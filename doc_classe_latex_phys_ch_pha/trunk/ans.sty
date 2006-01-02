@@ -1,0 +1,543 @@
+\typeout{Exercise and Answer macros} 
+\typeout{Charles Wells cfw2@po.cwru.edu}
+\typeout{24 February 1994}
+
+% Copyright 1994 by Charles Frederick Wells.
+% May be freely redistributed, provided that the files ans.sty,
+% ansdoc.tex and onceexam.tex are distributed together and are not
+% changed.
+
+\makeatletter
+% Counters for exercise and subexercise numbers
+\newcounter{exercounter}
+\newcounter{subexercounter}[exercounter]
+% % \renewcommand{\thesubexercounter}{\subexerstyle{subexercounter}}
+\newif\ifsols
+\newif\ifanswerson
+\newif\ifanswer
+\newif\ifsubanswer
+% Used to determine if the current exercise or subexercise
+% has an answer
+
+
+\def\exerbody{%
+\setcounter{exercounter}{0}%
+\ifanswerson\answerfalse\subanswerfalse\@wrheader\fi%
+\ifsols\@wrsolheader\fi}
+\newcommand{\exes}[1]{\exersection{#1}\exerbody}
+% You can comment out the forms you don't want:
+\newcommand{\exercises}{\exes{Exercises}}
+\newcommand{\exercise}{\exes{Exercise}}
+\newcommand{\problems}{\exes{Problems}}
+\newcommand{\extraproblems}{\exes{Extra Credit Problems}}
+\newcommand{\samplequestions}{\exes{Sample Test Questions}}
+
+% Amount of vertical space between exercises.
+% It would be better to have this space depend on the
+% type size.  In hindsight, I think each exercise section
+% should be a specially created LaTeX list environment.
+% But that's for the next revision!
+\newskip\exerskipamount
+\exerskipamount=6pt plus 1 pt 
+\newcommand{\medgap}{\par\vskip\exerskipamount\noindent}
+
+% \answermark is the symbol that marks questions with answers. 
+% Put another symbol here in place of \bullet if you wish.  The
+% spacing will take care of itself.  I hope.
+\newcommand\answermark{\mbox{$^\bullet$}}
+
+% The following commands set the numbering style for exercises and
+% subexercises.  See page 92 of LaTeX book for other
+% possibilities.
+\def\exerstyle{\arabic}
+\def\subexerstyle{\alph}
+
+% The quantities below control the spacing after the problem number
+% before the problem starts.  If you change \exerspace all the
+% others should change automatically.  The idea is that all the
+% problems start with the same indentation and the answer and hard
+% symbols are stuck between without affecting the indentation.
+% \newdimen{\hardback}
+\newdimen{\answerspace}
+\newdimen{\exerspace}
+\newdimen{\tempdim}
+\newdimen{\labeldim}
+\settowidth{\labeldim}{\bf5}
+\setlength{\exerspace}{\parindent}
+\advance\exerspace by -\labeldim
+\setlength{\answerspace}{\exerspace}
+\settowidth{\tempdim}{\answermark}
+\advance\answerspace by -\tempdim
+
+% \@pns is the style of the problem number.  It is set to
+% boldface.  Changing \@pns will change the styles of all the
+% problem numbers and subproblem letters in both the exercise
+% sections and the answer sections.  If you don't want them all
+% the same you will have to search the file and change them by
+% hand.  
+\def\@pns{\bf}
+
+% The following commands head exercises and subexercises.  (See
+% ansdoc.tex for a more complete explanation.)  
+\newcommand{\exer}{%
+\ifnum\c@exercounter>0
+\pagebreak[2]\else\nopagebreak\fi\medgap% 
+\ifanswerson\ifanswer\noanserror\fi\answerfalse% 
+\ifsubanswer\nosubanserror\fi\subanswerfalse\fi
+\refstepcounter{exercounter}\setcounter{subexercounter}{0}% 
+\@pns\exerstyle{exercounter}.\hspace{\exerspace}\rm}
+
+% \exhead is a header for a set of exercises
+\newcommand{\exhead}[1]{\ifnum\c@exercounter>0
+\pagebreak[3]\else\nopagebreak\fi
+\par\bigskip\noindent{\fbox{%
+\advance\textwidth by -1em\parbox{\textwidth}{#1}}}}
+
+% The two lines below produce a version of exhead that does
+% not enclose the header in a box.  I changed to the boxed
+% version when I noticed that a substantial number of students
+% overlooked the header.
+% \newcommand{\exhead}{\ifnum\c@exercounter>0
+% \pagebreak[3]\else\nopagebreak\fi\par\bigskip\noindent}
+
+
+\newcommand{\@ssa}% "offset subanswer"
+{\phantom{\bf\exerstyle{exercounter}.\ }%
+\bf\subexerstyle{subexercounter}}
+
+\newcommand{\exera}{\ifnum\c@exercounter>0
+\pagebreak[2]\else\nopagebreak\fi\medgap% 
+\ifanswerson\ifanswer\noanserror\fi% 
+\ifsubanswer\nosubanserror\fi\subanswerfalse\answertrue\fi
+\refstepcounter{exercounter}\setcounter{subexercounter}{0}% 
+\@pns\exerstyle{exercounter}.\answermark\hspace{\answerspace}\rm}
+
+\def\eexer{\ifanswerson\ifanswer\noanserror\fi% 
+\ifsubanswer\nosubanserror\fi\pagebreak[3]\@wrtail\fi%
+\ifsols\@wrsoltail\fi}
+
+\newcommand{\subexer}{\ifanswerson% 
+\ifsubanswer\nosubanserror\fi\subanswerfalse\fi% 
+\refstepcounter{subexercounter}% 
+\nopagebreak[1]\par\noindent\@ssa.\hspace{\exerspace}\rm}
+
+\newcommand{\subexera}{\ifanswerson% 
+\ifsubanswer\nosubanserror\fi\answerfalse\subanswertrue\fi% 
+\refstepcounter{subexercounter}% 
+\nopagebreak[1]\par\noindent\@ssa.%
+\answermark\hspace{\answerspace}\rm}
+
+\newcommand{\immsubexer}{\ifanswerson% 
+\ifsubanswer\nosubanserror\fi\subanswerfalse\fi% 
+\refstepcounter{subexercounter}
+\hspace{-\labeldim}\@pns\subexerstyle{subexercounter}.%
+\hspace{\exerspace}\rm} 
+
+\newcommand{\immsubexera}{\ifanswerson% 
+\ifsubanswer\nosubanserror\fi\answerfalse\subanswertrue\fi% 
+\refstepcounter{subexercounter}% 
+\hspace{-\labeldim}\@pns\subexerstyle{subexercounter}.%
+\answermark\hspace{\answerspace}\rm}
+
+%%The following places the word "(#1)" in boldface after the
+% exercise number. 
+% I use it to mark exercises "hard", "requires Mathematica",
+% etc.
+\def\annot#1{\hspace{-\answerspace}{{\bf (#1)}}}
+
+% These are the error messages for problems marked with the
+% answermark that don't have answers and vice versa.
+\newcommand\anserror{
+\typeout{Warning:}
+\typeout{Exercise \exerstyle{exercounter} has an answer but is not % 
+marked}}
+\newcommand\noanserror{
+\typeout{Warning:}
+\typeout{Exercise \exerstyle{exercounter} has no answer}}
+\newcommand\nosubanserror{
+\typeout{Warning:} 
+\typeout{Exercise \exerstyle{exercounter}.%
+\subexerstyle{subexercounter} % 
+has no answer}}
+\newcommand\subanserror{
+\typeout{Warning:}
+\typeout{Exercise \exerstyle{exercounter}.%
+\subexerstyle{subexercounter} % 
+has an answer but is not marked}}
+
+% Following is a modification of the makeindex code.
+% It defines the various answer macros that write appropriate
+% headers to the answer file.  The answer file has the same name
+% as the main file, with the extension ".ans".
+% The stuff concerning rightmark etc. control the running heads in
+% the answer section.  They won't appear unless you put
+% \pagestyle{headings} in the preamble.
+% The line in @wrheader beginning \string\ansection* controls what
+% is printed before the answers to each section.
+% The line saying \typeout controls the message on the screen.
+\def\makeanswers{\answersontrue\if@filesw \newwrite\answerfile
+  \immediate\openout\answerfile=\jobname.ans%
+%makeanswers continues...
+  \def\answer{\ifanswer\else\anserror\fi\answerfalse\par
+\putinans{\string\antwort[\exerstyle{exercounter}]}\copytoblankline}%
+%makeanswers continues...
+  \def\subanswer{\ifsubanswer\else\subanserror\fi\subanswerfalse\par
+      \ifnum\value{subexercounter}=1
+    \putinans{\string\immsubantwort[\exerstyle{exercounter}]%
+[\subexerstyle{subexercounter}]}\else 
+    \putinans{\string\subantwort[%\string\phantom%
+\exerstyle{exercounter}]%
+[\subexerstyle{subexercounter}]}\fi
+      \copytoblankline}%
+%makeanswers continues...
+  \def\immsubanswer{\subanswerfalse\par
+  \putinans{\string\immsubantwort[\exerstyle{exercounter}]%
+[\subexerstyle{subexercounter}]}% 
+      \copytoblankline}%
+   \typeout{Writing answer file \jobname.ans }\fi}% END \makeanswers
+
+% The command \makesolutions below produces a second file of
+% answers for the problems that aren't marked as having answers!
+% By putting \dosolutions at the very end of the printout you can
+% have a booklet of "answers to problems not answered in the
+% text."
+\def\makesolutions{\solstrue\if@filesw \newwrite\solutionfile
+\newwrite\solutionfile
+  \immediate\openout\solutionfile=\jobname.sol%
+  \def\solution{\par
+    \putinsol%
+     {\string\antwort[\exerstyle{exercounter}]}%
+     \copysoltoblankline\@esphack}%
+  \def\subsolution{\par
+      \ifnum\value{subexercounter}=1
+    \putinsol{\string\immsubantwort[\exerstyle{exercounter}]%
+[\subexerstyle{subexercounter}]}\else 
+    \putinans{\string\subantwort[%\string\phantom%
+{\exerstyle{exercounter}}]%
+[\subexerstyle{subexercounter}]}\fi
+      \copysoltoblankline}%
+  \def\immsubsolution{\par
+  \putinsol{\string\immsubantwort[\exerstyle{exercounter}]%
+[\subexerstyle{subexercounter}]}% 
+      \copysoltoblankline}%
+   \typeout{Writing solutions file \jobname.sol}\fi}% END 
+
+
+\def\skiplf{\catcode`\^^J=9} 
+
+% The following is by D. Knuth
+% It reads a line up to a CR then writes it to file #1
+% If it comes to a blank line it quits
+% DON'T MESS WITH THIS CODE.  EVEN BREAKING OR COMBINING THE 
+% LINES CAN MESS IT UP.
+\def\copytoblankline{\begingroup\setupcopy\copyans}
+\def\copysoltoblankline{\begingroup\setupcopy\copysol}
+   \def\setupcopy{\def\do##1{\catcode`##1=\other}\dospecials
+   \catcode`\|=\other \obeylines}
+   {\obeylines \gdef\copyans#1
+     {\def\next{#1}% 
+      \ifx\next\empty\let\next=\endgroup% 
+      \else\immediate\write\answerfile{\next} \let\next=\copyans\fi\next}}
+   {\obeylines \gdef\copysol#1
+     {\def\next{#1}% 
+      \ifx\next\empty\let\next=\endgroup% 
+      \else\immediate\write\solutionfile{\next} \let\next=\copysol\fi\next}}
+
+% The following modification of copytoblankline is used 
+% when answers are turned off
+\def\throwaway{\begingroup\setupcopy\killans}
+   {\obeylines \gdef\killans#1
+     {\def\next{#1}% 
+      \ifx\next\empty\let\next=\endgroup % 
+      \else\let\next=\killans\fi\next}}
+
+\chardef\other=12 
+
+% The following commands take effect if \makeanswers is not 
+% in preamble
+% They are intended to do nothing
+\def\@wrheader{\relax}
+\def\@wrtail{\relax}
+\def\@wrsolheader{\relax}
+\def\@wrsoltail{\relax}
+\def\answer{\throwaway}
+\def\solution{\throwaway}
+\def\subanswer{\throwaway}
+\def\immsubanswer{\throwaway}
+
+
+
+\answersonfalse
+\solsfalse
+
+% The words containing "antwort" format the answers in the
+% answer file.
+
+\def\ant{\@startsection
+ {paragraph}{4}{\z@}{-6pt plus -2pt minus -1pt}{-1em plus
+-.2em}{\normalsize\@pns}}
+
+
+\def\antwort[#1]{\ant{#1.}} %%Note the period
+% \def\subantwort[#1][#2]{\par\noindent\@pns#1\phantom{.}\ \ #2.\ \rm}
+\def\subantwort[#1][#2]{\pagebreak[1]%
+\medgap\@pns\phantom{#1.}\ \ #2.\ \rm}
+\def\immsubantwort[#1][#2]{\pagebreak[2]\medgap\@pns#1.\ \ #2.\ \rm} 
+
+
+% Here are some commands used repeatedly in \makeanswers and in
+% the option commands \artsec, \bkchap, etc.
+\def\putinans{\immediate\write\answerfile}
+\def\putinsol{\immediate\write\solutionfile}
+\def\putbreak{\string\pagebreak[3]\string\medbreak\noindent}
+
+% This command is called by doanswers and can be used to customize
+% the answer section.  For example, if you want the answers in
+% small type, you could put "\def\@therstuff{\small}" in the
+% preamble.
+\def\@therstuff{\relax}
+
+\def\do@nswers[#1]{
+\ifanswerson\putinans{\string\par}
+\immediate\closeout\answerfile% \fi
+\@therstuff
+\def\rightmark{\expandafter\@rightmark\botmark}
+\def\leftmark{\expandafter\@leftmark\firstmark}\fi
+\answersonfalse % minor kludge because answerfile is closed
+\anshead
+\input{#1.ans}
+\eject}
+ 
+% The following command should be put at place in the book where the
+% answers go, e.g. after the bibliography and before the index.
+% "Answers to selected exercises" heads the whole section.
+% Answers to each section are headed by "Section #.#".  
+% That is controlled by \@wrheader (above).
+\def\doanswers{\@ifnextchar [{\do@nswers}{\do@nswers[\jobname]}}
+
+\def\dos@ls[#1]{
+\immediate\write\solutionfile{\string\par}
+\immediate\closeout\solutionfile
+\@therstuff
+\setcounter{page}{1}
+\def\rightmark{\expandafter\@rightmark\botmark}
+\def\leftmark{\expandafter\@leftmark\firstmark}
+\raggedbottom% In case not used earlier
+\solhead
+\input{#1.sol}
+\eject}
+
+% The command \dosolutions produces a booklet of answers to
+% questions not answered in the text (provided you write the
+% answers!)  It could be put at the end of the .tex file after
+% resetting the page number.
+\def\dosolutions{\@ifnextchar [{\dos@ls}{\dos@ls[\jobname]}}
+
+% The following commands allow ans.sty to be used with book.sty or
+% article.sty, with various arrangements of the exercises.
+
+% Use this command in your preamble if you are using article style
+% and have (at most) one section of exercises per section.
+\def\artsec{%
+  \def\exersection{\subsection}%
+  \def\ansection{\section}%
+  \def\anshead{%
+    \section*{Answers to selected exercises}\label{ansec}
+    \sectionmark{}}
+  \def\solhead{%
+    \noindent\section*{Solutions to exercises\protect\\ 
+not answered in text}%
+    \sectionmark{}}
+  \def\@wrheader{\begingroup
+      \xdef\@gtempa{%
+\putinans{\string\ansection*{Section \thesection}\string\nopagebreak}
+ \putinans{\string\typeout{Answers to Section \thesection}}
+ \putinans{\string\markboth{Answers for Section \thesection}
+{Answers for Section \thesection\string\enskip}}}
+        \@gtempa\endgroup}%
+   \def\@wrsolheader{\begingroup
+      \xdef\@gtempa{%
+ \putinsol{\string\ansection*{Section \thesection}\string\nopagebreak}
+ \putinsol{\string\typeout{Solutions to Section \thesection}}
+ \putinsol{\string\markboth{Solutions for Section \thesection}
+{Solutions for Section \thesection\string\enskip}}}
+        \@gtempa\endgroup}%
+   \def\@wrtail{\xdef\@gtempa{%
+ \putinans{\string\markboth{Answers for Section \thesection}
+{Answers for Section \thesection\string\enskip}}
+  \putinans{\putbreak}}
+       \@gtempa}
+   \def\@wrsoltail{
+\xdef\@gtempa{\putinsol{\string\markboth{Solutions for Section
+   \thesection}
+{Solutions for Section \thesection\string\enskip}}
+    \putinsol{\string\pagebreak[3]\string\medbreak\noindent}}
+       \@gtempa}}% end \artsec
+
+% Use this command if you are using bookstyle and have at most one
+% set of exercises per chapter.
+\def\bkchap{%
+  \def\exersection{\section}%
+  \def\anstochap{\section}%
+  \def\anshead{%
+    \addcontentsline{toc}{part}{Answers to selected problems} 
+    \chapter*{Answers to selected problems}\label{ansec}
+    \chaptermark{}}
+  \def\solhead{%
+    \chapter*{Solutions to problems\protect\\ 
+     not answered in text}
+    \chaptermark{}}
+   \def\@wrheader{\begingroup
+      \xdef\@gtempa{%
+ \putinans{\string\anstochap*{Chapter \thechapter}\string\nopagebreak}
+ \putinans{\string\typeout{Answers to Chapter \thechapter}}
+  \putinans{\string\markboth{Solutions for Chapter \thechapter}
+{Solutions for Chapter \thechapter\string\enskip}}
+%       \putinans{%
+% % The following causes the string "Solutions for Chapter n"
+% % to be added IN THE FORMAT OF A SECTION ENTRY in the t.o.c
+%  \string\addcontentsline{toc}{section}{\string\protect
+%  \string\numberline{0}{Solutions for Chapter \thechapter}}}
+}
+        \@gtempa\endgroup}%
+   \def\@wrsolheader{\begingroup
+      \xdef\@gtempa%
+ {\putinsol{\string\anstochap*{Chapter \thechapter}\string\nopagebreak}
+ \putinsol{\string\typeout{Solutions to Chapter \thechapter}}
+ \putinsol{\string\markboth{Solutions for Chapter \thechapter}
+{Solutions for Chapter \thechapter\string\enskip}}}
+       \@gtempa\endgroup}%
+   \def\@wrtail{\xdef\@gtempa{%
+ \putinans{\string\markboth{Solutions for Chapter \thechapter}
+{Solutions for Chapter \thechapter\string\enskip}}
+      \putinans{\putbreak}}
+       \@gtempa}
+   \def\@wrsoltail{
+\xdef\@gtempa{\immediate\write\solutionfile{%
+       \string\markboth{Solutions for Chapter \thechapter}
+{Solutions for Chapter \thechapter\string\enskip}}
+      \immediate\write\solutionfile{\string\pagebreak[3]
+         \string\medbreak\noindent}}
+       \@gtempa}}% end\bkchap
+
+\def\twocolbkchap{%
+  \def\exersection{\section}%
+  \def\anstochap{\section}%
+  \def\anshead{%
+    \addcontentsline{toc}{part}{Answers to selected problems} 
+    \chapter*{Answers to selected problems}\label{ansec}
+    \chaptermark{}}
+  \def\solhead{%
+    \chapter*{Solutions to problems\protect\\ 
+     not answered in text}
+    \chaptermark{}}
+   \def\@wrheader{\begingroup
+      \xdef\@gtempa{%
+ \putinans{\string\anstochap*{Chapter \thechapter}\string\nopagebreak}
+ \putinans{\string\typeout{Answers to Chapter \thechapter}}
+  \putinans{\string\markboth{Solutions for Chapter \thechapter}
+{Solutions for Chapter \thechapter\string\enskip}}
+%       \putinans{%
+% % The following causes the string "Solutions for Chapter n"
+% % to be added IN THE FORMAT OF A SECTION ENTRY in the t.o.c
+%  \string\addcontentsline{toc}{section}{\string\protect
+%  \string\numberline{0}{Solutions for Chapter \thechapter}}}
+}
+        \@gtempa\endgroup}%
+   \def\@wrsolheader{\begingroup
+      \xdef\@gtempa%
+ {\putinsol{\string\anstochap*{Chapter \thechapter}\string\nopagebreak}
+ \putinsol{\string\typeout{Solutions to Chapter \thechapter}}
+ \putinsol{\string\markboth{Solutions for Chapter \thechapter}
+{Solutions for Chapter \thechapter\string\enskip}}}
+       \@gtempa\endgroup}%
+   \def\@wrtail{\xdef\@gtempa{%
+ \putinans{\string\markboth{Solutions for Chapter \thechapter}
+{Solutions for Chapter \thechapter\string\enskip}}
+      \putinans{\putbreak}}
+       \@gtempa}
+   \def\@wrsoltail{
+\xdef\@gtempa{\immediate\write\solutionfile{%
+       \string\markboth{Solutions for Chapter \thechapter}
+{Solutions for Chapter \thechapter\string\enskip}}
+      \immediate\write\solutionfile{\string\pagebreak[3]
+         \string\medbreak\noindent}}
+       \@gtempa}}% end\bkchap
+
+
+% Use this command if you are using book style and have at most
+% one set of exercises per section.
+\def\bksec{%
+  \def\exersection{\section}%
+  \def\anstochap{\section}%
+  \def\ansection{\subsection}%
+  \def\anshead{%
+    \setcounter{chapter}{-1}
+    \setcounter{section}{0}
+    \chapter{Answers to selected exercises}\label{ansec}
+    \chaptermark{Answers to exercises}}
+  \def\solhead{%
+    \chapter*{Solutions to exercises\protect\\ not answered in text}
+    \chaptermark{Solutions to exercises}}
+   \def\@nschap{\ifnum \c@chapter >\z@
+      {\begingroup
+      \xdef\@gtempa{\putinans{%
+      \string\typeout{Chapter \thechapter\space solutions}}
+% using several \writes keeps the answer file lines from being too long
+      \putinans{%
+      \string\noindent%
+      \string\anstochap*{Solutions for Chapter \thechapter}%
+      \string\nopagebreak}
+      \putinans{%
+ \string\addcontentsline{toc}{chapter}{\string\protect
+ \string\numberline{0}{Solutions for Chapter \thechapter}}}}
+        \@gtempa\endgroup}\fi}%
+   \def\s@lchap{\ifnum \c@chapter >\z@
+      {\begingroup
+      \xdef\@gtempa{\putinsol{%
+      \string\typeout{Chapter \thechapter\space solutions}}
+% using several \writes keeps the answer file lines from being too long
+      \putinsol{%
+      \string\noindent%
+      \string\anstochap*{Solutions for Chapter \thechapter}%
+      \string\nopagebreak}}%
+        \@gtempa\endgroup}\fi}%
+   \def\@wrheader{\begingroup
+      \xdef\@gtempa{\putinans{%
+       \string\ansection*{Section \thesection}\string\nopagebreak
+       \string\markboth{Solutions for section \thesection}
+{Solutions for section \thesection\string\enskip}}}
+        \@gtempa\endgroup}%
+   \def\@wrsolheader{\begingroup
+      \xdef\@gtempa{%
+ \putinsol{\string\anstochap*{Section \thesection}\string\nopagebreak}
+ \putinsol{\string\typeout{Solutions to Section \thesection}}
+ \putinsol{\string\markboth{Solutions for Section \thesection}
+{Solutions for Section \thesection\string\enskip}}}
+        \@gtempa\endgroup}%
+% Following rewrites chapter to write heading in answer section
+   \let\ch@@@p=\chapter
+   \def\chapter{\ch@@@p\@nschap\s@lchap}
+   \def\@wrtail{
+\xdef\@gtempa{\putinans{%
+       \string\markboth{Solutions for section \thesection}
+{Solutions for section \thesection\string\enskip}}
+      \putinans{\putbreak}}
+    \@gtempa}
+   \def\@wrsoltail{
+\xdef\@gtempa{\putinsol{\string\markboth{Solutions for Section
+   \thesection}
+{Solutions for Section \thesection\string\enskip}}
+    \putinsol{\string\pagebreak[3]\string\medbreak\noindent}}
+       \@gtempa}}% end\bksec
+
+\def\once{%
+  \renewcommand{\exercises}{\setcounter{exercounter}{0}%
+     \ifanswerson\answerfalse\subanswerfalse\fi\@wrheader}
+  \def\anshead{\relax}
+  \def\@wrheader{\putinans{\string\typeout{Answers}}}
+   \def\@wrtail{\relax}
+  \ifsols{%
+\typeout{Sorry, you can't make a Solutions Manual in this style}
+\solsfalse}\fi}% end \once
+

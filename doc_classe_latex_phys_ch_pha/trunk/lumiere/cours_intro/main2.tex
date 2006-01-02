@@ -1,0 +1,217 @@
+\cours{La lumière}
+
+\section*{Introduction : Qu'est-ce que la lumière ?}
+
+Il existe \textbf{deux modèles} pour décrire la lumière.
+
+\subsection{Modèle ondulatoire}
+La lumière est assimilée à une onde électromagnétique.
+
+\subsection{Modèle corpusculaire}
+La lumière est assimilée à des grains d'énergie qui se propagent.
+
+
+\section{La lumière est une onde}
+
+La lumière est une onde électromagnétique à laquelle notre oeil est sensible.
+
+L'émission de lumière est due à la vibration des électrons périphériques des atomes qui constituent la source.
+
+\begin{center}
+  \begin{figure}[H]
+    \caption{Propagation d'une onde électromagnétique}
+    \includegraphics[width=7cm]{lumiere/cours_intro/Image3.gif.eps}
+  \end{figure}
+\end{center}
+
+\`A toute onde électromagnétique correspond :
+    \begin{itemize}
+    \item dans le temps : une période T (période temporelle)
+    \item dans l'espace : une longueur d'onde $\lambda$ (période spatiale)
+      \begin{itemize}
+      \item[] $\lambda$ est la distance parcourue par l'onde pendant la période temporelle $T$
+      \end{itemize}
+    \end{itemize}
+
+
+
+
+
+Sur le schéma suivant on représente l'évolution de champ électrique
+$E$ en un point donné au fil du temps ($t$).
+
+
+
+\begin{center}
+  \begin{figure}[H]
+    \begin{pspicture}(-1,-1.5)(7,1.5)
+      % \psgrid[subgriddiv=1,griddots=10]
+      \psset{xunit=1}
+      \psset{yunit=1}
+      \psline{->}(0,-1.5)(0,1.4) % Axe des y
+      \psline{->}(-0.25,0)(7,0) % Axe des x
+      \rput{0}(-0.25,1.5){$E$}
+      \rput{0}(7,-0.25){\textcolor{red}{$t$}}
+      \psplot[linecolor=red,linewidth=2pt]{0}{6.28}{x 57.3 mul 4 mul sin}
+      \rput{0}(1.57,-0.25){$T$}
+      \rput{0}(3.14,-0.25){$2T$}
+    \end{pspicture}
+  \end{figure}
+\end{center}
+
+
+
+  On note sur ce graphique la période temporelle $T$ (en $s$) 
+  
+
+
+  et un de ses multiples $2T$.
+
+
+
+
+Sur le schéma suivant on représente l'évolution de champ électrique
+$E$ à un instant donné selon la position d'observation ($x$).
+
+
+\begin{center}
+  \begin{figure}[H]
+    \begin{pspicture}(-1,-1.5)(7,1.5)
+      % \psgrid[subgriddiv=1,griddots=10]
+      \psset{xunit=1}
+      \psset{yunit=1}
+      \psline{->}(0,-1.5)(0,1.4) % Axe des y
+      \psline{->}(-0.25,0)(7,0) % Axe des x
+      \rput{0}(-0.25,1.5){$E$}
+      \rput{0}(7,-0.25){\textcolor{red}{$x$}}
+      \psplot[linecolor=red,linewidth=2pt]{0}{6.28}{x 57.3 mul 4 mul sin}
+      \rput{0}(1.57,-0.25){$\lambda$}
+      \rput{0}(3.14,-0.25){$2\lambda$}
+      \rput{0}(-0.25,0.25){$O$}
+      \rput{0}(1.57,0.25){$O'$}
+      \rput{0}(1.18,-1.25){$A$}
+      \rput{0}(2.74,-1.25){$B$}
+    \end{pspicture}
+  \end{figure}
+\end{center}
+
+
+  On note sur ce graphique la période spatiale $\lambda$ (en m)
+  
+
+  On remarque que les points O et O' sont dans le même état vibratoire : on dit qu'ils sont en phase.
+ 
+
+  Les points A et B sont également en phase.
+
+
+
+  \begin{itemize}
+  \item Une lumière monochromatique correspond à une vibration à une fréquence unique.
+  \item En général, la lumière est la superposition de différentes longueur d'onde.
+  \item La lumière blanche peut être décomposée par un prisme pour former un spectre.
+  \item Le spectre visible est le domaine de radiation pouvant être captées par notre oeil.\\
+La longueur d'onde dans le vide $\lambda_0$ doit être comprise entre $400~nm$ (violet) et $800~nm$ (rouge) pour être visible par l'oeil humain.\\
+Au dessus de $800~nm$ c'est le domaine de l'infra-rouge.\\
+En dessous de $400~nm$ c'est le domaine de l'ultra-violet.
+  \end{itemize} 
+
+
+\begin{center}
+  \begin{figure}[H]
+    \caption{Spectre de la lumière blanche}
+    \includegraphics[width=9cm]{lumiere/cours_intro/image003.gif.eps}
+  \end{figure}
+\end{center}
+
+\begin{center}
+  \begin{figure}[H]
+    \caption{Spectre électromagnétique}
+    \includegraphics[width=9cm]{lumiere/cours_intro/623_1533_spectre_complet.jpg.eps}
+  \end{figure}
+\end{center}
+
+\begin{center}
+  \begin{figure}[H]
+    \caption{Spectre électromagnétique (résumé)}
+    \includegraphics[width=11cm]{lumiere/cours_intro/Spectre_onde_electromagnetique.png.eps}
+  \end{figure}
+\end{center}
+
+
+  La vitesse de propagation dépend du milieu traversée.\\
+
+
+  Celui-ci est caractérisé par son indice de réfraction noté $n$.
+
+  \[n=\frac{c_0}{c}\]
+  $c_0$ : vitesse de propagation (célérité) de la lumière dans le vide ($c_0 \approx 3.10^8~m/s$).\\
+  $c$ : vitesse de propagation de la lumière dans le milieu de propagation (en $m/s$).
+
+
+  \emph{Remarque :} $n$ est toujours supérieur à $1$ car la vitesse de propagation dans un milieu quelconque est toujours inférieure à la vitesse de propagation dans le vide.
+
+
+
+  La longueur d'onde de la lumière $\lambda$ (dans un milieu donné) est définie par :
+
+  \[\lambda = c T = \frac{c}{\nu}\]
+
+  $c$ : vitesse de propagation de la lumière dans le milieu de propagation (en $m/s$).\\
+  $T$ : période temporelle $T$ (en $s$)\\
+  $\nu$ : fréquence de l'onde (en $Hz$)\\
+
+
+\[\nu = \frac{1}{T}\]
+
+
+\section{Caractère corpusculaire de la lumière}
+
+
+\subsection{Expérience}
+
+
+
+    On éclaire une plaque de zinc avec une lumière violette.
+
+  
+    Des électrons sont arrachés à la plaque grâce à l'énergie cédée par la lumière.
+
+
+    Ces électrons échappent à l'emprise des atomes de zinc.
+
+
+    La même expérience avec une lumière rouge ne produit aucun effet (même si on prolonge l'éclairage ou si l'on éclaire plus intensément)
+
+\subsection{Interprétations}
+
+    
+    La lumière ne lâche pas son énergie de manière continue mais par paquets.
+  
+
+    Ces paquets d'énergie sont plus au moins importants selon les couleurs.
+    
+    
+    L'atome ne laisse partir un électron que si le paquet reçu possède une certaine valeur minimale.
+    
+    La lumière rouge ne possède pas cette valeur minimale d'énergie (alors que la lumière violette la possède)
+    
+    On peut dire que la lumière se comporte comme un flux de particules infiniment petites, sans masse ni charge appelées \emph{photons}.
+
+
+  \`A une lumière monochromatique de fréquence $\nu$ et de longueur d'onde $\lambda = \frac{c}{\nu}$
+
+  On associe des photons d'énergie $E$ telle que :
+
+  \[E = h \nu\]
+
+  $h$ : constante de Planck $h=6,626.10^{-34}J.s$
+
+  $E$ : énergie en Joule ($J$) ou parfois en électron-volt $1~eV = 1,6.10^{-19}~J$
+
+
+
+\newpage
+
+
+

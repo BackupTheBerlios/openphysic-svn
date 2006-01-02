@@ -1,0 +1,16 @@
+;; Object latex/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "latex/"
+  :tables (list 
+   (semanticdb-table "Makefile"
+    :major-mode 'makefile-mode
+    :tags '(("input" variable (:default-value ("main")) nil [1 12]) ("page" variable (:default-value ("0")) nil [12 19]) ("all" function nil nil [20 62]) (".PHONY" function (:arguments ("main.dvi" "clean" "view-ps" "view-pdf" "view-pdf-dvips" "view-pdf-pdflatex" "edit" "view-ps-2" "only.tex" "this" "brouillon" "clean_temp")) nil [62 186]) ("$(input)" function nil nil [186 288]) ("$(input)" function (:arguments ("$(input).dvi")) nil [288 331]) ("$(input)" function (:arguments ("$(input).ps")) nil [331 414]) ("view-dvi" function (:arguments ("$(input).dvi")) nil [414 459]) ("view-ps" function (:arguments ("$(input).ps")) nil [459 490]) ("view-pdf" function nil nil [490 525]) ("view-pdf-dvips" function (:arguments ("$(input)_dvips.pdf")) nil [525 572]) ("view-pdf-pdflatex" function (:arguments ("$(input)_pdflatex.pdf")) nil [572 625]) ("clean_temp" function nil nil [625 652]) ("clean" function nil nil [652 758]) ("edit" function nil nil [758 795]) ("$(input)" function (:arguments ("$(input).ps")) nil [796 850]) ("view-ps-2" function (:arguments ("$(input)_suite_2.ps")) nil [850 925]) ("$(input)" function (:arguments ("$(input)_dvips.pdf")) nil [926 1025]) ("view-pdf-dvips-2" function (:arguments ("$(input)_dvips_suite_2.pdf")) nil [1025 1082]) ("$(input)" function (:arguments ("$(input)_pdflatex.pdf")) nil [1082 1187]) ("view-pdf-2" function nil nil [1187 1226]) ("view-pdf-pdflatex-2" function (:arguments ("$(input)_dvips_pdflatex_2.pdf")) nil [1226 1289]) ("zip" function nil nil [1289 1338]) ("ftp" function nil nil [1338 1459]) ("ftp_full_build" function nil nil [1472 1620]) ("get" function nil nil [1620 1730]) ("select" function (:arguments ("$(input).ps")) nil [1732 1911]) ("clean_select" function nil nil [1911 1951]) ("clean_only" function nil nil [1953 1979]) ("only.tex" function nil nil [1979 2038]) ("only.dvi" function (:arguments ("only.tex")) nil [2083 2113]) ("only.ps" function (:arguments ("only.dvi")) nil [2113 2148]) ("only-ps" function (:arguments ("only.ps")) nil [2148 2175]) ("only_suite_2.ps" function (:arguments ("only.ps")) nil [2175 2221]) ("only-ps2" function (:arguments ("only_suite_2.ps")) nil [2221 2276]) ("only-pdf" function (:arguments ("only.pdf")) nil [2276 2307]) ("only-pdf2" function (:arguments ("only_suite_2.pdf")) nil [2338 2378]) ("only.pdf" function (:arguments ("only.ps")) nil [2378 2422]) ("only_suite_2.pdf" function (:arguments ("only.pdf")) nil [2422 2501]) ("this" function nil nil [2501 2624]) ("brouillon" function nil nil [2660 2715]) ("scan" function nil nil [2716 2749]))
+    :file "Makefile"
+    :pointmax 2749
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "semantic.cache"
+  :semantic-tag-version "2.0beta3"
+  :semanticdb-version "2.0beta3"
+  )

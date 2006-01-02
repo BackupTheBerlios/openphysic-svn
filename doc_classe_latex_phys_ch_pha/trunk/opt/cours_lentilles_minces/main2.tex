@@ -1,0 +1,202 @@
+\cours{Les lentilles minces}
+ 
+
+\section{Qu'est-ce qu'une lentille ?}
+
+\subsection{Définition}
+
+\subsection{Les différents types de lentilles}
+
+\subsection{Caractéristiques de lentilles monces}
+
+\section{Les lentilles convergentes}
+
+
+
+\section{Les lentilles divergentes}
+
+
+\newpage
+
+\null
+
+\newpage
+
+\section*{Relations de grandissement}
+
+
+\begin{center}
+\begin{pspicture}(-7,-2)(7,2)
+%\psgrid[subgriddiv=1,griddots=10]
+
+\psline{->}(-7,1.5)(-6.5,1.5)
+\rput(-6.75,1.25){$+$}
+\psline{->}(-7,1.5)(-7,2)
+\rput(-7.25,1.75){$+$}
+
+\pnode(-5,0){A}
+\pnode(-5,1){B}
+
+\psline{->}(A)(B)
+\uput{0.1}[225](A){$A$}
+\uput{0.1}[225](B){$B$}
+
+\psline{<->}(0,-2)(0,2)
+\rput(-0.25,-0.25){$O$}
+
+\psline(2,-0.1)(2,+0.1)
+\rput(2,-0.25){$F'$}
+
+\psline(-2,-0.1)(-2,+0.1)
+\rput(-2,-0.25){$F$}
+
+\psline{->}(-7,0)(7,0)
+\end{pspicture}
+\end{center}
+
+\subsection{Définition}
+
+\formule{\gamma = \rapportma{A'B'}{AB}}
+
+\subsection{Relations}
+
+\[\ma{AB} = \ma{OI}\]
+
+
+\[\ma{A'B'} = \ma{OJ}\]
+
+
+
+\subsubsection{Relation de grandissement avec origine au centre $O$}
+
+\begin{multicols}{2}
+
+\begin{pspicture}(-3,-1.5)(3,1.5)
+\psgrid[subgriddiv=1,griddots=10]
+\end{pspicture}
+
+\medskip
+
+\formule{\gamma = \rapportma{A'B'}{AB} = +\rapportma{OA'}{OA}}
+
+\end{multicols}
+
+
+
+\subsubsection{Relation de grandissement avec origine  au foyer objet $F$}
+
+\begin{multicols}{2}
+
+\begin{pspicture}(-3,-1.5)(3,1.5)
+\psgrid[subgriddiv=1,griddots=10]
+\end{pspicture}
+
+\medskip
+
+\formule{\gamma = \rapportma{A'B'}{AB} = -\rapportma{OF}{FA}}
+\end{multicols}
+
+
+\subsubsection{Relation de grandissement avec origine  au foyer image $F'$}
+
+\begin{multicols}{2}
+
+\begin{pspicture}(-3,-1.5)(3,1.5)
+\psgrid[subgriddiv=1,griddots=10]
+\end{pspicture}
+
+\medskip
+
+\formule{\gamma = \rapportma{A'B'}{AB} = -\rapportma{F'A'}{OF'}}
+\end{multicols}
+
+\newpage
+\section*{Relations de conjugaison}
+
+\setcounter{subsection}{0}
+
+\subsection{Formule de Newton (origine aux foyers)}
+On utilise les deux relations de grandissement avec origine aux foyers (objet et image)
+
+
+\[-\rapportma{OF}{FA} = -\rapportma{F'A'}{OF'}\]
+
+En multipliant par $-1$ : $\displaystyle \rapportma{OF}{FA} = \rapportma{F'A'}{OF'}$
+
+% \begin{center}
+% \fbox{$\displaystyle \ma{FA} \cdot \ma{F'A'} = \ma{OF} \cdot \ma{OF'}$}
+% \end{center}
+
+\formule{\ma{FA} \cdot \ma{F'A'} = \ma{OF} \cdot \ma{OF'}}
+
+
+Cette formule, nommée aussi \emph{formule de Newton} se note également :
+
+\[x \cdot x' = f f'\]
+
+Or comme pour une lentille mince on a $\ma{OF} = - \ma{OF'}$ soit $f = -f'$ on peut alors écrire :
+
+
+% \begin{center}
+% \fbox{$\displaystyle x \cdot x' = - {f'}^2$}
+% \end{center}
+
+
+\formule{x \cdot x' = - {f'}^2}
+
+
+\subsection{Formule de Descartes (origine au centre)}
+On utilise la relation de grandissement avec origine au centre et celle avec origine au foyer image.
+
+\[+\rapportma{OA'}{OA} = -\rapportma{F'A'}{OF'}\]
+
+Soit en mettant en ligne : $\ma{OA'} \cdot \ma{OF'} = -\ma{F'A'} \cdot \ma{OA}$
+
+Or $\ma{F'A'} = \ma{F'O} + \ma{OA'} = \ma{OA'} - \ma{OF'}$.
+
+
+Il vient alors $\ma{OA'} \cdot \ma{OF'} = -(\ma{OA'} - \ma{OF'}) \cdot \ma{OA}$.
+
+
+En développant, on obtient : $\ma{OA'} \cdot \ma{OF'} = -\ma{OA'} \cdot \ma{OA} + \ma{OF'} \cdot \ma{OA}$
+
+%Comme $\ma{OF} = -\ma{OF'}$
+
+Soit aussi : $\ma{OF'} \cdot \ma{OA} -\ma{OA'} \cdot \ma{OF'} = \ma{OA'} \cdot \ma{OA}$
+
+
+
+On divise alors par $\ma{OA} \cdot \ma{OA'} \cdot \ma{OF'}$ et on obtient :
+
+% \begin{center}
+% \fbox{$\displaystyle \frac{1}{\ma{OA'}} - \frac{1}{\ma{OA}} = \frac{1}{\ma{OF'}}$}
+% \end{center}
+
+\formule{\frac{1}{\ma{OA'}} - \frac{1}{\ma{OA}} = \frac{1}{\ma{OF'}}}
+
+
+Cette formule, nommée également \emph{Relation de Descartes}, se note aussi :
+
+\formule{\frac{1}{p'} - \frac{1}{p} = \frac{1}{f'}}
+
+\subsection*{Résumé}
+
+\begin{tabular}{cc}
+
+$\ma{OF} = f$    &  distance focale objet\\
+$\ma{OF'} = f'$  &  distance focale image\\
+$\ma{OA} = p$    &  distance objet-lentille\\
+$\ma{OA'} = p'$  &  distance image-lentille \\
+$\ma{FA} = x$    &  distance foyer objet - objet\\
+$\ma{F'A'} = x'$ &  distance foyer image - image \\
+
+\end{tabular}
+
+\subsubsection*{Relation de Descartes}
+\formule{\frac{1}{p'} - \frac{1}{p} = \frac{1}{f'}}
+
+\subsubsection*{Formule de Newton}
+\formule{x \cdot x' = - {f'}^2}
+
+\subsubsection*{Grandissement}
+\formule{\gamma = \rapportma{A'B'}{AB} = \frac{p'}{p} = -\frac{f}{x} = -\frac{x'}{f'}}

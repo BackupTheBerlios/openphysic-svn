@@ -1,0 +1,126 @@
+%\documentclass[a4paper]{article}
+\documentclass[a4paper,10pt]{book} % ans = answers (exercices et correction)
+%\documentclass[a4paper,10pt]{report}
+
+%\documentclass[a4paper,10pt]{book}
+
+\usepackage{s-celles}
+
+
+%\usepackage{nopageno} % pas de numéro de page
+
+\begin{document}
+
+
+%\exercices
+
+%\pgfpagesuselayout{2 on 1}[a4paper,landscape,border shrink=5mm]
+
+
+
+
+\title{Cours, Travaux Dirigés,\\ Travaux Pratiques et Devoirs Surveillés de\\ Sciences Physiques} % - Physique Appliquée}
+%\author{S. Celles}
+%\author{\null}
+
+\date{\today}
+%\date{\null}
+
+%thanks{Merci à eux !}
+
+
+% En-tête et pied de page
+%\usepackage{fancyhdr}
+%\pagestyle{fancy}
+%\lhead{S. \textsc{CELLES}} % haut de page gauche
+%\chead{Physique} % haut de page centre
+%\rhead{\null} % haut de page droite
+%\lfoot{pied de page gauche} % pied de page gauche
+%\cfoot{} % pied de page centré (pas de numér de page)
+%\rfoot{pied de page droit}  % pied de page droit
+%\renewcommand{\headrulewidth}{0.4pt} % Trace un trait de séparation de largeur 0,4 point. Mettre 0pt pour supprimer le trait.
+%\renewcommand{\footrulewidth}{0.4pt} % Trace un trait de séparation de largeur 0,4 point. Mettre 0pt pour supprimer le trait.
+
+
+% \begin{titlepage}
+% \maketitle % affichage du titre du document, de l'auteur, de la date
+% \end{titlepage}
+
+\input{title.tex} % page de titre
+
+\pagebreak
+
+\input{licence/licence.tex} % page de licence
+
+\newpage
+
+% table des matières
+% ==================
+% Comment changer la profondeur de la table des matières ?
+% http://www.grappa.univ-lille3.fr/FAQ-LaTeX/14.5.html
+\setcounter{tocdepth}{0}     % Dans la table des matieres
+%\setcounter{secnumdepth}{0}  % Avec un numero
+% Les sections sont numérotées si leur profondeur est inférieure à secnumdepth.
+% Elles apparaissent dans la table des matières si leur profondeur est inférieure à tocdepth.
+\tableofcontents % table des matières
+
+%\dominitoc % table des matières intermédiaire (minitoc) (par chapitre par ex)
+
+
+
+
+
+%\layout % Tester les marges nécessite \usepackage[francais]{layout}
+
+%\newpage % nouvelle page
+% \\ % saut de ligne
+%\footnote{Note de bas de page}
+
+
+
+
+%\newpage
+
+%\chapter{Chapitre} % classe book ou report mais pas article
+
+%\section{}
+%Voici la première section.
+
+%\subsection{SubSection}
+%Voici une subsection.
+
+%\subsubsection{SubSubSection}
+%Voici une subsubsection.
+
+%\paragraph{Paragraph}
+%Voici un paragraph.
+
+
+% \graphicspath{%
+%   {electrostat/doc_electrostat/}%
+% }
+
+
+\montrefalse % affiche les pointillés
+%\montretrue % affiche la solution
+
+%\LaTeX
+
+
+\input{include.tex}
+
+
+%\section*{Exercices}
+
+%\setcounter{num}{0}
+
+%\begin{exercice} Titre de l'exercice \\
+%Soit ce premier exercice
+%\end{exercice}
+
+%\begin{exercice} \\
+%Ce deuxième exercice
+%\end{exercice}
+
+\end{document}
+

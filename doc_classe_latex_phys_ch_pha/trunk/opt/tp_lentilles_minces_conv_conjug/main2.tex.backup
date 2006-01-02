@@ -1,0 +1,106 @@
+\tp{Relations de conjugaison\\des lentilles minces}
+
+\nomprenomclasse
+
+\objectifs{
+ \item \'Etablir les relations de conjugaison des lentilles minces.
+ \item \'Etablir les relations de grandissement des lentilles minces.
+}
+
+\materiel{
+ \item Banc optique avec objet (lanterne) et écran millimétré.
+ \item Lentilles minces.
+}
+
+\section{Montage optique}
+Utilisons un banc d'optique, un objet $AB$ bien éclairé, une lentille convergente de vergence $V$ connue et un écran muni d'une feuille de papier millimétré.
+
+\begin{enumerate}
+\item Quel est le signe de $V$ ?
+\item Quel est le signe de $f' = \overline{OF'}$ ?
+\item Quel est le signe de $f = \overline{OF}$ ?
+\end{enumerate}
+
+\section{Mesures}
+
+\begin{enumerate}
+ \item Mesurer la hauteur $\overline{AB}$ de l'objet.
+ \item Pour 4 positions différentes de l'objet par rapport à la lentille, mesurer :
+ \begin{enumerate}
+  \item la distance $\overline{OA}$ séparant l'objet de la lentille.
+  \item la distance $\overline{OA'}$ séparant l'image de la lentille.
+  \item la hauteur $\overline{A'B'}$ de l'image.
+ \end{enumerate}
+
+ \item Reporter les mesures dans le tableau
+
+\begin{framed}
+\begin{center}
+\emph{Attention :} dans tout les cas, on se placera tel que $\overline{OA} < f$.
+\end{center}
+\end{framed}
+
+\end{enumerate}
+
+\section{Interprétation}
+
+\begin{enumerate}
+
+ \item Faire la construction graphique pour quatres positions différentes.
+\begin{itemize}
+\item $\overline{AO} > 2f'$
+\item $f < \overline{AO} < 2f'$
+\item $\overline{AO} = f$
+\end{itemize}
+
+% \item Récapituler les 4 cas possibles de position d'un objet par rapport au centre d'une lentille
+
+ \item Calculer $\frac{1}{\overline{OA'}}$, $\frac{1}{\overline{OA}}$ et $\frac{1}{\overline{OF'}}$ et noter les valueurs dans le tableau.
+
+
+ \item Réaliser une représentation graphique de $y = \frac{1}{\overline{OA'}}$ en fonction de $x = \frac{1}{\overline{OA}}$.
+
+ \item Pour chaque position, calculer le rapport $\frac{\overline{OA'}}{\overline{OA}}$ et le comparer au rapport $\frac{\overline{A'B'}}{\overline{AB}}$.
+
+ \item Quelle relation la représentation graphique permet-elle d'établir ? Prolonger la courbe jusqu'à l'axe des ordonnées. Que représente ce point ? Comparer son ordonnée à la vergence $V$ de la lentille.
+
+ \item Etablir une relation entre $\frac{1}{\overline{OA'}}$, $\frac{1}{\overline{OA}}$ et $\frac{1}{\overline{OF'}}$.
+
+ \item \`A l'aide de ces résultats, décrire une méthode de mesure de la distance focale image d'une lentille de vergence $V$ inconnue.
+
+ \item D'après votre tableau de mesure, quelle grandeur est égale au grandissement $\gamma = \frac{\overline{A'B'}}{\overline{AB}}$.
+
+
+
+\end{enumerate}
+
+
+
+\newpage
+
+\section*{Optique géométrique et lentilles minces - Mesures}
+
+Pour 4 positions différentes de l'objet par rapport à la lentille, on relève les distances caractéristiques du système (distance lentille-objet, distance lentille-image).
+
+
+Toutes les distances sont exprimées en mètre et de manière algébrique, c'est à dire positivement du haut vers le bas et de la gauche vers la droite (sens de propagation de la lumière).
+
+
+L'objet est de taille constante $\overline{AB} = \troufixe{2cm}$
+
+
+La lentille est de vergence $V = +8~\delta$, donc $f' = \overline{OF'} = \troufixe{2cm}$
+
+
+\bigskip
+
+
+\begin{tabularx}{\textwidth}{*{9}{|>{\centering}X}|}
+\hline
+$$\mbox{Position}$$ & $$\overline{OA'}$$ & $$\overline{OA}$$ & $$\frac{1}{\overline{OA'}}$$ & $$\frac{1}{\overline{OA}}$$ & $$\frac{1}{\overline{OF'}}$$ & $$\frac{\overline{OA'}}{\overline{OA}}$$ & $$\overline{A'B'}$$ & $$\frac{\overline{A'B'}}{\overline{AB}}$$ \tabularnewline
+ & ($m$) & ($m$) & ($m^{-1}$) & ($m^{-1}$) & ($m^{-1}$) & & ($m$) & \tabularnewline \hline \hline
+$$1$$ & & & & & & & & \tabularnewline \hline
+$$2$$ & & & & & & & & \tabularnewline \hline
+$$3$$ & & & & & & & & \tabularnewline \hline
+$$4$$ & & & & & & & & \tabularnewline \hline
+\end{tabularx}

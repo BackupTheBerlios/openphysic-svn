@@ -1,0 +1,16 @@
+;; Object anti_double_dollar/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "anti_double_dollar/"
+  :tables (list 
+   (semanticdb-table "Makefile"
+    :major-mode 'makefile-mode
+    :tags '(("all" function nil nil [1 66]) ("search" function nil nil [66 113]))
+    :file "Makefile"
+    :pointmax 113
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "semantic.cache"
+  :semantic-tag-version "2.0beta3"
+  :semanticdb-version "2.0beta3"
+  )
