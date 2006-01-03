@@ -1,0 +1,28 @@
+random-singleton.o: random-singleton.cc random-singleton.h \
+  /usr/include/c++/3.3/cmath \
+  /usr/include/c++/3.3/i486-linux/bits/c++config.h \
+  /usr/include/c++/3.3/i486-linux/bits/os_defines.h \
+  /usr/include/features.h /usr/include/sys/cdefs.h \
+  /usr/include/gnu/stubs.h /usr/include/math.h \
+  /usr/include/bits/huge_val.h /usr/include/bits/nan.h \
+  /usr/include/bits/mathdef.h /usr/include/bits/mathcalls.h \
+  /usr/include/c++/3.3/bits/cmath.tcc /usr/include/c++/3.3/limits \
+  /usr/include/c++/3.3/cfloat \
+  /usr/lib/gcc-lib/i486-linux/3.3.5/include/float.h
+random-singleton.cc :
+random-singleton.h :
+/usr/include/c++/3.3/cmath :
+/usr/include/c++/3.3/i486-linux/bits/c++config.h :
+/usr/include/c++/3.3/i486-linux/bits/os_defines.h :
+/usr/include/features.h :
+/usr/include/sys/cdefs.h :
+/usr/include/gnu/stubs.h :
+/usr/include/math.h :
+/usr/include/bits/huge_val.h :
+/usr/include/bits/nan.h :
+/usr/include/bits/mathdef.h :
+/usr/include/bits/mathcalls.h :
+/usr/include/c++/3.3/bits/cmath.tcc :
+/usr/include/c++/3.3/limits :
+/usr/include/c++/3.3/cfloat :
+/usr/lib/gcc-lib/i486-linux/3.3.5/include/float.h :
