@@ -1,5 +1,10 @@
 input=main
+
 page=0
+
+dvi_viewer=xdvi
+ps_viewer=gv
+pdf_viewer=xpdf #acroread #xpdf
 
 all:
 	#$(MAKE) view-pdf
@@ -18,19 +23,19 @@ $(input)_dvips.pdf: $(input).ps
 	cp $(input)_dvips.pdf $(input).pdf
 
 view-dvi: $(input).dvi
-	xdvi -bg white $< &
+	$(dvi_viewer) -bg white $< &
 
 view-ps: $(input).ps
-	gv $< &
+	$(ps_viewer) $< &
 
 view-pdf:
 	$(MAKE) view-pdf-dvips
 
 view-pdf-dvips: $(input)_dvips.pdf
-	xpdf $< &
+	$(pdf_viewer) $< &
 
 view-pdf-pdflatex: $(input)_pdflatex.pdf
-	xpdf $< &
+	$(pdf_viewer) $< &
 
 clean_temp:
 	$(RM) temp/*
@@ -49,14 +54,14 @@ $(input)_suite_2.ps: $(input).ps
 	psnup -n 2 $< > $@
 
 view-ps-2: $(input)_suite_2.ps
-	gv --orient=landscape $< --page=$(page) &
+	$(ps_viewer) --orient=landscape $< --page=$(page) &
 
 
 $(input)_dvips_suite_2.pdf: $(input)_dvips.pdf
 	pdfnup --nup 2 $< --orient landscape --outfile $@
 
 view-pdf-dvips-2: $(input)_dvips_suite_2.pdf
-	xpdf $< &
+	$(pdf_viewer) $< &
 
 $(input)_pdflatex_suite_2.pdf: $(input)_pdflatex.pdf
 	pdfnup --nup 2 $< --orient landscape --outfile $@
@@ -65,7 +70,7 @@ view-pdf-2:
 	$(MAKE) view-pdf-dvips-2
 
 view-pdf-pdflatex-2: $(input)_dvips_pdflatex_2.pdf
-	xpdf $< &
+	$(pdf_viewer) $< &
 
 zip:
 	$(RM) $(input).zip
@@ -91,7 +96,7 @@ select: $(input).ps
 	page=1
 	psselect -p$(page) $(input).ps $(input)_select.ps
 	ps2pdf $(input)_select.ps $(input)_select.pdf
-	xpdf $(input)_select.pdf &
+	$(pdf_viewer) $(input)_select.pdf &
 
 clean_select:
 	$(RM) $(input)_select.*
@@ -115,20 +120,20 @@ only.ps: only.dvi
 	dvips $< -o $@
 
 only-ps: only.ps
-	gv $< &
+	$(ps_viewer) $< &
 
 only_suite_2.ps: only.ps
 	psnup -n 2 $< > $@
 
 only-ps2: only_suite_2.ps
-	gv --orient=landscape $< &
+	$(ps_viewer) --orient=landscape $< &
 
 only-pdf: only.pdf
-	xpdf $< &
+	$(pdf_viewer) $< &
 
 #make only-pdf2 file=title.tex
 only-pdf2: only_suite_2.pdf
-	xpdf $< &
+	$(pdf_viewer) $< &
 
 only.pdf: only.ps
 	ps2pdf only.ps only.pdf
