@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+rm *.zip
+zip -r nom_fichier.zip *
