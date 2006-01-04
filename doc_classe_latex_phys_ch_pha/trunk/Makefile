@@ -136,7 +136,7 @@ only-pdf2: only_suite_2.pdf
 	$(pdf_viewer) $< &
 
 only.pdf: only.ps
-	ps2pdf only.ps only.pdf
+	ps2pdf $< $@
 
 only_suite_2.pdf: only.pdf
 	pdfnup --nup 2 $< --orient landscape --outfile $@
@@ -154,3 +154,32 @@ brouillon:
 
 scan:
 	scanimage > temp/image.eps
+
+
+
+mini.dvi: mini.tex
+	latex $<
+
+mini.ps: mini.dvi
+	dvips $< -o $@
+
+mini-ps: mini.ps
+	$(ps_viewer) $< &
+
+mini_suite_2.ps: mini.ps
+	psnup -n 2 $< > $@
+
+mini-ps2: mini_suite_2.ps
+	$(ps_viewer) --orient=landscape $< &
+
+mini-pdf: mini.pdf
+	$(pdf_viewer) $< &
+
+mini-pdf2: mini_suite_2.pdf
+	$(pdf_viewer) $< &
+
+mini.pdf: mini.ps
+	ps2pdf $< $@
+
+mini_suite_2.pdf: mini.pdf
+	pdfnup --nup 2 $< --orient landscape --outfile $@
