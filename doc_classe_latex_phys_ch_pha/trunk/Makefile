@@ -183,3 +183,15 @@ mini.pdf: mini.ps
 
 mini_suite_2.pdf: mini.pdf
 	pdfnup --nup 2 $< --orient landscape --outfile $@
+
+commit_pdf:
+	cp main.pdf pdf/
+	cp main_dvips_suite_2.pdf pdf/
+	svn commit
+
+commit:
+	svn commit
+
+update:
+	svn update
+
