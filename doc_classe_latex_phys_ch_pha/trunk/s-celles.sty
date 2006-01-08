@@ -1,5 +1,5 @@
 % Fichier de style LaTeX de Sebastien CELLES
-% Application : Cours, TD, TP
+% Application : Cours, TD, TP, DS
 
 \ProvidesPackage{s-celles}
 
@@ -366,17 +366,18 @@
 %\definecolor{mybgcolor}{gray}{0.95}
 %\pagecolor{mybgcolor}
 
+%\usepackage{hyperref}
 %\usepackage[a4paper=true,ps2pdf=true,pagebackref=true]{hyperref} % liens cliquables
 %\hypersetup{colorlinks, linkcolor=black} % les liens ne sont plus encadrés
 % \hypersetup{ % Information sur le document
-%   pdfauthor = {CELLES Sébastien},
-%   pdftitle = {Sciences Physiques},
-%   pdfsubject = {Cours, TD, TP et documents divers},
-%   pdfcreator = {tetex and Emacs or Kile},
-%   pdfproducer = {CELLES Sébastien},
-%   colorlinks=false, % Couleur des liens
-%   pdfborder={0 0 0} % Bordure autour des liens
-% } 
+%    pdfauthor = {CELLES Sébastien},
+%    pdftitle = {Sciences Physiques},
+%    pdfsubject = {Cours, TD, TP et documents divers},
+%    pdfcreator = {tetex and Emacs or Kile},
+%    pdfproducer = {CELLES Sébastien},
+%    colorlinks=false, % Couleur des liens
+%    pdfborder={0 0 0} % Bordure autour des liens
+%  } 
 
 
 \usepackage{url} % url en verbatim
@@ -578,12 +579,21 @@
 %     {\theparagraph}{1em}{}
 %   \titlespacing*{\paragraph}{0pt}{1ex plus 0.2ex}{0.5ex plus .2ex}
 
+
+
+%\newcounter{pagelocal} % numérotation locale (sur le papier mais mais
+                       % dans le fichier ps ou pdf)
+                       % permet d'avoir les liens avec hyperref dans
+                       % le sommaire
+
+
 \usepackage{titlesec}
 
-\newcommand{\classe}[1]{%
+\newcommand{\classe}[2]{%
 \newpage
+\addcontentsline{toc}{part}{{\LARGE #2}}
 \setcounter{page}{1}
-\setcounter{part}{1}
+\setcounter{part}{0}
 \thispagestyle{empty}
 \begin{Huge}
 \vspace*{\stretch{3}}
@@ -601,22 +611,15 @@
 
 
 
-%\newcounter{pagelocal} % numérotation locale (sur le papier mais mais
-                       % dans le fichier ps ou pdf)
-
-
-
 
 \titleformat{\part}[display]%
     {\thispagestyle{empty}\setcounter{page}{1}\normalfont \huge \bfseries \filcenter}%
-%    {\setcounter{pagelocal}{1}\normalfont \huge \bfseries \filcenter}%
     {}{0pt}{\Huge}
     %{\partname \space \thepart}{0pt}{\Huge}
 
 % \titleclass{\chapter}{page}
 \titleformat{\chapter}[display]{%
     \setcounter{page}{1}% mettre à 0 le compteur de page
-%    \setcounter{pagelocal}{1}% mettre à 0 le compteur de page
     \setcounter{figure}{0}% mettre à 0 le compteur de figure
     \setcounter{table}{0}% mettre à 0 le compteur de table
     \normalfont \huge \bfseries \filcenter
@@ -637,26 +640,23 @@
   \titlespacing*{\paragraph}{0pt}{1ex plus 0.2ex}{0.5ex plus .2ex}
 
 
-%\newcommand{\chapitre}{\part} % attention \chapitre est un \part pas un \chapter !!!
 \newcommand{\chapitre}[1]{%
+% attention \chapitre est un \part pas un \chapter !!!
  \part{#1}
  \setcounter{chapter}{0}
-} % attention \chapitre est un \part pas un \chapter !!!
+}
 
 
 \newcommand{\cours}[1]{%
  \chapter{#1} 
-% \chapter{Cours : #1}
 }
 
 \newcommand{\td}[1]{%
  \chapter{TD : #1}
-% \chapter{#1}
 }
 
 \newcommand{\tp}[1]{%
  \chapter{TP : #1}
-% \chapter{#1}
 }
 
 
@@ -693,8 +693,7 @@
    %\newpage
    %\section*{#1}
   \chapter*{#1}
-  \setcounter{page}{1}
-%  \setcounter{pagelocal}{1}
+  \setcounter{page}{1} % page ou pagelocal
   \setcounter{section}{0}
 }
 
@@ -707,7 +706,7 @@
 
 \newcommand{\docsanstitre}{%
   \newpage
-  \setcounter{page}{1}
+  \setcounter{page}{1} % page ou pagelocal
   \setcounter{section}{0}
 }
 
