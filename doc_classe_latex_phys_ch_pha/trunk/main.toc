@@ -1,6 +1,4 @@
 \select@language {french}
-\contentsline {subsection}{\numberline {A}Acc\`es anonyme}{4}
-\contentsline {subsection}{\numberline {B}Acc\`es d\'eveloppeur}{4}
 \contentsline {part}{I\hspace {1em}Courant et tension \'electrique}{1}
 \contentsline {chapter}{\numberline {1}Circuit \'electrique\\Courant et tension \'electrique}{1}
 \contentsline {section}{\numberline {I}Circuit \'electrique}{1}
