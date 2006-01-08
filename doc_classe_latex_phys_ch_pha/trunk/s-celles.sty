@@ -582,15 +582,21 @@
 
 \newcommand{\classe}[1]{%
 \newpage
+\setcounter{page}{1}
+\setcounter{part}{1}
+\thispagestyle{empty}
 \begin{Huge}
 \vspace*{\stretch{3}}
+\begin{framed}
 \begin{center}
 \textbf{#1}
 \end{center}
+\end{framed}
 \vspace*{\stretch{3}}
 \end{Huge}
-\setcounter{part}{0}
 \newpage
+\null
+\thispagestyle{empty}
 }
 
 
@@ -602,7 +608,7 @@
 
 
 \titleformat{\part}[display]%
-    {\setcounter{page}{1}\normalfont \huge \bfseries \filcenter}%
+    {\thispagestyle{empty}\setcounter{page}{1}\normalfont \huge \bfseries \filcenter}%
 %    {\setcounter{pagelocal}{1}\normalfont \huge \bfseries \filcenter}%
     {}{0pt}{\Huge}
     %{\partname \space \thepart}{0pt}{\Huge}
@@ -697,6 +703,12 @@
 \newpage
 \textbf{\Huge #1}
 \end{center}
+}
+
+\newcommand{\docsanstitre}{%
+  \newpage
+  \setcounter{page}{1}
+  \setcounter{section}{0}
 }
 
 
