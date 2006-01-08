@@ -195,3 +195,5 @@ commit:
 update:
 	svn update
 
+version:
+	svn propset svn:keywords "Id" version.tex
