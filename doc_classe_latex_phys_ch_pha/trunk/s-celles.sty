@@ -581,10 +581,12 @@
 
 
 
-%\newcounter{pagelocal} % numérotation locale (sur le papier mais mais
-                       % dans le fichier ps ou pdf)
-                       % permet d'avoir les liens avec hyperref dans
-                       % le sommaire
+%\newcounter{pagelocal}
+ % numérotation locale (sur le papier mais mais
+ % dans le fichier ps ou pdf)
+ % permet d'avoir les liens avec hyperref dans
+ % le sommaire
+% http://www.grappa.univ-lille3.fr/FAQ-LaTeX/29.59.html
 
 
 \usepackage{titlesec}
@@ -1502,7 +1504,18 @@
 
 
 % Gestionnaire de versions (RCS, CVS, Subversion SVN)
+% RCS
 %\usepackage{rcs}
 
+% CVS
+% ?
+
+% SVN Subversion
 %ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/svn/
 \usepackage{svn}
+\usepackage[today]{svninfo}
+% L'option today remplace la date retournée par \today par la date de
+% révision du document 
+
+% $ svn propset svn:keywords "Id" version.tex 
+%\svnInfoRevision \svnInfoDate \svnInfoFile \svnInfoOwner \svnInfoDay
