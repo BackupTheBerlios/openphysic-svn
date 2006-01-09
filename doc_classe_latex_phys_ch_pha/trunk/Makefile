@@ -197,3 +197,6 @@ update:
 
 version:
 	svn propset svn:keywords "Id" version.tex
+
+status:
+	svn status
