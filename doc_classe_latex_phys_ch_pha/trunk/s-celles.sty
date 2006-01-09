@@ -39,6 +39,30 @@
 
 
 
+
+% Gestionnaire de versions (RCS, CVS, Subversion SVN)
+% ===================================================
+% RCS
+%\usepackage{rcs}
+
+% CVS
+% ?
+
+% SVN Subversion
+%ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/svn/
+%\usepackage{svn}
+%\usepackage[today]{svninfo}
+
+% L'option today remplace la date retournée par \today par la date de
+% révision du document 
+
+% $ svn propset svn:keywords "Id" version.tex 
+%\svnInfoRevision \svnInfoDate \svnInfoFile \svnInfoOwner \svnInfoDay
+
+
+
+
+
 %\usepackage{minitoc} % table des matières intermédiaire
 
 
@@ -990,6 +1014,8 @@
 %\cfoot{}
 %\cfoot{\thepagelocal}
 \cfoot{\thepage}
+\rfoot{\null}
+\lfoot{\null}
 
 \renewcommand{\headrulewidth}{0.4pt} % Trace un trait de séparation de largeur 0,4 point. Mettre 0pt pour supprimer le trait.
 %\renewcommand{\footrulewidth}{0.4pt} % Trace un trait de séparation de largeur 0,4 point. Mettre 0pt pour supprimer le trait.
@@ -1503,20 +1529,3 @@
 
 
 
-% Gestionnaire de versions (RCS, CVS, Subversion SVN)
-% RCS
-%\usepackage{rcs}
-
-% CVS
-% ?
-
-% SVN Subversion
-%ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/svn/
-%\usepackage{svn}
-\usepackage[today]{svninfo}
-
-% L'option today remplace la date retournée par \today par la date de
-% révision du document 
-
-% $ svn propset svn:keywords "Id" version.tex 
-%\svnInfoRevision \svnInfoDate \svnInfoFile \svnInfoOwner \svnInfoDay
