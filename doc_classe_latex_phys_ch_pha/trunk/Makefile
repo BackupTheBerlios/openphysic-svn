@@ -41,7 +41,7 @@ clean_temp:
 	$(RM) temp/*
 
 clean:
-	$(RM) *.aux *.log *.dvi *.ps *.pdf
+	$(RM) *.aux *.log *.dvi *.ps *.pdf *.toc *.out semantic.cache*
 	$(MAKE) clean_temp
 	$(MAKE) clean_select
 	$(MAKE) clean_only
