@@ -1,0 +1,10 @@
+\beamer@endinputifotherversion {3.01pt}
+\select@language {french}
+\beamer@sectionintoc {1}{Pr\'esentation du poste}{3}{0}{1}
+\beamer@sectionintoc {2}{Pr\'esentation sommaire du candidat au poste}{4}{0}{2}
+\beamer@sectionintoc {3}{En quoi mon parcours convient \`a ce poste ?}{14}{0}{3}
+\beamer@subsectionintoc {3}{1}{Informatique g\'en\'erale (langage C)}{15}{0}{3}
+\beamer@subsectionintoc {3}{2}{Informatique industrielle (microcontr\^oleurs)}{18}{0}{3}
+\beamer@subsectionintoc {3}{3}{R\'eseaux locaux}{24}{0}{3}
+\beamer@subsectionintoc {3}{4}{Serveurs (web, base de donn\'ees)}{31}{0}{3}
+\beamer@subsectionintoc {3}{5}{Autres \'el\'ements}{35}{0}{3}
