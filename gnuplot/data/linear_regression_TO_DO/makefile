@@ -1,2 +1,0 @@
-all:
-	gnuplot -persist *.gp
