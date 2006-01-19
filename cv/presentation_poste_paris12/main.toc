@@ -2,10 +2,10 @@
 \select@language {french}
 \beamer@sectionintoc {1}{Pr\'esentation du poste}{3}{0}{1}
 \beamer@sectionintoc {2}{Pr\'esentation succinte du candidat au poste}{4}{0}{2}
-\beamer@sectionintoc {3}{En quoi mon parcours est-il adapt\'e \`a ce poste ?}{23}{0}{3}
-\beamer@subsectionintoc {3}{1}{Informatique g\'en\'erale (langage C)}{24}{0}{3}
-\beamer@subsectionintoc {3}{2}{Informatique industrielle (microcontr\^oleurs)}{28}{0}{3}
-\beamer@subsectionintoc {3}{3}{R\'eseaux locaux}{35}{0}{3}
-\beamer@subsectionintoc {3}{4}{Serveurs (web, base de donn\'ees)}{44}{0}{3}
-\beamer@subsectionintoc {3}{5}{T\'el\'ecommunications}{48}{0}{3}
-\beamer@subsectionintoc {3}{6}{Autres \'el\'ements}{49}{0}{3}
+\beamer@sectionintoc {3}{En quoi mon parcours est-il adapt\'e \`a ce poste ?}{6}{0}{3}
+\beamer@subsectionintoc {3}{1}{Informatique g\'en\'erale (langage C)}{7}{0}{3}
+\beamer@subsectionintoc {3}{2}{Informatique industrielle (microcontr\^oleurs)}{8}{0}{3}
+\beamer@subsectionintoc {3}{3}{R\'eseaux locaux}{9}{0}{3}
+\beamer@subsectionintoc {3}{4}{Serveurs (web, base de donn\'ees)}{10}{0}{3}
+\beamer@subsectionintoc {3}{5}{T\'el\'ecommunications}{11}{0}{3}
+\beamer@subsectionintoc {3}{6}{Autres \'el\'ements}{12}{0}{3}
