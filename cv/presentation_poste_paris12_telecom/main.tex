@@ -1,0 +1,420 @@
+\documentclass[h, xcolor=pst, dvips]{beamer} % presentation normale avec du PSTricks (dvi->ps->pdf)
+
+
+\mode<article> % pour la version 'article'
+{
+  \usepackage{fullpage}
+  \usepackage{hyperref}
+}
+
+
+\mode<presentation> % pour la version 'presentation'
+{
+  \usetheme{Warsaw} % Warsaw Frankfurt
+}
+
+
+\usepackage[frenchb]{babel}     % specification francaise
+\usepackage[latin1]{inputenc}   % entree clavier latin1
+% \usepackage[T1]{fontenc}        % sortie
+
+% \usepackage{nameref} % permet d'écrire le nom de la section en cours
+% (nécessite 2 compilations)
+
+\usepackage{tabularx}
+
+\renewcommand{\emph}[1]{\textcolor{red}{\underline{\textit{\textcolor{black}{#1}}}}}
+
+% PSTricks
+% \usepackage{pstricks}
+% \usepackage{pst-plot} % tracé de fonctions
+% \usepackage{pst-circ} % circuit en elec
+
+\newcommand{\poste}{%
+  Poste 1315S\\
+  Physique Appliquée\\
+  Université Paris XII\\
+  Val de Marne
+}
+
+\newcommand{\actuellement}[1]{%
+  \textit{#1}
+  % \emph{#1}
+}
+
+
+\title{\poste}
+
+\author{Sébastien \textsc{CELLES}}
+
+\institute{Professeur agrégé de Sciences Physiques - Physique Appliquée}
+
+\date{Mercredi 25 Janvier 2006 - 14h30}
+% \date{\today}
+% \subject{...}
+
+\begin{document}
+
+\frame{
+  % \maketitle
+  \titlepage
+}
+
+
+\frame
+{
+  \tableofcontents
+}
+
+\section{Présentation du poste}
+
+\frame{
+  \frametitle{\insertsectionhead}
+  % \pause
+
+
+  \begin{tabularx}{\linewidth}{XX} %{p{13cm}X}
+
+    \begin{center} % flushright
+      \poste
+    \end{center}
+
+    &
+
+    \vspace*{\stretch{1}}
+
+    \begin{center}
+      \includegraphics[width=3cm]{logo.gif.eps}
+    \end{center}
+
+    \vspace*{\stretch{1}}
+
+  \end{tabularx}
+
+
+  \begin{itemize}
+  \item Réseaux locaux industriels
+  \item Informatique industrielle
+  \item Télécommunications
+  \end{itemize}
+}
+
+
+\section{Présentation succinte du candidat au poste}
+
+\frame{
+  \frametitle{\insertsectionhead}
+  % \pause
+  \begin{itemize}
+  \item Sébastien \textsc{CELLES}
+    % \pause
+  \item Professeur agrégé de Sciences Physiques - Physique Appliquée
+    % \pause
+  \item 27 ans
+    % \pause
+  \item Né à Brive (Corrèze)
+    % \pause
+  \item \'Etudes secondaires générales (filière Scientifique)
+    % \pause
+  \item \'Etudes supérieures
+    % \pause
+    \begin{itemize}
+    \item Classes Préparatoires aux Grandes Ecoles (PCSI, PSI)
+      % \pause
+    \item Université
+      % \pause
+      \begin{itemize}
+      \item Licence de Physique
+        % \pause
+      \item Maîtrise EEA (\'Electronique, \'Electrotechnique, Automatique)
+      \end{itemize}        
+    \end{itemize}
+    % \pause
+  \item CAPES de Physique Appliquée en 2001
+    % \pause
+  \item Agrégation de Physique Appliquée en 2003
+  \end{itemize}
+}
+
+\frame{
+  \frametitle{Mon parcours au sein de l'\'Education Nationale}
+
+  % \pause
+
+  \begin{itemize}
+  \item Physique Chimie en 5$^{\mbox{i\`eme}}$,
+    4$^{\mbox{i\`eme}}$\\
+    (Collège Jules Vernes - DEVILLE-LES-ROUEN)
+
+    % \pause
+
+  \item Titulaire en Zone de Remplacement (TZR) dans le
+    département de la Haute-Vienne
+    
+    % \pause
+
+    \begin{itemize}
+    \item Classes Préparatoires aux Grandes \'Ecoles\\
+      \small (Math. Sup. PCSI - Lycée Gay Lussac - LIMOGES)
+      
+      % \pause
+
+      \normalsize
+
+    \item Physique Industrielle en BTS CIRA\\ \small
+      (Lycée Raoul DAUTRY - LIMOGES)
+      
+      % \pause
+
+      \normalsize
+      
+    \item Physique Appliquée en lycée technologique\\
+      1$^{\mbox{i\`ere}}$ \'Electrotechnique,
+      Terminale Génie Mécanique\\ \small
+      (Lycée TURGOT - LIMOGES)
+      
+      % \pause
+
+      \normalsize
+      
+    \item Physique Chimie en lycée général\\ \small
+      \actuellement{1$^{\mbox{i\`ere}}$ Scientifique},
+      1$^{\mbox{i\`ere}}$ STL %Sciences et Techniques de Laboratoire
+      C, \actuellement{Terminale STL B}, \actuellement{Seconde PCL}
+      (Lycée Raoul DAUTRY - LIMOGES)
+
+      \normalsize   
+      
+    \end{itemize}
+
+
+  \end{itemize}
+
+}
+
+
+\section{En quoi mon parcours est-il adapté à ce poste ?}
+
+\frame{
+  \frametitle{\insertsectionhead}
+
+  \vspace{\stretch{5}}
+
+  \begin{center}
+    \begin{Huge}
+      En quoi mon parcours convient-il à ce poste ?
+    \end{Huge}
+  \end{center}
+  
+
+  \vspace{\stretch{5}}
+}
+
+\subsection{Informatique générale (langage C)}
+
+\frame{
+  \frametitle{\insertsubsectionhead}
+
+  % \pause
+  
+  \begin{itemize}
+  \item Programmation en langage C en maîtrise EEA à l'Université Paul
+    Sabatier - TOULOUSE III
+
+    % \pause
+    
+  \item Lecture du livre langage C de \textsc{KERNIGHAN} et
+    \textsc{RICHIE}
+    
+    % \pause
+    
+  \item Connaissance des outils GNU Make et des Autotools (autoconf, automake)
+    
+  \end{itemize}
+}
+
+\subsection{Informatique industrielle (microcontrôleurs)}
+
+\frame{
+  \frametitle{\insertsubsectionhead}
+
+  % \pause
+
+  \begin{itemize}
+  \item Programmation de microcontroleurs SAB Siemens C167\\ en langage C
+    % \pause
+    \begin{itemize}
+    \item Développement dans un environnement GNU/Linux
+      % \pause
+    \item Développement avec GNU Emacs
+      % \pause
+    \item Réalisation d'un système de distribution de carburant avec
+      carte magnétique (utilisation des interruptions pour la
+      lecture de la carte, utilisation des listes chaînées pour la
+      base de clients, ...)
+
+    \end{itemize}
+    
+    % \pause
+
+  \item Lectures sur la programmation en assembleur de PIC 16F (cours de \textsc{BIGONOFF})
+
+    % \pause
+
+  \item Lectures sur la programmation en langage C du
+    microcontrôleur ATMEL AVR ATmega16 (articles de GNU/Linux
+    Magazine France, documentation de gcc-avr)
+
+    
+  \end{itemize}
+
+  
+
+}
+
+\subsection{Réseaux locaux}
+
+\frame{
+  \frametitle{\insertsubsectionhead}
+
+  % \pause
+
+
+  \begin{itemize}
+  \item Connaissance du modèle OSI
+    
+    % \pause
+
+  \item Lecture : les réseaux, Guy \textsc{PUJOLLE}
+    
+    % \pause
+
+  \item Réalisation d'un réseau personnel
+    % \pause
+    \begin{itemize}
+    \item routeur/firewall sous GNU/Linux IPCop
+      % \begin{itemize}
+      % \end{itemize}
+      % \pause
+    \item serveur sous GNU/Linux Debian
+      % \pause
+      \begin{itemize}
+      \item Secure Copy scp par SSH
+      \item VNC dans tunnel SSH, export display
+      \item Samba
+      \item NFS
+      \item ...
+      \end{itemize}
+      % \pause
+    \item 2 postes clients
+    \end{itemize}
+    % \pause
+  \item Pratique du routage avec les règles iptables sous Linux
+  \end{itemize}
+
+  
+}
+
+\subsection{Serveurs (web, base de données)}
+
+\frame{
+  \frametitle{\insertsubsectionhead}
+
+  % \pause
+
+  \begin{itemize}
+  \item Utilisation du serveur web Apache
+    % \pause
+  \item Langage de scripts PHP avec base de données MySQL
+    % \pause
+  \item Administration base de données MySQL avec PhpMyAdmin
+  \end{itemize}
+}
+
+\subsection{Télécommunications}
+
+\frame{
+  \frametitle{\insertsubsectionhead}
+
+  % \pause
+
+  \begin{itemize}
+  \item Micro-ondes (lignes, guides, propagation, paramètres S, abaque de Smith)
+    % \pause
+  \item Traitement du signal
+    % \pause
+  \item Transmission en bande de base
+    % \pause
+  \item Modulations analogiques (AM, BLU, FM)
+    % \pause
+  \item Modulations numériques (ASK,PSK, FSK)
+  \end{itemize}
+}
+
+
+\subsection{Autres éléments}
+
+\frame{
+  \frametitle{\insertsubsectionhead}
+
+  % \pause
+
+  \begin{itemize}
+  \item Utilisation courante des systèmes Unix et/ou GNU/Linux
+    % \pause
+    \begin{itemize}
+    \item Arborescence, fichiers, liens, droits,
+      % \pause
+    \item Processus, signaux
+      % \pause
+    \item Shell : GNU BASH
+      % \pause
+    \end{itemize}
+
+  \item Goût pour les logiciels libres
+    \begin{itemize}
+
+      % \pause
+
+    \item Participation à certains projets libres (rapport de bugs
+      essentiellement)
+
+      % \pause
+
+    \item Cela m'a permis de mieux connaitre les outils (Bugzilla,
+      CVS ou Subversion) utilisés dans ce mode de développement
+    \end{itemize}
+    
+    % \pause
+
+  \item \'Edition scientifique et technique avec \LaTeX
+
+    % \pause
+
+  \item Documentation de code avec Doxygen
+    
+    % \pause
+    
+  \item Connaissance des outils modernes du Web (Content Management
+    System comme SPIP, Wiki...)
+
+    % \pause
+
+  \item Connaissance (plus ou moins approfondie) de différents
+    langages : C++, Python, Java, Ada
+
+  \end{itemize}
+}
+
+% \frame{
+%   \frametitle{\insertsubsectionhead (suite)}
+
+%   \begin{itemize}
+%   \item Un envie de 
+%   \end{itemize}
+
+% }
+
+
+
+\end{document}
