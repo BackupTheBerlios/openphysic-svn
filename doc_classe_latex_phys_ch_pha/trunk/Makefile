@@ -10,7 +10,15 @@ all:
 	#$(MAKE) view-pdf
 	$(MAKE) view-ps
 
-.PHONY: main.dvi clean view-ps view-pdf view-pdf-dvips view-pdf-pdflatex edit view-ps-2 only.tex this brouillon clean_temp
+# Raccourcis pour pouvoir taper par exemple `make pdf'
+dvi: $(input).dvi
+ps: $(input).ps
+ps2: $(input)_suite_2.ps
+pdf: $(input)_dvips.pdf
+pdf2: $(input)_dvips_suite_2.pdf
+
+
+.PHONY: all main.dvi clean view-ps view-pdf view-pdf-dvips view-pdf-pdflatex edit view-ps-2 only.tex this brouillon clean_temp distclean
 
 $(input).dvi: #$(input).tex s-celles.sty elec_intro/main2.tex elec_sin/main2.tex
 	latex $(input).tex
@@ -41,10 +49,13 @@ clean_temp:
 	$(RM) temp/*
 
 clean:
+	#$(RM) $(input).{toc,log,aux,out,dvi,ps,pdf} *~
 	$(RM) *.aux *.log *.dvi *.ps *.pdf *.toc *.out semantic.cache*
 	$(MAKE) clean_temp
 	$(MAKE) clean_select
 	$(MAKE) clean_only
+
+distclean: clean
 
 edit:
 	emacs *.tex Makefile *.sty &
