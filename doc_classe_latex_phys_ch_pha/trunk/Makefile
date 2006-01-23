@@ -6,9 +6,20 @@ dvi_viewer=xdvi
 ps_viewer=gv
 pdf_viewer=xpdf #acroread #xpdf
 
+do=view-ps
+
 all:
+	$(MAKE) $(do)
 	#$(MAKE) view-pdf
-	$(MAKE) view-ps
+	#$(MAKE) view-ps
+
+# Permet d'accélérer la compilation
+# en évitant une sortie sur la console
+# et en l'envoyant sur /dev/null
+# Exemple : make dvi stdout=/dev/null stderr=/dev/null
+#stdin=/dev/stdin
+#stdout=/dev/stdout
+#stderr=/dev/stderr
 
 # Raccourcis pour pouvoir taper par exemple `make pdf'
 dvi: $(input).dvi
@@ -211,3 +222,13 @@ version:
 
 status:
 	svn status
+
+rubber:
+	# http://www.pps.jussieu.fr/~beffara/soft/rubber
+	rubber --ps $(input)
+
+silent:
+	$(MAKE) $(do) > /dev/null 2> /dev/null
+	# Accélère la compilation (pas de sortie console)
+	#make silent do=pdf
+	#stdout=/dev/null stderr=/dev/null stdin=/dev/null
