@@ -133,6 +133,7 @@ only.tex:
 #	file=elec/tp_i_u/main2.tex
 	file=title.tex
 	perl make_only.pl $(file)
+#	Utiliser GNU M4 au lieu de Perl ?
 
 
 only.dvi: only.tex

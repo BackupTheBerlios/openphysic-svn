@@ -1,0 +1,1 @@
+m4_define(`_FILE', `elec/tp_loi_ohm/main2.tex')
