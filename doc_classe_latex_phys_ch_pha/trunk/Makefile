@@ -8,6 +8,11 @@ pdf_viewer=xpdf #acroread #xpdf
 
 do=view-ps
 
+# make only
+# compiler un seul fichier (file)
+#file=elec/tp_i_u/main2.tex
+file=title.tex
+
 all:
 	$(MAKE) $(do)
 	#$(MAKE) view-pdf
@@ -130,10 +135,15 @@ clean_only:
 
 only.tex:
 	$(MAKE) clean_only
-#	file=elec/tp_i_u/main2.tex
-	file=title.tex
-	perl make_only.pl $(file)
-#	Utiliser GNU M4 au lieu de Perl ?
+	# Bash
+	echo '\documentclass[a4paper,10pt]{book}' > only.tex
+	echo '\usepackage{s-celles}' >> only.tex
+	echo '\begin{document}' >> only.tex
+	echo '\input{$(file)}' >> only.tex
+	echo '\end{document}' >> only.tex
+	# Perl
+	#perl make_only.pl $(file)
+	# GNU M4
 
 
 only.dvi: only.tex
