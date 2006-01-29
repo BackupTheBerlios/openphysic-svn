@@ -17,7 +17,7 @@ $(input).ps: $(input).dvi
 
 $(input)_dvips.pdf: $(input).ps
 	ps2pdf $< $@
-	cp $(input)_dvips.pdf $(input).pdf
+	mv $(input)_dvips.pdf $(input).pdf
 
 view-dvi: $(input).dvi
 	$(dvi_viewer) -bg white $< &
