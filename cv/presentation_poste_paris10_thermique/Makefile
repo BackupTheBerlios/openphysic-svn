@@ -17,6 +17,8 @@ $(input).ps: $(input).dvi
 
 $(input)_dvips.pdf: $(input).ps
 	ps2pdf $< $@
+
+$(input).pdf: $(input)_dvips.pdf
 	mv $(input)_dvips.pdf $(input).pdf
 
 view-dvi: $(input).dvi
@@ -25,13 +27,7 @@ view-dvi: $(input).dvi
 view-ps: $(input).ps
 	$(ps_viewer) $< &
 
-view-pdf:
-	$(MAKE) view-pdf-dvips
-
-view-pdf-dvips: $(input)_dvips.pdf
-	$(pdf_viewer) $< &
-
-view-pdf-pdflatex: $(input)_pdflatex.pdf
+view-pdf: $(input).pdf
 	$(pdf_viewer) $< &
 
 clean:

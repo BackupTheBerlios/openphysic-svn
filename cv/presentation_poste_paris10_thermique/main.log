@@ -1,4 +1,4 @@
-This is e-TeX, Version 3.14159-2.1 (Web2C 7.4.5) (format=latex 2006.1.6)  29 JAN 2006 17:57
+This is e-TeX, Version 3.14159-2.1 (Web2C 7.4.5) (format=latex 2006.1.6)  29 JAN 2006 18:04
 entering extended mode
 **main.tex
 (./main.tex
@@ -549,7 +549,8 @@ Package: array 1998/05/13 v2.3m Tabular extension package (FMi)
 \TX@delta=\dimen192
 \TX@cols=\count147
 \TX@ftn=\toks42
-) (./main.aux)
+)
+No file main.aux.
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 64.
@@ -569,7 +570,6 @@ LaTeX Font Info:    ... okay on input line 64.
 LaTeX Font Info:    Checking defaults for OT2/wncyr/m/n on input line 64.
 LaTeX Font Info:    Try loading font information for OT2+wncyr on input line 64
 .
-
 (/usr/share/texmf/tex/latex/cyrillic/ot2wncyr.fd
 File: ot2wncyr.fd 1999/12/17 v3.2a Computer Modern Cyrillic font definitions
 )
@@ -976,8 +976,8 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 8683 strings out of 95370
- 145148 string characters out of 1188186
+ 8681 strings out of 95370
+ 145130 string characters out of 1188186
  245326 words of memory out of 1000001
  11522 multiletter control sequences out of 10000+50000
  14537 words of font info for 54 fonts, out of 500000 for 1000
