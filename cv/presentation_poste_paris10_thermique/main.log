@@ -1,4 +1,4 @@
-This is e-TeX, Version 3.14159-2.1 (Web2C 7.4.5) (format=latex 2006.1.6)  29 JAN 2006 16:27
+This is e-TeX, Version 3.14159-2.1 (Web2C 7.4.5) (format=latex 2006.1.6)  29 JAN 2006 17:57
 entering extended mode
 **main.tex
 (./main.tex
@@ -549,31 +549,31 @@ Package: array 1998/05/13 v2.3m Tabular extension package (FMi)
 \TX@delta=\dimen192
 \TX@cols=\count147
 \TX@ftn=\toks42
-)
-No file main.aux.
+) (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for OT2/wncyr/m/n on input line 59.
-LaTeX Font Info:    Try loading font information for OT2+wncyr on input line 59
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OT2/wncyr/m/n on input line 64.
+LaTeX Font Info:    Try loading font information for OT2+wncyr on input line 64
 .
+
 (/usr/share/texmf/tex/latex/cyrillic/ot2wncyr.fd
 File: ot2wncyr.fd 1999/12/17 v3.2a Computer Modern Cyrillic font definitions
 )
-LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    ... okay on input line 64.
 -------------------- Geometry parameters
 paper: user defined
 landscape: --
@@ -613,74 +613,74 @@ driver: dvips
 
 (1in=72.27pt, 1cm=28.45pt)
 -----------------------
-Package hyperref Info: Link coloring OFF on input line 59.
+Package hyperref Info: Link coloring OFF on input line 64.
 
 (/usr/share/texmf/tex/latex/hyperref/nameref.sty
 Package: nameref 2001/01/27 v2.19 Cross-referencing by name of section
 \c@section@level=\count148
 )
-LaTeX Info: Redefining \ref on input line 59.
-LaTeX Info: Redefining \pageref on input line 59.
+LaTeX Info: Redefining \ref on input line 64.
+LaTeX Info: Redefining \pageref on input line 64.
  (./main.out) (./main.out)
 \openout3 = `main.out'.
 
 \symnumbers=\mathgroup6
 \sympureletters=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 59.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 59.
+(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 64.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 64.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 59.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 64.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 59.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 59.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 64.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 64.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 59.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 64.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 59.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 59.
+(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 64.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 64.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 59.
+(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 64.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 59.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 59.
+(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 64.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 64.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 59.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 64.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 59.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 64.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/bx/n on input line 59.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/bx/n on input line 64.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/bx/it on input line 59.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/bx/it on input line 64.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/cmr/bx/n on input line 59.
+(Font)                  OT1/cmss/bx/n --> OT1/cmr/bx/n on input line 64.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/cmss/bx/n on input line 59.
+(Font)                  OT1/cmss/bx/n --> OT1/cmss/bx/n on input line 64.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/bx/n on input line 59.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/bx/n on input line 64.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/bx/it on input line 59.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/bx/it on input line 64.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/bx/n on input line 59.
-LaTeX Info: Redefining \dots on input line 59.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/bx/n on input line 64.
+LaTeX Info: Redefining \dots on input line 64.
 
 (./main.nav)
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/sc' in size <6> not available
-(Font)              Font shape `OT1/cmr/m/sc' tried instead on input line 59.
+(Font)              Font shape `OT1/cmr/m/sc' tried instead on input line 64.
 
 
-Overfull \hbox (95.93983pt too wide) in paragraph at lines 59--59
+Overfull \hbox (95.93983pt too wide) in paragraph at lines 64--64
  [][][][][]  
  []
 
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/sc' in size <10.95> not available
-(Font)              Font shape `OT1/cmr/m/sc' tried instead on input line 64.
+(Font)              Font shape `OT1/cmr/m/sc' tried instead on input line 69.
 
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <4> not available
-(Font)              size <5> substituted on input line 64.
+(Font)              size <5> substituted on input line 69.
 
 
 Overfull \hbox (95.93983pt too wide) has occurred while \output is active
@@ -729,6 +729,237 @@ Overfull \hbox (95.93983pt too wide) has occurred while \output is active
 [6
 
 ]
+Overfull \hbox (95.93983pt too wide) has occurred while \output is active
+ [][][][][]  
+ []
+
+[7
+
+]
+Overfull \hbox (95.93983pt too wide) has occurred while \output is active
+ [][][][][]  
+ []
+
+[8
+
+]
+Overfull \hbox (95.93983pt too wide) has occurred while \output is active
+ [][][][][]  
+ []
+
+[9
+
+]
+Overfull \hbox (95.93983pt too wide) has occurred while \output is active
+ [][][][][]  
+ []
+
+[10
+
+]
+Overfull \hbox (95.93983pt too wide) has occurred while \output is active
+ [][][][][]  
+ []
+
+[11
+
+]
+Overfull \hbox (95.93983pt too wide) has occurred while \output is active
+ [][][][][]  
+ []
+
+[12
+
+]
+Overfull \hbox (95.93983pt too wide) has occurred while \output is active
+ [][][][][]  
+ []
+
+[13
+
+]
+Overfull \hbox (95.93983pt too wide) has occurred while \output is active
+ [][][][][]  
+ []
+
+[14
+
+]
+Overfull \hbox (95.93983pt too wide) has occurred while \output is active
+ [][][][][]  
+ []
+
+[15
+
+]
+Overfull \hbox (95.93983pt too wide) has occurred while \output is active
+ [][][][][]  
+ []
+
+[16
+
+]
+Overfull \hbox (95.93983pt too wide) has occurred while \output is active
+ [][][][][]  
+ []
+
+[17
+
+]
+Overfull \hbox (95.93983pt too wide) has occurred while \output is active
+ [][][][][]  
+ []
+
+[18
+
+]
+Overfull \hbox (95.93983pt too wide) has occurred while \output is active
+ [][][][][]  
+ []
+
+[19
+
+]
+Overfull \hbox (95.93983pt too wide) has occurred while \output is active
+ [][][][][]  
+ []
+
+[20
+
+]
+Overfull \hbox (95.93983pt too wide) has occurred while \output is active
+ [][][][][]  
+ []
+
+[21
+
+]
+Overfull \hbox (95.93983pt too wide) has occurred while \output is active
+ [][][][][]  
+ []
+
+[22
+
+]
+Overfull \hbox (95.93983pt too wide) has occurred while \output is active
+ [][][][][]  
+ []
+
+[23
+
+]
+Overfull \hbox (95.93983pt too wide) has occurred while \output is active
+ [][][][][]  
+ []
+
+[24
+
+]
+Overfull \hbox (95.93983pt too wide) has occurred while \output is active
+ [][][][][]  
+ []
+
+[25
+
+]
+Overfull \hbox (95.93983pt too wide) has occurred while \output is active
+ [][][][][]  
+ []
+
+[26
+
+]
+Overfull \hbox (95.93983pt too wide) has occurred while \output is active
+ [][][][][]  
+ []
+
+[27
+
+]
+Overfull \hbox (95.93983pt too wide) has occurred while \output is active
+ [][][][][]  
+ []
+
+[28
+
+]
+Overfull \hbox (95.93983pt too wide) has occurred while \output is active
+ [][][][][]  
+ []
+
+[29
+
+]
+Overfull \hbox (95.93983pt too wide) has occurred while \output is active
+ [][][][][]  
+ []
+
+[30
+
+]
+Overfull \hbox (95.93983pt too wide) has occurred while \output is active
+ [][][][][]  
+ []
+
+[31
+
+]
+Overfull \hbox (95.93983pt too wide) has occurred while \output is active
+ [][][][][]  
+ []
+
+[32
+
+]
+Overfull \hbox (95.93983pt too wide) has occurred while \output is active
+ [][][][][]  
+ []
+
+[33
+
+]
+Overfull \hbox (95.93983pt too wide) has occurred while \output is active
+ [][][][][]  
+ []
+
+[34
+
+]
+Overfull \hbox (95.93983pt too wide) has occurred while \output is active
+ [][][][][]  
+ []
+
+[35
+
+]
+Overfull \hbox (95.93983pt too wide) has occurred while \output is active
+ [][][][][]  
+ []
+
+[36
+
+]
+Overfull \hbox (95.93983pt too wide) has occurred while \output is active
+ [][][][][]  
+ []
+
+[37
+
+]
+Overfull \hbox (95.93983pt too wide) has occurred while \output is active
+ [][][][][]  
+ []
+
+[38
+
+]
+Overfull \hbox (95.93983pt too wide) has occurred while \output is active
+ [][][][][]  
+ []
+
+[39
+
+]
 \tf@nav=\write5
 \openout5 = `main.nav'.
 
@@ -745,12 +976,12 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 8671 strings out of 95370
- 145031 string characters out of 1188186
- 243297 words of memory out of 1000001
- 11511 multiletter control sequences out of 10000+50000
- 14843 words of font info for 55 fonts, out of 500000 for 1000
+ 8683 strings out of 95370
+ 145148 string characters out of 1188186
+ 245326 words of memory out of 1000001
+ 11522 multiletter control sequences out of 10000+50000
+ 14537 words of font info for 54 fonts, out of 500000 for 1000
  198 hyphenation exceptions out of 1000
- 45i,21n,59p,244b,628s stack positions out of 1500i,500n,5000p,200000b,5000s
+ 45i,21n,59p,244b,684s stack positions out of 1500i,500n,5000p,200000b,5000s
 
-Output written on main.dvi (6 pages, 87268 bytes).
+Output written on main.dvi (39 pages, 721808 bytes).
