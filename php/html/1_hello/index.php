@@ -8,23 +8,16 @@
 </head>
 
 <body>
-	<p>
-		Hello php (static)<br/>
-		
-		<script language="PHP">
-			print "Hello php (dynamic)<br/>";
-		</script>
-		
-		<?php
-			print "Hello php (dynamic and shortest)<br/>";
-		?>
-	</p>
-	
-	<p>
-		<a href="http://validator.w3.org/check?uri=referer"><img
-		src="http://www.w3.org/Icons/valid-xhtml11"
-		alt="Valid XHTML 1.1!" height="31" width="88" /></a>
-	</p>
+
+<h1>Boucle for</h1>
+
+<?php
+for ($i = 1 ; $i<5 ; $i++)
+{
+  print "$i<br/>";
+}
+?>
+
     
 </body>
 
