@@ -1,0 +1,189 @@
+Model {
+  Name			  "osc"
+  Version		  2.09
+  SimParamPage		  RTW
+  SampleTimeColors	  off
+  InvariantConstants	  off
+  WideVectorLines	  on
+  ShowLineWidths	  off
+  PaperOrientation	  landscape
+  PaperType		  usletter
+  PaperUnits		  inches
+  StartTime		  "0.0"
+  StopTime		  "999999"
+  Solver		  FixedStepDiscrete
+  RelTol		  "1e-3"
+  AbsTol		  "1e-6"
+  Refine		  "1"
+  MaxStep		  "auto"
+  InitialStep		  "auto"
+  FixedStep		  "auto"
+  MaxOrder		  5
+  OutputOption		  RefineOutputTimes
+  OutputTimes		  "[]"
+  LoadExternalInput	  off
+  ExternalInput		  "[t, u]"
+  SaveTime		  off
+  TimeSaveName		  "tout"
+  SaveState		  off
+  StateSaveName		  "xout"
+  SaveOutput		  off
+  OutputSaveName	  "yout"
+  LoadInitialState	  off
+  InitialState		  "xInitial"
+  SaveFinalState	  off
+  FinalStateName	  "xFinal"
+  LimitMaxRows		  off
+  MaxRows		  "1000"
+  Decimation		  "1"
+  AlgebraicLoopMsg	  warning
+  MinStepSizeMsg	  warning
+  UnconnectedInputMsg	  warning
+  UnconnectedOutputMsg	  warning
+  UnconnectedLineMsg	  warning
+  ConsistencyChecking	  off
+  ZeroCross		  on
+  SimulationMode	  normal
+  RTWSystemTargetFile	  "grt.tlc"
+  RTWInlineParameters	  off
+  RTWRetainRTWFile	  off
+  RTWTemplateMakefile	  "grt_vc.tmf"
+  RTWMakeCommand	  "make_rtw"
+  RTWGenerateCodeOnly	  off
+  ExtModeMexFile	  "ext_comm"
+  ExtModeBatchMode	  off
+  BlockDefaults {
+    Orientation		    right
+    ForegroundColor	    black
+    BackgroundColor	    white
+    DropShadow		    off
+    NamePlacement	    normal
+    FontName		    "Helvetica"
+    FontSize		    10
+    FontWeight		    normal
+    FontAngle		    normal
+    ShowName		    on
+  }
+  AnnotationDefaults {
+    HorizontalAlignment	    center
+    VerticalAlignment	    middle
+    ForegroundColor	    black
+    BackgroundColor	    white
+    DropShadow		    off
+    FontName		    "Helvetica"
+    FontSize		    10
+    FontWeight		    normal
+    FontAngle		    normal
+  }
+  LineDefaults {
+    FontName		    "Helvetica"
+    FontSize		    9
+    FontWeight		    normal
+    FontAngle		    normal
+  }
+  System {
+    Name		    "osc"
+    Location		    [36, 86, 456, 239]
+    Open		    on
+    ScreenColor		    white
+    Block {
+      BlockType		      Reference
+      Name		      "Frequency\nVector Scope"
+      Ports		      [1, 0, 0, 0, 0]
+      Position		      [335, 23, 370, 67]
+      SourceBlock	      "dspsnks/Frequency\nVector Scope"
+      SourceType	      "Frequency Vector Scope"
+      radsPop		      rad/sec
+      frange		      Half
+      ampl_scale	      dB
+      ylabel		      "Magnitude, dB"
+      figpos		      "[50 100 400 250]"
+      ts		      "1"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Periodogram"
+      Ports		      [1, 1, 0, 0, 0]
+      Position		      [210, 19, 290, 71]
+      ShowName		      off
+      SourceBlock	      "dspspect/Periodogram"
+      SourceType	      "Periodogram"
+      bufsiz		      "128"
+      olap		      "64"
+      fftsize		      "128"
+      navg		      "4"
+      wintype		      Hamming
+      Rs		      "50"
+      beta		      "5"
+      winsamp		      Symmetric
+      Ts		      "1"
+    }
+    Block {
+      BlockType		      RandomNumber
+      Name		      "Random\nNumber"
+      Position		      [15, 17, 60, 53]
+      Mean		      "0"
+      Variance		      "1"
+      Seed		      "0"
+      SampleTime	      "1"
+    }
+    Block {
+      BlockType		      SignalGenerator
+      Name		      "Signal\nGenerator"
+      Position		      [85, 73, 130, 107]
+      WaveForm		      sine
+      Amplitude		      "1.000000"
+      Frequency		      "1.5"
+      Units		      rad/sec
+    }
+    Block {
+      BlockType		      Sum
+      Name		      "Sum2"
+      Ports		      [2, 1, 0, 0, 0]
+      Position		      [160, 29, 180, 56]
+      ShowName		      off
+      Inputs		      "++"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "dB Gain"
+      Ports		      [1, 1, 0, 0, 0]
+      Position		      [80, 17, 130, 53]
+      SourceBlock	      "dspelmat/dB Gain"
+      SourceType	      "dB Gain"
+      dB		      "-20"
+      intype		      Amplitude
+    }
+    Line {
+      SrcBlock		      "Periodogram"
+      SrcPort		      1
+      DstBlock		      "Frequency\nVector Scope"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "dB Gain"
+      SrcPort		      1
+      DstBlock		      "Sum2"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Random\nNumber"
+      SrcPort		      1
+      DstBlock		      "dB Gain"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Sum2"
+      SrcPort		      1
+      DstBlock		      "Periodogram"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Signal\nGenerator"
+      SrcPort		      1
+      Points		      [5, 0; 0, -40]
+      DstBlock		      "Sum2"
+      DstPort		      2
+    }
+  }
+}
