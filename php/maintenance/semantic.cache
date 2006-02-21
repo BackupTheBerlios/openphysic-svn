@@ -1,0 +1,15 @@
+;; Object maintenance/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "maintenance/"
+  :tables (list 
+   (semanticdb-table "connexion.php"
+    :major-mode 'php-mode
+    :tags '(("$mabase" variable (:default-value "mysql_connect('localhost', 'USER', 'PASSWORD')" :type ("php" type (:type "class") nil nil)) nil [3 64]) ("$result" variable (:default-value "mysql_select_db('s.cls')" :type "int") nil [141 176]))
+    :file "connexion.php"
+    :pointmax 275
+    )
+   )
+  :file "semantic.cache"
+  :semantic-tag-version "2.0beta3"
+  :semanticdb-version "2.0beta3"
+  )
