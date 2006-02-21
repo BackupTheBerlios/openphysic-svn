@@ -1,0 +1,23 @@
+;; Object timer/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "timer/"
+  :tables (list 
+   (semanticdb-table "main.c"
+    :major-mode 'c-mode
+    :tags '(("stdio.h" include (:system-flag t) nil [1 19]) ("sys/time.h" include (:system-flag t) nil [20 41]) ("faire_des_trucs" function (:arguments (("" variable (:type "void") (reparse-symbol arg-sub-list) [64 69])) :type "void") nil [43 149]) ("main" function (:arguments (("" variable (:type "void") (reparse-symbol arg-sub-list) [161 166])) :type "int") nil [152 472]) ("faire_des_trucs" function (:arguments (("" variable (:type "void") (reparse-symbol arg-sub-list) [474 474])) :type "void") nil [474 474]))
+    :file "main.c"
+    :pointmax 474
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "Makefile"
+    :major-mode 'makefile-mode
+    :tags '(("all" function nil nil [1 14]))
+    :file "Makefile"
+    :pointmax 14
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "semantic.cache"
+  :semantic-tag-version "2.0beta3"
+  :semanticdb-version "2.0beta3"
+  )

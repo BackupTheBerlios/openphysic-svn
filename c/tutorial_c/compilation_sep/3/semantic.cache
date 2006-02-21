@@ -1,0 +1,22 @@
+;; Object 1/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "1/"
+  :tables (list 
+   (semanticdb-table "main.c"
+    :major-mode 'c-mode
+    :tags '(("stdio.h" include (:system-flag t) nil [1 19]) ("afficher" function (:prototype-flag t :arguments (("" variable (:type "void") (reparse-symbol arg-sub-list) [35 40])) :type "void") nil [21 41]) ("main" function (:arguments (("" variable (:type "void") (reparse-symbol arg-sub-list) [52 57])) :type "int") nil [43 88]) ("afficher" function (:arguments (("" variable (:type "void") (reparse-symbol arg-sub-list) [105 110])) :type "void") nil [91 135]))
+    :file "main.c"
+    :pointmax 136
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "Makefile"
+    :major-mode 'makefile-mode
+    :tags '(("all" function nil nil [1 47]))
+    :file "Makefile"
+    :pointmax 47
+    )
+   )
+  :file "semantic.cache"
+  :semantic-tag-version "2.0beta3"
+  :semanticdb-version "2.0beta3"
+  )

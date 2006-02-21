@@ -1,0 +1,22 @@
+;; Object liste_ch/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "liste_ch/"
+  :tables (list 
+   (semanticdb-table "Makefile"
+    :major-mode 'makefile-mode
+    :tags '(("all" function nil nil [1 47]))
+    :file "Makefile"
+    :pointmax 47
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "main.c"
+    :major-mode 'c-mode
+    :tags '(("stdio.h" include (:system-flag t) nil [1 19]) ("stdlib.h" include (:system-flag t) nil [64 83]) ("list_item" type (:typedef ("_list_item" type (:type "struct") nil nil) :superclasses "_list_item" :type "typedef") nil [191 227]) ("_list_item" type (:members (("val" variable (:type "int") (reparse-symbol classsubparts) [251 265]) ("next" variable (:pointer 1 :type ("list_item" type (:type "class") nil nil)) (reparse-symbol classsubparts) [316 332])) :type "struct") nil [229 381]) ("inserer_debut" function (:pointer 1 :arguments (("list" variable (:pointer 1 :type ("list_item" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [534 550]) ("val" variable (:type "int") (reparse-symbol arg-sub-list) [551 559])) :type ("list_item" type (:type "class") nil nil)) nil [509 990]) ("inserer_fin" function (:pointer 1 :arguments (("list" variable (:pointer 1 :type ("list_item" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1139 1155]) ("val" variable (:type "int") (reparse-symbol arg-sub-list) [1156 1164])) :type ("list_item" type (:type "class") nil nil)) nil [1116 2013]) ("supprimer" function (:pointer 1 :arguments (("list" variable (:pointer 1 :type ("list_item" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2198 2214]) ("val" variable (:type "int") (reparse-symbol arg-sub-list) [2215 2223])) :type ("list_item" type (:type "class") nil nil)) nil [2177 3601]) ("main" function (:arguments (("argc" variable (:type "int") (reparse-symbol arg-sub-list) [3649 3658]) ("argv" variable (:pointer 2 :type "char") (reparse-symbol arg-sub-list) [3659 3671])) :type "int") nil [3640 4456]))
+    :file "main.c"
+    :pointmax 4457
+    )
+   )
+  :file "semantic.cache"
+  :semantic-tag-version "2.0beta3"
+  :semanticdb-version "2.0beta3"
+  )

@@ -1,0 +1,35 @@
+;; Object 1/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "1/"
+  :tables (list 
+   (semanticdb-table "main.c"
+    :major-mode 'c-mode
+    :tags '(("stdio.h" include (:system-flag t) nil [1 19]) ("affichage.h" include nil nil [21 43]) ("main" function (:arguments (("" variable (:type "void") (reparse-symbol arg-sub-list) [54 59])) :type "int") nil [45 90]))
+    :file "main.c"
+    :pointmax 91
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "Makefile"
+    :major-mode 'makefile-mode
+    :tags '(("CC" variable (:default-value ("gcc")) nil [1 8]) ("CFLAGS" variable (:default-value ("-pedantic" "-ansi" "-Wall")) nil [8 37]) ("OBJECTS" variable (:default-value ("main.o" "affichage.o")) nil [38 65]) ("main" function (:arguments ("$(OBJECTS)")) nil [67 121]) ("affichage.o" function (:arguments ("affichage.c" "affichage.h")) nil [121 191]) ("main.o" function (:arguments ("main.c" "affichage.h")) nil [191 245]) ("main" function (:arguments ("main.o" "affichage.o")) nil [245 247]) ("all" function nil nil [247 287]) (".PHONY" function (:arguments ("clean")) nil [287 302]) ("clean" function nil nil [302 324]))
+    :file "Makefile"
+    :pointmax 324
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "affichage.c"
+    :major-mode 'c-mode
+    :tags '(("stdio.h" include (:system-flag t) nil [1 19]) ("afficher" function (:arguments (("" variable (:type "void") (reparse-symbol arg-sub-list) [35 40])) :type "void") nil [21 65]))
+    :file "affichage.c"
+    :pointmax 66
+    )
+   (semanticdb-table "affichage.h"
+    :major-mode 'c-mode
+    :tags '(("AFFICHAGE_H" variable (:constant-flag t) nil [21 46]) ("afficher" function (:prototype-flag t :arguments (("" variable (:type "void") (reparse-symbol arg-sub-list) [56 61])) :type "void") nil [42 62]))
+    :file "affichage.h"
+    :pointmax 71
+    )
+   )
+  :file "semantic.cache"
+  :semantic-tag-version "2.0beta3"
+  :semanticdb-version "2.0beta3"
+  )
