@@ -1,0 +1,78 @@
+Chap 6 ? :					TRAVAIL D'UNE FORCE					1ère S
+
+I]	Travail d'une force.
+
+1)	Définition :
+
+Lors du déplacement d'un solide, les éventuelles forces qui lui sont appliquées travaillent.
+Le travail d'une force est une nouvelle grandeur physique. Il sera d'autant plus important que la valeur de la force sera grande et que le déplacement de l'objet se fera sur une longue distance.
+
+ Le travail WAB(F) d'une force constante F, lors d'un déplacement rectiligne de son point d'application de A vers B, est égal au produit scalaire de la force F par le vecteur déplacement AB.
+							WABF = F . AB = F . AB . cos?.
+
+Où ? est l'angle entre les vecteurs F et AB. WABF en joules J, F en N, AB en m.
+
+NB :  le joule est le travail d'une force de 1 N dont le point d'application se déplace de 1 m  selon la direction de la force.
+
+Une force ne travaille pas (WABF = 0) si son point d'application ne se déplace pas ou si sa direction est ? à celle du Dt (cos ? = 0).
+
+2)	Travail moteur et travail résistant.
+
+F ? 0,  AB ? 0 et -1 ? cos ? ? 1. Le travail est donc une grandeur algébrique.
+
+Scanner doc1 page 98.
+
+Si ? < 90° la force F favorise le déplacement WABF > 0. Le travail de la force est dit moteur.
+Si ? > 90° la force F favorise le déplacement WABF < 0. Le travail de la force est dit résistant.
+
+II]	Travail du poids d'un corps.
+
+Scanner doc 6 page 98.
+
+Déterminons le travail du poids de la balle lors de son déplacement le long d'une trajectoire quelconque conduisant d'un point A d'une altitude ZA à un point B d'une altitude ZB.
+
+On décompose la trajectoire curviligne AB en une infinité de segments rectilignes AM1, M1M2, M2M3, MiMi+1, MnB.
+
+WAB(P) = P . AM1 + P . M1M2 + P . MiMi+1 + P . MnB = P . (AM1 + M1M2 + MiMi+1 + MnB) = P . AB.
+
+P (O; O; - mg)	et 	AB (xB - xA; yB - yA; zB - zA)	WAB (P) = mg (zA - zB).
+
+Le travail du poids d'un corps est indépendant du chemin suivi par son centre d'inertie G pour aller d'un point de départ A vers un point d'arrivée B. Il ne dépend que de leur altitude zA et zB.
+
+III]	Travail d'une force constante.
+
+Pour une force constante quelconque : 
+
+Le travail WABF d'une force constante F lors d'un déplacement quelconque de son point d'application de A vers B est égal au produit scalaire de la force F par le vecteur déplacement AB : 
+
+WABF = F . AB
+De ce fait il est indépendant du chemin suivi mais ne dépend que du point de départ et de celui d'arrivée.
+
+IV]	Travail des forces dans le cas d'un solide en translation.
+
+Si un solide est en translation, chacun de ses points subi d'un déplacement identique.
+La somme des travaux des forces s'écrit : F1.A1B1 + F2.A2B2 + Fn.AnBn = (F1 + F2 + ? + Fn) . AB = F . AB = WAB(F).
+
+Pour un solide en translation, la somme des travaux des forces appliquées au solide est égale au travail de leur résultante.
+
+V]	Puissance d'une force.
+
+1)	Définition.
+
+Voire introduction de cette notion aux 1ère STLB.
+
+La puissance moyenne P moyenne d'une force F est le quotient de travail W(F) par la durée ?t mise à l'effectuer : P moyenne = W(F) / ?t. P moyenne s'exprime en watt (W), W(F) en joule (J) et ?t en seconde (s).
+
+Le watt est la puissance d'une force qui exerce un travail de 1 J pendant une durée de 1 s.
+
+NB: 1 cheval (ch) = 736 W.
+
+2)	Cas particulier d'un solide en translation rectiligne uniforme.
+
+Dans ce cas particulier la vitesse est cte et de valeur v.
+
+P moyenne = WAB(F) / ?t = F . AB / ?t	avec AB = v . ?t
+
+Dans le cas d'un solide en translation rectiligne uniforme, la puissance moyenne d'une force constant F appliquée au solide est égale au produit scalire de F par le vecteur vitesse v du solide : P moyenne = F . v
+
+Si la vitesse n'est pas constante au cours du temps, v désigne la vitesse à l'instant t, le terme F . v représente la puissance instantanée.

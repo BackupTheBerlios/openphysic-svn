@@ -1,0 +1,99 @@
+Chap 8 ? :					ENERGIE POTENTIELLE					1ère S
+
+I]	Définition.
+
+Dans le ?terrestre, même au repos, un solide possède du fait de sa masse, de sa position par rapport au sol, et de l'attraction terrestre une énergie cachée appelée énergie potentielle de pesanteur. Cette énergie ? quand l'altitude ?.
+
+II]	Energie potentielle au voisinage de la Terre.
+
+1)	Solide en chute libre.
+
+On applique le théorème de l'Ec au solide entre A et B. Seul le poids travaille.
+
+	EcB - EcA = ½ Mv²B - ½ Mv²A = WAB (P) = Mg (zA - zB)
+
+?	½ Mv²A + Mg zA = ½ Mv²B + Mg zB
+
+Dans chacune des positions A et B, le solide possède de l'Ec et de l'Ep de pesanteur.
+EpA = Mg zA et EpB = Mg zB
+
+Ep (zG) = M g zG    Ep en J, M en kg, g en N.kg-1 et zG en m. Oz orienté vers le haut.
+
+
+NB : l'Ep est une grandeur algébrique. Ep > 0 si z > 0 et Ep < 0 si z < 0.
+NB' : on ne sait mesurer que des variations d'Ep. L'Ep n'est donc connue qu'à une cte près. Le niveau de référence choisi généralement pour Ep = 0 est l'origine du repère z = 0 voire le niveau de la mer : altitude nulle.
+
+2)	Variation de l'Ep.
+
+Chute libre d'un solide.
+
+WAB (P) = Mg (zA - zB) = EpA - EpB > 0.	La variation de l'Ep de A à B s'écrit EpB - EpA = - WAB (P).
+
+Solide en translation rectiligne uniforme.
+
+Au contraire de précédemment, un solide soulevé par une grue est animé d'un mvt de translation rectiligne qui fait passer l'altitude de son centre d'inertie de zA à zB > zA.  Les vitesses en A et B sont nulles. Ce solide est soumis à P et la tension du câble T.
+
+½ Mv²B - ½ Mv²A = WAB (P) + WAB (T) = 0 	?	WAB (P) = - WAB (T)
+
+EpB - EpA = Mg zB - Mg zA = - WAB (P) = + WAB (T)	Le travail positif fourni par la tension T explique l'augmentation de l'Ep.
+
+Généralisation.
+
+Dans tous les cas, la variation d'Ep est égale à l'opposé du travail de la force de pesanteur : EpB - EpA = - WAB (P)
+
+III]	Energie potentielle de gravitation.
+
+Si l'on ne travaille plus dans un espace où le champ de pesanteur est g0, on utilise l'expression de l'Ep de gravitation. On choisit comme niveau de référence Ep = 0 pour une altitude infinie, l'expression de Ep pour 1 solide de masse m est : 
+
+Ep = - G m.MT / (RT + z)	  (Rappel g s'exprime de la façon suivante :  g = G ? MT / (R + z)².
+
+MT en kg, RT en m, z en m, G = 6,67.10-11 N.kg-2.m2.
+
+
+Là encore, EpB - EpA = - WAB (Fgravitationnelle).
+
+IV]	L'énergie mécanique.
+
+1)	Chute libre d'un solide.
+
+On a vu que :	½ Mv²A + Mg zA = ½ Mv²B + Mg zB	d'où	EcA + EpA = EcB + EpB
+
+La somme Ec + Ep des énergies cinétique et potentielle reste constante. Elle se conserve.
+
+2)	Mobile autoporteur en mvt sans frottement.
+
+Ici encore, on démontre facilement que Ec + Ep = cte puisque seul P travaille.
+
+Dans un ?terrestre, Ec + Ep = cte lorsque seul le poids travaille.
+
+
+3)	Echanges d'énergie.
+
+Lorsque seul P travaille, Ec + Ep = cte et ne dépend donc pas de l'altitude z.
+
+On note Em = Ec + Ep, l'énergie mécanique du solide.
+
+Quand le solide monte, Ep ? et Ec ? d'autant.
+
+Quand il descend Ep ? et Ec ?.
+
+Il y donc échange entre les formes cinétique et potentielle lorsque zG varie.
+
+Pour une valeur de Em donnée, le graphe met en évidence l'altitude maximale accessible.
+
+
+
+
+4)	L'énergie mécanique ne se conserve pas dans tous les cas.
+
+S'il existe des forces de frottement, celles-ci travaillent et dissipent de l'énergie sous forme de chaleur.
+
+	EcB - EcA 	= WAB (P) + WAB (Rn) + WAB (f)
+	EcB - EcA 	= EpA - EpB + 0 + WAB (f)
+
+EmB - EmA = WAB (f) < 0.
+
+Ici, l'Em du mobile ne se conserve pas : elle décroît au cours du temps.
+Il y a production de chaleur.
+
+

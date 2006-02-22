@@ -1,0 +1,117 @@
+Chap 9 ? :				LES TRANSFERTS D'ENERGIE					1ère S
+
+L'énergie : Caractéristique que possède un système s'il est capable de produire du travail.
+
+I]	Le travail d'une force est un 1er mode de transfert d'énergie.
+
+Ex 1 : Une force manuelle exerce un travail pour comprimer un ressort lanceur de flipper horizontal (z = 0). On suppose qu'il n'y a pas de frottement. L'Em du ressort se conserve donc. En A : EcA = 0 et EpA = 0. En B : EcB = 0 et EpB = 0. Pourtant le système a emmagasiné une énergie de type élastique qu'il est capable de restituer (sous forme de travail de la force de Tension).
+
+
+
+Ex 2 : Une force manuelle exerce un travail pour écraser le piston et comprimer le gaz intérieur au cylindre horizontal (z = 0). On suppose qu'il n'y a pas de frottement. Là aussi, l'Em du piston se conserve. Pourtant le système emmagasine de l'énergie élastique et thermique (vitesse + élevée des particules) qu'il est capable de restituer (sous forme de travail des forces de pression).
+
+
+
+Le travail d'une force peut permettre à un système d'emmagasiner, de stocker  de l'énergie.
+
+II]	L'énergie interne U.
+
+Un système peut posséder de l'énergie macroscopique, visible à notre échelle : Ec, Ep due à une position / à un corps extérieur.
+
+On regroupe sous la dénomination énergie interne U, toutes les autres formes d'énergie pouvant être emmagasinées par un système.
+
+L'énergie thermique : c'est l'Ec microscopique des particules du système.
+L'énergie élastique : elle provient de l'existence de forces d'interaction entre les particules (cf. F coulomb).
+L'énergie chimique : a pour origine l'existence de forces d'interaction entre les atomes des molécules.
+L'énergie nucléaire : elle a pour origine l'existence de forces d'interaction entre les nucléons des noyaux (interaction forte).
+
+NB : les 3 dernières énergies sont associées à des interactions entre les particules du système. Ce sont des Ep microscopiques.
+
+Ouvrir livre page 141 : voir doc 3, 4, 5.
+
+III]	La chaleur ou transfert thermique est  un 2ième mode de transfert d'énergie.
+
+1)	Définition.
+
+Il y a transfert thermique noté Q, chaque fois que l'on met en contact 2 corps ayant des T ?. Le transfert thermique s'effectue spontanément du corps ayant la T la + élevée vers le corps ayant la T la + basse.
+
+
+
+
+
+Au cours du transfert thermique l'énergie thermique du corps chaud ?, celle du corps froid ?. Le transfert thermique cesse qd l'équilibre thermique est atteint, TA =TB.
+
+2)	Transfert thermique par conduction (dans les solides).
+
+
+Ce sont d'abord les boules de cire situées près de la l'extrémité chauffée  qui fondent. Puis les autres. Il y a transfert thermique de l'extrémité chauffée vers l'extrémité froide : conduction. 
+Interprétation microscopique :
+
+
+
+
+
+Propagation de proche en proche de l'agitation thermique atomique par chocs successifs, sans transport de matière.
+3)	Transfert thermique par convection (dans les fluides).
+
+
+Lorsqu'un fluide (gaz ou liquide) est chauffé au contact d'une source chaude, un courant de circulation se met en place au sein du fluide. Il y a transport de matière.
+
+Cf : convecteur mural.
+ Interprétation microscopique :
+
+
+
+
+
+
+
+
+
+
+T ?, Ecmicroscopique ?, l'échantillon fluide (7 molécules) se dilate, ? = m / V ?, d = ? / ?0 ?, élévation de l'échantillon. Vice versa.
+
+4)	Ne pas confondre Q et T.
+
+La chaleur est un transfert thermique d'énergie : Q en J.
+
+La température caractérise l'agitation microscopique des particules constituant le corps : T en K ou °C.
+
+5)	Travail et transfert thermique.
+
+Pour chauffer 1 gaz, on peut utiliser un travail (compression rapide - pompe à vélo), un transfert thermique (le plonger ds 1 fluide chaud).
+
+Le travail est un transfert d'énergie ordonné : le piston de la pompe pousse les molécules du gaz dans une même direction.
+
+Le transfert thermique est un transfert d'énergie désordonné sans direction privilégiée.
+
+La conversion de W en Q est facile. Travail des forces de freinage d'une auto, converti en échauffement des plaquettes, disques.
+
+La conversion inverse est délicate et demande des dispositifs élaborés : moteurs thermiques. (Jamais ? = 100 ?).
+
+IV]	Un 3ième mode de transfert d'énergie : le rayonnement.
+
+Tout corps du fait de sa température, rayonne : il émet des ondes électromagnétiques. Ces ondes transportent de l'énergie.
+
+Le rayonnement est d'autant + important que la T du corps est élevée.
+
+Emission d'ondes : T corps émetteur ?.
+Absorption d'ondes : T corps récepteur ?. Cette absorption est + importante si la couleur du corps est + foncée.
+
+
+
+
+
+
+
+
+NB : 8? de l'énergie solaire rayonnée correspond à des UV, 41 ? à du visible et 51 ? au domaine des IR.
+
+V]	Conservation de l'énergie totale.
+
+ET système isolé = Ec macroscopique + Ep macroscopique + U = cte.
+
+Si un corps a perdu de l'énergie sous forme de W, ou Q ou rayonnement, il n'est pas isolé et la même quantité d'énergie a été gagnée par un ou plusieurs autres systèmes.
+
+?ET système non isolé = W + Q + Rayonnement
+
