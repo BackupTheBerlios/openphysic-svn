@@ -180,6 +180,11 @@ this:
 #	$(MAKE) only-ps file=title.tex
 
 
+#slide:
+# pour fabriquer un diaporama en indiquant le fichier
+# make slide file=meca/cours_energie_cinetique
+# fait un PDF avec Beamer (par exemple)
+
 
 brouillon:
 	$(MAKE) only-ps file=brouillons/main2.tex
