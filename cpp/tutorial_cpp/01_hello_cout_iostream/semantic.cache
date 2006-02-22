@@ -1,0 +1,22 @@
+;; Object 01_hello_cout_iostream/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "01_hello_cout_iostream/"
+  :tables (list 
+   (semanticdb-table "main.cc"
+    :major-mode 'c++-mode
+    :tags '(("iostream" include (:system-flag t) nil [1 20]) ("main" function (:arguments (("argc" variable (:type "int") (reparse-symbol arg-sub-list) [52 61]) ("argv" variable (:pointer 2 :type "char") (reparse-symbol arg-sub-list) [62 74])) :type "int") nil [43 136]))
+    :file "main.cc"
+    :pointmax 137
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "makefile"
+    :major-mode 'makefile-mode
+    :tags '(("all" function nil nil [1 39]))
+    :file "makefile"
+    :pointmax 39
+    )
+   )
+  :file "semantic.cache"
+  :semantic-tag-version "2.0beta3"
+  :semanticdb-version "2.0beta3"
+  )

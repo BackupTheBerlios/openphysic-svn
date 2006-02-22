@@ -1,0 +1,22 @@
+;; Object ascii/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "ascii/"
+  :tables (list 
+   (semanticdb-table "Makefile"
+    :major-mode 'makefile-mode
+    :tags '(("CC" variable (:default-value ("g++")) nil [1 8]) ("all" function nil nil [9 58]))
+    :file "Makefile"
+    :pointmax 58
+    )
+   (semanticdb-table "main.cc"
+    :major-mode 'c++-mode
+    :tags '(("iostream" include (:system-flag t) nil [1 20]) ("main" function (:arguments (("" variable (:type "void") (reparse-symbol arg-sub-list) [53 58])) :type "int") nil [44 854]))
+    :file "main.cc"
+    :pointmax 947
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "semantic.cache"
+  :semantic-tag-version "2.0beta3"
+  :semanticdb-version "2.0beta3"
+  )

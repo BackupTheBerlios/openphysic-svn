@@ -1,0 +1,15 @@
+;; Object parse_lex/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "parse_lex/"
+  :tables (list 
+   (semanticdb-table "lexer.ll"
+    :major-mode 'c++-mode
+    :tags '(("OPENPAR" variable (:type "int") nil [970 978]) ("CLOSEPAR" variable (:type "int") nil [991 1000]) ("PLUS" variable (:type "int") nil [1012 1017]) ("MINUS" variable (:type "int") nil [1029 1035]) ("TIMES" variable (:type "int") nil [1047 1053]) ("DIV" variable (:type "int") nil [1065 1069]) ("POW" variable (:type "int") nil [1081 1085]) ("SIN" variable (:type "int") nil [1099 1103]) ("yyerror" function (:arguments (("s" variable (:pointer 1 :constant-flag t :type "char") (reparse-symbol arg-sub-list) [1451 1465])) :type "void") nil [1437 1500]) ("resultat" variable (:type ("YYSTYPE" type (:type "class") nil nil)) nil [1502 1519]) ("lexer_string" variable (:type ("std::string" type (:type "class") nil nil)) nil [1558 1583]) ("curr_pos" variable (:default-value "0" :type "int") nil [1627 1644]) ("lexer_input" function (:typemodifiers ("static") :arguments (("buf" variable (:pointer 1 :type "char") (reparse-symbol arg-sub-list) [1710 1720]) ("max_size" variable (:type "int") (reparse-symbol arg-sub-list) [1721 1734])) :type "int") nil [1687 1957]) ("set_lexer_string" function (:arguments (("s" variable (:constant-flag t :type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1981 2003])) :type "void") nil [1959 2052]) ("yywrap" function (:type "int") nil [2096 2124]))
+    :file "lexer.ll"
+    :pointmax 2125
+    )
+   )
+  :file "semantic.cache"
+  :semantic-tag-version "2.0beta3"
+  :semanticdb-version "2.0beta3"
+  )
