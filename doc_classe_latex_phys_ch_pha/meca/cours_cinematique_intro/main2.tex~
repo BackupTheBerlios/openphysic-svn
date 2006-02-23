@@ -16,9 +16,34 @@ On peut, par exemple, considérer les référentiels suivants :
 \end{itemize}
 
 
+
 Pour repérer plus facilement la position d'un objet dans un
 référentiel, on définit un \emph{repère} : c'est un système d'axes lié
 au référentiel c'est à dire immobile par rapport au référentiel.
+
+
+
+% A mettre ??
+
+\begin{itemize}
+\item Un repère du référentiel héliocentrique a pour origine le centre
+  du Soleil et ses axes sont dirigés vers 3 étoiles fixes. Dans ce
+  repère, le centre de la Terre décrit presque un cercle.
+
+\item Un repère du référentiel de Copernic a pour origine le centre
+d'inertie du système solaire, ses axes sont dirigés vers 3 étoiles
+fixes. Référentiel de Copernic et référentiel héliocentrique sont
+assimilables.
+
+
+\item Un repère du référentiel géocentrique a pour origine le centre de la
+Terre, ses axes restent parallèles à ceux d'un repère du référentiel
+héliocentrique. Dans ce référentiel, la Terre est animée d'un
+mouvement de rotation uniforme autour d'un axe fixe Nord-Sud.
+
+%\item référentiel terrestre
+\end{itemize}
+
 
 
 \subsection{Trajectoire}
@@ -105,7 +130,9 @@ $M$ a pour caractéristiques :
 
 
 \begin{itemize}
-\item \emph{Point d'application : }la position $M$ qu'occupait le mobile à l'instant $t$.
+\item \emph{Point d'application : }la position $M$ qu'occupait le
+  mobile à l'instant $t$.
+
 
 \item \emph{Direction : }celle de la tangente à la trajectoire au
 point occupé par M mobile à l'instant t (voir schéma précédent)
@@ -144,8 +171,10 @@ Si on définit un angle $\alpha$ :
 
 \subsection{Mouvement rectiligne uniforme}
 
-Les positions successives du point $M$ sont \emph{alignées} : le mouvement est \emph{rectiligne}
- (différent de circulaire ou curviligne). Schéma.
+Les positions successives du point $M$ sont \emph{alignées} : le
+mouvement est \emph{rectiligne} (différent de circulaire ou
+curviligne). Schéma.
+
 
 
 Elles sont régulièrement espacées et le mobile va toujours dans le
