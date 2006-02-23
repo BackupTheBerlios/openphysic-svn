@@ -1,0 +1,18 @@
+\classe{Première\ \\
+Scientifique\ \\
+Partie Chimie}{Première Scientifique - Partie Chimie}
+
+
+\chapitre{Grandeurs physiques et quantité de matière}
+\input{tp_prem_s_chimie/tp1_sol_aqueuses/main2.tex}
+\input{tp_prem_s_chimie/tp2_vol_molaire_gaz/main2.tex}
+% pas de tp 3 (caractérisation des ions)
+\input{tp_prem_s_chimie/tp4_suivi_transfo_chim_pression/main2.tex}
+
+\chapitre{Solutions électrolytiques}
+\input{tp_prem_s_chimie/tp5_concentrations_molaires_effectives/main2.tex}
+
+\chapitre{Conductimétrie}
+\input{tp_prem_s_chimie/tp6_determination_par_conductimetrie_concentration/main2.tex}
+\input{tp_prem_s_chimie/tp7_conductivite_molaire_ionique/main2.tex}
+

@@ -1,0 +1,82 @@
+\classe{Première\ \\
+Scientifique\ \\
+Partie Physique}{Première Scientifique - Partie Physique}
+
+
+
+\chapitre{Intéractions fondamentales}
+\input{interactions/cours_particules_elementaires/main2.tex}    % Mettre les fig
+\input{interactions/cours_interactions_fondamentales/main2.tex} % Mettre les fig
+
+\input{electrostat/doc_electrostat/main2.tex}
+
+
+
+\chapitre{Vitesses et mouvements}
+\input{meca/cours_cinematique_intro/main2.tex} % Mettre les fig
+\input{tp_prem_s_phys/tp02_mouvement/main2.tex}
+\input{tp_prem_s_phys/tp02_mouvement_doc/main2.tex}
+\input{tp_prem_s_phys/tp03_rotation/main2.tex}
+\input{tp_prem_s_phys/tp04_mvt_parabolique/main2.tex}
+
+
+\chapitre{Forces}
+\input{meca/cours_forces/main2.tex} % Mettre les fig
+\input{meca/tp_poids_ressort_archimede/main2.tex}
+\input{meca/tp_equilibre_solide/main2.tex}
+\input{meca/doc_rapporteurs/main2.tex}
+
+
+\chapitre{Lois de Newton}
+\input{meca/cours_lois_newton/main2.tex}  % Mettre les fig
+\input{tp_prem_s_phys/tp08_deuxieme_loi_newton_micromega/main2.tex}
+\input{tp_prem_s_phys/tp08_deuxieme_loi_newton_parabole_video/main2.tex}
+
+
+\chapitre{Travail d'une force}
+\input{meca/cours_travail_force/main2.tex}  % Mettre les fig
+
+
+\chapitre{\'Energie cinétique}
+\input{meca/cours_energie_cinetique/main2.tex}  % Mettre les fig
+\input{tp_prem_s_phys/tp09_theo_energie_cinetique/main2.tex}
+
+
+\chapitre{\'Energie mécanique}
+\input{meca/cours_energie_potentielle_mecanique/main2.tex}  % Mettre les fig
+\input{tp_prem_s_phys/tp10_theo_energie_mecanique/main2.tex}
+
+
+\chapitre{Calorimétrie}
+%\input{}
+\input{thermodynamique/tp1_transferts_thermiques_capa_therm_calo/main2.tex}
+\input{thermodynamique/tp2_capa_thermique_massique_metal/main2.tex}
+\input{thermodynamique/tp3_chaleur_latente_fusion_glace/main2.tex}
+\input{thermodynamique/doc_balance_metler_p1200/main2.tex}
+
+
+\chapitre{\'Electromagnétisme}
+\input{electromag/tp_champ_magnetique/main2.tex} % Champ magnétique
+\input{electromag/tp_bobines_helmholtz/main2.tex} % Bobines de Helmholtz
+\input{electromag/tp_force_laplace/main2.tex} % Force de Laplace
+\input{electromag/tp_force_lorentz/main2.tex} % Force de Lorentz
+
+
+
+\chapitre{Optique géométrique}
+\input{opt/cours_intro_opt_geom/main2.tex} % conditions de visibilité
+\input{opt/cours_miroir_plan/main2.tex} % miroir plan
+\input{opt/cours_lentilles_minces/main2.tex} % lentilles minces
+\input{opt/doc_constructions_lentilles/main2.tex}
+\input{opt/tp_lentilles_minces_conv_conjug/main2.tex} % Lentilles (Images, rel de conjugaison)
+\input{opt/tp_lentilles_minces_conv_foco/main2.tex} % Focométrie lentilles minces
+% lunette astronomique
+% autres instruments d'optique ?
+
+
+
+\chapitre{Devoir Surveillé} % 1S
+\input{ds_2005_2006_prem_s/ds1/main2.tex}
+\input{ds_2005_2006_prem_s/ds2/main2.tex}
+
+
