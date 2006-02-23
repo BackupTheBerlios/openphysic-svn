@@ -60,7 +60,13 @@
 %\svnInfoRevision \svnInfoDate \svnInfoFile \svnInfoOwner \svnInfoDay
 
 
-
+\newcommand{\inclure}[1]{
+  \graphicspath{%
+    {#1/}%
+  }
+  \input{#1/main2.tex}
+}
+%\inclure{rep/sous_rep}
 
 
 %\usepackage{minitoc} % table des matières intermédiaire
@@ -1303,7 +1309,7 @@ dans l'appréciation des copies.
 % \referentiel{T} : référentiel terrestre
 
 
-\newcommand{\travail}[3]{W_{#1 \rightarrow #2}(#3)}
+\newcommand{\W}[3]{W_{#1 \rightarrow #2}(#3)}
 
 
 % Radioac (isotopes, nucleide)

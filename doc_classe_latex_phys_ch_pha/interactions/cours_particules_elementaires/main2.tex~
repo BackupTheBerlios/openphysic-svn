@@ -172,9 +172,9 @@ des nombres de neutrons différents.
 \item tope = position ou place
 \end{itemize}
 
-%\emph{Exemple :}\ ...
-\exemple{\noyau{U}{92}{235} ; \noyau{U}{92}{238} ;
-\noyau{U}{92}{239} sont trois isotopes de l'uranium.}
+
+\emph{Exemple :}\  \noyau{U}{92}{235} ; \noyau{U}{92}{238} ;
+\noyau{U}{92}{239} sont trois isotopes de l'uranium.
 
 
 
@@ -190,7 +190,7 @@ considérer un métal comme formé d'un réseau de cations dans lequel les
 e- libres peuvent se déplacer.
 
 
-\emph{Envisager un schéma.}
+ Envisager un schéma.
 
 
 \item \emph{Les électrolytes} : il s'agit de solutions contenant des espèces
@@ -203,16 +203,9 @@ ioniques (cations ou anions) mobiles.
   libres.
 
 
-  \exemple{cristal de chlorure de sodium, de diamant, éthanol.}
-
-
-
-  \pagebreak
+  Exemple : cristal de chlorure de sodium, de diamant, éthanol.
 
   \par\bigskip
-
-
-
 
   On peut distinguer un conducteur d'un isolant à l'aide de la \emph{machine
   de Wimshurst}.

@@ -139,7 +139,8 @@ only.tex:
 	echo '\documentclass[a4paper,10pt]{book}' > only.tex
 	echo '\usepackage{s-celles}' >> only.tex
 	echo '\begin{document}' >> only.tex
-	echo '\input{$(file)}' >> only.tex
+#	echo '\input{$(file)}' >> only.tex
+	echo '\inclure{$(file)}' >> only.tex
 	echo '\end{document}' >> only.tex
 	# Perl
 	#perl make_only.pl $(file)
