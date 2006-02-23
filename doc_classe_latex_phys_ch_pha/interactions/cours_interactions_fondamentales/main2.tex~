@@ -116,9 +116,25 @@ distance $d$ qui les sépare :
 \end{itemize}
 
 
-Si les 2 charges ont même signe, l'interaction est répulsive. Si les 2
-charges ont des signes différents, elle est attractive.
+\begin{tabularx}{\linewidth}{XX}
 
+%Si les 2 charges ont même signe, l'interaction est répulsive.
+
+\begin{center}
+\includegraphics{coulomb_repuls.png.eps}
+\caption{Les deux charge ont le même signe : elle se repoussent.}
+\end{center}
+
+&
+
+%Si les 2 charges ont des signes différents, elle est attractive.
+
+\begin{center}
+\includegraphics{coulomb_attire.png.eps}
+\caption{Les deux charges ont des signes différents : elles s'attirent.}
+\end{center}
+
+\end{tabularx}
 
 
 \exemple{%
@@ -171,6 +187,13 @@ possèdent un caractère dipolaire car les atomes constitutifs
 présentent une différence d'électronégativité.
 
 
+\begin{center}
+\includegraphics{dipole_electrostat.png.eps}
+\caption{Deux charges opposées proches l'une de l'autre forment un dipôle.}
+\end{center}
+
+
+
 \exemple{l'eau.}
 
 
@@ -184,12 +207,20 @@ l'interaction électrostatique entre ces ions (liaison ionique). Ex:
 cristal cubique de chlorure de sodium. Réseau CFC des ions $Cl^-$ avec
 occupation des sites octaédriques par les ions $Na^+$ ou vice versa.
 
+\begin{center}
+\includegraphics{cfc.png.eps}
+\caption{Réseau CFC de chlorure de sodium}
+\end{center}
+
 
 \subsubsection{Les solides moléculaires}
 
 
 Corps cristallisés où les molécules \emph{polaires} sont empilées
-périodiquement dans l'espace. Exemple de l'eau.
+périodiquement dans l'espace.
+
+
+\exemple{l'eau.}
 
 
 \section{Comparaison des 2 interactions}

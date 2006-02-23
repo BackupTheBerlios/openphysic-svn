@@ -1,6 +1,11 @@
 \cours{\'Energie cinétique}
 
 
+% TODO
+% Exercice d'application : skieur
+% Exercice d'application : auto/immeuble
+
+
 \section{\'Energie cinétique}
 
 \subsection{$E_c$ d'un point matériel}
@@ -19,7 +24,7 @@ Ec = \frac{1}{2} m \cdot v^2
 \end{itemize}
 
 \remarque{%
-$1$ électronvolt ou $1~ev = 1,6.10^{-19}~J$
+$1$ électronvolt ou $1~eV = 1,6.10^{-19}~J$
 }
 
 \subsection{$E_c$ d'un solide en translation}
@@ -109,4 +114,28 @@ $\W{A}{B}{\vect{F_{ext}}} < 0$, l'énergie cinétique du solide diminue.
 
 %\subsection{Pour aller plus loin}
 %Voir livre page 115.
+
+
+
+% Exercice d'application auto-immeuble
+
+% Montrez que l'énergie cinétique d'un véhicule de $1000~kg$ roulant à
+% $130~km/h$ est égale à celle qu'aurait ce même véhicule lorsqu'il
+% tombe d'un immeuble de 22 étages ($66,5~m$)
+% \donnees{%
+% \item $g = 9,51~N.kg^{-1}$
+% }
+
+
+\doc{\'Energie cinétique}
+
+
+\begin{center}
+\includegraphics[width=18cm]{force_vitesse_ec.png.eps}
+\end{center}
+
+
+\begin{center}
+\includegraphics[width=18cm]{force_vitesse.png.eps}
+\end{center}
 

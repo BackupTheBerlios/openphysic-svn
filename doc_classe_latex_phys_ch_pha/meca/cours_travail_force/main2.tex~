@@ -119,11 +119,11 @@ rectilignes $AM_1$, $M_1 M_2$, $M_2 M_3$, $M_i M_{i+1}$, $M_n B$.
 
 
 
-$\vect{P}$ (O; O; - mg)
+$\vect{P} (O ; O ; - m \cdot g)$
 
 
 
-$\vect{AB}$ (xB - xA; yB - yA; zB - zA)
+$\vect{AB} (x_B - x_A ; y_B - y_A ; z_B - z_A)$
 
 
 
@@ -254,7 +254,7 @@ P_{moyenne}
 
 
 
-
+%\begin{framed}
 Soit un solide en translation rectiligne uniforme, on a :
 
 \[
@@ -262,6 +262,7 @@ Soit un solide en translation rectiligne uniforme, on a :
 \]
 
 
+\begin{framed}
 La puissance moyenne d'une force constante $\vect{F}$ appliquée au
 solide est égale au produit scalaire de $\vect{F}$ par le vecteur
 vitesse $\vect{v}$ du solide :
@@ -270,7 +271,14 @@ vitesse $\vect{v}$ du solide :
 P_{moyenne} = \vect{F} . \vect{v}
 \]
 
-Si la vitesse n'est pas constante au cours du temps, $\vect{v}$
-désigne la vitesse à l'instant $t$, le terme $F . v$ représente la
-puissance instantanée.
+\end{framed}
 
+
+Si la vitesse n'est pas constante au cours du temps, $\vect{v}$
+désigne la vitesse à l'instant $t$, le terme $\vect{F} . \vect{v}$
+représente la puissance instantanée.
+
+
+
+
+%\doc{Travail d'une force}
