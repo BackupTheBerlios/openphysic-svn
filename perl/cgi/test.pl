@@ -24,6 +24,8 @@
 #  Ouvrir la page http://127.0.0.1/perl/test.cgi
 #
 print <<EOF;
+Content-type: text/html
+
 <html>
     <head>
     <title>Test GUI</title>
