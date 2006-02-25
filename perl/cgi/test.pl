@@ -25,10 +25,11 @@
 #
 print <<EOF;
 <html>
-<head>
-</head>
-<body>
-<h1>Test CGI</h1>
-</body>
+    <head>
+    <title>Test GUI</title>
+    </head>
+    <body>
+    <h1>Test CGI</h1>
+    </body>
 </html>
 EOF
