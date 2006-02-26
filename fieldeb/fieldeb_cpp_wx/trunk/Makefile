@@ -158,7 +158,7 @@ tags:
 	$(MAKE) etags
 
 etags:
-	etags *.cpp *.hpp
+	etags --language=c++ *.cpp *.hpp
 
 ctags:
 	ctags *.cpp *.hpp
