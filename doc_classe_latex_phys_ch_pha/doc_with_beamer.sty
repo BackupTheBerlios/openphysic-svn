@@ -60,6 +60,30 @@
 %\mode<handout>{\setbeamercolor{background canvas}{bg=black!5}}
 
 
+\newcommand{\pageintro}[1]{
+  \title{#1}
+  \frame{
+    % \maketitle
+    \titlepage
+  }
+}
+
+\newcommand{\cours}[1]{%
+ \pageintro{#1}
+}
+
+\newcommand{\td}[1]{%
+ \pageintro{TD : #1}
+}
+
+\newcommand{\tp}[1]{%
+ \pageintro{TP : #1}
+}
+
+
+
+
+
 
 
 \institute{Lycée Raoul Dautry - LIMOGES (87)}

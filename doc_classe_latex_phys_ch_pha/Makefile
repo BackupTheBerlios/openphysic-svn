@@ -138,7 +138,7 @@ only.tex:
 	# Bash
 	echo '\documentclass[a4paper,10pt]{book}' > only.tex
 	echo '\usepackage{s-celles}' >> only.tex
-#	echo '\usepackage{doc_no_beamer}' >> $@
+	echo '\usepackage{doc_no_beamer}' >> $@
 	echo '\begin{document}' >> only.tex
 #	echo '\input{$(file)}' >> only.tex
 	echo '\inclure{$(file)}' >> only.tex
@@ -268,6 +268,7 @@ presentation.tex:
 presentation:
 	$(MAKE) clean_presentation
 	$(MAKE) presentation.pdf
+	$(pdf_viewer) presentation.pdf &
 
 presentation.dvi: presentation.tex
 	latex $<
@@ -278,3 +279,8 @@ presentation.ps: presentation.dvi
 presentation.pdf: presentation.ps
 	ps2pdf $< $@
 
+test_presentation:
+	$(MAKE) presentation file=elec/cours_rappel_college
+
+test_papier:
+	$(MAKE) only-ps file=elec/cours_rappel_college

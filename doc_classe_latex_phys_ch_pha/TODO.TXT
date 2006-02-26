@@ -2,3 +2,11 @@
 	Trouver une méthode pour compiler un cours
 	A la fois en version papier et en presentation Beamer
 
+	$ make presentation file=elec/cours_rappel_college
+	$ make only-ps file=elec/cours_rappel_college
+
+	Voir les fichiers
+	 doc_no_beamer.sty   : version papier
+	 doc_with_beamer.sty : version présentation
+
+	Voir aussi brouillons/beamer pour faire les tests

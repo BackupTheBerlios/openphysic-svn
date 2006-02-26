@@ -595,102 +595,11 @@
 \newenvironment{exercice*}[0]{\noindent \textbf{Exercice~:~}}{\vskip
   0.5cm} % exercice sans numéro
 
-% *-----------------------------------*
-% * ---- Numérotation personnelle ----*
-% *-----------------------------------*
-% \usepackage{titlesec}
-% \titlelabel{\thetitle.~} % ajoute un point et une espace insécable après un numéro de titre
-% \renewcommand{\thesection}{\Roman{section}}
-% \renewcommand{\thesubsection}{\Alph{subsection}}
-% \renewcommand{\thesubsubsection}{\arabic{subsubsection}}
-% \renewcommand{\theparagraph}{\alph{paragraph}}
-% \setcounter{secnumdepth}{4}
-% \titleformat{\paragraph}%
-%     {\normalfont \normalsize \itshape}%
-%     {\theparagraph}{1em}{}
-%   \titlespacing*{\paragraph}{0pt}{1ex plus 0.2ex}{0.5ex plus .2ex}
-
-
-
-%\newcounter{pagelocal}
- % numérotation locale (sur le papier mais mais
- % dans le fichier ps ou pdf)
- % permet d'avoir les liens avec hyperref dans
- % le sommaire
-% http://www.grappa.univ-lille3.fr/FAQ-LaTeX/29.59.html
-
-
-\usepackage{titlesec}
-
-\newcommand{\classe}[2]{%
-\newpage
-\addcontentsline{toc}{part}{{\LARGE #2}}
-\setcounter{page}{1}
-\setcounter{part}{0}
-\thispagestyle{empty}
-\begin{Huge}
-\vspace*{\stretch{3}}
-\begin{framed}
-\begin{center}
-\textbf{#1}
-\end{center}
-\end{framed}
-\vspace*{\stretch{3}}
-\end{Huge}
-\newpage
-\null
-\thispagestyle{empty}
-}
 
 
 
 
-\titleformat{\part}[display]%
-    {\thispagestyle{empty}\setcounter{page}{1}\normalfont \huge \bfseries \filcenter}%
-    {}{0pt}{\Huge}
-    %{\partname \space \thepart}{0pt}{\Huge}
 
-% \titleclass{\chapter}{page}
-\titleformat{\chapter}[display]{%
-    \setcounter{page}{1}% mettre à 0 le compteur de page
-    \setcounter{figure}{0}% mettre à 0 le compteur de figure
-    \setcounter{table}{0}% mettre à 0 le compteur de table
-    \normalfont \huge \bfseries \filcenter
-  }{}{20pt}{\Huge}
-\titlelabel{\thetitle.~} % ajoute un point et une espace insécable après un numéro de titre
-
-%\titlespacing{\chapter}{0pt}{50pt}{40pt}
-\titlespacing{\chapter}{0pt}{-40pt}{20pt}
-
-\renewcommand{\thesection}{\Roman{section}}
-\renewcommand{\thesubsection}{\Alph{subsection}}
-\renewcommand{\thesubsubsection}{\arabic{subsubsection}}
-\renewcommand{\theparagraph}{\alph{paragraph}}
-\setcounter{secnumdepth}{4}
-\titleformat{\paragraph}%
-    {\normalfont \normalsize \itshape}%
-    {\theparagraph}{1em}{}
-  \titlespacing*{\paragraph}{0pt}{1ex plus 0.2ex}{0.5ex plus .2ex}
-
-
-\newcommand{\chapitre}[1]{%
-% attention \chapitre est un \part pas un \chapter !!!
- \part{#1}
- \setcounter{chapter}{0}
-}
-
-
-\newcommand{\cours}[1]{%
- \chapter{#1} 
-}
-
-\newcommand{\td}[1]{%
- \chapter{TD : #1}
-}
-
-\newcommand{\tp}[1]{%
- \chapter{TP : #1}
-}
 
 
 % numérotation compteur figure
@@ -1320,7 +1229,7 @@ dans l'appréciation des copies.
 % {}_{6}^{12} C
 
 \newcommand{\noyau}[3]{%
-${}_{#2}^{#3} \mbox{#1}$
+$\displaystyle {}_{#2}^{#3} \mbox{#1}$
 }
 
 
