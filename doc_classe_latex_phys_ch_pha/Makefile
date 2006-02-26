@@ -251,6 +251,9 @@ silent:
 	#make silent do=pdf
 	#stdout=/dev/null stderr=/dev/null stdin=/dev/null
 
+
+# $ make presentation file=elec/cours_rappel_college
+
 clean_presentation:
 	$(RM) presentation.tex presentation.pdf
 
