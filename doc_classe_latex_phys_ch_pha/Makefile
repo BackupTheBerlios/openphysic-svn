@@ -34,7 +34,7 @@ pdf: $(input)_dvips.pdf
 pdf2: $(input)_dvips_suite_2.pdf
 
 
-.PHONY: all main.dvi clean view-ps view-pdf view-pdf-dvips view-pdf-pdflatex edit view-ps-2 only.tex this brouillon clean_temp distclean
+.PHONY: all main.dvi clean view-ps view-pdf view-pdf-dvips view-pdf-pdflatex edit view-ps-2 only.tex this brouillon clean_temp distclean clean_presentation
 
 $(input).dvi: #$(input).tex s-celles.sty elec_intro/main2.tex elec_sin/main2.tex
 	latex $(input).tex
@@ -138,6 +138,7 @@ only.tex:
 	# Bash
 	echo '\documentclass[a4paper,10pt]{book}' > only.tex
 	echo '\usepackage{s-celles}' >> only.tex
+#	echo '\usepackage{doc_no_beamer}' >> $@
 	echo '\begin{document}' >> only.tex
 #	echo '\input{$(file)}' >> only.tex
 	echo '\inclure{$(file)}' >> only.tex
@@ -249,3 +250,28 @@ silent:
 	# Accélère la compilation (pas de sortie console)
 	#make silent do=pdf
 	#stdout=/dev/null stderr=/dev/null stdin=/dev/null
+
+clean_presentation:
+	$(RM) presentation.tex presentation.pdf
+
+presentation.tex:
+	echo '\documentclass[h, xcolor=pst, dvips]{beamer}' > $@
+	echo '\usepackage{s-celles}' >> $@
+	echo '\usepackage{doc_with_beamer}' >> $@
+	echo '\begin{document}' >> $@
+	echo '\inclure{$(file)}' >> $@
+	echo '\end{document}' >> $@
+
+presentation:
+	$(MAKE) clean_presentation
+	$(MAKE) presentation.pdf
+
+presentation.dvi: presentation.tex
+	latex $<
+
+presentation.ps: presentation.dvi
+	dvips $< -o $@
+
+presentation.pdf: presentation.ps
+	ps2pdf $< $@
+
