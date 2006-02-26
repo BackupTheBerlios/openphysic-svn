@@ -1,0 +1,274 @@
+
+charge.cpp,27
+void Charge::Draw(36,1816
+
+charges.cpp,576
+void Charges::Draw(35,1658
+void Charges::add(53,2109
+template <class T> T square 60,2249
+double calculate_square_distance(65,2319
+double calculate_distance(73,2514
+class compare_distance compare_distance79,2638
+  compare_distance compare_distance::compare_distance82,2703
+  bool operator() compare_distance::operator()83,2761
+list <Charge>::iterator Charges::get_nearest_charge(92,2995
+void Charges::remove(97,3159
+void Charges::set_movable(108,3374
+void Charges::unset_movable(123,3671
+void Charges::move(131,3859
+bool Charges::get_near_of_a_charge(152,4338
+
+color.cpp,210
+void Color::set_color_linear 25,1488
+void Color::set_color_step 157,3775
+void Color::set_bwg_linear 270,5521
+void Color::set_bwg_step 313,6076
+void Color::set_bw_step 426,7569
+void Color::set_bw 447,7822
+
+draw_grain.cpp,31
+void Draw_Grain::Draw(26,1511
+
+draw_rectangle.cpp,35
+void Draw_Rectangle::Draw(28,1599
+
+draw_vector.cpp,108
+void Draw_Vector::Draw(26,1512
+double Draw_Vector::get_len(80,2879
+double Draw_Vector::get_angle(85,2997
+
+fieldeb.cpp,28
+bool MyApp::OnInit(39,1923
+
+grid.cpp,25
+void Grid::Draw(28,1576
+
+position.cpp,0
+
+vector3d.cpp,0
+
+window_add_charge.cpp,89
+Window_Add_Charge::Window_Add_Charge(30,1616
+void OnOk(99,3826
+void OnCancel(104,3900
+
+window_main.cpp,2129
+#define Ke 43,1928
+#define Km 44,2003
+    ID_File_Quit=::ID_File_Quit56,2222
+    ID_File_About,::ID_File_About57,2242
+    ID_Mode_ModeE,::ID_Mode_ModeE58,2261
+    ID_Mode_ModeB,::ID_Mode_ModeB59,2280
+    ID_Image_Refresh,::ID_Image_Refresh60,2299
+    ID_Image_ShowField,::ID_Image_ShowField61,2321
+    ID_Image_ShowFieldLines,::ID_Image_ShowFieldLines62,2345
+    ID_Image_ShowEquipotentials,::ID_Image_ShowEquipotentials63,2374
+    ID_Options_FieldAsVector,::ID_Options_FieldAsVector64,2407
+    ID_Options_FieldAsGrains,::ID_Options_FieldAsGrains65,2437
+    ID_Colors_UseColors,::ID_Colors_UseColors66,2467
+    ID_Colors_UseBlackWhiteGray,::ID_Colors_UseBlackWhiteGray67,2492
+    ID_Colors_UseBlackWhite,::ID_Colors_UseBlackWhite68,2525
+    ID_Paint,::ID_Paint69,2554
+    ID_Test::ID_Test70,2568
+    ID_Mode_E,::ID_Mode_E75,2595
+    ID_Mode_B::ID_Mode_B76,2610
+    ID_Color_Mode_Color,::ID_Color_Mode_Color81,2639
+    ID_Color_Mode_BlackWhiteGray,::ID_Color_Mode_BlackWhiteGray82,2664
+    ID_Color_Mode_BlackWhite::ID_Color_Mode_BlackWhite83,2698
+BEGIN_EVENT_TABLE(88,2735
+void Window_Main::TO_DO(227,7572
+void Window_Main::On_Test(234,7720
+void Window_Main::Calculate(241,7978
+void Window_Main::Draw(309,9802
+void Window_Main::On_Paint(611,16332
+void Window_Main::On_Quit(647,17104
+void Window_Main::On_About(652,17183
+void Window_Main::On_Mode_E(658,17467
+void Window_Main::On_Mode_B(664,17562
+void Window_Main::On_ShowField(670,17657
+void Window_Main::On_ShowFieldLines(676,17816
+void Window_Main::On_ShowEquipotentials(683,17991
+void Window_Main::On_Clear(689,18159
+void Window_Main::On_Refresh(694,18241
+void Window_Main::On_FieldAsVector(702,18351
+void Window_Main::On_FieldAsGrains(708,18453
+void Window_Main::On_UseColors(713,18542
+void Window_Main::On_UseBlackWhiteGray(722,18870
+void Window_Main::On_UseBlackWhite(728,19021
+void Window_Main::On_Mouse_Left_Up(737,19207
+void Window_Main::On_Mouse_Left_Down(759,19640
+void Window_Main::On_Mouse_Move(817,21115
+void Window_Main::On_Mouse_Right_Up(905,23137
+void Window_Main::On_Mouse_Right_Down(911,23267
+
+charge.hpp,645
+#define CHARGE_HPP22,1483
+class ChargeCharge36,1721
+  Charge(Charge::Charge39,1745
+  Charge(Charge::Charge43,1773
+  Charge(Charge::Charge52,1990
+  double get_charge(Charge::get_charge63,2169
+  void set_charge(Charge::set_charge68,2231
+  double get_radius(Charge::get_radius74,2309
+  void set_radius(Charge::set_radius79,2371
+  bool get_movable(Charge::get_movable86,2450
+  void set_movable(Charge::set_movable91,2514
+  void unset_movable(Charge::unset_movable96,2576
+  void set_movable(Charge::set_movable101,2641
+  void set_position(Charge::set_position108,2720
+  Position get_position(Charge::get_position113,2839
+
+charges.hpp,214
+#define CHARGES_HPP22,1484
+class ChargesCharges36,1629
+  Charges(Charges::Charges39,1654
+  list <Charge>::const_iterator begin(Charges::begin46,1735
+  list <Charge>::const_iterator end(Charges::end51,1820
+
+color.hpp,126
+#define COLOR_HPP22,1482
+class Color Color32,1682
+  Color(Color::Color35,1722
+  void set_color(Color::set_color77,2467
+
+draw_grain.hpp,1007
+#define DRAW_GRAIN_HPP22,1487
+class Draw_GrainDraw_Grain32,1717
+  Draw_Grain(Draw_Grain::Draw_Grain35,1745
+  Draw_Grain(Draw_Grain::Draw_Grain50,1924
+  Draw_Grain(Draw_Grain::Draw_Grain65,2199
+  void set_x(Draw_Grain::set_x82,2470
+  void set_y(Draw_Grain::set_y87,2535
+  void set_z(Draw_Grain::set_z92,2600
+  double get_x(Draw_Grain::get_x97,2665
+  double get_y(Draw_Grain::get_y102,2723
+  double get_z(Draw_Grain::get_z107,2781
+  void set_ux(Draw_Grain::set_ux115,2842
+  void set_uy(Draw_Grain::set_uy120,2909
+  void set_uz(Draw_Grain::set_uz125,2976
+  double get_ux(Draw_Grain::get_ux130,3043
+  double get_uy(Draw_Grain::get_uy135,3103
+  double get_uz(Draw_Grain::get_uz140,3163
+  double get_width(Draw_Grain::get_width146,3224
+  double get_len(Draw_Grain::get_len151,3290
+  void set_len(Draw_Grain::set_len156,3352
+  void set_width(Draw_Grain::set_width161,3421
+  wxColor get_color(Draw_Grain::get_color168,3496
+  void set_color(Draw_Grain::set_color173,3565
+
+draw_rectangle.hpp,639
+#define DRAW_RECTANGLE_HPP22,1491
+class Draw_RectangleDraw_Rectangle32,1736
+  Draw_Rectangle(Draw_Rectangle::Draw_Rectangle35,1768
+  void set_x(Draw_Rectangle::set_x50,2054
+  void set_y(Draw_Rectangle::set_y55,2119
+  double get_x(Draw_Rectangle::get_x60,2184
+  double get_y(Draw_Rectangle::get_y65,2242
+  wxColor get_color(Draw_Rectangle::get_color71,2301
+  void set_color(Draw_Rectangle::set_color76,2370
+  double get_width(Draw_Rectangle::get_width82,2445
+  void set_width(Draw_Rectangle::set_width87,2511
+  double get_height(Draw_Rectangle::get_height92,2584
+  void set_height(Draw_Rectangle::set_height97,2652
+
+draw_vector.hpp,1481
+#define DRAW_VECTOR_HPP22,1488
+class Draw_VectorDraw_Vector34,1704
+  Draw_Vector(Draw_Vector::Draw_Vector58,2017
+  void set_x(Draw_Vector::set_x108,2818
+  void set_y(Draw_Vector::set_y113,2883
+  void set_z(Draw_Vector::set_z118,2948
+  double get_x(Draw_Vector::get_x125,3015
+  double get_y(Draw_Vector::get_y130,3073
+  double get_z(Draw_Vector::get_z135,3131
+  void set_ux(Draw_Vector::set_ux143,3192
+  void set_uy(Draw_Vector::set_uy148,3259
+  void set_uz(Draw_Vector::set_uz153,3326
+  double get_ux(Draw_Vector::get_ux159,3394
+  double get_uy(Draw_Vector::get_uy164,3454
+  double get_uz(Draw_Vector::get_uz169,3514
+  double get_width(Draw_Vector::get_width176,3576
+  double get_arrow_len(Draw_Vector::get_arrow_len183,3644
+  void set_arrow_len(Draw_Vector::set_arrow_len188,3718
+  double get_arrow_ratio(Draw_Vector::get_arrow_ratio195,3801
+  void set_arrow_ratio(Draw_Vector::set_arrow_ratio200,3879
+  double get_arrow_angle(Draw_Vector::get_arrow_angle207,3966
+  void set_arrow_angle(Draw_Vector::set_arrow_angle212,4044
+  void set_width(Draw_Vector::set_width219,4131
+  void set_variable_len(Draw_Vector::set_variable_len226,4206
+  void unset_variable_len(Draw_Vector::unset_variable_len231,4278
+  void set_variable_len(Draw_Vector::set_variable_len236,4353
+  bool get_variable_len(Draw_Vector::get_variable_len241,4438
+  wxColor get_color(Draw_Vector::get_color248,4518
+  void set_color(Draw_Vector::set_color253,4587
+
+fieldeb.hpp,52
+#define MAIN_HPP22,1482
+class MyApp MyApp29,1629
+
+grid.hpp,1152
+#define GRID_HPP22,1481
+class GridGrid35,1782
+  Grid Grid::Grid38,1804
+  Grid(Grid::Grid57,2085
+  double get_x_min(Grid::get_x_min82,2625
+  void set_x_min(Grid::set_x_min87,2691
+  double get_x_max(Grid::get_x_max94,2766
+  void set_x_max(Grid::set_x_max99,2832
+  double get_x_space(Grid::get_x_space106,2907
+  void set_x_space(Grid::set_x_space111,2977
+  double get_y_min(Grid::get_y_min118,3056
+  void set_y_min(Grid::set_y_min123,3122
+  double get_y_max(Grid::get_y_max130,3197
+  void set_y_max(Grid::set_y_max135,3263
+  double get_y_space(Grid::get_y_space142,3338
+  void set_y_space(Grid::set_y_space147,3408
+  double get_z_min(Grid::get_z_min154,3487
+  void set_z_min(Grid::set_z_min159,3553
+  double get_z_max(Grid::get_z_max166,3628
+  void set_z_max(Grid::set_z_max171,3694
+  double get_z_space(Grid::get_z_space178,3769
+  void set_z_space(Grid::set_z_space183,3839
+  bool Is_visible(Grid::Is_visible190,3918
+  bool get_visible(Grid::get_visible195,3985
+  void set_visible(Grid::set_visible200,4053
+  void set_visible(Grid::set_visible205,4128
+  void unset_visible(Grid::unset_visible210,4190
+
+position.hpp,413
+#define POSITION_HPP22,1485
+class Position Position32,1669
+  Position Position::Position35,1715
+  Position Position::Position42,1865
+  Position Position::Position49,2057
+  void set_x(Position::set_x57,2234
+  void set_y(Position::set_y62,2299
+  void set_z(Position::set_z67,2364
+  double get_x(Position::get_x73,2429
+  double get_y(Position::get_y78,2498
+  double get_z(Position::get_z83,2567
+
+vector3d.hpp,412
+#define VECTOR3D_HPP22,1485
+class Vector3dVector3d30,1727
+  Vector3d(Vector3d::Vector3d33,1753
+  Vector3d(Vector3d::Vector3d41,1879
+  Vector3d(Vector3d::Vector3d49,2052
+  void set_x(Vector3d::set_x57,2209
+  void set_y(Vector3d::set_y62,2264
+  void set_z(Vector3d::set_z67,2319
+  double get_x(Vector3d::get_x72,2373
+  double get_y(Vector3d::get_y77,2427
+  double get_z(Vector3d::get_z82,2481
+
+window_add_charge.hpp,134
+#define WINDOW_CHARGE_HPP22,1495
+class Window_Add_Charge Window_Add_Charge28,1588
+ protected:Window_Add_Charge::protected39,1968
+
+window_main.hpp,228
+#define WINDOW_MAIN_HPP22,1489
+class Window_Main Window_Main35,1654
+  int get_mode(Window_Main::get_mode51,2117
+  void set_mode(Window_Main::set_mode56,2174
+  DECLARE_EVENT_TABLE(Window_Main::DECLARE_EVENT_TABLE65,2253

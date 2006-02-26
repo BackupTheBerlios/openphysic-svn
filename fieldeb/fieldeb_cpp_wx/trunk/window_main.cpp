@@ -267,8 +267,10 @@ void Window_Main::Calculate(double x, double y, double z, double& Ex, double& Ey
 		pow( x - chge.get_position().get_x() , 2 )
 		+ pow( y - chge.get_position().get_y() , 2 )
 		+ pow( z - chge.get_position().get_z() , 2 ) );
+
       
       V = V + ( Ke * chge.get_charge() ) / r;
+
 
       double X = x - chge.get_position().get_x(); // TO_VERIFY signe ? ... cf vector
       double Y = y - chge.get_position().get_y();
