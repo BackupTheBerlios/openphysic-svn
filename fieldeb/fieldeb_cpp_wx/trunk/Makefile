@@ -45,7 +45,8 @@ $(FILENAME) : $(OBJECTS)
 
 
 %.o : %.cpp %.hpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -c $<
+#	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 
 all:
