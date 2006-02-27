@@ -1,6 +1,7 @@
 # Effacer fichier *.*~
 # ceux qui sont versionnés et les autres
 find -name *.*~ > file.txt
+find -name semantic.cache >> file.txt
 for file in `cat file.txt`
 do
   echo $file
