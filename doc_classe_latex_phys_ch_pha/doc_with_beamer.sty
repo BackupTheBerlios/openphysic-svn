@@ -87,7 +87,43 @@
 
 
 
+% *************************************
+% * ---- Numérotation personnelle ----*
+% *************************************
 
+\makeatletter 
+\newcommand*\Section{\@ifstar{\starSection}{\nonstarSection}}
+\newcommand*{\nonstarSection}[1]{%  version non étoilée de Section (avec numérotation)
+  \section{\thesection. #1}%
+}%
+\newcommand*{\starSection}[1]{%  version étoilée de Section (pas de numérotation)
+  \section*{#1}%
+  %\addtocounter{section}{-1}
+  \setcounter{section}{0}
+}%
+
+
+\newcommand*\Subsection{\@ifstar{\starSubsection}{\nonstarSubsection}}
+\newcommand*{\starSubsection}[1]{%  version étoilée de Subection (pas de numérotation)
+  \subsection*{#1}%
+  %\addtocounter{subsection}{-1}
+  \setcounter{subsection}{0}
+}%
+
+\newcommand*{\nonstarSubsection}[1]{% version non étoilée de Subsection (avec numérotation)
+     \subsection{\thesubsection. #1}%
+   }%
+
+
+
+
+\renewcommand{\thesection}{\Roman{section}} % I II III ...
+%\renewcommand{\thesubsection}{\Alph{subsection}} % A B C ...
+\renewcommand{\thesubsection}{\arabic{subsection}}
+% \Roman \Alph \arabic \alph
+
+
+\makeatother
 
 
 

@@ -10,3 +10,7 @@
 	 doc_with_beamer.sty : version présentation
 
 	Voir aussi brouillons/beamer pour faire les tests
+
+	Voir la numérotation des présentations
+	Voir les \section*{xxx} dans \frame{...}
+
