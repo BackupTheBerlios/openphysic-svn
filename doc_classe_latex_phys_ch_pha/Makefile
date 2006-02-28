@@ -228,6 +228,7 @@ commit_pdf:
 	cp main.pdf pdf/
 	cp main_dvips_suite_2.pdf pdf/
 	svn commit
+#	ncftpput -u s.cls ftpperso.free.fr realisations/phys_latex/full_build main.pdf main_dvips_suite_2.pdf
 
 commit:
 	svn commit

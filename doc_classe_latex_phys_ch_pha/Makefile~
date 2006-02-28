@@ -138,7 +138,7 @@ only.tex:
 	# Bash
 	echo '\documentclass[a4paper,10pt]{book}' > only.tex
 	echo '\usepackage{s-celles}' >> only.tex
-#	echo '\usepackage{doc_no_beamer}' >> $@
+	echo '\usepackage{doc_no_beamer}' >> $@
 	echo '\begin{document}' >> only.tex
 #	echo '\input{$(file)}' >> only.tex
 	echo '\inclure{$(file)}' >> only.tex
