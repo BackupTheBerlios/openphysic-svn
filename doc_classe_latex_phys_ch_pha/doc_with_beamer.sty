@@ -35,7 +35,45 @@
   %\setbeamertemplate{background canvas}[vertical shading][bottom=red!10,top=blue!10]
   % définir un fond personnalisé pour Beamer (fichier.pdf)
   % \setbeamertemplate{background}{\includegraphics[width=15cm]{fichier}} 
-  \usetheme{Warsaw} % Warsaw Frankfurt
+
+% W/o navigation bar:
+    \usetheme{default}
+%    \usetheme{boxes}
+%    \usetheme{Bergen}
+%    \usetheme{Madrid}
+%    \usetheme{Pittsburgh}
+%    \usetheme{Rochester}
+% With a treelike navigation bar
+%    \usetheme{Antibes}
+%    \usetheme{JuanLesPins}
+%    \usetheme{Montpellier}
+% With a TOC sidebar
+%    \usetheme{Berkeley}
+%    \usetheme{PaloAlto}
+%    \usetheme{Goettingen}
+%    \usetheme{Marburg}
+%    \usetheme{Hannover}
+% With a mini frame navigation:
+%    \usetheme{Berlin}
+%    \usetheme{Ilmenau}
+%    \usetheme{Dresden}
+%    \usetheme{Darmstadt}
+%    \usetheme{Frankfurt}
+%    \usetheme{Singapore}
+%    \usetheme{Szeged}
+% With section and subsection titles:
+%    \usetheme{Copenhagen}
+%    \usetheme{Luebeck}
+%    \usetheme{Malmoe}
+%    \usetheme{Warsaw}
+
+
+%\usetheme{Warsaw}
+%\usetheme{Frankfurt}
+%\usetheme{Dresden}
+%\usetheme{Darmstadt}
+
+
   %\usefonttheme[onlysmall]{structurebold}
   %\usecolortheme{rose} % seahorse rose
 }
@@ -92,6 +130,9 @@
 % *************************************
 
 \makeatletter 
+
+
+%\renewcommand*\section{\@ifstar{\starSection}{\nonstarSection}}
 \newcommand*\Section{\@ifstar{\starSection}{\nonstarSection}}
 \newcommand*{\nonstarSection}[1]{%  version non étoilée de Section (avec numérotation)
   \section{\thesection. #1}%
@@ -118,9 +159,13 @@
 
 
 \renewcommand{\thesection}{\Roman{section}} % I II III ...
-%\renewcommand{\thesubsection}{\Alph{subsection}} % A B C ...
-\renewcommand{\thesubsection}{\arabic{subsection}}
+\renewcommand{\thesubsection}{\Alph{subsection}} % A B C ...
+%\renewcommand{\thesubsection}{\arabic{subsection}}
 % \Roman \Alph \arabic \alph
+
+
+
+
 
 
 \makeatother
