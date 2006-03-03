@@ -3,10 +3,10 @@ R=0.35;
 OMEGA=V/R;
 t=[0:0.05:1]';
 N=size(t,"r");
-x1=R*sin(OMEGA*t)+V*t;
-x2=R*sin(OMEGA*t);
+x1=R*cos(-OMEGA*t)+V*t;
+x2=R*cos(-OMEGA*t);
 x3=V*t;
-y1=R*cos(OMEGA*t);
+y1=R*sin(-OMEGA*t);
 y2=ones(N,1);
 isoview(0,4,-2,2) // isoview(xmin,xmax,ymin,ymax) 
 plot2d(x1,y1,style=-1);
