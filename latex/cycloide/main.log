@@ -1,4 +1,4 @@
-This is e-TeX, Version 3.14159-2.1 (Web2C 7.4.5) (format=latex 2006.1.6)  4 MAR 2006 18:32
+This is e-TeX, Version 3.14159-2.1 (Web2C 7.4.5) (format=latex 2006.1.6)  4 MAR 2006 19:23
 entering extended mode
 **main.tex
 (./main.tex
@@ -88,44 +88,71 @@ Package: pstricks 1997/03/25 package wrapper for PSTricks pstricks.tex
 \psframesep=\dimen115
 \pslabelsep=\dimen116
 \theoverlaybox=\box28
-)) (./main.aux)
+))
+(/usr/share/texmf/tex/latex/pstricks/pst-plot.sty
+Package: pst-plot 1997/03/25 package wrapper for PSTricks pst-plot.tex
+
+(/usr/share/texmf/tex/generic/pstricks/pst-plot.tex  v97 patch 2, 1999/12/12
+(/usr/share/texmf/tex/generic/multido/multido.tex  v1.41, 2004/05/18 <tvz>
+\multido@count=\count94
+\multidocount=\count95
+\multido@stuff=\toks17
+)))
+(/usr/share/texmf/tex/latex/graphics/lscape.sty
+Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
+
+(/usr/share/texmf/tex/latex/graphics/graphics.sty
+Package: graphics 2001/07/07 v1.0n Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/share/texmf/tex/latex/config/graphics.cfg
+File: graphics.cfg 2001/08/31 v1.1 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: dvips.def on input line 80.
+
+(/usr/share/texmf/tex/latex/graphics/dvips.def
+File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+))) (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for OT2/wncyr/m/n on input line 9.
-LaTeX Font Info:    Try loading font information for OT2+wncyr on input line 9.
-
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OT2/wncyr/m/n on input line 12.
+LaTeX Font Info:    Try loading font information for OT2+wncyr on input line 12
+.
 
 (/usr/share/texmf/tex/latex/cyrillic/ot2wncyr.fd
 File: ot2wncyr.fd 1999/12/17 v3.2a Computer Modern Cyrillic font definitions
 )
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Info: Redefining \dots on input line 9.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Info: Redefining \dots on input line 12.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 15.
+(Font)              <14.4> on input line 20.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 15.
+(Font)              <7> on input line 20.
  [1
+
 
 ] (./main.aux) ) 
 Here is how much of TeX's memory you used:
- 1797 strings out of 95370
- 19654 string characters out of 1188186
- 76327 words of memory out of 1000001
- 4892 multiletter control sequences out of 10000+50000
+ 2194 strings out of 95370
+ 24647 string characters out of 1188186
+ 85914 words of memory out of 1000001
+ 5265 multiletter control sequences out of 10000+50000
  7831 words of font info for 22 fonts, out of 500000 for 1000
  198 hyphenation exceptions out of 1000
- 24i,6n,24p,173b,235s stack positions out of 1500i,500n,5000p,200000b,5000s
+ 25i,6n,24p,186b,261s stack positions out of 1500i,500n,5000p,200000b,5000s
 
-Output written on main.dvi (1 page, 496 bytes).
+Output written on main.dvi (1 page, 1432 bytes).
