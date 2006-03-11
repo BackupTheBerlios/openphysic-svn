@@ -285,3 +285,6 @@ test_presentation:
 
 test_papier:
 	$(MAKE) only-ps file=elec/cours_rappel_college
+
+test_papier2:
+	$(MAKE) only-ps2 file=elec/cours_rappel_college
