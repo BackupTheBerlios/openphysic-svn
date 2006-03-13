@@ -694,25 +694,45 @@
 
 
 
+% \newenvironment{changemargin}[2]{%
+%   \begin{list}{}{%
+%     \setlength{\topsep}{0pt}%
+%     \setlength{\leftmargin}{#1}%
+%     \setlength{\rightmargin}{#2}%
+%     \setlength{\listparindent}{\parindent}%
+%     \setlength{\itemindent}{\parindent}%
+%     \setlength{\parsep}{\parskip}%
+%   }%
+%   \item[]}{\end{list}}
+
+
 % Unités Physique
 %\usepackage{enumitem}
-% \newenvironment{unites}%
-% {\begin{itemize}}%
-% {\end{itemize}}%
+\newenvironment{unites}{%
+\begin{changemargin}{2cm}{0cm}
+\noindent
+\begin{itemize}
+}{%
+\end{itemize}
+\end{changemargin}
+}%
 
-\newenvironment*{unites}{%
-    \ifnum \@itemdepth >\thr@@\@toodeep\else
-      \advance\@itemdepth\@ne
-      \edef\@itemitem{labelitem\romannumeral\the\@itemdepth}%
-      \expandafter
-      \list \expandafter {\csname\@itemitem\endcsname}{%
-        \setlength{\leftmargin}{2cm}%
-        \def\makelabel##1{\hss\llap{##1}}%
-      }%
-    \fi
-  }{%
-    \endlist
-  }
+
+% \newenvironment*{unites}{%
+%     \ifnum \@itemdepth >\thr@@\@toodeep\else
+%       \advance\@itemdepth\@ne
+%       \edef\@itemitem{labelitem\romannumeral\the\@itemdepth}%
+%       \expandafter
+%       \list \expandafter {\csname\@itemitem\endcsname}{%
+%         \setlength{\leftmargin}{2cm}%
+%         \def\makelabel##1{\hss\llap{##1}}%
+%       }%
+%     \fi
+%   }{%
+%     \endlist
+%   }
+
+
 
 
 % Examen, Concours
