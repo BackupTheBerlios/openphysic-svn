@@ -109,16 +109,26 @@
  \chapter{TP : #1}
 }
 
-\newcommand{\Section}[1]{%
+\newcommand*\Section{\@ifstar{\starSection}{\nonstarSection}}
+\newcommand*{\nonstarSection}[1]{%
  \section{#1}
 }
-
-\newcommand{\Subsection}[1]{%
- \subsection{#1}
+\newcommand*{\starSection}[1]{%  version étoilée de Section (pas de numérotation)
+  \section*{#1}%
 }
 
+
+\newcommand*\Subsection{\@ifstar{\starSubsection}{\nonstarSubsection}}
+\newcommand*{\nonstarSubsection}[1]{% version non étoilée de Subsection (avec numérotation)
+     \subsection{\thesubsection. #1}%
+}
+\newcommand*{\starSubsection}[1]{%  version étoilée de Subection (pas de numérotation)
+  \subsection*{#1}%
+}
+
+
 \newcommand{\Subsubsection}[1]{%
- \subsubsection{#1}
+ \subsubsection{#1}%
 }
 
 
@@ -237,3 +247,7 @@
 \newcommand{\frametitle}{}
 \newcommand{\insertsectionhead}{}
 \newcommand{\insertsubsectionhead}{}
+
+% affiche le texte passé en paramètre
+\newcommand{\papier}[1]{#1} % version papier
+\newcommand{\diaporama}[1]{} % version diaporama
