@@ -1,3 +1,6 @@
+2006/03/16
+	Voir Seconde option MPI dans BUP 882
+
 2006/02/26
 	Trouver une méthode pour compiler un cours
 	A la fois en version papier et en presentation Beamer
