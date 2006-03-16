@@ -120,7 +120,7 @@
 
 \newcommand*\Subsection{\@ifstar{\starSubsection}{\nonstarSubsection}}
 \newcommand*{\nonstarSubsection}[1]{% version non étoilée de Subsection (avec numérotation)
-     \subsection{\thesubsection. #1}%
+     \subsection{#1}%
 }
 \newcommand*{\starSubsection}[1]{%  version étoilée de Subection (pas de numérotation)
   \subsection*{#1}%
@@ -251,3 +251,5 @@
 % affiche le texte passé en paramètre
 \newcommand{\papier}[1]{#1} % version papier
 \newcommand{\diaporama}[1]{} % version diaporama
+
+\newenvironment{block}{}{}
