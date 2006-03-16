@@ -15,9 +15,7 @@
 
   \pause
 
-\begin{center}
   \includegraphics[width=9cm]{623_1533_spectre_complet.jpg.eps}
-\end{center}
 
   \pause
 
@@ -33,10 +31,10 @@
 
   \frametitle{\insertsubsectionhead}
   
-  \begin{center}
-    \includegraphics[width=9cm]{tube_coolidge.png.eps}
+  \begin{figure}
     \caption{Le tube de Coolidge}
-  \end{center}
+    \includegraphics[width=9cm]{tube_coolidge.png.eps}
+  \end{figure}
 
 }
 
@@ -72,21 +70,18 @@
   
 
   Un électron peut acquérir l'énergie
-  \[E = e U\]
-
-  \begin{unites}
-  \item $E$ : énergie en Joule ($J$)
-  \item $e = 1,6.10^{-19} C$ : valeur absolue de la charge d'un électron
-  \item $U$ : différence de potentiel (tension) en Volt ($V$)
-  \end{unites}
+  $$E = e U$$
+  $E$ : énergie en Joule ($J$)\\
+  $e = 1,6.10^{-19} C$ : valeur absolue de la charge d'un électron\\
+  $U$ : différence de potentiel (tension) en Volt ($V$)
   
   \pause
 
   Or on a vu que cette énergie est équivalente à l'énergie d'une radiation de longueur d'onde $\lambda$ telle que :
-  \[E = h \nu = h \frac{c}{\lambda}\]
+  $$E = h \nu = h \frac{c}{\lambda}$$
 
   \pause
-  On déduit donc : \pause \[\lambda = \frac{h c}{e U}\]
+  On déduit donc : \pause $$\lambda = \frac{h c}{e U}$$
 
 \pause
 
@@ -100,7 +95,6 @@ La tension $U$ utilisée pour accélérer les électrons est réglable ce qui permet 
 
   \pause
   
-\begin{center}
   \begin{tabular}{|c|c|}
     \hline
     Lumière & Rayons X \\ \hline \hline
@@ -109,7 +103,6 @@ La tension $U$ utilisée pour accélérer les électrons est réglable ce qui permet 
     (donc de niveau d'énergie) & (donc de niveau d'énergie) \\
     \hline
   \end{tabular}
-\end{center}
 
   \pause
 
@@ -124,10 +117,10 @@ La tension $U$ utilisée pour accélérer les électrons est réglable ce qui permet 
 \frame{
   \frametitle{a. \'Emission de rayons X par les atomes de l'anticathode}
 
-  \begin{center}
-    \includegraphics[width=5cm]{emission_rayons_x.png.eps}
+  \begin{figure}
     \caption{\'Emission de rayons X par les atomes de l'anticathode}
-  \end{center}
+    \includegraphics[width=5cm]{emission_rayons_x.png.eps}
+  \end{figure}
 
   \pause
 
@@ -148,7 +141,6 @@ La tension $U$ utilisée pour accélérer les électrons est réglable ce qui permet 
   Cet électron K étant arraché, un électron provenant de la couche L ou de la couche M peut prendre sa place laissée vacante au niveau K.\\
   Déduire la valeur des deux longueurs d'onde qui seront émises.\\
 
-\begin{center}
   \begin{pspicture}(-1.5,0.5)(4,-3.5) %(-1,0)(4,-4)
     %\psgrid[subgriddiv=1,griddots=10]
     \psset{xunit=1}
@@ -169,7 +161,7 @@ La tension $U$ utilisée pour accélérer les électrons est réglable ce qui permet 
     \psline[linecolor=black,linewidth=2pt](0,0)(3,0)
 
   \end{pspicture}
-\end{center}
+
 }
 
 
@@ -178,25 +170,25 @@ La tension $U$ utilisée pour accélérer les électrons est réglable ce qui permet 
 
   \pause
 
-  \[\Delta E = e.U = 1,6.10^{-19}.40.10^3 = 6,4.10^{-15}~J\]
+  $$\Delta E = e.U = 1,6.10^{-19}.40.10^3 = 6,4.10^{-15}~J$$
 
   \pause
 
-  \[1 eV = 1,6.10^{-19}~J\]
+  $$1 eV = 1,6.10^{-19}~J$$
 
   \pause
 
-  \[\Delta E = 40.10^3~eV = 4.10^4~eV\]
+  $$\Delta E = 40.10^3~eV = 4.10^4~eV$$
 
   \pause
 
-  \[\lambda_{L \rightarrow K} = \frac{h.c}{\Delta E} = \frac{h.c}{E_L-E_K} = 154.10^{-12}~m\]
+  $$\lambda_{L \rightarrow K} = \frac{h.c}{\Delta E} = \frac{h.c}{E_L-E_K} = 154.10^{-12}~m$$
 
   \pause
 
-  \[\lambda_{M \rightarrow K} = \frac{h.c}{\Delta E} = \frac{h.c}{E_M-E_K} = 139.10^{-12}~m\]
+  $$\lambda_{M \rightarrow K} = \frac{h.c}{\Delta E} = \frac{h.c}{E_M-E_K} = 139.10^{-12}~m$$
 
-  % \[\lambda_{M \rightarrow L} = \] ??????? 1,4.10^{-9}
+  % $$\lambda_{M \rightarrow L} = $$ ??????? 1,4.10^{-9}
 
   % \lambda doit appartenir à 10^-8  10^-12 pour être dans le domaine des rayons X
 
@@ -219,10 +211,10 @@ La tension $U$ utilisée pour accélérer les électrons est réglable ce qui permet 
   
   \pause
 
-  \begin{center}
-    \includegraphics[width=9cm]{absorption_rayons_x.png.eps}
+  \begin{figure}
     \caption{Absorption des rayons X par la matière}
-  \end{center}
+    \includegraphics[width=9cm]{absorption_rayons_x.png.eps}
+  \end{figure}
 
 
 }
@@ -242,7 +234,6 @@ La tension $U$ utilisée pour accélérer les électrons est réglable ce qui permet 
 
   \vspace{0,5cm}
 
-\begin{center}
   \begin{tabular}{|c||c|c|c|}
     \hline
     Substance       & \multicolumn{3}{c|}{Longueur d'onde} \\ \cline{2-4}
@@ -252,7 +243,6 @@ La tension $U$ utilisée pour accélérer les électrons est réglable ce qui permet 
     plomb $Z = 82$  & 0,16           & 0,027         & 0,004 \\
     \hline
   \end{tabular}
-\end{center}
   
 }
 
@@ -276,12 +266,12 @@ La tension $U$ utilisée pour accélérer les électrons est réglable ce qui permet 
 \frame{
   \frametitle{c. Influence de l'épaisseur traversée}
 
-  \begin{center}
-    \includegraphics[width=4cm]{influence_epaisseur.png.eps}
+  \begin{figure}
     \caption{Influence de l'épaisseur traversée sur l'absorption des rayons X}
-  \end{center}
+    \includegraphics[width=4cm]{influence_epaisseur.png.eps}
+  \end{figure}
 
-  \[I = I_0.e^{-k a}\]
+  $$I = I_0.e^{-k a}$$
 
   k dépend de la longueur d'onde et de la nature de la substance traversée.\\
   k s'exprime en $m^{-1}$.
