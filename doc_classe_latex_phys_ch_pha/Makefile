@@ -70,6 +70,7 @@ clean:
 	$(MAKE) clean_temp
 	$(MAKE) clean_select
 	$(MAKE) clean_only
+	$(MAKE) clean_presentation
 
 distclean: clean
 
@@ -256,7 +257,7 @@ silent:
 # $ make presentation file=elec/cours_rappel_college
 
 clean_presentation:
-	$(RM) presentation.tex presentation.pdf
+	$(RM) presentation.tex presentation.pdf presentation.*
 
 presentation.tex:
 	echo '\documentclass[h, xcolor=pst, dvips]{beamer}' > $@
