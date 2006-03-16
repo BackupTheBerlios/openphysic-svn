@@ -14,12 +14,14 @@ Remplacer $$...$$ par \[ \]
 perl -pi -e '
   s/\$\$(.*?)\$\$/\\[$1\\]/g;' ./**/*.tex
 
-perl -pi -e '
-  s{
-    \$\$ ((?: \. | .)*?) \$\$ |
-    % .*?\n |
-    \\verb(.).*?\1 |
-    \\. |
-    [^\\%\$]+ |
-    .
-  }{defined($1) ? "\\[$1\\]" : $&}gsxe' ...
+
+find . -name '*.tex' -type f -exec perl -0777 -pi -e '
+   s/\\section\b/\\Section/g;
+   s{
+     \$\$ ((?: \\. | . | %.*?\n)*?) \$\$ |
+     %.*?\n |
+     \\verb(.).*?\2 |
+     \\begin\{verbatim\}.*?\\end\{verbatim\} |
+     \\. |
+     .[^\\%\$]*
+   }{defined($1) ? "\\[$1\\]" : "$&"}gsxe;' {} +
