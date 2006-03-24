@@ -127,8 +127,14 @@
 }
 
 
-\newcommand{\Subsubsection}[1]{%
- \subsubsection{#1}%
+\newcommand*\Subsubsection{\@ifstar{\starSubsection}{\nonstarSubsection}}
+
+\newcommand*{\nonstarSubsubsection}[1]{%
+  \subsubsection{#1}%
+}
+
+\newcommand*{\starSubsubsection}[1]{%
+  \subsubsection*{#1}%
 }
 
 

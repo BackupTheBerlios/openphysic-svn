@@ -1,0 +1,236 @@
+\cours{Champ magnétique}
+
+\Section{Qu'est-ce qu'un aimant}
+Les aimants sont des objets capables d'attirer des morceaux de fer, de
+nickel, ainsi que leurs alliages. Il existe des interactions à
+distance entre quelques métaux et certains matériaux dits magnétiques
+(naturellement aimantés ou susceptibles de s'aimanter sous l'effet
+d'un aimant).
+
+\Section{Propriété d'un aimant}
+
+\begin{multicols}{2}
+{\centering
+\includegraphics{aimant_aiguille_1.png.eps}
+
+\includegraphics{aimant_aiguille_2.png.eps}
+}
+\end{multicols}
+
+Chaque aimant possède deux pôles différents. Ils sont désignés par
+nord et sud. Il existe des forces de répulsion et des forces
+d'attraction.
+
+
+\begin{itemize}
+\item deux pôles de même nom se repoussent
+\item deux pôles de noms contraires s'attirent
+\end{itemize}
+
+\Section{Champ magnétique d'un aimant}
+\Subsection{Notion de champ magnétique}
+On appelle champ magnétique la région de l'espace qui entoure un aimant.
+%(revoir def)
+
+\Subsection{Le vecteur champ magnétique}
+Une aiguille aimantée, placée dans un champ magnétique d'un aimant
+s'oriente de facon bien déterminée.
+
+
+
+\begin{multicols}{2}
+
+%\begin{multicols}{2}
+{\centering
+\includegraphics{aimant_boussole.png.eps}
+
+%\includegraphics{aimant_boussole.png.eps}
+}
+%\end{multicols}
+
+
+Le champ magnétique est représenté par le vecteur $\vect{B}$ qui a
+pour caractéristiques :
+
+
+\begin{itemize}
+\item Direction : celle que prendrait une petite aiguille aimantée
+  mobile placee en ce point
+
+\item Sens : Sud vers le Nord de cette aiguille aimantée
+\item Intensité : la valeur du champ magnétique au point
+  considéré. Elle s'exprime en Tesla $T$.\\
+
+Ce nom vient de l'ingenieur croate Nikola \textsc{Tesla} (1857-1943)
+\end{itemize}
+
+\end{multicols}
+
+\Subsection{Les lignes de champ}
+On appele ligne de champ magnétique, une ligne qui en chacun de ces
+points est tangente au vecteur champ magnétique $\vect{B}$.
+
+
+\Subsubsection{Spectre magnétique d'un aimant droit}
+
+
+\Subsubsection{Propriétes des lignes de champ magnétique}
+
+\begin{itemize}
+\item À l'extérieur d'un aimant, les lignes de champ sortent par le
+  pôle Nord et entrent par le pôle Sud de l'aimant. 
+\item Dans le cas d'un aimant en U, le vecteur champ magnétique garde
+  à l'interieur :
+
+ \begin{itemize}
+  \item la même valeur
+  \item la même direction
+  \item le même sens
+ \end{itemize}
+\end{itemize}
+
+On dit qu'il est uniforme en tout point de cette région.
+
+
+
+\Section{Spectres magnétiques de quelques circuits parcourus par un
+  courant}
+
+Tout conducteur métallique, parcouru par un courant, crée un champ
+magnétique.
+
+On appelle la constante $\mu_0$ la \emph{perméabilité} du vide et on note :
+\[
+\mu_0 = 4 \pi . 10^{-7}~U.S.I.
+\]
+
+\Subsection{Spectre magnétique d'une bobine plate parcourue par un courant}
+
+
+On constate que les lignes de champ sont fermées.
+
+\begin{multicols}{2}
+{
+\begin{center}
+\includegraphics{chp_bobine_plate_1.png.eps}
+\end{center}
+
+\begin{center}
+\includegraphics{chp_bobine_plate_2.png.eps}
+\end{center}
+}
+\end{multicols}
+
+\[
+B(O) = \frac{\mu_0}{2} \frac{N I}{R}
+\]
+
+\begin{unites}
+\item $B$ : champ magnétique en Tesla ($T$)
+\item $I$ : intensité du courant dans le fil ($A$)
+\item $N$ : nombre de spires
+\item $R$ : rayon de la bobine ($m$)
+%\item $\mu_0$ : perméabilité du vide (constante valant $4 \pi . 10^{-7}~USI$)
+\end{unites}
+
+
+\Subsection{Spectre magnétique créé par un courant rectiligne}
+
+Les lignes de champ sont concentriques.
+
+\begin{multicols}{2}
+{
+\begin{center}
+\includegraphics{chp_fil_rec_1.png.eps}
+\end{center}
+
+\begin{center}
+\includegraphics{chp_fil_rec_2.png.eps}
+\end{center}
+}
+\end{multicols}
+
+\[
+B(M) = \frac{\mu_0}{2 \pi} \frac{I}{d}
+\]
+
+\begin{unites}
+\item $B$ : champ magnétique en Tesla ($T$)
+\item $I$ : intensité du courant dans le fil ($A$)
+\item $d$ : distance entre le fil et le point $M$
+%\item $\mu_0$ : perméabilité du vide (constante valant $4 \pi . 10^{-7}~USI$)
+\end{unites}
+
+\Subsection{Spectre magnétique d'un solénoide}
+
+Un solenoide est une bobine longue (la longueur est grande par rapport
+à son diamètre). D'après l'expérience on peut dire qu'à l'intérieur
+d'un solenoide, le champ magnétique est uniforme et parallèle à l'axe
+du solenoide. Le sens du champ peut-être donné par la règle du
+bonhomme d'Ampère. L'extrémité de la bobine par laquelle sort le
+vecteur champ est l'extrémité Nord de la bobine.
+
+
+\`A l'intérieur d'un solenoide, le champ magnétique est uniforme et
+parallèle à l'axe du solenoide.
+
+
+
+\begin{multicols}{2}
+{
+\begin{center}
+\includegraphics{chp_solenoide_1.png.eps}
+\end{center}
+
+\begin{center}
+\includegraphics{chp_solenoide_2.png.eps}
+\end{center}
+}
+\end{multicols}
+
+La valeur du champ magnétique du solenoide peut être calculée par :
+
+\[
+B(O) = \mu \frac{N I}{l}
+\]
+
+\begin{unites}
+\item $B$ : champ magnétique en Tesla ($T$)
+\item $I$ : intensité du courant dans le solenoide ($A$)
+\item $N$ : nombre de spires
+\item $l$ : longueur du solenoide
+%\item $\mu_0$ : perméabilité du vide (constante valant $4 \pi . 10^{-7}~USI$)
+\end{unites}
+
+
+\Section{Champ magnétique terrestre}
+
+En première approximation, le champ magnétique terrestre est similaire
+à celui que créerait un gigantesque aimant droit incliné d'environ
+$11,5~°$ par rapport à l'axe de rotation terrestre.
+
+
+
+La direction donnée par une boussoule ne coincide pas tout à fait avec
+la direction Nord-Sud géographique. L'écart angulaire entre ces deux
+droite est variable (selon le lieu et selon le temps). C'est la
+déclinaison.
+
+
+
+
+Elle est d'environ xxxxxxxx en France. La valeur du champ magnétque
+terrestre varie selon le lieu. Elle est d'environ $30 \mu T$ à
+l'équateur magnétique, de $60~\mu T$ aux p\^oles, $20~\mu T$ en
+France.
+
+
+
+
+
+%\Section{Champ magnétique créé par un courant électrique}
+
+%\Section{Champ magnétique créé par un solenoide}
+
+
+
