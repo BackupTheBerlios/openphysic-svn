@@ -54,12 +54,14 @@
 
 
     \pause
+\begin{center}
     \begin{tabular}{|c||c|c|c|c|c|c|}
       \hline
       Couleur & Violette & Bleue & Verte & Jaune & Jaune & Rouge \\ \hline
        $\lambda (nm)$ & $404$ & $435,8$ & $546,1$ & $577$ & $579,1$ & $615$ \\
       \hline
     \end{tabular}
+\end{center}
   \end{block}
 }
 
@@ -75,12 +77,14 @@
 
 
     \pause
+\begin{center}
     \begin{tabular}{|c||c|c|c|c|c|}
       \hline
       Couleur & Violette & Violette & Bleue & Jaune & Rouge \\ \hline
       $\lambda (nm)$ & $410$ & $434$ & $486,1$ & $577$ & $615$ \\
       \hline
     \end{tabular}
+\end{center}
   \end{block}
 }
 
@@ -223,8 +227,10 @@ L'énergie de l'atome est alors \emph{minimale}, elle est notée $E_1$.
 }
 
 \frame{
+\diaporama{
   \frametitle{Calcul des niveaux d'énergie de l'atome d'hydrogène}
 
+\begin{center}
   \begin{tabular}{|c|c|c|}
     \hline
     $n$ & $E_n (eV)$ & \'Etat \\ \hline \hline
@@ -236,12 +242,15 @@ L'énergie de l'atome est alors \emph{minimale}, elle est notée $E_1$.
     \vdots & \vdots & \vdots \\ %\hline
     $\infty$ & $0$ & Ionisé \\ \hline
   \end{tabular}
+\end{center}
+}
 }
 
 
 \frame{
   \frametitle{Calcul des niveaux d'énergie de l'atome d'hydrogène}
 
+\begin{center}
   \begin{tabular}{|c|c|c|}
     \hline
     $n$ & $E_n (eV)$ & \'Etat \\ \hline \hline
@@ -253,6 +262,8 @@ L'énergie de l'atome est alors \emph{minimale}, elle est notée $E_1$.
     \vdots & \vdots & \vdots \\ %\hline
     $\infty$ & $0$ & Ionisé \\ \hline
   \end{tabular}
+\end{center}
+
 }
 
 
@@ -261,6 +272,7 @@ L'énergie de l'atome est alors \emph{minimale}, elle est notée $E_1$.
 
   \pause
 
+\begin{center}
  \begin{pspicture}(0,0)(11,-7)
    %\psgrid[subgriddiv=1,griddots=10]
    \psset{xunit=1}
@@ -332,6 +344,7 @@ L'énergie de l'atome est alors \emph{minimale}, elle est notée $E_1$.
 
 
   \end{pspicture}
+\end{center}
 }
 
 \frame{
@@ -452,9 +465,11 @@ L'énergie de l'atome est alors \emph{minimale}, elle est notée $E_1$.
 \frame{
   \frametitle{\small D'après http://www.ac-rouen.fr/lycees/galilee/spectreabsorption.htm}
 
-%  \begin{figure}
+%  \begin{figure
+\begin{center}
     \includegraphics[width=9cm]{image003.gif.eps}
     \caption{Spectre de la lumière blanche}
+\end{center}
 %  \end{figure}
 }
  
@@ -462,8 +477,10 @@ L'énergie de l'atome est alors \emph{minimale}, elle est notée $E_1$.
   \frametitle{\small D'après http://www.ac-rouen.fr/lycees/galilee/spectreabsorption.htm}
  
 %  \begin{figure}
+\begin{center}
     \includegraphics[width=9cm]{image006.gif.eps}
     \caption{Spectre d'émission du sodium}
+\end{center}
 %  \end{figure}
 }
  
@@ -471,8 +488,10 @@ L'énergie de l'atome est alors \emph{minimale}, elle est notée $E_1$.
   \frametitle{\small D'après http://www.ac-rouen.fr/lycees/galilee/spectreabsorption.htm}
  
 %  \begin{figure}
+\begin{center}
     \includegraphics[width=9cm]{image009.gif.eps}
     \caption{Spectre d'absorption du sodium}
+\end{center}
 %  \end{figure}
 }
 

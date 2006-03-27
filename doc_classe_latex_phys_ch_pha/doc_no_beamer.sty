@@ -97,16 +97,32 @@
 }
 
 
-\newcommand{\cours}[1]{%
- \chapter{#1} 
+%\newcommand{\cours}[1]{%
+% \chapter{#1} 
+%}
+
+\newcommand{\cours}[2][\DefaultOpt]{%
+  \def\DefaultOpt{#2}%
+  \chapter[#1]{#2}
 }
 
-\newcommand{\td}[1]{%
- \chapter{TD : #1}
+
+% \newcommand{\td}[1]{%
+%  \chapter{TD : #1}
+% }
+
+\newcommand{\td}[2][\DefaultOpt]{%
+  \def\DefaultOpt{#2}%
+  \chapter[TD : #1]{TD : #2}
 }
 
-\newcommand{\tp}[1]{%
- \chapter{TP : #1}
+% \newcommand{\tp}[1]{%
+%  \chapter{TP : #1}
+% }
+
+\newcommand{\tp}[2][\DefaultOpt]{%
+  \def\DefaultOpt{#2}%
+  \chapter[TP : #1]{TP : #2}
 }
 
 \newcommand*\Section{\@ifstar{\starSection}{\nonstarSection}}
