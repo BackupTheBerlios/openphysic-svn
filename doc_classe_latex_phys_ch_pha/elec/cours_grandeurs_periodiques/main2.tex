@@ -7,8 +7,7 @@ Générateur Basse Fréquence (GBF) réglé sur le mode triangle. On note
 \emph{u(t)} cette tension, avec u en \emph{minuscule} car la grandeur que
 nous observons évolue au fil du \emph{temps}.
 
-\begin{figure}[H]
-\caption{Signal triangulaire}
+{\centering
 \begin{pspicture}(-1,-1.75)(7,1.75)
 %\psgrid[subgriddiv=1,griddots=10]
 \psset{xunit=1}
@@ -40,7 +39,8 @@ nous observons évolue au fil du \emph{temps}.
 %\rput{0}(-0.5,-1){$-E$}
 %\psline{-}(-0.1,-1)(0.1,-1)
 \end{pspicture}
-\end{figure}
+\caption{Signal triangulaire}
+}
 
 
 \section{Grandeur périodique}
@@ -74,8 +74,8 @@ par :
 
 \subsection{Quantité d'électricité transportée par un courant continu}
 
-\begin{figure}[H]
-\caption{Courant continu}
+
+{\centering
 \begin{pspicture}(-1,-0.75)(7,1.75)
 %\psgrid[subgriddiv=1,griddots=10]
 \psset{xunit=1}
@@ -96,7 +96,8 @@ par :
 \rput{0}(1.25,-0.25){$t_1$}
 \rput{0}(3.75,-0.25){$t_2$}
 \end{pspicture}
-\end{figure}
+\caption{Courant continu}
+}
 
 La quantité d'électricité transportée par un courant continu
 d'intensité $I_0$ entre deux instants $t_1$ et $t_2$ est
@@ -107,8 +108,7 @@ $Q_{12}$ est l'aire $\mathcal{A}$ du rectangle ABCD.
 \subsection{Quantité d'électricité transportée par un courant en créneaux}
 Soit le signal $i(t)$ de période $T=t_2-t_1$.
 
-\begin{figure}[H]
-\caption{Courant en crénaux}
+{\centering
 \begin{pspicture}(-1,-0.75)(7,1.75)
 %\psgrid[subgriddiv=1,griddots=10]
 \psset{xunit=1}
@@ -147,7 +147,9 @@ Soit le signal $i(t)$ de période $T=t_2-t_1$.
 \rput{0}(1.5,-0.25){$t'_1$}
 \rput{0}(3,-0.25){$t_2=t_1+T$}
 \end{pspicture}
-\end{figure}
+\caption{Courant en crénaux}
+}
+
 
 La quantité d'électricité transportée par ce courant entre $t_1$ et $t_2$ est :
 \[Q_{12}=I_1(t'_1-t_1)+I_2(t_2-t'_1)\]

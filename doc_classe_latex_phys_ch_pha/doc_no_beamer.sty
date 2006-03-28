@@ -231,23 +231,33 @@
 %\renewcommand{\headrulewidth}{0.4pt} % Trace un trait de séparation de largeur 0,4 point. Mettre 0pt pour supprimer le trait.
 %\renewcommand{\footrulewidth}{0.4pt}
 
+
 \renewcommand*{\partmark}[1]{\markboth{#1}{}}
 \renewcommand*{\chaptermark}[1]{}
 \renewcommand*{\sectionmark}[1]{}
-\fancyhf{}
+\fancyhf{} % effacer header et footer
 \rhead{\itshape S. \textsc{CELLES}}
 \lhead{\itshape Sciences Physiques}
 \chead{\itshape \leftmark}
 %\cfoot{}
 %\cfoot{\thepagelocal}
-\cfoot{\thepage} % la vraie page
-%\cfoot{\getnewpagevalue} % la page remise à 1 en début de partie, chapitre, cours, tp, td...
+%\cfoot{\thepage} % la vraie page
+\cfoot{\getnewpagevalue} % la page remise à 1 en début de partie, chapitre, cours, tp, td...
 \rfoot{\null}
 \lfoot{\null}
 
 \renewcommand{\headrulewidth}{0.4pt} % Trace un trait de séparation de largeur 0,4 point. Mettre 0pt pour supprimer le trait.
-%\renewcommand{\footrulewidth}{0.4pt} % Trace un trait de séparation de largeur 0,4 point. Mettre 0pt pour supprimer le trait.
+%\renewcommand{\footrulewidth}{0.4pt} % Trace un trait de séparation
+%de largeur 0,4 point. Mettre 0pt pour supprimer le trait.
 
+
+
+\fancypagestyle{plain}{%
+\fancyhf{} % effacer header et footer
+\cfoot{\getnewpagevalue}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+}
 
 
 % Portrait / paysage
