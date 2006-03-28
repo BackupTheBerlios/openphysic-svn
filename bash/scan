@@ -1,2 +1,16 @@
 #!/bin/bash
-scanimage > ~/scanner/out.png
+format=png
+filename=out
+directory=~/scanner
+
+device=hp5400:libusb:001:003 # obtenir la liste des scanners avec scanimage --list-device
+
+scanimage -x 215 -y 297 --device-name=$device > $directory/$filename
+
+# On peut facilement faire un scanner réseau
+# en rajoutant
+# Dans Samba /etc/smb.conf
+#[scanner]
+#	path = /home/scls/scanner
+#	read only = No
+#	guest ok = Yes
