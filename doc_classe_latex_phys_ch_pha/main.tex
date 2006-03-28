@@ -29,24 +29,6 @@
 
 %thanks{Merci à eux !}
 
-
-% En-tête et pied de page
-%\usepackage{fancyhdr}
-%\pagestyle{fancy}
-%\lhead{S. \textsc{CELLES}} % haut de page gauche
-%\chead{Physique} % haut de page centre
-%\rhead{\null} % haut de page droite
-%\lfoot{pied de page gauche} % pied de page gauche
-%\cfoot{} % pied de page centré (pas de numér de page)
-%\rfoot{pied de page droit}  % pied de page droit
-%\renewcommand{\headrulewidth}{0.4pt} % Trace un trait de séparation de largeur 0,4 point. Mettre 0pt pour supprimer le trait.
-%\renewcommand{\footrulewidth}{0.4pt} % Trace un trait de séparation de largeur 0,4 point. Mettre 0pt pour supprimer le trait.
-
-
-% \begin{titlepage}
-% \maketitle % affichage du titre du document, de l'auteur, de la date
-% \end{titlepage}
-
 \input{title.tex} % page de titre
 
 \pagebreak
@@ -76,6 +58,17 @@
 %\dominitoc % table des matières intermédiaire (minitoc) (par chapitre par ex)
 
 
+
+% à enlever ou pas suivant la taille du sommaire
+% ==============================================
+% le sommaire doit se terminer sur une page paire
+% afin que les chapitres commencent sur une page
+% impaire (c'est à dire à gauche en 2 pages en 1)
+%
+ \newpage 
+ \null
+ \newpage
+%
 
 
 
@@ -115,18 +108,6 @@
 
 %\LaTeX
 
-
-
-% à enlever ou pas suivant la taille du sommaire
-% ==============================================
-% le sommaire doit se terminer sur une page paire
-% afin que les chapitres commencent sur une page
-% impaire (c'est à dire à gauche en 2 pages en 1)
-%
- \newpage 
- \null
- \newpage
-%
 
 
 % fichiers à inclure 

@@ -187,10 +187,13 @@
 \usepackage{pst-coil} % bobine, zig-zag (utile pour dessiner des ressorts en méca)
 
 %\usepackage{pst-eucl} % Géométrie Euclidienne, rotation, etc... 
-%\usepackage{pst-node}
+\usepackage{pst-node}
 %\usepackage{pstricks-add}
 
 \usepackage{pstcol,pst-osci} % oscilloscope
+
+
+%\usepackage{pst-optic} % Optique
 
 
 \usepackage{psfrag} % remplacement de texte dans fichier eps
@@ -524,7 +527,35 @@
 
 
 
+% *----------------------------------------------*
+% *---- Gestion de la numérotation des pages ----*
+% *----------------------------------------------*
 
+\usepackage{calc} % Simple arithmetic operations
+
+\newcounter{refpage}  % Reference page (when page  refpage, newpage  1)
+\newcounter{newpage}  % Faked page number
+
+% page     11  12  13 ...
+% newpage   1   2   3 ...
+
+%\setcounter{refpage}{11}
+
+% Before using newpage, compute its value
+\newcommand*{\getnewpagevalue}{%
+ \setcounter{newpage}{\value{page} - \value{refpage} + 1}%
+ \thenewpage
+}
+
+%[...]
+%  \getnewpagevalue 
+
+
+\newcommand{\razpage}{%
+  \setcounter{page}{1}
+%\setcounter{refpage}{\thepage}
+%\setcounter{refpage}{0}
+}
 
 
 
@@ -594,7 +625,8 @@
    %\newpage
    %\section*{#1}
   \chapter*{#1}
-  \setcounter{page}{1} % page ou pagelocal
+%  \setcounter{page}{1} % page ou pagelocal
+  \razpage
   \setcounter{section}{0}
 }
 
@@ -610,7 +642,8 @@
 %  \newpage
   \chapter*{}
   \vspace*{-0.5cm}
-  \setcounter{page}{1} % page ou pagelocal
+%  \setcounter{page}{1} % page ou pagelocal
+  \razpage
   \setcounter{section}{0}
 }
 
@@ -1032,7 +1065,8 @@ dans l'appréciation des copies.
 %\montrefalse : cache le mot par des pointillés
 %\trou{Le ou les mots à cacher} : permet de sélectionner le ou les mots qui doivent être remplacés par des pointillés
 
-\montretrue
+%\montretrue
+\montrefalse
 
 
 % --------------
