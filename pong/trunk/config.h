@@ -12,7 +12,7 @@
 #define PACKAGE_PIXMAPS_DIR "/usr/local/share/pixmaps"
 #define PACKAGE_HELP_DIR "/usr/local/share/help"
 #define PACKAGE_MENU_DIR "/usr/local/share"
-#define PACKAGE_SOURCE_DIR "/media/graver/sciences/programmation/c_cpp/projets_cpp/pong"
+#define PACKAGE_SOURCE_DIR "/home/scls/openphysic/pong/trunk"
 /* #undef GETTEXT_PACKAGE */
 
 /* Define to 1 if you have the <dlfcn.h> header file. */

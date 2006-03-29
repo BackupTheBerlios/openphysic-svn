@@ -524,9 +524,9 @@ s,@ac_ct_RANLIB@,ranlib,;t t
 s,@STRIP@,strip,;t t
 s,@ac_ct_STRIP@,strip,;t t
 s,@CXXCPP@,g++ -E,;t t
-s,@F77@,g77,;t t
-s,@FFLAGS@,-g -O2,;t t
-s,@ac_ct_F77@,g77,;t t
+s,@F77@,,;t t
+s,@FFLAGS@,,;t t
+s,@ac_ct_F77@,,;t t
 s,@LIBTOOL@,$(SHELL) $(top_builddir)/libtool,;t t
 s,@NO_PREFIX_PACKAGE_DATA_DIR@,share,;t t
 s,@PACKAGE_DATA_DIR@,/usr/local/share,;t t
@@ -872,7 +872,7 @@ ${ac_dA}PACKAGE_DOC_DIR${ac_dB}PACKAGE_DOC_DIR${ac_dC}"/usr/local/doc/pong"${ac_
 ${ac_dA}PACKAGE_PIXMAPS_DIR${ac_dB}PACKAGE_PIXMAPS_DIR${ac_dC}"/usr/local/share/pixmaps"${ac_dD}
 ${ac_dA}PACKAGE_HELP_DIR${ac_dB}PACKAGE_HELP_DIR${ac_dC}"/usr/local/share/help"${ac_dD}
 ${ac_dA}PACKAGE_MENU_DIR${ac_dB}PACKAGE_MENU_DIR${ac_dC}"/usr/local/share"${ac_dD}
-${ac_dA}PACKAGE_SOURCE_DIR${ac_dB}PACKAGE_SOURCE_DIR${ac_dC}"/media/graver/sciences/programmation/c_cpp/projets_cpp/pong"${ac_dD}
+${ac_dA}PACKAGE_SOURCE_DIR${ac_dB}PACKAGE_SOURCE_DIR${ac_dC}"/home/scls/openphysic/pong/trunk"${ac_dD}
 CEOF
   sed -f $tmp/defines.sed $tmp/in >$tmp/out
   rm -f $tmp/in
@@ -908,7 +908,7 @@ ${ac_uA}PACKAGE_DOC_DIR${ac_uB}PACKAGE_DOC_DIR${ac_uC}"/usr/local/doc/pong"${ac_
 ${ac_uA}PACKAGE_PIXMAPS_DIR${ac_uB}PACKAGE_PIXMAPS_DIR${ac_uC}"/usr/local/share/pixmaps"${ac_uD}
 ${ac_uA}PACKAGE_HELP_DIR${ac_uB}PACKAGE_HELP_DIR${ac_uC}"/usr/local/share/help"${ac_uD}
 ${ac_uA}PACKAGE_MENU_DIR${ac_uB}PACKAGE_MENU_DIR${ac_uC}"/usr/local/share"${ac_uD}
-${ac_uA}PACKAGE_SOURCE_DIR${ac_uB}PACKAGE_SOURCE_DIR${ac_uC}"/media/graver/sciences/programmation/c_cpp/projets_cpp/pong"${ac_uD}
+${ac_uA}PACKAGE_SOURCE_DIR${ac_uB}PACKAGE_SOURCE_DIR${ac_uC}"/home/scls/openphysic/pong/trunk"${ac_uD}
 s,^[	 ]*#[	 ]*undef[	 ][	 ]*[a-zA-Z_][a-zA-Z_0-9]*,/* & */,
 CEOF
   sed -f $tmp/undefs.sed $tmp/in >$tmp/out
