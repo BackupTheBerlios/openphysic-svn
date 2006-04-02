@@ -1,12 +1,24 @@
 \documentclass{article}
 
 
+\usepackage{hyperref}
 \usepackage{url}
+
+
+\newcommand{\frwiki}[1]{
+\url{http://fr.wikipedia.org/wiki/#1}
+}
+
+
+\newcommand{\inclure}[1]{
+\input{#1/main2.tex}
+}
 
 \begin{document}
 
 
-\include{reseau_intro/main2.tex}
+\inclure{reseau_intro}
+
 
 
 
