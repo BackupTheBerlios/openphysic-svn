@@ -1,41 +1,35 @@
-\section{Utilisation d'un réseau}
-\subsection{Qu'est-ce qu'un réseau ?}
-\begin{itemize}
-\item \frwiki{Cat%C3%A9gorie:R%C3%A9seau_informatique}
-\item \frwiki{Cat%C3%A9gorie:Protocole_r%C3%A9seau
-\item \frwiki{Topologie_de_r%C3%A9seau}
-\item \url{http://www.themanualpage.org/reseau/reseau_topo.php}
-\end{itemize}
+===== Utilisation d'un réseau =====
+Qu'est-ce qu'un réseau ?
+ http://fr.wikipedia.org/wiki/Cat%C3%A9gorie:R%C3%A9seau_informatique
+ http://fr.wikipedia.org/wiki/Cat%C3%A9gorie:Protocole_r%C3%A9seau
+ http://fr.wikipedia.org/wiki/Topologie_de_r%C3%A9seau
+ http://www.themanualpage.org/reseau/reseau_topo.php
 
+Comment ça marche ? 
+ - Adresse IP
+  http://fr.wikipedia.org/wiki/Adresse_ip
+  http://fr.wikipedia.org/wiki/Protocole_Internet
+  http://fr.wikibooks.org/wiki/Reseaux_TCP/IP_:_adressage_IP_v4
+  http://fr.wikipedia.org/wiki/Adresse_IPv4
+  http://fr.wikipedia.org/wiki/Adresse_IPv6
 
-\subsection{Comment ça marche ? }
+  ##ipconfig## (Win NT/XP)
 
-\subsubsection{Adresse IP}
-\begin{itemize}
-\item \frwiki{Adresse_ip}
-\item \frwiki{Protocole_Internet}
-\item \url{http://fr.wikibooks.org/wiki/Reseaux_TCP/IP_:_adressage_IP_v4}
-\item \frwiki{Adresse_IPv4}
-\item \frwiki{Adresse_IPv6}
-\end{itemize}
+ - Adresse MAC
+  http://fr.wikipedia.org/wiki/Adresse_MAC
+  ##ipconfig /all## (Win NT/XP)
+  ##ifconfig -a## (Linux/Unix)
 
- ##ipconfig## (Win NT/XP)
+ - Ethernet
+  http://fr.wikipedia.org/wiki/Ethernet
 
-\subsubsection{ Adresse MAC}
- \frwiki{Adresse_MAC}
- ##ipconfig /all## (Win NT/XP)
- ##ifconfig -a## (Linux/Unix)
+ - DNS 
+   http://fr.wikipedia.org/wiki/DNS
+   http://fr.wikipedia.org/wiki/R%C3%A9solution_de_noms
 
-\subsubsection{Ethernet}
- \frwiki{Ethernet}
+ - Masque réseau
 
-\subsubsection{DNS}
-  \url{http://fr.wikipedia.org/wiki/DNS}
-  \url{http://fr.wikipedia.org/wiki/R%C3%A9solution_de_noms}
-
-\subsubsection{Masque réseau}
-
-\subsubsection{Adresse IP statique}
+ - Adresse IP statique
    A la maison
     Adresse IP ##192.168.0.1##
     ##128.64.32.16.8.4.2.1 . 128.64.32.16.8.4.2.1 . 128.64.32.16.8.4.2.1 . 128.64.32.16.8.4.2.1##
@@ -95,7 +89,7 @@ http://fr.wikipedia.org/wiki/RJ45
    Toutefois, cela n'est pas impossible si le switch présente des failles de sécurité (via son interface web d'administration par exemple).
 
  - Passerelle / routeur
-  \url{http://fr.wikipedia.org/wiki/Passerelle_%28informatique%29}
+  http://fr.wikipedia.org/wiki/Passerelle_%28informatique%29
   http://fr.wikipedia.org/wiki/Routeur
   http://fr.wikipedia.org/wiki/DMZ
 
@@ -164,24 +158,3 @@ http://fr.wikipedia.org/wiki/UDP
 
 Quelques "astuces" pour résoudre des problèmes de réseau (TCP/IP)
 http://ftp.traduc.org/doc-vf/gazette-linux/html/2003/096/lg96-D.html#LG96D-2.FR
-
-
-\section{Questions réseau 1}
-Qu'est-ce qu'un réseau ?
-De quels équipements est constitué un réseau ?
-Qu'est ce qu'une adresse IP ?
-Qu'est ce qu'un masque ?
-A quoi sert un routeur ?
-Que sont les DNS ?
-Citez plusieurs types de serveurs.
-
-\section{Question réseau 2 : Identifier des problèmes du réseau}
-
-"Les ordinateurs ne se voient pas"
-  Comment vérifier que 2 ordinateurs peuvent se contacter ?
-
-
-"Internet ne marche pas"
-  Comment identifier un problème de DNS ?
-  Comment identifier un problème du routeur ?
-
