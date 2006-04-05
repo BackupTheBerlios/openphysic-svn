@@ -44,7 +44,7 @@ z = 0;
             //DATA = [DATA; OM E V];
             OM_DATA = [OM_DATA; OM];
             E_DATA = [E_DATA; E];
-            //V_DATA = [V_DATA; V];
+            V_DATA = [V_DATA; V];
             //V_MATRIX(x,y) = V;
          end
       end
@@ -57,6 +57,18 @@ Ez_DATA = E_DATA(:,3);
 
 DATA = [OM_DATA E_DATA V_DATA];
 
+
+V_MATRIX = zeros(size(xlist,'c'),size(ylist,'c'));
+
+
+for j=1:size(ylist,'c'), // colonne ; x
+  for i=1:size(xlist,'c'), // ligne ; y
+    V_MATRIX(i,j) = V_DATA((j-1)*size(xlist,'c')+i);
+  end
+end
+
+
+Matplot(V_MATRIX)
 
 //champ1(xlist,ylist,...,...);
 //matplot ?
