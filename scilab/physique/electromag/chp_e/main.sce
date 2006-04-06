@@ -12,9 +12,9 @@ epsilon0 = 8.85418781762E-12;
 ke = 1/(4*%pi*epsilon0);
 
 // Définition des bornes de l'espace
-xmin = -2; xmax = 2; xstep = 0.5; xlist=xmin:xstep:xmax;
-ymin = -2; ymax = 2; ystep = 0.5; ylist=ymin:ystep:ymax;
-zmin = -2; zmax = 2; zstep = 0.5; zlist=zmin:zstep:zmax;
+xmin = -2; xmax = 2; xstep = 0.1; xlist=xmin:xstep:xmax;
+ymin = -2; ymax = 2; ystep = 0.1; ylist=ymin:ystep:ymax;
+zmin = -2; zmax = 2; zstep = 0.1; zlist=zmin:zstep:zmax;
 
 DATA = [];
 OM_DATA = [];
@@ -68,7 +68,11 @@ for j=1:size(ylist,'c'), // colonne ; x
 end
 
 
-Matplot(V_MATRIX)
+f=gcf();
+//cmap=get(sdf(),"color_map")
+//f.color_map=cmap;
+isoview();
+Matplot(V_MATRIX/1E9)
 
 //champ1(xlist,ylist,...,...);
 //matplot ?
