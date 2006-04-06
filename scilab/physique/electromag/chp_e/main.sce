@@ -1,6 +1,13 @@
 // Position des charges
+
+//Charge seule
 OA = [0 0 0]; // en m
 q = [1]; // en C
+
+
+//Dipole Electrostatique
+//OA = [0 0 0 ; 1 0 0]; // en m
+//q = [1 ; 1]; // en C
 
 Ncharge = size(q,'r');
 
@@ -14,7 +21,7 @@ ke = 1/(4*%pi*epsilon0);
 // Définition des bornes de l'espace
 xmin = -2; xmax = 2; xstep = 0.1; xlist=xmin:xstep:xmax;
 ymin = -2; ymax = 2; ystep = 0.1; ylist=ymin:ystep:ymax;
-zmin = -2; zmax = 2; zstep = 0.1; zlist=zmin:zstep:zmax;
+//zmin = -2; zmax = 2; zstep = 0.1; zlist=zmin:zstep:zmax;
 
 DATA = [];
 OM_DATA = [];
@@ -26,6 +33,9 @@ V_MATRIX = zeros(size(xlist,'c'),size(ylist,'c'));
 z = 0;
    for y=ylist,
       for x=xlist,
+        V = 0;
+        E = [0 0 0];
+      
          for i=1:Ncharge,
             OM = [x y z];
 
@@ -34,19 +44,21 @@ z = 0;
 
             // Calcul du champ électrique E
             if norm(AM) <> 0 then
-               E = ke * q(i,1) / norm(AM)^3 * AM;
-               V = ke * q(i,1) / norm(AM);
-            else
-               E = [0 0 0];
-               V = 0;
+               E = E + ke * q(i,1) / norm(AM)^3 * AM;
+               V = V + ke * q(i,1) / norm(AM);
+//            else
+               //E = E + [0 0 0];
+               //V = V + 0;
             end
-         
-            //DATA = [DATA; OM E V];
-            OM_DATA = [OM_DATA; OM];
-            E_DATA = [E_DATA; E];
-            V_DATA = [V_DATA; V];
-            //V_MATRIX(x,y) = V;
+     
+            
          end
+         
+         //DATA = [DATA; OM E V];
+         OM_DATA = [OM_DATA; OM];
+         E_DATA = [E_DATA; E];
+         V_DATA = [V_DATA; V];
+         //V_MATRIX(x,y) = V;
       end
    end
 //end
@@ -61,18 +73,29 @@ DATA = [OM_DATA E_DATA V_DATA];
 V_MATRIX = zeros(size(xlist,'c'),size(ylist,'c'));
 
 
-for j=1:size(ylist,'c'), // colonne ; x
-  for i=1:size(xlist,'c'), // ligne ; y
-    V_MATRIX(i,j) = V_DATA((j-1)*size(xlist,'c')+i);
+for i=1:size(ylist,'c'), // ligne ; y
+  for j=1:size(xlist,'c'), // colonne ; x
+    V_MATRIX(size(xlist,'c')-j+1,i) = V_DATA((j-1)*size(xlist,'c')+i);
   end
 end
 
 
-f=gcf();
-//cmap=get(sdf(),"color_map")
-//f.color_map=cmap;
-isoview();
-Matplot(V_MATRIX/1E9)
+cmap = hotcolormap(32);
+//cmap = graycolormap(32);
+//cmap = (hotcolormap(32) + jetcolormap(32))/2;
+
+//n=64;
+//r=linspace(0,1,n)';
+//g=linspace(1,0,n)';
+//b=ones(n,1);
+//cmap=[r g b];
+
+
+xset("colormap",cmap);
+
+xbasc(); isoview();
+V_MAT2 = V_MATRIX/1E9;
+Matplot(V_MAT2)
 
 //champ1(xlist,ylist,...,...);
 //matplot ?
