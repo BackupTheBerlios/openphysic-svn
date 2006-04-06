@@ -1,7 +1,7 @@
 // Position des charges
 
 //Charge seule
-OA = [0 0 0]; // en m
+OA = [-1 0 0]; // en m
 q = [1]; // en C
 
 
@@ -82,6 +82,7 @@ end
 
 cmap = hotcolormap(32);
 //cmap = graycolormap(32);
+//cmap = jetcolormap(32);
 //cmap = (hotcolormap(32) + jetcolormap(32))/2;
 
 //n=64;
@@ -94,7 +95,7 @@ cmap = hotcolormap(32);
 xset("colormap",cmap);
 
 xbasc(); isoview();
-V_MAT2 = V_MATRIX/1E9;
+V_MAT2 = V_MATRIX/2E9;
 Matplot(V_MAT2)
 
 //champ1(xlist,ylist,...,...);
