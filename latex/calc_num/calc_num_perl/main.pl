@@ -29,9 +29,11 @@ dire des documents réalisés avec \LaTeX{}, comportants du calcul numérique dont 
 sont recalculées à la volée par le langage de script Perl.
 
 \\section{Premier exemple}
-La variable x vaut\\
-La variable y vaut\\
-La variable z = x + y vaut $z
+\\begin{itemize}
+\\item La variable x vaut $x\\\\
+\\item La variable y vaut $y\\\\
+\\item La variable z = x + y vaut $z
+\\end{itemize}
 
 
 \\end{document}

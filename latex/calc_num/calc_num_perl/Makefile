@@ -1,13 +1,11 @@
-input=main_in
-script=main
-output=main_out
+input=main
 
 all:
-	perl $(script).pl
-	latex $(output).tex
+	perl $(input).pl
+	latex $(input).tex
 	xdvi $(input).dvi
 
 .PHONY: clean
 
 clean:
-	$(RM) $(output).tex
+	$(RM) $(input).tex *~ semantic.cache *.aux *.log *.dvi
