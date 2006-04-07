@@ -289,3 +289,8 @@ test_papier:
 
 test_papier2:
 	$(MAKE) only-ps2 file=elec/cours_rappel_college
+
+
+# si calcul numérique (avec PHP-CLI)
+php:
+	php $(file)/main2.php > $(file)/main2.tex
