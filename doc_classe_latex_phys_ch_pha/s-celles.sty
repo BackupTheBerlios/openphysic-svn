@@ -602,6 +602,15 @@
 % la mise à zéro est faites dans les chapter (cours, TP, TD)
 
 
+
+% mise à zéro de compteur automatique
+% \@addtoreset{compteur}{dépendance}
+\@addtoreset{chapter}{part} % met chapter à 0 quand on change de part
+\@addtoreset{figure}{chapter}
+\@addtoreset{table}{chapter}
+
+
+
 \newcommand{\dsthemes}[1]{%
 \begin{center}
 \begingroup

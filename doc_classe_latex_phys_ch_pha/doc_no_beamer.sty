@@ -73,8 +73,8 @@
 % \titleclass{\chapter}{page}
 \titleformat{\chapter}[display]{%
     \razpage% mettre à 0 le compteur de page
-    \setcounter{figure}{0}% mettre à 0 le compteur de figure
-    \setcounter{table}{0}% mettre à 0 le compteur de table
+%    \setcounter{figure}{0}% mettre à 0 le compteur de figure
+%    \setcounter{table}{0}% mettre à 0 le compteur de table
     \normalfont \huge \bfseries \filcenter
   }{}{20pt}{\Huge}
 \titlelabel{\thetitle.~} % ajoute un point et une espace insécable après un numéro de titre
@@ -96,7 +96,7 @@
 \newcommand{\chapitre}[1]{%
 % attention \chapitre est un \part pas un \chapter !!!
  \part{#1}
- \setcounter{chapter}{0}
+% \setcounter{chapter}{0}
 }
 
 
