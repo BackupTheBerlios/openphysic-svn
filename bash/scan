@@ -5,7 +5,7 @@ directory=~/scanner
 
 device=hp5400:libusb:001:003 # obtenir la liste des scanners avec scanimage --list-device
 
-scanimage -x 215 -y 297 --device-name $device --brightness 20 --mode Color > $directory/$filename.$format
+scanimage -x 215mm -y 297mm --resolution 75 --device-name $device > $directory/$filename.$format
 
 
 # On peut facilement faire un scanner réseau
