@@ -19,7 +19,7 @@ if_ext=ppp0
 case "$1" in
 
     start)
-      #iptables -N bloque_ip
+      iptables -N bloque_ip
       #iptables -A FORWARD -i $if_lan -o $if_ext -j bloque_ip
 
 	for ip in `cat internet_rules_room_$room.dat`
