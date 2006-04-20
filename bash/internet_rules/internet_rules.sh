@@ -20,12 +20,14 @@ case "$1" in
 
     start)
       iptables -N bloque_ip
-      #iptables -A FORWARD -i $if_lan -o $if_ext -j bloque_ip
+
+      iptables -I FORWARD -i $if_lan -o $if_ext -j bloque_ip
+      # -I insérer au début ou -A ajouter à la fin
 
 	for ip in `cat internet_rules_room_$room.dat`
 	  do
 	  echo "start internet connection for $ip for $time minutes"
-         #iptables -D bloque_ip -s $ip -j REJECT --reject-with net-unreach
+	  iptables -D bloque_ip -s $ip -j REJECT --reject-with net-unreach
 	done
 
 	sleep "$time"m
@@ -37,7 +39,7 @@ case "$1" in
 	for ip in `cat internet_rules_room_$room.dat`
 	  do
           echo "stop internet connection for $ip"
-          #iptables -A bloque_ip -s $ip -j REJECT --reject-with net-unreach
+          iptables -I bloque_ip -s $ip -j REJECT --reject-with net-unreach
 	done
 	;;
 
