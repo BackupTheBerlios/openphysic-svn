@@ -99,14 +99,26 @@
 
 <hr>
 
+<?php
+	/*
+foreach ($_POST as $key => $value)
+        echo "post: ".$key."=".$value."<br>";
+
+foreach ($_GET  as $key => $value)
+        echo "get: ".$key."=".$value."<br>";
+	*/
+?>
 
 
 <?php
-if ( $start <> "" ) {
+$room = $_POST["room"];
+$duree = $_POST["duree"];
+
+if ( $_POST["start"] <> "" ) {
     $action = "start";
 }
 
-if ( $stop <> "" ) {
+if ( $_POST["stop"] <> "" ) {
     $action = "stop";
     $duree = "";
 }
