@@ -1,13 +1,22 @@
 // Position des charges
 
-//Charge seule
+//Charge positive seule
 OA = [-1 0 0]; // en m
 q = [1]; // en C
 
+//Charge négative seule
+//OA = [-1 0 0]; // en m
+//q = [-1]; // en C
 
-//Dipole Electrostatique
-//OA = [0 0 0 ; 1 0 0]; // en m
+
+//Dipole Electrostatique + +
+//OA = [-0.5 0 0 ; 0.5 0 0]; // en m
 //q = [1 ; 1]; // en C
+
+//Dipole Electrostatique + -
+//OA = [-0.5 0 0 ; 0.5 0 0]; // en m
+//q = [1 ; -1]; // en C
+
 
 Ncharge = size(q,'r');
 
@@ -96,6 +105,8 @@ xset("colormap",cmap);
 
 xbasc(); isoview();
 V_MAT2 = V_MATRIX/2E9;
+//nc=xget("lastpattern"); // TO FIX Negative value
+//V_MAT2 = (V_MAT2-min(V_MAT2))/(max(V_MAT2)-min(V_MAT2))*(nc-1)+1; // TO FIX Negative value
 Matplot(V_MAT2)
 
 //champ1(xlist,ylist,...,...);
