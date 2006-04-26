@@ -1,4 +1,4 @@
-This is e-TeX, Version 3.14159-2.1 (Web2C 7.4.5) (format=latex 2006.1.6)  7 APR 2006 16:17
+This is e-TeX, Version 3.14159-2.1 (Web2C 7.4.5) (format=latex 2006.1.6)  7 APR 2006 16:19
 entering extended mode
 **main_out.tex
 (./main_out.tex
@@ -75,8 +75,7 @@ Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 
 (/usr/share/texmf/tex/latex/config/geometry.cfg
 File: geometry.cfg 2001/06/05 v1.0 teTeX (uncustomised setup)
-))
-No file main_out.aux.
+)) (./main_out.aux)
 \openout1 = `main_out.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
@@ -94,6 +93,7 @@ LaTeX Font Info:    ... okay on input line 15.
 LaTeX Font Info:    Checking defaults for OT2/wncyr/m/n on input line 15.
 LaTeX Font Info:    Try loading font information for OT2+wncyr on input line 15
 .
+
 (/usr/share/texmf/tex/latex/cyrillic/ot2wncyr.fd
 File: ot2wncyr.fd 1999/12/17 v3.2a Computer Modern Cyrillic font definitions
 )
@@ -160,8 +160,8 @@ File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 [2]) (./affect_var.php.tex) (./print_var.php.tex) (./utilisation_var.php.tex)
 [3] [4] (./main_out.aux) ) 
 Here is how much of TeX's memory you used:
- 1420 strings out of 95370
- 17329 string characters out of 1188186
+ 1422 strings out of 95370
+ 17355 string characters out of 1188186
  70739 words of memory out of 1000001
  4482 multiletter control sequences out of 10000+50000
  17491 words of font info for 42 fonts, out of 500000 for 1000
