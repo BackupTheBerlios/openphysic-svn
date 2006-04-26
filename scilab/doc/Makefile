@@ -9,4 +9,4 @@ $(input).pdf: $(input).tex
 .PHONY: clean $(input).pdf
 
 clean:
-	$(RM) *.aux *.log 
+	$(RM) *.aux *.log *.toc *.mtc* *~ *.pdf semantic.cache
