@@ -21,9 +21,15 @@
 % initialisation du langage
 \lstset{language=Scilab}
 
-\newcommand{\ins}[1]{%
+\newcommand{\ins}[1]{% insérer un fichier Scilab (externe)
 \lstinputlisting{#1}
 }
+
+% \newcommand{\sce}[1]{% colorer un code Scilab (interne)
+% \begin{lstlisting}{}
+% #1
+% \end{lstlisting}
+% }
 
 
 % Titre
@@ -70,15 +76,23 @@
 }
 
 
-% \chapitre{Test}
-% \section{Test}
-% \begin{lstlisting}{}
+\chapitre{Test}
+\section{Test}
+\begin{lstlisting}{}
+A = [1 2 3];
+B = [1 2 3];
+C = A + B;
+xbasc(); // ceci est un test accentué
+\end{lstlisting}
+
+
+% \section{Test 2}
+% \sce{
 % A = [1 2 3];
 % B = [1 2 3];
 % C = A + B;
-% xbasc();
-% \end{lstlisting}
-
+% xbasc(); // ceci est un test accentué
+% }
 
 \chapitre{Mécanique}
 
@@ -218,6 +232,12 @@
 
 \section{Transformation de Laplace}
 
+
+
+\chapitre{Automatique}
+%\section{}
+% Bode Black Nyquist
+% Non linéaire (Plan de phase)
 
 
 
