@@ -42,9 +42,31 @@
 
 \usepackage{titlesec}
 
-\newcommand{\classe}[2]{%
+% \newcommand{\classe}[2]{%
+% \newpage
+% \addcontentsline{toc}{part}{{\LARGE #2}}
+% \razpage
+% \setcounter{part}{0}
+% \thispagestyle{empty}
+% \begin{Huge}
+% \vspace*{\stretch{3}}
+% \begin{framed}
+% \begin{center}
+% \textbf{#1}
+% \end{center}
+% \end{framed}
+% \vspace*{\stretch{3}}
+% \end{Huge}
+% \newpage
+% \null
+% \thispagestyle{empty}
+% }
+
+
+\newcommand{\classe}[2][\DefaultOpt]{%
+\def\DefaultOpt{#2}%
 \newpage
-\addcontentsline{toc}{part}{{\LARGE #2}}
+\addcontentsline{toc}{part}{{\LARGE #1}}
 \razpage
 \setcounter{part}{0}
 \thispagestyle{empty}
@@ -52,7 +74,7 @@
 \vspace*{\stretch{3}}
 \begin{framed}
 \begin{center}
-\textbf{#1}
+\textbf{#2}
 \end{center}
 \end{framed}
 \vspace*{\stretch{3}}
@@ -61,7 +83,6 @@
 \null
 \thispagestyle{empty}
 }
-
 
 
 
