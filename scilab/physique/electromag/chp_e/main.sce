@@ -4,7 +4,7 @@
 OA = [-1 0 0]; // en m
 q = [1]; // en C
 
-//Charge nÃ©gative seule
+//Charge négative seule
 //OA = [-1 0 0]; // en m
 //q = [-1]; // en C
 
@@ -20,14 +20,14 @@ q = [1]; // en C
 
 Ncharge = size(q,'r');
 
-// Point oÃ¹ l'on calcule le champ 
+// Point où l'on calcule le champ 
 OM = [2 2 0]; // en m
 
 // Constantes
 epsilon0 = 8.85418781762E-12;
 ke = 1/(4*%pi*epsilon0);
 
-// DÃ©finition des bornes de l'espace
+// Définition des bornes de l'espace
 xmin = -2; xmax = 2; xstep = 0.1; xlist=xmin:xstep:xmax;
 ymin = -2; ymax = 2; ystep = 0.1; ylist=ymin:ystep:ymax;
 //zmin = -2; zmax = 2; zstep = 0.1; zlist=zmin:zstep:zmax;
@@ -48,10 +48,10 @@ z = 0;
          for i=1:Ncharge,
             OM = [x y z];
 
-            // Vecteur charge -> point oÃ¹ on mesure le champ
+            // Vecteur charge -> point où on mesure le champ
             AM = OM - OA(i,:);
 
-            // Calcul du champ Ã©lectrique E
+            // Calcul du champ électrique E
             if norm(AM) <> 0 then
                E = E + ke * q(i,1) / norm(AM)^3 * AM;
                V = V + ke * q(i,1) / norm(AM);

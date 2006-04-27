@@ -1,4 +1,4 @@
-// Loi de dÃ©croissance radioactive
+// Loi de décroissance radioactive
 // ===============================
 
 // S. Celles
@@ -7,32 +7,32 @@
 
 
 // ceci n'est que la partie affichage...
-// Ã§a n'est pas Ã§a le plus important.
-// mais je suis obligÃ© de le dÃ©finir au dÃ©but
+// ça n'est pas ça le plus important.
+// mais je suis obligé de le définir au début
 // pour pouvoir l'appeler ensuite dans le programme
 function affiche_noyaux()
-	M = zeros(sqrtN,sqrtN); // matrice carrÃ©e remplie de zeros
+	M = zeros(sqrtN,sqrtN); // matrice carrée remplie de zeros
 
-	// on remplit la matrice avec la liste des noyaux (radioactifs ou dÃ©sintÃ©grÃ©s)
+	// on remplit la matrice avec la liste des noyaux (radioactifs ou désintégrés)
    for i=1:sqrtN // ligne
      for j=1:sqrtN // colonne
        M(i,j)=ELT(j+(i-1)*sqrtN);
      end
    end
 
-	// on applique la rÃ©gle de couleur suivante :
+	// on applique la régle de couleur suivante :
 	//  noir : noyau radioactif
-	//  blanc : noyau dÃ©sintÃ©grÃ©
+	//  blanc : noyau désintégré
 	M=M*(color("black")-color("white"))+color("white"); 
 	
 	// on dessine les noyaux !
-	//xbasc() // on efface l'Ã©cran
+	//xbasc() // on efface l'écran
 	Matplot(M)
 
 endfunction
 
 function affiche_courbe()
-  //xbasc() // effacer l'Ã©cran
+  //xbasc() // effacer l'écran
   plot(Nlist)
 endfunction
 
@@ -51,10 +51,10 @@ function affiche_logn()
 endfunction
 
 function affiche_histo()
-N1=Nlist(1:size(Nlist,'r')-1); // du premier Ã  l'avant dernier
-N2=Nlist(2:size(Nlist,'r')); // du deuxiÃ¨me au dernier
+N1=Nlist(1:size(Nlist,'r')-1); // du premier à l'avant dernier
+N2=Nlist(2:size(Nlist,'r')); // du deuxième au dernier
 Nd=N1-N2;
-// Il faut mainteant calculer les frÃ©quences d'un nombre de dÃ©sintÃ©gration
+// Il faut mainteant calculer les fréquences d'un nombre de désintégration
 histplot(size(Nd,'r'),Nd,normalization=%f)
 endfunction
 
@@ -63,7 +63,7 @@ endfunction
 lines(0);
 
 
-sqrtN = 25; // sqrtN = 25 : 25 lignes et 25 colonnes soit 625 Ã©lÃ©ments (Nb de lignes et de colonnes)
+sqrtN = 25; // sqrtN = 25 : 25 lignes et 25 colonnes soit 625 éléments (Nb de lignes et de colonnes)
 
 Nini = sqrtN^2
 
@@ -73,9 +73,9 @@ lambda = 0.2
 // Initialisation
 
 j=0; // nb de tirage
-ELT = ones(Nini,1); // Matrice colonne reprÃ©sentant
+ELT = ones(Nini,1); // Matrice colonne représentant
   // les atomes radioactifs (1)
-  // ou les atomes dÃ©sintÃ©grÃ©s (0)
+  // ou les atomes désintégrés (0)
 // Initialement tous les atomes sont radioactifs
 
 
@@ -95,7 +95,7 @@ while (sum(ELT)>0)
 
   for i=1:Nini
   	 rnd = rand(); // tirage au sort d'un nombre rnd entre 0 et 1
-  	 if rnd<lambda	 // rnd est infÃ©rieur Ã  lamdba le noyau est dÃ©sintÃ©grÃ©
+  	 if rnd<lambda	 // rnd est inférieur à lamdba le noyau est désintégré
       ELT(i,1) = 0;
     end
    	// sinon il reste tel quel ! (on ne fait rien)
@@ -111,9 +111,9 @@ end
 printf("Tous les noyaux radioactifs sont desintegres\n");
 
 // L'allure de la courbe N=f(t) est une exponentielle
-// On le vÃ©rifie en traÃ§ant log(N)
-// Dans Scilab log = log nÃ©pÃ©rien et log10 = log dÃ©cimal
-// Il faut Ã©liminer le dernier point (0)
+// On le vérifie en traçant log(N)
+// Dans Scilab log = log népérien et log10 = log décimal
+// Il faut éliminer le dernier point (0)
 // car log(0) tend vers l'infini
 
 
@@ -124,9 +124,9 @@ affiche_logn();
 
 //halt(),
 
-// On veux montrer le caractÃ¨re alÃ©atoire d'une dÃ©sintÃ©gration radioactive
+// On veux montrer le caractère aléatoire d'une désintégration radioactive
 // On trace un histogramme
-//  y : nombre de fois oÃ¹ l'on dÃ©tecte n dÃ©sintÃ©grations
-//  x : nombre  de dÃ©sintÃ©grations (intervalles)
+//  y : nombre de fois où l'on détecte n désintégrations
+//  x : nombre  de désintégrations (intervalles)
 //xbasc()
 //affiche_histo()

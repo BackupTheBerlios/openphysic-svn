@@ -2,6 +2,7 @@ input=main
 
 all:
 	$(MAKE) $(input).pdf
+	xpdf $(input).pdf &
 
 $(input).pdf: $(input).tex
 	pdflatex $<
