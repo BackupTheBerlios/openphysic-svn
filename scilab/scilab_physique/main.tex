@@ -18,8 +18,19 @@
 \begin{document}
 
 % insertion de code source
-% initialisation du langage
-\lstset{language=Scilab}
+\lstset{%
+%  showspaces = \true,
+%  showtabs = true,
+%  tab = \rightarrowfill,
+  basicstyle = \small,
+  language=Scilab, % choix du langage Scilab
+  extendedchars=true % contre les problèmes avec les accents
+  % limitation à x caractères horizontalement 
+%  frame = single % cadre ?
+} 
+
+
+
 
 \newcommand{\ins}[1]{% insérer un fichier Scilab (externe)
 \lstinputlisting{#1}
@@ -30,6 +41,8 @@
 % #1
 % \end{lstlisting}
 % }
+
+% \lstinline!...!
 
 
 % Titre
