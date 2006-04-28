@@ -10,6 +10,8 @@
 \usepackage{listings} % insertion de code source
 % voir aussi : lgrind 
 
+%\usepackage{bbding}
+
 \title{Utilisation de Scilab\\ en Sciences Physiques}
 \author{Sébastien \textsc{CELLES}}
 \date{\today} 
@@ -23,9 +25,12 @@
 %  showtabs = true,
 %  tab = \rightarrowfill,
   basicstyle = \small,
-  language=Scilab, % choix du langage Scilab
-  extendedchars=true % contre les problèmes avec les accents
-  % limitation à x caractères horizontalement 
+  language = Scilab, % choix du langage Scilab
+  extendedchars = true, % contre les problèmes avec les accents
+  breaklines = true, % retour à la ligne
+  breakindent = 10pt,
+  prebreak = \mbox{$\ \hookleftarrow$}, %\mbox{\ \ldots\ }, %\ArrowBoldDownRight % $\hookleftarrow$, % caractère avant le retour à la ligne
+  postbreak = \mbox{\ \ldots\ }, %\dots,  %\space, % caractère après le retour à la ligne
 %  frame = single % cadre ?
 } 
 
@@ -97,6 +102,9 @@ B = [1 2 3];
 C = A + B;
 xbasc(); // ceci est un test accentué
 \end{lstlisting}
+
+
+Mon texte $\hookleftarrow$ $\cdots$ \dots
 
 
 % \section{Test 2}
