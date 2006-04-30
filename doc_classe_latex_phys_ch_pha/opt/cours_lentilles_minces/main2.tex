@@ -1,19 +1,413 @@
 \cours{Les lentilles minces}
+
  
+\newcommand{\optminilcv}{%
+\begin{center}
+\begin{pspicture}(-3,-2)(3,2)
+\psline(-3,0)(3,0)
+\psline{<->}(0,2)(0,-2)
+\end{pspicture}
+\end{center}
+}
+
+\newcommand{\optminildv}{%
+\begin{center}
+\begin{pspicture}(-3,-2)(3,2)
+\psline(-3,0)(3,0)
+\psline{>-<}(0,2)(0,-2)
+\end{pspicture}
+\end{center}
+}
+
 
 \section{Qu'est-ce qu'une lentille ?}
 
 \subsection{Définition}
+Les instruments optiques: loupe, verres de lunettes, objectif
+photographique, microscope, lunette astronomique s'obtiennent par
+association de lentilles.
+
+
+Une lentille mince est un milieu transparent (verre, plexiglas, eau)
+limité par 2 calottes sphériques ou une calotte sphérique et 1 plan.
 
 \subsection{Les différents types de lentilles}
+%On peut distinguer 2 types de lentilles
 
-\subsection{Caractéristiques de lentilles monces}
+\subsubsection{Lentilles à bords minces}
+% schéma cv
+
+
+\vspace{2cm}
+\begin{multicols}{3}
+\caption{Biconvexe}
+
+%
+\caption{Plan convexe}
+
+%
+\caption{Ménisque convergent}
+\end{multicols}
+
+
+\vspace{2cm}
+\caption{Les pinceaux lumineux sortent de la lentille en
+  \emph{convergeant} vers un point commun.}
+
+
+\subsubsection{Lentilles à bords épais}
+% schéma db
+
+\vspace{2cm}
+\begin{multicols}{3}
+%
+\caption{Biconcave}
+
+%
+\caption{Plan concave}
+
+%
+\caption{Ménisque divergent}
+\end{multicols}
+
+\vspace{2cm}
+\caption{Les pinceaux lumineux sortent de la lentille en
+  \emph{divergeant}.}
+
+
+
+
+
+
+\subsection{Caractéristiques des lentilles minces}
+
+\subsubsection{L'approximation de la lentille \emph{mince}}
+On nomme $R_1$ et $R_2$ les rayons des calottes sphériques et $e$
+l'épaisseur de la lentille.
+
+
+La lentille peut être considérée comme \emph{mince} si $e << R$ (en
+général, on dit que c'est le cas lorsque $e < \frac{R}{10}$.
+
+
+Nous nous limiterons à l'étude des lentilles minces, car celle des
+lentilles épaisses est beaucoup trop complexe.
+
+
+%\begin{pspicture}(-3,-2)(3,2)
+%\null
+%\end{pspicture}
+
+
+\newpage
+
+\subsubsection{L'axe optique $\Delta$}
+L'axe optique d'une lentille (généralement noté $\Delta$) est l'axe de
+symétrie (symétrie de révolution) de la lentille. Il passe par $C_1$
+et $C_2$.
+
+
+\subsubsection{Schématisation}
+Les lentilles se schématisent de la façon suivante :
+
+
+\begin{multicols}{2}
+\optminilcv
+\caption{Lentille .............................}
+
+\optminildv
+\caption{Lentille .............................}
+\end{multicols}
+
+
+\subsection{Le centre optique $O$}
+Le centre optique est le point d'intersection de la lentille mince avec
+l'axe optique.
+
+
+Un rayon lumineux qui passe par le centre optique d'une lentille mince
+n'est pas dévié.
+
+
+
+\begin{multicols}{2}
+\optminilcv
+
+
+\optminildv
+
+\end{multicols}
 
 \section{Les lentilles convergentes}
 
 
+\subsection{Le foyer image $F'$}
+\optminilcv
+Tout rayon incident parallèle à l'axe optique de la lentille sort en
+passant par un point particulier appelé foyer image $F'$.
+
+\subsection{Le foyer objet $F$}
+\optminilcv
+Tout rayon passant par un point particulier appelé foyer objet $F$, sort
+de la lentille parallèlement à l'axe optique. 
+
+\remarque{%
+Le foyer objet $F$ et le foyer image $F'$ sont symétriques
+  par rapport au centre optique $O$ de la lentille.
+}
+
+
+\vressort{1}
+\subsection{La distance focale $f'$}
+La valeur algébrique $\ma{OF'}$ (longueur orientée suivant la
+convention donnée dans le schéma) représente la
+distance focale de la lentille.
+
+\optminilcv
+
+\formule{\ma{OF'} = f' > 0 \mbox{ pour une lentille convergente}}
+
+
+\begin{unites}
+\item $f'$ en mètre
+\end{unites}
+
+\vressort{1}
+
+
+\subsection{Les plans focaux}
+Le \emph{plan focal image} est le plan passant par $F'$
+perpendiculaire à l'axe optique.
+
+Le \emph{plan focal objet} est le plan passant par $F$ perpendiculaire à l'axe
+optique.
+
+On observe l'image d'un objet placé très loin devant la lentille (on
+dit à l'infini $\infty$) sur un écran placé dans le plan focal image.
+
+\vressort{1}
+
+\subsection{La vergence}
+
+Les opticiens utilisent la \emph{vergence} (notée $C$) pour caractériser les
+lentilles.
+
+
+La vergence est l'inverse de la distance focale $f'$ :
+
+\formule{C = \frac{1}{\ma{OF'}} = \frac{1}{f'}}
+
+
+\begin{unites}
+\item $C$ en dioptrie ($\delta$)
+\item $f'$ en mètre
+\end{unites}
+
+\medskip
+
+Pour une lentille convergente $C > 0$.
+
+
+\newpage
+
+\subsection{Images données par une lentille convergente}
+
+\subsubsection{Projection d'une image sur un écran}
+
+\vressort{1}
+
+\begin{center}
+\begin{pspicture}(-7,-2)(7,2)
+%\psgrid[subgriddiv=1,griddots=10]
+
+\psline{->}(-7,1.5)(-6.5,1.5)
+\rput(-6.75,1.25){$+$}
+\psline{->}(-7,1.5)(-7,2)
+\rput(-7.25,1.75){$+$}
+
+\pnode(-5,0){A}
+\pnode(-5,1){B}
+
+\psline{->}(A)(B)
+\uput{0.1}[225](A){$A$}
+\uput{0.1}[225](B){$B$}
+
+\psline{<->}(0,-2)(0,2)
+\rput(-0.25,-0.25){$O$}
+
+\psline(2,-0.1)(2,+0.1)
+\rput(2,-0.25){$F'$}
+
+\psline(-2,-0.1)(-2,+0.1)
+\rput(-2,-0.25){$F$}
+
+\psline{->}(-7,0)(7,0)
+\end{pspicture}
+\end{center}
+
+
+\vressort{1}
+
+\emph{Nature :} \hressort{3}
+L'objet est ................................. \hressort{1} 
+L'image est .................................
+%\hressort{3}
+
+\vressort{1}
+
+\emph{Sens de l'image : } ................................. \hressort{3}
+\emph{Taille de l'image : } .................................
+
+
+\vressort{1}
+
+\emph{Position de l'image : } on peut trouver la position de l'image
+connaissant la position de l'objet et la distance focale de la
+lentille à l'aide d'une \emph{formule de conjugaison}
+(voir paragraphe «~Relations de conjugaisons~»)
+
+
+\vressort{1}
+
+
+\emph{Grandissement} : le grandissement $\gamma$ de l'image est le
+rapport de la taille de l'image sur la taille de l'objet. C'est une
+grandeur \emph{algébrique}.
+
+
+
+\formule{\gamma = \rapportma{A'B'}{AB}}
+
+
+
+\begin{center}
+\begin{pspicture}(-7,-2)(7,2)
+\psline{->}(-7,0)(7,0)
+\psline(-2.828,0.1)(-2.828,-0.1) \rput{0}(-2.828,-0.3){$-1$}
+\psline(2.828,0.1)(2.828,-0.1)   \rput{0}(2.828,-0.3){$1$}
+\psline(0,0.1)(0,-0.1)   \rput{0}(0,-0.3){$0$}
+\rput{0}(7,-0.3){$\gamma$}
+
+\rput{0}(-6,2){sens de l'image}
+\rput{0}(-6,-2){taille de l'image}
+\end{pspicture}
+\end{center}
+
+
+
+\vressort{3}
+
+\subsubsection{Observer une image à l'aide d'une loupe}
+
+\vressort{1}
+
+\begin{center}
+\begin{pspicture}(-7,-2)(7,2)
+%\psgrid[subgriddiv=1,griddots=10]
+
+\psline{->}(-7,1.5)(-6.5,1.5)
+\rput(-6.75,1.25){$+$}
+\psline{->}(-7,1.5)(-7,2)
+\rput(-7.25,1.75){$+$}
+
+\pnode(-3.5,0){A}
+\pnode(-3.5,1){B}
+
+\psline{->}(A)(B)
+\uput{0.1}[225](A){$A$}
+\uput{0.1}[225](B){$B$}
+
+\psline{<->}(0,-2)(0,2)
+\rput(-0.25,-0.25){$O$}
+
+\rput{0}(5,0){%
+\psline(0,-0.1)(0,+0.1)
+\rput(0,-0.25){$F'$}
+}
+
+\rput{0}(-5,0){%
+\psline(0,-0.1)(0,+0.1)
+\rput(0,-0.25){$F$}
+}
+
+\psline{->}(-7,0)(7,0)
+\end{pspicture}
+\end{center}
+
+\vressort{1}
+
+\emph{Nature :} \hressort{3}
+L'objet est ................................. \hressort{3} 
+L'image est .................................
+%\hressort{3}
+
+\vressort{1}
+
+\emph{Sens de l'image : } ................................. \hressort{1}
+\emph{Taille de l'image : } .................................
+
+\vressort{1}
+
+%\emph{Position de l'image} : 
+%\vressort{1}
+
+
+\emph{Grossissement d'une loupe : }
+L'impression de grandeur est liée non pas à la dimension absolue de
+l'objet regardé mais à son diamètre apparent (angle sous lequel il est
+vu). C'est pourquoi pour les instruments oculaires où le récepteur est
+l'oeil, on définit le \emph{grossissement} $G$ qui caractérise
+numériquement le bénéfice tiré par l'oeil.
+
+
+\formule{G = \frac{\alpha}{\alpha'}}
+
+\begin{small}
+\begin{unites}
+\item $\alpha$ : angle sous lequel on voit l'image donnée par la loupe.
+\item $\alpha'$ : angle sous lequel on voit l'objet à l'oeil nu et dans
+  les meilleures conditions donc à la distance minimale de vision
+  distincte $d_m$.
+\end{unites}
+\end{small}
+
+
+
+\todo{}
+
+
+\newpage
 
 \section{Les lentilles divergentes}
+
+% pas pour les 1S
+
+\subsection{Le foyer image $F'$}
+\optminildv
+Tout rayon incident parallèle à l'axe optique émerge de la lentille
+en semblant provenir d'un point particulier : le foyer $F'$.
+
+\subsection{Le foyer objet $F$}
+\optminildv
+Tout rayon lumineux incident, arrivant sur la lentille divergente en
+semblant passer par le foyer objet $F$ sort de la lentille,
+parallèlement à l'axe optique.
+
+\subsection{La distance focale $f'$}
+La valeur algébrique $\ma{OF'}$ (longueur orientée suivant la
+convention donnée dans le schéma) représente la
+distance focale de la lentille.
+
+\[
+\ma{OF'} = f' < 0 \mbox{ pour une lentille divergente}
+\]
+
+\begin{unites}
+\item $f'$ en mètre
+\end{unites}
+
+\subsection{La vergence}
+Pour une lentille divergente $C < 0$.
 
 
 \newpage
@@ -22,8 +416,12 @@
 
 \newpage
 
+
+
+
 \section*{Relations de grandissement}
 
+\setcounter{subsection}{0}
 
 \begin{center}
 \begin{pspicture}(-7,-2)(7,2)
@@ -197,3 +595,7 @@ $\ma{F'A'} = x'$ &  distance foyer image - image \\
 \subsubsection*{Grandissement}
 \formule{\gamma = \rapportma{A'B'}{AB} = \frac{p'}{p} = -\frac{f}{x} =
   -\frac{x'}{f'}}
+
+
+%\newpage
+

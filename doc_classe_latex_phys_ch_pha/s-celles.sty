@@ -813,6 +813,19 @@ dans l'appréciation des copies.
 }
 
 
+\newcommand{\optconvorient}{% convention d'orientation
+\psline{->}(0,0)(0.5,0)
+\psline{->}(0,0)(0,0.5)
+\rput{0}(0.25,-0.25){$+$}
+\rput{0}(-0.25,0.25){$+$}
+}
+
+\newcommand{\optobjab}{% objet AB
+\psline{->}(0,0)(0,1)
+\rput{0}(-0.25,-0.25){$A$}
+\rput{0}(-0.25,1.25){$B$}
+}
+
 \newcommand{\optlcvdv}[4]{
 \begin{pspicture}(-10,-2)(7,2)
 %\psgrid[subgriddiv=1,griddots=10]
@@ -871,8 +884,10 @@ dans l'appréciation des copies.
 \endpsclip}%
 
 
-
-
+\newcommand{\optsyst}[1]{%
+\ $\overset{\small #1}{\longrightarrow}$
+}
+% $AB$ \optsyst{M_1} $A_1B_1$
 
 
 \usepackage{framed} % encadre des paragraphes entiers
@@ -1542,3 +1557,8 @@ $\displaystyle {}_{#2}^{#3} \mbox{#1}$
 
 
 
+\newcommand{\todo}[1]{%
+\begin{center}
+\fbox{\emph{\`A faire !!!} #1}
+\end{center}
+}
