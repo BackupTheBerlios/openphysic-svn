@@ -1,11 +1,9 @@
 \cours{Les lentilles minces}
 
 
-\vressort{1}
+
 
 \section{Qu'est-ce qu'une lentille ?}
-
-\vressort{1}
 
 \subsection{Définition}
 Les instruments optiques: loupe, verres de lunettes, objectif
@@ -16,102 +14,57 @@ association de lentilles.
 Une lentille mince est un milieu transparent (verre, plexiglas, eau)
 limité par 2 calottes sphériques ou une calotte sphérique et 1 plan.
 
-
-\vressort{1}
-
 \subsection{Les différents types de lentilles}
 %On peut distinguer 2 types de lentilles
-
-\vressort{1}
 
 \subsubsection{Lentilles à bords minces}
 % schéma cv
 
 
-%\vspace{2cm}
+\vspace{2cm}
 \begin{multicols}{3}
-
-\begin{center}
-\includegraphics[height=2cm]{lcv_biconvexe.png.eps}
-\end{center}
-\vspace{-0.5cm}
 \caption{Biconvexe}
 
-\begin{center}
-\includegraphics[height=2cm]{lcv_plan_convexe.png.eps}
-\end{center}
-\vspace{-0.5cm}
+%
 \caption{Plan convexe}
 
-\begin{center}
-\includegraphics[height=2cm]{lcv_menisque_convergent.png.eps}
-\end{center}
-\vspace{-0.5cm}
+%
 \caption{Ménisque convergent}
 \end{multicols}
 
 
-%\vspace{2cm}
-
-
-\begin{center}
-\includegraphics{lcv.png.eps}
-\end{center}
-\vspace{-0.5cm}
+\vspace{2cm}
 \caption{Les pinceaux lumineux sortent de la lentille en
   \emph{convergeant} vers un point commun.}
 
-\vressort{1}
 
 \subsubsection{Lentilles à bords épais}
 % schéma db
 
-%\vspace{2cm}
+\vspace{2cm}
 \begin{multicols}{3}
-
-\begin{center}
-\includegraphics[height=2cm]{ldv_biconcave.png.eps}
-\end{center}
-\vspace{-0.5cm}
+%
 \caption{Biconcave}
 
-\begin{center}
-\includegraphics[height=2cm]{ldv_plan_concave.png.eps}
-\end{center}
-\vspace{-0.5cm}
+%
 \caption{Plan concave}
 
-\begin{center}
-\includegraphics[height=2cm]{ldv_menisque_divergent.png.eps}
-\end{center}
-\vspace{-0.5cm}
+%
 \caption{Ménisque divergent}
-
 \end{multicols}
 
-%\vspace{2cm}
-
-\begin{center}
-\includegraphics{ldv.png.eps}
-\end{center}
-\vspace{-0.5cm}
+\vspace{2cm}
 \caption{Les pinceaux lumineux sortent de la lentille en
   \emph{divergeant}.}
 
 
 
 
-\newpage
+
 
 \subsection{Caractéristiques des lentilles minces}
 
 \subsubsection{L'approximation de la lentille \emph{mince}}
-
-\begin{center}
-\includegraphics{lentille_epaisse.png.eps}
-\caption{Dimensions d'une lentille}
-\end{center}
-
 On nomme $R_1$ et $R_2$ les rayons des calottes sphériques et $e$
 l'épaisseur de la lentille.
 
@@ -129,16 +82,13 @@ lentilles épaisses est beaucoup trop complexe.
 %\end{pspicture}
 
 
-%\newpage
-
-\vressort{1}
+\newpage
 
 \subsubsection{L'axe optique $\Delta$}
 L'axe optique d'une lentille (généralement noté $\Delta$) est l'axe de
 symétrie (symétrie de révolution) de la lentille. Il passe par $C_1$
 et $C_2$.
 
-\vressort{1}
 
 \subsubsection{Schématisation}
 Les lentilles se schématisent de la façon suivante :
@@ -151,9 +101,6 @@ Les lentilles se schématisent de la façon suivante :
 \optminildv
 \caption{Lentille .............................}
 \end{multicols}
-
-
-\vressort{1}
 
 
 \subsection{Le centre optique $O$}
@@ -174,26 +121,16 @@ n'est pas dévié.
 
 \end{multicols}
 
-
-%\vressort{1}
-
-\newpage
-
 \section{Les lentilles convergentes}
 
 
 \subsection{Le foyer image $F'$}
-\begin{multicols}{2}
 \optminilcv
-
 Tout rayon incident parallèle à l'axe optique de la lentille sort en
 passant par un point particulier appelé foyer image $F'$.
-\end{multicols}
 
 \subsection{Le foyer objet $F$}
-\begin{multicols}{2}
 \optminilcv
-
 Tout rayon passant par un point particulier appelé foyer objet $F$, sort
 de la lentille parallèlement à l'axe optique. 
 
@@ -201,28 +138,24 @@ de la lentille parallèlement à l'axe optique.
 Le foyer objet $F$ et le foyer image $F'$ sont symétriques
   par rapport au centre optique $O$ de la lentille.
 }
-\end{multicols}
 
 
-%\vressort{1}
-
+\vressort{1}
 \subsection{La distance focale $f'$}
-
-\begin{multicols}{2}
-\optminilcv
-
 La valeur algébrique $\ma{OF'}$ (longueur orientée suivant la
 convention donnée dans le schéma) représente la
 distance focale de la lentille.
 
+\optminilcv
+
 \formule{\ma{OF'} = f' > 0 \mbox{ pour une lentille convergente}}
-\end{multicols}
+
 
 \begin{unites}
 \item $f'$ en mètre
 \end{unites}
 
-%\vressort{1}
+\vressort{1}
 
 
 \subsection{Les plans focaux}
@@ -232,18 +165,10 @@ perpendiculaire à l'axe optique.
 Le \emph{plan focal objet} est le plan passant par $F$ perpendiculaire à l'axe
 optique.
 
-%On observe l'image d'un objet placé très loin devant la lentille (on
-%dit à l'infini $\infty$) sur un écran placé dans le plan focal image.
+On observe l'image d'un objet placé très loin devant la lentille (on
+dit à l'infini $\infty$) sur un écran placé dans le plan focal image.
 
-\begin{multicols}{2}
-\optminilcv
-\caption{Plan focal image}
-
-\optminilcv
-\caption{Plan focal objet}
-\end{multicols}
-
-%\vressort{1}
+\vressort{1}
 
 \subsection{La vergence}
 
@@ -266,7 +191,7 @@ La vergence est l'inverse de la distance focale $f'$ :
 Pour une lentille convergente $C > 0$.
 
 
-%\newpage
+\newpage
 
 \subsection{Images données par une lentille convergente}
 
@@ -353,14 +278,9 @@ grandeur \emph{algébrique}.
 
 
 
-%\vressort{3}
-
-\newpage
+\vressort{3}
 
 \subsubsection{Observer une image à l'aide d'une loupe}
-
-On place l'objet entre le centre optique $O$ et le foyer objet $F$.
-
 
 \vressort{1}
 
@@ -434,59 +354,9 @@ numériquement le bénéfice tiré par l'oeil.
 \end{unites}
 \end{small}
 
-\begin{multicols}{2}
-\begin{center}
-\includegraphics{loupe2a.png.eps}
-\caption{L'oeil voit $AB$ dans les meilleures conditions sous un angle
-  $\alpha$.}
-\end{center}
 
 
-\begin{center}
-\includegraphics{loupe2b.png.eps}
-\caption{Observation de A'B' quand l'oeil n'accomode pas.}
-\end{center}
-\end{multicols}
-
-
-
-
-$G$ dépend des caractéristiques de l'oeil et de la loupe. Pour
-comparer sans ambiguïté deux loupes, on définit le \emph{grossissement
-  commercial $G_c$}
-
-
-\begin{itemize}
-\item On choisit $d_m = 25~cm$
-
-\item On suppose que l'oeil est placé au foyer image $F'$ de la loupe.
-
-\item On suppose que l'oeil \emph{n'accomode pas}, ce qui revient à placer
-l'objet dans le plan focal objet de la loupe.
-
-\item Dans ces conditions, les angles sont petits et exprimés en
-  radians :
-
-\[
-\tan(\alpha) \approx \alpha \approx = \frac{AB}{0,25} = 4 A B
-\]
-
-
-\[
-\tan(\alpha') \approx \frac{AB}{f'}
-\]
-
-\end{itemize}
-
-\formule{G_c = \frac{\alpha'}{\alpha} = \frac{1}{4 f'} = \frac{C}{4}}
-
-
-Un grossissement commercial inférieur à $1$ n'a pas d'intérêt, la
-vergence $C$ de la lentille convergente utilisée doit donc être
-supérieure à $4~\delta$.
-
-
-%\todo{}
+\todo{}
 
 
 \newpage
@@ -495,25 +365,16 @@ supérieure à $4~\delta$.
 
 % pas pour les 1S
 
-
-\vressort{1}
-
-
 \subsection{Le foyer image $F'$}
 \optminildv
 Tout rayon incident parallèle à l'axe optique émerge de la lentille
-en semblant provenir d'un point particulier : le foyer image $F'$.
-
-\vressort{1}
-
+en semblant provenir d'un point particulier : le foyer $F'$.
 
 \subsection{Le foyer objet $F$}
 \optminildv
 Tout rayon lumineux incident, arrivant sur la lentille divergente en
 semblant passer par le foyer objet $F$ sort de la lentille,
 parallèlement à l'axe optique.
-
-\vressort{1}
 
 \subsection{La distance focale $f'$}
 La valeur algébrique $\ma{OF'}$ (longueur orientée suivant la
@@ -528,15 +389,13 @@ distance focale de la lentille.
 \item $f'$ en mètre
 \end{unites}
 
-\vressort{1}
-
 \subsection{La vergence}
 Pour une lentille divergente $C < 0$.
 
 
-% \newpage
+\newpage
 
-% \null
+\null
 
 \newpage
 

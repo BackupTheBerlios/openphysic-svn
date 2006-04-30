@@ -884,10 +884,31 @@ dans l'appréciation des copies.
 \endpsclip}%
 
 
-\newcommand{\optsyst}[1]{%
+\newcommand{\optsyst}[1]{% 
 \ $\overset{\small #1}{\longrightarrow}$
 }
 % $AB$ \optsyst{M_1} $A_1B_1$
+%     M1
+% AB ---> A1B1
+
+ 
+\newcommand{\optminilcv}{%
+\begin{center}
+\begin{pspicture}(-3,-2)(3,2)
+\psline(-3,0)(3,0)
+\psline{<->}(0,2)(0,-2)
+\end{pspicture}
+\end{center}
+}
+
+\newcommand{\optminildv}{%
+\begin{center}
+\begin{pspicture}(-3,-2)(3,2)
+\psline(-3,0)(3,0)
+\psline{>-<}(0,2)(0,-2)
+\end{pspicture}
+\end{center}
+}
 
 
 \usepackage{framed} % encadre des paragraphes entiers
