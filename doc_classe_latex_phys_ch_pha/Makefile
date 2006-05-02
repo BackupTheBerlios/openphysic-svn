@@ -4,7 +4,7 @@ page=0
 
 dvi_viewer=xdvi
 ps_viewer=gv
-pdf_viewer=acroread #xpdf
+pdf_viewer=gv #acroread #xpdf
 
 do=view-ps
 
