@@ -2,8 +2,9 @@
 
 
 
-\vressort{3}
+\vressort{1}
 
+%\vspace{-0.75cm}
 
 
 \section{La propagation de la lumière}
@@ -62,6 +63,8 @@ droite.
 \emph{Remarque :} On a représenté ici que les 2 rayons lumineux
 limitant le faisceau ; c'est ce qui est généralement fait.
 
+\emph{Question :} Peut-on voir un rayon lumineux ?
+
 
 \vressort{1}
 
@@ -85,6 +88,10 @@ homogènes.
 \psline(-3,1.5)(0,0) \psline{->}(-3,1.5)(-2,1)
 \rput(-1,1){$i_1$}
 \pswedge(0,0){0.75}{90}{153.4}
+
+% indice milieu
+\rput(2,1){$n_1$}
+\rput(-2,-1){$n_2$}
 
 % rayon réfracté
 %\rput(5.5,1){rayon réfracté}
@@ -129,14 +136,14 @@ séparation.
 $n_{air} = 1$ alors $\sin{i_2} < \sin{i_1}$ soit $i_2 < i_1$.
 
 
-%\newpage
+\newpage
 
 \section{Les objets visibles par l'oeil}
 
 \subsection{Les objets lumineux}
 
 
-%\begin{multicols}{2}
+\begin{multicols}{2}
 
 \begin{center}
 \begin{pspicture}(-2,-2)(5,2)
@@ -184,7 +191,7 @@ Un objet lumineux étendu est considéré comme la juxtaposition d'objets
 lumineux ponctuels.
 
 
-%\end{multicols}
+\end{multicols}
 
 \vressort{1}
 
@@ -304,102 +311,105 @@ constitue une illusion d'optique).
 
 %\newpage
 
-\section{Le miroir plan}
+% \section{Le miroir plan}
 
-\subsection{Structure d'un miroir}
+% \subsection{Structure d'un miroir}
 
-Un miroir est une surface opaque polie ; contrairement à une surface
-opaque non polie, elle réfléchit la lumière au lieu de la diffuser.
-
-
-
-
-\subsection{Lois de Snell-Descartes}
-
-%\begin{multicols}{2}
-
-
-\begin{center}
-\begin{pspicture}(-3,-1)(3,2)
-%\psgrid[subgriddiv=1,griddots=10]
-\psline(-3,0)(3,0)
-\multiput(0,0)(0.25,0){25}{\psline(-3,0)(-3.25,-0.25)}
-
-\psline[linestyle=dashed](0,2)(0,-1)
-
-\psline(-2,2)(0,0) \psline{->}(-2,2)(-1,1)
-\psline(2,2)(0,0) \psline{->}(0,0)(1,1)
-
-\pswedge(0,0){0.75}{90}{135}
-\rput{0}(-0.5,1){$i$}
-
-\pswedge(0,0){0.75}{45}{90}
-\rput{0}(0.5,1){$i'$}
-
-
-\end{pspicture}
-\caption{Réflexion d'un rayon lumineux sur un miroir plan}
-\end{center}
-
-
-\subsubsection{1\iere\ loi de Snell-Descartes sur la réflexion}
-
-Le rayon réfléchi est dans le plan d'incidence.
-
-
-\subsubsection{2\ieme\ loi de Snell-Descartes sur la réflexion}
-
-L'angle de réflexion est égal à l'angle d'incidence.
-
-
-%\end{multicols}
+% Un miroir est une surface opaque polie ; contrairement à une surface
+% opaque non polie, elle réfléchit la lumière au lieu de la diffuser.
 
 
 
-\subsection{Formation de l'image}
+
+% \subsection{Lois de Snell-Descartes}
+
+% %\begin{multicols}{2}
+
 
 % \begin{center}
-% \begin{pspicture}(-3,-2)(3,2)
-% \psgrid[subgriddiv=1,griddots=10]
+% \begin{pspicture}(-3,-1)(3,2)
+% %\psgrid[subgriddiv=1,griddots=10]
+% \psline(-3,0)(3,0)
+% \multiput(0,0)(0.25,0){25}{\psline(-3,0)(-3.25,-0.25)}
+
+% \psline[linestyle=dashed](0,2)(0,-1)
+
+% \psline(-2,2)(0,0) \psline{->}(-2,2)(-1,1)
+% \psline(2,2)(0,0) \psline{->}(0,0)(1,1)
+
+% \pswedge(0,0){0.75}{90}{135}
+% \rput{0}(-0.5,1){$i$}
+
+% \pswedge(0,0){0.75}{45}{90}
+% \rput{0}(0.5,1){$i'$}
+
+
+% \end{pspicture}
+% \caption{Réflexion d'un rayon lumineux sur un miroir plan}
+% \end{center}
+
+
+% \subsubsection{1\iere\ loi de Snell-Descartes sur la réflexion}
+
+% Le rayon réfléchi est dans le plan d'incidence.
+
+
+% \subsubsection{2\ieme\ loi de Snell-Descartes sur la réflexion}
+
+% L'angle de réflexion est égal à l'angle d'incidence.
+
+% \[
+% i = i'
+% \]
+
+% %\end{multicols}
+
+
+
+% \subsection{Formation de l'image}
+
+% % \begin{center}
+% % \begin{pspicture}(-3,-2)(3,2)
+% % \psgrid[subgriddiv=1,griddots=10]
+% % \end{pspicture}
+% % \caption{Formation de l'image $A'$ de l'objet $A$ au travers un
+% %   miroir plan}
+% % \end{center}
+
+% $A'$ est l'image de l'objet $A$ au travers le miroir plan.
+
+
+% Tracez 3 rayons lumineux issus de $A$ et se réfléchissant sur le miroir.
+
+
+% $A'$ est le symétrique de $A$ par rapport au plan du miroir.
+
+
+% L'oeil ne verra $A'$ que s'il est contenu dans le faisceau réfléchi.
+
+% \newpage
+
+% \vressort{3}
+
+% \begin{center}
+% \begin{pspicture}(-8,-12)(8,12)
+% %\psgrid[subgriddiv=1,griddots=10]
+
+% \psline[linewidth=0.05](0,12)(0,-12)
+
+% \multiput(0,0)(0,1){13}{\psline[linewidth=0.05](0,0)(1,-1)}
+% \multiput(0,0)(0,-1){12}{\psline[linewidth=0.05](0,0)(1,-1)}
+
+% \rput{0}(-5,-9){%
+% \psline(-0.125,-0.125)(0.125,0.125)
+% \psline(-0.125,0.125)(0.125,-0.125)
+% \rput{0}(0,-0.5){$A$}
+% }
+
+
 % \end{pspicture}
 % \caption{Formation de l'image $A'$ de l'objet $A$ au travers un
 %   miroir plan}
 % \end{center}
 
-$A'$ est l'image de l'objet $A$ au travers le miroir plan.
-
-
-Tracez 3 rayons lumineux issus de $A$ et se réfléchissant sur le miroir.
-
-
-$A'$ est le symétrique de $A$ par rapport au plan du miroir.
-
-
-L'oeil ne verra $A'$ que s'il est contenu dans le faisceau réfléchi.
-
-\newpage
-
-\vressort{3}
-
-\begin{center}
-\begin{pspicture}(-8,-12)(8,12)
-%\psgrid[subgriddiv=1,griddots=10]
-
-\psline[linewidth=0.05](0,12)(0,-12)
-
-\multiput(0,0)(0,1){13}{\psline[linewidth=0.05](0,0)(1,-1)}
-\multiput(0,0)(0,-1){12}{\psline[linewidth=0.05](0,0)(1,-1)}
-
-\rput{0}(-5,-9){%
-\psline(-0.125,-0.125)(0.125,0.125)
-\psline(-0.125,0.125)(0.125,-0.125)
-\rput{0}(0,-0.5){$A$}
-}
-
-
-\end{pspicture}
-\caption{Formation de l'image $A'$ de l'objet $A$ au travers un
-  miroir plan}
-\end{center}
-
-\vressort{3}
+% \vressort{3}
