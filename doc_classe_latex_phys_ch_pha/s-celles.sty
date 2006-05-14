@@ -64,8 +64,10 @@
 
 
 % itemize avec des puces (rondes) et non des tirets
-\renewcommand*{\FrenchLabelItem}{\textbullet}
-
+\renewcommand*{\FrenchLabelItem}{\smalltextbullet} %\textbullet
+\newcommand*{\smalltextbullet}{%
+  \raisebox{0.5ex - (\height + \depth) / 2}{{\scriptsize \textbullet}}%
+}
 
 \newcommand{\inclure}[1]{
   \graphicspath{%
