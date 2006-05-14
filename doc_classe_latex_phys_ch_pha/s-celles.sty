@@ -20,7 +20,10 @@
 
 
 \usepackage[frenchb]{babel}     % specification francaise
+
 \usepackage[latin1]{inputenc}   % entree clavier latin1
+%\usepackage[utf8x]{inputenc}   % entree clavier unicode
+
 \usepackage[T1]{fontenc}        % sortie
 
 
@@ -58,6 +61,10 @@
 
 % $ svn propset svn:keywords "Id" version.tex 
 %\svnInfoRevision \svnInfoDate \svnInfoFile \svnInfoOwner \svnInfoDay
+
+
+% itemize avec des puces (rondes) et non des tirets
+\renewcommand*{\FrenchLabelItem}{\textbullet}
 
 
 \newcommand{\inclure}[1]{
