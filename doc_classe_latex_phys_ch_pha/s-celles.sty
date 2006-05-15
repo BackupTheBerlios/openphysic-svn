@@ -639,14 +639,21 @@
 %\nomprenomclasse
 }
 
+% \newcommand{\cours}[2][\DefaultOpt]{%
+%   \def\DefaultOpt{#2}%
+%   \chapter[#1]{#2}
+% }
 
-\newcommand{\doc}[1]{%
+
+\newcommand{\doc}[2][\DefaultOpt]{%
+  \def\DefaultOpt{#2}%
    %\newpage
    %\section*{#1}
-  \chapter*{#1}
+  \chapter[#1]{#2}
 %  \setcounter{page}{1} % page ou pagelocal
   \razpage
   \setcounter{section}{0}
+%  \addcontentsline{toc}{chapter}{#1}
 }
 
 \newcommand{\docsuite}[1]{%
@@ -664,15 +671,15 @@
 \end{center}
 }
 
+
 \newcommand{\docsanstitre}[1]{%
-%  \null
-%  \newpage
-  \chapter*{}
-  \vspace*{-0.5cm}
+  \chapter[#1]{\null}  % \chapter[#1]*{} pour ajouter dans la table des matières
+  \vspace*{-3.6cm}
 %  \setcounter{page}{1} % page ou pagelocal
   \razpage
   \setcounter{section}{0}
   \thispagestyle{empty}
+%  \addcontentsline{toc}{chapter}{#1}
 }
 
 \newcommand{\docsuitesanstitre}{%
