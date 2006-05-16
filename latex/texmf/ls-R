@@ -1,6 +1,7 @@
 % ls-R -- filename database for kpathsea; do not change this line.
 ./:
 .:
+bibtex
 doc
 dvips
 fonts
@@ -10,6 +11,12 @@ metapost
 tex
 tex4ht
 tpm
+
+./bibtex:
+bst
+
+./bibtex/bst:
+plain-fr.bst
 
 ./doc:
 fourier
@@ -280,10 +287,8 @@ tmp
 wcprops
 
 ./dvips/utopia/.svn/prop-base:
-utopia.map.svn-base
 
 ./dvips/utopia/.svn/props:
-utopia.map.svn-work
 
 ./dvips/utopia/.svn/text-base:
 utopia.map.svn-base
@@ -2482,24 +2487,8 @@ tmp
 wcprops
 
 ./fonts/source/jknappen/ec/.svn/prop-base:
-ecrm0900.mf.svn-base
-ecrm2488.mf.svn-base
-ecss1000.mf.svn-base
-ecss1200.mf.svn-base
-ecsx0900.mf.svn-base
-ecsx1000.mf.svn-base
-ecti0900.mf.svn-base
-ectt1000.mf.svn-base
 
 ./fonts/source/jknappen/ec/.svn/props:
-ecrm0900.mf.svn-work
-ecrm2488.mf.svn-work
-ecss1000.mf.svn-work
-ecss1200.mf.svn-work
-ecsx0900.mf.svn-work
-ecsx1000.mf.svn-work
-ecti0900.mf.svn-work
-ectt1000.mf.svn-work
 
 ./fonts/source/jknappen/ec/.svn/text-base:
 ecrm0900.mf.svn-base
@@ -2582,10 +2571,8 @@ tmp
 wcprops
 
 ./fonts/source/public/cm/.svn/prop-base:
-cmr10.mf.svn-base
 
 ./fonts/source/public/cm/.svn/props:
-cmr10.mf.svn-work
 
 ./fonts/source/public/cm/.svn/text-base:
 cmr10.mf.svn-base
@@ -4398,16 +4385,10 @@ tmp
 wcprops
 
 ./metapost/m3d/manual/.svn/prop-base:
-m3Dmanmac.tex.svn-base
-m3Dmanual.mp.svn-base
 m3Dmanual.pdf.svn-base
-m3Dmanual.tex.svn-base
 
 ./metapost/m3d/manual/.svn/props:
-m3Dmanmac.tex.svn-work
-m3Dmanual.mp.svn-work
 m3Dmanual.pdf.svn-work
-m3Dmanual.tex.svn-work
 
 ./metapost/m3d/manual/.svn/text-base:
 m3Dmanmac.tex.svn-base
@@ -4449,14 +4430,8 @@ tmp
 wcprops
 
 ./metapost/m3d/mpinputs/.svn/prop-base:
-m3Dlib01.mp.svn-base
-m3Dplain.mp.svn-base
-m3Dsty01.mp.svn-base
 
 ./metapost/m3d/mpinputs/.svn/props:
-m3Dlib01.mp.svn-work
-m3Dplain.mp.svn-work
-m3Dsty01.mp.svn-work
 
 ./metapost/m3d/mpinputs/.svn/text-base:
 m3Dlib01.mp.svn-base
@@ -4492,11 +4467,9 @@ wcprops
 
 ./metapost/m3d/.svn/prop-base:
 @distrib.svn-base
-README.svn-base
 
 ./metapost/m3d/.svn/props:
 @distrib.svn-work
-README.svn-work
 
 ./metapost/m3d/.svn/text-base:
 @distrib.svn-base
@@ -4564,70 +4537,8 @@ tmp
 wcprops
 
 ./metapost/m3d/trials/.svn/prop-base:
-animate-script.svn-base
-m3Danim.100.svn-base
-m3Danim.101.svn-base
-m3Danim.102.svn-base
-m3Danim.103.svn-base
-m3Danim.104.svn-base
-m3Danim.105.svn-base
-m3Danim.106.svn-base
-m3Danim.107.svn-base
-m3Danim.108.svn-base
-m3Danim.109.svn-base
-m3Danim.110.svn-base
-m3Danim.111.svn-base
-m3Danim.112.svn-base
-m3Danim.113.svn-base
-m3Danim.114.svn-base
-m3Danim.115.svn-base
-m3Danim.116.svn-base
-m3Danim.117.svn-base
-m3Danim.118.svn-base
-m3Danim.119.svn-base
-m3Danim.log.svn-base
-m3Danim.mp.svn-base
-m3Dchair.mp.svn-base
-m3Ddirect.mp.svn-base
-m3Dlego.mp.svn-base
-m3Dpicts.mp.svn-base
-m3Dpolyhedron.log.svn-base
-m3Dpolyhedron.mp.svn-base
-m3Dsimpletext.mp.svn-base
-m3Dviviani.mp.svn-base
 
 ./metapost/m3d/trials/.svn/props:
-animate-script.svn-work
-m3Danim.100.svn-work
-m3Danim.101.svn-work
-m3Danim.102.svn-work
-m3Danim.103.svn-work
-m3Danim.104.svn-work
-m3Danim.105.svn-work
-m3Danim.106.svn-work
-m3Danim.107.svn-work
-m3Danim.108.svn-work
-m3Danim.109.svn-work
-m3Danim.110.svn-work
-m3Danim.111.svn-work
-m3Danim.112.svn-work
-m3Danim.113.svn-work
-m3Danim.114.svn-work
-m3Danim.115.svn-work
-m3Danim.116.svn-work
-m3Danim.117.svn-work
-m3Danim.118.svn-work
-m3Danim.119.svn-work
-m3Danim.log.svn-work
-m3Danim.mp.svn-work
-m3Dchair.mp.svn-work
-m3Ddirect.mp.svn-work
-m3Dlego.mp.svn-work
-m3Dpicts.mp.svn-work
-m3Dpolyhedron.log.svn-work
-m3Dpolyhedron.mp.svn-work
-m3Dsimpletext.mp.svn-work
-m3Dviviani.mp.svn-work
 
 ./metapost/m3d/trials/.svn/text-base:
 animate-script.svn-base
@@ -4845,7 +4756,6 @@ fmlfutmi.fd.svn-base
 fmsfutm.fd.svn-base
 fmxfutm.fd.svn-base
 fourier-orns.sty.svn-base
-fourier.sty.backup.svn-base
 fourier.sty.svn-base
 t1futj.fd.svn-base
 t1futs.fd.svn-base
@@ -4861,7 +4771,6 @@ fmlfutmi.fd.svn-work
 fmsfutm.fd.svn-work
 fmxfutm.fd.svn-work
 fourier-orns.sty.svn-work
-fourier.sty.backup.svn-work
 fourier.sty.svn-work
 t1futj.fd.svn-work
 t1futs.fd.svn-work
@@ -4967,14 +4876,17 @@ wcprops
 atvr.ins
 default.ins
 lettre.cls
+lettre.cls~
 lettre.cls.backup
 lycee.ins
+lycee.ins~
 lycee.ins.backup
 modele.aux
 modele.dvi
 modele.log
 modele.ps
 modele.tex
+modele.tex~
 modele.tex.backup
 modele.tns
 moi.ins
@@ -4994,33 +4906,17 @@ wcprops
 ./tex/latex/lettre/.svn/prop-base:
 atvr.ins.svn-base
 default.ins.svn-base
-lettre.cls.backup.svn-base
 lettre.cls.svn-base
-lycee.ins.backup.svn-base
 lycee.ins.svn-base
-modele.aux.svn-base
 modele.dvi.svn-base
-modele.log.svn-base
-modele.ps.svn-base
-modele.tex.backup.svn-base
-modele.tex.svn-base
-modele.tns.svn-base
 moi.ins.svn-base
 
 ./tex/latex/lettre/.svn/props:
 atvr.ins.svn-work
 default.ins.svn-work
-lettre.cls.backup.svn-work
 lettre.cls.svn-work
-lycee.ins.backup.svn-work
 lycee.ins.svn-work
-modele.aux.svn-work
 modele.dvi.svn-work
-modele.log.svn-work
-modele.ps.svn-work
-modele.tex.backup.svn-work
-modele.tex.svn-work
-modele.tns.svn-work
 moi.ins.svn-work
 
 ./tex/latex/lettre/.svn/text-base:
@@ -5072,11 +4968,9 @@ tmp
 wcprops
 
 ./tex/latex/livre/.svn/prop-base:
-livre.cls.backup.svn-base
 livre.cls.svn-base
 
 ./tex/latex/livre/.svn/props:
-livre.cls.backup.svn-work
 livre.cls.svn-work
 
 ./tex/latex/livre/.svn/text-base:
@@ -5220,11 +5114,9 @@ tmp
 wcprops
 
 ./tex/latex/monster2e/.svn/prop-base:
-monster2e.sty.backup.svn-base
 monster2e.sty.svn-base
 
 ./tex/latex/monster2e/.svn/props:
-monster2e.sty.backup.svn-work
 monster2e.sty.svn-work
 
 ./tex/latex/monster2e/.svn/text-base:
@@ -5303,10 +5195,8 @@ tmp
 wcprops
 
 ./tex/latex/perltex/.svn/prop-base:
-perltex.sty.svn-base
 
 ./tex/latex/perltex/.svn/props:
-perltex.sty.svn-work
 
 ./tex/latex/perltex/.svn/text-base:
 perltex.sty.svn-base
@@ -5329,8 +5219,10 @@ wcprops
 
 ./tex/latex/polymaths:
 BeamerPolymaths.sty
+BeamerPolymaths.sty~
 BeamerPolymaths.sty.backup
 polymaths.cls
+polymaths.cls~
 polymaths.cls.backup
 polymathspdf.cls
 .svn
@@ -5347,18 +5239,10 @@ tmp
 wcprops
 
 ./tex/latex/polymaths/.svn/prop-base:
-BeamerPolymaths.sty.backup.svn-base
-BeamerPolymaths.sty.svn-base
-polymaths.cls.backup.svn-base
 polymaths.cls.svn-base
-polymathspdf.cls.svn-base
 
 ./tex/latex/polymaths/.svn/props:
-BeamerPolymaths.sty.backup.svn-work
-BeamerPolymaths.sty.svn-work
-polymaths.cls.backup.svn-work
 polymaths.cls.svn-work
-polymathspdf.cls.svn-work
 
 ./tex/latex/polymaths/.svn/text-base:
 BeamerPolymaths.sty.backup.svn-base
@@ -6198,16 +6082,8 @@ tmp
 wcprops
 
 ./tex/latex/showexpl/.svn/prop-base:
-showexpl.dtx.svn-base
-showexpl.ins.svn-base
-showexpl.log.svn-base
-showexpl.sty.svn-base
 
 ./tex/latex/showexpl/.svn/props:
-showexpl.dtx.svn-work
-showexpl.ins.svn-work
-showexpl.log.svn-work
-showexpl.sty.svn-work
 
 ./tex/latex/showexpl/.svn/text-base:
 showexpl.dtx.svn-base
@@ -6311,6 +6187,7 @@ wcprops
 ./tex/latex/tarassconf:
 .svn
 tarassconf.sty
+tarassconf.sty~
 tarassconf.sty.backup
 
 ./tex/latex/tarassconf/.svn:
@@ -6325,11 +6202,9 @@ tmp
 wcprops
 
 ./tex/latex/tarassconf/.svn/prop-base:
-tarassconf.sty.backup.svn-base
 tarassconf.sty.svn-base
 
 ./tex/latex/tarassconf/.svn/props:
-tarassconf.sty.backup.svn-work
 tarassconf.sty.svn-work
 
 ./tex/latex/tarassconf/.svn/text-base:
@@ -6368,10 +6243,8 @@ tmp
 wcprops
 
 ./tex/latex/varwidth/.svn/prop-base:
-varwidth.sty.svn-base
 
 ./tex/latex/varwidth/.svn/props:
-varwidth.sty.svn-work
 
 ./tex/latex/varwidth/.svn/text-base:
 varwidth.sty.svn-base
