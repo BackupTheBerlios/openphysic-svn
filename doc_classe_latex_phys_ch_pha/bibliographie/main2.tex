@@ -1,6 +1,8 @@
 % «~Simplifiez-vous la bibliographie sous LateX~»
-% D'après GNU/Linux Magazine France Mai 2006 n°83
-
+% D'après GNU/Linux Magazine France Mai 2006 n°83 
+% Cyril Buttay et Florent Morel
+% voir aussi
+% http://www.lsv.ens-cachan.fr/~markey/bibla.php
 
 %% Bibliographie incorporée avec l'environnement thebibliography
 
@@ -36,5 +38,21 @@ L'utilisation de BibTeX est décrite dans \cite{lamport86}.
 Quand nous serons passés à la postérité, le présent article sera cité
 comme suit \cite{cyril_et_florent}.
 
-\bibliographystyle{plain}
+
+
+% voir les styles de biblio BibTeX dans
+% /usr/share/texmf/bibtex/bst
+% http://www.ctan.org/tex-archive/biblio/bibtex/contrib/bib-fr
+% Il faut ajouter les styles de biblio français (*-fr.bst) à tetex
+
+\bibliographystyle{plain-fr}
+% plain : classique, alphabétique, étiquette numérique
+% alpha : idem mais étiquette 3 lettres auteur et 2 chiffre
+% unsrt : étiquette numérique pas de classement (ordre de la biblio)
+% apalike : étiquette auteur-date
+
+
+
+
 \bibliography{bibliographie/bibliographie}
+

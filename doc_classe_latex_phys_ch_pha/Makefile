@@ -38,6 +38,7 @@ pdf2: $(input)_dvips_suite_2.pdf
 
 $(input).dvi: #$(input).tex s-celles.sty elec_intro/main2.tex elec_sin/main2.tex
 	latex $(input).tex
+#	bibtex $(input)
 
 $(input).ps: $(input).dvi
 	dvips $< -o $@
@@ -151,6 +152,7 @@ only.tex:
 
 only.dvi: only.tex
 	latex $<
+#	bibtex only
 
 only.ps: only.dvi
 	dvips $< -o $@
