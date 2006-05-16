@@ -1,0 +1,40 @@
+% «~Simplifiez-vous la bibliographie sous LateX~»
+% D'après GNU/Linux Magazine France Mai 2006 n°83
+
+
+%% Bibliographie incorporée avec l'environnement thebibliography
+
+% \section{Essai de bibliographie incorporée}
+
+% L'utilisation de l'environnement \texttt{thebibliography} est décrite
+% dans \cite{livre_de_chevet}. Quand nous serons passés à la postérité,
+% le présent article sera cité comme suit \cite{cyril_et_florent}.
+
+
+% \begin{thebibliography}{9}
+% \bibitem[Lamport-86]{livre_de_chevet} Lamport, L,
+%  {\it \LaTeX: A Document Preparation System},
+%  Addison-Wesley, 1986.
+
+% \bibitem{cyril_et_florent} Buttay, C. \& Morel, F.,
+%  {\it Linux Pratique}, n°1457, décembre 2051.
+% \end{thebibliography}
+
+
+
+%% Bibliographie externe avec BibTeX
+
+% Voir GNU/Linux Magazine France Mai 2006 (N°83)
+% latex fichier.tex
+% bibtex fichier     (utilise fichier.aux et donne fichier.bbl avec
+%                     fichier = main ou only)
+% latex fichier.tex
+% latex fichier.tex
+
+\section{Essai d'utilisation de BibTeX}
+L'utilisation de BibTeX est décrite dans \cite{lamport86}.
+Quand nous serons passés à la postérité, le présent article sera cité
+comme suit \cite{cyril_et_florent}.
+
+\bibliographystyle{plain}
+\bibliography{bibliographie/bibliographie}
