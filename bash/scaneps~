@@ -1,0 +1,9 @@
+#!/bin/bash
+format=eps
+filename=out
+directory=.
+
+device=hp5400:libusb:001:003 # obtenir la liste des scanners avec scanimage --list-device
+
+scanimage -x 215 -y 297 --device-name=$device > $directory/$filename.png
+convert $filename.png $file.png.eps
