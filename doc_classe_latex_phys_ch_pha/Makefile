@@ -262,7 +262,9 @@ clean_presentation:
 	$(RM) presentation.tex presentation.pdf presentation.*
 
 presentation.tex:
-	echo '\documentclass[h, xcolor=pst, dvips]{beamer}' > $@
+#	echo '\documentclass[h, xcolor=pst, dvips]{beamer}' > $@
+	echo '\documentclass{beamer}' > $@
+#	echo '\listfiles' > $@ 
 	echo '\usepackage{s-celles}' >> $@
 	echo '\usepackage{doc_with_beamer}' >> $@
 	echo '\begin{document}' >> $@
