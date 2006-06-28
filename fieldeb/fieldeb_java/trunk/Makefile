@@ -1,14 +1,14 @@
 FILENAME=fieldeb
 
-JAVAC=/usr/lib/sun-j2se5.0-jdk/bin/javac
-JAVA=/usr/lib/sun-j2se5.0-jdk/bin/java
+#JAVAC=/usr/lib/sun-j2se5.0-jdk/bin/javac
+#JAVA=/usr/lib/sun-j2se5.0-jdk/bin/java
 
-
-#JAVAC=javac
-#JAVA=java
+JAVAC=javac
+JAVA=java
 
 
 EDIT=emacs
+#EDIT=open
 
 
 all:
