@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 import java.awt.Graphics; 
-import java.awt.Rectangle; 
+//import java.awt.Rectangle; 
 
 class CCharge extends CChargeCurrent {
 
@@ -31,8 +31,10 @@ class CCharge extends CChargeCurrent {
 	
     }
 
+    /*
     public Rectangle getRectangle(){
 	Rectangle rect = new Rectangle();
 	return rect;
     }
+    */
 }

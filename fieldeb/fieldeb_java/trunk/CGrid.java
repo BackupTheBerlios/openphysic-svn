@@ -19,10 +19,14 @@
  ***************************************************************************/
 
 
+import java.awt.Graphics; 
+import java.awt.Rectangle; 
+
+
 /*
  * Grille
  */
-public class CGrid
+public class CGrid //implements IDrawable
 {
     private double m_x_min;
     private double m_x_max;
@@ -193,5 +197,15 @@ public class CGrid
 	m_visible = false;
     }
 
+
+
+    public Rectangle getRectangle(){
+	Rectangle rect = new Rectangle();
+	return rect;
+    } 
+
+    public void draw(Graphics g) {
+	
+    }
 
 }

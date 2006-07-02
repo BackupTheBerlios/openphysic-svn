@@ -19,15 +19,19 @@
  ***************************************************************************/
 
 
+
+import java.awt.Rectangle; 
+
+
 /**
  * Describe an electical charge or an electrical current
  */
 public abstract class CChargeCurrent implements IDrawable{
 
-    private double m_charge;
-    private double m_radius;
+    private double m_charge = 1000;
+    private double m_radius = 50;
     private CPosition m_position;
-    private boolean m_movable;
+    private boolean m_movable = false;
 
 
     /**
@@ -142,6 +146,13 @@ public abstract class CChargeCurrent implements IDrawable{
     {
 	return m_position;
     }
-    
+   
+
+
+
+    public Rectangle getRectangle(){
+	Rectangle rect = new Rectangle();
+	return rect;
+    } 
     
 }

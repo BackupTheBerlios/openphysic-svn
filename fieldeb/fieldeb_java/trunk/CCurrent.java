@@ -31,8 +31,10 @@ class CCurrent extends CChargeCurrent {
 	
     }
 
+    /*
     public Rectangle getRectangle(){
 	Rectangle rect = new Rectangle();
 	return rect;
     }
+    */
 }
