@@ -17,7 +17,8 @@ class MainWindow(wxFrame):
         d.ShowModal()
 
     def Refresh_Panel(self):
-        DrawPanel(self, grid)
+        #DrawPanel(self, grid)
+        self.Refresh()
     
     def CreateMenu(self):
         # Setting up the menu
@@ -161,13 +162,13 @@ class MainWindow(wxFrame):
         global mode
         mode="E"
         self.Refresh_Panel()
+       
 
         
     def OnModeB(self, event=None):
         #print "Mode B"
         global mode
         mode="B"
-        #TO FIX : Refresh
         self.Refresh_Panel()
 
 
