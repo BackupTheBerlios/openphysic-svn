@@ -205,7 +205,10 @@ class CMainFrame extends JFrame
 
 
 	setJMenuBar(menuBar);
+
+	//test();
     }
+
 }
 
 
@@ -233,7 +236,19 @@ class CMainPanel extends JPanel
     public void paintComponent(Graphics g)
     {
 	super.paintComponent(g);
+	
+	test(g);
+    }
+
+    void test(Graphics g)
+    {
 	g.drawString("Mon Texte", 25, 25);
+
+ 	System.out.println("paint");
+
+	CCharge chg = new CCharge();
+	chg.set_position(100, 100, 0);
+	chg.draw(g);
     }
 
     /*

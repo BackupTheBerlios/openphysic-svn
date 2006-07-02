@@ -20,6 +20,7 @@
 
 import java.awt.Graphics; 
 //import java.awt.Rectangle; 
+import java.awt.Color;
 
 class CCharge extends CChargeCurrent {
 
@@ -28,7 +29,17 @@ class CCharge extends CChargeCurrent {
     }
 
     public void draw(Graphics g) {
-	
+	drawCircle(g);
+
+	double x = this.get_position().get_x();
+	double y = this.get_position().get_y();
+	double R = this.get_radius();
+
+	g.setColor(Color.black);
+	g.drawLine((int) (x - R/2),
+		   (int) y,
+		   (int) (x + R/2),
+		   (int) y);
     }
 
     /*

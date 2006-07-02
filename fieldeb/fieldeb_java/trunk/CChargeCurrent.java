@@ -19,7 +19,8 @@
  ***************************************************************************/
 
 
-
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.Rectangle; 
 
 
@@ -29,7 +30,7 @@ import java.awt.Rectangle;
 public abstract class CChargeCurrent implements IDrawable{
 
     private double m_charge = 1000;
-    private double m_radius = 50;
+    private double m_radius = 10;
     private CPosition m_position;
     private boolean m_movable = false;
 
@@ -147,8 +148,34 @@ public abstract class CChargeCurrent implements IDrawable{
 	return m_position;
     }
    
+    public void drawCircle(Graphics g) {
+	double x = this.get_position().get_x();
+	double y = this.get_position().get_y();
+	double R = this.get_radius();
 
+	if ( this.get_charge() < 0 )
+	    {
+		g.setColor(Color.red);
+	    }
+	else if ( this.get_charge() > 0 )
+	    {
+		g.setColor(Color.blue);
+	    }
+	else if ( this.get_charge() == 0 )
+	    {
+		g.setColor(Color.black);		
+	    }
 
+	// fillOval drawOval
+	g.fillOval((int) x,
+		   (int) y,
+		   (int) R,
+		   (int) R);	
+    }
+
+    public void draw(Graphics g) {
+	drawCircle(g);
+    }
 
     public Rectangle getRectangle(){
 	Rectangle rect = new Rectangle();
