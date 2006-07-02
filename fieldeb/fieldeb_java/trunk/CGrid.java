@@ -21,27 +21,30 @@
 
 import java.awt.Graphics; 
 import java.awt.Rectangle; 
-
+import java.awt.Color;
 
 /*
  * Grille
  */
 public class CGrid //implements IDrawable
 {
-    private double m_x_min;
-    private double m_x_max;
-    private double m_x_space;
+    private double m_x_min = 0;
+    private double m_x_max = 200;
+    private double m_x_space = 50;
 
-    private double m_y_min;
-    private double m_y_max;
-    private double m_y_space;
+    private double m_y_min = 0;
+    private double m_y_max = 200;
+    private double m_y_space = 50;
 
-    private double m_z_min;
-    private double m_z_max;
-    private double m_z_space;
+    private double m_z_min = 0;
+    private double m_z_max = 0;
+    private double m_z_space = 100;
 
     private boolean m_visible;
 
+    CGrid() {
+
+    }
 
     CGrid(double x_min, double x_max, double x_space,
 	  double y_min, double y_max, double y_space,
@@ -205,7 +208,16 @@ public class CGrid //implements IDrawable
     } 
 
     public void draw(Graphics g) {
-	
+
+	double x = 100; // test
+	double y = 100; // test
+
+	if ( Is_visible() )
+	    {
+		g.setColor(Color.black);
+		
+		//	g.drawPoint(x, y); // TO FIX : drawPoint !!!
+	    }
     }
 
 }

@@ -21,7 +21,7 @@
 import java.awt.Graphics; 
 //import java.awt.Rectangle; 
 
-Class CCurrent extends CChargeCurrent {
+class CCurrent extends CChargeCurrent {
 
     CCurrent(){
 	// Constructeur
