@@ -22,7 +22,7 @@
 /**
  * Describe an electical charge or an electrical current
  */
-public abstract class CCharge implements IDrawable{
+public abstract class CChargeCurrent implements IDrawable{
 
     private double m_charge;
     private double m_radius;
@@ -30,14 +30,15 @@ public abstract class CCharge implements IDrawable{
     private boolean m_movable;
 
 
-
     /**
-     *Constructeur de charge par defaut
+     *Constructeur de charge/current par defaut
      */
-    CCharge(double charge, double radius, double x, double y, double z)
+    /*
+    CChargeCurrent(double charge, double radius, double x, double y, double z)
     {
 	// Constructeur
     }
+    */
 
 
     /**
