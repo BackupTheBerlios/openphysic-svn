@@ -22,7 +22,7 @@
 /**
  * Describe an electical charge or an electrical current
  */
-public class CCharge {
+public abstract class CCharge implements IDrawable{
 
     private double m_charge;
     private double m_radius;
@@ -45,10 +45,12 @@ public class CCharge {
      *@param mode mode d'affichage
      *@return void
      */
+    /*
     void Draw(int mode) 
     {
 
     }
+    */
 
 
 
