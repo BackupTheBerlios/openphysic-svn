@@ -1,5 +1,5 @@
 /**************************************************************************
- *   Copyright (C) 2005 by Sebastien CELLES                                *
+ *   Copyright (C) 2006 by Sebastien CELLES                                *
  *   s.cls@laposte.net                                                     *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
