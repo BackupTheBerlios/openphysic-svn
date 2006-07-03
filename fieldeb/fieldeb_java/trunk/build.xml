@@ -68,9 +68,4 @@
 
     -->
 
-    <!-- scls begin -->
-    <taskdef resource="checkstyletask.properties"
-         classpath="/usr/share/java/checkstyle.jar"/>
-    <!-- scls  end  -->
-
 </project>
