@@ -18,59 +18,64 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-/** fieldEB
-* Simulateur electrostatique et magnetostatique
-* @author Sebastien CELLES
-* @author http://www.celles.net
-* @version 0.1
-*/
-
-
-/*
-public class CMain {
-    public static void main (String[] args){
-	String str = "fieldEB";
-	str = str + "\n" + "under GNU General Public License";
-	str = str + "\n" + "by S. CELLES";
-
-   	System.out.println(str);
-    }
-}
-*/
-
-
-
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-
-
-public class CMain extends JApplet // public
+/**
+ *
+ * @author scls
+ */
+class CMainPanel extends JPanel
 {
-    public static void main(String[] args)
+    private CMainFrame maFenetre = null;
+    public CMainPanel(CMainFrame maFenetre)
     {
-	mainfunc();
+	setLayout(new BorderLayout());
+
+	/*
+	JButton boutonFermer = new JButton("Fermer");
+	add(boutonFermer, BorderLayout.SOUTH);
+
+	MyListener myListener = new MyListener();
+	*/
+
+	this.maFenetre = maFenetre;
+	
+	/*
+	boutonFermer.addActionListener(myListener);
+	*/
     }
 
-    public void init()
+    public void paintComponent(Graphics g)
     {
-	//add(new Label("Hello World"));
-	mainfunc();
+	super.paintComponent(g);
+	
+	test(g);
     }
 
-    private static void mainfunc()
+    void test(Graphics g)
     {
-	String str = "fieldEB";
-	str = str + "\n" + "under GNU General Public License";
-	str = str + "\n" + "by S. CELLES";
+	//g.drawString("Mon Texte", 25, 25);
 
-   	System.out.println(str);	
+ 	//System.out.println("paint");
 
-	CMainFrame fenetre = new CMainFrame();
-	fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	//fenetre.show(); // is deprecated
-	fenetre.setVisible(true);
+	CCharge chg = new CCharge();
+	chg.set_position(100, 100, 0);
+        chg.set_charge(-1000);
+	chg.draw(g);
+        
+        CGrid grid = new CGrid();
+        grid.draw(g);
     }
-  
+
+    /*
+    class MyListener implements ActionListener
+    {
+	public void actionPerformed(ActionEvent event)
+	{
+	    maFenetre.dispose();
+	}
+    }
+    */
 }
