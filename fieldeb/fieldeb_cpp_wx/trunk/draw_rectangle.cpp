@@ -27,19 +27,19 @@ using namespace std;
 
 void Draw_Rectangle::Draw(wxWindowDC *dc)
 {
-  //wxPen pen = wxPen("GREEN",1,wxSOLID);
-  wxPen pen = wxPen(get_color(),1,wxSOLID);
-  wxBrush brush = wxBrush(get_color(),wxSOLID);
+    //wxPen pen = wxPen("GREEN",1,wxSOLID);
+    wxPen pen = wxPen(get_color(),1,wxSOLID);
+    wxBrush brush = wxBrush(get_color(),wxSOLID);
 
-  dc->SetPen(pen);
-  dc->SetBrush(brush);
+    dc->SetPen(pen);
+    dc->SetBrush(brush);
 
-  dc->DrawRectangle(
-		  (int) ( get_x() - get_width()/2 ),
-		  (int) ( get_y() - get_height()/2 ),
-		  (int) ( get_width() ),
-		  (int) ( get_height() )
-		  );
+    dc->DrawRectangle(
+        (int) ( get_x() - get_width()/2 ),
+        (int) ( get_y() - get_height()/2 ),
+        (int) ( get_width() ),
+        (int) ( get_height() )
+    );
 
 
 }

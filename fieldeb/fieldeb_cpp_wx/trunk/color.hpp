@@ -31,64 +31,64 @@ using namespace std;
  */
 class Color : public wxColor
 {
- public:
-  Color( )
+public:
+    Color( )
     {
-      set_color(0,0,0);
+        set_color(0,0,0);
     }
 
-  /*
-  Color::Color(float N, float N_min, float N_max)
+    /*
+    Color::Color(float N, float N_min, float N_max)
+      {
+        // Default is step color
+        set_step(N,N_min,N_max);
+      }
+    */
+
+    void set_color_linear (double N, double N_min, double N_max);  // color
+    void set_color_step (double N, double N_min, double N_max);
+
+    void set_bwg_linear (double N, double N_min, double N_max); // black white gray
+    void set_bwg_step (double N, double N_min, double N_max);
+
+    void set_bw_step (double N, double N_min, double N_max); // black OR white
+    void set_bw (double N, double N_min, double N_max);
+
+    /*
+    int get_R()
     {
-      // Default is step color
-      set_step(N,N_min,N_max);
-    }
-  */
-
-  void set_color_linear (double N, double N_min, double N_max);  // color
-  void set_color_step (double N, double N_min, double N_max);
-
-  void set_bwg_linear (double N, double N_min, double N_max); // black white gray
-  void set_bwg_step (double N, double N_min, double N_max);
-
-  void set_bw_step (double N, double N_min, double N_max); // black OR white
-  void set_bw (double N, double N_min, double N_max);
-
-  /*
-  int get_R()
-  {
-    return m_R;
-  }
-
-  int get_G()
-  {
-    return m_G;
-  }
-
-  int get_B()
-  {
-    return m_B;
-  }
-  */
-
- protected:
-
- private:
-  void set_color(int R, int G, int B)
-    {
-      //m_color = wxColor(R,G,B);
-      //wxColor(R,G,B);
-      
-      //this->m_R = R;
-      //this->m_G = G;
-      //this->m_B = B;
-
-      this->Set(R,G,B);
+      return m_R;
     }
 
-  // int m_R, m_G, m_B;
+    int get_G()
+    {
+      return m_G;
+    }
 
-  //wxColor m_color;
+    int get_B()
+    {
+      return m_B;
+    }
+    */
+
+protected:
+
+private:
+    void set_color(int R, int G, int B)
+    {
+        //m_color = wxColor(R,G,B);
+        //wxColor(R,G,B);
+
+        //this->m_R = R;
+        //this->m_G = G;
+        //this->m_B = B;
+
+        this->Set(R,G,B);
+    }
+
+    // int m_R, m_G, m_B;
+
+    //wxColor m_color;
 
 };
 

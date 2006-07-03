@@ -26,17 +26,17 @@
  * This is a window which is shown when adding a charge.
  */
 class Window_Add_Charge : public wxDialog {
- public:
-  Window_Add_Charge(wxWindow* parent, int id, const wxString& title, const wxPoint& pos=wxDefaultPosition, const wxSize& size=wxDefaultSize, long style=wxDEFAULT_FRAME_STYLE);
- 
-  wxTextCtrl *txtAnswer;
+public:
+    Window_Add_Charge(wxWindow* parent, int id, const wxString& title, const wxPoint& pos=wxDefaultPosition, const wxSize& size=wxDefaultSize, long style=wxDEFAULT_FRAME_STYLE);
 
- private:
-  //DECLARE_EVENT_TABLE()
-  //void On_Ok( wxCommandEvent &event );
-  //void On_Cancel( wxCommandEvent &event );
+    wxTextCtrl *txtAnswer;
 
- protected:
+private:
+    //DECLARE_EVENT_TABLE()
+    //void On_Ok( wxCommandEvent &event );
+    //void On_Cancel( wxCommandEvent &event );
+
+protected:
 
 };
 

@@ -35,51 +35,51 @@
  */
 class Charges
 {
- public:
-  Charges(void)
+public:
+    Charges(void)
     {
     }
 
-  //typedef list <Charge>::const_iterator LI_chg;
+    //typedef list <Charge>::const_iterator LI_chg;
 
 
-  list <Charge>::const_iterator begin()
+    list <Charge>::const_iterator begin()
     {
-      return m_charges.begin();
+        return m_charges.begin();
     }
 
-  list <Charge>::const_iterator end()
+    list <Charge>::const_iterator end()
     {
-      return m_charges.end();
+        return m_charges.end();
     }
 
-  void add(Charge const & chg);
+    void add(Charge const & chg);
 
-  bool get_near_of_a_charge(Position const & p);
-
-
-  list <Charge>::iterator Charges::get_nearest_charge(Position const& pos);
-
-  void remove(Position const & p);
-
-  void set_movable(Position const& p);
-
-  //void unset_movable(Position const& p);
-  void unset_movable();
-
-  void move(Position const& pos);
-
-  void Draw(wxWindowDC *ptr_dc, int const mode);
+    bool get_near_of_a_charge(Position const & p);
 
 
+    list <Charge>::iterator Charges::get_nearest_charge(Position const& pos);
 
- protected:
+    void remove(Position const & p);
 
- private:
-  list <Charge> m_charges;
-  //vector <Charge> m_charges;
+    void set_movable(Position const& p);
 
-  bool distance_equal(const Charge & chge);
+    //void unset_movable(Position const& p);
+    void unset_movable();
+
+    void move(Position const& pos);
+
+    void Draw(wxWindowDC *ptr_dc, int const mode);
+
+
+
+protected:
+
+private:
+    list <Charge> m_charges;
+    //vector <Charge> m_charges;
+
+    bool distance_equal(const Charge & chge);
 
 
 

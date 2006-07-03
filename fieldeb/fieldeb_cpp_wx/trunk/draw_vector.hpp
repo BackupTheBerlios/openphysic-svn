@@ -33,250 +33,250 @@
  */
 class Draw_Vector
 {
- public:
-  /*
-  Draw_Vector()
-    {      
-      set_x(0);
-      set_y(0);
-      set_z(0);
+public:
+    /*
+    Draw_Vector()
+      {      
+        set_x(0);
+        set_y(0);
+        set_z(0);
 
-      set_ux(0);
-      set_uy(0);
-      set_uz(0);
+        set_ux(0);
+        set_uy(0);
+        set_uz(0);
 
-      set_arrow_len(10);
-      set_arrow_angle(20);
-      set_arrow_ratio(10);
+        set_arrow_len(10);
+        set_arrow_angle(20);
+        set_arrow_ratio(10);
 
-      set_width(1);
-     
-      Draw_Vector(0,0,0,0,0,0);
-    }
-  */
+        set_width(1);
+       
+        Draw_Vector(0,0,0,0,0,0);
+      }
+    */
 
-  Draw_Vector(double const x, double const y, double const z, double const ux, double const uy, double const uz)
+    Draw_Vector(double const x, double const y, double const z, double const ux, double const uy, double const uz)
     {
-      set_x(x);
-      set_y(y);
-      set_z(z);
+        set_x(x);
+        set_y(y);
+        set_z(z);
 
-      set_ux(ux);
-      set_uy(uy);
-      set_uz(uz);
+        set_ux(ux);
+        set_uy(uy);
+        set_uz(uz);
 
-      set_arrow_len(5);
-      set_arrow_angle(20);
-      set_arrow_ratio(10);
+        set_arrow_len(5);
+        set_arrow_angle(20);
+        set_arrow_ratio(10);
 
-      set_width(1);
+        set_width(1);
 
-      set_variable_len(false);
+        set_variable_len(false);
 
-      set_color("BLACK");
+        set_color("BLACK");
     }
 
-  /*
-  Draw_Vector(double x, double y, double ux, double uy)
+    /*
+    Draw_Vector(double x, double y, double ux, double uy)
+      {
+        
+        set_x(x);
+        set_y(y);
+        set_z(0);
+
+        set_ux(ux);
+        set_uy(uy);
+        set_uz(0);
+
+        set_arrow_len(10);
+        set_arrow_angle(20);
+        set_arrow_ratio(10);
+
+        set_width(1);
+        
+        Draw_Vector(x,y,0,ux,uy,0);
+      }
+    */
+
+    double get_len(void);
+    double get_angle(void);
+
+    void Draw(wxWindowDC *dc);
+
+
+
+    void set_x(double const value)
     {
-      
-      set_x(x);
-      set_y(y);
-      set_z(0);
-
-      set_ux(ux);
-      set_uy(uy);
-      set_uz(0);
-
-      set_arrow_len(10);
-      set_arrow_angle(20);
-      set_arrow_ratio(10);
-
-      set_width(1);
-      
-      Draw_Vector(x,y,0,ux,uy,0);
+        m_x = value;
     }
-  */
 
-  double get_len(void);
-  double get_angle(void);
-
-  void Draw(wxWindowDC *dc);
-
-
-
-  void set_x(double const value)
+    void set_y(double const value)
     {
-      m_x = value;
+        m_y = value;
     }
 
-  void set_y(double const value)
+    void set_z(double const value)
     {
-      m_y = value;
+        m_z = value;
     }
 
-  void set_z(double const value)
+
+
+    double get_x(void) const
     {
-      m_z = value;
+        return m_x;
     }
 
-
-
-  double get_x(void) const
+    double get_y(void) const
     {
-      return m_x;
+        return m_y;
     }
 
-  double get_y(void) const
+    double get_z(void) const
     {
-      return m_y;
+        return m_z;
     }
 
-  double get_z(void) const
+
+
+
+    void set_ux(double const value)
     {
-      return m_z;
+        m_ux = value;
     }
 
-
-
-
-  void set_ux(double const value)
+    void set_uy(double const value)
     {
-      m_ux = value;
+        m_uy = value;
     }
 
-  void set_uy(double const value)
+    void set_uz(double const value)
     {
-      m_uy = value;
+        m_uz = value;
     }
 
-  void set_uz(double const value)
+
+    double get_ux(void) const
     {
-      m_uz = value;
+        return m_ux;
     }
 
-
-  double get_ux(void) const
+    double get_uy(void) const
     {
-      return m_ux;
+        return m_uy;
     }
 
-  double get_uy(void) const
+    double get_uz(void) const
     {
-      return m_uy;
+        return m_uz;
     }
 
-  double get_uz(void) const
+
+
+    double get_width(void) const
     {
-      return m_uz;
+        return m_width;
     }
 
 
 
-  double get_width(void) const
+    double get_arrow_len(void) const
     {
-      return m_width;
+        return m_arrow_len;
     }
 
-
-
-  double get_arrow_len(void) const
+    void set_arrow_len(double const value)
     {
-      return m_arrow_len;
+        m_arrow_len = value;
     }
 
-  void set_arrow_len(double const value)
+
+
+    double get_arrow_ratio(void) const
     {
-      m_arrow_len = value;
+        return m_arrow_ratio;
     }
 
-
-
-  double get_arrow_ratio(void) const
+    void set_arrow_ratio(double const value)
     {
-      return m_arrow_ratio;
+        m_arrow_ratio = value;
     }
 
-  void set_arrow_ratio(double const value)
+
+
+    double get_arrow_angle(void) const
     {
-      m_arrow_ratio = value;
+        return m_arrow_angle;
     }
 
-
-
-  double get_arrow_angle(void) const
+    void set_arrow_angle(double const value)
     {
-      return m_arrow_angle;
+        m_arrow_angle = value;
     }
 
-  void set_arrow_angle(double const value)
+
+
+    void set_width(double const value)
     {
-      m_arrow_angle = value;
+        m_width = value;
     }
 
 
 
-  void set_width(double const value)
+    void set_variable_len(void)
     {
-      m_width = value;
+        m_variable_len = true;
     }
 
-
-
-  void set_variable_len(void)
+    void unset_variable_len(void)
     {
-      m_variable_len = true;
+        m_variable_len = false;
     }
 
-  void unset_variable_len(void)
+    void set_variable_len(bool const value)
     {
-      m_variable_len = false;
+        m_variable_len = value;
     }
 
-  void set_variable_len(bool const value)
+    bool get_variable_len(void) const
     {
-      m_variable_len = value;
+        return m_variable_len;
     }
 
-  bool get_variable_len(void) const
+
+
+    wxColor get_color(void) const
     {
-      return m_variable_len;
+        return m_color;
     }
 
-
-
-  wxColor get_color(void) const
+    void set_color(wxColor const value)
     {
-      return m_color;
-    }
-  
-  void set_color(wxColor const value)
-    {
-      m_color = value;
+        m_color = value;
     }
 
 
- protected:
+protected:
 
- private:
-  double m_x;
-  double m_y;
-  double m_z;
+private:
+    double m_x;
+    double m_y;
+    double m_z;
 
-  double m_ux;
-  double m_uy;
-  double m_uz;
+    double m_ux;
+    double m_uy;
+    double m_uz;
 
-  float m_width;
+    float m_width;
 
-  float m_arrow_len;
-  float m_arrow_angle;
-  float m_arrow_ratio;
+    float m_arrow_len;
+    float m_arrow_angle;
+    float m_arrow_ratio;
 
-  bool m_variable_len;
- 
-  wxColor m_color;
-  // TO_DO : color wxColor & bool
+    bool m_variable_len;
+
+    wxColor m_color;
+    // TO_DO : color wxColor & bool
 
 };
 

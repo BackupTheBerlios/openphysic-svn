@@ -25,23 +25,23 @@
 
 void Draw_Grain::Draw(wxWindowDC *dc)
 {
-  //wxPen pen = wxPen("BLACK",1,wxSOLID);
-  wxPen pen = wxPen(get_color(),1,wxSOLID);
-  dc->SetPen(pen);
+    //wxPen pen = wxPen("BLACK",1,wxSOLID);
+    wxPen pen = wxPen(get_color(),1,wxSOLID);
+    dc->SetPen(pen);
 
 
-  double r_u = sqrt ( get_ux() * get_ux()
-		   + get_uy() * get_uy()
-		   + get_uz() * get_uz() );
+    double r_u = sqrt ( get_ux() * get_ux()
+                        + get_uy() * get_uy()
+                        + get_uz() * get_uz() );
 
-  if ( r_u != 0 ) // Not null direction vector
-    {            	
-      dc->DrawLine(
-		  (int) ( get_x() - get_len()/2 * get_ux() / r_u ),
-		  (int) ( get_y() - get_len()/2 * get_uy() / r_u ),
-		  (int) ( get_x() + get_len()/2 * get_ux() / r_u ),
-		  (int) ( get_y() + get_len()/2 * get_uy() / r_u )
-		  );
+    if ( r_u != 0 ) // Not null direction vector
+    {
+        dc->DrawLine(
+            (int) ( get_x() - get_len()/2 * get_ux() / r_u ),
+            (int) ( get_y() - get_len()/2 * get_uy() / r_u ),
+            (int) ( get_x() + get_len()/2 * get_ux() / r_u ),
+            (int) ( get_y() + get_len()/2 * get_uy() / r_u )
+        );
     }
 
 }

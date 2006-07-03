@@ -34,88 +34,88 @@
  */
 class Window_Main : public wxFrame {
 
- public:
-  Window_Main(wxWindow* parent, int id, const wxString& title, const wxPoint& pos=wxDefaultPosition, const wxSize& size=wxDefaultSize, long style=wxDEFAULT_FRAME_STYLE);
+public:
+    Window_Main(wxWindow* parent, int id, const wxString& title, const wxPoint& pos=wxDefaultPosition, const wxSize& size=wxDefaultSize, long style=wxDEFAULT_FRAME_STYLE);
 
-  void On_Quit(wxCommandEvent& event);
+    void On_Quit(wxCommandEvent& event);
 
-  Grid myGrid;
+    Grid myGrid;
 
-  Charges charges;
-  //typedef list <Charge> Charges;
-  //Charges charges;
-  //typedef list <Charge>::const_iterator LI_chg; // Iterator for list of charges
+    Charges charges;
+    //typedef list <Charge> Charges;
+    //Charges charges;
+    //typedef list <Charge>::const_iterator LI_chg; // Iterator for list of charges
 
-  //  const double Ke = 1000;
+    //  const double Ke = 1000;
 
-  int get_mode() const
+    int get_mode() const
     {
-      return m_mode;
+        return m_mode;
     }
 
-  void set_mode(int const mode)
+    void set_mode(int const mode)
     {
-      m_mode=mode;
+        m_mode=mode;
     }
-  
 
 
 
- private:
-  DECLARE_EVENT_TABLE()
 
-  wxMenuBar *menuBar;
-  wxMenu *menuMode;
-  wxMenu *menuImage;
-  wxMenu *menuOptions;
-  wxMenu *menuColors;
-    
-  void TO_DO();
+private:
+    DECLARE_EVENT_TABLE()
 
+    wxMenuBar *menuBar;
+    wxMenu *menuMode;
+    wxMenu *menuImage;
+    wxMenu *menuOptions;
+    wxMenu *menuColors;
 
-  void On_Paint( wxPaintEvent& event );
+    void TO_DO();
 
 
-  void On_Mouse_Move( wxMouseEvent& event );
-
-  void On_Mouse_Left_Up( wxMouseEvent& event );
-  void On_Mouse_Left_Down( wxMouseEvent& event );
-
-  void On_Mouse_Right_Up( wxMouseEvent& event );
-  void On_Mouse_Right_Down( wxMouseEvent& event );
+    void On_Paint( wxPaintEvent& event );
 
 
-  void On_About( wxCommandEvent& event );
-  void On_Mode_E( wxCommandEvent& event );
-  void On_Mode_B( wxCommandEvent& event );
+    void On_Mouse_Move( wxMouseEvent& event );
 
-  void On_ShowField( wxCommandEvent& event );
-  void On_ShowFieldLines( wxCommandEvent& event);
-  void On_ShowEquipotentials( wxCommandEvent& event );
+    void On_Mouse_Left_Up( wxMouseEvent& event );
+    void On_Mouse_Left_Down( wxMouseEvent& event );
 
-  void On_Clear( wxCommandEvent& event );
+    void On_Mouse_Right_Up( wxMouseEvent& event );
+    void On_Mouse_Right_Down( wxMouseEvent& event );
 
-  void On_Refresh( wxCommandEvent& event );
 
-  void On_FieldAsVector( wxCommandEvent& event );
-  void On_FieldAsGrains( wxCommandEvent& event );
+    void On_About( wxCommandEvent& event );
+    void On_Mode_E( wxCommandEvent& event );
+    void On_Mode_B( wxCommandEvent& event );
 
-  void On_UseColors( wxCommandEvent& event );
-  void On_UseBlackWhiteGray( wxCommandEvent& event );
-  void On_UseBlackWhite( wxCommandEvent& event );
+    void On_ShowField( wxCommandEvent& event );
+    void On_ShowFieldLines( wxCommandEvent& event);
+    void On_ShowEquipotentials( wxCommandEvent& event );
 
-  void On_Test( wxCommandEvent& event );
+    void On_Clear( wxCommandEvent& event );
 
-  void Draw();
-  //void Draw_Charges(wxWindowDC *ptr_dc);
+    void On_Refresh( wxCommandEvent& event );
 
-  //void Calculate(double x, double y, double z, double K, double& Ex, double& Ey, double& Ez, double& V);
-  void Calculate(double x, double y, double z, double& Ex, double& Ey, double& Ez, double& V,double& Bx,double& By,double& Bz,double& Ax,double& Ay,double& Az);
+    void On_FieldAsVector( wxCommandEvent& event );
+    void On_FieldAsGrains( wxCommandEvent& event );
 
-  int m_mode; // 0=E 1=B
+    void On_UseColors( wxCommandEvent& event );
+    void On_UseBlackWhiteGray( wxCommandEvent& event );
+    void On_UseBlackWhite( wxCommandEvent& event );
 
- protected:
-  //
+    void On_Test( wxCommandEvent& event );
+
+    void Draw();
+    //void Draw_Charges(wxWindowDC *ptr_dc);
+
+    //void Calculate(double x, double y, double z, double K, double& Ex, double& Ey, double& Ez, double& V);
+    void Calculate(double x, double y, double z, double& Ex, double& Ey, double& Ez, double& V,double& Bx,double& By,double& Bz,double& Ax,double& Ay,double& Az);
+
+    int m_mode; // 0=E 1=B
+
+protected:
+    //
 
 };
 

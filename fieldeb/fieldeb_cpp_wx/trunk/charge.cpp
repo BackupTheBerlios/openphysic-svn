@@ -35,91 +35,91 @@ using namespace std;
  */
 void Charge::Draw(wxWindowDC *dc, int mode)
 {
-  // mode = 0 : E => + / - charge
-  // mode = 1 : B => . / x current
+    // mode = 0 : E => + / - charge
+    // mode = 1 : B => . / x current
 
-  wxPen pen;
-  wxBrush brush;
+    wxPen pen;
+    wxBrush brush;
 
-  if ( this->get_charge() < 0 )
+    if ( this->get_charge() < 0 )
     {
-      pen = wxPen("BLACK",1,wxSOLID); // "BLACK"='#000000'='RRGGBB'
-      brush = wxBrush("RED",2);
+        pen = wxPen("BLACK",1,wxSOLID); // "BLACK"='#000000'='RRGGBB'
+        brush = wxBrush("RED",2);
     }
-  if ( this->get_charge() > 0 )
+    if ( this->get_charge() > 0 )
     {
-      pen = wxPen("BLACK",1,wxSOLID);
-      brush = wxBrush("BLUE",2);
+        pen = wxPen("BLACK",1,wxSOLID);
+        brush = wxBrush("BLUE",2);
     }
-  if ( this->get_charge() == 0 )
+    if ( this->get_charge() == 0 )
     {
-      pen = wxPen("BLACK",1,wxSOLID);
-      brush = wxBrush("BLACK",2);
+        pen = wxPen("BLACK",1,wxSOLID);
+        brush = wxBrush("BLACK",2);
     }
 
-  dc->SetPen(pen);     // contour
-  dc->SetBrush(brush); // inside
+    dc->SetPen(pen);     // contour
+    dc->SetBrush(brush); // inside
 
-  Position pos;
-  pos = this->get_position();
-  
-  dc->DrawCircle( (int) pos.get_x(), (int) pos.get_y(), (int) get_radius() );
+    Position pos;
+    pos = this->get_position();
 
-  if ( this->get_charge() < 0 )
+    dc->DrawCircle( (int) pos.get_x(), (int) pos.get_y(), (int) get_radius() );
+
+    if ( this->get_charge() < 0 )
     {
-      if (mode==0)
-	{
-	  // "-"
-	  //dc->DrawText( wxString("-"), (int) pos.get_x(), (int) pos.get_y() ); // very dirty !
-	  dc->DrawLine( (int) ( pos.get_x() - get_radius()/2 ) ,
-			(int) ( pos.get_y() ) ,
-			(int) ( pos.get_x() + get_radius()/2 ) ,
-			(int) ( pos.get_y() ) );
-	}
-      else if (mode==1)
-	{
-	  dc->DrawPoint( (int) ( pos.get_x() ) , (int) ( pos.get_y() ) );
-	}
+        if (mode==0)
+        {
+            // "-"
+            //dc->DrawText( wxString("-"), (int) pos.get_x(), (int) pos.get_y() ); // very dirty !
+            dc->DrawLine( (int) ( pos.get_x() - get_radius()/2 ) ,
+                          (int) ( pos.get_y() ) ,
+                          (int) ( pos.get_x() + get_radius()/2 ) ,
+                          (int) ( pos.get_y() ) );
+        }
+        else if (mode==1)
+        {
+            dc->DrawPoint( (int) ( pos.get_x() ) , (int) ( pos.get_y() ) );
+        }
     }
-  if ( this->get_charge() > 0 )
+    if ( this->get_charge() > 0 )
     {
-      if (mode==0)
-	{
-	  // "+"
-	  //dc->DrawText( wxString("+"), (int) pos.get_x(), (int) pos.get_y() );
-	  dc->DrawLine( (int) ( pos.get_x() - get_radius()/2 ) ,
-			(int) ( pos.get_y() ) ,
-			(int) ( pos.get_x() + get_radius()/2 ) ,
-			(int) ( pos.get_y() ) );
-	  dc->DrawLine( (int) ( pos.get_x() ) ,
-			(int) ( pos.get_y() - get_radius()/2 ) ,
-			(int) ( pos.get_x() ) ,
-			(int) ( pos.get_y() + get_radius()/2 ) );
-	}
-      else if (mode==1)
-	{
-	  /*
-	    +--------->x
-	    | z (X)
-	    |
-	    |
-	   \ /y
+        if (mode==0)
+        {
+            // "+"
+            //dc->DrawText( wxString("+"), (int) pos.get_x(), (int) pos.get_y() );
+            dc->DrawLine( (int) ( pos.get_x() - get_radius()/2 ) ,
+                          (int) ( pos.get_y() ) ,
+                          (int) ( pos.get_x() + get_radius()/2 ) ,
+                          (int) ( pos.get_y() ) );
+            dc->DrawLine( (int) ( pos.get_x() ) ,
+                          (int) ( pos.get_y() - get_radius()/2 ) ,
+                          (int) ( pos.get_x() ) ,
+                          (int) ( pos.get_y() + get_radius()/2 ) );
+        }
+        else if (mode==1)
+        {
+            /*
+              +--------->x
+              | z (X)
+              |
+              |
+             \ /y
 
-	   positive current is going "inside screen"	
-	   */
-	  dc->DrawLine( (int) ( pos.get_x() - get_radius()/sqrt(2.0) ) ,
-			(int) ( pos.get_y() - get_radius()/sqrt(2.0) ) ,
-			(int) ( pos.get_x() + get_radius()/sqrt(2.0) ) ,
-			(int) ( pos.get_y() + get_radius()/sqrt(2.0) ));
-	  dc->DrawLine( (int) ( pos.get_x() + get_radius()/sqrt(2.0) ) ,
-			(int) ( pos.get_y() - get_radius()/sqrt(2.0) ) ,
-			(int) ( pos.get_x() - get_radius()/sqrt(2.0) ) ,
-			(int) ( pos.get_y() + get_radius()/sqrt(2.0) ));
-	}
+             positive current is going "inside screen"	
+             */
+            dc->DrawLine( (int) ( pos.get_x() - get_radius()/sqrt(2.0) ) ,
+                          (int) ( pos.get_y() - get_radius()/sqrt(2.0) ) ,
+                          (int) ( pos.get_x() + get_radius()/sqrt(2.0) ) ,
+                          (int) ( pos.get_y() + get_radius()/sqrt(2.0) ));
+            dc->DrawLine( (int) ( pos.get_x() + get_radius()/sqrt(2.0) ) ,
+                          (int) ( pos.get_y() - get_radius()/sqrt(2.0) ) ,
+                          (int) ( pos.get_x() - get_radius()/sqrt(2.0) ) ,
+                          (int) ( pos.get_y() + get_radius()/sqrt(2.0) ));
+        }
     }
-  if ( this->get_charge() == 0 )
+    if ( this->get_charge() == 0 )
     {
-      //dc->DrawText( wxString("0"), (int) pos.get_x(), (int) pos.get_y() );
+        //dc->DrawText( wxString("0"), (int) pos.get_x(), (int) pos.get_y() );
     }
 
 

@@ -29,67 +29,67 @@ using namespace std;
  */
 class Vector3d
 {
- public:
-  Vector3d( )
+public:
+    Vector3d( )
     {
-      //cout << "DEBUG: " << "Vector3d 1" << "\n";
-      set_x(0);
-      set_y(0);
-      set_z(0);
+        //cout << "DEBUG: " << "Vector3d 1" << "\n";
+        set_x(0);
+        set_y(0);
+        set_z(0);
     }
 
-  Vector3d( double const x, double const y, double const z )
+    Vector3d( double const x, double const y, double const z )
     {
-      //cout << "DEBUG: " << "Vector3d 2" << "\n";
-      set_x(x);
-      set_y(y);
-      set_z(z);
+        //cout << "DEBUG: " << "Vector3d 2" << "\n";
+        set_x(x);
+        set_y(y);
+        set_z(z);
     }
 
-  Vector3d( double const x, double const y )
+    Vector3d( double const x, double const y )
     {
-      //cout << "DEBUG: " << "Vector3d 3" << "\n";
-      set_x(x);
-      set_y(y);
-      set_z(0);
+        //cout << "DEBUG: " << "Vector3d 3" << "\n";
+        set_x(x);
+        set_y(y);
+        set_z(0);
     }
 
-  void set_x(double const x)
+    void set_x(double const x)
     {
-      m_x=x;
+        m_x=x;
     }
 
-  void set_y(double const y)
+    void set_y(double const y)
     {
-      m_y=y;
+        m_y=y;
     }
 
-  void set_z(float const z)
+    void set_z(float const z)
     {
-      m_z=z;
+        m_z=z;
     }
 
-  double get_x() const
+    double get_x() const
     {
-      return m_x;
+        return m_x;
     }
 
-  double get_y() const
+    double get_y() const
     {
-      return m_y;
+        return m_y;
     }
 
-  double get_z() const
+    double get_z() const
     {
-      return m_z;
+        return m_z;
     }
 
- protected:
+protected:
 
- private:
-  double m_x;
-  double m_y;
-  double m_z;
+private:
+    double m_x;
+    double m_y;
+    double m_z;
 };
 
 #endif // VECTOR3D_HPP

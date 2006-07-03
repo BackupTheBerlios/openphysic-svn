@@ -34,202 +34,202 @@ using namespace std;
  */
 class Grid
 {
- public:
-  Grid (void)
-  {
-    set_x_min(0);
-    set_x_max(300);
-    set_x_space(10);
-    
-    set_y_min(0);
-    set_y_max(300);
-    set_y_space(10);
-    
-    set_z_min(0);
-    set_z_max(0);
-    set_z_space(0);
-    
-    set_visible();
-    //unset_visible();
-    //set_vibible(true);
-  }
-  
-  Grid(double const x_min, double const x_max, double const x_space,
-       double const y_min, double const y_max, double const y_space,
-       double const z_min, double const z_max, double const z_space,
-       bool const visible )
+public:
+    Grid (void)
     {
-      set_x_min(x_min);
-      set_x_max(x_max);
-      set_x_space(x_space);
+        set_x_min(0);
+        set_x_max(300);
+        set_x_space(10);
 
-      set_y_min(y_min);
-      set_y_max(y_max);
-      set_y_space(y_space);
+        set_y_min(0);
+        set_y_max(300);
+        set_y_space(10);
 
-      set_z_min(z_min);
-      set_z_max(z_max);
-      set_z_space(z_space);
+        set_z_min(0);
+        set_z_max(0);
+        set_z_space(0);
 
-      set_visible(visible);
+        set_visible();
+        //unset_visible();
+        //set_vibible(true);
     }
 
-  void Draw(wxWindowDC *dc);
-
-
-
-
-  double get_x_min(void) const
+    Grid(double const x_min, double const x_max, double const x_space,
+         double const y_min, double const y_max, double const y_space,
+         double const z_min, double const z_max, double const z_space,
+         bool const visible )
     {
-      return m_x_min;
+        set_x_min(x_min);
+        set_x_max(x_max);
+        set_x_space(x_space);
+
+        set_y_min(y_min);
+        set_y_max(y_max);
+        set_y_space(y_space);
+
+        set_z_min(z_min);
+        set_z_max(z_max);
+        set_z_space(z_space);
+
+        set_visible(visible);
     }
 
-  void set_x_min(double const value)
+    void Draw(wxWindowDC *dc);
+
+
+
+
+    double get_x_min(void) const
     {
-      m_x_min = value;
+        return m_x_min;
     }
 
-
-
-  double get_x_max(void) const
+    void set_x_min(double const value)
     {
-      return m_x_max;
-    }
-
-  void set_x_max(double const value)
-    {
-      m_x_max = value;
+        m_x_min = value;
     }
 
 
 
-  double get_x_space(void) const
+    double get_x_max(void) const
     {
-      return m_x_space;
+        return m_x_max;
     }
 
-  void set_x_space(double const value)
+    void set_x_max(double const value)
     {
-      m_x_space = value;
-    }
-
-
-
-  double get_y_min(void) const
-    {
-      return m_y_min;
-    }
-
-  void set_y_min(double const value)
-    {
-      m_y_min = value;
+        m_x_max = value;
     }
 
 
 
-  double get_y_max(void) const
+    double get_x_space(void) const
     {
-      return m_y_max;
+        return m_x_space;
     }
 
-  void set_y_max(double const value)
+    void set_x_space(double const value)
     {
-      m_y_max = value;
-    }
-
-
-
-  double get_y_space(void) const
-    {
-      return m_y_space;
-    }
-
-  void set_y_space(double const value)
-    {
-      m_y_space = value;
+        m_x_space = value;
     }
 
 
 
-  double get_z_min(void) const
+    double get_y_min(void) const
     {
-      return m_z_min;
+        return m_y_min;
     }
 
-  void set_z_min(double const value)
+    void set_y_min(double const value)
     {
-      m_z_min = value;
-    }
-
-
-
-  double get_z_max(void) const
-    {
-      return m_z_max;
-    }
-
-  void set_z_max(double const value)
-    {
-      m_z_max = value;
+        m_y_min = value;
     }
 
 
 
-  double get_z_space(void) const
+    double get_y_max(void) const
     {
-      return m_z_space;
+        return m_y_max;
     }
 
-  void set_z_space(double const value)
+    void set_y_max(double const value)
     {
-      m_z_space = value;
-    }
-
-
-
-  bool Is_visible(void) const
-    {
-      return m_visible;
-    }
-
-  bool get_visible(void) const
-    {
-      return m_visible;
-    }
-
-  void set_visible(bool const value)
-    {
-      m_visible = value;
-    }
-
-  void set_visible(void)
-    {
-      m_visible = true;
-    }
-
-  void unset_visible(void)
-    {
-      m_visible = false;
+        m_y_max = value;
     }
 
 
 
- protected:
+    double get_y_space(void) const
+    {
+        return m_y_space;
+    }
 
- private:
-  double m_x_min;
-  double m_x_max;
-  double m_x_space;
+    void set_y_space(double const value)
+    {
+        m_y_space = value;
+    }
 
-  double m_y_min;
-  double m_y_max;
-  double m_y_space;
 
-  double m_z_min;
-  double m_z_max;
-  double m_z_space;
 
-  bool m_visible;
+    double get_z_min(void) const
+    {
+        return m_z_min;
+    }
+
+    void set_z_min(double const value)
+    {
+        m_z_min = value;
+    }
+
+
+
+    double get_z_max(void) const
+    {
+        return m_z_max;
+    }
+
+    void set_z_max(double const value)
+    {
+        m_z_max = value;
+    }
+
+
+
+    double get_z_space(void) const
+    {
+        return m_z_space;
+    }
+
+    void set_z_space(double const value)
+    {
+        m_z_space = value;
+    }
+
+
+
+    bool Is_visible(void) const
+    {
+        return m_visible;
+    }
+
+    bool get_visible(void) const
+    {
+        return m_visible;
+    }
+
+    void set_visible(bool const value)
+    {
+        m_visible = value;
+    }
+
+    void set_visible(void)
+    {
+        m_visible = true;
+    }
+
+    void unset_visible(void)
+    {
+        m_visible = false;
+    }
+
+
+
+protected:
+
+private:
+    double m_x_min;
+    double m_x_max;
+    double m_x_space;
+
+    double m_y_min;
+    double m_y_max;
+    double m_y_space;
+
+    double m_z_min;
+    double m_z_max;
+    double m_z_space;
+
+    bool m_visible;
 
 };
 

@@ -35,93 +35,93 @@
  */
 class Charge
 {
- public:
-  Charge(void)
+public:
+    Charge(void)
     {
     }
 
-  Charge(double const charge, double const radius, double const x, double const y, double const z)
+    Charge(double const charge, double const radius, double const x, double const y, double const z)
     {
-      set_charge(charge);
-      set_radius(radius);
-      set_position(x, y, z);
+        set_charge(charge);
+        set_radius(radius);
+        set_position(x, y, z);
 
-      unset_movable();
+        unset_movable();
     }
 
-  Charge(double const charge, double const radius, double const x, double const y)
+    Charge(double const charge, double const radius, double const x, double const y)
     {
-      Charge(charge, radius, x, y, 0);
+        Charge(charge, radius, x, y, 0);
     }
 
 
 
-  void Draw(wxWindowDC *dc, int mode);
+    void Draw(wxWindowDC *dc, int mode);
 
 
 
-  double get_charge(void)
+    double get_charge(void)
     {
-      return m_charge;
+        return m_charge;
     }
 
-  void set_charge(double const charge)
+    void set_charge(double const charge)
     {
-      m_charge=charge;
-    }
-  
-
-  double get_radius(void)
-    {
-      return m_radius;
+        m_charge=charge;
     }
 
-  void set_radius(double const radius)
-    {
-      m_radius=radius;
-    }
-  
 
-
-  bool get_movable() const
+    double get_radius(void)
     {
-      return m_movable;
+        return m_radius;
     }
 
-  void set_movable(void)
+    void set_radius(double const radius)
     {
-      m_movable = true;
+        m_radius=radius;
     }
 
-  void unset_movable(void)
+
+
+    bool get_movable() const
     {
-      m_movable = false;
+        return m_movable;
     }
 
-  void set_movable(bool const value)
+    void set_movable(void)
     {
-      m_movable = value;
+        m_movable = true;
     }
 
-  
-
-  void set_position(double const x, double const y, double const z)
+    void unset_movable(void)
     {
-      m_position = Position(x, y, z);
+        m_movable = false;
     }
 
-  Position get_position() const
+    void set_movable(bool const value)
     {
-      return m_position;
+        m_movable = value;
     }
 
- protected:
 
- private:
-  double m_charge;
-  double m_radius;
-  Position m_position;
-  bool m_movable;
+
+    void set_position(double const x, double const y, double const z)
+    {
+        m_position = Position(x, y, z);
+    }
+
+    Position get_position() const
+    {
+        return m_position;
+    }
+
+protected:
+
+private:
+    double m_charge;
+    double m_radius;
+    Position m_position;
+    bool m_movable;
 };
 
 #endif // CHARGE_HPP

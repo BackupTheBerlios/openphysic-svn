@@ -31,85 +31,85 @@ using namespace std;
  */
 class Draw_Rectangle
 {
- public:
-  Draw_Rectangle(double const x, double const y, double const width, double const height)
+public:
+    Draw_Rectangle(double const x, double const y, double const width, double const height)
     {
-      //cout << "DEBUG: " << "1" << "\n";
-      set_x(x);
-      set_y(y);
+        //cout << "DEBUG: " << "1" << "\n";
+        set_x(x);
+        set_y(y);
 
-      set_width(width);
-      set_height(height);
+        set_width(width);
+        set_height(height);
 
-      set_color("BLACK");
+        set_color("BLACK");
     }
 
 
-  void Draw(wxWindowDC *dc);
+    void Draw(wxWindowDC *dc);
 
-  void set_x(double const value)
+    void set_x(double const value)
     {
-      m_x = value;
+        m_x = value;
     }
 
-  void set_y(double const value)
+    void set_y(double const value)
     {
-      m_y = value;
+        m_y = value;
     }
 
-  double get_x(void) const
+    double get_x(void) const
     {
-      return m_x;
+        return m_x;
     }
 
-  double get_y(void) const
+    double get_y(void) const
     {
-      return m_y;
-    }
-
-
-  wxColor get_color(void) const
-    {
-      return m_color;
-    }
-  
-  void set_color(wxColor const value)
-    {
-      m_color = value;
+        return m_y;
     }
 
 
-  double get_width(void) const
+    wxColor get_color(void) const
     {
-      return m_width;
+        return m_color;
     }
 
-  void set_width(double const value)
+    void set_color(wxColor const value)
     {
-      m_width = value;
-    }
-
-  double get_height(void) const
-    {
-      return m_height;
-    }
-
-  void set_height(double const value)
-    {
-      m_height = value;
+        m_color = value;
     }
 
 
- protected:
+    double get_width(void) const
+    {
+        return m_width;
+    }
 
- private:
-  double m_x;
-  double m_y;
+    void set_width(double const value)
+    {
+        m_width = value;
+    }
 
-  double m_width;
-  double m_height;
+    double get_height(void) const
+    {
+        return m_height;
+    }
 
-  wxColor m_color;
+    void set_height(double const value)
+    {
+        m_height = value;
+    }
+
+
+protected:
+
+private:
+    double m_x;
+    double m_y;
+
+    double m_width;
+    double m_height;
+
+    wxColor m_color;
 
 };
 

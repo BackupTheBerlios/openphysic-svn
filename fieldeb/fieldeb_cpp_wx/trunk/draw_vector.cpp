@@ -25,92 +25,92 @@
 
 void Draw_Vector::Draw(wxWindowDC *dc)
 {
-  //wxPen pen = wxPen("BLACK",1,wxSOLID);
-  //wxPen pen = wxPen("RED",1,wxSOLID);
-  wxPen pen = wxPen(get_color(),1,wxSOLID);
-  dc->SetPen(pen);
+    //wxPen pen = wxPen("BLACK",1,wxSOLID);
+    //wxPen pen = wxPen("RED",1,wxSOLID);
+    wxPen pen = wxPen(get_color(),1,wxSOLID);
+    dc->SetPen(pen);
 
-  if ( get_len() !=0 ) // not null vector
+    if ( get_len() !=0 ) // not null vector
     {
-      dc->DrawLine((wxCoord) get_x(),
-		   (wxCoord) get_y(),
-		   (wxCoord) ( get_x() + get_ux() ),
-		   (wxCoord) ( get_y() + get_uy() ));
-      
-      float Len = 0;
-      if (!get_variable_len()) // Len is the len of the 2 shorts segments of an arrow
-	{
-	  Len = get_arrow_len();
-	}
-      else
-	{
-	  Len = get_len() / get_arrow_ratio();
-	}
-      
+        dc->DrawLine((wxCoord) get_x(),
+                     (wxCoord) get_y(),
+                     (wxCoord) ( get_x() + get_ux() ),
+                     (wxCoord) ( get_y() + get_uy() ));
 
-      float epsilonX;
-      float epsilonY;
-      
-      epsilonX = Len * cos(get_arrow_angle() + get_angle());
-      epsilonY = Len * sin(get_arrow_angle() + get_angle());          
-      dc->DrawLine((wxCoord) (get_x() + get_ux()),
-		   (wxCoord) (get_y() + get_uy()),
-		   (wxCoord) (get_x() + get_ux() - epsilonX),
-		   (wxCoord) (get_y() + get_uy() - epsilonY) );
+        float Len = 0;
+        if (!get_variable_len()) // Len is the len of the 2 shorts segments of an arrow
+        {
+            Len = get_arrow_len();
+        }
+        else
+        {
+            Len = get_len() / get_arrow_ratio();
+        }
 
-      epsilonX = Len * cos(get_arrow_angle() - get_angle());
-      epsilonY = Len * sin(get_arrow_angle() - get_angle());          
-      dc->DrawLine((wxCoord) (get_x() + get_ux()),
-		   (wxCoord) (get_y() + get_uy()),
-		   (wxCoord) (get_x() + get_ux() - epsilonX),
-		   (wxCoord) (get_y() + get_uy() + epsilonY));
-      
+
+        float epsilonX;
+        float epsilonY;
+
+        epsilonX = Len * cos(get_arrow_angle() + get_angle());
+        epsilonY = Len * sin(get_arrow_angle() + get_angle());
+        dc->DrawLine((wxCoord) (get_x() + get_ux()),
+                     (wxCoord) (get_y() + get_uy()),
+                     (wxCoord) (get_x() + get_ux() - epsilonX),
+                     (wxCoord) (get_y() + get_uy() - epsilonY) );
+
+        epsilonX = Len * cos(get_arrow_angle() - get_angle());
+        epsilonY = Len * sin(get_arrow_angle() - get_angle());
+        dc->DrawLine((wxCoord) (get_x() + get_ux()),
+                     (wxCoord) (get_y() + get_uy()),
+                     (wxCoord) (get_x() + get_ux() - epsilonX),
+                     (wxCoord) (get_y() + get_uy() + epsilonY));
+
     }
-  else
+    else
     {
-      // null vector
-      // drawpoint ?
+        // null vector
+        // drawpoint ?
     }
-  
-  // TO DO
+
+    // TO DO
 }
 
 
 
 double Draw_Vector::get_len(void)
 {
-  return sqrt(get_ux()*get_ux() + get_uy()*get_uy()); // + get_uz()*get_uz());
+    return sqrt(get_ux()*get_ux() + get_uy()*get_uy()); // + get_uz()*get_uz());
 }
 
 double Draw_Vector::get_angle(void)
 {
-  // return the angle between x (horizontal up) and vector
-  // return value belongs to 0->360 degree or 0->2*pi rad
-  // use the cos to get a value between 0 and 180 deg
-  // trick with sign of delta y to get angle between 180 and 360 deg
-  // result is given in rad
-  // error code is -1
-  
-  if ( get_len() == 0 )
+    // return the angle between x (horizontal up) and vector
+    // return value belongs to 0->360 degree or 0->2*pi rad
+    // use the cos to get a value between 0 and 180 deg
+    // trick with sign of delta y to get angle between 180 and 360 deg
+    // result is given in rad
+    // error code is -1
+
+    if ( get_len() == 0 )
     {
-      // null vector
-      // should return undef (coded by -1)
-      return -1;
+        // null vector
+        // should return undef (coded by -1)
+        return -1;
     }
-  
-  if (get_ux()>0)
+
+    if (get_ux()>0)
     {
-      return acos(get_ux()/get_len());
-		     
+        return acos(get_ux()/get_len());
+
     }
-  
-  if (get_ux()<0)
+
+    if (get_ux()<0)
     {
-      return 2 * 3.14 - acos(get_ux() / get_len());
+        return 2 * 3.14 - acos(get_ux() / get_len());
     }
-  
-  else //y_end-y_start==0
+
+    else //y_end-y_start==0
     {
-      return 0;
-    } 
+        return 0;
+    }
 }

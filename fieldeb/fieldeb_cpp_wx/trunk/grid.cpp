@@ -27,18 +27,18 @@ using namespace std;
 
 void Grid::Draw(wxWindowDC *dc)
 {
-  wxPen pen = wxPen("BLACK",2,wxSOLID); // "BLACK"='#000000'='RRGGBB'
-  dc->SetPen(pen);
-  //dc->DrawPoint( 200, 200 ); 
+    wxPen pen = wxPen("BLACK",2,wxSOLID); // "BLACK"='#000000'='RRGGBB'
+    dc->SetPen(pen);
+    //dc->DrawPoint( 200, 200 );
 
-  if (Is_visible())
+    if (Is_visible())
     {
-      for (double y = get_y_min() + get_y_space()/2 ; y <= get_y_max() ; y = y + get_y_space())
-	{
-	  for (double x = get_x_min() + get_x_space()/2 ; x <= get_x_max() ; x = x + get_x_space())
-	    {
-	      dc->DrawPoint( (int) x, (int) y ); 
-	    }
-	}
+        for (double y = get_y_min() + get_y_space()/2 ; y <= get_y_max() ; y = y + get_y_space())
+        {
+            for (double x = get_x_min() + get_x_space()/2 ; x <= get_x_max() ; x = x + get_x_space())
+            {
+                dc->DrawPoint( (int) x, (int) y );
+            }
+        }
     }
 }

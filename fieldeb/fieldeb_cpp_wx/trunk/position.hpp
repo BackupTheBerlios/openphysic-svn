@@ -31,66 +31,66 @@
  */
 class Position //: public Vector3d
 {
- public:
-  Position (void)
+public:
+    Position (void)
     {
-      //cout << "DEBUG: " << "Position1" << "\n";
-      //Vector3d::Vector3d(0, 0, 0);
-      m_vect = Vector3d(0,0,0);
+        //cout << "DEBUG: " << "Position1" << "\n";
+        //Vector3d::Vector3d(0, 0, 0);
+        m_vect = Vector3d(0,0,0);
     }
 
-  Position (double const x, double const y, double const z)
+    Position (double const x, double const y, double const z)
     {
-      //cout << "DEBUG: " << "Position2" << "\n";
-      //Vector3d::Vector3d(x, y, z);
-      m_vect = Vector3d(x,y,z);
+        //cout << "DEBUG: " << "Position2" << "\n";
+        //Vector3d::Vector3d(x, y, z);
+        m_vect = Vector3d(x,y,z);
     }
 
-  Position (double const x, double const y)
+    Position (double const x, double const y)
     {
-      //cout << "DEBUG: " << "Position3" << "\n";
-      //Vector3d::Vector3d(x, y, 0);
-      m_vect = Vector3d(x,y,0);
-    }
-
-
-  void set_x(double const x)
-    {
-      m_vect.set_x(x);
-    }
-
-  void set_y(double const y)
-    {
-      m_vect.set_y(y);
-    }
-
-  void set_z(float const z)
-    {
-      m_vect.set_z(z);
+        //cout << "DEBUG: " << "Position3" << "\n";
+        //Vector3d::Vector3d(x, y, 0);
+        m_vect = Vector3d(x,y,0);
     }
 
 
-  double get_x(void) const
+    void set_x(double const x)
     {
-      return m_vect.get_x();
+        m_vect.set_x(x);
     }
 
-  double get_y(void) const
+    void set_y(double const y)
     {
-      return m_vect.get_y();
+        m_vect.set_y(y);
     }
 
-  double get_z(void) const
+    void set_z(float const z)
     {
-      return m_vect.get_z();
+        m_vect.set_z(z);
     }
-  //
- protected:
-  //
- private:
-  //
-  Vector3d m_vect;
-  
+
+
+    double get_x(void) const
+    {
+        return m_vect.get_x();
+    }
+
+    double get_y(void) const
+    {
+        return m_vect.get_y();
+    }
+
+    double get_z(void) const
+    {
+        return m_vect.get_z();
+    }
+    //
+protected:
+    //
+private:
+    //
+    Vector3d m_vect;
+
 };
 
 #endif // POSITION_HPP
