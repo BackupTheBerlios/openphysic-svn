@@ -25,12 +25,12 @@ import java.awt.Rectangle;
 
 
 /**
- * Describe an electical charge or an electrical current
+ * Abstract class that describe an electical charge or an electrical current
  */
-public abstract class CChargeCurrent implements IDrawable{
+public abstract class CChargeCurrent implements IDrawable, IMovable {
 
     private double m_charge = 1000;
-    private double m_radius = 11;
+    private double m_radius = 17;
     private CPosition m_position;
     private boolean m_movable = false;
 

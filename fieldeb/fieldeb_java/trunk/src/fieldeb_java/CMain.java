@@ -67,10 +67,10 @@ public class CMain //extends JApplet // public
 
    	System.out.println(str);	
 
-	CMainFrame fenetre = new CMainFrame();
-	fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	//fenetre.show(); // is deprecated
-	fenetre.setVisible(true);
+	CMainFrame window = new CMainFrame();
+	window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	//window.show(); // is deprecated
+	window.setVisible(true);
     }
   
 }

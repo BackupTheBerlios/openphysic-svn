@@ -23,7 +23,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 /**
- *
+ * Fenêtre principale de l'application
  * @author scls
  */
 class CMainFrame extends JFrame

@@ -24,7 +24,8 @@ import java.awt.Color;
 
 
 /**
- *
+ * Graine : segment de taille constante ayant la faculté de se tourner selon
+ * le champ (E ou B)
  * @author scls
  */
 public class CGrain implements IDrawable {

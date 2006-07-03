@@ -18,69 +18,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-
 /**
- * Panel sur lequel les charges, la grille, ... sont dessinés
+ * Interface représentant les objets déplaçables
  * @author scls
  */
-class CMainPanel extends JPanel
-{
-    private CMainFrame myWindow = null;
-    public CMainPanel(CMainFrame myWindow)
-    {
-	setLayout(new BorderLayout());
-
-	/*
-	JButton boutonFermer = new JButton("Fermer");
-	add(boutonFermer, BorderLayout.SOUTH);
-
-	MyListener myListener = new MyListener();
-	*/
-
-	this.myWindow = myWindow;
-	
-	/*
-	boutonFermer.addActionListener(myListener);
-	*/
-    }
-
-    public void paintComponent(Graphics g)
-    {
-	super.paintComponent(g);
-	
-	test(g);
-    }
-
-    void test(Graphics g)
-    {
-	//g.drawString("Mon Texte", 25, 25);
-
- 	//System.out.println("paint");
-
-	CCharge chg = new CCharge();
-	chg.set_position(100, 100, 0);
-        //chg.set_charge(-1000); // -
-        chg.set_charge(1000); // +
-	chg.draw(g);
-        
-        chg.set_position(200, 100, 0);
-        chg.set_charge(-1000); // -
-	chg.draw(g);
-        
-        CGrid grid = new CGrid();
-        grid.draw(g);
-    }
-
-    /*
-    class MyListener implements ActionListener
-    {
-	public void actionPerformed(ActionEvent event)
-	{
-	    maFenetre.dispose();
-	}
-    }
-    */
+public interface IMovable {
+    
 }

@@ -20,7 +20,7 @@
 
 
 /**
- *
+ * Vecteur 3D pouvant servir à représenter une position, une vitesse, etc ...
  * @author scls
  */
 public class CVector3D {
