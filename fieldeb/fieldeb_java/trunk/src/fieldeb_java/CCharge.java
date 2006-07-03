@@ -25,56 +25,61 @@ import java.awt.Graphics;
 //import java.awt.Rectangle;
 import java.awt.Color;
 
-class CCharge extends CChargeCurrent {
+class CCharge extends CChargeCurrent
+{
 
-    CCharge(){
-        // Constructeur
-    }
+      CCharge()
+      {
+            // Constructeur
+      }
 
-    public void draw(Graphics g) {
-        drawCircle(g);
+      public void draw(Graphics g)
+      {
+            drawCircle(g);
 
 
-        double x = this.get_position().get_x();
-        double y = this.get_position().get_y();
-        double R = this.get_radius();
+            double x = this.get_position().get_x();
+            double y = this.get_position().get_y();
+            double R = this.get_radius();
 
-        //g.setColor(Color.black);
-        g.setColor(Color.white);
-
-        if ( this.get_charge() < 0 ) {
-            g.drawString("-",(int) (x - R/4), (int) (y + R/4));
-
-            /*
-            g.drawLine((int) (x - R/2),
-                       (int) y,
-                       (int) (x + R/2),
-                       (int) y);            
-             */
-        }
-        else if ( this.get_charge() > 0 ) {
-            g.drawString("+",(int) (x - R/4), (int) (y + R/4));
-
-            /*
-            g.drawLine((int) (x - R/4),
-                       (int) y,
-                       (int) (x + R/4),
-                       (int) y);  
-             */
-        }
-        else
-        {
+            //g.setColor(Color.black);
             g.setColor(Color.white);
-            g.drawString("0",(int) x, (int) y);
-        }
-    }
+
+            if ( this.get_charge() < 0 )
+            {
+                  g.drawString("-",(int) (x - R/4), (int) (y + R/4));
+
+                  /*
+                  g.drawLine((int) (x - R/2),
+                             (int) y,
+                             (int) (x + R/2),
+                             (int) y);            
+                   */
+            }
+            else if ( this.get_charge() > 0 )
+            {
+                  g.drawString("+",(int) (x - R/4), (int) (y + R/4));
+
+                  /*
+                  g.drawLine((int) (x - R/4),
+                             (int) y,
+                             (int) (x + R/4),
+                             (int) y);  
+                   */
+            }
+            else
+            {
+                  g.setColor(Color.white);
+                  g.drawString("0",(int) x, (int) y);
+            }
+      }
 
 
 
-    /*
-    public Rectangle getRectangle(){
-    Rectangle rect = new Rectangle();
-    return rect;
-    }
-    */
+      /*
+      public Rectangle getRectangle(){
+      Rectangle rect = new Rectangle();
+      return rect;
+      }
+      */
 }

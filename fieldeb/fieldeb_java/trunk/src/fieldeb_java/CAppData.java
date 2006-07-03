@@ -24,58 +24,66 @@ package fieldeb_java;
  *
  * @author scls
  */
-public class CAppData {
+public class CAppData
+{
 
-    public enum Mode { E, B };
-    public enum Show { Field, FieldLines, Equipotentials };
-    public enum Draw { Vectors, Grains };
-    public enum Color { Colors, BlackWhiteGray, BlackWhite };
+      public enum Mode { E, B };
+      public enum Show { Field, FieldLines, Equipotentials };
+      public enum Draw { Vectors, Grains };
+      public enum Color { Colors, BlackWhiteGray, BlackWhite };
 
-    private Mode m_mode = Mode.E;
-    private Show m_show = Show.Field;
-    private Draw m_draw = Draw.Grains;
-    private Color m_color = Color.Colors;
+      private Mode m_mode = Mode.E;
+      private Show m_show = Show.Field;
+      private Draw m_draw = Draw.Grains;
+      private Color m_color = Color.Colors;
 
-    /** Creates a new instance of CAppData */
-    public CAppData() {
-
-    }
-
-
-
-    public void set_mode(Mode mode) {
-        m_mode = mode;
-    }
-
-    public void set_show(Show show) {
-        m_show = show;
-    }
-
-    public void set_draw(Draw draw) {
-        m_draw = draw;
-    }
-
-    public void set_color(Color color) {
-        m_color = color;
-    }
+      /** Creates a new instance of CAppData */
+      public CAppData()
+      {}
 
 
 
-    public Mode get_mode() {
-        return m_mode;
-    }
+      public void set_mode(Mode mode)
+      {
+            m_mode = mode;
+      }
 
-    public Show get_show() {
-        return m_show;
-    }
+      public void set_show(Show show)
+      {
+            m_show = show;
+      }
 
-    public Draw get_draw() {
-        return m_draw;
-    }
+      public void set_draw(Draw draw)
+      {
+            m_draw = draw;
+      }
 
-    public Color get_color() {
-        return m_color;
-    }
+      public void set_color(Color color)
+      {
+            m_color = color;
+      }
+
+
+
+      public Mode get_mode()
+      {
+            return m_mode;
+      }
+
+      public Show get_show()
+      {
+            return m_show;
+      }
+
+      public Draw get_draw()
+      {
+            return m_draw;
+      }
+
+      public Color get_color()
+      {
+            return m_color;
+      }
 
 
 }

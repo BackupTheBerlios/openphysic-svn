@@ -34,7 +34,7 @@ public class CMain {
 	String str = "fieldEB";
 	str = str + "\n" + "under GNU General Public License";
 	str = str + "\n" + "by S. CELLES";
-
+ 
    	System.out.println(str);
     }
 }
@@ -50,29 +50,29 @@ import javax.swing.*;
 
 public class CMain //extends JApplet // public
 {
-    public static void main(String[] args)
-    {
-        mainfunc();
-    }
+      public static void main(String[] args)
+      {
+            mainfunc();
+      }
 
-    public void init()
-    {
-        //add(new Label("Hello World"));
-        mainfunc();
-    }
+      public void init()
+      {
+            //add(new Label("Hello World"));
+            mainfunc();
+      }
 
-    private static void mainfunc()
-    {
-        String str = "fieldEB";
-        str = str + "\n" + "under GNU General Public License";
-        str = str + "\n" + "by S. CELLES";
+      private static void mainfunc()
+      {
+            String str = "fieldEB";
+            str = str + "\n" + "under GNU General Public License";
+            str = str + "\n" + "by S. CELLES";
 
-        System.out.println(str);
+            System.out.println(str);
 
-        CMainFrame window = new CMainFrame();
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //window.show(); // is deprecated
-        window.setVisible(true);
-    }
+            CMainFrame window = new CMainFrame();
+            window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            //window.show(); // is deprecated
+            window.setVisible(true);
+      }
 
 }

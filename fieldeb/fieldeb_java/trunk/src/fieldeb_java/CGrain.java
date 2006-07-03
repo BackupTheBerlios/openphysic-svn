@@ -30,126 +30,129 @@ import java.awt.Color;
  * le champ (E ou B)
  * @author scls
  */
-public class CGrain implements IDrawable {
+public class CGrain implements IDrawable
+{
 
-    private double m_x = 0;
-    private double m_y = 0;
+      private double m_x = 0;
+      private double m_y = 0;
 
-    private double m_ux = 0;
-    private double m_uy = 0;
+      private double m_ux = 0;
+      private double m_uy = 0;
 
-    private double m_width = 1;
-    private double m_len = 10;
+      private double m_width = 1;
+      private double m_len = 10;
 
-    private Color m_color = Color.black;
+      private Color m_color = Color.black;
 
-    /** Creates a new instance of CGrain */
-    public CGrain() {
-    }
-
-
-    void set_x(double value)
-    {
-        m_x = value;
-    }
-
-    void set_y(double value)
-    {
-        m_y = value;
-    }
+      /** Creates a new instance of CGrain */
+      public CGrain()
+      {}
 
 
-    double get_x()
-    {
-        return m_x;
-    }
+      void set_x(double value)
+      {
+            m_x = value;
+      }
 
-    double get_y()
-    {
-        return m_y;
-    }
-
-
-    void set_ux(double value)
-    {
-        m_ux = value;
-    }
-
-    void set_uy(double value)
-    {
-        m_uy = value;
-    }
+      void set_y(double value)
+      {
+            m_y = value;
+      }
 
 
-    double get_ux()
-    {
-        return m_ux;
-    }
+      double get_x()
+      {
+            return m_x;
+      }
 
-    double get_uy()
-    {
-        return m_uy;
-    }
+      double get_y()
+      {
+            return m_y;
+      }
 
 
+      void set_ux(double value)
+      {
+            m_ux = value;
+      }
 
-    double get_width()
-    {
-        return m_width;
-    }
+      void set_uy(double value)
+      {
+            m_uy = value;
+      }
 
-    double get_len()
-    {
-        return m_len;
-    }
 
-    void set_len(double value)
-    {
-        m_len = value;
-    }
+      double get_ux()
+      {
+            return m_ux;
+      }
 
-    void set_width(double value)
-    {
-        m_width = value;
-    }
+      double get_uy()
+      {
+            return m_uy;
+      }
 
 
 
-    Color get_color()
-    {
-        return m_color;
-    }
+      double get_width()
+      {
+            return m_width;
+      }
 
-    void set_color(Color value)
-    {
-        m_color = value;
-    }
+      double get_len()
+      {
+            return m_len;
+      }
+
+      void set_len(double value)
+      {
+            m_len = value;
+      }
+
+      void set_width(double value)
+      {
+            m_width = value;
+      }
 
 
 
-    public Rectangle getRectangle(){
-        Rectangle rect = new Rectangle();
-        return rect;
-    }
+      Color get_color()
+      {
+            return m_color;
+      }
 
-    public void draw(Graphics g) {
-        g.setColor(this.m_color);
+      void set_color(Color value)
+      {
+            m_color = value;
+      }
 
 
-        double r_u = Math.sqrt (  get_ux() * get_ux()
-                                  + get_uy() * get_uy()
-                               );
 
-        if ( r_u != 0 ) // Not null direction vector
-        {
-            g.drawLine(
-                (int) ( get_x() - get_len()/2 * get_ux() / r_u ),
-                (int) ( get_y() - get_len()/2 * get_uy() / r_u ),
-                (int) ( get_x() + get_len()/2 * get_ux() / r_u ),
-                (int) ( get_y() + get_len()/2 * get_uy() / r_u )
-            );
-        }
+      public Rectangle getRectangle()
+      {
+            Rectangle rect = new Rectangle();
+            return rect;
+      }
 
-    }
+      public void draw(Graphics g)
+      {
+            g.setColor(this.m_color);
+
+
+            double r_u = Math.sqrt (  get_ux() * get_ux()
+                                      + get_uy() * get_uy()
+                                   );
+
+            if ( r_u != 0 ) // Not null direction vector
+            {
+                  g.drawLine(
+                        (int) ( get_x() - get_len()/2 * get_ux() / r_u ),
+                        (int) ( get_y() - get_len()/2 * get_uy() / r_u ),
+                        (int) ( get_x() + get_len()/2 * get_ux() / r_u ),
+                        (int) ( get_y() + get_len()/2 * get_uy() / r_u )
+                  );
+            }
+
+      }
 
 }

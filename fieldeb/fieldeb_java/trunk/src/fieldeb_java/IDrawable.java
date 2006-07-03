@@ -27,8 +27,9 @@ import java.awt.Rectangle;
  * Interface représentant les objets dessinable sur un JPanel
  * @author scls
  */
-public interface IDrawable {
-    public void draw(Graphics g);
+public interface IDrawable
+{
+      public void draw(Graphics g);
 
-    public Rectangle getRectangle();
+      public Rectangle getRectangle();
 }

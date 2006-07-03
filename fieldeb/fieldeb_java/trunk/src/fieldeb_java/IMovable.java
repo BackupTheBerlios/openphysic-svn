@@ -24,6 +24,5 @@ package fieldeb_java;
  * Interface représentant les objets déplaçables
  * @author scls
  */
-public interface IMovable {
-
-}
+public interface IMovable
+      {}
