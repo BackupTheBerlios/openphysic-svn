@@ -20,8 +20,8 @@
 
 package fieldeb_java;
 
-import java.awt.Graphics; 
-import java.awt.Rectangle; 
+import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.Color;
 
 
@@ -31,7 +31,7 @@ import java.awt.Color;
  * @author scls
  */
 public class CGrain implements IDrawable {
-    
+
     private double m_x = 0;
     private double m_y = 0;
 
@@ -40,14 +40,14 @@ public class CGrain implements IDrawable {
 
     private double m_width = 1;
     private double m_len = 10;
-  
+
     private Color m_color = Color.black;
-    
+
     /** Creates a new instance of CGrain */
     public CGrain() {
     }
-    
-    
+
+
     void set_x(double value)
     {
         m_x = value;
@@ -66,90 +66,90 @@ public class CGrain implements IDrawable {
 
     double get_y()
     {
-      return m_y;
+        return m_y;
     }
 
-  
+
     void set_ux(double value)
     {
-      m_ux = value;
+        m_ux = value;
     }
 
     void set_uy(double value)
     {
-      m_uy = value;
+        m_uy = value;
     }
 
 
     double get_ux()
     {
-      return m_ux;
+        return m_ux;
     }
 
     double get_uy()
     {
-      return m_uy;
+        return m_uy;
     }
 
 
 
     double get_width()
     {
-      return m_width;
+        return m_width;
     }
 
     double get_len()
     {
-      return m_len;
+        return m_len;
     }
 
     void set_len(double value)
     {
-      m_len = value;
+        m_len = value;
     }
 
     void set_width(double value)
     {
-      m_width = value;
+        m_width = value;
     }
 
 
 
     Color get_color()
     {
-      return m_color;
+        return m_color;
     }
-  
+
     void set_color(Color value)
     {
-      m_color = value;
+        m_color = value;
     }
-    
-    
+
+
 
     public Rectangle getRectangle(){
-	Rectangle rect = new Rectangle();
-	return rect;
-    } 
+        Rectangle rect = new Rectangle();
+        return rect;
+    }
 
     public void draw(Graphics g) {
         g.setColor(this.m_color);
 
 
         double r_u = Math.sqrt (  get_ux() * get_ux()
-                                + get_uy() * get_uy()
-                );
+                                  + get_uy() * get_uy()
+                               );
 
         if ( r_u != 0 ) // Not null direction vector
-        {            	
-        g.drawLine(
-		  (int) ( get_x() - get_len()/2 * get_ux() / r_u ),
-		  (int) ( get_y() - get_len()/2 * get_uy() / r_u ),
-		  (int) ( get_x() + get_len()/2 * get_ux() / r_u ),
-		  (int) ( get_y() + get_len()/2 * get_uy() / r_u )
-                    );
+        {
+            g.drawLine(
+                (int) ( get_x() - get_len()/2 * get_ux() / r_u ),
+                (int) ( get_y() - get_len()/2 * get_uy() / r_u ),
+                (int) ( get_x() + get_len()/2 * get_ux() / r_u ),
+                (int) ( get_y() + get_len()/2 * get_uy() / r_u )
+            );
         }
-  
+
     }
-    
+
 }

@@ -33,45 +33,45 @@ class CMainPanel extends JPanel
     private CMainFrame myWindow = null;
     public CMainPanel(CMainFrame myWindow)
     {
-	setLayout(new BorderLayout());
+        setLayout(new BorderLayout());
 
-	/*
-	JButton boutonFermer = new JButton("Fermer");
-	add(boutonFermer, BorderLayout.SOUTH);
+        /*
+        JButton boutonFermer = new JButton("Fermer");
+        add(boutonFermer, BorderLayout.SOUTH);
 
-	MyListener myListener = new MyListener();
-	*/
+        MyListener myListener = new MyListener();
+        */
 
-	this.myWindow = myWindow;
-	
-	/*
-	boutonFermer.addActionListener(myListener);
-	*/
+        this.myWindow = myWindow;
+
+        /*
+        boutonFermer.addActionListener(myListener);
+        */
     }
 
     public void paintComponent(Graphics g)
     {
-	super.paintComponent(g);
-	
-	test(g);
+        super.paintComponent(g);
+
+        test(g);
     }
 
     void test(Graphics g)
     {
-	//g.drawString("Mon Texte", 25, 25);
+        //g.drawString("Mon Texte", 25, 25);
 
- 	//System.out.println("paint");
+        //System.out.println("paint");
 
-	CCharge chg = new CCharge();
-	chg.set_position(100, 100, 0);
+        CCharge chg = new CCharge();
+        chg.set_position(100, 100, 0);
         //chg.set_charge(-1000); // -
         chg.set_charge(1000); // +
-	chg.draw(g);
-        
+        chg.draw(g);
+
         chg.set_position(200, 100, 0);
         chg.set_charge(-1000); // -
-	chg.draw(g);
-        
+        chg.draw(g);
+
         CGrid grid = new CGrid();
         grid.draw(g);
     }
@@ -79,10 +79,10 @@ class CMainPanel extends JPanel
     /*
     class MyListener implements ActionListener
     {
-	public void actionPerformed(ActionEvent event)
-	{
-	    maFenetre.dispose();
-	}
+    public void actionPerformed(ActionEvent event)
+    {
+     maFenetre.dispose();
+    }
     }
     */
 }

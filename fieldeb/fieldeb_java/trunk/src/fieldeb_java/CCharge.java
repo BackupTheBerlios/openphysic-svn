@@ -21,30 +21,30 @@
 package fieldeb_java;
 
 
-import java.awt.Graphics; 
-//import java.awt.Rectangle; 
+import java.awt.Graphics;
+//import java.awt.Rectangle;
 import java.awt.Color;
 
 class CCharge extends CChargeCurrent {
 
     CCharge(){
-	// Constructeur
+        // Constructeur
     }
 
     public void draw(Graphics g) {
-	drawCircle(g);
-        
+        drawCircle(g);
 
-	double x = this.get_position().get_x();
-	double y = this.get_position().get_y();
-	double R = this.get_radius();
 
-	//g.setColor(Color.black);
+        double x = this.get_position().get_x();
+        double y = this.get_position().get_y();
+        double R = this.get_radius();
+
+        //g.setColor(Color.black);
         g.setColor(Color.white);
-        
+
         if ( this.get_charge() < 0 ) {
             g.drawString("-",(int) (x - R/4), (int) (y + R/4));
-        
+
             /*
             g.drawLine((int) (x - R/2),
                        (int) y,
@@ -54,7 +54,7 @@ class CCharge extends CChargeCurrent {
         }
         else if ( this.get_charge() > 0 ) {
             g.drawString("+",(int) (x - R/4), (int) (y + R/4));
-            
+
             /*
             g.drawLine((int) (x - R/4),
                        (int) y,
@@ -65,7 +65,7 @@ class CCharge extends CChargeCurrent {
         else
         {
             g.setColor(Color.white);
-            g.drawString("0",(int) x, (int) y);            
+            g.drawString("0",(int) x, (int) y);
         }
     }
 
@@ -73,8 +73,8 @@ class CCharge extends CChargeCurrent {
 
     /*
     public Rectangle getRectangle(){
-	Rectangle rect = new Rectangle();
-	return rect;
+    Rectangle rect = new Rectangle();
+    return rect;
     }
     */
 }

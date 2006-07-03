@@ -20,8 +20,8 @@
 
 package fieldeb_java;
 
-import java.awt.Graphics; 
-import java.awt.Rectangle; 
+import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.Color;
 
 /**
@@ -36,83 +36,83 @@ public class CRectangle implements IDrawable {
     private double m_height = 10;
 
     private Color m_color = Color.black;
-    
-    
+
+
     /** Creates a new instance of CRectangle */
     public CRectangle() {
     }
-    
+
 
 
     void set_x(double value)
     {
-      m_x = value;
+        m_x = value;
     }
 
     void set_y(double value)
     {
-      m_y = value;
+        m_y = value;
     }
 
     double get_x()
     {
-      return m_x;
+        return m_x;
     }
 
     double get_y()
     {
-      return m_y;
+        return m_y;
     }
 
 
     Color get_color()
     {
-      return m_color;
+        return m_color;
     }
-  
+
     void set_color(Color value)
     {
-      m_color = value;
+        m_color = value;
     }
 
 
     double get_width()
     {
-      return m_width;
+        return m_width;
     }
 
     void set_width(double value)
     {
-      m_width = value;
+        m_width = value;
     }
 
     double get_height()
     {
-      return m_height;
+        return m_height;
     }
 
     void set_height(double value)
     {
-      m_height = value;
+        m_height = value;
     }
 
-    
-    
-    
+
+
+
     public Rectangle getRectangle(){
         Rectangle rect = new Rectangle();
-	return rect;
-    } 
+        return rect;
+    }
 
     public void draw(Graphics g) {
-  
+
         g.setColor(get_color());
 
         g.fillRect(
-		  (int) ( get_x() - get_width()/2 ),
-		  (int) ( get_y() - get_height()/2 ),
-		  (int) ( get_width() ),
-		  (int) ( get_height() )
-		  );
+            (int) ( get_x() - get_width()/2 ),
+            (int) ( get_y() - get_height()/2 ),
+            (int) ( get_width() ),
+            (int) ( get_height() )
+        );
     }
 }

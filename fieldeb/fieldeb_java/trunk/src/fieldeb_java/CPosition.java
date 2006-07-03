@@ -27,8 +27,8 @@ public class CPosition extends CVector3D
 {
     public CPosition() {
         super();
-    }  
-    
+    }
+
     public CPosition (double x, double y, double z)
     {
         super(x,y,z);

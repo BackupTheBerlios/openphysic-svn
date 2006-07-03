@@ -22,7 +22,7 @@ package fieldeb_java;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Rectangle; 
+import java.awt.Rectangle;
 
 
 /**
@@ -42,7 +42,7 @@ public abstract class CChargeCurrent implements IDrawable, IMovable {
     /*
     CChargeCurrent(double charge, double radius, double x, double y, double z)
     {
-	// Constructeur
+    // Constructeur
     }
     */
 
@@ -67,18 +67,18 @@ public abstract class CChargeCurrent implements IDrawable, IMovable {
      */
     double get_charge()
     {
-	return m_charge;
+        return m_charge;
     }
-    
+
     /**
      *Modificateur (mutateur) de la charge de la charge
      *@param charge la nouvelle charge de la charge
      */    
     void set_charge(double charge)
     {
-      m_charge=charge;
+        m_charge=charge;
     }
-    
+
 
 
     /**
@@ -87,7 +87,7 @@ public abstract class CChargeCurrent implements IDrawable, IMovable {
      */    
     double get_radius()
     {
-	return m_radius;
+        return m_radius;
     }
 
     /**
@@ -96,18 +96,18 @@ public abstract class CChargeCurrent implements IDrawable, IMovable {
      */      
     void set_radius(double radius)
     {
-	m_radius=radius;
+        m_radius=radius;
     }
-    
 
-    
+
+
     /**
      *Accesseur sur la mobilite de la charge
      *@return vrai si la charge est deplacable non si elle ne l'est pas
      */    
     boolean get_movable()
     {
-	return m_movable;
+        return m_movable;
     }
 
     /**
@@ -116,72 +116,72 @@ public abstract class CChargeCurrent implements IDrawable, IMovable {
      */ 
     void set_movable()
     {
-      m_movable = true;
+        m_movable = true;
     }
-    
+
     /**
      *Modificateur de la mobilite de la charge
      *Rend la charge indeplacable
      */ 
     void unset_movable()
     {
-      m_movable = false;
+        m_movable = false;
     }
-    
+
     /**
      *Modificateur (mutateur) de la mobilite de la charge
      *@param value mobilite de la charge (vrai si elle est mobile non si elle ne l'est pas)
      */ 
     void set_movable(boolean value)
     {
-      m_movable = value;
+        m_movable = value;
     }
-    
-    
+
+
 
     void set_position(double x, double y, double z)
     {
-	m_position = new CPosition(x, y, z);
+        m_position = new CPosition(x, y, z);
     }
 
     CPosition get_position()
     {
-	return m_position;
+        return m_position;
     }
-   
+
     public void drawCircle(Graphics g) {
-	double R = this.get_radius();
+        double R = this.get_radius();
         double x = this.get_position().get_x() - R/2;
-	double y = this.get_position().get_y() - R/2;
-	
+        double y = this.get_position().get_y() - R/2;
 
-	if ( this.get_charge() < 0 )
-	    {
-		g.setColor(Color.red);
-	    }
-	else if ( this.get_charge() > 0 )
-	    {
-		g.setColor(Color.blue);
-	    }
-	else if ( this.get_charge() == 0 )
-	    {
-		g.setColor(Color.black);		
-	    }
 
-	// fillOval drawOval
-	g.fillOval((int) x,
-		   (int) y,
-		   (int) R,
-		   (int) R);	
+        if ( this.get_charge() < 0 )
+        {
+            g.setColor(Color.red);
+        }
+        else if ( this.get_charge() > 0 )
+        {
+            g.setColor(Color.blue);
+        }
+        else if ( this.get_charge() == 0 )
+        {
+            g.setColor(Color.black);
+        }
+
+        // fillOval drawOval
+        g.fillOval((int) x,
+                   (int) y,
+                   (int) R,
+                   (int) R);
     }
 
     public void draw(Graphics g) {
-	drawCircle(g);
+        drawCircle(g);
     }
 
     public Rectangle getRectangle(){
-	Rectangle rect = new Rectangle();
-	return rect;
-    } 
-    
+        Rectangle rect = new Rectangle();
+        return rect;
+    }
+
 }

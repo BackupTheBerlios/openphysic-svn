@@ -20,23 +20,23 @@
 
 package fieldeb_java;
 
-import java.awt.Graphics; 
-//import java.awt.Rectangle; 
+import java.awt.Graphics;
+//import java.awt.Rectangle;
 
 class CCurrent extends CChargeCurrent {
 
     CCurrent(){
-	// Constructeur
+        // Constructeur
     }
 
     public void draw(Graphics g) {
-	
+
     }
 
     /*
     public Rectangle getRectangle(){
-	Rectangle rect = new Rectangle();
-	return rect;
+    Rectangle rect = new Rectangle();
+    return rect;
     }
     */
 }

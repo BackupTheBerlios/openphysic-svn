@@ -25,5 +25,5 @@ package fieldeb_java;
  * @author scls
  */
 public interface IMovable {
-    
+
 }
