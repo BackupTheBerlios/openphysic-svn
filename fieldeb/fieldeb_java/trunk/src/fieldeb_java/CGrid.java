@@ -209,8 +209,10 @@ public class CGrid //implements IDrawable
 
     public void draw(Graphics g) {
         
+        this.set_x_max(g.getClipBounds().width);
+        this.set_y_max(g.getClipBounds().height);
         
-        double R = 1;
+        final double R = 3;
 	double x = get_x_min(); // = 100 - R/2; // test
 	double y = get_y_min(); //= 100 - R/2; // test
 
@@ -220,8 +222,8 @@ public class CGrid //implements IDrawable
             
 		g.setColor(Color.black);
 	
-                for ( y = get_y_min() + get_y_space()/2 ; y <= get_y_max() + get_y_space()/2 ; y += get_y_space() ) {
-                    for ( x = get_x_min() + get_x_space()/2 ; x <= get_x_max() + get_x_space()/2 ; x += get_x_space() ) {    
+                for ( y = get_y_min() + get_y_space()/2 ; y <= get_y_max() ; y += get_y_space() ) {
+                    for ( x = get_x_min() + get_x_space()/2 ; x <= get_x_max() ; x += get_x_space() ) {    
                         //	g.drawPoint(x, y); // TO FIX : drawPoint !!!
                         g.fillOval((int) (x - R/2),
                                    (int) (y - R/2),
