@@ -18,59 +18,62 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-/** fieldEB
-* Simulateur electrostatique et magnetostatique
-* @author Sebastien CELLES
-* @author http://www.celles.net
-* @version 0.1
-*/
-
-
-/*
-public class CMain {
-    public static void main (String[] args){
-	String str = "fieldEB";
-	str = str + "\n" + "under GNU General Public License";
-	str = str + "\n" + "by S. CELLES";
-
-   	System.out.println(str);
+/**
+ *
+ * @author scls
+ */
+public class CAppData {
+    
+    public enum Mode { E, B };
+    public enum Show { Field, FieldLines, Equipotentials };
+    public enum Draw { Vectors, Grains };
+    public enum Color { Colors, BlackWhiteGray, BlackWhite };
+    
+    private Mode m_mode = Mode.E;
+    private Show m_show = Show.Field;
+    private Draw m_draw = Draw.Grains;
+    private Color m_color = Color.Colors;
+    
+    /** Creates a new instance of CAppData */
+    public CAppData() {
+        
     }
-}
-*/
-
-
-
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-
-
-
-public class CMain //extends JApplet // public
-{
-    public static void main(String[] args)
-    {
-	mainfunc();
+    
+    
+    
+    public void set_mode(Mode mode) {
+        m_mode = mode;
+    }
+    
+    public void set_show(Show show) {
+        m_show = show;
     }
 
-    public void init()
-    {
-	//add(new Label("Hello World"));
-	mainfunc();
+    public void set_draw(Draw draw) {
+        m_draw = draw;
+    }
+    
+    public void set_color(Color color) {
+        m_color = color;
+    }
+    
+    
+    
+    public Mode get_mode() {
+        return m_mode;
     }
 
-    private static void mainfunc()
-    {
-	String str = "fieldEB";
-	str = str + "\n" + "under GNU General Public License";
-	str = str + "\n" + "by S. CELLES";
-
-   	System.out.println(str);	
-
-	CMainFrame fenetre = new CMainFrame();
-	fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	//fenetre.show(); // is deprecated
-	fenetre.setVisible(true);
+    public Show get_show() {
+        return m_show;
     }
-  
+
+    public Draw get_draw() {
+        return m_draw;
+    }    
+
+    public Color get_color() {
+        return m_color;
+    }
+    
+    
 }
