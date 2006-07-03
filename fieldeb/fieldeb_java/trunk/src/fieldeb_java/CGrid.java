@@ -29,18 +29,18 @@ import java.awt.Color;
 public class CGrid //implements IDrawable
 {
     private double m_x_min = 0;
-    private double m_x_max = 200;
-    private double m_x_space = 50;
+    private double m_x_max = 400;
+    private double m_x_space = 20;
 
     private double m_y_min = 0;
-    private double m_y_max = 200;
-    private double m_y_space = 50;
+    private double m_y_max = 300;
+    private double m_y_space = 20;
 
     private double m_z_min = 0;
     private double m_z_max = 0;
     private double m_z_space = 100;
 
-    private boolean m_visible;
+    private boolean m_visible = true;
 
     CGrid() {
 
@@ -208,15 +208,27 @@ public class CGrid //implements IDrawable
     } 
 
     public void draw(Graphics g) {
+        
+        
+        double R = 1;
+	double x = get_x_min(); // = 100 - R/2; // test
+	double y = get_y_min(); //= 100 - R/2; // test
 
-	double x = 100; // test
-	double y = 100; // test
-
+        
 	if ( Is_visible() )
 	    {
+            
 		g.setColor(Color.black);
-		
-		//	g.drawPoint(x, y); // TO FIX : drawPoint !!!
+	
+                for ( y = get_y_min() + get_y_space()/2 ; y <= get_y_max() + get_y_space()/2 ; y += get_y_space() ) {
+                    for ( x = get_x_min() + get_x_space()/2 ; x <= get_x_max() + get_x_space()/2 ; x += get_x_space() ) {    
+                        //	g.drawPoint(x, y); // TO FIX : drawPoint !!!
+                        g.fillOval((int) (x - R/2),
+                                   (int) (y - R/2),
+                                   (int) R,
+                                   (int) R);
+                    }
+                }
 	    }
     }
 

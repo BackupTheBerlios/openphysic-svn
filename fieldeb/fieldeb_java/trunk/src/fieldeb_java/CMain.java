@@ -85,14 +85,13 @@ class CMainFrame extends JFrame
 	int width_screen = screen_size.width;
 	int height_screen = screen_size.height;
 
-	setTitle("fieldEB");
+	setTitle("fieldEB by S. CELLES under GNU General Public License (GPL)");
 	setSize(width_screen/4, height_screen/4);
 	setLocation(width_screen*3/8, height_screen*3/8);
 
 	CMainPanel monContenu = new CMainPanel(this);
 	Container leContenant = getContentPane();
 	leContenant.add(monContenu);
-
 
 
 	JMenuItem item;
@@ -246,13 +245,17 @@ class CMainPanel extends JPanel
 
     void test(Graphics g)
     {
-	g.drawString("Mon Texte", 25, 25);
+	//g.drawString("Mon Texte", 25, 25);
 
- 	System.out.println("paint");
+ 	//System.out.println("paint");
 
 	CCharge chg = new CCharge();
 	chg.set_position(100, 100, 0);
+        chg.set_charge(-1000);
 	chg.draw(g);
+        
+        CGrid grid = new CGrid();
+        grid.draw(g);
     }
 
     /*

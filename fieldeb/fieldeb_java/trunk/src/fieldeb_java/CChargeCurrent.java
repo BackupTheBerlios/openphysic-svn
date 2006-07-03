@@ -30,7 +30,7 @@ import java.awt.Rectangle;
 public abstract class CChargeCurrent implements IDrawable{
 
     private double m_charge = 1000;
-    private double m_radius = 10;
+    private double m_radius = 11;
     private CPosition m_position;
     private boolean m_movable = false;
 
@@ -149,9 +149,10 @@ public abstract class CChargeCurrent implements IDrawable{
     }
    
     public void drawCircle(Graphics g) {
-	double x = this.get_position().get_x();
-	double y = this.get_position().get_y();
 	double R = this.get_radius();
+        double x = this.get_position().get_x() - R/2;
+	double y = this.get_position().get_y() - R/2;
+	
 
 	if ( this.get_charge() < 0 )
 	    {
