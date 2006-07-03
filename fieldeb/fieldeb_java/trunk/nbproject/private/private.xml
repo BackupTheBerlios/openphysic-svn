@@ -1,4 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
+        <file>file:/home/scls/openphysic/fieldeb/fieldeb_java/trunk/src/fieldeb_java/CAppData.java</file>
+        <file>file:/home/scls/openphysic/fieldeb/fieldeb_java/trunk/src/fieldeb_java/CCharge.java</file>
+        <file>file:/home/scls/openphysic/fieldeb/fieldeb_java/trunk/src/fieldeb_java/CChargeCurrent.java</file>
+        <file>file:/home/scls/openphysic/fieldeb/fieldeb_java/trunk/src/fieldeb_java/CColor.java</file>
+        <file>file:/home/scls/openphysic/fieldeb/fieldeb_java/trunk/src/fieldeb_java/CCurrent.java</file>
+        <file>file:/home/scls/openphysic/fieldeb/fieldeb_java/trunk/src/fieldeb_java/CGrain.java</file>
+        <file>file:/home/scls/openphysic/fieldeb/fieldeb_java/trunk/src/fieldeb_java/CGrid.java</file>
+        <file>file:/home/scls/openphysic/fieldeb/fieldeb_java/trunk/src/fieldeb_java/CMain.java</file>
+        <file>file:/home/scls/openphysic/fieldeb/fieldeb_java/trunk/src/fieldeb_java/CMainFrame.java</file>
+        <file>file:/home/scls/openphysic/fieldeb/fieldeb_java/trunk/src/fieldeb_java/CMainPanel.java</file>
+        <file>file:/home/scls/openphysic/fieldeb/fieldeb_java/trunk/src/fieldeb_java/CPosition.java</file>
+        <file>file:/home/scls/openphysic/fieldeb/fieldeb_java/trunk/src/fieldeb_java/CRectangle.java</file>
+        <file>file:/home/scls/openphysic/fieldeb/fieldeb_java/trunk/src/fieldeb_java/CVector.java</file>
+        <file>file:/home/scls/openphysic/fieldeb/fieldeb_java/trunk/src/fieldeb_java/CVector3D.java</file>
+        <file>file:/home/scls/openphysic/fieldeb/fieldeb_java/trunk/src/fieldeb_java/IDrawable.java</file>
+        <file>file:/home/scls/openphysic/fieldeb/fieldeb_java/trunk/src/fieldeb_java/IMovable.java</file>
+    </open-files>
 </project-private>

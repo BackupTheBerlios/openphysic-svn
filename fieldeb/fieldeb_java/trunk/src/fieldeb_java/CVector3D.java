@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+package fieldeb_java;
 
 /**
  * Vecteur 3D pouvant servir à représenter une position, une vitesse, etc ...
