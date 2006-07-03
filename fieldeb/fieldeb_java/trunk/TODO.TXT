@@ -1,2 +1,0 @@
-Fixer le probleme avec Applet
-appletviewer index.html
