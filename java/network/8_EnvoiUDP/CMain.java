@@ -3,6 +3,9 @@ import java.io.*;
 
 // ce programme permet d'envoyer des paquets UDP
 
+// DatagramPacket
+// DatagramSocket
+
 public class CMain { //EnvoiUDP {
 	public static void main(String [] args) {
 		if ( args.length < 3) {
@@ -16,6 +19,11 @@ public class CMain { //EnvoiUDP {
 			InetAddress adr = InetAddress.getByName( args[0]);
 			int port = Integer.parseInt(args[1]);
 			DatagramPacket p = new DatagramPacket( buffer, buffer.length, adr, port);
+
+			/* -- */
+			DatagramSocket ds = new DatagramSocket();
+			ds.send(p);
+			/* -- */
 
 		} catch ( UnknownHostException e) {
 			System.out.println("Erreur du nom de host: "+e.getMessage());
