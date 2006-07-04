@@ -7,7 +7,7 @@ import java.io.*;
 public class CMain {
 	public CMain (String nomServeur, int port) {
 		try {
-			while (true) {
+			while ( true ) {
 				Socket socket = new Socket(nomServeur, port);
 
 				System.out.println("Tapez une ligne à envoyer au "
@@ -37,7 +37,7 @@ public class CMain {
 	}
 
 	public static void main(String [] args) {
-		if (args.length < 2) {
+		if ( args.length < 2 ) {
 			System.out.println(
 				"Syntaxe: java ClientTCP NomServeur NumeroPort");
 			System.exit(0);

@@ -12,7 +12,7 @@ public class CMain {
 
 			System.out.println("Serveur démarré");
 
-			while (true) {
+			while ( true ) {
 				Socket socket = serverSocket.accept();
 
 				// Ici il faudrait créer un thread qui gère le socket
@@ -28,7 +28,7 @@ public class CMain {
 			}
 
 
-		} catch (IOException ioe) {
+		} catch ( IOException ioe ) {
 			System.out.println("Erreur I/O : "+ioe.getMessage());
 		}
 	}

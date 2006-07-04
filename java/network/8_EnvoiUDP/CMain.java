@@ -6,6 +6,9 @@ import java.io.*;
 // DatagramPacket
 // DatagramSocket
 
+// $ java CMain 127.0.0.1 80 hello
+
+
 public class CMain { //EnvoiUDP {
 	public static void main(String [] args) {
 		if ( args.length < 3) {
@@ -25,10 +28,10 @@ public class CMain { //EnvoiUDP {
 			ds.send(p);
 			/* -- */
 
-		} catch ( UnknownHostException e) {
+		} catch ( UnknownHostException e ) {
 			System.out.println("Erreur du nom de host: "+e.getMessage());
 
-		} catch ( IOException e) {
+		} catch ( IOException e ) {
 			System.out.println("Erreur I/O: "+e.getMessage());
 		}
 
