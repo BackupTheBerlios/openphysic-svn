@@ -22,9 +22,12 @@ public class CMain {
 
 		try {
 			DatagramSocket ds = new DatagramSocket(port);
-			ds.receive(paquet);
-			System.out.println("Paquet reçu: "
-				+ new String(paquet.getData()));
+
+			//while ( true )  { // TO FIX : la fin du paquet reste rempli (voir client)
+				ds.receive(paquet);
+				System.out.println("Paquet reçu: "
+					+ new String(paquet.getData()));
+			//}
 
 		} catch ( IOException e ) {
 			System.out.println("Erreur I/O: "+e.getMessage());
