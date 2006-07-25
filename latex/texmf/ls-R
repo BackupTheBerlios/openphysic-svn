@@ -20976,3 +20976,13 @@ wcprops
 ./tpm/.svn/tmp/wcprops:
 
 ./tpm/.svn/wcprops:
+./fonts/tfm/jknappen/ec:
+ecrm2488.tfm
+./fonts/pk/ljfour/jknappen/ec:
+ecrm2488.600pk
+./fonts/tfm/jknappen/ec:
+ecrm0900.tfm
+./fonts/pk/ljfour/jknappen/ec:
+ecrm0900.600pk
+./fonts/tfm/jknappen/ec:
+ectt1000.tfm
