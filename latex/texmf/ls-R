@@ -1351,7 +1351,9 @@ eccc1000.600pk
 eccc1728.600pk
 ecrm0700.600pk
 ecrm0800.600pk
+ecrm0900.600pk
 ecrm1000.600pk
+ecrm2488.600pk
 ecsl0700.600pk
 ecsl1000.600pk
 ecss0900.600pk
@@ -3145,9 +3147,12 @@ ec
 .svn
 
 ./fonts/tfm/jknappen/ec:
+ecrm0900.tfm
+ecrm2488.tfm
 ecss1000.tfm
 ecss1200.tfm
 ecsx1000.tfm
+ectt1000.tfm
 .svn
 
 ./fonts/tfm/jknappen/ec/.svn:
@@ -20976,13 +20981,3 @@ wcprops
 ./tpm/.svn/tmp/wcprops:
 
 ./tpm/.svn/wcprops:
-./fonts/tfm/jknappen/ec:
-ecrm2488.tfm
-./fonts/pk/ljfour/jknappen/ec:
-ecrm2488.600pk
-./fonts/tfm/jknappen/ec:
-ecrm0900.tfm
-./fonts/pk/ljfour/jknappen/ec:
-ecrm0900.600pk
-./fonts/tfm/jknappen/ec:
-ectt1000.tfm
