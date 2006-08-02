@@ -70,6 +70,30 @@
             <string>Sélectionner un répertoire</string>
         </property>
     </widget>
+    <widget class="FileSelector">
+        <property name="name">
+            <cstring>directory</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>10</x>
+                <y>30</y>
+                <width>350</width>
+                <height>24</height>
+            </rect>
+        </property>
+        <property name="populationText">
+            <string></string>
+        </property>
+        <property name="associations" stdset="0">
+            <stringlist>
+                <string></string>
+            </stringlist>
+        </property>
+        <property name="selectionType">
+            <enum>Directory</enum>
+        </property>
+    </widget>
     <widget class="PixmapLabel">
         <property name="name">
             <cstring>preview</cstring>
@@ -83,25 +107,25 @@
             </rect>
         </property>
     </widget>
-    <widget class="FileSelector">
+    <widget class="ScriptObject">
         <property name="name">
-            <cstring>directory</cstring>
+            <cstring>scriptPreview</cstring>
         </property>
         <property name="geometry">
             <rect>
-                <x>10</x>
-                <y>30</y>
-                <width>350</width>
-                <height>24</height>
+                <x>350</x>
+                <y>90</y>
+                <width>32</width>
+                <height>32</height>
             </rect>
+        </property>
+        <property name="populationText">
+            <string>@preview.setText("@directory.text/@files.selection")</string>
         </property>
         <property name="associations" stdset="0">
             <stringlist>
-                <string></string>
+                <string>@preview.setText("@directory.text/@files.selection")</string>
             </stringlist>
-        </property>
-        <property name="selectionType">
-            <enum>Directory</enum>
         </property>
     </widget>
     <widget class="ListBox">
@@ -116,30 +140,17 @@
                 <height>310</height>
             </rect>
         </property>
+        <property name="font">
+            <font>
+                <family>Monospace</family>
+            </font>
+        </property>
         <property name="populationText">
-            <string>@exec('' ls -l @directory.text '') </string>
+            <string>@exec("ls -l @directory.text")</string>
         </property>
         <property name="associations" stdset="0">
             <stringlist>
                 <string></string>
-            </stringlist>
-        </property>
-    </widget>
-    <widget class="ScriptObject">
-        <property name="name">
-            <cstring>ScriptObject1</cstring>
-        </property>
-        <property name="geometry">
-            <rect>
-                <x>530</x>
-                <y>10</y>
-                <width>32</width>
-                <height>32</height>
-            </rect>
-        </property>
-        <property name="associations" stdset="0">
-            <stringlist>
-                <string>@preview.setText("@directory.text/@files.selection") </string>
             </stringlist>
         </property>
     </widget>
@@ -148,7 +159,7 @@
     <connection>
         <sender>files</sender>
         <signal>clicked(QListBoxItem*)</signal>
-        <receiver>ScriptObject1</receiver>
+        <receiver>scriptPreview</receiver>
         <slot>execute()</slot>
     </connection>
     <connection>
@@ -158,5 +169,10 @@
         <slot>populate()</slot>
     </connection>
 </connections>
+<tabstops>
+    <tabstop>files</tabstop>
+    <tabstop>apply</tabstop>
+    <tabstop>close</tabstop>
+</tabstops>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>
