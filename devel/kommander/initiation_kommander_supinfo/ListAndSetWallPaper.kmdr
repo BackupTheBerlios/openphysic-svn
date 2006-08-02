@@ -1,0 +1,162 @@
+<!DOCTYPE UI><UI version="3.0" stdsetdef="1">
+<class>frmListAndSetWallPaper</class>
+<widget class="Dialog">
+    <property name="name">
+        <cstring>frmListAndSetWallPaper</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>781</width>
+            <height>392</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>ListAndSetWallPaper</string>
+    </property>
+    <property name="associations" stdset="0">
+        <stringlist>
+            <string></string>
+            <string></string>
+            <string></string>
+        </stringlist>
+    </property>
+    <widget class="ExecButton">
+        <property name="name">
+            <cstring>apply</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>370</x>
+                <y>350</y>
+                <width>140</width>
+                <height>30</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>&amp;Appliquer</string>
+        </property>
+    </widget>
+    <widget class="CloseButton">
+        <property name="name">
+            <cstring>close</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>630</x>
+                <y>350</y>
+                <width>140</width>
+                <height>30</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>&amp;Quitter</string>
+        </property>
+    </widget>
+    <widget class="Label">
+        <property name="name">
+            <cstring>label</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>10</x>
+                <y>10</y>
+                <width>200</width>
+                <height>20</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Sélectionner un répertoire</string>
+        </property>
+    </widget>
+    <widget class="PixmapLabel">
+        <property name="name">
+            <cstring>preview</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>380</x>
+                <y>30</y>
+                <width>390</width>
+                <height>310</height>
+            </rect>
+        </property>
+    </widget>
+    <widget class="FileSelector">
+        <property name="name">
+            <cstring>directory</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>10</x>
+                <y>30</y>
+                <width>350</width>
+                <height>24</height>
+            </rect>
+        </property>
+        <property name="associations" stdset="0">
+            <stringlist>
+                <string></string>
+            </stringlist>
+        </property>
+        <property name="selectionType">
+            <enum>Directory</enum>
+        </property>
+    </widget>
+    <widget class="ListBox">
+        <property name="name">
+            <cstring>files</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>10</x>
+                <y>70</y>
+                <width>350</width>
+                <height>310</height>
+            </rect>
+        </property>
+        <property name="populationText">
+            <string>@exec('' ls -l @directory.text '') </string>
+        </property>
+        <property name="associations" stdset="0">
+            <stringlist>
+                <string></string>
+            </stringlist>
+        </property>
+    </widget>
+    <widget class="ScriptObject">
+        <property name="name">
+            <cstring>ScriptObject1</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>530</x>
+                <y>10</y>
+                <width>32</width>
+                <height>32</height>
+            </rect>
+        </property>
+        <property name="associations" stdset="0">
+            <stringlist>
+                <string>@preview.setText("@directory.text/@files.selection") </string>
+            </stringlist>
+        </property>
+    </widget>
+</widget>
+<connections>
+    <connection>
+        <sender>files</sender>
+        <signal>clicked(QListBoxItem*)</signal>
+        <receiver>ScriptObject1</receiver>
+        <slot>execute()</slot>
+    </connection>
+    <connection>
+        <sender>directory</sender>
+        <signal>widgetTextChanged(const QString&amp;)</signal>
+        <receiver>files</receiver>
+        <slot>populate()</slot>
+    </connection>
+</connections>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>
