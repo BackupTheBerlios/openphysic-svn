@@ -1,8 +1,8 @@
 <!DOCTYPE UI><UI version="3.0" stdsetdef="1">
-<class>Form3</class>
+<class>frmddscript</class>
 <widget class="Dialog">
     <property name="name">
-        <cstring>Form3</cstring>
+        <cstring>frmddscript</cstring>
     </property>
     <property name="geometry">
         <rect>
@@ -13,8 +13,50 @@
         </rect>
     </property>
     <property name="caption">
-        <string>Form3</string>
+        <string>DDScript</string>
     </property>
+    <widget class="ScriptObject">
+        <property name="name">
+            <cstring>qt_dead_widget_ScriptObject1</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>330</x>
+                <y>160</y>
+                <width>32</width>
+                <height>32</height>
+            </rect>
+        </property>
+    </widget>
+    <widget class="TabWidget">
+        <property name="name">
+            <cstring>TabWidget1</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>180</width>
+                <height>210</height>
+            </rect>
+        </property>
+        <widget class="QWidget">
+            <property name="name">
+                <cstring>tab</cstring>
+            </property>
+            <attribute name="title">
+                <string>Tab &amp;1</string>
+            </attribute>
+        </widget>
+        <widget class="QWidget">
+            <property name="name">
+                <cstring>tab</cstring>
+            </property>
+            <attribute name="title">
+                <string>Tab &amp;2</string>
+            </attribute>
+        </widget>
+    </widget>
 </widget>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>
