@@ -22,22 +22,6 @@
             <string></string>
         </stringlist>
     </property>
-    <widget class="ExecButton">
-        <property name="name">
-            <cstring>apply</cstring>
-        </property>
-        <property name="geometry">
-            <rect>
-                <x>370</x>
-                <y>350</y>
-                <width>140</width>
-                <height>30</height>
-            </rect>
-        </property>
-        <property name="text">
-            <string>&amp;Appliquer</string>
-        </property>
-    </widget>
     <widget class="CloseButton">
         <property name="name">
             <cstring>close</cstring>
@@ -168,6 +152,30 @@
         <property name="associations" stdset="0">
             <stringlist>
                 <string></string>
+            </stringlist>
+        </property>
+    </widget>
+    <widget class="ExecButton">
+        <property name="name">
+            <cstring>apply</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>370</x>
+                <y>350</y>
+                <width>140</width>
+                <height>30</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>&amp;Appliquer</string>
+        </property>
+        <property name="populationText">
+            <string></string>
+        </property>
+        <property name="associations" stdset="0">
+            <stringlist>
+                <string>@dcop(kdesktop,KBackgroundIface,"setWallpaper(QString,int)","@directory.text/@files.selection",6)</string>
             </stringlist>
         </property>
     </widget>
