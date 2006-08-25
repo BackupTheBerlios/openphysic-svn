@@ -1,4 +1,7 @@
 all:
+	$(MAKE) html
+
+dvi:
 	latex main.tex
 	latex main.tex
 	bibtex main
