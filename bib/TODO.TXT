@@ -12,3 +12,8 @@ et
 
 bib2html (perl)
 http://www.arakhne.org/bib2html/
+
+
+bib2html produit un page avec frame, classement, etc..
+par contre il ne supporte pas le champ ISBN.
+
