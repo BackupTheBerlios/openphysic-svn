@@ -1,3 +1,14 @@
 Rajouter le champ domain ou domains
 voir les tags
 
+
+
+Ne pas confondre
+
+bibtex2html (ocalm)
+http://www.lri.fr/~filliatr/bibtex2html/index.en.html
+
+et
+
+bib2html (perl)
+http://www.arakhne.org/bib2html/
