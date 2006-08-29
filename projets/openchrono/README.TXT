@@ -105,3 +105,5 @@ Fonctionnalités supplémentaires (pas implanté dans un premier temps)
 WIFI (pour envoyer les temps)
 clé USB (pour récupérer les données) data-logger
 coupure à distance du kart
+reflashage facile du microcontroleur voir In Situ Programming ISP... par port série mais l'idéal serait par USB... voir si c'est possible !!!)
+
