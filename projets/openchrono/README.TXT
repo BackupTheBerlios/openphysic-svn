@@ -57,6 +57,9 @@ Affichage à compléter avec des LEDs (vert jaune rouge)
   passage de 1 LED rouge
 
 
+Attention au domaine de température d'utilisation du LCD !!! (surtout l'été !!!)
+
+
 Microcontrôleur
 ===============
 PIC ou ATMEL AVR ou ARM ou ...
