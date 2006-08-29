@@ -36,10 +36,12 @@ Wirz-SLI and PIC-an-LCD; and some devices connected to the LPT port:
 HD44780, STV5730, T6963, SED1520 and SED1330. As of 0.4.4 some USB
 displays are also supported by the drivers CFonz633, CwLnx, and USBLCD.
 
+Samsung KS0108
+Hitachi HD61202
 
 http://www.matrixorbital.com
 
-Taille autour de 85x49mm 
+Taille autour de 85x49mm (un pixel = 0,48x0.48mm)
 
 voir docs dans /media/graver/sciences/programmation/microcontroleurs/display_7seg_lcd_graph/
 
