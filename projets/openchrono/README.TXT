@@ -50,6 +50,7 @@ Envoyer un bitmap à un LCD
 http://www.amontec.com/lcd_nokia_3310.shtml
 [WISH] Transformer un bitmap en tableau (array) C
 GIMP http://bugzilla.gnome.org/show_bug.cgi?id=353521
+--> Exporter en tant que fichier .xbm (X11 Bitmap = Image Bitmap X)
 ImageMagick convert : à faire http://www.imagemagick.org
 
 
