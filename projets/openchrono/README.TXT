@@ -119,7 +119,7 @@ Choix final :
 Fonctionnalités supplémentaires (pas implanté dans un premier temps)
 ===============================
 WIFI (pour envoyer les temps)
-clé USB (pour récupérer les données) data-logger
+clé USB (pour récupérer les données) data-logger ou écriture sur carte MMC, SD ou CF
 coupure à distance du kart
 reflashage facile du microcontroleur voir In Situ Programming ISP... par port série mais l'idéal serait par USB... voir si c'est possible !!!)
 
