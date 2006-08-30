@@ -46,6 +46,17 @@ Taille autour de 85x49mm (un pixel = 0,48x0.48mm)
 voir docs dans /media/graver/sciences/programmation/microcontroleurs/display_7seg_lcd_graph/
 
 
+Envoyer un bitmap à un LCD
+http://www.amontec.com/lcd_nokia_3310.shtml
+[WISH] Transformer un bitmap en tableau (array) C
+GIMP http://bugzilla.gnome.org/show_bug.cgi?id=353521
+ImageMagick convert : à faire http://www.imagemagick.org
+
+
+Bibliothèque permettant de gérer les menus
+
+
+
 Choix final : 
 
 
