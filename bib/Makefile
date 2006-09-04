@@ -26,6 +26,9 @@ bibtex2html:
 	bibtex2html s-celles.bib
 	firefox s-celles.html &
 
+#noisbn:
+#	perl -ne 'print unless /^\s*ISBN\s*=\s*[{][\d-]+[}],?\s*$/i' < s-celles-2.bib > s-celles.bib
+
 svn:
 	svn commit
 
