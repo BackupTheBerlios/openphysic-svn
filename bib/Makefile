@@ -26,6 +26,13 @@ bibtex2html:
 	bibtex2html s-celles.bib
 	firefox s-celles.html &
 
+svn:
+	svn commit
+
 ftp:
 	#ncftpput (ncftp)
 	ncftpput -u celles ftp.celles.net www/bib/bib2html bib2html/*
+
+send:
+	$(MAKE) svn
+	$(MAKE) ftp
