@@ -26,11 +26,6 @@ bibtex2html:
 	bibtex2html s-celles.bib
 	firefox s-celles.html &
 
-noisbn:
-#	perl -ne 'print unless /^\s*isbn\s*=\s*[{][\d-]+[}],?\s*$/i'
-	cp s-celles-2.bib s-celles.bib
-	/bin/ed s-celles.bib <<EOF
-	g/ISBN/d
-	wq
-	EOF
-
+ftp:
+	#ncftpput (ncftp)
+	ncftpput -u celles ftp.celles.net www/bib/bib2html bib2html/*
