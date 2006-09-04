@@ -14,11 +14,12 @@ clean:
 	$(RM) *~ *.aux *.blg *.bbl *.log *.dvi
 
 html:
-	$(MAKE) bibtex2html
+	$(MAKE) bib2html
 
 bib2html:
 	# http://www.arakhne.org/IMG/deb/bib2html_4.3-1_all.deb (Perl)
 	bib2html --g Domain -f s-celles.bib
+	firefox bib2html/index.html &
 
 bibtex2html:
 	# http://www.lri.fr/~filliatr/bibtex2html/index.en.html (OCalm)
