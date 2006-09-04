@@ -18,7 +18,7 @@ html:
 
 bib2html:
 	# http://www.arakhne.org/IMG/deb/bib2html_4.3-1_all.deb (Perl)
-	bib2html -f s-celles.bib
+	bib2html --g Domain -f s-celles.bib
 
 bibtex2html:
 	# http://www.lri.fr/~filliatr/bibtex2html/index.en.html (OCalm)
@@ -26,4 +26,10 @@ bibtex2html:
 	firefox s-celles.html &
 
 noisbn:
-	perl -ne 'print unless /^\s*isbn\s*=\s*[{][\d-]+[}],?\s*$/i'
+#	perl -ne 'print unless /^\s*isbn\s*=\s*[{][\d-]+[}],?\s*$/i'
+	cp s-celles-2.bib s-celles.bib
+	/bin/ed s-celles.bib <<EOF
+	g/ISBN/d
+	wq
+	EOF
+
