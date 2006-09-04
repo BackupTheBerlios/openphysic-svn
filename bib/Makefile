@@ -24,3 +24,6 @@ bibtex2html:
 	# http://www.lri.fr/~filliatr/bibtex2html/index.en.html (OCalm)
 	bibtex2html s-celles.bib
 	firefox s-celles.html &
+
+noisbn:
+	perl -ne 'print unless /^\s*isbn\s*=\s*[{][\d-]+[}],?\s*$/i'
