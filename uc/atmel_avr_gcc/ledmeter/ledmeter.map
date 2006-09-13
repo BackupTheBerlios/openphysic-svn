@@ -1,0 +1,332 @@
+Archive member included because of file (symbol)
+
+C:/WinAVR/lib/gcc/avr/3.4.6/avr4\libgcc.a(_copy_data.o)
+                              ledmeter.o (__do_copy_data)
+C:/WinAVR/lib/gcc/avr/3.4.6/avr4\libgcc.a(_clear_bss.o)
+                              ledmeter.o (__do_clear_bss)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+text             0x00000000         0x00002000         xr
+data             0x00800060         0x0000ffa0         rw !x
+eeprom           0x00810000         0x00010000         rw !x
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4/crtm8535.o
+LOAD ledmeter.o
+LOAD c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4\libm.a
+LOAD C:/WinAVR/lib/gcc/avr/3.4.6/avr4\libgcc.a
+LOAD c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4\libc.a
+LOAD C:/WinAVR/lib/gcc/avr/3.4.6/avr4\libgcc.a
+
+.hash
+ *(.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rela.init
+ *(.rela.init)
+
+.rel.text
+ *(.rel.text)
+ *(.rel.text.*)
+ *(.rel.gnu.linkonce.t*)
+
+.rela.text
+ *(.rela.text)
+ *(.rela.text.*)
+ *(.rela.gnu.linkonce.t*)
+
+.rel.fini
+ *(.rel.fini)
+
+.rela.fini
+ *(.rela.fini)
+
+.rel.rodata
+ *(.rel.rodata)
+ *(.rel.rodata.*)
+ *(.rel.gnu.linkonce.r*)
+
+.rela.rodata
+ *(.rela.rodata)
+ *(.rela.rodata.*)
+ *(.rela.gnu.linkonce.r*)
+
+.rel.data
+ *(.rel.data)
+ *(.rel.data.*)
+ *(.rel.gnu.linkonce.d*)
+
+.rela.data
+ *(.rela.data)
+ *(.rela.data.*)
+ *(.rela.gnu.linkonce.d*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rel.got
+ *(.rel.got)
+
+.rela.got
+ *(.rela.got)
+
+.rel.bss
+ *(.rel.bss)
+
+.rela.bss
+ *(.rela.bss)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.text           0x00000000      0x1b8
+ *(.vectors)
+ .vectors       0x00000000       0x2a c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4/crtm8535.o
+                0x00000000                __vectors
+                0x00000000                __vector_default
+                0x0000002a                __ctors_start = .
+ *(.ctors)
+                0x0000002a                __ctors_end = .
+                0x0000002a                __dtors_start = .
+ *(.dtors)
+                0x0000002a                __dtors_end = .
+ *(.progmem.gcc*)
+ *(.progmem*)
+                0x0000002a                . = ALIGN (0x2)
+ *(.init0)
+ *(.init1)
+ *(.init2)
+ .init2         0x0000002a        0xc c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4/crtm8535.o
+ *(.init3)
+ *(.init4)
+ .init4         0x00000036       0x16 C:/WinAVR/lib/gcc/avr/3.4.6/avr4\libgcc.a(_copy_data.o)
+                0x00000036                __do_copy_data
+ .init4         0x0000004c       0x10 C:/WinAVR/lib/gcc/avr/3.4.6/avr4\libgcc.a(_clear_bss.o)
+                0x0000004c                __do_clear_bss
+ *(.init5)
+ *(.init6)
+ *(.init7)
+ *(.init8)
+ *(.init9)
+ .init9         0x0000005c        0x2 c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4/crtm8535.o
+ *(.text)
+ .text          0x0000005e        0x2 c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4/crtm8535.o
+                0x0000005e                __vector_1
+                0x0000005e                __vector_12
+                0x0000005e                __bad_interrupt
+                0x0000005e                __vector_6
+                0x0000005e                __vector_3
+                0x0000005e                __vector_11
+                0x0000005e                __vector_13
+                0x0000005e                __vector_17
+                0x0000005e                __vector_19
+                0x0000005e                __vector_7
+                0x0000005e                __vector_5
+                0x0000005e                __vector_4
+                0x0000005e                __vector_9
+                0x0000005e                __vector_2
+                0x0000005e                __vector_15
+                0x0000005e                __vector_8
+                0x0000005e                __vector_14
+                0x0000005e                __vector_10
+                0x0000005e                __vector_16
+                0x0000005e                __vector_18
+                0x0000005e                __vector_20
+ .text          0x00000060      0x158 ledmeter.o
+                0x00000132                switch_on_min_dels
+                0x00000072                switch_off_all_leds
+                0x00000196                loop
+                0x00000180                init
+                0x000000de                switch_off_led
+                0x000001aa                main
+                0x00000060                switch_on_all_leds
+                0x00000086                switch_on_led
+                0x000001b8                . = ALIGN (0x2)
+ *(.text.*)
+                0x000001b8                . = ALIGN (0x2)
+ *(.fini9)
+ *(.fini8)
+ *(.fini7)
+ *(.fini6)
+ *(.fini5)
+ *(.fini4)
+ *(.fini3)
+ *(.fini2)
+ *(.fini1)
+ *(.fini0)
+                0x000001b8                _etext = .
+
+.data           0x00800060        0x0 load address 0x000001b8
+                0x00800060                PROVIDE (__data_start, .)
+ *(.data)
+ *(.gnu.linkonce.d*)
+                0x00800060                . = ALIGN (0x2)
+                0x00800060                _edata = .
+                0x00800060                PROVIDE (__data_end, .)
+
+.bss            0x00800060        0x0
+                0x00800060                PROVIDE (__bss_start, .)
+ *(.bss)
+ *(COMMON)
+                0x00800060                PROVIDE (__bss_end, .)
+                0x000001b8                __data_load_start = LOADADDR (.data)
+                0x000001b8                __data_load_end = (__data_load_start + SIZEOF (.data))
+
+.noinit         0x00800060        0x0
+                0x00800060                PROVIDE (__noinit_start, .)
+ *(.noinit*)
+                0x00800060                PROVIDE (__noinit_end, .)
+                0x00800060                _end = .
+                0x00800060                PROVIDE (__heap_start, .)
+
+.eeprom         0x00810000        0x0
+ *(.eeprom*)
+                0x00810000                __eeprom_end = .
+
+.stab           0x00000000      0x888
+ *(.stab)
+ .stab          0x00000000      0x36c c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4/crtm8535.o
+ .stab          0x0000036c      0x51c ledmeter.o
+                                0x528 (size before relaxing)
+
+.stabstr        0x00000000      0x7d2
+ *(.stabstr)
+ .stabstr       0x00000000      0x7d2 c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4/crtm8535.o
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment
+ *(.comment)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges
+ *(.debug_aranges)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info
+ *(.debug_info)
+ *(.gnu.linkonce.wi.*)
+
+.debug_abbrev
+ *(.debug_abbrev)
+
+.debug_line
+ *(.debug_line)
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str
+ *(.debug_str)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+OUTPUT(ledmeter.elf elf32-avr)
+
+Cross Reference Table
+
+Symbol                                            File
+__bad_interrupt                                   c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4/crtm8535.o
+__bss_end                                         C:/WinAVR/lib/gcc/avr/3.4.6/avr4\libgcc.a(_clear_bss.o)
+__bss_start                                       C:/WinAVR/lib/gcc/avr/3.4.6/avr4\libgcc.a(_clear_bss.o)
+__data_end                                        C:/WinAVR/lib/gcc/avr/3.4.6/avr4\libgcc.a(_copy_data.o)
+__data_load_start                                 C:/WinAVR/lib/gcc/avr/3.4.6/avr4\libgcc.a(_copy_data.o)
+__data_start                                      C:/WinAVR/lib/gcc/avr/3.4.6/avr4\libgcc.a(_copy_data.o)
+__do_clear_bss                                    C:/WinAVR/lib/gcc/avr/3.4.6/avr4\libgcc.a(_clear_bss.o)
+                                                  ledmeter.o
+__do_copy_data                                    C:/WinAVR/lib/gcc/avr/3.4.6/avr4\libgcc.a(_copy_data.o)
+                                                  ledmeter.o
+__heap_end                                        c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4/crtm8535.o
+__init                                            c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4/crtm8535.o
+__stack                                           c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4/crtm8535.o
+                                                  ledmeter.o
+__vector_1                                        c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4/crtm8535.o
+__vector_10                                       c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4/crtm8535.o
+__vector_11                                       c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4/crtm8535.o
+__vector_12                                       c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4/crtm8535.o
+__vector_13                                       c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4/crtm8535.o
+__vector_14                                       c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4/crtm8535.o
+__vector_15                                       c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4/crtm8535.o
+__vector_16                                       c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4/crtm8535.o
+__vector_17                                       c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4/crtm8535.o
+__vector_18                                       c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4/crtm8535.o
+__vector_19                                       c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4/crtm8535.o
+__vector_2                                        c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4/crtm8535.o
+__vector_20                                       c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4/crtm8535.o
+__vector_3                                        c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4/crtm8535.o
+__vector_4                                        c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4/crtm8535.o
+__vector_5                                        c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4/crtm8535.o
+__vector_6                                        c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4/crtm8535.o
+__vector_7                                        c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4/crtm8535.o
+__vector_8                                        c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4/crtm8535.o
+__vector_9                                        c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4/crtm8535.o
+__vector_default                                  c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4/crtm8535.o
+__vectors                                         c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4/crtm8535.o
+init                                              ledmeter.o
+loop                                              ledmeter.o
+main                                              ledmeter.o
+                                                  c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4/crtm8535.o
+switch_off_all_leds                               ledmeter.o
+switch_off_led                                    ledmeter.o
+switch_on_all_leds                                ledmeter.o
+switch_on_led                                     ledmeter.o
+switch_on_min_dels                                ledmeter.o

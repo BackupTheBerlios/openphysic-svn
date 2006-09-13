@@ -1,0 +1,333 @@
+
+ledmeter.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000001b8  00000000  00000000  00000094  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  000001b8  0000024c  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000000  00800060  000001b8  0000024c  2**0
+                  ALLOC
+  3 .noinit       00000000  00800060  00800060  0000024c  2**0
+                  CONTENTS
+  4 .eeprom       00000000  00810000  00810000  0000024c  2**0
+                  CONTENTS
+  5 .stab         00000888  00000000  00000000  0000024c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  6 .stabstr      000007d2  00000000  00000000  00000ad4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	14 c0       	rjmp	.+40     	; 0x2a <__ctors_end>
+   2:	2d c0       	rjmp	.+90     	; 0x5e <__bad_interrupt>
+   4:	2c c0       	rjmp	.+88     	; 0x5e <__bad_interrupt>
+   6:	2b c0       	rjmp	.+86     	; 0x5e <__bad_interrupt>
+   8:	2a c0       	rjmp	.+84     	; 0x5e <__bad_interrupt>
+   a:	29 c0       	rjmp	.+82     	; 0x5e <__bad_interrupt>
+   c:	28 c0       	rjmp	.+80     	; 0x5e <__bad_interrupt>
+   e:	27 c0       	rjmp	.+78     	; 0x5e <__bad_interrupt>
+  10:	26 c0       	rjmp	.+76     	; 0x5e <__bad_interrupt>
+  12:	25 c0       	rjmp	.+74     	; 0x5e <__bad_interrupt>
+  14:	24 c0       	rjmp	.+72     	; 0x5e <__bad_interrupt>
+  16:	23 c0       	rjmp	.+70     	; 0x5e <__bad_interrupt>
+  18:	22 c0       	rjmp	.+68     	; 0x5e <__bad_interrupt>
+  1a:	21 c0       	rjmp	.+66     	; 0x5e <__bad_interrupt>
+  1c:	20 c0       	rjmp	.+64     	; 0x5e <__bad_interrupt>
+  1e:	1f c0       	rjmp	.+62     	; 0x5e <__bad_interrupt>
+  20:	1e c0       	rjmp	.+60     	; 0x5e <__bad_interrupt>
+  22:	1d c0       	rjmp	.+58     	; 0x5e <__bad_interrupt>
+  24:	1c c0       	rjmp	.+56     	; 0x5e <__bad_interrupt>
+  26:	1b c0       	rjmp	.+54     	; 0x5e <__bad_interrupt>
+  28:	1a c0       	rjmp	.+52     	; 0x5e <__bad_interrupt>
+
+0000002a <__ctors_end>:
+  2a:	11 24       	eor	r1, r1
+  2c:	1f be       	out	0x3f, r1	; 63
+  2e:	cf e5       	ldi	r28, 0x5F	; 95
+  30:	d2 e0       	ldi	r29, 0x02	; 2
+  32:	de bf       	out	0x3e, r29	; 62
+  34:	cd bf       	out	0x3d, r28	; 61
+
+00000036 <__do_copy_data>:
+  36:	10 e0       	ldi	r17, 0x00	; 0
+  38:	a0 e6       	ldi	r26, 0x60	; 96
+  3a:	b0 e0       	ldi	r27, 0x00	; 0
+  3c:	e8 eb       	ldi	r30, 0xB8	; 184
+  3e:	f1 e0       	ldi	r31, 0x01	; 1
+  40:	02 c0       	rjmp	.+4      	; 0x46 <.do_copy_data_start>
+
+00000042 <.do_copy_data_loop>:
+  42:	05 90       	lpm	r0, Z+
+  44:	0d 92       	st	X+, r0
+
+00000046 <.do_copy_data_start>:
+  46:	a0 36       	cpi	r26, 0x60	; 96
+  48:	b1 07       	cpc	r27, r17
+  4a:	d9 f7       	brne	.-10     	; 0x42 <.do_copy_data_loop>
+
+0000004c <__do_clear_bss>:
+  4c:	10 e0       	ldi	r17, 0x00	; 0
+  4e:	a0 e6       	ldi	r26, 0x60	; 96
+  50:	b0 e0       	ldi	r27, 0x00	; 0
+  52:	01 c0       	rjmp	.+2      	; 0x56 <.do_clear_bss_start>
+
+00000054 <.do_clear_bss_loop>:
+  54:	1d 92       	st	X+, r1
+
+00000056 <.do_clear_bss_start>:
+  56:	a0 36       	cpi	r26, 0x60	; 96
+  58:	b1 07       	cpc	r27, r17
+  5a:	e1 f7       	brne	.-8      	; 0x54 <.do_clear_bss_loop>
+  5c:	a6 c0       	rjmp	.+332    	; 0x1aa <main>
+
+0000005e <__bad_interrupt>:
+  5e:	d0 cf       	rjmp	.-96     	; 0x0 <__vectors>
+
+00000060 <switch_on_all_leds>:
+// 0=on
+
+
+
+void switch_on_all_leds() {
+  60:	cf 93       	push	r28
+  62:	df 93       	push	r29
+  64:	cd b7       	in	r28, 0x3d	; 61
+  66:	de b7       	in	r29, 0x3e	; 62
+    PORTD = 0x00;
+  68:	10 92 32 00 	sts	0x0032, r1
+  6c:	df 91       	pop	r29
+  6e:	cf 91       	pop	r28
+  70:	08 95       	ret
+
+00000072 <switch_off_all_leds>:
+}
+
+void switch_off_all_leds() {
+  72:	cf 93       	push	r28
+  74:	df 93       	push	r29
+  76:	cd b7       	in	r28, 0x3d	; 61
+  78:	de b7       	in	r29, 0x3e	; 62
+    PORTD = 0xFF;
+  7a:	8f ef       	ldi	r24, 0xFF	; 255
+  7c:	80 93 32 00 	sts	0x0032, r24
+  80:	df 91       	pop	r29
+  82:	cf 91       	pop	r28
+  84:	08 95       	ret
+
+00000086 <switch_on_led>:
+}
+
+// led from 1 to 8 (LEDSNUM)
+// PDx with w from 0 to 7
+void switch_on_led(int led) {
+  86:	cf 93       	push	r28
+  88:	df 93       	push	r29
+  8a:	cd b7       	in	r28, 0x3d	; 61
+  8c:	de b7       	in	r29, 0x3e	; 62
+  8e:	26 97       	sbiw	r28, 0x06	; 6
+  90:	0f b6       	in	r0, 0x3f	; 63
+  92:	f8 94       	cli
+  94:	de bf       	out	0x3e, r29	; 62
+  96:	0f be       	out	0x3f, r0	; 63
+  98:	cd bf       	out	0x3d, r28	; 61
+  9a:	9a 83       	std	Y+2, r25	; 0x02
+  9c:	89 83       	std	Y+1, r24	; 0x01
+    int pin = led - 1;
+  9e:	89 81       	ldd	r24, Y+1	; 0x01
+  a0:	9a 81       	ldd	r25, Y+2	; 0x02
+  a2:	01 97       	sbiw	r24, 0x01	; 1
+  a4:	9c 83       	std	Y+4, r25	; 0x04
+  a6:	8b 83       	std	Y+3, r24	; 0x03
+    int mask = ~(0x01<<pin);
+  a8:	81 e0       	ldi	r24, 0x01	; 1
+  aa:	90 e0       	ldi	r25, 0x00	; 0
+  ac:	0b 80       	ldd	r0, Y+3	; 0x03
+  ae:	02 c0       	rjmp	.+4      	; 0xb4 <switch_on_led+0x2e>
+  b0:	88 0f       	add	r24, r24
+  b2:	99 1f       	adc	r25, r25
+  b4:	0a 94       	dec	r0
+  b6:	e2 f7       	brpl	.-8      	; 0xb0 <switch_on_led+0x2a>
+  b8:	80 95       	com	r24
+  ba:	90 95       	com	r25
+  bc:	9e 83       	std	Y+6, r25	; 0x06
+  be:	8d 83       	std	Y+5, r24	; 0x05
+    PORTD&=mask;
+  c0:	90 91 32 00 	lds	r25, 0x0032
+  c4:	8d 81       	ldd	r24, Y+5	; 0x05
+  c6:	89 23       	and	r24, r25
+  c8:	80 93 32 00 	sts	0x0032, r24
+  cc:	26 96       	adiw	r28, 0x06	; 6
+  ce:	0f b6       	in	r0, 0x3f	; 63
+  d0:	f8 94       	cli
+  d2:	de bf       	out	0x3e, r29	; 62
+  d4:	0f be       	out	0x3f, r0	; 63
+  d6:	cd bf       	out	0x3d, r28	; 61
+  d8:	df 91       	pop	r29
+  da:	cf 91       	pop	r28
+  dc:	08 95       	ret
+
+000000de <switch_off_led>:
+}
+
+void switch_off_led(int led) {
+  de:	cf 93       	push	r28
+  e0:	df 93       	push	r29
+  e2:	cd b7       	in	r28, 0x3d	; 61
+  e4:	de b7       	in	r29, 0x3e	; 62
+  e6:	26 97       	sbiw	r28, 0x06	; 6
+  e8:	0f b6       	in	r0, 0x3f	; 63
+  ea:	f8 94       	cli
+  ec:	de bf       	out	0x3e, r29	; 62
+  ee:	0f be       	out	0x3f, r0	; 63
+  f0:	cd bf       	out	0x3d, r28	; 61
+  f2:	9a 83       	std	Y+2, r25	; 0x02
+  f4:	89 83       	std	Y+1, r24	; 0x01
+    int pin = led - 1;
+  f6:	89 81       	ldd	r24, Y+1	; 0x01
+  f8:	9a 81       	ldd	r25, Y+2	; 0x02
+  fa:	01 97       	sbiw	r24, 0x01	; 1
+  fc:	9c 83       	std	Y+4, r25	; 0x04
+  fe:	8b 83       	std	Y+3, r24	; 0x03
+    int mask = (0x01<<pin);
+ 100:	81 e0       	ldi	r24, 0x01	; 1
+ 102:	90 e0       	ldi	r25, 0x00	; 0
+ 104:	0b 80       	ldd	r0, Y+3	; 0x03
+ 106:	02 c0       	rjmp	.+4      	; 0x10c <switch_off_led+0x2e>
+ 108:	88 0f       	add	r24, r24
+ 10a:	99 1f       	adc	r25, r25
+ 10c:	0a 94       	dec	r0
+ 10e:	e2 f7       	brpl	.-8      	; 0x108 <switch_off_led+0x2a>
+ 110:	9e 83       	std	Y+6, r25	; 0x06
+ 112:	8d 83       	std	Y+5, r24	; 0x05
+    PORTD|=mask;
+ 114:	90 91 32 00 	lds	r25, 0x0032
+ 118:	8d 81       	ldd	r24, Y+5	; 0x05
+ 11a:	89 2b       	or	r24, r25
+ 11c:	80 93 32 00 	sts	0x0032, r24
+ 120:	26 96       	adiw	r28, 0x06	; 6
+ 122:	0f b6       	in	r0, 0x3f	; 63
+ 124:	f8 94       	cli
+ 126:	de bf       	out	0x3e, r29	; 62
+ 128:	0f be       	out	0x3f, r0	; 63
+ 12a:	cd bf       	out	0x3d, r28	; 61
+ 12c:	df 91       	pop	r29
+ 12e:	cf 91       	pop	r28
+ 130:	08 95       	ret
+
+00000132 <switch_on_min_dels>:
+}
+
+
+
+void switch_on_min_dels(int n) {
+ 132:	cf 93       	push	r28
+ 134:	df 93       	push	r29
+ 136:	cd b7       	in	r28, 0x3d	; 61
+ 138:	de b7       	in	r29, 0x3e	; 62
+ 13a:	24 97       	sbiw	r28, 0x04	; 4
+ 13c:	0f b6       	in	r0, 0x3f	; 63
+ 13e:	f8 94       	cli
+ 140:	de bf       	out	0x3e, r29	; 62
+ 142:	0f be       	out	0x3f, r0	; 63
+ 144:	cd bf       	out	0x3d, r28	; 61
+ 146:	9a 83       	std	Y+2, r25	; 0x02
+ 148:	89 83       	std	Y+1, r24	; 0x01
+    int i;
+    for(i = 1; i<=Nleds; i++) {
+ 14a:	81 e0       	ldi	r24, 0x01	; 1
+ 14c:	90 e0       	ldi	r25, 0x00	; 0
+ 14e:	9c 83       	std	Y+4, r25	; 0x04
+ 150:	8b 83       	std	Y+3, r24	; 0x03
+ 152:	8b 81       	ldd	r24, Y+3	; 0x03
+ 154:	9c 81       	ldd	r25, Y+4	; 0x04
+ 156:	89 30       	cpi	r24, 0x09	; 9
+ 158:	91 05       	cpc	r25, r1
+ 15a:	4c f4       	brge	.+18     	; 0x16e <switch_on_min_dels+0x3c>
+        switch_on_led(i);
+ 15c:	8b 81       	ldd	r24, Y+3	; 0x03
+ 15e:	9c 81       	ldd	r25, Y+4	; 0x04
+ 160:	92 df       	rcall	.-220    	; 0x86 <switch_on_led>
+ 162:	8b 81       	ldd	r24, Y+3	; 0x03
+ 164:	9c 81       	ldd	r25, Y+4	; 0x04
+ 166:	01 96       	adiw	r24, 0x01	; 1
+ 168:	9c 83       	std	Y+4, r25	; 0x04
+ 16a:	8b 83       	std	Y+3, r24	; 0x03
+ 16c:	f2 cf       	rjmp	.-28     	; 0x152 <switch_on_min_dels+0x20>
+ 16e:	24 96       	adiw	r28, 0x04	; 4
+ 170:	0f b6       	in	r0, 0x3f	; 63
+ 172:	f8 94       	cli
+ 174:	de bf       	out	0x3e, r29	; 62
+ 176:	0f be       	out	0x3f, r0	; 63
+ 178:	cd bf       	out	0x3d, r28	; 61
+ 17a:	df 91       	pop	r29
+ 17c:	cf 91       	pop	r28
+ 17e:	08 95       	ret
+
+00000180 <init>:
+    }
+}
+
+
+
+
+
+
+void init() {
+ 180:	cf 93       	push	r28
+ 182:	df 93       	push	r29
+ 184:	cd b7       	in	r28, 0x3d	; 61
+ 186:	de b7       	in	r29, 0x3e	; 62
+
+   DDRD=0xFF; // set up PORTD pins 0 to 7 as output
+ 188:	8f ef       	ldi	r24, 0xFF	; 255
+ 18a:	80 93 31 00 	sts	0x0031, r24
+
+   //switch_on_all_leds();
+   switch_off_all_leds();
+ 18e:	71 df       	rcall	.-286    	; 0x72 <switch_off_all_leds>
+ 190:	df 91       	pop	r29
+ 192:	cf 91       	pop	r28
+ 194:	08 95       	ret
+
+00000196 <loop>:
+}
+
+void loop(void) {  // Put the open brace '{' here
+ 196:	cf 93       	push	r28
+ 198:	df 93       	push	r29
+ 19a:	cd b7       	in	r28, 0x3d	; 61
+ 19c:	de b7       	in	r29, 0x3e	; 62
+   switch_on_min_dels(N);
+ 19e:	82 e3       	ldi	r24, 0x32	; 50
+ 1a0:	90 e0       	ldi	r25, 0x00	; 0
+ 1a2:	c7 df       	rcall	.-114    	; 0x132 <switch_on_min_dels>
+ 1a4:	df 91       	pop	r29
+ 1a6:	cf 91       	pop	r28
+ 1a8:	08 95       	ret
+
+000001aa <main>:
+
+	//switch_on_led(3);
+	//switch_on_led(5);
+	//switch_on_led(7);	
+	
+	//switch_off_led(5);
+}
+
+// ***********************************************************
+// Main program
+//
+int main(void) {
+ 1aa:	cf e5       	ldi	r28, 0x5F	; 95
+ 1ac:	d2 e0       	ldi	r29, 0x02	; 2
+ 1ae:	de bf       	out	0x3e, r29	; 62
+ 1b0:	cd bf       	out	0x3d, r28	; 61
+   init();
+ 1b2:	e6 df       	rcall	.-52     	; 0x180 <init>
+
+   while(1) {             // Infinite loop; define here the
+      loop();      // system behaviour
+ 1b4:	f0 df       	rcall	.-32     	; 0x196 <loop>
+ 1b6:	fe cf       	rjmp	.-4      	; 0x1b4 <main+0xa>
