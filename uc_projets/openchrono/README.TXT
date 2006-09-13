@@ -56,6 +56,15 @@ ImageMagick convert : à faire http://www.imagemagick.org
 
 Bibliothèque permettant de gérer les menus
 
+Quelques bibliothèques à envisager :
+ Liste : http://forums.jelectronique.com/ftopic104.php
+ 
+AVR-libc http://www.nongnu.org/avr-libc/
+AVRLib http://hubbard.engr.scu.edu/embedded/avr/avrlib/
+AVR Snapshot http://zer0.droids-corp.org/fr/avr.php
+VinceVG http://anyedit.free.fr/
+Peter Fleury http://homepage.hispeed.ch/peterfleury/
+Embedded FileSystem Library http://sourceforge.net/projects/efsl
 
 
 Choix final : 
