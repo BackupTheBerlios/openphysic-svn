@@ -20981,3 +20981,7 @@ wcprops
 ./tpm/.svn/tmp/wcprops:
 
 ./tpm/.svn/wcprops:
+./fonts/tfm/jknappen/ec:
+ecti0900.tfm
+./fonts/pk/ljfour/jknappen/ec:
+ecti0900.600pk

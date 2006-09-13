@@ -18,7 +18,7 @@ html:
 
 bib2html:
 	# http://www.arakhne.org/IMG/deb/bib2html_4.3-1_all.deb (Perl)
-	bib2html --g Domain -f s-celles.bib
+	bib2html --svn --g Domain -f s-celles.bib
 	firefox bib2html/index.html &
 
 bibtex2html:
