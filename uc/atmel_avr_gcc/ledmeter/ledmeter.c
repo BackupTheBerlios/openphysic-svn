@@ -6,6 +6,8 @@
 
 #include <avr/io.h>              // Most basic include files
 
+#include <math.h>
+
 #define F_CPU 1000000UL  // 1 MHz
 #include <avr/delay.h>
 
@@ -52,17 +54,49 @@ void switch_off_led(int led) {
 
 
 
-void switch_on_min_dels(int n) {
+void switch_on_leds_with_delay(double delay) {
     int i;
     for(i = 1; i<=Nleds; i++) {
+        _delay_ms(delay);
         switch_on_led(i);
-        // TODO : mettre un delai
     }
 }
 
+void switch_off_leds_with_delay(double delay) {
+    int i;
+    for(i = Nleds; i>=0; i--) {
+        _delay_ms(delay);
+        switch_off_led(i);
+    }
+}
 
+void test_leds() {
+    switch_on_leds_with_delay(100);
+    _delay_ms(50);
+    switch_off_leds_with_delay(100);
+}
 
+void switch_on_min_dels(int n) {
+    int i;
+    for(i = 1; (i<=Nleds) && (i<=n); i++) {
+        switch_on_led(i);
+    }
+}
 
+void switch_on_max_dels(int n) {
+    int i;
+    for(i = Nleds; i>=n; i--) {
+        switch_on_led(i);
+    }
+}
+
+void show_percent(double p) {
+    // p pourcent
+    int n;
+    //n = 4;
+    n = floor(p / 100.0 * Nleds); // TO FIX (math.h ceil floor ...)
+    switch_on_min_dels(n);
+}
 
 
 void init() {
@@ -73,8 +107,12 @@ void init() {
    switch_off_all_leds();
 }
 
-void loop(void) {  // Put the open brace '{' here
-   switch_on_min_dels(N);
+void loop(void) {
+   show_percent(25);
+
+   //test_leds();
+   //switch_on_min_dels(5);
+   //switch_on_max_dels(3);
 
 	//switch_on_led(3);
 	//switch_on_led(5);
@@ -95,4 +133,5 @@ int main(void) {
 
    return 0;
 }
+
 

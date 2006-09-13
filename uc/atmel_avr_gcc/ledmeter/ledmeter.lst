@@ -18,29 +18,32 @@
    5:ledmeter.c    **** // ***********************************************************
    6:ledmeter.c    **** 
    7:ledmeter.c    **** #include <avr/io.h>              // Most basic include files
-   8:ledmeter.c    **** #define F_CPU 1000000UL  // 1 MHz
-   9:ledmeter.c    **** #include <avr/delay.h>
+   8:ledmeter.c    **** 
+   9:ledmeter.c    **** #include <math.h>
   10:ledmeter.c    **** 
-  11:ledmeter.c    **** #define Nleds 8  // number of leds connected to the uC
-  12:ledmeter.c    **** 
-  13:ledmeter.c    **** #define N 50 // number between 0 and 255
-  14:ledmeter.c    **** #define Nmax 0xFF
+  11:ledmeter.c    **** #define F_CPU 1000000UL  // 1 MHz
+  12:ledmeter.c    **** #include <avr/delay.h>
+  13:ledmeter.c    **** 
+  14:ledmeter.c    **** #define Nleds 8  // number of leds connected to the uC
   15:ledmeter.c    **** 
-  16:ledmeter.c    **** /*
-  17:ledmeter.c    **** void switch_on_all_leds();
-  18:ledmeter.c    **** void switch_off_all_leds();
-  19:ledmeter.c    **** void switch_on_led(int led);
-  20:ledmeter.c    **** void switch_off_led(int led);
-  21:ledmeter.c    **** void loop(void);
-  22:ledmeter.c    **** void init(void);
-  23:ledmeter.c    **** */
-  24:ledmeter.c    **** 
-  25:ledmeter.c    **** // 1=off
-  26:ledmeter.c    **** // 0=on
+  16:ledmeter.c    **** #define N 50 // number between 0 and 255
+  17:ledmeter.c    **** #define Nmax 0xFF
+  18:ledmeter.c    **** 
+  19:ledmeter.c    **** /*
+  20:ledmeter.c    **** void switch_on_all_leds();
+  21:ledmeter.c    **** void switch_off_all_leds();
+  22:ledmeter.c    **** void switch_on_led(int led);
+  23:ledmeter.c    **** void switch_off_led(int led);
+  24:ledmeter.c    **** void loop(void);
+  25:ledmeter.c    **** void init(void);
+  26:ledmeter.c    **** */
   27:ledmeter.c    **** 
-  28:ledmeter.c    **** 
-  29:ledmeter.c    **** 
-  30:ledmeter.c    **** void switch_on_all_leds() {
+  28:ledmeter.c    **** // 1=off
+  29:ledmeter.c    **** // 0=on
+  30:ledmeter.c    **** 
+  31:ledmeter.c    **** 
+  32:ledmeter.c    **** 
+  33:ledmeter.c    **** void switch_on_all_leds() {
   78               	.LM1:
   79               	/* prologue: frame size=0 */
   80 0000 CF93      		push r28
@@ -48,7 +51,7 @@
   82 0004 CDB7      		in r28,__SP_L__
   83 0006 DEB7      		in r29,__SP_H__
   84               	/* prologue end (size=4) */
-  31:ledmeter.c    ****     PORTD = 0x00;
+  34:ledmeter.c    ****     PORTD = 0x00;
   86               	.LM2:
   87 0008 1092 3200 		sts 50,__zero_reg__
   88               	/* epilogue: frame size=0 */
@@ -60,9 +63,9 @@
   95               	.Lscope0:
   97               	.global	switch_off_all_leds
   99               	switch_off_all_leds:
-  32:ledmeter.c    **** }
-  33:ledmeter.c    **** 
-  34:ledmeter.c    **** void switch_off_all_leds() {
+  35:ledmeter.c    **** }
+  36:ledmeter.c    **** 
+  37:ledmeter.c    **** void switch_off_all_leds() {
  101               	.LM3:
  102               	/* prologue: frame size=0 */
  103 0012 CF93      		push r28
@@ -70,7 +73,7 @@
  105 0016 CDB7      		in r28,__SP_L__
  106 0018 DEB7      		in r29,__SP_H__
  107               	/* prologue end (size=4) */
-  35:ledmeter.c    ****     PORTD = 0xFF;
+  38:ledmeter.c    ****     PORTD = 0xFF;
  109               	.LM4:
  110 001a 8FEF      		ldi r24,lo8(-1)
  111 001c 8093 3200 		sts 50,r24
@@ -83,11 +86,11 @@
  119               	.Lscope1:
  122               	.global	switch_on_led
  124               	switch_on_led:
-  36:ledmeter.c    **** }
-  37:ledmeter.c    **** 
-  38:ledmeter.c    **** // led from 1 to 8 (LEDSNUM)
-  39:ledmeter.c    **** // PDx with w from 0 to 7
-  40:ledmeter.c    **** void switch_on_led(int led) {
+  39:ledmeter.c    **** }
+  40:ledmeter.c    **** 
+  41:ledmeter.c    **** // led from 1 to 8 (LEDSNUM)
+  42:ledmeter.c    **** // PDx with w from 0 to 7
+  43:ledmeter.c    **** void switch_on_led(int led) {
  126               	.LM5:
  127               	/* prologue: frame size=6 */
  128 0026 CF93      		push r28
@@ -103,14 +106,14 @@
  138               	/* prologue end (size=10) */
  139 003a 9A83      		std Y+2,r25
  140 003c 8983      		std Y+1,r24
-  41:ledmeter.c    ****     int pin = led - 1;
+  44:ledmeter.c    ****     int pin = led - 1;
  142               	.LM6:
  143 003e 8981      		ldd r24,Y+1
  144 0040 9A81      		ldd r25,Y+2
  145 0042 0197      		sbiw r24,1
  146 0044 9C83      		std Y+4,r25
  147 0046 8B83      		std Y+3,r24
-  42:ledmeter.c    ****     int mask = ~(0x01<<pin);
+  45:ledmeter.c    ****     int mask = ~(0x01<<pin);
  149               	.LM7:
  150 0048 81E0      		ldi r24,lo8(1)
  151 004a 90E0      		ldi r25,hi8(1)
@@ -124,7 +127,7 @@
  159 005a 9095      		com r25
  160 005c 9E83      		std Y+6,r25
  161 005e 8D83      		std Y+5,r24
-  43:ledmeter.c    ****     PORTD&=mask;
+  46:ledmeter.c    ****     PORTD&=mask;
  163               	.LM8:
  164 0060 9091 3200 		lds r25,50
  165 0064 8D81      		ldd r24,Y+5
@@ -145,9 +148,9 @@
  185               	.Lscope2:
  188               	.global	switch_off_led
  190               	switch_off_led:
-  44:ledmeter.c    **** }
-  45:ledmeter.c    **** 
-  46:ledmeter.c    **** void switch_off_led(int led) {
+  47:ledmeter.c    **** }
+  48:ledmeter.c    **** 
+  49:ledmeter.c    **** void switch_off_led(int led) {
  192               	.LM9:
  193               	/* prologue: frame size=6 */
  194 007e CF93      		push r28
@@ -163,14 +166,14 @@
  204               	/* prologue end (size=10) */
  205 0092 9A83      		std Y+2,r25
  206 0094 8983      		std Y+1,r24
-  47:ledmeter.c    ****     int pin = led - 1;
+  50:ledmeter.c    ****     int pin = led - 1;
  208               	.LM10:
  209 0096 8981      		ldd r24,Y+1
  210 0098 9A81      		ldd r25,Y+2
  211 009a 0197      		sbiw r24,1
  212 009c 9C83      		std Y+4,r25
  213 009e 8B83      		std Y+3,r24
-  48:ledmeter.c    ****     int mask = (0x01<<pin);
+  51:ledmeter.c    ****     int mask = (0x01<<pin);
  215               	.LM11:
  216 00a0 81E0      		ldi r24,lo8(1)
  217 00a2 90E0      		ldi r25,hi8(1)
@@ -182,7 +185,7 @@
  223 00ae E2F7      		brpl 1b
  224 00b0 9E83      		std Y+6,r25
  225 00b2 8D83      		std Y+5,r24
-  49:ledmeter.c    ****     PORTD|=mask;
+  52:ledmeter.c    ****     PORTD|=mask;
  227               	.LM12:
  228 00b4 9091 3200 		lds r25,50
  229 00b8 8D81      		ldd r24,Y+5
@@ -201,184 +204,1006 @@
  242               	/* epilogue end (size=9) */
  243               	/* function switch_off_led size 42 (23) */
  249               	.Lscope3:
- 252               	.global	switch_on_min_dels
- 254               	switch_on_min_dels:
-  50:ledmeter.c    **** }
-  51:ledmeter.c    **** 
-  52:ledmeter.c    **** 
-  53:ledmeter.c    **** 
-  54:ledmeter.c    **** void switch_on_min_dels(int n) {
+ 252               	.global	switch_on_leds_with_delay
+ 254               	switch_on_leds_with_delay:
+  53:ledmeter.c    **** }
+  54:ledmeter.c    **** 
+  55:ledmeter.c    **** 
+  56:ledmeter.c    **** 
+  57:ledmeter.c    **** void switch_on_leds_with_delay(double delay) {
  256               	.LM13:
- 257               	/* prologue: frame size=4 */
+ 257               	/* prologue: frame size=18 */
  258 00d2 CF93      		push r28
  259 00d4 DF93      		push r29
  260 00d6 CDB7      		in r28,__SP_L__
  261 00d8 DEB7      		in r29,__SP_H__
- 262 00da 2497      		sbiw r28,4
+ 262 00da 6297      		sbiw r28,18
  263 00dc 0FB6      		in __tmp_reg__,__SREG__
  264 00de F894      		cli
  265 00e0 DEBF      		out __SP_H__,r29
  266 00e2 0FBE      		out __SREG__,__tmp_reg__
  267 00e4 CDBF      		out __SP_L__,r28
  268               	/* prologue end (size=10) */
- 269 00e6 9A83      		std Y+2,r25
- 270 00e8 8983      		std Y+1,r24
-  55:ledmeter.c    ****     int i;
-  56:ledmeter.c    ****     for(i = 1; i<=Nleds; i++) {
- 272               	.LM14:
- 273 00ea 81E0      		ldi r24,lo8(1)
- 274 00ec 90E0      		ldi r25,hi8(1)
- 275 00ee 9C83      		std Y+4,r25
- 276 00f0 8B83      		std Y+3,r24
- 277               	.L6:
- 279               	.LM15:
- 280 00f2 8B81      		ldd r24,Y+3
- 281 00f4 9C81      		ldd r25,Y+4
- 282 00f6 8930      		cpi r24,9
- 283 00f8 9105      		cpc r25,__zero_reg__
- 284 00fa 4CF4      		brge .L5
-  57:ledmeter.c    ****         switch_on_led(i);
- 286               	.LM16:
- 287 00fc 8B81      		ldd r24,Y+3
- 288 00fe 9C81      		ldd r25,Y+4
- 289 0100 92DF      		rcall switch_on_led
- 291               	.LM17:
- 292 0102 8B81      		ldd r24,Y+3
- 293 0104 9C81      		ldd r25,Y+4
- 294 0106 0196      		adiw r24,1
- 295 0108 9C83      		std Y+4,r25
- 296 010a 8B83      		std Y+3,r24
- 297 010c F2CF      		rjmp .L6
- 298               	.L5:
- 299               	/* epilogue: frame size=4 */
- 300 010e 2496      		adiw r28,4
- 301 0110 0FB6      		in __tmp_reg__,__SREG__
- 302 0112 F894      		cli
- 303 0114 DEBF      		out __SP_H__,r29
- 304 0116 0FBE      		out __SREG__,__tmp_reg__
- 305 0118 CDBF      		out __SP_L__,r28
- 306 011a DF91      		pop r29
- 307 011c CF91      		pop r28
- 308 011e 0895      		ret
- 309               	/* epilogue end (size=9) */
- 310               	/* function switch_on_min_dels size 39 (20) */
- 315               	.Lscope4:
- 317               	.global	init
- 319               	init:
-  58:ledmeter.c    ****     }
-  59:ledmeter.c    **** }
-  60:ledmeter.c    **** 
-  61:ledmeter.c    **** 
-  62:ledmeter.c    **** 
-  63:ledmeter.c    **** 
+ 269 00e6 6983      		std Y+1,r22
+ 270 00e8 7A83      		std Y+2,r23
+ 271 00ea 8B83      		std Y+3,r24
+ 272 00ec 9C83      		std Y+4,r25
+  58:ledmeter.c    ****     int i;
+  59:ledmeter.c    ****     for(i = 1; i<=Nleds; i++) {
+ 274               	.LM14:
+ 275 00ee 81E0      		ldi r24,lo8(1)
+ 276 00f0 90E0      		ldi r25,hi8(1)
+ 277 00f2 9E83      		std Y+6,r25
+ 278 00f4 8D83      		std Y+5,r24
+ 279               	.L6:
+ 281               	.LM15:
+ 282 00f6 8D81      		ldd r24,Y+5
+ 283 00f8 9E81      		ldd r25,Y+6
+ 284 00fa 8930      		cpi r24,9
+ 285 00fc 9105      		cpc r25,__zero_reg__
+ 286 00fe 0CF0      		brlt .+2
+ 287 0100 53C0      		rjmp .L5
+ 288               	.LBB2:
+ 290               	.Ltext1:
+   1:C:/WinAVR/avr/include/util/delay.h **** /* Copyright (c) 2002, Marek Michalkiewicz
+   2:C:/WinAVR/avr/include/util/delay.h ****    Copyright (c) 2004,2005 Joerg Wunsch
+   3:C:/WinAVR/avr/include/util/delay.h ****    All rights reserved.
+   4:C:/WinAVR/avr/include/util/delay.h **** 
+   5:C:/WinAVR/avr/include/util/delay.h ****    Redistribution and use in source and binary forms, with or without
+   6:C:/WinAVR/avr/include/util/delay.h ****    modification, are permitted provided that the following conditions are met:
+   7:C:/WinAVR/avr/include/util/delay.h **** 
+   8:C:/WinAVR/avr/include/util/delay.h ****    * Redistributions of source code must retain the above copyright
+   9:C:/WinAVR/avr/include/util/delay.h ****      notice, this list of conditions and the following disclaimer.
+  10:C:/WinAVR/avr/include/util/delay.h **** 
+  11:C:/WinAVR/avr/include/util/delay.h ****    * Redistributions in binary form must reproduce the above copyright
+  12:C:/WinAVR/avr/include/util/delay.h ****      notice, this list of conditions and the following disclaimer in
+  13:C:/WinAVR/avr/include/util/delay.h ****      the documentation and/or other materials provided with the
+  14:C:/WinAVR/avr/include/util/delay.h ****      distribution.
+  15:C:/WinAVR/avr/include/util/delay.h **** 
+  16:C:/WinAVR/avr/include/util/delay.h ****    * Neither the name of the copyright holders nor the names of
+  17:C:/WinAVR/avr/include/util/delay.h ****      contributors may be used to endorse or promote products derived
+  18:C:/WinAVR/avr/include/util/delay.h ****      from this software without specific prior written permission.
+  19:C:/WinAVR/avr/include/util/delay.h **** 
+  20:C:/WinAVR/avr/include/util/delay.h ****   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  21:C:/WinAVR/avr/include/util/delay.h ****   AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  22:C:/WinAVR/avr/include/util/delay.h ****   IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+  23:C:/WinAVR/avr/include/util/delay.h ****   ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+  24:C:/WinAVR/avr/include/util/delay.h ****   LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+  25:C:/WinAVR/avr/include/util/delay.h ****   CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+  26:C:/WinAVR/avr/include/util/delay.h ****   SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+  27:C:/WinAVR/avr/include/util/delay.h ****   INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+  28:C:/WinAVR/avr/include/util/delay.h ****   CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  29:C:/WinAVR/avr/include/util/delay.h ****   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  30:C:/WinAVR/avr/include/util/delay.h ****   POSSIBILITY OF SUCH DAMAGE. */
+  31:C:/WinAVR/avr/include/util/delay.h **** 
+  32:C:/WinAVR/avr/include/util/delay.h **** /* $Id: delay.h,v 1.1.2.1 2005/12/12 23:19:49 joerg_wunsch Exp $ */
+  33:C:/WinAVR/avr/include/util/delay.h **** 
+  34:C:/WinAVR/avr/include/util/delay.h **** #ifndef _UTIL_DELAY_H_
+  35:C:/WinAVR/avr/include/util/delay.h **** #define _UTIL_DELAY_H_ 1
+  36:C:/WinAVR/avr/include/util/delay.h **** 
+  37:C:/WinAVR/avr/include/util/delay.h **** #include <inttypes.h>
+  38:C:/WinAVR/avr/include/util/delay.h **** 
+  39:C:/WinAVR/avr/include/util/delay.h **** /** \defgroup util_delay <util/delay.h>: Busy-wait delay loops
+  40:C:/WinAVR/avr/include/util/delay.h ****     \code
+  41:C:/WinAVR/avr/include/util/delay.h ****     #define F_CPU 1000000UL  // 1 MHz
+  42:C:/WinAVR/avr/include/util/delay.h ****     //#define F_CPU 14.7456E6
+  43:C:/WinAVR/avr/include/util/delay.h ****     #include <util/delay.h>
+  44:C:/WinAVR/avr/include/util/delay.h ****     \endcode
+  45:C:/WinAVR/avr/include/util/delay.h **** 
+  46:C:/WinAVR/avr/include/util/delay.h ****     \note As an alternative method, it is possible to pass the
+  47:C:/WinAVR/avr/include/util/delay.h ****     F_CPU macro down to the compiler from the Makefile.
+  48:C:/WinAVR/avr/include/util/delay.h ****     Obviously, in that case, no \c \#define statement should be
+  49:C:/WinAVR/avr/include/util/delay.h ****     used.
+  50:C:/WinAVR/avr/include/util/delay.h **** 
+  51:C:/WinAVR/avr/include/util/delay.h ****     The functions in this header file implement simple delay loops
+  52:C:/WinAVR/avr/include/util/delay.h ****     that perform a busy-waiting.  They are typically used to
+  53:C:/WinAVR/avr/include/util/delay.h ****     facilitate short delays in the program execution.  They are
+  54:C:/WinAVR/avr/include/util/delay.h ****     implemented as count-down loops with a well-known CPU cycle
+  55:C:/WinAVR/avr/include/util/delay.h ****     count per loop iteration.  As such, no other processing can
+  56:C:/WinAVR/avr/include/util/delay.h ****     occur simultaneously.  It should be kept in mind that the
+  57:C:/WinAVR/avr/include/util/delay.h ****     functions described here do not disable interrupts.
+  58:C:/WinAVR/avr/include/util/delay.h **** 
+  59:C:/WinAVR/avr/include/util/delay.h ****     In general, for long delays, the use of hardware timers is
+  60:C:/WinAVR/avr/include/util/delay.h ****     much preferrable, as they free the CPU, and allow for
+  61:C:/WinAVR/avr/include/util/delay.h ****     concurrent processing of other events while the timer is
+  62:C:/WinAVR/avr/include/util/delay.h ****     running.  However, in particular for very short delays, the
+  63:C:/WinAVR/avr/include/util/delay.h ****     overhead of setting up a hardware timer is too much compared
+  64:C:/WinAVR/avr/include/util/delay.h ****     to the overall delay time.
+  65:C:/WinAVR/avr/include/util/delay.h **** 
+  66:C:/WinAVR/avr/include/util/delay.h ****     Two inline functions are provided for the actual delay algorithms.
+  67:C:/WinAVR/avr/include/util/delay.h **** 
+  68:C:/WinAVR/avr/include/util/delay.h ****     Two wrapper functions allow the specification of microsecond, and
+  69:C:/WinAVR/avr/include/util/delay.h ****     millisecond delays directly, using the application-supplied macro
+  70:C:/WinAVR/avr/include/util/delay.h ****     F_CPU as the CPU clock frequency (in Hertz).  These functions
+  71:C:/WinAVR/avr/include/util/delay.h ****     operate on double typed arguments, however when optimization is
+  72:C:/WinAVR/avr/include/util/delay.h ****     turned on, the entire floating-point calculation will be done at
+  73:C:/WinAVR/avr/include/util/delay.h ****     compile-time.
+  74:C:/WinAVR/avr/include/util/delay.h **** 
+  75:C:/WinAVR/avr/include/util/delay.h ****     \note When using _delay_us() and _delay_ms(), the expressions
+  76:C:/WinAVR/avr/include/util/delay.h ****     passed as arguments to these functions shall be compile-time
+  77:C:/WinAVR/avr/include/util/delay.h ****     constants, otherwise the floating-point calculations to setup the
+  78:C:/WinAVR/avr/include/util/delay.h ****     loops will be done at run-time, thereby drastically increasing
+  79:C:/WinAVR/avr/include/util/delay.h ****     both the resulting code size, as well as the time required to
+  80:C:/WinAVR/avr/include/util/delay.h ****     setup the loops.
+  81:C:/WinAVR/avr/include/util/delay.h **** */
+  82:C:/WinAVR/avr/include/util/delay.h **** 
+  83:C:/WinAVR/avr/include/util/delay.h **** #if !defined(__DOXYGEN__)
+  84:C:/WinAVR/avr/include/util/delay.h **** static inline void _delay_loop_1(uint8_t __count) __attribute__((always_inline));
+  85:C:/WinAVR/avr/include/util/delay.h **** static inline void _delay_loop_2(uint16_t __count) __attribute__((always_inline));
+  86:C:/WinAVR/avr/include/util/delay.h **** static inline void _delay_us(double __us) __attribute__((always_inline));
+  87:C:/WinAVR/avr/include/util/delay.h **** static inline void _delay_ms(double __ms) __attribute__((always_inline));
+  88:C:/WinAVR/avr/include/util/delay.h **** #endif
+  89:C:/WinAVR/avr/include/util/delay.h **** 
+  90:C:/WinAVR/avr/include/util/delay.h **** /** \ingroup util_delay
+  91:C:/WinAVR/avr/include/util/delay.h **** 
+  92:C:/WinAVR/avr/include/util/delay.h ****     Delay loop using an 8-bit counter \c __count, so up to 256
+  93:C:/WinAVR/avr/include/util/delay.h ****     iterations are possible.  (The value 256 would have to be passed
+  94:C:/WinAVR/avr/include/util/delay.h ****     as 0.)  The loop executes three CPU cycles per iteration, not
+  95:C:/WinAVR/avr/include/util/delay.h ****     including the overhead the compiler needs to setup the counter
+  96:C:/WinAVR/avr/include/util/delay.h ****     register.
+  97:C:/WinAVR/avr/include/util/delay.h **** 
+  98:C:/WinAVR/avr/include/util/delay.h ****     Thus, at a CPU speed of 1 MHz, delays of up to 768 microseconds
+  99:C:/WinAVR/avr/include/util/delay.h ****     can be achieved.
+ 100:C:/WinAVR/avr/include/util/delay.h **** */
+ 101:C:/WinAVR/avr/include/util/delay.h **** void
+ 102:C:/WinAVR/avr/include/util/delay.h **** _delay_loop_1(uint8_t __count)
+ 103:C:/WinAVR/avr/include/util/delay.h **** {
+ 104:C:/WinAVR/avr/include/util/delay.h **** 	__asm__ volatile (
+ 105:C:/WinAVR/avr/include/util/delay.h **** 		"1: dec %0" "\n\t"
+ 106:C:/WinAVR/avr/include/util/delay.h **** 		"brne 1b"
+ 107:C:/WinAVR/avr/include/util/delay.h **** 		: "=r" (__count)
+ 108:C:/WinAVR/avr/include/util/delay.h **** 		: "0" (__count)
+ 109:C:/WinAVR/avr/include/util/delay.h **** 	);
+ 110:C:/WinAVR/avr/include/util/delay.h **** }
+ 111:C:/WinAVR/avr/include/util/delay.h **** 
+ 112:C:/WinAVR/avr/include/util/delay.h **** /** \ingroup util_delay
+ 113:C:/WinAVR/avr/include/util/delay.h **** 
+ 114:C:/WinAVR/avr/include/util/delay.h ****     Delay loop using a 16-bit counter \c __count, so up to 65536
+ 115:C:/WinAVR/avr/include/util/delay.h ****     iterations are possible.  (The value 65536 would have to be
+ 116:C:/WinAVR/avr/include/util/delay.h ****     passed as 0.)  The loop executes four CPU cycles per iteration,
+ 117:C:/WinAVR/avr/include/util/delay.h ****     not including the overhead the compiler requires to setup the
+ 118:C:/WinAVR/avr/include/util/delay.h ****     counter register pair.
+ 119:C:/WinAVR/avr/include/util/delay.h **** 
+ 120:C:/WinAVR/avr/include/util/delay.h ****     Thus, at a CPU speed of 1 MHz, delays of up to about 262.1
+ 121:C:/WinAVR/avr/include/util/delay.h ****     milliseconds can be achieved.
+ 122:C:/WinAVR/avr/include/util/delay.h ****  */
+ 123:C:/WinAVR/avr/include/util/delay.h **** void
+ 124:C:/WinAVR/avr/include/util/delay.h **** _delay_loop_2(uint16_t __count)
+ 125:C:/WinAVR/avr/include/util/delay.h **** {
+ 126:C:/WinAVR/avr/include/util/delay.h **** 	__asm__ volatile (
+ 127:C:/WinAVR/avr/include/util/delay.h **** 		"1: sbiw %0,1" "\n\t"
+ 128:C:/WinAVR/avr/include/util/delay.h **** 		"brne 1b"
+ 129:C:/WinAVR/avr/include/util/delay.h **** 		: "=w" (__count)
+ 130:C:/WinAVR/avr/include/util/delay.h **** 		: "0" (__count)
+ 131:C:/WinAVR/avr/include/util/delay.h **** 	);
+ 132:C:/WinAVR/avr/include/util/delay.h **** }
+ 133:C:/WinAVR/avr/include/util/delay.h **** 
+ 134:C:/WinAVR/avr/include/util/delay.h **** #ifndef F_CPU
+ 135:C:/WinAVR/avr/include/util/delay.h **** /* prevent compiler error by supplying a default */
+ 136:C:/WinAVR/avr/include/util/delay.h **** # warning "F_CPU not defined for <util/delay.h>"
+ 137:C:/WinAVR/avr/include/util/delay.h **** # define F_CPU 1000000UL
+ 138:C:/WinAVR/avr/include/util/delay.h **** #endif
+ 139:C:/WinAVR/avr/include/util/delay.h **** 
+ 140:C:/WinAVR/avr/include/util/delay.h **** /**
+ 141:C:/WinAVR/avr/include/util/delay.h ****    \ingroup util_delay
+ 142:C:/WinAVR/avr/include/util/delay.h **** 
+ 143:C:/WinAVR/avr/include/util/delay.h ****    Perform a delay of \c __us microseconds, using _delay_loop_1().
+ 144:C:/WinAVR/avr/include/util/delay.h **** 
+ 145:C:/WinAVR/avr/include/util/delay.h ****    The macro F_CPU is supposed to be defined to a
+ 146:C:/WinAVR/avr/include/util/delay.h ****    constant defining the CPU clock frequency (in Hertz).
+ 147:C:/WinAVR/avr/include/util/delay.h **** 
+ 148:C:/WinAVR/avr/include/util/delay.h ****    The maximal possible delay is 768 us / F_CPU in MHz.
+ 149:C:/WinAVR/avr/include/util/delay.h ****  */
+ 150:C:/WinAVR/avr/include/util/delay.h **** void
+ 151:C:/WinAVR/avr/include/util/delay.h **** _delay_us(double __us)
+ 152:C:/WinAVR/avr/include/util/delay.h **** {
+ 153:C:/WinAVR/avr/include/util/delay.h **** 	uint8_t __ticks;
+ 154:C:/WinAVR/avr/include/util/delay.h **** 	double __tmp = ((F_CPU) / 3e6) * __us;
+ 155:C:/WinAVR/avr/include/util/delay.h **** 	if (__tmp < 1.0)
+ 156:C:/WinAVR/avr/include/util/delay.h **** 		__ticks = 1;
+ 157:C:/WinAVR/avr/include/util/delay.h **** 	else if (__tmp > 255)
+ 158:C:/WinAVR/avr/include/util/delay.h **** 		__ticks = 0;	/* i.e. 256 */
+ 159:C:/WinAVR/avr/include/util/delay.h **** 	else
+ 160:C:/WinAVR/avr/include/util/delay.h **** 		__ticks = (uint8_t)__tmp;
+ 161:C:/WinAVR/avr/include/util/delay.h **** 	_delay_loop_1(__ticks);
+ 162:C:/WinAVR/avr/include/util/delay.h **** }
+ 163:C:/WinAVR/avr/include/util/delay.h **** 
+ 164:C:/WinAVR/avr/include/util/delay.h **** 
+ 165:C:/WinAVR/avr/include/util/delay.h **** /**
+ 166:C:/WinAVR/avr/include/util/delay.h ****    \ingroup util_delay
+ 167:C:/WinAVR/avr/include/util/delay.h **** 
+ 168:C:/WinAVR/avr/include/util/delay.h ****    Perform a delay of \c __ms milliseconds, using _delay_loop_2().
+ 169:C:/WinAVR/avr/include/util/delay.h **** 
+ 170:C:/WinAVR/avr/include/util/delay.h ****    The macro F_CPU is supposed to be defined to a
+ 171:C:/WinAVR/avr/include/util/delay.h ****    constant defining the CPU clock frequency (in Hertz).
+ 172:C:/WinAVR/avr/include/util/delay.h **** 
+ 173:C:/WinAVR/avr/include/util/delay.h ****    The maximal possible delay is 262.14 ms / F_CPU in MHz.
+ 174:C:/WinAVR/avr/include/util/delay.h ****  */
+ 175:C:/WinAVR/avr/include/util/delay.h **** void
+ 176:C:/WinAVR/avr/include/util/delay.h **** _delay_ms(double __ms)
+ 177:C:/WinAVR/avr/include/util/delay.h **** {
+ 292               	.LM16:
+ 293 0102 8981      		ldd r24,Y+1
+ 294 0104 9A81      		ldd r25,Y+2
+ 295 0106 AB81      		ldd r26,Y+3
+ 296 0108 BC81      		ldd r27,Y+4
+ 297 010a 8F83      		std Y+7,r24
+ 298 010c 9887      		std Y+8,r25
+ 299 010e A987      		std Y+9,r26
+ 300 0110 BA87      		std Y+10,r27
+ 301               	.LBB3:
+ 178:C:/WinAVR/avr/include/util/delay.h **** 	uint16_t __ticks;
+ 179:C:/WinAVR/avr/include/util/delay.h **** 	double __tmp = ((F_CPU) / 4e3) * __ms;
+ 303               	.LM17:
+ 304 0112 20E0      		ldi r18,lo8(0x437a0000)
+ 305 0114 30E0      		ldi r19,hi8(0x437a0000)
+ 306 0116 4AE7      		ldi r20,hlo8(0x437a0000)
+ 307 0118 53E4      		ldi r21,hhi8(0x437a0000)
+ 308 011a 6F81      		ldd r22,Y+7
+ 309 011c 7885      		ldd r23,Y+8
+ 310 011e 8985      		ldd r24,Y+9
+ 311 0120 9A85      		ldd r25,Y+10
+ 312 0122 00D0      		rcall __mulsf3
+ 313 0124 DC01      		movw r26,r24
+ 314 0126 CB01      		movw r24,r22
+ 315 0128 8D87      		std Y+13,r24
+ 316 012a 9E87      		std Y+14,r25
+ 317 012c AF87      		std Y+15,r26
+ 318 012e B88B      		std Y+16,r27
+ 180:C:/WinAVR/avr/include/util/delay.h **** 	if (__tmp < 1.0)
+ 320               	.LM18:
+ 321 0130 20E0      		ldi r18,lo8(0x3f800000)
+ 322 0132 30E0      		ldi r19,hi8(0x3f800000)
+ 323 0134 40E8      		ldi r20,hlo8(0x3f800000)
+ 324 0136 5FE3      		ldi r21,hhi8(0x3f800000)
+ 325 0138 6D85      		ldd r22,Y+13
+ 326 013a 7E85      		ldd r23,Y+14
+ 327 013c 8F85      		ldd r24,Y+15
+ 328 013e 9889      		ldd r25,Y+16
+ 329 0140 00D0      		rcall __ltsf2
+ 330 0142 8823      		tst r24
+ 331 0144 0CF0      		brlt .L10
+ 332 0146 05C0      		rjmp .L9
+ 333               	.L10:
+ 181:C:/WinAVR/avr/include/util/delay.h **** 		__ticks = 1;
+ 335               	.LM19:
+ 336 0148 81E0      		ldi r24,lo8(1)
+ 337 014a 90E0      		ldi r25,hi8(1)
+ 338 014c 9C87      		std Y+12,r25
+ 339 014e 8B87      		std Y+11,r24
+ 340 0150 18C0      		rjmp .L11
+ 341               	.L9:
+ 182:C:/WinAVR/avr/include/util/delay.h **** 	else if (__tmp > 65535)
+ 343               	.LM20:
+ 344 0152 20E0      		ldi r18,lo8(0x477fff00)
+ 345 0154 3FEF      		ldi r19,hi8(0x477fff00)
+ 346 0156 4FE7      		ldi r20,hlo8(0x477fff00)
+ 347 0158 57E4      		ldi r21,hhi8(0x477fff00)
+ 348 015a 6D85      		ldd r22,Y+13
+ 349 015c 7E85      		ldd r23,Y+14
+ 350 015e 8F85      		ldd r24,Y+15
+ 351 0160 9889      		ldd r25,Y+16
+ 352 0162 00D0      		rcall __gtsf2
+ 353 0164 1816      		cp __zero_reg__,r24
+ 354 0166 0CF0      		brlt .L13
+ 355 0168 03C0      		rjmp .L12
+ 356               	.L13:
+ 183:C:/WinAVR/avr/include/util/delay.h **** 		__ticks = 0;	/* i.e. 65536 */
+ 358               	.LM21:
+ 359 016a 1C86      		std Y+12,__zero_reg__
+ 360 016c 1B86      		std Y+11,__zero_reg__
+ 361 016e 09C0      		rjmp .L11
+ 362               	.L12:
+ 184:C:/WinAVR/avr/include/util/delay.h **** 	else
+ 185:C:/WinAVR/avr/include/util/delay.h **** 		__ticks = (uint16_t)__tmp;
+ 364               	.LM22:
+ 365 0170 6D85      		ldd r22,Y+13
+ 366 0172 7E85      		ldd r23,Y+14
+ 367 0174 8F85      		ldd r24,Y+15
+ 368 0176 9889      		ldd r25,Y+16
+ 369 0178 00D0      		rcall __fixunssfsi
+ 370 017a DC01      		movw r26,r24
+ 371 017c CB01      		movw r24,r22
+ 372 017e 9C87      		std Y+12,r25
+ 373 0180 8B87      		std Y+11,r24
+ 374               	.L11:
+ 375               	.LBB4:
+ 377               	.LM23:
+ 378 0182 8B85      		ldd r24,Y+11
+ 379 0184 9C85      		ldd r25,Y+12
+ 380 0186 9A8B      		std Y+18,r25
+ 381 0188 898B      		std Y+17,r24
+ 382               	.LBB5:
+ 384               	.LM24:
+ 385 018a 8989      		ldd r24,Y+17
+ 386 018c 9A89      		ldd r25,Y+18
+ 387               	/* #APP */
+ 388 018e 0197      		1: sbiw r24,1
+ 389 0190 F1F7      		brne 1b
+ 390               	/* #NOAPP */
+ 391 0192 9A8B      		std Y+18,r25
+ 392 0194 898B      		std Y+17,r24
+ 393               	.LBE5:
+ 394               	.LBE4:
+ 395               	.LBE3:
+ 396               	.LBE2:
+ 398               	.Ltext2:
+  60:ledmeter.c    ****         _delay_ms(delay);
+  61:ledmeter.c    ****         switch_on_led(i);
+ 400               	.LM25:
+ 401 0196 8D81      		ldd r24,Y+5
+ 402 0198 9E81      		ldd r25,Y+6
+ 403 019a 45DF      		rcall switch_on_led
+ 405               	.LM26:
+ 406 019c 8D81      		ldd r24,Y+5
+ 407 019e 9E81      		ldd r25,Y+6
+ 408 01a0 0196      		adiw r24,1
+ 409 01a2 9E83      		std Y+6,r25
+ 410 01a4 8D83      		std Y+5,r24
+ 411 01a6 A7CF      		rjmp .L6
+ 412               	.L5:
+ 413               	/* epilogue: frame size=18 */
+ 414 01a8 6296      		adiw r28,18
+ 415 01aa 0FB6      		in __tmp_reg__,__SREG__
+ 416 01ac F894      		cli
+ 417 01ae DEBF      		out __SP_H__,r29
+ 418 01b0 0FBE      		out __SREG__,__tmp_reg__
+ 419 01b2 CDBF      		out __SP_L__,r28
+ 420 01b4 DF91      		pop r29
+ 421 01b6 CF91      		pop r28
+ 422 01b8 0895      		ret
+ 423               	/* epilogue end (size=9) */
+ 424               	/* function switch_on_leds_with_delay size 118 (99) */
+ 439               	.Lscope4:
+ 442               	.global	switch_off_leds_with_delay
+ 444               	switch_off_leds_with_delay:
+  62:ledmeter.c    ****     }
+  63:ledmeter.c    **** }
   64:ledmeter.c    **** 
-  65:ledmeter.c    **** 
-  66:ledmeter.c    **** void init() {
- 321               	.LM18:
- 322               	/* prologue: frame size=0 */
- 323 0120 CF93      		push r28
- 324 0122 DF93      		push r29
- 325 0124 CDB7      		in r28,__SP_L__
- 326 0126 DEB7      		in r29,__SP_H__
- 327               	/* prologue end (size=4) */
-  67:ledmeter.c    **** 
-  68:ledmeter.c    ****    DDRD=0xFF; // set up PORTD pins 0 to 7 as output
- 329               	.LM19:
- 330 0128 8FEF      		ldi r24,lo8(-1)
- 331 012a 8093 3100 		sts 49,r24
-  69:ledmeter.c    **** 
-  70:ledmeter.c    ****    //switch_on_all_leds();
-  71:ledmeter.c    ****    switch_off_all_leds();
- 333               	.LM20:
- 334 012e 71DF      		rcall switch_off_all_leds
- 335               	/* epilogue: frame size=0 */
- 336 0130 DF91      		pop r29
- 337 0132 CF91      		pop r28
- 338 0134 0895      		ret
- 339               	/* epilogue end (size=3) */
- 340               	/* function init size 11 (4) */
- 342               	.Lscope5:
- 344               	.global	loop
- 346               	loop:
-  72:ledmeter.c    **** }
-  73:ledmeter.c    **** 
-  74:ledmeter.c    **** void loop(void) {  // Put the open brace '{' here
- 348               	.LM21:
- 349               	/* prologue: frame size=0 */
- 350 0136 CF93      		push r28
- 351 0138 DF93      		push r29
- 352 013a CDB7      		in r28,__SP_L__
- 353 013c DEB7      		in r29,__SP_H__
- 354               	/* prologue end (size=4) */
-  75:ledmeter.c    ****    switch_on_min_dels(N);
- 356               	.LM22:
- 357 013e 82E3      		ldi r24,lo8(50)
- 358 0140 90E0      		ldi r25,hi8(50)
- 359 0142 C7DF      		rcall switch_on_min_dels
- 360               	/* epilogue: frame size=0 */
- 361 0144 DF91      		pop r29
- 362 0146 CF91      		pop r28
- 363 0148 0895      		ret
- 364               	/* epilogue end (size=3) */
- 365               	/* function loop size 10 (3) */
- 367               	.Lscope6:
- 369               	.global	main
- 371               	main:
-  76:ledmeter.c    **** 
-  77:ledmeter.c    **** 	//switch_on_led(3);
-  78:ledmeter.c    **** 	//switch_on_led(5);
-  79:ledmeter.c    **** 	//switch_on_led(7);	
-  80:ledmeter.c    **** 	
-  81:ledmeter.c    **** 	//switch_off_led(5);
-  82:ledmeter.c    **** }
-  83:ledmeter.c    **** 
-  84:ledmeter.c    **** // ***********************************************************
-  85:ledmeter.c    **** // Main program
-  86:ledmeter.c    **** //
-  87:ledmeter.c    **** int main(void) {
- 373               	.LM23:
- 374               	/* prologue: frame size=0 */
- 375 014a C0E0      		ldi r28,lo8(__stack - 0)
- 376 014c D0E0      		ldi r29,hi8(__stack - 0)
- 377 014e DEBF      		out __SP_H__,r29
- 378 0150 CDBF      		out __SP_L__,r28
- 379               	/* prologue end (size=4) */
-  88:ledmeter.c    ****    init();
- 381               	.LM24:
- 382 0152 E6DF      		rcall init
- 383               	.L12:
-  89:ledmeter.c    **** 
-  90:ledmeter.c    ****    while(1) {             // Infinite loop; define here the
-  91:ledmeter.c    ****       loop();      // system behaviour
- 385               	.LM25:
- 386 0154 F0DF      		rcall loop
- 387 0156 FECF      		rjmp .L12
- 388               	/* epilogue: frame size=0 */
- 389               	/* epilogue: noreturn */
- 390               	/* epilogue end (size=0) */
- 391               	/* function main size 7 (3) */
- 393               	.Lscope7:
- 394               		.text
- 396               	Letext:
- 397               	/* File "ledmeter.c": code  172 = 0x00ac (  83), prologues  50, epilogues  39 */
+  65:ledmeter.c    **** void switch_off_leds_with_delay(double delay) {
+ 446               	.LM27:
+ 447               	/* prologue: frame size=18 */
+ 448 01ba CF93      		push r28
+ 449 01bc DF93      		push r29
+ 450 01be CDB7      		in r28,__SP_L__
+ 451 01c0 DEB7      		in r29,__SP_H__
+ 452 01c2 6297      		sbiw r28,18
+ 453 01c4 0FB6      		in __tmp_reg__,__SREG__
+ 454 01c6 F894      		cli
+ 455 01c8 DEBF      		out __SP_H__,r29
+ 456 01ca 0FBE      		out __SREG__,__tmp_reg__
+ 457 01cc CDBF      		out __SP_L__,r28
+ 458               	/* prologue end (size=10) */
+ 459 01ce 6983      		std Y+1,r22
+ 460 01d0 7A83      		std Y+2,r23
+ 461 01d2 8B83      		std Y+3,r24
+ 462 01d4 9C83      		std Y+4,r25
+  66:ledmeter.c    ****     int i;
+  67:ledmeter.c    ****     for(i = Nleds; i>=0; i--) {
+ 464               	.LM28:
+ 465 01d6 88E0      		ldi r24,lo8(8)
+ 466 01d8 90E0      		ldi r25,hi8(8)
+ 467 01da 9E83      		std Y+6,r25
+ 468 01dc 8D83      		std Y+5,r24
+ 469               	.L18:
+ 471               	.LM29:
+ 472 01de 8D81      		ldd r24,Y+5
+ 473 01e0 9E81      		ldd r25,Y+6
+ 474 01e2 9923      		tst r25
+ 475 01e4 0CF4      		brge .+2
+ 476 01e6 53C0      		rjmp .L17
+ 477               	.LBB6:
+ 479               	.Ltext3:
+ 481               	.LM30:
+ 482 01e8 8981      		ldd r24,Y+1
+ 483 01ea 9A81      		ldd r25,Y+2
+ 484 01ec AB81      		ldd r26,Y+3
+ 485 01ee BC81      		ldd r27,Y+4
+ 486 01f0 8F83      		std Y+7,r24
+ 487 01f2 9887      		std Y+8,r25
+ 488 01f4 A987      		std Y+9,r26
+ 489 01f6 BA87      		std Y+10,r27
+ 490               	.LBB7:
+ 492               	.LM31:
+ 493 01f8 20E0      		ldi r18,lo8(0x437a0000)
+ 494 01fa 30E0      		ldi r19,hi8(0x437a0000)
+ 495 01fc 4AE7      		ldi r20,hlo8(0x437a0000)
+ 496 01fe 53E4      		ldi r21,hhi8(0x437a0000)
+ 497 0200 6F81      		ldd r22,Y+7
+ 498 0202 7885      		ldd r23,Y+8
+ 499 0204 8985      		ldd r24,Y+9
+ 500 0206 9A85      		ldd r25,Y+10
+ 501 0208 00D0      		rcall __mulsf3
+ 502 020a DC01      		movw r26,r24
+ 503 020c CB01      		movw r24,r22
+ 504 020e 8D87      		std Y+13,r24
+ 505 0210 9E87      		std Y+14,r25
+ 506 0212 AF87      		std Y+15,r26
+ 507 0214 B88B      		std Y+16,r27
+ 509               	.LM32:
+ 510 0216 20E0      		ldi r18,lo8(0x3f800000)
+ 511 0218 30E0      		ldi r19,hi8(0x3f800000)
+ 512 021a 40E8      		ldi r20,hlo8(0x3f800000)
+ 513 021c 5FE3      		ldi r21,hhi8(0x3f800000)
+ 514 021e 6D85      		ldd r22,Y+13
+ 515 0220 7E85      		ldd r23,Y+14
+ 516 0222 8F85      		ldd r24,Y+15
+ 517 0224 9889      		ldd r25,Y+16
+ 518 0226 00D0      		rcall __ltsf2
+ 519 0228 8823      		tst r24
+ 520 022a 0CF0      		brlt .L22
+ 521 022c 05C0      		rjmp .L21
+ 522               	.L22:
+ 524               	.LM33:
+ 525 022e 81E0      		ldi r24,lo8(1)
+ 526 0230 90E0      		ldi r25,hi8(1)
+ 527 0232 9C87      		std Y+12,r25
+ 528 0234 8B87      		std Y+11,r24
+ 529 0236 18C0      		rjmp .L23
+ 530               	.L21:
+ 532               	.LM34:
+ 533 0238 20E0      		ldi r18,lo8(0x477fff00)
+ 534 023a 3FEF      		ldi r19,hi8(0x477fff00)
+ 535 023c 4FE7      		ldi r20,hlo8(0x477fff00)
+ 536 023e 57E4      		ldi r21,hhi8(0x477fff00)
+ 537 0240 6D85      		ldd r22,Y+13
+ 538 0242 7E85      		ldd r23,Y+14
+ 539 0244 8F85      		ldd r24,Y+15
+ 540 0246 9889      		ldd r25,Y+16
+ 541 0248 00D0      		rcall __gtsf2
+ 542 024a 1816      		cp __zero_reg__,r24
+ 543 024c 0CF0      		brlt .L25
+ 544 024e 03C0      		rjmp .L24
+ 545               	.L25:
+ 547               	.LM35:
+ 548 0250 1C86      		std Y+12,__zero_reg__
+ 549 0252 1B86      		std Y+11,__zero_reg__
+ 550 0254 09C0      		rjmp .L23
+ 551               	.L24:
+ 553               	.LM36:
+ 554 0256 6D85      		ldd r22,Y+13
+ 555 0258 7E85      		ldd r23,Y+14
+ 556 025a 8F85      		ldd r24,Y+15
+ 557 025c 9889      		ldd r25,Y+16
+ 558 025e 00D0      		rcall __fixunssfsi
+ 559 0260 DC01      		movw r26,r24
+ 560 0262 CB01      		movw r24,r22
+ 561 0264 9C87      		std Y+12,r25
+ 562 0266 8B87      		std Y+11,r24
+ 563               	.L23:
+ 564               	.LBB8:
+ 566               	.LM37:
+ 567 0268 8B85      		ldd r24,Y+11
+ 568 026a 9C85      		ldd r25,Y+12
+ 569 026c 9A8B      		std Y+18,r25
+ 570 026e 898B      		std Y+17,r24
+ 571               	.LBB9:
+ 573               	.LM38:
+ 574 0270 8989      		ldd r24,Y+17
+ 575 0272 9A89      		ldd r25,Y+18
+ 576               	/* #APP */
+ 577 0274 0197      		1: sbiw r24,1
+ 578 0276 F1F7      		brne 1b
+ 579               	/* #NOAPP */
+ 580 0278 9A8B      		std Y+18,r25
+ 581 027a 898B      		std Y+17,r24
+ 582               	.LBE9:
+ 583               	.LBE8:
+ 584               	.LBE7:
+ 585               	.LBE6:
+ 587               	.Ltext4:
+  68:ledmeter.c    ****         _delay_ms(delay);
+  69:ledmeter.c    ****         switch_off_led(i);
+ 589               	.LM39:
+ 590 027c 8D81      		ldd r24,Y+5
+ 591 027e 9E81      		ldd r25,Y+6
+ 592 0280 FEDE      		rcall switch_off_led
+ 594               	.LM40:
+ 595 0282 8D81      		ldd r24,Y+5
+ 596 0284 9E81      		ldd r25,Y+6
+ 597 0286 0197      		sbiw r24,1
+ 598 0288 9E83      		std Y+6,r25
+ 599 028a 8D83      		std Y+5,r24
+ 600 028c A8CF      		rjmp .L18
+ 601               	.L17:
+ 602               	/* epilogue: frame size=18 */
+ 603 028e 6296      		adiw r28,18
+ 604 0290 0FB6      		in __tmp_reg__,__SREG__
+ 605 0292 F894      		cli
+ 606 0294 DEBF      		out __SP_H__,r29
+ 607 0296 0FBE      		out __SREG__,__tmp_reg__
+ 608 0298 CDBF      		out __SP_L__,r28
+ 609 029a DF91      		pop r29
+ 610 029c CF91      		pop r28
+ 611 029e 0895      		ret
+ 612               	/* epilogue end (size=9) */
+ 613               	/* function switch_off_leds_with_delay size 117 (98) */
+ 628               	.Lscope5:
+ 630               	.global	test_leds
+ 632               	test_leds:
+  70:ledmeter.c    ****     }
+  71:ledmeter.c    **** }
+  72:ledmeter.c    **** 
+  73:ledmeter.c    **** void test_leds() {
+ 634               	.LM41:
+ 635               	/* prologue: frame size=12 */
+ 636 02a0 CF93      		push r28
+ 637 02a2 DF93      		push r29
+ 638 02a4 CDB7      		in r28,__SP_L__
+ 639 02a6 DEB7      		in r29,__SP_H__
+ 640 02a8 2C97      		sbiw r28,12
+ 641 02aa 0FB6      		in __tmp_reg__,__SREG__
+ 642 02ac F894      		cli
+ 643 02ae DEBF      		out __SP_H__,r29
+ 644 02b0 0FBE      		out __SREG__,__tmp_reg__
+ 645 02b2 CDBF      		out __SP_L__,r28
+ 646               	/* prologue end (size=10) */
+  74:ledmeter.c    ****     switch_on_leds_with_delay(100);
+ 648               	.LM42:
+ 649 02b4 60E0      		ldi r22,lo8(0x42c80000)
+ 650 02b6 70E0      		ldi r23,hi8(0x42c80000)
+ 651 02b8 88EC      		ldi r24,hlo8(0x42c80000)
+ 652 02ba 92E4      		ldi r25,hhi8(0x42c80000)
+ 653 02bc 0ADF      		rcall switch_on_leds_with_delay
+ 654               	.LBB10:
+ 656               	.Ltext5:
+ 658               	.LM43:
+ 659 02be 80E0      		ldi r24,lo8(0x42480000)
+ 660 02c0 90E0      		ldi r25,hi8(0x42480000)
+ 661 02c2 A8E4      		ldi r26,hlo8(0x42480000)
+ 662 02c4 B2E4      		ldi r27,hhi8(0x42480000)
+ 663 02c6 8983      		std Y+1,r24
+ 664 02c8 9A83      		std Y+2,r25
+ 665 02ca AB83      		std Y+3,r26
+ 666 02cc BC83      		std Y+4,r27
+ 667               	.LBB11:
+ 669               	.LM44:
+ 670 02ce 20E0      		ldi r18,lo8(0x437a0000)
+ 671 02d0 30E0      		ldi r19,hi8(0x437a0000)
+ 672 02d2 4AE7      		ldi r20,hlo8(0x437a0000)
+ 673 02d4 53E4      		ldi r21,hhi8(0x437a0000)
+ 674 02d6 6981      		ldd r22,Y+1
+ 675 02d8 7A81      		ldd r23,Y+2
+ 676 02da 8B81      		ldd r24,Y+3
+ 677 02dc 9C81      		ldd r25,Y+4
+ 678 02de 00D0      		rcall __mulsf3
+ 679 02e0 DC01      		movw r26,r24
+ 680 02e2 CB01      		movw r24,r22
+ 681 02e4 8F83      		std Y+7,r24
+ 682 02e6 9887      		std Y+8,r25
+ 683 02e8 A987      		std Y+9,r26
+ 684 02ea BA87      		std Y+10,r27
+ 686               	.LM45:
+ 687 02ec 20E0      		ldi r18,lo8(0x3f800000)
+ 688 02ee 30E0      		ldi r19,hi8(0x3f800000)
+ 689 02f0 40E8      		ldi r20,hlo8(0x3f800000)
+ 690 02f2 5FE3      		ldi r21,hhi8(0x3f800000)
+ 691 02f4 6F81      		ldd r22,Y+7
+ 692 02f6 7885      		ldd r23,Y+8
+ 693 02f8 8985      		ldd r24,Y+9
+ 694 02fa 9A85      		ldd r25,Y+10
+ 695 02fc 00D0      		rcall __ltsf2
+ 696 02fe 8823      		tst r24
+ 697 0300 0CF0      		brlt .L31
+ 699               	.LM46:
+ 700 0302 05C0      		rjmp .L30
+ 701               	.L31:
+ 703               	.LM47:
+ 704 0304 81E0      		ldi r24,lo8(1)
+ 705 0306 90E0      		ldi r25,hi8(1)
+ 706 0308 9E83      		std Y+6,r25
+ 707 030a 8D83      		std Y+5,r24
+ 708 030c 18C0      		rjmp .L32
+ 709               	.L30:
+ 711               	.LM48:
+ 712 030e 20E0      		ldi r18,lo8(0x477fff00)
+ 713 0310 3FEF      		ldi r19,hi8(0x477fff00)
+ 714 0312 4FE7      		ldi r20,hlo8(0x477fff00)
+ 715 0314 57E4      		ldi r21,hhi8(0x477fff00)
+ 716 0316 6F81      		ldd r22,Y+7
+ 717 0318 7885      		ldd r23,Y+8
+ 718 031a 8985      		ldd r24,Y+9
+ 719 031c 9A85      		ldd r25,Y+10
+ 720 031e 00D0      		rcall __gtsf2
+ 721 0320 1816      		cp __zero_reg__,r24
+ 722 0322 0CF0      		brlt .L34
+ 723 0324 03C0      		rjmp .L33
+ 724               	.L34:
+ 726               	.LM49:
+ 727 0326 1E82      		std Y+6,__zero_reg__
+ 728 0328 1D82      		std Y+5,__zero_reg__
+ 729 032a 09C0      		rjmp .L32
+ 730               	.L33:
+ 732               	.LM50:
+ 733 032c 6F81      		ldd r22,Y+7
+ 734 032e 7885      		ldd r23,Y+8
+ 735 0330 8985      		ldd r24,Y+9
+ 736 0332 9A85      		ldd r25,Y+10
+ 737 0334 00D0      		rcall __fixunssfsi
+ 738 0336 DC01      		movw r26,r24
+ 739 0338 CB01      		movw r24,r22
+ 740 033a 9E83      		std Y+6,r25
+ 741 033c 8D83      		std Y+5,r24
+ 742               	.L32:
+ 743               	.LBB12:
+ 745               	.LM51:
+ 746 033e 8D81      		ldd r24,Y+5
+ 747 0340 9E81      		ldd r25,Y+6
+ 748 0342 9C87      		std Y+12,r25
+ 749 0344 8B87      		std Y+11,r24
+ 750               	.LBB13:
+ 752               	.LM52:
+ 753 0346 8B85      		ldd r24,Y+11
+ 754 0348 9C85      		ldd r25,Y+12
+ 755               	/* #APP */
+ 756 034a 0197      		1: sbiw r24,1
+ 757 034c F1F7      		brne 1b
+ 758               	/* #NOAPP */
+ 759 034e 9C87      		std Y+12,r25
+ 760 0350 8B87      		std Y+11,r24
+ 761               	.LBE13:
+ 762               	.LBE12:
+ 763               	.LBE11:
+ 764               	.LBE10:
+ 766               	.Ltext6:
+  75:ledmeter.c    ****     _delay_ms(50);
+  76:ledmeter.c    ****     switch_off_leds_with_delay(100);
+ 768               	.LM53:
+ 769 0352 60E0      		ldi r22,lo8(0x42c80000)
+ 770 0354 70E0      		ldi r23,hi8(0x42c80000)
+ 771 0356 88EC      		ldi r24,hlo8(0x42c80000)
+ 772 0358 92E4      		ldi r25,hhi8(0x42c80000)
+ 773 035a 2FDF      		rcall switch_off_leds_with_delay
+ 774               	/* epilogue: frame size=12 */
+ 775 035c 2C96      		adiw r28,12
+ 776 035e 0FB6      		in __tmp_reg__,__SREG__
+ 777 0360 F894      		cli
+ 778 0362 DEBF      		out __SP_H__,r29
+ 779 0364 0FBE      		out __SREG__,__tmp_reg__
+ 780 0366 CDBF      		out __SP_L__,r28
+ 781 0368 DF91      		pop r29
+ 782 036a CF91      		pop r28
+ 783 036c 0895      		ret
+ 784               	/* epilogue end (size=9) */
+ 785               	/* function test_leds size 105 (86) */
+ 797               	.Lscope6:
+ 800               	.global	switch_on_min_dels
+ 802               	switch_on_min_dels:
+  77:ledmeter.c    **** }
+  78:ledmeter.c    **** 
+  79:ledmeter.c    **** void switch_on_min_dels(int n) {
+ 804               	.LM54:
+ 805               	/* prologue: frame size=4 */
+ 806 036e CF93      		push r28
+ 807 0370 DF93      		push r29
+ 808 0372 CDB7      		in r28,__SP_L__
+ 809 0374 DEB7      		in r29,__SP_H__
+ 810 0376 2497      		sbiw r28,4
+ 811 0378 0FB6      		in __tmp_reg__,__SREG__
+ 812 037a F894      		cli
+ 813 037c DEBF      		out __SP_H__,r29
+ 814 037e 0FBE      		out __SREG__,__tmp_reg__
+ 815 0380 CDBF      		out __SP_L__,r28
+ 816               	/* prologue end (size=10) */
+ 817 0382 9A83      		std Y+2,r25
+ 818 0384 8983      		std Y+1,r24
+  80:ledmeter.c    ****     int i;
+  81:ledmeter.c    ****     for(i = 1; (i<=Nleds) && (i<=n); i++) {
+ 820               	.LM55:
+ 821 0386 81E0      		ldi r24,lo8(1)
+ 822 0388 90E0      		ldi r25,hi8(1)
+ 823 038a 9C83      		std Y+4,r25
+ 824 038c 8B83      		std Y+3,r24
+ 825               	.L39:
+ 827               	.LM56:
+ 828 038e 8B81      		ldd r24,Y+3
+ 829 0390 9C81      		ldd r25,Y+4
+ 830 0392 8930      		cpi r24,9
+ 831 0394 9105      		cpc r25,__zero_reg__
+ 832 0396 84F4      		brge .L38
+ 833 0398 2B81      		ldd r18,Y+3
+ 834 039a 3C81      		ldd r19,Y+4
+ 835 039c 8981      		ldd r24,Y+1
+ 836 039e 9A81      		ldd r25,Y+2
+ 837 03a0 8217      		cp r24,r18
+ 838 03a2 9307      		cpc r25,r19
+ 839 03a4 4CF0      		brlt .L38
+  82:ledmeter.c    ****         switch_on_led(i);
+ 841               	.LM57:
+ 842 03a6 8B81      		ldd r24,Y+3
+ 843 03a8 9C81      		ldd r25,Y+4
+ 844 03aa 3DDE      		rcall switch_on_led
+ 846               	.LM58:
+ 847 03ac 8B81      		ldd r24,Y+3
+ 848 03ae 9C81      		ldd r25,Y+4
+ 849 03b0 0196      		adiw r24,1
+ 850 03b2 9C83      		std Y+4,r25
+ 851 03b4 8B83      		std Y+3,r24
+ 852 03b6 EBCF      		rjmp .L39
+ 853               	.L38:
+ 854               	/* epilogue: frame size=4 */
+ 855 03b8 2496      		adiw r28,4
+ 856 03ba 0FB6      		in __tmp_reg__,__SREG__
+ 857 03bc F894      		cli
+ 858 03be DEBF      		out __SP_H__,r29
+ 859 03c0 0FBE      		out __SREG__,__tmp_reg__
+ 860 03c2 CDBF      		out __SP_L__,r28
+ 861 03c4 DF91      		pop r29
+ 862 03c6 CF91      		pop r28
+ 863 03c8 0895      		ret
+ 864               	/* epilogue end (size=9) */
+ 865               	/* function switch_on_min_dels size 46 (27) */
+ 870               	.Lscope7:
+ 873               	.global	switch_on_max_dels
+ 875               	switch_on_max_dels:
+  83:ledmeter.c    ****     }
+  84:ledmeter.c    **** }
+  85:ledmeter.c    **** 
+  86:ledmeter.c    **** void switch_on_max_dels(int n) {
+ 877               	.LM59:
+ 878               	/* prologue: frame size=4 */
+ 879 03ca CF93      		push r28
+ 880 03cc DF93      		push r29
+ 881 03ce CDB7      		in r28,__SP_L__
+ 882 03d0 DEB7      		in r29,__SP_H__
+ 883 03d2 2497      		sbiw r28,4
+ 884 03d4 0FB6      		in __tmp_reg__,__SREG__
+ 885 03d6 F894      		cli
+ 886 03d8 DEBF      		out __SP_H__,r29
+ 887 03da 0FBE      		out __SREG__,__tmp_reg__
+ 888 03dc CDBF      		out __SP_L__,r28
+ 889               	/* prologue end (size=10) */
+ 890 03de 9A83      		std Y+2,r25
+ 891 03e0 8983      		std Y+1,r24
+  87:ledmeter.c    ****     int i;
+  88:ledmeter.c    ****     for(i = Nleds; i>=n; i--) {
+ 893               	.LM60:
+ 894 03e2 88E0      		ldi r24,lo8(8)
+ 895 03e4 90E0      		ldi r25,hi8(8)
+ 896 03e6 9C83      		std Y+4,r25
+ 897 03e8 8B83      		std Y+3,r24
+ 898               	.L43:
+ 900               	.LM61:
+ 901 03ea 2B81      		ldd r18,Y+3
+ 902 03ec 3C81      		ldd r19,Y+4
+ 903 03ee 8981      		ldd r24,Y+1
+ 904 03f0 9A81      		ldd r25,Y+2
+ 905 03f2 2817      		cp r18,r24
+ 906 03f4 3907      		cpc r19,r25
+ 907 03f6 4CF0      		brlt .L42
+  89:ledmeter.c    ****         switch_on_led(i);
+ 909               	.LM62:
+ 910 03f8 8B81      		ldd r24,Y+3
+ 911 03fa 9C81      		ldd r25,Y+4
+ 912 03fc 14DE      		rcall switch_on_led
+ 914               	.LM63:
+ 915 03fe 8B81      		ldd r24,Y+3
+ 916 0400 9C81      		ldd r25,Y+4
+ 917 0402 0197      		sbiw r24,1
+ 918 0404 9C83      		std Y+4,r25
+ 919 0406 8B83      		std Y+3,r24
+ 920 0408 F0CF      		rjmp .L43
+ 921               	.L42:
+ 922               	/* epilogue: frame size=4 */
+ 923 040a 2496      		adiw r28,4
+ 924 040c 0FB6      		in __tmp_reg__,__SREG__
+ 925 040e F894      		cli
+ 926 0410 DEBF      		out __SP_H__,r29
+ 927 0412 0FBE      		out __SREG__,__tmp_reg__
+ 928 0414 CDBF      		out __SP_L__,r28
+ 929 0416 DF91      		pop r29
+ 930 0418 CF91      		pop r28
+ 931 041a 0895      		ret
+ 932               	/* epilogue end (size=9) */
+ 933               	/* function switch_on_max_dels size 41 (22) */
+ 938               	.Lscope8:
+ 941               	.global	show_percent
+ 943               	show_percent:
+  90:ledmeter.c    ****     }
+  91:ledmeter.c    **** }
+  92:ledmeter.c    **** 
+  93:ledmeter.c    **** void show_percent(double p) {
+ 945               	.LM64:
+ 946               	/* prologue: frame size=6 */
+ 947 041c CF93      		push r28
+ 948 041e DF93      		push r29
+ 949 0420 CDB7      		in r28,__SP_L__
+ 950 0422 DEB7      		in r29,__SP_H__
+ 951 0424 2697      		sbiw r28,6
+ 952 0426 0FB6      		in __tmp_reg__,__SREG__
+ 953 0428 F894      		cli
+ 954 042a DEBF      		out __SP_H__,r29
+ 955 042c 0FBE      		out __SREG__,__tmp_reg__
+ 956 042e CDBF      		out __SP_L__,r28
+ 957               	/* prologue end (size=10) */
+ 958 0430 6983      		std Y+1,r22
+ 959 0432 7A83      		std Y+2,r23
+ 960 0434 8B83      		std Y+3,r24
+ 961 0436 9C83      		std Y+4,r25
+  94:ledmeter.c    ****     // p pourcent
+  95:ledmeter.c    ****     int n;
+  96:ledmeter.c    ****     //n = 4;
+  97:ledmeter.c    ****     n = floor(p / 100.0 * Nleds); // TO FIX (math.h ceil floor ...)
+ 963               	.LM65:
+ 964 0438 20E0      		ldi r18,lo8(0x42c80000)
+ 965 043a 30E0      		ldi r19,hi8(0x42c80000)
+ 966 043c 48EC      		ldi r20,hlo8(0x42c80000)
+ 967 043e 52E4      		ldi r21,hhi8(0x42c80000)
+ 968 0440 6981      		ldd r22,Y+1
+ 969 0442 7A81      		ldd r23,Y+2
+ 970 0444 8B81      		ldd r24,Y+3
+ 971 0446 9C81      		ldd r25,Y+4
+ 972 0448 00D0      		rcall __divsf3
+ 973 044a DC01      		movw r26,r24
+ 974 044c CB01      		movw r24,r22
+ 975 044e 20E0      		ldi r18,lo8(0x41000000)
+ 976 0450 30E0      		ldi r19,hi8(0x41000000)
+ 977 0452 40E0      		ldi r20,hlo8(0x41000000)
+ 978 0454 51E4      		ldi r21,hhi8(0x41000000)
+ 979 0456 BC01      		movw r22,r24
+ 980 0458 CD01      		movw r24,r26
+ 981 045a 00D0      		rcall __mulsf3
+ 982 045c DC01      		movw r26,r24
+ 983 045e CB01      		movw r24,r22
+ 984 0460 BC01      		movw r22,r24
+ 985 0462 CD01      		movw r24,r26
+ 986 0464 00D0      		rcall floor
+ 987 0466 DC01      		movw r26,r24
+ 988 0468 CB01      		movw r24,r22
+ 989 046a BC01      		movw r22,r24
+ 990 046c CD01      		movw r24,r26
+ 991 046e 00D0      		rcall __fixsfsi
+ 992 0470 DC01      		movw r26,r24
+ 993 0472 CB01      		movw r24,r22
+ 994 0474 9E83      		std Y+6,r25
+ 995 0476 8D83      		std Y+5,r24
+  98:ledmeter.c    ****     switch_on_min_dels(n);
+ 997               	.LM66:
+ 998 0478 8D81      		ldd r24,Y+5
+ 999 047a 9E81      		ldd r25,Y+6
+ 1000 047c 78DF      		rcall switch_on_min_dels
+ 1001               	/* epilogue: frame size=6 */
+ 1002 047e 2696      		adiw r28,6
+ 1003 0480 0FB6      		in __tmp_reg__,__SREG__
+ 1004 0482 F894      		cli
+ 1005 0484 DEBF      		out __SP_H__,r29
+ 1006 0486 0FBE      		out __SREG__,__tmp_reg__
+ 1007 0488 CDBF      		out __SP_L__,r28
+ 1008 048a DF91      		pop r29
+ 1009 048c CF91      		pop r28
+ 1010 048e 0895      		ret
+ 1011               	/* epilogue end (size=9) */
+ 1012               	/* function show_percent size 58 (39) */
+ 1017               	.Lscope9:
+ 1019               	.global	init
+ 1021               	init:
+  99:ledmeter.c    **** }
+ 100:ledmeter.c    **** 
+ 101:ledmeter.c    **** 
+ 102:ledmeter.c    **** void init() {
+ 1023               	.LM67:
+ 1024               	/* prologue: frame size=0 */
+ 1025 0490 CF93      		push r28
+ 1026 0492 DF93      		push r29
+ 1027 0494 CDB7      		in r28,__SP_L__
+ 1028 0496 DEB7      		in r29,__SP_H__
+ 1029               	/* prologue end (size=4) */
+ 103:ledmeter.c    **** 
+ 104:ledmeter.c    ****    DDRD=0xFF; // set up PORTD pins 0 to 7 as output
+ 1031               	.LM68:
+ 1032 0498 8FEF      		ldi r24,lo8(-1)
+ 1033 049a 8093 3100 		sts 49,r24
+ 105:ledmeter.c    **** 
+ 106:ledmeter.c    ****    //switch_on_all_leds();
+ 107:ledmeter.c    ****    switch_off_all_leds();
+ 1035               	.LM69:
+ 1036 049e B9DD      		rcall switch_off_all_leds
+ 1037               	/* epilogue: frame size=0 */
+ 1038 04a0 DF91      		pop r29
+ 1039 04a2 CF91      		pop r28
+ 1040 04a4 0895      		ret
+ 1041               	/* epilogue end (size=3) */
+ 1042               	/* function init size 11 (4) */
+ 1044               	.Lscope10:
+ 1046               	.global	loop
+ 1048               	loop:
+ 108:ledmeter.c    **** }
+ 109:ledmeter.c    **** 
+ 110:ledmeter.c    **** void loop(void) {
+ 1050               	.LM70:
+ 1051               	/* prologue: frame size=0 */
+ 1052 04a6 CF93      		push r28
+ 1053 04a8 DF93      		push r29
+ 1054 04aa CDB7      		in r28,__SP_L__
+ 1055 04ac DEB7      		in r29,__SP_H__
+ 1056               	/* prologue end (size=4) */
+ 111:ledmeter.c    ****    show_percent(25);
+ 1058               	.LM71:
+ 1059 04ae 60E0      		ldi r22,lo8(0x41c80000)
+ 1060 04b0 70E0      		ldi r23,hi8(0x41c80000)
+ 1061 04b2 88EC      		ldi r24,hlo8(0x41c80000)
+ 1062 04b4 91E4      		ldi r25,hhi8(0x41c80000)
+ 1063 04b6 B2DF      		rcall show_percent
+ 1064               	/* epilogue: frame size=0 */
+ 1065 04b8 DF91      		pop r29
+ 1066 04ba CF91      		pop r28
+ 1067 04bc 0895      		ret
+ 1068               	/* epilogue end (size=3) */
+ 1069               	/* function loop size 12 (5) */
+ 1071               	.Lscope11:
+ 1073               	.global	main
+ 1075               	main:
+ 112:ledmeter.c    **** 
+ 113:ledmeter.c    ****    //test_leds();
+ 114:ledmeter.c    ****    //switch_on_min_dels(5);
+ 115:ledmeter.c    ****    //switch_on_max_dels(3);
+ 116:ledmeter.c    **** 
+ 117:ledmeter.c    **** 	//switch_on_led(3);
+ 118:ledmeter.c    **** 	//switch_on_led(5);
+ 119:ledmeter.c    **** 	//switch_on_led(7);	
+ 120:ledmeter.c    **** 	
+ 121:ledmeter.c    **** 	//switch_off_led(5);
+ 122:ledmeter.c    **** }
+ 123:ledmeter.c    **** 
+ 124:ledmeter.c    **** // ***********************************************************
+ 125:ledmeter.c    **** // Main program
+ 126:ledmeter.c    **** //
+ 127:ledmeter.c    **** int main(void) {
+ 1077               	.LM72:
+ 1078               	/* prologue: frame size=0 */
+ 1079 04be C0E0      		ldi r28,lo8(__stack - 0)
+ 1080 04c0 D0E0      		ldi r29,hi8(__stack - 0)
+ 1081 04c2 DEBF      		out __SP_H__,r29
+ 1082 04c4 CDBF      		out __SP_L__,r28
+ 1083               	/* prologue end (size=4) */
+ 128:ledmeter.c    ****    init();
+ 1085               	.LM73:
+ 1086 04c6 E4DF      		rcall init
+ 1087               	.L50:
+ 129:ledmeter.c    **** 
+ 130:ledmeter.c    ****    while(1) {             // Infinite loop; define here the
+ 131:ledmeter.c    ****       loop();      // system behaviour
+ 1089               	.LM74:
+ 1090 04c8 EEDF      		rcall loop
+ 1091 04ca FECF      		rjmp .L50
+ 1092               	/* epilogue: frame size=0 */
+ 1093               	/* epilogue: noreturn */
+ 1094               	/* epilogue end (size=0) */
+ 1095               	/* function main size 7 (3) */
+ 1097               	.Lscope12:
+ 1098               		.text
+ 1100               	Letext:
+ 1101               	/* File "ledmeter.c": code  620 = 0x026c ( 436), prologues 100, epilogues  84 */
 DEFINED SYMBOLS
                             *ABS*:00000000 ledmeter.c
-C:\DOCUME~1\scls\LOCALS~1\Temp/ccqKaaaa.s:3      *ABS*:0000003f __SREG__
-C:\DOCUME~1\scls\LOCALS~1\Temp/ccqKaaaa.s:4      *ABS*:0000003e __SP_H__
-C:\DOCUME~1\scls\LOCALS~1\Temp/ccqKaaaa.s:5      *ABS*:0000003d __SP_L__
-C:\DOCUME~1\scls\LOCALS~1\Temp/ccqKaaaa.s:6      *ABS*:00000000 __tmp_reg__
-C:\DOCUME~1\scls\LOCALS~1\Temp/ccqKaaaa.s:7      *ABS*:00000001 __zero_reg__
-C:\DOCUME~1\scls\LOCALS~1\Temp/ccqKaaaa.s:76     .text:00000000 switch_on_all_leds
-C:\DOCUME~1\scls\LOCALS~1\Temp/ccqKaaaa.s:99     .text:00000012 switch_off_all_leds
-C:\DOCUME~1\scls\LOCALS~1\Temp/ccqKaaaa.s:124    .text:00000026 switch_on_led
-C:\DOCUME~1\scls\LOCALS~1\Temp/ccqKaaaa.s:190    .text:0000007e switch_off_led
-C:\DOCUME~1\scls\LOCALS~1\Temp/ccqKaaaa.s:254    .text:000000d2 switch_on_min_dels
-C:\DOCUME~1\scls\LOCALS~1\Temp/ccqKaaaa.s:319    .text:00000120 init
-C:\DOCUME~1\scls\LOCALS~1\Temp/ccqKaaaa.s:346    .text:00000136 loop
-C:\DOCUME~1\scls\LOCALS~1\Temp/ccqKaaaa.s:371    .text:0000014a main
-C:\DOCUME~1\scls\LOCALS~1\Temp/ccqKaaaa.s:396    .text:00000158 Letext
+C:\DOCUME~1\scls\LOCALS~1\Temp/ccC4aaaa.s:3      *ABS*:0000003f __SREG__
+C:\DOCUME~1\scls\LOCALS~1\Temp/ccC4aaaa.s:4      *ABS*:0000003e __SP_H__
+C:\DOCUME~1\scls\LOCALS~1\Temp/ccC4aaaa.s:5      *ABS*:0000003d __SP_L__
+C:\DOCUME~1\scls\LOCALS~1\Temp/ccC4aaaa.s:6      *ABS*:00000000 __tmp_reg__
+C:\DOCUME~1\scls\LOCALS~1\Temp/ccC4aaaa.s:7      *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\scls\LOCALS~1\Temp/ccC4aaaa.s:76     .text:00000000 switch_on_all_leds
+C:\DOCUME~1\scls\LOCALS~1\Temp/ccC4aaaa.s:99     .text:00000012 switch_off_all_leds
+C:\DOCUME~1\scls\LOCALS~1\Temp/ccC4aaaa.s:124    .text:00000026 switch_on_led
+C:\DOCUME~1\scls\LOCALS~1\Temp/ccC4aaaa.s:190    .text:0000007e switch_off_led
+C:\DOCUME~1\scls\LOCALS~1\Temp/ccC4aaaa.s:254    .text:000000d2 switch_on_leds_with_delay
+C:\DOCUME~1\scls\LOCALS~1\Temp/ccC4aaaa.s:444    .text:000001ba switch_off_leds_with_delay
+C:\DOCUME~1\scls\LOCALS~1\Temp/ccC4aaaa.s:632    .text:000002a0 test_leds
+C:\DOCUME~1\scls\LOCALS~1\Temp/ccC4aaaa.s:802    .text:0000036e switch_on_min_dels
+C:\DOCUME~1\scls\LOCALS~1\Temp/ccC4aaaa.s:875    .text:000003ca switch_on_max_dels
+C:\DOCUME~1\scls\LOCALS~1\Temp/ccC4aaaa.s:943    .text:0000041c show_percent
+C:\DOCUME~1\scls\LOCALS~1\Temp/ccC4aaaa.s:1021   .text:00000490 init
+C:\DOCUME~1\scls\LOCALS~1\Temp/ccC4aaaa.s:1048   .text:000004a6 loop
+C:\DOCUME~1\scls\LOCALS~1\Temp/ccC4aaaa.s:1075   .text:000004be main
+C:\DOCUME~1\scls\LOCALS~1\Temp/ccC4aaaa.s:1100   .text:000004cc Letext
 
 UNDEFINED SYMBOLS
 __do_copy_data
 __do_clear_bss
+__mulsf3
+__ltsf2
+__gtsf2
+__fixunssfsi
+__divsf3
+floor
+__fixsfsi
 __stack
