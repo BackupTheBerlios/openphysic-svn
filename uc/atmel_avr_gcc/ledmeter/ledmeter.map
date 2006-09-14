@@ -139,7 +139,7 @@ LOAD C:/WinAVR/lib/gcc/avr/3.4.6/avr4\libgcc.a
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0xa32
+.text           0x00000000      0xb1e
  *(.vectors)
  .vectors       0x00000000       0x2a c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4/crtm8535.o
                 0x00000000                __vectors
@@ -191,65 +191,65 @@ LOAD C:/WinAVR/lib/gcc/avr/3.4.6/avr4\libgcc.a
                 0x0000005e                __vector_16
                 0x0000005e                __vector_18
                 0x0000005e                __vector_20
- .text          0x00000060      0x76e ledmeter.o
+ .text          0x00000060      0x85a ledmeter.o
                 0x000003ce                switch_on_min_dels
                 0x00000072                switch_off_all_leds
-                0x0000067e                __vector_1
-                0x0000066a                StartStopChronometer
-                0x00000772                adcConvert8bit
-                0x000005f6                show_percent
-                0x000007a8                loop
+                0x0000069e                __vector_1
+                0x0000068a                StartStopChronometer
+                0x0000079a                adcConvert8bit
+                0x00000616                show_percent
+                0x000007d0                loop
                 0x00000300                test_leds
-                0x0000042a                switch_on_max_dels
-                0x000006d4                init
+                0x00000432                switch_on_max_dels
+                0x000006f0                init
                 0x000000de                switch_off_led
-                0x000007c0                main
+                0x000008ac                main
                 0x00000060                switch_on_all_leds
                 0x00000086                switch_on_led
-                0x0000047c                led_alarm
+                0x0000049c                led_alarm
                 0x0000021a                switch_off_leds_with_delay
                 0x00000132                switch_on_leds_with_delay
-                0x000006f8                adcConvert10bit
-                0x000007ce                . = ALIGN (0x2)
+                0x00000720                adcConvert10bit
+                0x000008ba                . = ALIGN (0x2)
  *(.text.*)
- .text.fplib    0x000007ce        0x6 c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4\libm.a(divsf3.o)
-                0x000007ce                __divsf3
- .text.fplib    0x000007d4       0x86 c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4\libm.a(divsf3x.o)
-                0x000007d4                __divsf3x
- .text.fplib    0x0000085a       0x36 c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4\libm.a(fixsfsi.o)
-                0x0000085a                __fixsfsi
-                0x00000880                __fp_lneg
-                0x0000085a                __fixunssfsi
- .text.fplib    0x00000890       0x32 c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4\libm.a(floor.o)
-                0x00000890                floor
- .text.fplib    0x000008c2       0x44 c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4\libm.a(fp_cmp.o)
-                0x000008c2                __lesf2
-                0x000008c2                __nesf2
-                0x000008c8                __gtsf2
-                0x000008c2                __eqsf2
-                0x000008ce                __cmpsf2
-                0x000008c2                __ltsf2
-                0x000008c8                __gesf2
- .text.fplib    0x00000906       0x3a c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4\libm.a(fp_merge.o)
-                0x00000910                __fp_merge
- .text.fplib    0x00000940        0x6 c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4\libm.a(fp_nan.o)
-                0x00000940                __fp_nanERANGE
-                0x00000940                __fp_nan
-                0x00000940                __fp_nanEDOM
-                0x00000940                __fp_nanx
- .text.fplib    0x00000946       0x52 c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4\libm.a(fp_split.o)
-                0x00000946                __fp_split3
-                0x0000094c                __fp_split2
-                0x0000095e                __fp_split1
-                0x0000097a                __fp_split_a
- .text.fplib    0x00000998        0xa c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4\libm.a(fp_zero.o)
-                0x00000998                __fp_zero
-                0x0000099e                __fp_zerox
- .text.fplib    0x000009a2        0x6 c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4\libm.a(mulsf3.o)
-                0x000009a2                __mulsf3
- .text.fplib    0x000009a8       0x8a c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4\libm.a(mulsf3x.o)
-                0x000009a8                __mulsf3x
-                0x00000a32                . = ALIGN (0x2)
+ .text.fplib    0x000008ba        0x6 c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4\libm.a(divsf3.o)
+                0x000008ba                __divsf3
+ .text.fplib    0x000008c0       0x86 c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4\libm.a(divsf3x.o)
+                0x000008c0                __divsf3x
+ .text.fplib    0x00000946       0x36 c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4\libm.a(fixsfsi.o)
+                0x00000946                __fixsfsi
+                0x0000096c                __fp_lneg
+                0x00000946                __fixunssfsi
+ .text.fplib    0x0000097c       0x32 c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4\libm.a(floor.o)
+                0x0000097c                floor
+ .text.fplib    0x000009ae       0x44 c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4\libm.a(fp_cmp.o)
+                0x000009ae                __lesf2
+                0x000009ae                __nesf2
+                0x000009b4                __gtsf2
+                0x000009ae                __eqsf2
+                0x000009ba                __cmpsf2
+                0x000009ae                __ltsf2
+                0x000009b4                __gesf2
+ .text.fplib    0x000009f2       0x3a c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4\libm.a(fp_merge.o)
+                0x000009fc                __fp_merge
+ .text.fplib    0x00000a2c        0x6 c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4\libm.a(fp_nan.o)
+                0x00000a2c                __fp_nanERANGE
+                0x00000a2c                __fp_nan
+                0x00000a2c                __fp_nanEDOM
+                0x00000a2c                __fp_nanx
+ .text.fplib    0x00000a32       0x52 c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4\libm.a(fp_split.o)
+                0x00000a32                __fp_split3
+                0x00000a38                __fp_split2
+                0x00000a4a                __fp_split1
+                0x00000a66                __fp_split_a
+ .text.fplib    0x00000a84        0xa c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4\libm.a(fp_zero.o)
+                0x00000a84                __fp_zero
+                0x00000a8a                __fp_zerox
+ .text.fplib    0x00000a8e        0x6 c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4\libm.a(mulsf3.o)
+                0x00000a8e                __mulsf3
+ .text.fplib    0x00000a94       0x8a c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4\libm.a(mulsf3x.o)
+                0x00000a94                __mulsf3x
+                0x00000b1e                . = ALIGN (0x2)
  *(.fini9)
  *(.fini8)
  *(.fini7)
@@ -260,9 +260,9 @@ LOAD C:/WinAVR/lib/gcc/avr/3.4.6/avr4\libgcc.a
  *(.fini2)
  *(.fini1)
  *(.fini0)
-                0x00000a32                _etext = .
+                0x00000b1e                _etext = .
 
-.data           0x00800060        0x0 load address 0x00000a32
+.data           0x00800060        0x0 load address 0x00000b1e
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  *(.gnu.linkonce.d*)
@@ -277,8 +277,8 @@ LOAD C:/WinAVR/lib/gcc/avr/3.4.6/avr4\libgcc.a
  COMMON         0x00800060        0x1 ledmeter.o
                 0x00800060                a2dCompleteFlag
                 0x00800061                PROVIDE (__bss_end, .)
-                0x00000a32                __data_load_start = LOADADDR (.data)
-                0x00000a32                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00000b1e                __data_load_start = LOADADDR (.data)
+                0x00000b1e                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800061        0x0
                 0x00800061                PROVIDE (__noinit_start, .)
@@ -291,11 +291,11 @@ LOAD C:/WinAVR/lib/gcc/avr/3.4.6/avr4\libgcc.a
  *(.eeprom*)
                 0x00810000                __eeprom_end = .
 
-.stab           0x00000000     0x1110
+.stab           0x00000000     0x129c
  *(.stab)
  .stab          0x00000000      0x36c c:/winavr/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr4/crtm8535.o
- .stab          0x0000036c      0xda4 ledmeter.o
-                                0xdb0 (size before relaxing)
+ .stab          0x0000036c      0xf30 ledmeter.o
+                                0xf3c (size before relaxing)
 
 .stabstr        0x00000000      0x964
  *(.stabstr)

@@ -1,6 +1,6 @@
 ; ************************************************************
-; PROJECT:
-; AUTHOR:
+; PROJECT: OpenChrono
+; AUTHOR: Sebastien CELLES
 ; ************************************************************
 
 ; Micro + software running
@@ -20,6 +20,7 @@
 .POWER VDD=5 VSS=0  ; Power nodes
 .CLOCK 1meg         ; Micro clock
 .STORE 250m         ; Trace (micro+signals) storage time
+;.STORE 500m
 
 ; Micro nodes: RESET, PB0-PB7, PD0-PD7, PE0-PE2, ACO, TIM1OVF
 ; Define here the hardware around the micro
@@ -55,6 +56,7 @@ R8 D8_NODE PC7 0.62K
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Passage de barrière (sonde à effet Hall, barrière optique...) ;
 ; NMI = entrée d'interruption externe non masquable             ;
+; INT0 = PD2 sur ATmega8535                                     ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Slider direct
@@ -70,7 +72,7 @@ R8 D8_NODE PC7 0.62K
 
 ; Slider + comparateur simple
 VsliderSS PLUS VSS SLIDER_1(0 5)
-Xop OPAMP PLUS MINUS INT0
+Xop OPAMP PLUS MINUS PD2
 R14 VDD MINUS 10K
 R15 MINUS VSS 10K
 ;;;;;;;;;;;;;;;;;;;;;;;
@@ -86,7 +88,8 @@ VsliderTemp1 PA1 VSS SLIDER_3(0 5)
 
 
 ; scope (PD0 et PD7)
-.PLOT V(INT0) V(PA0) V(PA1)
+.PLOT V(PD2) V(PA0) V(PA1)
 ;.PLOT V(PD0) V(PD1) V(PD2) V(PD3) V(PD4) V(PD5) V(PD6) V(PD7)
+
 
 

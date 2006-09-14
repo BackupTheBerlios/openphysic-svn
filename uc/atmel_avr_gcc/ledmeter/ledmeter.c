@@ -1,7 +1,7 @@
 // ***********************************************************
-// Project:
-// Author:
-// Module description:
+// Project: OpenChrono
+// Author: Sebastien CELLES
+// Module description: an handhelds device for karts, bike or sport cars
 // ***********************************************************
 
 #include <avr/io.h>              // Most basic include files
@@ -60,7 +60,7 @@ void switch_off_all_leds() {
  */
 void switch_on_led(int led) {
     int pin = led - 1;
-    int mask = ~(0x01<<pin);
+    int mask = ~(1<<pin);
     PORTC&=mask;
 }
 
@@ -69,7 +69,7 @@ void switch_on_led(int led) {
  */
 void switch_off_led(int led) {
     int pin = led - 1;
-    int mask = (0x01<<pin);
+    int mask = (1<<pin);
     PORTC|=mask;
 }
 
@@ -105,12 +105,16 @@ void test_leds() {
 }
 
 /*
- *  switch on every leds (from 0 to n)
+ *  switch on every leds (from 0 to n)  (and switch off others)
  */
 void switch_on_min_dels(int n) {
     int i;
-    for(i = 1; (i<=Nleds) && (i<=n); i++) {
-        switch_on_led(i);
+    for(i = 1; i<=Nleds; i++) {
+        if (i<=n) {
+            switch_on_led(i);
+        } else {
+            switch_off_led(i);
+        }
     }
 }
 
@@ -119,9 +123,14 @@ void switch_on_min_dels(int n) {
  */
 void switch_on_max_dels(int n) {
     int i;
-    for(i = Nleds; i>=n; i--) {
-        switch_on_led(i);
+    for(i = Nleds; i>=0; i--) {
+        if (i>=Nleds-n) {
+            switch_on_led(i);
+        } else {
+            switch_off_led(i);
+        }
     }
+    // TO TEST (switch off)
 }
 
 /*
@@ -131,9 +140,9 @@ void led_alarm(int n) {
     int i;
     for(i = 1; i<=n; i++) {
         switch_off_all_leds();
-        _delay_ms(100);
+        _delay_ms(50);
         switch_on_all_leds();
-        _delay_ms(100);
+        _delay_ms(50);
     }
 }
 
@@ -150,18 +159,18 @@ void show_percent(double p) {
 
 
 /*
- * Start or stop chronometer
+ * start or stop chronometer
  */
 void StartStopChronometer() {
     led_alarm(3);
 }
 
 /*
- * Interrupt handler example for INT0
+ * interrupt handler example for INT0
  */
 SIGNAL(SIG_INTERRUPT0) {
     //StartStopChronometer();
-    switch_on_led(8);
+    StartStopChronometer();
 }
 
 
@@ -182,12 +191,17 @@ void init() {
    // *********************************
    // Set Pin 6 (PD2) as the pin to use for this example
    //PCMSK |= (1<<PIND2); // TO FIX
+   //PIND |= (1<<PIND2); // try scls:Error : read-only !!!
 
    // interrupt on INT0 pin falling edge (sensor triggered)
    MCUCR = (1<<ISC01) | (1<<ISC00);
 
    // turn on interrupts!
    //GIMSK  |= (1<<INT0); // TO FIX
+
+   GICR |= (1<<INT0); //INT0
+
+   sei();
 
    // *************************************************
    // * Conv Analog to Digital (CAN for RPM and Temp) *
@@ -251,17 +265,31 @@ unsigned char adcConvert8bit(unsigned char ch)
 }
 
 /*
- *  This is the main loop
+ *  this is the main loop
  */
 void loop(void) {
-   show_percent(0x80 * 100 / 0xFF);
+   //show_percent(0x80 * 100 / 0xFF);
+
+   int i;
+   for (i = 0; i<=Nleds; i++) {
+       //switch_on_max_dels(i);
+       switch_on_min_dels(i);
+       _delay_ms(500);
+   }
+
    //show_percent(adcConvert10bit(0));
 
-   //show_percent(25);
-   //_delay_ms(500);                                how
-   //show_percent(50);
-   //_delay_ms(500);
-   //show_percent(100);
+   /*
+   show_percent(25);
+   _delay_ms(500);
+   show_percent(50);
+   _delay_ms(500);
+   show_percent(100);
+   _delay_ms(500);
+   show_percent(75);
+   _delay_ms(500);
+   show_percent(50);
+   */
 
    //led_alarm(3);
 
@@ -271,20 +299,21 @@ void loop(void) {
 
 	//switch_on_led(3);
 	//switch_on_led(5);
-	//switch_on_led(7);	
+	//switch_on_led(7);
+	//switch_on_led(8);	
 	
 	//switch_off_led(5);
 }
 
 
 /*
- * Main program
+ * main program
  */
 int main(void) {
    init();
 
-   while(1) {             // Infinite loop; define here the
-      loop();      // system behaviour
+   while(1) { // Infinite loop; define here the
+      loop(); // system behaviour
    }
 
    return 0;
