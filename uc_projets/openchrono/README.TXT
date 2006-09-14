@@ -25,6 +25,8 @@ voir docs dans /media/graver/auto/sports_mecaniques/kart/alfano
 Affichage
 =========
 Possible : LCD (alphanumérique ou graphique ?)
+alphanumérique : bien supporté par WinAVR HD44780 http://www.nongnu.org/avr-libc/user-manual/group__stdiodemo.html
+mais
 graphique car plus joli et plus facile à faire évoluer...
 
 
