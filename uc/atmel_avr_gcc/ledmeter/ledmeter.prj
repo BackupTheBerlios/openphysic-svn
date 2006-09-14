@@ -26,28 +26,28 @@
 ; ------------------------------------------------------------
 ; R1 et D1 en serie entre masse et PD0
 D1 VDD D1_NODE
-R1 D1_NODE PD0 0.62K
+R1 D1_NODE PC0 0.62K
 ; R2 et D2 en serie entre masse et PD1
 D2 VDD D2_NODE
-R2 D2_NODE PD1 0.62K
+R2 D2_NODE PC1 0.62K
 ;
 D3 VDD D3_NODE
-R3 D3_NODE PD2 0.62K
+R3 D3_NODE PC2 0.62K
 ;
 D4 VDD D4_NODE
-R4 D4_NODE PD3 0.62K
+R4 D4_NODE PC3 0.62K
 ;
 D5 VDD D5_NODE
-R5 D5_NODE PD4 0.62K
+R5 D5_NODE PC4 0.62K
 ;
 D6 VDD D6_NODE
-R6 D6_NODE PD5 0.62K
+R6 D6_NODE PC5 0.62K
 ;
 D7 VDD D7_NODE
-R7 D7_NODE PD6 0.62K
+R7 D7_NODE PC6 0.62K
 ;
 D8 VDD D8_NODE
-R8 D8_NODE PD7 0.62K
+R8 D8_NODE PC7 0.62K
 
 ; VSS : masse(neg)
 ; VDD : +
@@ -70,10 +70,9 @@ R8 D8_NODE PD7 0.62K
 
 ; Slider + comparateur simple
 VsliderSS PLUS VSS SLIDER_1(0 5)
-Xop OPAMP PLUS MINUS NMI
+Xop OPAMP PLUS MINUS INT0
 R14 VDD MINUS 10K
 R15 MINUS VSS 10K
-
 ;;;;;;;;;;;;;;;;;;;;;;;
 ; Régime moteur (ADC) ;
 ;;;;;;;;;;;;;;;;;;;;;;;
@@ -87,7 +86,7 @@ VsliderTemp1 PA1 VSS SLIDER_3(0 5)
 
 
 ; scope (PD0 et PD7)
-.PLOT V(NMI) V(PA0) V(PA1)
+.PLOT V(INT0) V(PA0) V(PA1)
 ;.PLOT V(PD0) V(PD1) V(PD2) V(PD3) V(PD4) V(PD5) V(PD6) V(PD7)
 
 

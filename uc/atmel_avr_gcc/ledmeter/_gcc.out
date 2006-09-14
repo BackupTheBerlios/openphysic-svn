@@ -13,10 +13,11 @@ Compiling: ledmeter.c
 avr-gcc -c -mmcu=atmega8535 -I. -O0 -gstabs -std=gnu99  -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums  -Wall -Wstrict-prototypes  -Wa,-adhlns=ledmeter.lst   ledmeter.c -o ledmeter.o
 In file included from ledmeter.c:12:
 C:/WinAVR/avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
-ledmeter.c:40: warning: function declaration isn't a prototype
-ledmeter.c:47: warning: function declaration isn't a prototype
-ledmeter.c:97: warning: function declaration isn't a prototype
-ledmeter.c:150: warning: function declaration isn't a prototype
+ledmeter.c:44: warning: function declaration isn't a prototype
+ledmeter.c:51: warning: function declaration isn't a prototype
+ledmeter.c:101: warning: function declaration isn't a prototype
+ledmeter.c:155: warning: function declaration isn't a prototype
+ledmeter.c:172: warning: function declaration isn't a prototype
 
 Linking: ledmeter.elf
 avr-gcc -mmcu=atmega8535 -I. -O0 -gstabs -std=gnu99  -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums  -Wall -Wstrict-prototypes  -Wa,-adhlns=ledmeter.o   ledmeter.o   --output ledmeter.elf -lm -Wl,-Map=ledmeter.map -Wl,--cref
@@ -43,14 +44,14 @@ Warning: ignoring function __bad_interrupt() outside any compilation unit
 Size after:
 ledmeter.elf  :
 section    size      addr
-.text      2498         0
+.text      2610         0
 .data         0   8388704
 .bss          1   8388704
 .noinit       0   8388705
 .eeprom       0   8454144
-.stab      4284         0
-.stabstr   2356         0
-Total      9139
+.stab      4368         0
+.stabstr   2404         0
+Total      9383
 
 
 

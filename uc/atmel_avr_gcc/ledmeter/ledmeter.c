@@ -11,6 +11,10 @@
 #define F_CPU 1000000UL  // 1 MHz
 #include <avr/delay.h>
 
+//#include <avr/io.h>              // Most basic include files
+#include <avr/interrupt.h>       // Add the necessary ones
+//#include <avr/signal.h>          // here
+
 
 volatile unsigned char a2dCompleteFlag;
 
@@ -38,18 +42,18 @@ void init(void);
  *
  */
 void switch_on_all_leds() {
-    PORTD = 0x00;
+    PORTC = 0x00;
 }
 
 /*
  *
  */
 void switch_off_all_leds() {
-    PORTD = 0xFF;
+    PORTC = 0xFF;
 }
 
 // led from 1 to 8 (LEDSNUM)
-// PDx with w from 0 to 7
+// PCx with w from 0 to 7
 
 /*
  *  switch on the led with the number called "led"
@@ -57,7 +61,7 @@ void switch_off_all_leds() {
 void switch_on_led(int led) {
     int pin = led - 1;
     int mask = ~(0x01<<pin);
-    PORTD&=mask;
+    PORTC&=mask;
 }
 
 /*
@@ -66,7 +70,7 @@ void switch_on_led(int led) {
 void switch_off_led(int led) {
     int pin = led - 1;
     int mask = (0x01<<pin);
-    PORTD|=mask;
+    PORTC|=mask;
 }
 
 /*
@@ -121,7 +125,7 @@ void switch_on_max_dels(int n) {
 }
 
 /*
- *
+ * switch off every leds, wait and swith them all, n times (a sort of visual alarm)
  */
 void led_alarm(int n) {
     int i;
@@ -134,7 +138,7 @@ void led_alarm(int n) {
 }
 
 /*
- *
+ * switch on every dels depending of the percentage p
  */
 void show_percent(double p) {
     // p pourcent
@@ -144,6 +148,24 @@ void show_percent(double p) {
     switch_on_min_dels(n);
 }
 
+
+/*
+ * Start or stop chronometer
+ */
+void StartStopChronometer() {
+    led_alarm(3);
+}
+
+/*
+ * Interrupt handler example for INT0
+ */
+SIGNAL(SIG_INTERRUPT0) {
+    //StartStopChronometer();
+    switch_on_led(8);
+}
+
+
+
 /*
  *  init function
  */
@@ -151,9 +173,21 @@ void init() {
    // ********
    // * Dels *
    // ********
-   DDRD=0xFF; // set up PORTD pins 0 to 7 as output
+   DDRC=0xFF; // set up PORTD pins 0 to 7 as output
    //switch_on_all_leds();
    switch_off_all_leds();
+
+   // *********************************
+   // * Start/Stop chronometer (INT0) *
+   // *********************************
+   // Set Pin 6 (PD2) as the pin to use for this example
+   //PCMSK |= (1<<PIND2); // TO FIX
+
+   // interrupt on INT0 pin falling edge (sensor triggered)
+   MCUCR = (1<<ISC01) | (1<<ISC00);
+
+   // turn on interrupts!
+   //GIMSK  |= (1<<INT0); // TO FIX
 
    // *************************************************
    // * Conv Analog to Digital (CAN for RPM and Temp) *
@@ -255,6 +289,7 @@ int main(void) {
 
    return 0;
 }
+
 
 
 
