@@ -49,7 +49,45 @@ R7 D7_NODE PD6 0.62K
 D8 VDD D8_NODE
 R8 D8_NODE PD7 0.62K
 
+; VSS : masse(neg)
+; VDD : +
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Passage de barrière (sonde à effet Hall, barrière optique...) ;
+; NMI = entrée d'interruption externe non masquable             ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Slider direct
+;Vslider NMI VSS SLIDER_1(0 5)
+
+; Slider + comparateur hysteresis
+;Vslider SGEN VSS SLIDER_1(0 5)   ;
+;R12 SGEN PLUS 10K              ; Input resistor
+;R13 NMI PLUS 30K               ; Feeback resistor  (30K)
+;Xop OPAMP PLUS MINUS NMI      ; OPAMP instance, with plus, minus and out nodes
+;R14 VDD MINUS 10K
+;R15 MINUS VSS 10K
+
+; Slider + comparateur simple
+VsliderSS PLUS VSS SLIDER_1(0 5)
+Xop OPAMP PLUS MINUS NMI
+R14 VDD MINUS 10K
+R15 MINUS VSS 10K
+
+;;;;;;;;;;;;;;;;;;;;;;;
+; Régime moteur (ADC) ;
+;;;;;;;;;;;;;;;;;;;;;;;
+VsliderMotor PA0 VSS SLIDER_2(0 5)
+
+
+;;;;;;;;;;;;;;;;;;;;;
+; Température (ADC) ;
+;;;;;;;;;;;;;;;;;;;;;
+VsliderTemp1 PA1 VSS SLIDER_3(0 5)
+
 
 ; scope (PD0 et PD7)
-.PLOT V(PD0) V(PD1) V(PD2) V(PD3) V(PD4) V(PD5) V(PD6) V(PD7)
+.PLOT V(NMI) V(PA0) V(PA1)
+;.PLOT V(PD0) V(PD1) V(PD2) V(PD3) V(PD4) V(PD5) V(PD6) V(PD7)
+
 
