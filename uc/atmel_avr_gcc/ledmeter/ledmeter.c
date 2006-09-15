@@ -30,6 +30,8 @@
 #define Nmax 0xFF
 
 
+int running_chronometer = FALSE; // 0 false ; -1 true
+
 typedef struct {
     int hh; //8bits 0-255
     int mm; //8bits 0-255
@@ -41,43 +43,45 @@ time_typ current_time;
 time_typ last_time;
 time_typ best_time;
 
-int running_chronometer = FALSE; // 0 false ; -1 true
-
-void init_time(time_typ time) {
-    time.hh = 0;
-    time.mm = 0;
-    time.ss = 0;
-    time.xx = 0;
+void init_time(time_typ * time) {
+    time->hh = 0;
+    time->mm = 0;
+    time->ss = 0;
+    time->xx = 0;
 }
 
-void copy_time(time_typ time_source, time_typ time_dest) { // TO TEST (pointer ?)
-    time_dest.hh = time_source.hh;
-    time_dest.mm = time_source.mm;
-    time_dest.ss = time_source.ss;
-    time_dest.xx = time_source.xx;
+void print_time(time_typ * t) {
+    printf("===%02i:%02i:%02i:%03u===\n",t->hh,t->mm,t->ss,t->xx);
 }
 
-int compare_time(time_typ time1, time_typ time2) {
+void copy_time(time_typ * time_source, time_typ * time_dest) { // TO TEST (pointer ?)
+    time_dest->hh = time_source->hh;
+    time_dest->mm = time_source->mm;
+    time_dest->ss = time_source->ss;
+    time_dest->xx = time_source->xx;
+}
+
+int compare_time(time_typ * time1, time_typ * time2) {
     //  0 time1=time2
     // -1 time1<time2
     //  1 time1>time2
     return 0;
 }
 
-void inc_time(time_typ time) {
+void inc_time(time_typ * time) {
   if (running_chronometer) {
-    time.xx++;
-    if(time.xx >= 1000) {
-        time.xx = 0;
-        time.ss++;
-        if (time.ss >= 60) {
-            time.ss = 0;
-            time.mm++;
-            if (time.mm >= 60) {
-                time.mm = 0;
-                time.hh++;
-                if (time.hh >= 24) {
-                    time.hh = 0;
+    time->xx++;
+    if(time->xx >= 1000) {
+        time->xx = 0;
+        time->ss++;
+        if (time->ss >= 60) {
+            time->ss = 0;
+            time->mm++;
+            if (time->mm >= 60) {
+                time->mm = 0;
+                time->hh++;
+                if (time->hh >= 24) {
+                    time->hh = 0;
 					 }
             }
         }
@@ -336,9 +340,9 @@ void init() {
 
    // Time
    running_chronometer = FALSE;
-   init_time(current_time);
-   init_time(last_time);
-   init_time(best_time);
+   init_time(&current_time);
+   init_time(&last_time);
+   init_time(&best_time);
 
 }
 
@@ -431,7 +435,7 @@ void loop(void) {
 
     TestRunningChronometer();
 
-    inc_time(current_time);
+    inc_time(&current_time);
 }
 
 

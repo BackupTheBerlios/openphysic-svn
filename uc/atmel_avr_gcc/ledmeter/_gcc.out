@@ -11,12 +11,15 @@ warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 Compiling: ledmeter.c
 avr-gcc -c -mmcu=atmega8535 -I. -O0 -gstabs -std=gnu99  -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums  -Wall -Wstrict-prototypes  -Wa,-adhlns=ledmeter.lst   ledmeter.c -o ledmeter.o
-ledmeter.c:106: warning: function declaration isn't a prototype
-ledmeter.c:113: warning: function declaration isn't a prototype
-ledmeter.c:163: warning: function declaration isn't a prototype
-ledmeter.c:246: warning: function declaration isn't a prototype
-ledmeter.c:256: warning: function declaration isn't a prototype
-ledmeter.c:269: warning: function declaration isn't a prototype
+ledmeter.c: In function `print_time':
+ledmeter.c:54: warning: implicit declaration of function `printf'
+ledmeter.c: At top level:
+ledmeter.c:110: warning: function declaration isn't a prototype
+ledmeter.c:117: warning: function declaration isn't a prototype
+ledmeter.c:167: warning: function declaration isn't a prototype
+ledmeter.c:250: warning: function declaration isn't a prototype
+ledmeter.c:260: warning: function declaration isn't a prototype
+ledmeter.c:273: warning: function declaration isn't a prototype
 
 Linking: ledmeter.elf
 avr-gcc -mmcu=atmega8535 -I. -O0 -gstabs -std=gnu99  -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums  -Wall -Wstrict-prototypes  -Wa,-adhlns=ledmeter.o   ledmeter.o   --output ledmeter.elf -lm -Wl,-Map=ledmeter.map -Wl,--cref
@@ -43,14 +46,14 @@ Warning: ignoring function __bad_interrupt() outside any compilation unit
 Size after:
 ledmeter.elf  :
 section     size      addr
-.text       4664         0
-.data          0   8388704
-.bss          26   8388704
-.noinit        0   8388730
+.text       6308         0
+.data         28   8388704
+.bss          32   8388732
+.noinit        0   8388764
 .eeprom        0   8454144
-.stab       6672         0
-.stabstr    2829         0
-Total      14191
+.stab       6720         0
+.stabstr    2879         0
+Total      15967
 
 
 
