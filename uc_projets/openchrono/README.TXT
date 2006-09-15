@@ -69,6 +69,9 @@ Peter Fleury http://homepage.hispeed.ch/peterfleury/
 Embedded FileSystem Library http://sourceforge.net/projects/efsl
 
 
+Attention au domaine de température d'utilisation du LCD !!! (surtout l'été !!!)
+
+
 Choix final : 
 
 
@@ -79,10 +82,24 @@ Affichage à compléter avec des LEDs (vert jaune rouge)
   rapide 4 LED rouges
 
 - autres (à définir)
-  passage de 1 LED rouge
+  passage de 1 LED rouge (clignotante)
+  meilleur temps 1 LED verte (clignotante)
 
 
-Attention au domaine de température d'utilisation du LCD !!! (surtout l'été !!!)
+
+
+Clavier
+=======
+2 boutons (OK et CANCEL)
+et un bouton joystick à 4 positions (gauche, droite, haut, bas)
+permettront de se déplacer dans les pages, menus, etc...
+
+Idée d'interface
+des pages différentes que l'on peut faire défiler par gauche/droite
+on rentre dans une page par OK pour des faire modifications
+et on quite les modifs
+ 
+Interruption externe ou pas ?
 
 
 Microcontrôleur
@@ -109,6 +126,11 @@ ARM
 Choix final :
 
 
+Alimentation
+============
+Choix final :
+
+
 Capteurs
 ========
 
@@ -116,16 +138,32 @@ Sonde à effet Hall
 ------------------
 Choix final : 
 
+Interruption externe (INT0 sur PD2) via AO comparateur 0 5V
+
+
+Régime moteur
+=============
+Choix final :
+
+Convertisseur analogique-numérique intégré au microcontrôleur
+
+
 
 Sonde température
 -----------------
 Choix final : 
+
+Convertisseur analogique-numérique intégré au microcontrôleur
+
+
 
 
 Accéléromètre
 -------------
 Choix final :
 
+
+Convertisseur analogique-numérique intégré au microcontrôleur
 
 
 Fonctionnalités supplémentaires (pas implanté dans un premier temps)
