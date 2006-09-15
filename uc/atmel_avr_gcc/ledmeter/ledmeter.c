@@ -4,7 +4,11 @@
 // Module description: an handhelds device for karts, bike or sport cars
 // ***********************************************************
 
-#include <avr/io.h>              // Most basic include files
+#include <avr/io.h> // Most basic include files
+
+#include <stdint.h> // uint8_t = unsigned char
+
+#include <stdio.h> // TO FIX (LCD)
 
 #include <math.h>
 
@@ -30,12 +34,12 @@
 #define Nmax 0xFF
 
 
-int running_chronometer = FALSE; // 0 false ; -1 true
+uint8_t running_chronometer = FALSE; // 0 false ; -1 true
 
 typedef struct {
-    int hh; //8bits 0-255
-    int mm; //8bits 0-255
-    int ss; //8bits 0-255
+    uint8_t hh; //8bits 0-255
+    uint8_t mm; //8bits 0-255
+    uint8_t ss; //8bits 0-255
     unsigned short int xx;  //16bits 0-65535
 } time_typ;
 
@@ -61,7 +65,7 @@ void copy_time(time_typ * time_source, time_typ * time_dest) { // TO TEST (point
     time_dest->xx = time_source->xx;
 }
 
-int compare_time(time_typ * time1, time_typ * time2) {
+uint8_t compare_time(time_typ * time1, time_typ * time2) {
     //  0 time1=time2
     // -1 time1<time2
     //  1 time1>time2
@@ -95,8 +99,8 @@ void inc_time(time_typ * time) {
 /*
 void switch_on_all_leds();
 void switch_off_all_leds();
-void switch_on_led(int led);
-void switch_off_led(int led);
+void switch_on_led(uint8_t led);
+void switch_off_led(uint8_t led);
 void loop(void);
 void init(void);
 */
@@ -107,14 +111,14 @@ void init(void);
 /*
  * switch on all leds
  */
-void switch_on_all_leds() {
+void switch_on_all_leds(void) {
     PORTC = 0x00;
 }
 
 /*
  * switch off all leds
  */
-void switch_off_all_leds() {
+void switch_off_all_leds(void) {
     PORTC = 0xFF;
 }
 
@@ -124,18 +128,18 @@ void switch_off_all_leds() {
 /*
  * switch on the led with the number called "led"
  */
-void switch_on_led(int led) {
-    int pin = led - 1;
-    int mask = ~(1<<pin);
+void switch_on_led(uint8_t led) {
+    uint8_t pin = led - 1;
+    uint8_t mask = ~(1<<pin);
     PORTC&=mask;
 }
 
 /*
  * switch off the led with the number called "led"
  */
-void switch_off_led(int led) {
-    int pin = led - 1;
-    int mask = (1<<pin);
+void switch_off_led(uint8_t led) {
+    uint8_t pin = led - 1;
+    uint8_t mask = (1<<pin);
     PORTC|=mask;
 }
 
@@ -143,7 +147,7 @@ void switch_off_led(int led) {
  * switch on every leds one after one with a delay (called "delay")
  */
 void switch_on_leds_with_delay(double delay) {
-    int i;
+    uint8_t i;
     for(i = 1; i<=Nleds; i++) {
         _delay_ms(delay);
         switch_on_led(i);
@@ -154,8 +158,8 @@ void switch_on_leds_with_delay(double delay) {
  * switch off every leds on after one with a delay (called "delay")
  */
 void switch_off_leds_with_delay(double delay) {
-    int i;
-    for(i = Nleds; i>=0; i--) {
+    uint8_t i;
+    for(i = Nleds; i>=1; i--) {
         _delay_ms(delay);
         switch_off_led(i);
     }
@@ -164,17 +168,23 @@ void switch_off_leds_with_delay(double delay) {
 /*
  * a function for testing leds that switch on every leds and switch off every leds (one after one)
  */
-void test_leds() {
-    switch_on_leds_with_delay(100);
-    _delay_ms(50);
-    switch_off_leds_with_delay(100);
+void test_leds_up_down(void) {
+    switch_on_leds_with_delay(50); //100
+    _delay_ms(50); //50
+    switch_off_leds_with_delay(50); //100
+}
+
+void test_leds_up_off(void) {
+    switch_on_leds_with_delay(50); //100
+    _delay_ms(50); //50
+    switch_off_all_leds();
 }
 
 /*
  *  switch on every leds (from 0 to n)  (and switch off others)
  */
-void switch_on_min_dels(int n) {
-    int i;
+void switch_on_min_dels(uint8_t n) {
+    uint8_t i;
     for(i = 1; i<=Nleds; i++) {
         if (i<=n) {
             switch_on_led(i);
@@ -187,9 +197,9 @@ void switch_on_min_dels(int n) {
 /*
  *  switch on every leds (from Nleds to n)
  */
-void switch_on_max_dels(int n) {
-    int i;
-    for(i = Nleds; i>=0; i--) {
+void switch_on_max_dels(uint8_t n) {
+    uint8_t i;
+    for(i = Nleds; i>=1; i--) {
         if (i>=Nleds-n) {
             switch_on_led(i);
         } else {
@@ -202,28 +212,29 @@ void switch_on_max_dels(int n) {
 /*
  * switch off every leds, wait and swith them all, n times (a sort of visual alarm)
  */
-void led_alarm(int n, double delay) {
-    int i;
+void led_alarm(uint8_t n, double delay) {
+    uint8_t i;
     for(i = 1; i<=n; i++) {
         switch_off_all_leds();
         _delay_ms(delay);
         switch_on_all_leds();
         _delay_ms(delay);
     }
+    switch_off_all_leds();
 }
 
 /*
  * switch on every dels depending of the percentage p
  */
 //#define roundp floor
-inline int roundp(double n) {
+inline uint8_t roundp(double n) {
     return floor(n+0.5);
 }
 
 // roundp = round for positive number
 void show_percent(double p) {
     // p pourcent
-    int n;
+    uint8_t n;
     //n = 4;
     n = roundp(p / 100.0 * Nleds); // TO FIX (math.h ceil floor ... round en Java !)
     // TO FIX : +0.5 is a very dirty hack
@@ -233,9 +244,9 @@ void show_percent(double p) {
 /*
  * send a sound (on or more beep(s))
  */
-void beep(int n, double delay) {
+void beep(uint8_t n, double delay) {
     // TO DO
-    int i;
+    uint8_t i;
     for(i = 1; i<=n; i++) {
         //TO DO : send a beep
         if (n>1) {
@@ -247,7 +258,7 @@ void beep(int n, double delay) {
 /*
  * start or stop chronometer
  */
-inline void StartStopChronometer() {
+inline void StartStopChronometer(void) {
     beep(1,100);
     led_alarm(3,50);
     if (running_chronometer) {
@@ -257,7 +268,7 @@ inline void StartStopChronometer() {
     }
 }
 
-void TestRunningChronometer() {
+void TestRunningChronometer(void) {
     if (running_chronometer) {
         switch_on_led(8);
         _delay_ms(100);
@@ -266,15 +277,31 @@ void TestRunningChronometer() {
     }
 }
 
+/*
+ * software init function
+ */
+void sf_init(void) {
+    // Leds
+    //test_leds_up_off(); // uncomment for release or comment for debug
+
+    // Sound
+    //beep(3,100); // uncomment for release or comment for debug
+
+    // Time
+    running_chronometer = FALSE;
+    init_time(&current_time);
+    init_time(&last_time);
+    init_time(&best_time);
+}
 
 /*
- *  init function
+ *  hardware init function
  */
-void init() {
+void hw_init(void) {
    // ******************
    // * WatchDog Timer *
    // ******************
-
+   // disable by default
 
    // ********
    // * LEDs *
@@ -307,7 +334,7 @@ void init() {
    //volatile static unsigned char analog_busy;
 
    //analog_busy=1; // busy mark the ADC function
-   int channel = 0; // measure ADC0
+   uint8_t channel = 0; // measure ADC0
 
    // use internal 2.56V ref  REFS1=1 & REFS0=1 (11)
    // use external ref (01)
@@ -336,20 +363,22 @@ void init() {
    // ***************
 
    // Sound
-   beep(3,300);
 
    // Time
-   running_chronometer = FALSE;
-   init_time(&current_time);
-   init_time(&last_time);
-   init_time(&best_time);
+}
 
+/*
+ * init function
+ */
+void init(void) {
+    hw_init();
+    sf_init();
 }
 
 /*
  * convert from analog to digital (10 bits)
  */
-unsigned short adcConvert10bit(unsigned char ch)
+unsigned short adcConvert10bit(uint8_t ch)
 {
 	//a2dCompleteFlag = 0;				// clear conversion complete flag
 	ADMUX = ((ADMUX) & ~0x1F) | (ch & 0x1F);	// set channel ADC_MUX_MASK=0x1F
@@ -383,31 +412,31 @@ unsigned char adcConvert8bit(unsigned char ch)
 #define B_CANCEL 5
 
 void SeekButtons(void) {
-    int bstate = 0;
-    int i;
+    uint8_t bstate = FALSE;
+    uint8_t i;
 	 for (i=0; i<=Nbuts-1; i++) {
-	     if ( (PINB>>i) == 0 ) {
-	         bstate = TRUE;
-	     } else {
+	     if (PINB>>i) {
 	         bstate = FALSE;
+	     } else {
+	         bstate = TRUE;
 	     }
 		
-	     if ( i==0 && bstate ) { // LEFT
+	     if ( i==B_LEFT && bstate ) { // LEFT
 
 	     }
-	     if ( i==1 && bstate ) { // RIGHT
+	     if ( i==B_RIGHT && bstate ) { // RIGHT
 
 	     }
-	     if ( i==2 && bstate ) { // UP
+	     if ( i==B_UP && bstate ) { // UP
 
 	     }
-	     if ( i==3 && bstate ) { // DOWN
+	     if ( i==B_DOWN && bstate ) { // DOWN
 
 	     }
-	     if ( i==4 && bstate ) { // OK
+	     if ( i==B_OK && bstate ) { // OK
             StartStopChronometer();
 	     }
-	     if ( i==5 && bstate ) { // CANCEL
+	     if ( i==B_CANCEL && bstate ) { // CANCEL
 
 	     }	     	     	     	
 	}
@@ -419,7 +448,7 @@ void SeekButtons(void) {
 void loop(void) {
     SeekButtons();
 
-    double ch0 = adcConvert10bit(0);
+    volatile double ch0 = adcConvert10bit(0);
     ch0 *= 0.09765625; // 0.09765625 = 100 / 2^10
     show_percent(ch0);
 
@@ -456,4 +485,5 @@ int main(void) {
 SIGNAL(SIG_INTERRUPT0) {
     StartStopChronometer();
 }
+
 
