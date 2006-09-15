@@ -18,11 +18,57 @@
 
 volatile unsigned char a2dCompleteFlag;
 
+int channel;
+unsigned short analog_result;
+int analog_busy;
 
 #define Nleds 8  // number of leds connected to the uC
 
 #define N 50 // number between 0 and 255
 #define Nmax 0xFF
+
+
+typedef struct {
+    int hh; //8bits 0-255
+    int mm; //8bits 0-255
+    int ss; //8bits 0-255
+    unsigned short int xx;  //16bits 0-65535
+} time_t;
+
+time_t current_time;
+time_t last_time;
+time_t best_time;
+
+int running_chronometer = 0; // 0 false ; -1 true
+
+void init_time(time_t time) {
+    time.hh = 0;
+    time.mm = 0;
+    time.ss = 0;
+    time.xx = 0;
+}
+
+void inc_time(time_t time) {
+  if (running_chronometer) {
+    time.xx++;
+    if(time.xx >= 1000) {
+        time.xx = 0;
+        time.ss++;
+        if (time.ss >= 60) {
+            time.ss = 0;
+            time.mm++;
+            if (time.mm >= 60) {
+                time.mm = 0;
+                time.hh++;
+                if (time.hh >= 24) {
+                    time.hh = 0;
+					 }
+            }
+        }
+    }
+    _delay_ms(1);
+  }
+}
 
 
 
@@ -149,11 +195,13 @@ void led_alarm(int n) {
 /*
  * switch on every dels depending of the percentage p
  */
+#define round floor
 void show_percent(double p) {
     // p pourcent
     int n;
     //n = 4;
-    n = floor(p / 100.0 * Nleds); // TO FIX (math.h ceil floor ...)
+    n = round(p / 100.0 * (Nleds+0.5)); // TO FIX (math.h ceil floor ... round en Java !)
+    // TO FIX : +0.5 is a very dirty hack
     switch_on_min_dels(n);
 }
 
@@ -163,16 +211,21 @@ void show_percent(double p) {
  */
 void StartStopChronometer() {
     led_alarm(3);
+    if (running_chronometer) {
+       running_chronometer = 0; // false
+    } else {
+       running_chronometer = -1; // true
+    }
 }
 
-/*
- * interrupt handler example for INT0
- */
-SIGNAL(SIG_INTERRUPT0) {
-    //StartStopChronometer();
-    StartStopChronometer();
+void TestRunningChronometer() {
+    if (running_chronometer) {
+        switch_on_led(8);
+        _delay_ms(100);
+        switch_off_led(8);
+        _delay_ms(100);
+    }
 }
-
 
 
 /*
@@ -207,7 +260,21 @@ void init() {
    // * Conv Analog to Digital (CAN for RPM and Temp) *
    // *************************************************
 
+   volatile static int analog_result;
+   volatile static unsigned char analog_busy;
 
+   analog_busy=1; // busy mark the ADC function
+   channel=0; // measure ADC0
+   // use internal 2.56V ref
+   //outb((1<<REFS1)|(1<<REFS0)|(channel & 0x07),ADMUX);
+   ADMUX=(1<<REFS1)|(1<<REFS0)|(channel & 0x07);
+   //outb((1<<ADEN)|(1<<ADIE)|(1<<ADIF)|(1<<ADPS2),ADCSRA);
+   ADCSRA=(1<<ADEN)|(1<<ADIE)|(1<<ADIF)|(1<<ADPS2);
+   //sbi(ADCSRA,ADSC); // start conversion
+   (ADCSRA) |= (1 << (ADSC));
+
+
+   /*
 	ADCSRA |= (_BV(ADEN));   // enable ADC (turn on ADC power)
 	ADCSRA &= ~(_BV(ADATE)); // default to single sample convert mode
 
@@ -230,10 +297,25 @@ void init() {
    DDRA=0x00;
 	// make sure pull-up resistors are turned off
 	PORTA = 0x00;
+	*/
+
+   // **********
+   // * Keypad *
+   // **********
+   // 1 joystick button (4 directions, up, down, left, right)
+   // 2 push buttons (ok, cancel)
+   //DDRB=0x00;
+   //PORTB=0xFF;
 
    // ***************
    // * Graphic LCD *
    // ***************
+
+   // Time
+   init_time(current_time);
+   init_time(last_time);
+   init_time(best_time);
+
 }
 
 /*
@@ -268,6 +350,12 @@ unsigned char adcConvert8bit(unsigned char ch)
  *  this is the main loop
  */
 void loop(void) {
+   // Pb voir ADC (interruption)
+
+   //inc_time(current_time);
+
+   //TestRunningChronometer();
+
    //show_percent(0x80 * 100 / 0xFF);
 
    /*
@@ -279,7 +367,8 @@ void loop(void) {
    }
    */
 
-   show_percent(adcConvert8bit(1));
+   //show_percent(adcConvert8bit(0));
+   //show_percent(adcConvert8bit(1));
 
    /*
    show_percent(25);
@@ -321,7 +410,41 @@ int main(void) {
    return 0;
 }
 
+/*
+ * interrupt handler for INT0
+ */
+SIGNAL(SIG_INTERRUPT0) {
+    //StartStopChronometer();
+    StartStopChronometer();
+}
 
+/*
+ * interrupt handler for ADC
+ */
+SIGNAL(SIG_ADC) {
+   inc_time(current_time);
+
+   TestRunningChronometer();
+
+        unsigned char adlow,adhigh;
+        adlow=ADCL; /* read low first, two lines. Do not combine
+                          the two lines into one C statement */
+        adhigh=ADCH;
+        //analog_result=(adhigh<<8)|(adlow & 0xFF);
+        analog_busy=0;
+
+        //double ch0 = adcConvert8bit(0) / 2^8 * 100;
+        //double ch0 = adcConvert10bit(0) / 2^10 * 100;
+        double ch0 = adcConvert10bit(0);
+        double ch1 = adcConvert10bit(1);
+        ch0 *= 0.09765625; // 0.09765625 = 100 / 2^10
+        ch1 *= 0.09765625; // 0.09765625 = 100 / 2^10
+        show_percent(ch0);
+        //_delay_ms(1000);
+        //show_percent(ch1);
+        //_delay_ms(1000);
+        // TO FIX : problem when using 2 ADC
+}
 
 
 

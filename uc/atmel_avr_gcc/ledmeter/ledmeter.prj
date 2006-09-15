@@ -80,8 +80,9 @@ R15 MINUS VSS 10K
 ;;;;;;;;;;;;;;;;;;;;;;;
 ; ADC                 ;
 ;;;;;;;;;;;;;;;;;;;;;;;
-R16 VDD AREF 10K
-R17 AREF VSS 10K
+;R16 VDD AREF 10K
+;R17 AREF VSS 10K
+;;R16 VDD AREF 1
 
 ;R18 GND VSS 10K
 ;AVCC
@@ -89,17 +90,36 @@ R17 AREF VSS 10K
 ;;;;;;;;;;;;;;;;;;;;;;;
 ; Régime moteur (ADC) ;
 ;;;;;;;;;;;;;;;;;;;;;;;
-VsliderMotor PA0 VSS SLIDER_2(0 5)
+VsliderMotor PA0 VSS SLIDER_2(0 5) ;(0 5) 2.56 = internal adc
 
 
 ;;;;;;;;;;;;;;;;;;;;;
 ; Température (ADC) ;
 ;;;;;;;;;;;;;;;;;;;;;
-VsliderTemp1 PA1 VSS SLIDER_3(0 5)
+VsliderTemp1 PA1 VSS SLIDER_3(0 2.56)
 
+;;;;;;;;;;
+; Keypad ;
+;;;;;;;;;;
+; left   4  (interrupteur joystick)
+; right  6  ..
+; up     1  ..
+; down   9  ..
+; ok     C  (bouton poussoir)
+; cancel E  (bouton poussoir)
+;Kx node1 node2 [type(delay)] ; x: Buttons 0 - F. Optional type: MONOSTABLE(t_delay), LATCHED
+
+;K4 VDD PB1
+;X[inst_name]  OPAMP node+ node- out
+
+;K6 VDD PD2
+;K1 VDD PD2
+;K9 VDD PD2
+;KC VDD PD2
+;KE VDD PD2
 
 ; scope (PD0 et PD7)
-.PLOT V(PD2) V(PA0) V(PA1)
+.PLOT V(PD2) V(PA0) V(PA1) V(PB1)
 ;.PLOT V(PD0) V(PD1) V(PD2) V(PD3) V(PD4) V(PD5) V(PD6) V(PD7)
 
 

@@ -13,11 +13,14 @@ Compiling: ledmeter.c
 avr-gcc -c -mmcu=atmega8535 -I. -O0 -gstabs -std=gnu99  -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums  -Wall -Wstrict-prototypes  -Wa,-adhlns=ledmeter.lst   ledmeter.c -o ledmeter.o
 In file included from ledmeter.c:12:
 C:/WinAVR/avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
-ledmeter.c:44: warning: function declaration isn't a prototype
-ledmeter.c:51: warning: function declaration isn't a prototype
-ledmeter.c:101: warning: function declaration isn't a prototype
-ledmeter.c:164: warning: function declaration isn't a prototype
-ledmeter.c:181: warning: function declaration isn't a prototype
+ledmeter.c:90: warning: function declaration isn't a prototype
+ledmeter.c:97: warning: function declaration isn't a prototype
+ledmeter.c:147: warning: function declaration isn't a prototype
+ledmeter.c:212: warning: function declaration isn't a prototype
+ledmeter.c:221: warning: function declaration isn't a prototype
+ledmeter.c:234: warning: function declaration isn't a prototype
+ledmeter.c: In function `init':
+ledmeter.c:263: warning: unused variable `analog_result'
 
 Linking: ledmeter.elf
 avr-gcc -mmcu=atmega8535 -I. -O0 -gstabs -std=gnu99  -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums  -Wall -Wstrict-prototypes  -Wa,-adhlns=ledmeter.o   ledmeter.o   --output ledmeter.elf -lm -Wl,-Map=ledmeter.map -Wl,--cref
@@ -43,15 +46,15 @@ Warning: ignoring function __bad_interrupt() outside any compilation unit
 
 Size after:
 ledmeter.elf  :
-section    size      addr
-.text      2974         0
-.data         0   8388704
-.bss          1   8388704
-.noinit       0   8388705
-.eeprom       0   8454144
-.stab      4548         0
-.stabstr   2404         0
-Total      9927
+section     size      addr
+.text       4104         0
+.data          0   8388704
+.bss          36   8388704
+.noinit        0   8388740
+.eeprom        0   8454144
+.stab       6000         0
+.stabstr    2817         0
+Total      12957
 
 
 
