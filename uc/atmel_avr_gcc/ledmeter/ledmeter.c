@@ -201,13 +201,13 @@ void init() {
 
    GICR |= (1<<INT0); //INT0
 
-   sei();
+   sei(); // enable interrupts
 
    // *************************************************
    // * Conv Analog to Digital (CAN for RPM and Temp) *
    // *************************************************
 
-/*
+
 	ADCSRA |= (_BV(ADEN));   // enable ADC (turn on ADC power)
 	ADCSRA &= ~(_BV(ADATE)); // default to single sample convert mode
 
@@ -223,7 +223,7 @@ void init() {
 	a2dCompleteFlag = 0;		// clear conversion complete flag (FALSE=0 TRUE=-1)
 
 	__asm__ __volatile__ ("sei" ::);
-*/
+
 	
 	// configure a2d port (PORTA) as input
 	// so we can receive analog signals
@@ -270,14 +270,16 @@ unsigned char adcConvert8bit(unsigned char ch)
 void loop(void) {
    //show_percent(0x80 * 100 / 0xFF);
 
+   /*
    int i;
    for (i = 0; i<=Nleds; i++) {
        //switch_on_max_dels(i);
        switch_on_min_dels(i);
        _delay_ms(500);
    }
+   */
 
-   //show_percent(adcConvert10bit(0));
+   show_percent(adcConvert8bit(1));
 
    /*
    show_percent(25);
@@ -318,6 +320,7 @@ int main(void) {
 
    return 0;
 }
+
 
 
 

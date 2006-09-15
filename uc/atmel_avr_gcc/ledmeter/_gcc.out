@@ -43,15 +43,15 @@ Warning: ignoring function __bad_interrupt() outside any compilation unit
 
 Size after:
 ledmeter.elf  :
-section     size      addr
-.text       2846         0
-.data          0   8388704
-.bss           1   8388704
-.noinit        0   8388705
-.eeprom        0   8454144
-.stab       4764         0
-.stabstr    2404         0
-Total      10015
+section    size      addr
+.text      2974         0
+.data         0   8388704
+.bss          1   8388704
+.noinit       0   8388705
+.eeprom       0   8454144
+.stab      4548         0
+.stabstr   2404         0
+Total      9927
 
 
 
