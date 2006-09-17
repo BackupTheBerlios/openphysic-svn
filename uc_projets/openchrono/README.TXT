@@ -207,3 +207,10 @@ clé USB (pour récupérer les données) data-logger ou écriture sur carte MMC, SD o
 coupure à distance du kart
 reflashage facile du microcontroleur voir In Situ Programming ISP... par port série mais l'idéal serait par USB... voir si c'est possible !!!)
 
+TO DO
+=====
+écart temps
+ou sur clavier INT1 (PD3)
+LCD
+timer
+separation du code
