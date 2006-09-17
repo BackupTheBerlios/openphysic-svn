@@ -62,6 +62,7 @@ uint8_t running_chronometer = false; // 0 false ; -1 true
 
 typedef struct
 {
+    bool is_neg; // false=0(+) true=1(-)
     uint8_t hh; //8bits 0-255
     uint8_t mm; //8bits 0-255
     uint8_t ss; //8bits 0-255
@@ -75,6 +76,7 @@ time_typ best_time;
 
 void init_time(time_typ * time)
 {
+    time->is_neg = false;
     time->hh = 0;
     time->mm = 0;
     time->ss = 0;
@@ -83,6 +85,7 @@ void init_time(time_typ * time)
 
 void def_time(time_typ * time, uint8_t _hh, uint8_t _mm, uint8_t _ss, unsigned short int _xx)
 {
+    time->is_neg = false;
     time->hh = _hh;
     time->mm = _mm;
     time->ss = _ss;
@@ -217,6 +220,25 @@ uint8_t compare_time(time_typ * time1, time_typ * time2)
 
 }
 
+void print_diff_time(time_typ * time) {
+    time_typ max_time;
+    def_time(&max_time, 0, 1, 00, 0000);
+
+    if ( time_is_null(time) ) {
+        printf("=00:000");
+    } else {
+            if ( time->is_neg ) {
+                printf("-");
+            } else {
+                printf("+");
+            }
+            if ( compare_time(time,&max_time) == 1 ) {
+                printf("%02i:%03u",time->ss,time->xx/((int) pow(10,CHR_PRECISION-CHR_DISPLAY)));
+            } else {
+                printf("xx:xxx");
+            }
+    }
+}
 
 
 /*
@@ -767,4 +789,5 @@ SIGNAL(SIG_OUTPUT_COMPARE1A)
     StartStopChronometer();
     inc_time(&current_time);
 }
+
 
