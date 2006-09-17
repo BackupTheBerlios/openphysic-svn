@@ -19,6 +19,11 @@ voir docs dans /media/graver/auto/sports_mecaniques/kart/alfano
 "Caractéristques : - Temps au tour / meilleur temps - Configurable jusquÇà 6 partiels - Comparateur de temps (sur le meilleur temps, sur le temps précédent, sur le temps cible « configurable ») - RPM en lecture directe, Shift Lights et Bar Graph - 2 entrées de température (De 0°C à 1.500°C: Eau, Culasse, Bougie, Echappements, etcÄ) - Configuration de la température : Maximum, minimum pour chaque tour avec alarmes luminescentes - Vitesse (Configurable avec ou sans le capteur de roue) - Rapport de boîte jusqu'à 9 vitesses - 8 compteurs configurables - Simulation dÇun tour en temps réel, pendant 15 Minutes - Force G Latérale et Longitudinale - Fonctionne en infrarouge pour les pistes non équippées de la bande magnétique - Données de téléchargement à un PC par l'intermédiaire de stylo infrarouge USB - Système up-gradable Dimension du système : 123 x 104 mm Dimension écran : 85 x 49 mm Poids : +/- 425 Gr Batteries : 2 x AA "
 
 
+Fonction à suuporter impérativement
+===================================
+temps du tour
+meilleur temps
+dernier temps
 
 
 
@@ -100,6 +105,13 @@ on rentre dans une page par OK pour des faire modifications
 et on quite les modifs
  
 Interruption externe ou pas ?
+Astuce : brancher les boutons entre la masse et PBx pour récupérer l'état de chaque touche
+mais on utilise une interruption externe pour déclancher lors de l'appui d'une touche
+voir : http://forums.jelectronique.com/ftopic3760.php&sid=3735f95c7f0de511b3825bbf68867b53
+OU logique entre les 6 entrées dont la sortie va sur une interruption. 
+de simple diodes suffisent amplement pour faire un ou
+on peut mettre toutes les ( 6) anodes communes et les relier à l'entrée interruption et chaque cathode relier à une touche et la touche relier à la masse.
+chaque touche appuyée forcera l'entrée interruption à la masse. 
 
 
 Microcontrôleur
@@ -130,6 +142,12 @@ Alimentation
 ============
 Choix final :
 
+
+Timer
+=====
+On utilisera une interruption générée par un timer
+voir : http://forums.jelectronique.com/ftopic3761.php&sid=3735f95c7f0de511b3825bbf68867b53
+voir : http://www.jelectronique.com/pwm.php
 
 Capteurs
 ========
