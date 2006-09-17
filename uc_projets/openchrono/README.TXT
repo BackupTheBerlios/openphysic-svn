@@ -47,8 +47,14 @@ ZONE2=meileur temps (best_time)
 ZONE3=dernier temps (last_time)
 ZONE4
  + ou - ou = : comparaison avec dernier temps (LST) ou avec le meilleur (BST)
+      00:00:000
+ ex : BST= LST+ (sans calcul de la différence de temps)
+ ex : BST=
+
 
 19 colonnes ; 2 lignes
+
+Attention on trouve pas mal de LCD alphanumérique en 16x2 !!! mais des 20x2 ou 20x3 ???
 
 
 possibilité de tester le LCD avec lcdproc http://lcdproc.omnipotent.net
@@ -207,10 +213,63 @@ clé USB (pour récupérer les données) data-logger ou écriture sur carte MMC, SD o
 coupure à distance du kart
 reflashage facile du microcontroleur voir In Situ Programming ISP... par port série mais l'idéal serait par USB... voir si c'est possible !!!)
 
+
+
+Utilisation des ports
+=====================
+ATMEL AVR ATmega8535 PDIP
+voir doc2502.pdf
+
+PB0.............KEYPAD OK
+PB1.............KEYPAD CANCEL
+PB2.............KEYPAD LEFT
+PB3.............KEYPAD RIGHT
+PB4.............KEYPAD UP
+PB5.............KEYPAD DOWN
+PB6.............
+PB7.............
+~RESET..........
+VCC.............+5V
+GND............. 0V
+XTAL2...........
+XTAL1...........
+PD0.............RXD
+PD1.............TXD
+PD2(INT0).......SONDE DE HALL
+PD3(INT1).......KEYPAD (OR with DIODES)
+PD4.............
+PD5.............
+PD6.............
+
+PA0.............ADC0 RPM
+PA1.............ADC1 TEMP
+PA2.............ADC2
+PA3.............ADC3
+PA4.............ADC4
+PA5.............ADC5
+PA6.............ADC6
+PA7.............ADC7
+AREF............+5V
+GND............. 0V
+AVCC............
+PC7.............LED RPM 8/8 (10)
+PC6.............LED RPM 7/8 (10)
+PC5.............LED RPM 6/8 (10)
+PC4.............LED RPM 5/8 (10)
+PC3.............LED RPM 4/8 (10)
+PC2.............LED RPM 3/8 (10)
+PC1.............LED RPM 2/8 (10)
+PC0.............LED RPM 1/8 (10)
+PD7.............
+
+
+
+
 TO DO
 =====
-écart temps
+timer
 ou sur clavier INT1 (PD3)
 LCD
-timer
 separation du code
+écart temps
+
