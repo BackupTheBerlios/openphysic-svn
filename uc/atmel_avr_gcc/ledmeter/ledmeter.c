@@ -19,8 +19,7 @@
 #include <avr/interrupt.h>       // Add the necessary ones
 //#include <avr/signal.h>          // here
 
-#define TRUE -1
-#define FALSE 0
+#include <stdbool.h>           // boolean
 
 //volatile unsigned char a2dCompleteFlag;
 
@@ -34,7 +33,11 @@
 #define Nmax 0xFF
 
 
-uint8_t running_chronometer = FALSE; // 0 false ; -1 true
+
+#define CHR_PRECISION 4 // precision 1/10000eme = 1/(10^4)
+#define CHR_DISPLAY 3 // display 1/1000  = 1/(10^3)
+
+uint8_t running_chronometer = false; // 0 false ; -1 true
 
 typedef struct {
     uint8_t hh; //8bits 0-255
@@ -54,8 +57,38 @@ void init_time(time_typ * time) {
     time->xx = 0;
 }
 
+void def_time(time_typ * time, uint8_t _hh, uint8_t _mm, uint8_t _ss, unsigned short int _xx) {
+    time->hh = _hh;
+    time->mm = _mm;
+    time->ss = _ss;
+    time->xx = _xx;
+}
+
 void print_time(time_typ * t) {
-    printf("===%02i:%02i:%02i:%03u===\n",t->hh,t->mm,t->ss,t->xx);
+    //printf("===%02i:%02i:%02i:%03u===\n",t->hh,t->mm,t->ss,t->xx/10);
+    printf("===%02i:%02i:%02i:%03u===\n",t->hh,t->mm,t->ss,t->xx/((int) pow(10,CHR_PRECISION-CHR_DISPLAY)));
+}
+
+void inc_time(time_typ * time) {
+  if (running_chronometer) {
+    time->xx++;
+    if(time->xx >= pow(10,CHR_PRECISION)) {
+        time->xx = 0;
+        time->ss++;
+        if (time->ss >= 60) {
+            time->ss = 0;
+            time->mm++;
+            if (time->mm >= 60) {
+                time->mm = 0;
+                time->hh++;
+                if (time->hh >= 24) {
+                    time->hh = 0;
+					 }
+            }
+        }
+    }
+    //_delay_ms(1);
+  }
 }
 
 void copy_time(time_typ * time_source, time_typ * time_dest) { // TO TEST (pointer ?)
@@ -72,27 +105,6 @@ uint8_t compare_time(time_typ * time1, time_typ * time2) {
     return 0;
 }
 
-void inc_time(time_typ * time) {
-  if (running_chronometer) {
-    time->xx++;
-    if(time->xx >= 1000) {
-        time->xx = 0;
-        time->ss++;
-        if (time->ss >= 60) {
-            time->ss = 0;
-            time->mm++;
-            if (time->mm >= 60) {
-                time->mm = 0;
-                time->hh++;
-                if (time->hh >= 24) {
-                    time->hh = 0;
-					 }
-            }
-        }
-    }
-    _delay_ms(1);
-  }
-}
 
 
 
@@ -262,9 +274,9 @@ inline void StartStopChronometer(void) {
     beep(1,100);
     led_alarm(3,50);
     if (running_chronometer) {
-       running_chronometer = FALSE; // false = 0
+       running_chronometer = false; // false = 0
     } else {
-       running_chronometer = TRUE; // true = -1
+       running_chronometer = true; // true = -1
     }
 }
 
@@ -288,7 +300,7 @@ void sf_init(void) {
     //beep(3,100); // uncomment for release or comment for debug
 
     // Time
-    running_chronometer = FALSE;
+    running_chronometer = false;
     init_time(&current_time);
     init_time(&last_time);
     init_time(&best_time);
@@ -412,13 +424,13 @@ unsigned char adcConvert8bit(unsigned char ch)
 #define B_CANCEL 5
 
 void SeekButtons(void) {
-    uint8_t bstate = FALSE;
+    uint8_t bstate = false;
     uint8_t i;
 	 for (i=0; i<=Nbuts-1; i++) {
 	     if (PINB>>i) {
-	         bstate = FALSE;
+	         bstate = false;
 	     } else {
-	         bstate = TRUE;
+	         bstate = true;
 	     }
 		
 	     if ( i==B_LEFT && bstate ) { // LEFT
@@ -485,5 +497,6 @@ int main(void) {
 SIGNAL(SIG_INTERRUPT0) {
     StartStopChronometer();
 }
+
 
 
