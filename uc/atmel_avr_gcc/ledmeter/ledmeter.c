@@ -99,12 +99,47 @@ void copy_time(time_typ * time_source, time_typ * time_dest) { // TO TEST (point
 }
 
 uint8_t compare_time(time_typ * time1, time_typ * time2) {
-    //  0 time1=time2
-    // -1 time1<time2
-    //  1 time1>time2
-    return 0;
-}
+    uint8_t result = 0;
 
+    if (time1->hh > time2->hh) {
+        result = 2;
+    }
+    else if (time1->hh < time2->hh) {
+        result = 1;
+    }	
+    else {
+        if (time1->mm > time2->mm) {
+            result = 2;
+        }
+        else if (time1->mm < time2->mm) {
+            result = 1;
+        }	
+        else {
+            if (time1->ss > time2->ss) {
+                result = 2;
+            }
+            else if (time1->ss < time2->ss) {
+                result = 1;
+            }	
+            else {
+                if (time1->xx > time2->xx) {
+                    result = 2;
+                }
+                else if (time1->xx < time2->xx) {
+                    result = 1;
+                }	
+                else {
+                    result = 0;
+                }
+            }
+        }
+    }
+    // return the best time (lower)
+    // 0 time1=time2
+    // 1 time1>time2
+    // 2 time1<time2
+    return result;
+}
 
 
 
@@ -274,9 +309,15 @@ inline void StartStopChronometer(void) {
     beep(1,100);
     led_alarm(3,50);
     if (running_chronometer) {
-       running_chronometer = false; // false = 0
+        //running_chronometer = false; // false = 0
+        if (compare_time(&current_time,&best_time) == 1) {
+            copy_time(&current_time,&best_time);
+        }
+        copy_time(&current_time,&last_time);
     } else {
-       running_chronometer = true; // true = -1
+        // this is before first lap (start from pit)
+        running_chronometer = true; // true = -1
+        // this is after first lap
     }
 }
 
@@ -374,6 +415,11 @@ void hw_init(void) {
    // * Graphic LCD *
    // ***************
 
+   // *********
+   // * Timer *
+   // *********
+
+
    // Sound
 
    // Time
@@ -458,7 +504,7 @@ void SeekButtons(void) {
  *  this is the main loop
  */
 void loop(void) {
-    SeekButtons();
+    //SeekButtons(); // use INT1 instead
 
     volatile double ch0 = adcConvert10bit(0);
     ch0 *= 0.09765625; // 0.09765625 = 100 / 2^10
@@ -474,9 +520,9 @@ void loop(void) {
     _delay_ms(500);
 */
 
-    TestRunningChronometer();
+    //TestRunningChronometer();
 
-    inc_time(&current_time);
+    //inc_time(&current_time);
 }
 
 

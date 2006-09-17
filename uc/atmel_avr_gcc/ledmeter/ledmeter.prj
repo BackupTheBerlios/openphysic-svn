@@ -104,7 +104,7 @@ VsliderMotor PA0 VSS SLIDER_2(0 5) ;(0 5) 2.56 = internal adc  (AREF)
 VsliderTemp1 PA1 VSS SLIDER_3(0 5)
 
 ;;;;;;;;;;
-; Keypad ;  Port B for buttons and PD3 (INT0) for interrupt
+; Keypad ;  Port B for buttons and PD3 (INT1) for interrupt
 ;;;;;;;;;;
 ;Kx node1 node2 [type(delay)] ; x: Buttons 0 - F. Optional type: MONOSTABLE(t_delay), LATCHED
 ; LATCHED=conserve la position (on ou off)
@@ -116,7 +116,14 @@ K9 VSS PB3 ; down   9  ..
 KC VSS PB4 ; ok     C  (bouton poussoir)
 KE VSS PB5 ; cancel E  (bouton poussoir)
 
+; OR is needed to send to INT1 (PD3)
 
+
+;;;;;;;
+; LCD ;
+;;;;;;;
+;X[inst_name]  LCD(chars lines oscil_freq) RS RW E D7 D6 D5 D4 D3 D2 D1 D0
+;X[inst_name]  TTY(baud_rate [n_bits] [parity] [odd_parity] [n_stop_bits] [rx_display_as]) node_tx node_rx
 
 ; scope (PD0 et PD7)
 .PLOT V(PD2) V(PD3) V(PA0) V(PA1) V(PB4)
