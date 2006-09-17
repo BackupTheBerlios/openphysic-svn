@@ -24,6 +24,9 @@ time_typ last_time;
 time_typ best_time;
 
 
+time_typ d_time; 
+
+
 void init_time(time_typ * time) {
     time->is_neg = false;
     time->hh = 0;
@@ -42,7 +45,7 @@ void def_time(time_typ * time, uint8_t _hh, uint8_t _mm, uint8_t _ss, unsigned s
 
 void print_time(time_typ * t) {
     //printf("===%02i:%02i:%02i:%03u===\n",t->hh,t->mm,t->ss,t->xx/10);
-    printf("===%02i:%02i:%02i:%03u===\n",t->hh,t->mm,t->ss,t->xx/((int) pow(10,CHR_PRECISION-CHR_DISPLAY)));
+    printf("%02i:%02i:%02i:%03u",t->hh,t->mm,t->ss,t->xx/((int) pow(10,CHR_PRECISION-CHR_DISPLAY)));
 }
 
 inline void inc_time(time_typ * time) {
@@ -142,13 +145,44 @@ uint8_t compare_time(time_typ * time1, time_typ * time2) {
 }
 
 
-time_typ * diff_time(time_typ * time1, time_typ * time2) {
-    //time_type * time_diff;
-    //init_time(time_diff);
+void diff_time(time_typ * time1, time_typ * time2, time_typ * d_time) {
+    init_time(d_time);
     
-    //uint8 cmp = time_compare(time1,time2);
+    uint8_t cmp = compare_time(time1,time2);
     
-              
+    time_typ t_max,t_min;
+    
+    
+    if ( cmp == 1 ) {
+        time_typ * t_max = time2;
+        time_typ * t_min = time1;
+        d_time->is_neg = true;
+    }
+    if ( cmp == 2 ) {
+        time_typ * t_max = time1;
+        time_typ * t_min = time2;
+        d_time->is_neg = false;           
+    }
+    
+    // TO DO = -
+    
+    // TO FIX
+    
+    d_time->hh = t_max.hh - t_min.hh;
+    d_time->mm = t_max.mm - t_min.mm;
+    d_time->ss = t_max.ss - t_min.ss;
+    d_time->xx = t_max.xx - t_min.xx;
+    
+    
+    /*
+    d_time->hh=0;
+    d_time->mm=0;
+    d_time->ss=10;
+    d_time->xx=5000;
+    */
+    
+    
+
 }
 
 void print_diff_time(time_typ * time) {
@@ -229,12 +263,23 @@ void test_diff(void) {
   //print_diff_time(diff_time(&current_time,&last_time));
  
    
-  time_typ d_time;
+  //time_typ d_time;
   //def_time(&d_time, 0, 0, 59, 9999);
-  def_time(&d_time, 0, 1, 0, 0);  
-  (&d_time)->is_neg = false;
-  print_diff_time(&d_time);
-   
+  //def_time(&d_time, 0, 0, 59, 9999);  
+  //(&d_time)->is_neg = true;
+  //print_diff_time(&d_time);
+  
+  def_time(&current_time, 0, 1,23,500);
+  def_time(&last_time, 0, 1,22,400);
+  
+    
+  diff_time(&current_time,&last_time,&d_time);
+  
+  print_time(&d_time);
+  
+  printf("\n");  
+  
+  print_diff_time(&d_time);    
   
   printf("\n");
     
