@@ -31,10 +31,10 @@
 ;;;;;;;;
 ; LEDs ;  Port C
 ;;;;;;;;
-; R1 et D1 en serie entre masse et PD0
+; R1 et D1 en serie entre masse et PC0
 D1 VDD D1_NODE
 R1 D1_NODE PC0 0.62K
-; R2 et D2 en serie entre masse et PD1
+; R2 et D2 en serie entre masse et PC1
 D2 VDD D2_NODE
 R2 D2_NODE PC1 0.62K
 ;
@@ -61,6 +61,7 @@ R8 D8_NODE PC7 0.62K
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Passage de barrière (sonde à effet Hall, barrière optique...) ;
+; Hall probe
 ; NMI = entrée d'interruption externe non masquable             ;
 ; INT0 = PD2 sur ATmega8535                                     ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -109,12 +110,13 @@ VsliderTemp1 PA1 VSS SLIDER_3(0 5)
 ;Kx node1 node2 [type(delay)] ; x: Buttons 0 - F. Optional type: MONOSTABLE(t_delay), LATCHED
 ; LATCHED=conserve la position (on ou off)
 ;
-K4 VSS PB0 ; left   4  (interrupteur joystick)
-K6 VSS PB1 ; right  6  ..
-K1 VSS PB2 ; up     1  ..
-K9 VSS PB3 ; down   9  ..
-KC VSS PB4 ; ok     C  (bouton poussoir)
-KE VSS PB5 ; cancel E  (bouton poussoir)
+KC VSS PB0 ; ok     C  (bouton poussoir)
+KE VSS PB1 ; cancel E  (bouton poussoir)
+K4 VSS PB2 ; left   4  (interrupteur joystick)
+K6 VSS PB3 ; right  6  ..
+K1 VSS PB4 ; up     1  ..
+K9 VSS PB5 ; down   9  ..
+
 
 ; OR is needed to send to INT1 (PD3)
 
@@ -128,6 +130,7 @@ KE VSS PB5 ; cancel E  (bouton poussoir)
 ; scope (PD0 et PD7)
 .PLOT V(PD2) V(PD3) V(PA0) V(PA1) V(PB4)
 ;.PLOT V(PD0) V(PD1) V(PD2) V(PD3) V(PD4) V(PD5) V(PD6) V(PD7)
+
 
 
 

@@ -351,6 +351,12 @@ void sf_init(void) {
  *  hardware init function
  */
 void hw_init(void) {
+   // **************
+   // * Oscillator *
+   // **************
+   // internal oscillator set as 1MHz
+   // CKSEL
+
    // ******************
    // * WatchDog Timer *
    // ******************
@@ -418,6 +424,22 @@ void hw_init(void) {
    // *********
    // * Timer *
    // *********
+   //FPWM=Fquartz/(N.256) with N={1,8,64,256,1024}
+   //N=Fquartz/(FPWM.256)
+   //http://www.jelectronique.com/pwm.php
+   // here Fquartz = F_CPU = 1MHz
+   // here T = 0.1ms so FPWM = 10 000 Hz  = 10 kHZ
+   // That's a  bab idea because
+   // we need a variable number of step in the timer TCNT1=ICR1
+   //FPWM=Fquartz/((N.(1+TOP))
+   //TOP=Fquartz/(FPWM.N)-1
+   // N=1 SO TOP=99=Ox63=ICR1 (2 registres de 8 bits)
+   // TOP
+   ICR1H=0x00;
+   ICR1L=0x63;
+   // START
+   OCR1AH = 0x00;
+	OCR1AL = 0x00;
 
 
    // Sound
@@ -462,42 +484,38 @@ unsigned char adcConvert8bit(unsigned char ch)
 }
 
 #define Nbuts 6
-#define B_LEFT 0
-#define B_RIGHT 1
-#define B_UP 2
-#define B_DOWN 3
-#define B_OK 4
-#define B_CANCEL 5
+#define B_OK 0
+#define B_CANCEL 1
+#define B_LEFT 2
+#define B_RIGHT 3
+#define B_UP 4
+#define B_DOWN 5
 
-void SeekButtons(void) {
-    uint8_t bstate = false;
-    uint8_t i;
-	 for (i=0; i<=Nbuts-1; i++) {
-	     if (PINB>>i) {
-	         bstate = false;
-	     } else {
-	         bstate = true;
-	     }
-		
-	     if ( i==B_LEFT && bstate ) { // LEFT
 
-	     }
-	     if ( i==B_RIGHT && bstate ) { // RIGHT
+inline void SeekButtons(void) {
+    if ( (PINB>>B_OK)&0x1 ) { // OK
+        StartStopChronometer();
+	 }
+	
+    if ( (PINB>>B_CANCEL)&0x1 ) { // CANCEL
 
-	     }
-	     if ( i==B_UP && bstate ) { // UP
+    }		
+	
+	 if ( (PINB>>B_LEFT)&0x1 ) { // LEFT
 
-	     }
-	     if ( i==B_DOWN && bstate ) { // DOWN
+	 }
+	
+    if ( (PINB>>B_RIGHT)&0x1 ) { // RIGHT
 
-	     }
-	     if ( i==B_OK && bstate ) { // OK
-            StartStopChronometer();
-	     }
-	     if ( i==B_CANCEL && bstate ) { // CANCEL
+	 }
+	
+	 if ( (PINB>>B_UP)&0x1 ) { // UP
 
-	     }	     	     	     	
-	}
+	 }
+	
+    if ( (PINB>>B_DOWN)&0x1 ) { // DOWN
+
+	 }	     	     	     	
 }
 
 /*
@@ -506,6 +524,7 @@ void SeekButtons(void) {
 void loop(void) {
     //SeekButtons(); // use INT1 instead
 
+    // RPM
     volatile double ch0 = adcConvert10bit(0);
     ch0 *= 0.09765625; // 0.09765625 = 100 / 2^10
     show_percent(ch0);
@@ -538,11 +557,17 @@ int main(void) {
 }
 
 /*
- * interrupt handler for INT0
+ * interrupt handler for INT0 (HALL PROBE)
  */
 SIGNAL(SIG_INTERRUPT0) {
     StartStopChronometer();
 }
 
+/*
+ * interrupt handler for INT1 (KEYPAD)
+ */
+SIGNAL(SIG_INTERRUPT1) {
+    StartStopChronometer();
+}
 
 
