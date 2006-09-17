@@ -34,6 +34,22 @@ alphanumérique : bien supporté par WinAVR HD44780 http://www.nongnu.org/avr-libc
 mais
 graphique car plus joli et plus facile à faire évoluer...
 
+si LCD alpha : affichage temps
+
+01:30:123 01:28:540
+01:29:123 LST+1:000
+
+ZONE1     ZONE2
+ZONE3     ZONE4
+
+ZONE1=temps du tour (current_time)
+ZONE2=meileur temps (best_time)
+ZONE3=dernier temps (last_time)
+ZONE4
+ + ou - ou = : comparaison avec dernier temps (LST) ou avec le meilleur (BST)
+
+19 colonnes ; 2 lignes
+
 
 possibilité de tester le LCD avec lcdproc http://lcdproc.omnipotent.net
 This is a client/server suite including drivers for all kinds of
