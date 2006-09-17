@@ -1,8 +1,29 @@
-// ***********************************************************
-// Project: OpenChrono
-// Author: Sebastien CELLES
-// Module description: an handhelds device for karts, bike or sport cars
-// ***********************************************************
+/***************************************************************************
+ * Project: OpenChrono                                                     *
+ * Author: Sebastien CELLES                                                *
+ * Module description: an handhelds device for karts, bikes or sport cars  *
+ ***************************************************************************/
+
+/***************************************************************************
+ *   Copyright (C) 2006 by Sebastien CELLES                                *
+ *   s.cls@laposte.net                                                     *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
+
 
 #include <avr/io.h> // Most basic include files
 
@@ -66,10 +87,10 @@ void def_time(time_typ * time, uint8_t _hh, uint8_t _mm, uint8_t _ss, unsigned s
 
 void print_time(time_typ * t) {
     //printf("===%02i:%02i:%02i:%03u===\n",t->hh,t->mm,t->ss,t->xx/10);
-    printf("===%02i:%02i:%02i:%03u===\n",t->hh,t->mm,t->ss,t->xx/((int) pow(10,CHR_PRECISION-CHR_DISPLAY)));
+    printf("%02i:%02i:%02i:%03u",t->hh,t->mm,t->ss,t->xx/((int) pow(10,CHR_PRECISION-CHR_DISPLAY)));
 }
 
-void inc_time(time_typ * time) {
+inline void inc_time(time_typ * time) {
   if (running_chronometer) {
     time->xx++;
     if(time->xx >= pow(10,CHR_PRECISION)) {
@@ -87,19 +108,40 @@ void inc_time(time_typ * time) {
             }
         }
     }
-    //_delay_ms(1);
+    //_delay_ms(1); // use timer interrupts instead of delay
   }
 }
 
-void copy_time(time_typ * time_source, time_typ * time_dest) { // TO TEST (pointer ?)
+void copy_time(time_typ * time_source, time_typ * time_dest) {
     time_dest->hh = time_source->hh;
     time_dest->mm = time_source->mm;
     time_dest->ss = time_source->ss;
     time_dest->xx = time_source->xx;
 }
 
+bool time_is_null(time_typ * time) {
+     if ( (time->hh == 0) &&  (time->mm == 0) && (time->ss == 0) && (time->xx == 0) ) {
+         return true;
+     } else {
+         return false;
+     }
+}
+
 uint8_t compare_time(time_typ * time1, time_typ * time2) {
     uint8_t result = 0;
+
+    if ( time_is_null(time1) && time_is_null(time2) ) {
+        return 0;
+    }
+
+    if ( time_is_null(time1) ) {
+        return 2;
+    }
+
+    if ( time_is_null(time2) ) {
+        return 1;
+    }
+
 
     if (time1->hh > time2->hh) {
         result = 2;
@@ -134,11 +176,13 @@ uint8_t compare_time(time_typ * time1, time_typ * time2) {
             }
         }
     }
-    // return the best time (lower)
+
+    // return the best time (lower) (if different from 00:00:00:000)
     // 0 time1=time2
     // 1 time1>time2
     // 2 time1<time2
     return result;
+
 }
 
 
@@ -311,15 +355,23 @@ inline void StartStopChronometer(void) {
     if (running_chronometer) {
         //running_chronometer = false; // false = 0
         if (compare_time(&current_time,&best_time) == 1) {
+            // better time them the best time
             copy_time(&current_time,&best_time);
+            led_alarm(3,50);
+        }
+        if (compare_time(&current_time,&last_time) == 1) {
+            // better time them the last time
+            led_alarm(1,50);
         }
         copy_time(&current_time,&last_time);
+        init_time(&current_time);
     } else {
         // this is before first lap (start from pit)
         running_chronometer = true; // true = -1
         // this is after first lap
     }
 }
+
 
 void TestRunningChronometer(void) {
     if (running_chronometer) {
@@ -439,8 +491,9 @@ void hw_init(void) {
    ICR1L=0x63;
    // START
    OCR1AH = 0x00;
-	OCR1AL = 0x00;
-
+	OCR1AL = 31;//0x00;
+   // Timer(s)/Counter(s) Interrupt(s) initialization
+   TIMSK=(1<<OCIE1A)|(1<<TOIE1); //0x00;
 
    // Sound
 
@@ -493,29 +546,72 @@ unsigned char adcConvert8bit(unsigned char ch)
 
 
 inline void SeekButtons(void) {
-    if ( (PINB>>B_OK)&0x1 ) { // OK
+    if ( (PINB>>B_OK)&0x01 ) { // OK
         StartStopChronometer();
 	 }
 	
-    if ( (PINB>>B_CANCEL)&0x1 ) { // CANCEL
+    if ( (PINB>>B_CANCEL)&0x01 ) { // CANCEL
 
     }		
 	
-	 if ( (PINB>>B_LEFT)&0x1 ) { // LEFT
+	 if ( (PINB>>B_LEFT)&0x01 ) { // LEFT
 
 	 }
 	
-    if ( (PINB>>B_RIGHT)&0x1 ) { // RIGHT
+    if ( (PINB>>B_RIGHT)&0x01 ) { // RIGHT
 
 	 }
 	
-	 if ( (PINB>>B_UP)&0x1 ) { // UP
+	 if ( (PINB>>B_UP)&0x01 ) { // UP
 
 	 }
 	
-    if ( (PINB>>B_DOWN)&0x1 ) { // DOWN
+    if ( (PINB>>B_DOWN)&0x01 ) { // DOWN
 
 	 }	     	     	     	
+}
+
+void display(void) {
+    // clear screen
+    // TO DO
+
+    // line 1
+
+	 print_time(&current_time); // ZONE 1
+	
+	 printf(" ");
+	
+	 print_time(&best_time); // ZONE 2
+	
+	
+	 printf("\n");	
+	 // line 2
+	
+	 print_time(&last_time); // ZONE 3
+	
+	 printf(" ");
+	
+	 // ZONE 4
+	 if( compare_time(&current_time,&last_time) == 0 ) {
+	     printf("LST=");
+	 }
+	 if( compare_time(&current_time,&last_time) == 1 ) {
+	     printf("LST-");
+	 }
+	 if( compare_time(&current_time,&last_time) == 2 ) {
+	     printf("LST-");
+	 }
+	
+	 if( compare_time(&current_time,&best_time) == 0 ) {
+	     printf("BST=");
+	 }
+	 if( compare_time(&current_time,&best_time) == 1 ) {
+	     printf("BST-");
+	 }
+	 if( compare_time(&current_time,&best_time) == 2 ) {
+	     printf("BST+");
+	 }			
+	
 }
 
 /*
@@ -528,6 +624,9 @@ void loop(void) {
     volatile double ch0 = adcConvert10bit(0);
     ch0 *= 0.09765625; // 0.09765625 = 100 / 2^10
     show_percent(ch0);
+
+	 // display (LCD)
+	 display();
 
 /*
     _delay_ms(500);
@@ -567,7 +666,14 @@ SIGNAL(SIG_INTERRUPT0) {
  * interrupt handler for INT1 (KEYPAD)
  */
 SIGNAL(SIG_INTERRUPT1) {
-    StartStopChronometer();
+    SeekButtons();
 }
 
+/*
+ * interrupt handler for TIMER
+ */
+SIGNAL(SIG_OUTPUT_COMPARE1A) {
+    StartStopChronometer();
+    inc_time(&current_time);
+}
 
