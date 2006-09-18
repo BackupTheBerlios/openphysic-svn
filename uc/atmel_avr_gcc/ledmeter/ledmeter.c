@@ -508,7 +508,7 @@ void hw_init(void)
     // ********
     // * LEDs *
     // ********
-    DDRC=0xFF; // set up PORTD pins 0 to 7 as output
+    DDRC=0xFF; // set up PORT C pins 0 to 7 as output
     //switch_on_all_leds();
     switch_off_all_leds();
 
@@ -582,7 +582,7 @@ void hw_init(void)
     ICR1L=0x63;
     // START
     OCR1AH = 0x00;
-    OCR1AL = 31;//0x00;
+    OCR1AL = 0x31;//0x00;
     // Timer(s)/Counter(s) Interrupt(s) initialization
     TIMSK=(1<<OCIE1A)|(1<<TOIE1); //0x00;
 
@@ -789,5 +789,6 @@ SIGNAL(SIG_OUTPUT_COMPARE1A)
     StartStopChronometer();
     inc_time(&current_time);
 }
+
 
 
