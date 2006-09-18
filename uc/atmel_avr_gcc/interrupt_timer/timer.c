@@ -51,7 +51,12 @@ void init(void) {
    OCR1AH=0x00;
    OCR1AL=0x31;
 
-   TIMSK=(1<<OCIE1A)|(1<<TOIE1);
+   TCCR1A=(1<<WGM12); //CTC
+
+   TIFR|=(1<<OCF1A);
+   TIMSK|=(1<<OCIE1A)|(1<<TOIE1);
+
+   sei();
 }
 
 // It is recommended to use this coding style to
@@ -74,4 +79,5 @@ int main(void) {
    }
    return 0;
 }
+
 
