@@ -519,14 +519,14 @@ void hw_init(void)
     //PCMSK |= (1<<PIND2); // TO FIX
     //PIND |= (1<<PIND2); // try scls:Error : read-only !!!
 
-    // interrupt on INT0 pin falling edge (sensor triggered)
-    MCUCR = (1<<ISC01) | (1<<ISC00);
+    // interrupt on INT0 pin (sensor triggered)
+    MCUCR |= (1<<ISC01) | (1<<ISC00); // rising edge
 
     // turn on interrupts!
 
     GICR |= (1<<INT0); //INT0
 
-    sei(); // enable interrupts
+    //sei(); // enable interrupts
 
     // *************************************************
     // * Conv Analog to Digital (CAN for RPM and Temp) *
@@ -557,8 +557,14 @@ void hw_init(void)
     // **********
     // 1 joystick button (4 directions, up, down, left, right)
     // 2 push buttons (ok, cancel)
+    // keypad input
     DDRB=0x00;
     PORTB=0xFF;
+    // keypad interrupt with OR output on INT1
+    MCUCR |= (1<<ISC11) | (0<<ISC10); // falling edge
+    //MCUCR |= (0<<ISC11) | (0<<ISC10); // low level (for test)
+    GICR |= (1<<INT1); // turn on interrupts INT1
+
 
     // ***************
     // * Graphic LCD *
@@ -589,6 +595,8 @@ void hw_init(void)
     // Sound
 
     // Time
+
+    sei(); // enable interrupts
 }
 
 /*
@@ -640,32 +648,32 @@ unsigned char adcConvert8bit(unsigned char ch)
 
 inline void SeekButtons(void)
 {
-    if ( (PINB>>B_OK)&0x01 )
+    if ( !((PINB>>B_OK)&0x01) )
     { // OK
         StartStopChronometer();
     }
 
-    if ( (PINB>>B_CANCEL)&0x01 )
+    if ( !((PINB>>B_CANCEL)&0x01) )
     { // CANCEL
 
     }
 
-    if ( (PINB>>B_LEFT)&0x01 )
+    if ( !((PINB>>B_LEFT)&0x01) )
     { // LEFT
 
     }
 
-    if ( (PINB>>B_RIGHT)&0x01 )
+    if ( !((PINB>>B_RIGHT)&0x01) )
     { // RIGHT
 
     }
 
-    if ( (PINB>>B_UP)&0x01 )
+    if ( !((PINB>>B_UP)&0x01) )
     { // UP
 
     }
 
-    if ( (PINB>>B_DOWN)&0x01 )
+    if ( !((PINB>>B_DOWN)&0x01) )
     { // DOWN
 
     }
@@ -789,6 +797,8 @@ SIGNAL(SIG_OUTPUT_COMPARE1A)
     StartStopChronometer();
     inc_time(&current_time);
 }
+
+
 
 
 

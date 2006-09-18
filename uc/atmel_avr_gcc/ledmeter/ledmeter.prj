@@ -102,7 +102,7 @@ VsliderMotor PA0 VSS SLIDER_2(0 5) ;(0 5) 2.56 = internal adc  (AREF)
 ;;;;;;;;;;;;;;;;;;;;;
 ; Température (ADC) ; Port A
 ;;;;;;;;;;;;;;;;;;;;;
-VsliderTemp1 PA1 VSS SLIDER_3(0 5)
+;VsliderTemp1 PA1 VSS SLIDER_3(0 5)
 
 ;;;;;;;;;;
 ; Keypad ;  Port B for buttons and PD3 (INT1) for interrupt
@@ -119,6 +119,10 @@ K9 VSS PB5 ; down   9  ..
 
 
 ; OR is needed to send to INT1 (PD3)
+VsliderINT1 PLUS1 VSS SLIDER_3(0 5)
+Xop2 OPAMP PLUS1 MINUS1 PD3 ; INT1
+R24 VDD MINUS1 10K
+R25 MINUS1 VSS 10K
 
 
 ;;;;;;;
@@ -130,6 +134,7 @@ K9 VSS PB5 ; down   9  ..
 ; scope (PD0 et PD7)
 .PLOT V(PD2) V(PD3) V(PA0) V(PA1) V(PB0) V(PD5)
 ;.PLOT V(PD0) V(PD1) V(PD2) V(PD3) V(PD4) V(PD5) V(PD6) V(PD7)
+
 
 
 
