@@ -24,6 +24,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#define F_CPU 1000000UL  // 1 MHz
+
+//#include "lcd.h"	//Fonction de gestion LCD (Fleury)
+//#include "lcd.c"
 
 #include <avr/io.h> // Most basic include files
 
@@ -33,7 +37,6 @@
 
 #include <math.h>
 
-#define F_CPU 1000000UL  // 1 MHz
 #include <util/delay.h>
 
 //#include <avr/io.h>              // Most basic include files
@@ -797,6 +800,7 @@ SIGNAL(SIG_OUTPUT_COMPARE1A)
     StartStopChronometer();
     inc_time(&current_time);
 }
+
 
 
 
