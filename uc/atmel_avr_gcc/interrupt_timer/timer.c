@@ -1,15 +1,5 @@
-// ***********************************************************
-// Project:
-// Author:
-// Module description:
-// ***********************************************************
-/* TO DO
-CTC MODE
-
-*/
 #include <avr/io.h>              // Most basic include files
 #include <avr/interrupt.h>       // Add the necessary ones
-#include <avr/signal.h>          // here
 
 #include <stdbool.h>
 
@@ -26,37 +16,26 @@ void light_on_off(void) {
      PORTC = 0xFF; // switch off all leds
 }
 
-// Interrupt handler example for INT0
-//
-//SIGNAL(SIG_INTERRUPT0) {
-//}
-
-// Interrupt handler for TIMER
-//SIGNAL(SIG_OUTPUT_COMPARE1A) {
 ISR(TIMER1_COMPA_vect) {
    light_on = ~light_on;
 
-   light_on_off();
+   //light_on_off();
 }
 
 // init
 void init(void) {
-   DDRC=0xFF; // set up PORTC pins 0 to 7 as output
+      DDRC=0xFF; // set up PORTC pins 0 to 7 as output
 
-   light_on_off();
+      light_on_off();
 
-   // Timer init
-   ICR1H=0x00;
-   ICR1L;0x63;
-   OCR1AH=0x00;
-   OCR1AL=0x31;
+      OCR1AH=0x00;
+      OCR1AL=0x63;
 
-   TCCR1A=(1<<WGM12); //CTC
+      TCCR1B |=(1<<WGM12)|(1<<CS10); //CTC division F_CPU 1
 
-   TIFR|=(1<<OCF1A);
-   TIMSK|=(1<<OCIE1A)|(1<<TOIE1);
+      TIMSK|=(1<<OCIE1A);
 
-   sei();
+      sei();
 }
 
 // It is recommended to use this coding style to
@@ -66,7 +45,7 @@ void init(void) {
 void my_function(void) {  // Put the open brace '{' here
    // In the loop !
 
-   //asm("nop");          // Inline assembly example
+   asm("nop");          // Inline assembly example
 }
 
 // ***********************************************************
@@ -79,5 +58,4 @@ int main(void) {
    }
    return 0;
 }
-
 
