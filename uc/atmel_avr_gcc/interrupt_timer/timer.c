@@ -17,9 +17,9 @@ void light_on_off(void) {
 }
 
 ISR(TIMER1_COMPA_vect) {
-   light_on = ~light_on;
+   light_on = !light_on;
 
-   //light_on_off();
+   light_on_off();
 }
 
 // init
@@ -31,7 +31,7 @@ void init(void) {
       OCR1AH=0x00;
       OCR1AL=0x63;
 
-      TCCR1B |=(1<<WGM12)|(1<<CS10); //CTC division F_CPU 1
+      TCCR1B |=(1<<WGM12)|(1<<CS11)|(1<<CS10); //CTC division F_CPU 1  (1<<WGM12)|(1<<CS11)|(1<<CS10)
 
       TIMSK|=(1<<OCIE1A);
 
