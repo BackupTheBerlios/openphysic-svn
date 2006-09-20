@@ -30,7 +30,7 @@ dernier temps
 Affichage
 =========
 Possible : LCD (alphanumérique ou graphique ?)
-alphanumérique : bien supporté par WinAVR HD44780 http://www.nongnu.org/avr-libc/user-manual/group__stdiodemo.html
+alphanumérique : bien supporté par WinAVR et VMLAB HD44780 http://www.nongnu.org/avr-libc/user-manual/group__stdiodemo.html
 mais
 graphique car plus joli et plus facile à faire évoluer...
 
@@ -267,9 +267,18 @@ PD7.............
 
 TO DO
 =====
-timer
-ou sur clavier INT1 (PD3)
-LCD
-separation du code
-écart temps
++ timer
+- ou sur clavier INT1 (PD3)
+- LCD
++ separation du code
+- écart temps
 
+
+
+Hardware
+========
+uc ATMEL AVR ATmega8535
+Diodes 1N4148 (*6)
+LCD caractère type HD44780 (2 lignes et 19 colonnes au mini - 17 à la rigueur)
+74HC164 (parallèle->serie)
+ 
