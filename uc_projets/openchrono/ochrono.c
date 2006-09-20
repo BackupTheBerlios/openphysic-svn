@@ -1,0 +1,283 @@
+/***************************************************************************
+ * Project: OpenChrono                                                     *
+ * Author: Sebastien CELLES                                                *
+ * Module description: an handhelds device for karts, bikes or sport cars  *
+ ***************************************************************************/
+
+/***************************************************************************
+ *   Copyright (C) 2006 by Sebastien CELLES                                *
+ *   s.cls@laposte.net                                                     *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
+
+#define F_CPU 8000000UL  // 8 MHz
+
+//#include "lcd.h"	//Fonction de gestion LCD (Fleury)
+//#include "lcd.c"
+
+#include <avr/io.h> // Most basic include files
+
+#include <stdint.h> // uint8_t = unsigned char
+
+#include <stdio.h> // TO FIX (LCD)
+
+#include <math.h>
+
+#include <util/delay.h>
+
+//#include <avr/io.h>              // Most basic include files
+#include <avr/interrupt.h>       // Add the necessary ones
+//#include <avr/signal.h>          // here
+
+#include <stdbool.h>           // boolean
+
+//volatile unsigned char a2dCompleteFlag;
+
+//int channel;
+//unsigned short analog_result;
+//int analog_busy;
+
+//#define N 50 // number between 0 and 255
+//#define Nmax 0xFF
+
+
+#define CHR_PRECISION 4 // precision 1/10000eme = 1/(10^4)
+#define CHR_DISPLAY 3 // display 1/1000  = 1/(10^3)
+
+uint8_t running_chronometer = false; // 0 false ; -1 true
+
+#include "time_op.c"
+#include "ledmeter.c"
+#include "sound.c"
+#include "a2d.c"
+#include "display.c"
+#include "chrono.c"
+#include "keypad.c"
+
+/*
+ * software init function
+ */
+void init_sf(void)
+{
+    // Leds
+    //test_leds_up_off(); // uncomment for release or comment for debug
+
+    // Sound
+    //beep(3,100); // uncomment for release or comment for debug
+
+    // Time
+    running_chronometer = false;
+    init_time(&current_time);
+    init_time(&last_time);
+    init_time(&best_time);
+}
+
+/*
+ *  hardware init function
+ */
+void init_hw(void)
+{
+    // **************
+    // * Oscillator *
+    // **************
+    // internal oscillator set as 1MHz
+    // CKSEL
+
+    // ******************
+    // * WatchDog Timer *
+    // ******************
+    // disable by default
+
+    // ********
+    // * LEDs *
+    // ********
+    DDRC=0xFF; // set up PORT C pins 0 to 7 as output
+    //switch_on_all_leds();
+    switch_off_all_leds();
+
+    // *********************************
+    // * Start/Stop chronometer (INT0) *
+    // *********************************
+    // Set Pin 6 (PD2) as the pin to use for this example
+    //PCMSK |= (1<<PIND2); // TO FIX
+    //PIND |= (1<<PIND2); // try scls:Error : read-only !!!
+
+    // interrupt on INT0 pin (sensor triggered)
+    MCUCR |= (1<<ISC01) | (1<<ISC00); // rising edge
+
+    // turn on interrupts!
+
+    GICR |= (1<<INT0); //INT0
+
+    //sei(); // enable interrupts
+
+    // *************************************************
+    // * Conv Analog to Digital (CAN for RPM and Temp) *
+    // *************************************************
+
+    //volatile static int analog_result;
+    //volatile static unsigned char analog_busy;
+
+    //analog_busy=1; // busy mark the ADC function
+    uint8_t channel = 0; // measure ADC0
+
+    // use internal 2.56V ref  REFS1=1 & REFS0=1 (11)
+    // use external ref (01)
+    ADMUX=(0<<REFS1)|(1<<REFS0)|(channel & 0x07); // channel & 0x07
+
+    //ADCSRA=(1<<ADEN)|(1<<ADIE)|(1<<ADIF)|(1<<ADPS2); // interrupt ADIE=1
+    ADCSRA=(1<<ADEN)|(0<<ADIE)|(1<<ADIF)|(1<<ADPS2); // no interrupt ADIE=0
+
+    ADCSRA |= (1 << (ADSC)); // start conversion
+
+    DDRA=0x00;
+    // make sure pull-up resistors are turned off
+    PORTA = 0x00;
+
+
+    // **********
+    // * Keypad *
+    // **********
+    // 1 joystick button (4 directions, up, down, left, right)
+    // 2 push buttons (ok, cancel)
+    // keypad input
+    DDRB=0x00;
+    PORTB=0xFF;
+    // keypad interrupt with OR output on INT1
+    MCUCR |= (1<<ISC11) | (0<<ISC10); // falling edge
+    //MCUCR |= (0<<ISC11) | (0<<ISC10); // low level (for test)
+    GICR |= (1<<INT1); // turn on interrupts INT1
+
+
+    // ***************
+    // * Graphic LCD *
+    // ***************
+
+    // *********
+    // * Timer *
+    // *********
+    //FPWM=Fquartz/(N.256) with N={1,8,64,256,1024}
+    //N=Fquartz/(FPWM.256)
+    //http://www.jelectronique.com/pwm.php
+    // here Fquartz = F_CPU = 1MHz
+    // here T = 0.1ms so FPWM = 10 000 Hz  = 10 kHZ
+    // That's a  bab idea because
+    // we need a variable number of step in the timer TCNT1=ICR1
+    //FPWM=Fquartz/((N.(1+TOP))
+    //TOP=Fquartz/(FPWM.N)-1
+    // N=1 SO TOP=99=Ox63=ICR1 (2 registres de 8 bits)
+
+    OCR1AH=0x03; //Ox00
+    OCR1AL=0x20; //0x63
+
+    TCCR1B |=(1<<WGM12)|(0<<CS11)|(1<<CS10); //CTC division F_CPU 1  (1<<WGM12)|(1<<CS11)|(1<<CS10)
+
+    TIMSK|=(1<<OCIE1A);
+
+
+    // Sound
+
+    // Time
+
+    sei(); // enable interrupts
+}
+
+/*
+ * init function
+ */
+void init(void)
+{
+    init_hw();
+    init_sf();
+}
+
+
+/*
+ *  this is the main loop
+ */
+void loop(void)
+{
+    //SeekButtons(); // use INT1 instead
+
+    // RPM
+    volatile double ch0 = adcConvert10bit(0);
+    ch0 *= 0.09765625; // 0.09765625 = 100 / 2^10
+    show_percent(ch0);
+
+    // display (LCD)
+    display();
+
+    /*
+      _delay_ms(500);
+
+      double ch1 = adcConvert10bit(1);
+      ch1 *= 0.09765625; // 0.09765625 = 100 / 2^10
+      show_percent(ch1);
+
+      _delay_ms(500);
+    */
+
+    //TestRunningChronometer();
+
+    //inc_time(&current_time);
+}
+
+
+/*
+ * main program
+ */
+int main(void)
+{
+    init();
+    while(1)
+    { // Infinite loop; define here the
+        loop(); // system behaviour
+    }
+    return 0;
+}
+
+/*
+ * interrupt handler for INT0 (HALL PROBE)
+ */
+SIGNAL(SIG_INTERRUPT0)
+{
+    StartStopChronometer();
+}
+
+/*
+ * interrupt handler for INT1 (KEYPAD)
+ */
+SIGNAL(SIG_INTERRUPT1)
+{
+    SeekButtons();
+}
+
+/*
+ * interrupt handler for TIMER
+ */
+SIGNAL(SIG_OUTPUT_COMPARE1A)
+{
+    inc_time(&current_time);
+}
+
+
+
+
+
+
+
+
