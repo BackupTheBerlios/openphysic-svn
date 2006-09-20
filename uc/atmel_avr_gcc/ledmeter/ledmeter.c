@@ -24,7 +24,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#define F_CPU 1000000UL  // 1 MHz
+#define F_CPU 8000000UL  // 1 MHz
 
 //#include "lcd.h"	//Fonction de gestion LCD (Fleury)
 //#include "lcd.c"
@@ -586,14 +586,14 @@ void hw_init(void)
     //FPWM=Fquartz/((N.(1+TOP))
     //TOP=Fquartz/(FPWM.N)-1
     // N=1 SO TOP=99=Ox63=ICR1 (2 registres de 8 bits)
-    // TOP
-    ICR1H=0x00;
-    ICR1L=0x63;
-    // START
-    OCR1AH = 0x00;
-    OCR1AL = 0x31;//0x00;
-    // Timer(s)/Counter(s) Interrupt(s) initialization
-    TIMSK=(1<<OCIE1A)|(1<<TOIE1); //0x00;
+
+    OCR1AH=0x03; //Ox00
+    OCR1AL=0x20; //0x63
+
+    TCCR1B |=(1<<WGM12)|(0<<CS11)|(1<<CS10); //CTC division F_CPU 1  (1<<WGM12)|(1<<CS11)|(1<<CS10)
+
+    TIMSK|=(1<<OCIE1A);
+
 
     // Sound
 
@@ -797,9 +797,9 @@ SIGNAL(SIG_INTERRUPT1)
  */
 SIGNAL(SIG_OUTPUT_COMPARE1A)
 {
-    StartStopChronometer();
     inc_time(&current_time);
 }
+
 
 
 

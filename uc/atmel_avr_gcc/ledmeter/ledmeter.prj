@@ -18,7 +18,7 @@
 ; exactly these values are taken by default
 ; ------------------------------------------------------------
 .POWER VDD=5 VSS=0  ; Power nodes
-.CLOCK 1meg         ; Micro clock
+.CLOCK 8meg         ; Micro clock
 ;.CLOCK 128K ; for ADC
 .STORE 250m         ; Trace (micro+signals) storage time
 ;.STORE 500m
@@ -134,6 +134,7 @@ R25 MINUS1 VSS 10K
 ; scope (PD0 et PD7)
 .PLOT V(PD2) V(PD3) V(PA0) V(PA1) V(PB0) V(PD5)
 ;.PLOT V(PD0) V(PD1) V(PD2) V(PD3) V(PD4) V(PD5) V(PD6) V(PD7)
+
 
 
 
