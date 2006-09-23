@@ -3,6 +3,7 @@ inline void display_openchrono_center(void) {
  //lcd_EcrisAuCentre("12345678901234567890",0);
  //lcd_EcrisAuCentre("===OpenChrono===",0);
  //lcd_EcrisAuCentre("----S.CELLES----",1);
+   //lcd_printf("OpenChrono");
    lcd_EcrisAuCentre("OpenChrono",0);
    lcd_EcrisAuCentre("S.Celles",1);
 }
@@ -25,53 +26,56 @@ inline void display_time(void)
 {
     // clear screen
     // TO DO
+    lcd_clrscr();
 
     // line 1
 
-    print_time(&current_time); // ZONE 1
+    print_time_mm_ss_xxx(&current_time); // ZONE 1
 
-    printf(" ");
+    lcd_printf(" ");
 
-    print_time(&best_time); // ZONE 2
+    print_time_mm_ss_xxx(&best_time); // ZONE 2
 
 
-    printf("\n");
+    lcd_printf("\n");
     // line 2
 
-    print_time(&last_time); // ZONE 3
+    print_time_mm_ss_xxx(&last_time); // ZONE 3
 
-    printf(" ");
+    lcd_printf(" ");
 
     // ZONE 4
     if( compare_time(&current_time,&last_time) == 0 )
     {
-        printf("LST=");
+        lcd_printf("LST=");
     }
     if( compare_time(&current_time,&last_time) == 1 )
     {
-        printf("LST-");
+        lcd_printf("LST-");
     }
     if( compare_time(&current_time,&last_time) == 2 )
     {
-        printf("LST-");
+        lcd_printf("LST-");
     }
 
     if( compare_time(&current_time,&best_time) == 0 )
     {
-        printf("BST=");
+        lcd_printf("BST=");
     }
     if( compare_time(&current_time,&best_time) == 1 )
     {
-        printf("BST-");
+        lcd_printf("BST-");
     }
     if( compare_time(&current_time,&best_time) == 2 )
     {
-        printf("BST+");
+        lcd_printf("BST+");
     }
 
 }
 
 void display(void) {
-   display_openchrono_center();
+   //display_openchrono_center();
+   display_time();
 }
+
 

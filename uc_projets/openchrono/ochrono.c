@@ -34,7 +34,8 @@
 #include <stdint.h> // uint8_t = unsigned char
 
 #include <stdio.h> // TO FIX (LCD)
-#include <string.h>
+#include <stdarg.h>
+//#include <string.h>
 
 #include <math.h>
 
@@ -295,6 +296,7 @@ SIGNAL(SIG_OUTPUT_COMPARE1A)
 {
     inc_time(&current_time);
 }
+
 
 
 

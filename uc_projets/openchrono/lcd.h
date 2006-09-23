@@ -58,7 +58,7 @@ par Frank SAURET
  *  à adapter à son afficheur
  */
 #define LCD_LINES           2     /**< Nombre de ligne de l'afficheur */
-#define LCD_DISP_LENGTH    16     /**< Nombre de caractère visible par ligne */
+#define LCD_DISP_LENGTH    20     /**< Nombre de caractère visible par ligne 16 */
 #define LCD_LINE_LENGTH  0x40     /**< Longueur de la ligne interne de l'afficheur   */
 #define LCD_START_LINE1  0x00     /**< Adresse DDRAM du 1er caractère de la ligne 1 (00) */
 #define LCD_START_LINE2  0x40     /**< Adresse DDRAM du 1er caractère de la ligne  2 (40) */
@@ -350,5 +350,6 @@ extern void lcd_ChargeAccentsFrancais(void);
 extern void lcd_EcrisAuCentre(const char *s, uint8_t y);
 /*@}*/
 #endif //LCD_H
+
 
 

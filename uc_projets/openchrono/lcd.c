@@ -30,7 +30,7 @@
 #include <lcd.h>
 #include <string.h>
 
-
+#include <stdarg.h>
 
 /*
 ** constants/macros
@@ -733,3 +733,22 @@ void lcd_EcrisTexteLong(const char *s, char x, char y, char xfinal, unsigned int
 				}
 	}
 
+void lcd_printf(const char *msg, ...)
+{
+// thanks to Eric Levenez
+// fr.comp.lang.c
+// 2006 sept 23th 20:56
+    va_list     ap;
+    char        c;
+    char        tmp[80];
+    char *      s;
+
+    va_start(ap, msg);
+    vsnprintf(tmp, sizeof tmp, msg, ap);
+    va_end(ap);
+
+    s = tmp;
+    while ((c = *s++))
+        lcd_putc(c);
+
+}

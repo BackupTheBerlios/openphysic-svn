@@ -30,10 +30,16 @@ void def_time(time_typ * time, uint8_t _hh, uint8_t _mm, uint8_t _ss, unsigned s
     time->xx = _xx;
 }
 
-void print_time(time_typ * t)
+void print_time_hh_mm_ss_xxx(time_typ * t)
+{
+    lcd_printf("%02i:%02i:%02i:%03u",t->hh,t->mm,t->ss,t->xx/((int) pow(10,CHR_PRECISION-CHR_DISPLAY)));
+}
+
+void print_time_mm_ss_xxx(time_typ * t)
 {
     //printf("===%02i:%02i:%02i:%03u===\n",t->hh,t->mm,t->ss,t->xx/10);
-    printf("%02i:%02i:%02i:%03u",t->hh,t->mm,t->ss,t->xx/((int) pow(10,CHR_PRECISION-CHR_DISPLAY)));
+    //lcd_printf("%02i:%02i:%02i:%03u",t->hh,t->mm,t->ss,t->xx/((int) pow(10,CHR_PRECISION-CHR_DISPLAY)));
+    lcd_printf("%02i:%02i:%03u",t->mm,t->ss,t->xx/((int) pow(10,CHR_PRECISION-CHR_DISPLAY)));
 }
 
 inline void inc_time(time_typ * time)
@@ -163,18 +169,19 @@ void print_diff_time(time_typ * time) {
     def_time(&max_time, 0, 1, 00, 0000);
 
     if ( time_is_null(time) ) {
-        printf("=00:000");
+        lcd_printf("=00:000");
     } else {
             if ( time->is_neg ) {
-                printf("-");
+                lcd_printf("-");
             } else {
-                printf("+");
+                lcd_printf("+");
             }
             if ( compare_time(time,&max_time) == 1 ) {
-                printf("%02i:%03u",time->ss,time->xx/((int) pow(10,CHR_PRECISION-CHR_DISPLAY)));
+                lcd_printf("%02i:%03u",time->ss,time->xx/((int) pow(10,CHR_PRECISION-CHR_DISPLAY)));
             } else {
-                printf("xx:xxx");
+                lcd_printf("xx:xxx");
             }
     }
 }
+
 
