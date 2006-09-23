@@ -26,14 +26,15 @@
 
 #define F_CPU 8000000UL  // 8 MHz
 
-//#include "lcd.h"	//Fonction de gestion LCD (Fleury)
-//#include "lcd.c"
+#include "lcd.h"	//Fonction de gestion LCD (Fleury)
+#include "lcd.c"
 
 #include <avr/io.h> // Most basic include files
 
 #include <stdint.h> // uint8_t = unsigned char
 
 #include <stdio.h> // TO FIX (LCD)
+#include <string.h>
 
 #include <math.h>
 
@@ -121,7 +122,8 @@ void init_hw(void)
 
     // turn on interrupts!
 
-    GICR |= (1<<INT0); //INT0
+    //GICR |= (1<<INT0); //INT0  ATmega8535
+    EIMSK |= (1<<INT0); // ATmega128
 
     //sei(); // enable interrupts
 
@@ -160,12 +162,27 @@ void init_hw(void)
     // keypad interrupt with OR output on INT1
     MCUCR |= (1<<ISC11) | (0<<ISC10); // falling edge
     //MCUCR |= (0<<ISC11) | (0<<ISC10); // low level (for test)
-    GICR |= (1<<INT1); // turn on interrupts INT1
+
+    //GICR |= (1<<INT1); // turn on interrupts INT1  (ATmega8535)
+    EIMSK |= (1<<INT1); // ATmega128
 
 
-    // ***************
-    // * Graphic LCD *
-    // ***************
+    // ***********
+    // * Display *
+    // ***********
+    // Port des bits de données du lcd
+    PORTE=0x00; // PORTC
+    DDRE=0xFF; //Port en sortie DDRC
+    // Port des bits de controles du lcd
+    PORTF=0x00;   // R/W=0 // PORTD
+    DDRF=0xFF;//Port en sortie
+
+    lcd_init(LCD_DISP_ON_CURSOR_BLINK); //Initialisation curseur clignotant
+    lcd_command(LCD_DISP_ON); //curseur éteint
+
+    lcd_clrscr(); //efface l'écran
+    //Active la gestion des accents français	éèêëàùçô
+    lcd_ChargeAccentsFrancais(); // Charge 8 caractères accentués dans la CGRAM et active leur utilisation
 
     // *********
     // * Timer *
@@ -193,7 +210,7 @@ void init_hw(void)
 
     // Time
 
-    sei(); // enable interrupts
+    //sei(); // enable interrupts
 }
 
 /*
@@ -255,7 +272,7 @@ int main(void)
  */
 SIGNAL(SIG_INTERRUPT0)
 {
-    StartStopChronometer();
+//    StartStopChronometer();
 }
 
 /*
@@ -273,6 +290,8 @@ SIGNAL(SIG_OUTPUT_COMPARE1A)
 {
     inc_time(&current_time);
 }
+
+
 
 
 

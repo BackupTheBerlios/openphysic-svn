@@ -262,6 +262,10 @@ PC1.............LED RPM 2/8 (10)
 PC0.............LED RPM 1/8 (10)
 PD7.............
 
+Abandonné car pas assez de ports pour un LCD parallèle (et le reste)
+
+
+nouveau choix ATmega128
 
 
 
@@ -272,6 +276,10 @@ TO DO
 - LCD
 + separation du code
 - écart temps
+
+projet temporairement cassé (changement de uc ATmega8535 vers ATmega128)
+faire modifications pour les pb d'interruptions
+
 
 
 

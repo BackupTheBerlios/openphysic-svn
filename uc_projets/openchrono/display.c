@@ -1,4 +1,18 @@
-void display(void)
+void display(void) {
+   lcd_clrscr();
+
+   lcd_gotoxy(0,0); 	//Curseur  1ère colonne 1ère ligne
+   lcd_puts("Boujour");
+   lcd_gotoxy(0,1);
+   lcd_puts("le monde");
+
+   //delay_ms(500); // delay (Fleury)
+   _delay_ms(250);
+   //lcd_clrscr();     
+}
+
+
+void display2(void)
 {
     // clear screen
     // TO DO
