@@ -48,6 +48,11 @@ par Frank SAURET
 #include <avr/pgmspace.h>
 
 
+// scls
+//#define N 1 // scls for VMLAB warning Flag N must be set to '1' in dispalys with lines > 1
+
+
+
 /**
  *  @name  Définition de la taille de l'affichage
  *  à adapter à son afficheur
@@ -60,6 +65,7 @@ par Frank SAURET
 #define LCD_START_LINE3  0x14     /**< Adresse DDRAM du 1er caractère de la ligne  */
 #define LCD_START_LINE4  0x54     /**< Adresse DDRAM du 1er caractère de la ligne  4 */
 #define LCD_WRAP_LINES      0     /**< 0: pas de décalage, 1: décalage à la fin de la ligne visible*/
+
 
 
 #define LCD_IO_MODE      1         /**< 0: Mode adressage, 1: mode port E/S */

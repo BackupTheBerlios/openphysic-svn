@@ -1,18 +1,27 @@
-void display(void) {
+inline void display_openchrono_center(void) {
+   lcd_clrscr();
+ //lcd_EcrisAuCentre("12345678901234567890",0);
+ //lcd_EcrisAuCentre("===OpenChrono===",0);
+ //lcd_EcrisAuCentre("----S.CELLES----",1);
+   lcd_EcrisAuCentre("OpenChrono",0);
+   lcd_EcrisAuCentre("S.Celles",1);
+}
+
+inline void display_openchrono(void) {
    lcd_clrscr();
 
    lcd_gotoxy(0,0); 	//Curseur  1ère colonne 1ère ligne
-   lcd_puts("Boujour");
+   lcd_puts("OpenChrono");
    lcd_gotoxy(0,1);
-   lcd_puts("le monde");
+   lcd_puts("S. CELLES");
 
    //delay_ms(500); // delay (Fleury)
    _delay_ms(250);
-   //lcd_clrscr();     
+   //lcd_clrscr();
 }
 
 
-void display2(void)
+inline void display_time(void)
 {
     // clear screen
     // TO DO
@@ -61,3 +70,8 @@ void display2(void)
     }
 
 }
+
+void display(void) {
+   display_openchrono_center();
+}
+

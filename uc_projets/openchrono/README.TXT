@@ -279,7 +279,7 @@ TO DO
 
 projet temporairement cassé (changement de uc ATmega8535 vers ATmega128)
 faire modifications pour les pb d'interruptions
-
+modif conv analogique->numérique
 
 
 

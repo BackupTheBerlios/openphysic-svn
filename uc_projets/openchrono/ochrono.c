@@ -85,6 +85,9 @@ void init_sf(void)
     init_time(&current_time);
     init_time(&last_time);
     init_time(&best_time);
+
+	 // LCD
+	 display_openchrono_center();
 }
 
 /*
@@ -118,7 +121,8 @@ void init_hw(void)
     //PIND |= (1<<PIND2); // try scls:Error : read-only !!!
 
     // interrupt on INT0 pin (sensor triggered)
-    MCUCR |= (1<<ISC01) | (1<<ISC00); // rising edge
+    //MCUCR |= (1<<ISC01) | (1<<ISC00); // rising edge ATmega8535
+    EICRA |= (1<<ISC01) | (1<<ISC00); // rising edge  ATmega128
 
     // turn on interrupts!
 
@@ -160,7 +164,8 @@ void init_hw(void)
     DDRB=0x00;
     PORTB=0xFF;
     // keypad interrupt with OR output on INT1
-    MCUCR |= (1<<ISC11) | (0<<ISC10); // falling edge
+    //MCUCR |= (1<<ISC11) | (0<<ISC10); // falling edge ATmega8535
+    EICRA |= (1<<ISC11) | (0<<ISC10); // falling edge ATmega8535
     //MCUCR |= (0<<ISC11) | (0<<ISC10); // low level (for test)
 
     //GICR |= (1<<INT1); // turn on interrupts INT1  (ATmega8535)
@@ -210,7 +215,7 @@ void init_hw(void)
 
     // Time
 
-    //sei(); // enable interrupts
+    sei(); // enable interrupts
 }
 
 /*
@@ -272,7 +277,7 @@ int main(void)
  */
 SIGNAL(SIG_INTERRUPT0)
 {
-//    StartStopChronometer();
+    StartStopChronometer();
 }
 
 /*
@@ -290,6 +295,7 @@ SIGNAL(SIG_OUTPUT_COMPARE1A)
 {
     inc_time(&current_time);
 }
+
 
 
 
