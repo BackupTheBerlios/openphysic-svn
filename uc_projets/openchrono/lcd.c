@@ -733,6 +733,7 @@ void lcd_EcrisTexteLong(const char *s, char x, char y, char xfinal, unsigned int
 				}
 	}
 
+/*
 void lcd_printf(const char *msg, ...)
 {
 // thanks to Eric Levenez
@@ -752,3 +753,4 @@ void lcd_printf(const char *msg, ...)
         lcd_putc(c);
 
 }
+*/

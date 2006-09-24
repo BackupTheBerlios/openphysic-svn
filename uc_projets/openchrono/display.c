@@ -32,43 +32,43 @@ inline void display_time(void)
 
     print_time_mm_ss_xxx(&current_time); // ZONE 1
 
-    lcd_printf(" ");
+    printf(" ");
 
     print_time_mm_ss_xxx(&best_time); // ZONE 2
 
 
-    lcd_printf("\n");
+    printf("\n");
     // line 2
 
     print_time_mm_ss_xxx(&last_time); // ZONE 3
 
-    lcd_printf(" ");
+    printf(" ");
 
     // ZONE 4
     if( compare_time(&current_time,&last_time) == 0 )
     {
-        lcd_printf("LST=");
+        printf("LST=");
     }
     if( compare_time(&current_time,&last_time) == 1 )
     {
-        lcd_printf("LST-");
+        printf("LST-");
     }
     if( compare_time(&current_time,&last_time) == 2 )
     {
-        lcd_printf("LST-");
+        printf("LST-");
     }
 
     if( compare_time(&current_time,&best_time) == 0 )
     {
-        lcd_printf("BST=");
+        printf("BST=");
     }
     if( compare_time(&current_time,&best_time) == 1 )
     {
-        lcd_printf("BST-");
+        printf("BST-");
     }
     if( compare_time(&current_time,&best_time) == 2 )
     {
-        lcd_printf("BST+");
+        printf("BST+");
     }
 
 }
@@ -77,5 +77,6 @@ void display(void) {
    //display_openchrono_center();
    display_time();
 }
+
 
 

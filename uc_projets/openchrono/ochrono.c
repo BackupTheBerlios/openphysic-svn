@@ -26,15 +26,18 @@
 
 #define F_CPU 8000000UL  // 8 MHz
 
+#include <stdio.h> // TO FIX (LCD)
+
 #include "lcd.h"	//Fonction de gestion LCD (Fleury)
 #include "lcd.c"
+static FILE lcdout = FDEV_SETUP_STREAM( (void *)lcd_putc, NULL,_FDEV_SETUP_WRITE );
+//stdout = &lcdout;
 
 #include <avr/io.h> // Most basic include files
 
 #include <stdint.h> // uint8_t = unsigned char
 
-#include <stdio.h> // TO FIX (LCD)
-#include <stdarg.h>
+//#include <stdarg.h>
 //#include <string.h>
 
 #include <math.h>
@@ -183,6 +186,8 @@ void init_hw(void)
     PORTF=0x00;   // R/W=0 // PORTD
     DDRF=0xFF;//Port en sortie
 
+    stdout = &lcdout; // Peter Fleury hack for printf
+
     lcd_init(LCD_DISP_ON_CURSOR_BLINK); //Initialisation curseur clignotant
     lcd_command(LCD_DISP_ON); //curseur éteint
 
@@ -296,6 +301,7 @@ SIGNAL(SIG_OUTPUT_COMPARE1A)
 {
     inc_time(&current_time);
 }
+
 
 
 
