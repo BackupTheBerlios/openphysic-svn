@@ -17,7 +17,7 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
- 
+
 typedef struct
 {
     bool is_neg; // false=0(+) true=1(-)
@@ -30,6 +30,7 @@ time_typ;
 
 time_typ current_time;
 time_typ last_time;
+time_typ before_last_time;
 time_typ best_time;
 
 void init_time(time_typ * time)
@@ -61,6 +62,12 @@ void print_time_mm_ss_xxx(time_typ * t)
     //lcd_printf("%02i:%02i:%02i:%03u",t->hh,t->mm,t->ss,t->xx/((int) pow(10,CHR_PRECISION-CHR_DISPLAY)));
     printf("%02i:%02i:%03u",t->mm,t->ss,t->xx/((int) pow(10,CHR_PRECISION-CHR_DISPLAY)));
 }
+
+void print_time_m_ss_xxx(time_typ * t)
+{
+    printf("%01i:%02i:%03u",t->mm,t->ss,t->xx/((int) pow(10,CHR_PRECISION-CHR_DISPLAY)));
+}
+
 
 inline void inc_time(time_typ * time)
 {
@@ -203,6 +210,7 @@ void print_diff_time(time_typ * time) {
             }
     }
 }
+
 
 
 

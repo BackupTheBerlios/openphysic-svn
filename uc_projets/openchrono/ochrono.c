@@ -88,6 +88,7 @@ void init_sf(void)
     running_chronometer = false;
     init_time(&current_time);
     init_time(&last_time);
+    init_time(&before_last_time);
     init_time(&best_time);
 
 	 // LCD
@@ -281,7 +282,8 @@ int main(void)
 /*
  * interrupt handler for INT0 (HALL PROBE)
  */
-SIGNAL(SIG_INTERRUPT0)
+//SIGNAL(SIG_INTERRUPT0)
+ISR(INT0_vect)
 {
     StartStopChronometer();
 }
@@ -289,7 +291,8 @@ SIGNAL(SIG_INTERRUPT0)
 /*
  * interrupt handler for INT1 (KEYPAD)
  */
-SIGNAL(SIG_INTERRUPT1)
+//SIGNAL(SIG_INTERRUPT1)
+ISR(INT1_vect)
 {
     SeekButtons();
 }
@@ -298,9 +301,11 @@ SIGNAL(SIG_INTERRUPT1)
  * interrupt handler for TIMER
  */
 SIGNAL(SIG_OUTPUT_COMPARE1A)
+//ISR(TIM1_COMPA_vect)
 {
     inc_time(&current_time);
 }
+
 
 
 

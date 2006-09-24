@@ -17,7 +17,13 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
- 
+
+enum display_mode { lcd_char_16_2 = 0, lcd_char_20_2, lcd_graph};
+const enum display_mode my_display_type = lcd_char_16_2;
+
+enum display_page { time_current_best_last_sgn_cmp = 0};
+enum display_page my_display_page = time_current_best_last_sgn_cmp;
+
 inline void display_openchrono_center(void) {
    lcd_clrscr();
  //lcd_EcrisAuCentre("12345678901234567890",0);
@@ -42,10 +48,9 @@ inline void display_openchrono(void) {
 }
 
 
-inline void display_time(void)
+inline void display_time_char_20_2(void)
 {
     // clear screen
-    // TO DO
     lcd_clrscr();
 
     // line 1
@@ -65,28 +70,80 @@ inline void display_time(void)
     printf(" ");
 
     // ZONE 4
-    if( compare_time(&current_time,&last_time) == 0 )
+    if( compare_time(&last_time,&before_last_time) == 0 )
     {
         printf("LST=");
     }
-    if( compare_time(&current_time,&last_time) == 1 )
+    if( compare_time(&last_time,&before_last_time) == 1 )
     {
         printf("LST-");
     }
-    if( compare_time(&current_time,&last_time) == 2 )
+    if( compare_time(&last_time,&before_last_time) == 2 )
     {
-        printf("LST-");
+        printf("LST+");
     }
 
-    if( compare_time(&current_time,&best_time) == 0 )
+    printf(" ");
+
+    if( compare_time(&last_time,&best_time) == 0 )
     {
         printf("BST=");
     }
-    if( compare_time(&current_time,&best_time) == 1 )
+    if( compare_time(&last_time,&best_time) == 1 )
     {
         printf("BST-");
     }
-    if( compare_time(&current_time,&best_time) == 2 )
+    if( compare_time(&last_time,&best_time) == 2 )
+    {
+        printf("BST+");
+    }
+
+}
+
+inline void display_time_char_16_2(void)
+{
+    // clear screen
+    lcd_clrscr();
+
+    // line 1
+
+    print_time_m_ss_xxx(&current_time); // ZONE 1
+
+    //printf(" ");
+
+    print_time_m_ss_xxx(&best_time); // ZONE 2
+
+
+    printf("\n");
+    // line 2
+
+    print_time_m_ss_xxx(&last_time); // ZONE 3
+
+    //printf(" ");
+
+    // ZONE 4
+    if( compare_time(&last_time,&before_last_time) == 0 )
+    {
+        printf("LST=");
+    }
+    if( compare_time(&last_time,&before_last_time) == 1 )
+    {
+        printf("LST-");
+    }
+    if( compare_time(&last_time,&before_last_time) == 2 )
+    {
+        printf("LST+");
+    }
+
+    if( compare_time(&last_time,&best_time) == 0 )
+    {
+        printf("BST=");
+    }
+    if( compare_time(&last_time,&best_time) == 1 )
+    {
+        printf("BST-");
+    }
+    if( compare_time(&last_time,&best_time) == 2 )
     {
         printf("BST+");
     }
@@ -95,8 +152,17 @@ inline void display_time(void)
 
 void display(void) {
    //display_openchrono_center();
-   display_time();
+
+   //if ( my_display_type == lcd_char_20_2 )
+   //{
+     if ( my_display_page == time_current_best_last_sgn_cmp )
+     {
+       display_time_char_16_2();
+     }
+   //}
+
 }
+
 
 
 

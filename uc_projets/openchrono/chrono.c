@@ -17,14 +17,14 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
- 
+
 /*
  * start or stop chronometer
  */
 inline void StartStopChronometer(void)
 {
     beep(1,100);
-    led_alarm(3,50);
+    led_alarm(1,50);  // led_alarm(3,50) (à diminuer pour ne pas ralentir traitement interruption)
     if (running_chronometer)
     {
         //running_chronometer = false; // false = 0
@@ -39,6 +39,7 @@ inline void StartStopChronometer(void)
             // better time them the last time
             led_alarm(1,50);
         }
+        copy_time(&last_time,&before_last_time);
         copy_time(&current_time,&last_time);
         init_time(&current_time);
     }
@@ -61,4 +62,5 @@ void TestRunningChronometer(void)
         _delay_ms(100);
     }
 }
+
 

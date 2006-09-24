@@ -19,7 +19,7 @@ voir docs dans /media/graver/auto/sports_mecaniques/kart/alfano
 "Caractéristques : - Temps au tour / meilleur temps - Configurable jusquÇà 6 partiels - Comparateur de temps (sur le meilleur temps, sur le temps précédent, sur le temps cible « configurable ») - RPM en lecture directe, Shift Lights et Bar Graph - 2 entrées de température (De 0°C à 1.500°C: Eau, Culasse, Bougie, Echappements, etcÄ) - Configuration de la température : Maximum, minimum pour chaque tour avec alarmes luminescentes - Vitesse (Configurable avec ou sans le capteur de roue) - Rapport de boîte jusqu'à 9 vitesses - 8 compteurs configurables - Simulation dÇun tour en temps réel, pendant 15 Minutes - Force G Latérale et Longitudinale - Fonctionne en infrarouge pour les pistes non équippées de la bande magnétique - Données de téléchargement à un PC par l'intermédiaire de stylo infrarouge USB - Système up-gradable Dimension du système : 123 x 104 mm Dimension écran : 85 x 49 mm Poids : +/- 425 Gr Batteries : 2 x AA "
 
 
-Fonction à suuporter impérativement
+Fonction à supporter impérativement
 ===================================
 temps du tour
 meilleur temps
@@ -280,6 +280,9 @@ TO DO
 projet temporairement cassé (changement de uc ATmega8535 vers ATmega128)
 faire modifications pour les pb d'interruptions
 modif conv analogique->numérique
+
+traiter les signaux visuels (led_alarm) et auditif (beep) en dehors des interruptions
+(afin de ne pas ralentir le chrono)
 
 
 
