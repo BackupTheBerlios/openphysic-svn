@@ -6,6 +6,9 @@
 
 \setcounter{numexercice}{0}
 
+%\renewcommand{\tabularx}[1]{>{\centering}m{#1}} 
+
+%\newcommand{\tabularxc}[1]{\tabularx{>{\centering}m{#1}}}
 
 \vressort{3}
 
@@ -14,7 +17,7 @@
 \item De quoi est composé un atome ?
 \item Que signifie les lettres $A$, $Z$ et $X$ dans la représentation \noyau{X}{Z}{A} ?
 \item Comment trouve-t-on le nombre de neutrons d'un atome de l'élément précédent.
-\item Si un atome a $5$ protons combien-a-t-il d'électrons ? Pourquoi ?
+\item Si un atome a $5$ protons, combien-a-t-il d'électrons ? Pourquoi ?
 \item Qu'est-ce qui caractérise un élément chimique ?
 \item Qu'est-ce qu'un isotope ?
 \end{enumerate}
@@ -28,18 +31,29 @@
 
 \begin{exercice}{Composition des atomes}\\
 En vous aidant du tableau périodique des éléments,
-compléter le tableau suivant
+compléter le tableau suivant :
 
+\medskip
 
-\begin{tabularx}{\linewidth}{|>{\centering}X|>{\centering}X|>{\centering}X|>{\centering}X|>{\centering}X|}
+\noindent
+\begin{tabularx}{\textwidth}{|>{\centering}X|>{\centering}X|>{\centering}X|>{\centering}X|>{\centering}X|}
+%\begin{tabularx}{\linewidth}{XXXXX}
 \hline
-\emph{nom}       & \emph{symbole}  & \emph{protons} & \emph{neutrons} & \emph{nucléons} \tbnl
+\emph{nom}       & \emph{symbole}  & \emph{protons} & \emph{neutrons}
+& \emph{nucléons} \tbnl
+\rule[-0.7cm]{0cm}{1cm}
 carbone   & \noyau{C}{6}{14}   &         &          &          \tbnl
+\rule[-0.7cm]{0cm}{1cm}
 fluor     & \noyau{F}{9}{19}   &         &          &          \tbnl
+\rule[-0.7cm]{0cm}{1cm}
 sodium    & \noyau{Na}{11}{23} &         &          &          \tbnl
+\rule[-0.7cm]{0cm}{1cm}
 oxygène   & \noyau{O}{8}{16}   &         &          &          \tbnl
+\rule[-0.7cm]{0cm}{1cm}
 hydrogène &          &         & 0        &          \tbnl
+\rule[-0.7cm]{0cm}{1cm}
           & \noyau{Cl}{17}{35} &         &          &          \tbnl
+\rule[-0.7cm]{0cm}{1cm}
           &          & 8       &          & 16       \tbnl
 \end{tabularx}
 \end{exercice}
@@ -51,7 +65,7 @@ hydrogène &          &         & 0        &          \tbnl
 \begin{exercice}{Masse d'un atome de carbone}\\
 Soit le carbone $12$ noté \noyau{C}{6}{14}.
 \begin{enumerate}
-\item L'élément carbone peut-il avoir $5$ protons ?
+\item L'élément carbone peut-il avoir $5$ protons ? Pourquoi ?
 \item Calculer la masse du noyau d'un atome de carbone $12$
 sachant que la masse d'un nucléon est $m_n = 1,67.10^{-27}~kg$
 \item Calculer la masse des électrons de l'atome de carbone 12
@@ -65,7 +79,7 @@ Que concluez-vous ?
 
 \newpage
 
-\vressort{3}
+\vressort{1}
 
 \begin{exercice}{Couches électroniques}\\
 Dans l'état le plus stable de l'atome, appelé état fondamental,
@@ -78,11 +92,16 @@ Lorsqu'une couche est pleine, ou encore saturée, on passe à la suivante.
 La dernière couche occupée est appelée couche externe.\\
 Toutes les autres sont appelées couches internes.
 
-\begin{tabularx}{\linewidth}{|>{\centering}X|>{\centering}X|>{\centering}X|>{\centering}X|}
+\medskip
+
+\noindent
+\begin{tabularx}{\textwidth}{|>{\centering}X|>{\centering}X|>{\centering}X|>{\centering}X|}
 \hline
 \emph{Symbole de la couche}       & $K$ & $L$ & $M$  \tbnl
 \emph{Nombre maximal d'électrons} & $2$ & $8$ & $18$ \tbnl
 \end{tabularx}
+
+\medskip
 
 Ainsi, par exemple, l'atome de chlore ($Z=17$) a la configuration électronique :
 $(K)^2(L)^8(M)^{7}$.
@@ -90,13 +109,14 @@ $(K)^2(L)^8(M)^{7}$.
 \begin{enumerate}
 \item Indiquez le nombre d'électrons et donnez la configuration des atomes suivants :
   \begin{enumerate}
-  \item $H 1$
-  \item $O 8$
-  \item $C 6$
-  \item $Ne 10$
+  \item \noyau{H}{1}{}
+  \item \noyau{O}{8}{}
+  \item \noyau{C}{6}{}
+  \item \noyau{Ne}{10}{}
   \end{enumerate}
 \item Parmi les ions ci-desssous, précisez s'il s'agit d'anions ou de cations.
-Indiquez le nombre d'électrons donnez la configuration électronique des ions suivants :
+Indiquez le nombre d'électrons et donnez la configuration électronique
+des ions suivants :
   \begin{enumerate}
   \item $Be^{2+}$ ($Z=4$)
   \item $Al^{3+}$ ($Z=13$)
@@ -108,7 +128,7 @@ Indiquez le nombre d'électrons donnez la configuration électronique des ions sui
 \end{exercice}
 
 
-\vressort{3}
+\vressort{5}
 
 
 \begin{exercice}{Charge d'un atome de Zinc}%\\
@@ -118,13 +138,14 @@ Indiquez le nombre d'électrons donnez la configuration électronique des ions sui
 \item Calculer la charge totale des protons
 sachant qu'un proton a pour charge $e = 1,6.10^{-19}~C$.
 \item Calculer la charge totale des électrons
-sachant qu'un proton a pour charge $-e = -1,6.10^{-19}~C$.
+sachant qu'un électron a pour charge $-e = -1,6.10^{-19}~C$.
 \item En déduire la charge de l'atome de Zinc.
 \item Ce résultat est-il identique pour tous les atomes ?
-\item A l'issu d'une réaction dite d'oxydation un atome de zinc se transforme en un ion $Zn^{2+}$.
+\item A l'issue d'une réaction dite d'oxydation, un atome de zinc $Zn$
+  se transforme en un ion $Zn^{2+}$.
   \begin{enumerate}
   \item Donnez l'équation de cette réaction
-  (en faisant intervenir un ou plusieurs électrons notés $e^-$.
+  (en faisant intervenir un ou plusieurs électrons notés $e^-$).
   \item Indiquez la charge (en coulomb $C$) de cet ion.
   \end{enumerate}
 \end{enumerate}
