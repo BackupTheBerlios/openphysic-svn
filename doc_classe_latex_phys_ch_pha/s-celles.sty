@@ -435,7 +435,11 @@
 
 \usepackage{tabularx}
 
-\renewcommand\tabularxcolumn[1]{>{\centering}m{#1}} % centré verticalement
+%\renewcommand\tabularxcolumn[1]{>{\centering}m{#1}} % centré
+                                % verticalement (absolu)
+
+% Pour un centrage au niveau de la ligne de base
+\renewcommand\tabularxcolumn[1]{>{\centering}p{#1}} 
 
 % exemple
 % \begin{tabularx}{\linewidth}{|X|X|X|X|X|X|}
@@ -449,6 +453,28 @@
 %         &       &       &       &       & \tbnl
 % \end{tabularx}
 
+\newcommand*\ecartement{2} % écartement lignes de tableau
+
+\newcommand*\mystrut{%
+\rule[(-0.5\ht\@arstrutbox-0.5\dp\@arstrutbox)*\ecartement+\dp\@arstrutbox]
+       {0cm}{(\ht\@arstrutbox+\dp\@arstrutbox)*\ecartement}%
+} 
+
+% \begin{tabularx}{\linewidth}{|>{\mystrut}X|X|X|X|X|}
+% \hline
+% % multicolumn pour faire disparaître le \mystrut
+% \multicolumn{1}{|X|}{\emph{nom}} & \emph{symbole}  &
+% \emph{protons} & \emph{neutrons} & \emph{nucléons} \tbnl
+% carbone   & \noyau{C}{6}{14}   &   &   &    \tbnl
+% fluor     & \noyau{F}{9}{19}   &   &   &    \tbnl
+% sodium    & \noyau{Na}{11}{23} &   &   &    \tbnl
+% oxygène   & \noyau{O}{8}{16}   &   &   &    \tbnl
+% hydrogène &                    &   & 0 &    \tbnl
+%           & \noyau{Cl}{17}{35} &   &   &    \tbnl
+%           &                    & 8 &   & 16 \tbnl
+% \end{tabularx}
+
+ 
 
 \usepackage{array}
 
