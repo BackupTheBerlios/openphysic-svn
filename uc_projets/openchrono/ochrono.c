@@ -64,6 +64,8 @@ static FILE lcdout = FDEV_SETUP_STREAM( (void *)lcd_putc, NULL,_FDEV_SETUP_WRITE
 #define CHR_DISPLAY 3 // display 1/1000  = 1/(10^3)
 
 uint8_t running_chronometer = false; // 0 false ; -1 true
+uint8_t n_led_alarm = 0;
+uint8_t n_beep_alarm = 0;
 
 #include "time_op.c"
 #include "ledmeter.c"
@@ -250,6 +252,13 @@ void loop(void)
     // display (LCD)
     display();
 
+    // alarm are in the main loop
+    // because in the interrupt
+    // it could make the counter
+    // count slower...
+    //do_led_alarm();
+    //do_beep_alarm();
+
     /*
       _delay_ms(500);
 
@@ -305,6 +314,7 @@ SIGNAL(SIG_OUTPUT_COMPARE1A)
 {
     inc_time(&current_time);
 }
+
 
 
 

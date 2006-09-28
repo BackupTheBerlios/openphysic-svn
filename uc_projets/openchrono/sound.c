@@ -17,7 +17,7 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
- 
+
 /*
  * send a sound (on or more beep(s))
  */
@@ -32,5 +32,21 @@ void beep(uint8_t n, double delay)
         {
             _delay_ms(delay);
         }
+    }
+}
+
+void set_beep_alarm(uint8_t n) {
+    n_beep_alarm = n;
+}
+
+void add_beep_alarm(uint8_t n) {
+    n_beep_alarm += n;
+}
+
+
+void do_beep_alarm(void) {
+    while (n_beep_alarm > 0) {
+        // TO DO
+        _delay_ms(50);
     }
 }

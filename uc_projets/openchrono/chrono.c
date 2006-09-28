@@ -23,8 +23,11 @@
  */
 inline void StartStopChronometer(void)
 {
-    beep(1,100);
-    led_alarm(1,50);  // led_alarm(3,50) (à diminuer pour ne pas ralentir traitement interruption)
+    add_beep_alarm(1);
+    add_led_alarm(1);
+
+    //beep(1,100);
+    //led_alarm(1,50);  // led_alarm(3,50) (à diminuer pour ne pas ralentir traitement interruption)
     if (running_chronometer)
     {
         //running_chronometer = false; // false = 0
@@ -32,12 +35,16 @@ inline void StartStopChronometer(void)
         {
             // better time them the best time
             copy_time(&current_time,&best_time);
-            led_alarm(3,50);
+            //led_alarm(3,50);
+            add_led_alarm(3);
+            add_beep_alarm(3);
         }
         if (compare_time(&current_time,&last_time) == 1)
         {
             // better time them the last time
-            led_alarm(1,50);
+            //led_alarm(1,50);
+            add_led_alarm(1);
+            add_beep_alarm(1);
         }
         copy_time(&last_time,&before_last_time);
         copy_time(&current_time,&last_time);
@@ -62,5 +69,6 @@ void TestRunningChronometer(void)
         _delay_ms(100);
     }
 }
+
 
 

@@ -17,7 +17,7 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
- 
+
 /*
  * convert from analog to digital (10 bits)
  */
@@ -30,8 +30,7 @@ unsigned short adcConvert10bit(uint8_t ch)
 
     //while(!a2dCompleteFlag);				// wait until conversion complete
     //while( bit_is_clear(ADCSR, ADIF) );		// wait until conversion complete
-    while( bit_is_set(ADCSRA, ADSC) )
-        ;		// wait until conversion complete
+    while( bit_is_set(ADCSRA, ADSC) );		// wait until conversion complete
 
     // CAUTION: MUST READ ADCL BEFORE ADCH!!!
     return ((ADCL) | ((ADCH)<<8));	// read ADC (full 10 bits);
@@ -46,3 +45,4 @@ unsigned char adcConvert8bit(unsigned char ch)
     // do 10-bit conversion and return highest 8 bits
     return adcConvert10bit(ch)>>2;			// return ADC MSB byte
 }
+

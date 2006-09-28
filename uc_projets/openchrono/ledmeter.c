@@ -17,7 +17,7 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
- 
+
 #define Nleds 8  // number of leds connected to the uC
 
 // 1=off
@@ -178,5 +178,26 @@ void show_percent(double p)
     n = roundp(p / 100.0 * Nleds); // TO FIX (math.h ceil floor ... round en Java !)
     // TO FIX : +0.5 is a very dirty hack
     switch_on_min_dels(n);
+}
+
+
+void set_led_alarm(uint8_t n) {
+    n_led_alarm = n;
+}
+
+void add_led_alarm(uint8_t n) {
+    n_led_alarm += n;
+}
+
+
+void do_led_alarm(void) {
+    while (n_led_alarm > 0) {
+        n_led_alarm--;
+        switch_off_all_leds();
+        _delay_ms(100);
+        switch_on_all_leds();
+        _delay_ms(100);
+    }
+    switch_off_all_leds();
 }
 
