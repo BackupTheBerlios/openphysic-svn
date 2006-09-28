@@ -46,7 +46,9 @@ void add_beep_alarm(uint8_t n) {
 
 void do_beep_alarm(void) {
     while (n_beep_alarm > 0) {
+        n_beep_alarm--;
         // TO DO
         _delay_ms(50);
     }
 }
+

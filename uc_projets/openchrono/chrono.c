@@ -30,24 +30,27 @@ inline void StartStopChronometer(void)
     //led_alarm(1,50);  // led_alarm(3,50) (à diminuer pour ne pas ralentir traitement interruption)
     if (running_chronometer)
     {
+        //copy_time(&src_time, &dest_time);
+        copy_time(&last_time, &before_last_time);
+        copy_time(&current_time, &last_time);
+
         //running_chronometer = false; // false = 0
-        if (compare_time(&current_time,&best_time) == 1)
+        if (compare_time(&last_time, &best_time) == 1) // meilleur temps
         {
             // better time them the best time
-            copy_time(&current_time,&best_time);
+            copy_time(&last_time, &best_time);
             //led_alarm(3,50);
             add_led_alarm(3);
             add_beep_alarm(3);
         }
-        if (compare_time(&current_time,&last_time) == 1)
+        if (compare_time(&last_time, &before_last_time) == 1) // meilleur que le dernier tour
         {
             // better time them the last time
             //led_alarm(1,50);
             add_led_alarm(1);
             add_beep_alarm(1);
         }
-        copy_time(&last_time,&before_last_time);
-        copy_time(&current_time,&last_time);
+
         init_time(&current_time);
     }
     else
@@ -69,6 +72,7 @@ void TestRunningChronometer(void)
         _delay_ms(100);
     }
 }
+
 
 
 

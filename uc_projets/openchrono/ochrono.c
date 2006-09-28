@@ -256,7 +256,7 @@ void loop(void)
     // because in the interrupt
     // it could make the counter
     // count slower...
-    //do_led_alarm();
+    //do_led_alarm(); // TODO : Uncomment this for RELEASE
     //do_beep_alarm();
 
     /*
@@ -314,6 +314,7 @@ SIGNAL(SIG_OUTPUT_COMPARE1A)
 {
     inc_time(&current_time);
 }
+
 
 
 
