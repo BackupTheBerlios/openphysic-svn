@@ -1,0 +1,45 @@
+\documentclass[a4paper]{article}
+\usepackage{pstricks}
+\usepackage{multido}
+\usepackage{lscape}
+\pagestyle{empty}
+\SpecialCoor
+\begin{document}
+\begin{landscape}
+%\hspace*{\stretch{1}}
+%\vspace*{\stretch{1}}
+%xyz
+
+
+%\vspace*{3cm}
+\hspace*{-3cm}
+
+\begin{pspicture}(-12,-2)(12,2)
+%\psgrid[subgriddiv=1,griddots=5,gridlabels=0pt]
+%\psset{xunit=1} \psset{yunit=1}
+% contour règle
+\psline(-10.5,1.5)(10.5,1.5)
+\psline(-10.5,-1.5)(10.5,-1.5)
+\psline(-10.5,-1.5)(-10.5,1.5)
+\psline(10.5,-1.5)(10.5,1.5)
+% graduations cm
+\multido{\n=-10+1}{21}{%
+ \psline[linewidth=.01](\n,-1.5)(\n,-1)
+ \psline[linewidth=.01](\n,1.5)(\n,1)
+}
+\multido{\n=-10+0.1}{201}{%
+ \psline[linewidth=.01](\n,-1.5)(\n,-1.2)
+ \psline[linewidth=.01](\n,1.5)(\n,1.2)
+}
+%\multido{\n=-10+1}{21}{}
+% graduations mm
+
+% nombres
+
+% poigné
+
+\end{pspicture}
+%\vspace*{\stretch{1}}
+%\hspace*{\stretch{1}}
+\end{landscape}
+\end{document}
