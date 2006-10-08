@@ -1,45 +1,47 @@
 \documentclass[a4paper]{article}
 \usepackage{pstricks}
 \usepackage{multido}
-\usepackage{lscape}
+
 \pagestyle{empty}
 \SpecialCoor
 \begin{document}
-\begin{landscape}
-%\hspace*{\stretch{1}}
-%\vspace*{\stretch{1}}
-%xyz
 
+\vspace*{-4cm}
 
-%\vspace*{3cm}
-\hspace*{-3cm}
-
-\begin{pspicture}(-12,-2)(12,2)
+\begin{center}
+\begin{pspicture}(-2,-12)(2,12)
 %\psgrid[subgriddiv=1,griddots=5,gridlabels=0pt]
 %\psset{xunit=1} \psset{yunit=1}
 % contour règle
-\psline(-10.5,1.5)(10.5,1.5)
-\psline(-10.5,-1.5)(10.5,-1.5)
-\psline(-10.5,-1.5)(-10.5,1.5)
-\psline(10.5,-1.5)(10.5,1.5)
+\psline(1.5,-11)(1.5,11)
+\psline(-1.5,-11)(-1.5,11)
+\psline(-1.5,-11)(1.5,-11)
+\psline(-1.5,11)(1.5,11)
 % graduations cm
 \multido{\n=-10+1}{21}{%
- \psline[linewidth=.01](\n,-1.5)(\n,-1)
- \psline[linewidth=.01](\n,1.5)(\n,1)
+ \psline[linewidth=.01](-1.5,\n)(-1,\n)
+ \psline[linewidth=.01](1.5,\n)(1,\n)
 }
-\multido{\n=-10+0.1}{201}{%
- \psline[linewidth=.01](\n,-1.5)(\n,-1.2)
- \psline[linewidth=.01](\n,1.5)(\n,1.2)
-}
-%\multido{\n=-10+1}{21}{}
+
 % graduations mm
+\multido{\n=-10+0.1}{201}{%
+ \psline[linewidth=.01](-1.5,\n)(-1.2,\n)
+ \psline[linewidth=.01](1.5,\n)(1.2,\n)
+}
+
+% graduations 1/2 mm
+\multido{\n=-10+0.05}{200}{%
+ \psline[linewidth=.01](-1.5,\n)(-1.35,\n)
+ \psline[linewidth=.01](-1.5,-\n)(-1.35,-\n)
+}
 
 % nombres
 
 % poigné
 
+% marque
+
 \end{pspicture}
-%\vspace*{\stretch{1}}
-%\hspace*{\stretch{1}}
-\end{landscape}
+\end{center}
+
 \end{document}
