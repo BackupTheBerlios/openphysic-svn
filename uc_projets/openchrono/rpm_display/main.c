@@ -21,8 +21,18 @@ inline uint8_t roundp(double n)
 #define Bar_Height_Min 20 /* hauteur mini de la barre */
 #define Bar_Height_Max 100 /* hauteur maxi de la barre */
 
-enum rpm_display_mode { rpm_constant = 0, rpm_linear_down_inc};
-const enum rpm_display_mode my_rpm_display_type = rpm_linear_down_inc;
+#define Bar_Height_Mid 50 /* hauteur de la barre du milieu*/
+/*
+double a;
+double b;
+double c;
+c = (double) Bar_Height_Min;
+b = 6.388888;
+a = 0.277777;
+*/
+
+enum rpm_display_mode { rpm_constant = 0, rpm_linear_down_inc, rpm_parabolic_down_inc};
+const enum rpm_display_mode my_rpm_display_type = rpm_parabolic_down_inc;
 
 double Npc; /* Pourcentage par rapport au max de l'afficheur */
 
@@ -51,6 +61,13 @@ static gboolean realisation( GtkWidget *aire_de_dessin, GdkEventConfigure *event
 			  Bar_X_Space + i * (Bar_Width + Bar_X_Space) , Vertical_Offset,
 			  Bar_Width, Bar_Height_Min + (Bar_Height_Max - Bar_Height_Min)/N_Bar*i );
     }
+    if ( my_rpm_display_type == rpm_parabolic_down_inc ) {
+      gdk_draw_rectangle( pixmap, aire_de_dessin->style->black_gc, FALSE,
+			  Bar_X_Space + i * (Bar_Width + Bar_X_Space) , Vertical_Offset,
+			  Bar_Width, 0.77777*i*i + 1.88888*i + 20 );
+      /* 0.77777*i*i + 1.88888*i + 20 */
+      /* 0.27777*i*i + 6.38888*i + 20 */
+    }
   }
 
   /* barres eclairees */
@@ -67,6 +84,11 @@ static gboolean realisation( GtkWidget *aire_de_dessin, GdkEventConfigure *event
       gdk_draw_rectangle( pixmap, aire_de_dessin->style->black_gc, TRUE,
 			  Bar_X_Space + i * (Bar_Width + Bar_X_Space) , Vertical_Offset,
 			  Bar_Width, Bar_Height_Min + (Bar_Height_Max - Bar_Height_Min)/N_Bar*i );
+    }
+    if ( my_rpm_display_type == rpm_parabolic_down_inc ) {
+      gdk_draw_rectangle( pixmap, aire_de_dessin->style->black_gc, TRUE,
+			  Bar_X_Space + i * (Bar_Width + Bar_X_Space) , Vertical_Offset,
+			  Bar_Width, 0.77777*i*i + 1.88888*i + 20 );
     }
   }
 
