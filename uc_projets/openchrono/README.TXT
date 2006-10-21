@@ -34,7 +34,14 @@ alphanumérique : bien supporté par WinAVR et VMLAB HD44780 http://www.nongnu.org
 mais
 graphique car plus joli et plus facile à faire évoluer...
 
-si LCD alpha : affichage temps
+si LCD alpha
+
+19 colonnes ; 2 lignes
+
+01234567890123456789012345
+
+PAGE TEMPS
+01234567890123456789012345
 
 01:30:123 01:28:540
 01:29:123 LST+1:000
@@ -51,8 +58,21 @@ ZONE4
  ex : BST= LST+ (sans calcul de la différence de temps)
  ex : BST=
 
+PAGE RESULT SUM
+01234567890123456789012345
 
-19 colonnes ; 2 lignes
+01 01:30:123 L+ B+
+02 01:30:123 L+ B+
+
+PAGE RESULT COMP LAST
+01 01:30:123L+1:000
+02 01:30:123L+1:000
+
+PAGE RESULT COMP BEST
+01 01:30:123B+1:000
+02 01:30:123B+1:000
+
+
 
 Attention on trouve pas mal de LCD alphanumérique en 16x2 !!! mais des 20x2 ou 20x3 ???
 
@@ -200,6 +220,8 @@ Convertisseur analogique-numérique intégré au microcontrôleur
 
 Accéléromètre
 -------------
+Mesure de l'accélération latérale (G/D)
+Mesure de l'accélération/décélération (AV/AR)
 Choix final :
 
 
@@ -208,8 +230,17 @@ Convertisseur analogique-numérique intégré au microcontrôleur
 
 Fonctionnalités supplémentaires (pas implanté dans un premier temps)
 ===============================
-WIFI (pour envoyer les temps)
-clé USB (pour récupérer les données) data-logger ou écriture sur carte MMC, SD ou CF
+Temps partiels
+data-logger
+ temps par tours
+ temps intermédiaires
+ RPM=f(t)
+ T°1=f(t)
+ T°2=f(t)
+ acc_frontale=f(t)
+ acc_laterale=f(t) 
+WIFI (pour envoyer les temps) ou Infra-Rouge
+clé USB (pour récupérer les données) ou écriture sur carte MMC, SD ou CF
 coupure à distance du kart
 reflashage facile du microcontroleur voir In Situ Programming ISP... par port série mais l'idéal serait par USB... voir si c'est possible !!!)
 

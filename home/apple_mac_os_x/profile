@@ -25,9 +25,8 @@ export PATH=$PATH:/sw/bin
 # others
 export PATH=$PATH:/usr/local/bin
 
-
-
-export PATH
+# Crossover apps
+export PATH=$PATH:/Users/scls/Library/Application\ Support/CrossOver/Bottles/win2000/drive_c/WinAVR/bin/
 
 
 # BerliOS SVN - OpenPhysic
