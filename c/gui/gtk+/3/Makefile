@@ -1,2 +1,7 @@
+input=main
+
 all:
-	gcc main.c -o main `pkg-config --cflags --libs gtk+-2.0`
+	gcc $(input).c -o $(input) `pkg-config --cflags --libs gtk+-2.0`
+
+clean:
+	$(RM) $(input)
