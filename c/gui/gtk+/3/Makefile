@@ -1,7 +1,8 @@
 input=main
+CC=gcc -Wall -W -ansi -pedantic
 
 all:
-	gcc $(input).c -o $(input) `pkg-config --cflags --libs gtk+-2.0`
+	$(CC) $(input).c -o $(input) `pkg-config --cflags --libs gtk+-2.0`
 
 clean:
 	$(RM) $(input)
