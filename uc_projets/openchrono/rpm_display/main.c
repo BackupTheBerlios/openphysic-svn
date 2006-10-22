@@ -21,15 +21,7 @@ inline uint8_t roundp(double n)
 #define Bar_Height_Min 20 /* hauteur mini de la barre */
 #define Bar_Height_Max 100 /* hauteur maxi de la barre */
 
-#define Bar_Height_Mid 50 /* hauteur de la barre du milieu*/
-/*
-double a;
-double b;
-double c;
-c = (double) Bar_Height_Min;
-b = 6.388888;
-a = 0.277777;
-*/
+#define Bar_Height_Mid 35 /* hauteur de la barre du milieu*/
 
 enum rpm_display_mode { rpm_constant = 0, rpm_linear_down_inc, rpm_parabolic_down_inc};
 const enum rpm_display_mode my_rpm_display_type = rpm_parabolic_down_inc;
@@ -48,6 +40,16 @@ static gboolean realisation( GtkWidget *aire_de_dessin, GdkEventConfigure *event
   gdk_draw_rectangle( pixmap, aire_de_dessin->style->white_gc, TRUE, 0, 0,
 		      aire_de_dessin->allocation.width, aire_de_dessin->allocation.height );
 
+  /* Taille de reference */
+  /*
+  gdk_draw_rectangle( pixmap, aire_de_dessin->style->black_gc, TRUE,
+		      Bar_X_Space + (N_Bar+1) * (Bar_Width + Bar_X_Space) , Vertical_Offset,
+		      Bar_Width, Bar_Height_Min );
+  gdk_draw_rectangle( pixmap, aire_de_dessin->style->black_gc, TRUE,
+		      Bar_X_Space + (N_Bar+2) * (Bar_Width + Bar_X_Space) , Vertical_Offset,
+		      Bar_Width, Bar_Height_Max );
+  */
+
   /* barres non eclairees */
   uint8_t i;
   for ( i=0 ; i < N_Bar ; i++ ) {
@@ -64,8 +66,18 @@ static gboolean realisation( GtkWidget *aire_de_dessin, GdkEventConfigure *event
     if ( my_rpm_display_type == rpm_parabolic_down_inc ) {
       gdk_draw_rectangle( pixmap, aire_de_dessin->style->black_gc, FALSE,
 			  Bar_X_Space + i * (Bar_Width + Bar_X_Space) , Vertical_Offset,
-			  Bar_Width, 0.77777*pow(i,2) + 1.88888*i + 20 );
-      /* 0.77777*i*i + 1.88888*i + 20 */
+			  Bar_Width,
+			  (((Bar_Height_Max-Bar_Height_Min)*(N_Bar/2-1)-(Bar_Height_Mid-Bar_Height_Min)*(N_Bar-1))
+			   /(pow((N_Bar-1),2)*(N_Bar/2-1)-(pow(N_Bar/2-1,2)*(N_Bar-1))))*pow(i,2)
+			  + (((Bar_Height_Max-Bar_Height_Min)*pow(N_Bar/2-1,2)-(Bar_Height_Mid-Bar_Height_Min)*pow(N_Bar-1,2))
+			     /((N_Bar-1)*pow(N_Bar/2-1,2)-(N_Bar/2-1)*pow(N_Bar-1,2)))*i
+			  + Bar_Height_Min );
+      /*
+      gdk_draw_rectangle( pixmap, aire_de_dessin->style->black_gc, FALSE,
+			  Bar_X_Space + i * (Bar_Width + Bar_X_Space) , Vertical_Offset,
+			  Bar_Width, param*pow(i,2) + ((Bar_Height_Max-Bar_Height_Min)/(N_Bar-1)-param*(N_Bar-1))*i + 20 );
+      */
+      /* 0.77777*pow(i,2) + 1.88888*i + 20 */
       /* 0.27777*i*i + 6.38888*i + 20 */
     }
   }
@@ -88,7 +100,12 @@ static gboolean realisation( GtkWidget *aire_de_dessin, GdkEventConfigure *event
     if ( my_rpm_display_type == rpm_parabolic_down_inc ) {
       gdk_draw_rectangle( pixmap, aire_de_dessin->style->black_gc, TRUE,
 			  Bar_X_Space + i * (Bar_Width + Bar_X_Space) , Vertical_Offset,
-			  Bar_Width, 0.77777*pow(i,2) + 1.88888*i + 20 );
+			  Bar_Width,
+			  (((Bar_Height_Max-Bar_Height_Min)*(N_Bar/2-1)-(Bar_Height_Mid-Bar_Height_Min)*(N_Bar-1))
+			   /(pow((N_Bar-1),2)*(N_Bar/2-1)-(pow(N_Bar/2-1,2)*(N_Bar-1))))*pow(i,2)
+			  + (((Bar_Height_Max-Bar_Height_Min)*pow(N_Bar/2-1,2)-(Bar_Height_Mid-Bar_Height_Min)*pow(N_Bar-1,2))
+			     /((N_Bar-1)*pow(N_Bar/2-1,2)-(N_Bar/2-1)*pow(N_Bar-1,2)))*i
+			  + Bar_Height_Min );
     }
   }
 
