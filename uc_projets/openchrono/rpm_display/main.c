@@ -64,7 +64,7 @@ static gboolean realisation( GtkWidget *aire_de_dessin, GdkEventConfigure *event
     if ( my_rpm_display_type == rpm_parabolic_down_inc ) {
       gdk_draw_rectangle( pixmap, aire_de_dessin->style->black_gc, FALSE,
 			  Bar_X_Space + i * (Bar_Width + Bar_X_Space) , Vertical_Offset,
-			  Bar_Width, 0.77777*i*i + 1.88888*i + 20 );
+			  Bar_Width, 0.77777*pow(i,2) + 1.88888*i + 20 );
       /* 0.77777*i*i + 1.88888*i + 20 */
       /* 0.27777*i*i + 6.38888*i + 20 */
     }
@@ -88,7 +88,7 @@ static gboolean realisation( GtkWidget *aire_de_dessin, GdkEventConfigure *event
     if ( my_rpm_display_type == rpm_parabolic_down_inc ) {
       gdk_draw_rectangle( pixmap, aire_de_dessin->style->black_gc, TRUE,
 			  Bar_X_Space + i * (Bar_Width + Bar_X_Space) , Vertical_Offset,
-			  Bar_Width, 0.77777*i*i + 1.88888*i + 20 );
+			  Bar_Width, 0.77777*pow(i,2) + 1.88888*i + 20 );
     }
   }
 
