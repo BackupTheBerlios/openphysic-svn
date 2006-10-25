@@ -5,3 +5,6 @@ all:
 
 clean:
 	$(RM) *~ *.swf
+
+run:
+	firefox index.htm
