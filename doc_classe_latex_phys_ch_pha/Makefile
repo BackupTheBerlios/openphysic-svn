@@ -6,6 +6,8 @@ dvi_viewer=xdvi
 ps_viewer=gv
 pdf_viewer=gv #acroread #xpdf
 
+ps2pdf=ps2pdf -sPAPERSIZE=a4
+
 do=view-ps
 
 # make only
@@ -44,7 +46,7 @@ $(input).ps: $(input).dvi
 	dvips $< -o $@
 
 $(input)_dvips.pdf: $(input).ps
-	ps2pdf $< $@
+	$(ps2pdf) $< $@
 	cp $(input)_dvips.pdf $(input).pdf
 
 view-dvi: $(input).dvi
@@ -124,7 +126,7 @@ select: $(input).ps
 	#$ make select page=39
 	page=1
 	psselect -p$(page) $(input).ps $(input)_select.ps
-	ps2pdf $(input)_select.ps $(input)_select.pdf
+	$(ps2pdf) $(input)_select.ps $(input)_select.pdf
 	$(pdf_viewer) $(input)_select.pdf &
 
 clean_select:
@@ -174,7 +176,7 @@ only-pdf2: only_suite_2.pdf
 	$(pdf_viewer) $< &
 
 only.pdf: only.ps
-	ps2pdf $< $@
+	$(ps2pdf) $< $@
 
 only_suite_2.pdf: only.pdf
 	pdfnup --nup 2 $< --orient landscape --outfile $@
@@ -222,7 +224,7 @@ mini-pdf2: mini_suite_2.pdf
 	$(pdf_viewer) $< &
 
 mini.pdf: mini.ps
-	ps2pdf $< $@
+	$(ps2pdf) $< $@
 
 mini_suite_2.pdf: mini.pdf
 	pdfnup --nup 2 $< --orient landscape --outfile $@
@@ -283,7 +285,7 @@ presentation.ps: presentation.dvi
 	dvips $< -o $@
 
 presentation.pdf: presentation.ps
-	ps2pdf $< $@
+	$(ps2pdf) $< $@
 
 test_presentation:
 	$(MAKE) presentation file=elec/cours_rappel_college

@@ -1,15 +1,19 @@
 \tp{Réflexion - Réfraction}
 
+\begin{multicols}{2}
 
 \objectifs{
 \item Vérifier les lois de Snell-Descartes.
 }
 
 \materiel{
-\item disque optique gradué (plexiglas)
-\item miroir
 \item lanterne et fente
+\item disque gradué
+\item miroir
+\item demi-cylindre en plexiglas
 }
+
+\end{multicols}
 
 \newcommand{\optdisquegradue}{%
 \psline(-7,0)(7,0)
@@ -83,19 +87,19 @@
 \rput(-3.5,0.5){$r$ : angle de réflexion}
 \rput(-3.5,-0.5){$i$ : angle d'incidence}
 
-\pswedge(0,0){0.75}{180}{206.6} % 180+atan(2/4) = 206.6
-\pswedge(0,0){0.75}{153.4}{180} % 180-atan(2/4) = 153.4
+\pswedge(0,0){0.65}{180}{206.6} % 180+atan(2/4) = 206.6
+\pswedge(0,0){0.85}{153.4}{180} % 180-atan(2/4) = 153.4
 
 \end{pspicture}
 \end{center}
 
 \begin{enumerate}
-\item Poser le miroir sur un disque gradué de telle sorte que son plan soit perpendiculaire à celui du disque.
+\item Poser le miroir sur un disque gradué de telle sorte que son plan soit perpendiculaire à l'axe $0°$ du disque gradué.
 
 
 \item \'Eclairer le miroir par un pinceau lumineux.
 
-\item Faire varier l'angle d'incidence $i$ (par rapport à la normale au miroir). Mesurer l'angle de réflexion $r$. Reporter les résultats expérimentaux dans le tableau suivant.
+\item Faire varier l'angle d'incidence $i$ (par rapport à la normale au miroir). Mesurer l'angle de réflexion $r$. Reporter les résultats expérimentaux dans le tableau suivant :
 
 %\begin{tabularx}{\linewidth}{|m{4cm}|X|X|X|X|X|X|X|X|X|X|}
 % \begin{tabularx}{\linewidth}{|m{4cm}|*{10}{|>{\centering}X}|}
@@ -115,7 +119,7 @@
 \hline
 Angle d'incidence $i$ ($°$)  & 0 & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80
 & 85 \\ \hline
-\rule[-1cm]{0cm}{2cm}%
+\rule[-0.4cm]{0cm}{1cm}%
 Angle de r\'eflexion $r$ ($°$) &   &    &    &    &    &    &    &    &
  &    \\ \hline
 \end{arraydata}
@@ -173,18 +177,21 @@ Angle de r\'eflexion $r$ ($°$) &   &    &    &    &    &    &    &    &
 
 \item Envoyer le pinceau lumineux en direction de la face plane du demi cylindre.
 
-\item Faire varier l'angle d'incidence $i$ (par rapport à la normale au plan du demi-cylindre). Mesurer l'angle de réflexion $r$. Reporter les résultats expérimentaux dans le tableau suivant.
+\item Faire varier l'angle d'incidence $i_1$ (par rapport à la normale au plan du demi-cylindre). Mesurer l'angle de réfraction $i_2$. Reporter les résultats expérimentaux dans le tableau suivant :
+
+%\bigskip 
+
 
 \begin{arraydata}{10}
 \hline
 Angle d'incidence $i_1$ ($°$)  & 0 & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80 & 85 \\ \hline
-\rule[-0.3cm]{0cm}{1cm}%
+\rule[-0.4cm]{0cm}{1cm}%
 Angle de réfraction $i_2$ ($°$) &   &    &    &    &    &    &    &    &    &    \\ \hline
-\rule[-0.3cm]{0cm}{1cm}%
+\rule[-0.4cm]{0cm}{1cm}%
 $\sin(i_1)$  &   &    &    &    &    &    &    &    &    &    \\ \hline
-\rule[-0.3cm]{0cm}{1cm}%
+\rule[-0.4cm]{0cm}{1cm}%
 $\sin(i_2)$  &   &    &    &    &    &    &    &    &    &    \\ \hline
-\rule[-0.3cm]{0cm}{1cm}%
+\rule[-0.4cm]{0cm}{1cm}%
 $\displaystyle \frac{\sin(i_1)}{\sin(i_2)}$    &   &    &    &    &    &    &    &    &    &    \\ \hline
 \end{arraydata}
 %\frac{sin(i_1)}{sin(i_2}}
@@ -198,7 +205,11 @@ $\displaystyle \frac{\sin(i_1)}{\sin(i_2)}$    &   &    &    &    &    &    &   
 
 \item Calculer l'indice de réfraction $n_2$ du plexiglas. On suppose que l'indice de l'air vaut $n_1 = 1$.
 
-\item Mesurer puis calculer l'angle d'incidence limite ${i_1}_{lim}$ (s'il existe).
+\item Déduire la relation entre $n_1$, $n_2$, $i_1$ et $i_2$.
+
+\item Y a-t-il toujours réfraction lorsque l'on fait varier l'angle d'incidence $i_1$ de $0°$ à $90°$ ?
+
+\item Mesurer puis calculer l'angle d'incidence limite ${i_1}_{lim}$ pour lequel il y a encore réfraction (s'il existe).
 
 \item Mesurer puis calculer l'angle de réfraction limite ${i_2}_{lim}$ (s'il existe).
 \end{enumerate}
@@ -245,18 +256,18 @@ $\displaystyle \frac{\sin(i_1)}{\sin(i_2)}$    &   &    &    &    &    &    &   
 
 \item Envoyer le pinceau lumineux en direction de la face arrondie du demi cylindre.
 
-\item Faire varier l'angle d'incidence $i$ (par rapport à la normale interne au plan du demi-cylindre). Mesurer l'angle de réflexion $r$. Reporter les résultats expérimentaux dans le tableau suivant.
+\item Faire varier l'angle d'incidence $i_1$ (par rapport à la normale interne au plan du demi-cylindre). Mesurer l'angle de réfraction $i_2$. Reporter les résultats expérimentaux dans le tableau suivant :
 
 \begin{arraydata}{10}
 \hline
 Angle d'incidence $i_1$ ($°$)  & 0 & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80 & 85 \\ \hline
-\rule[-0.3cm]{0cm}{1cm}%
+\rule[-0.4cm]{0cm}{1cm}%
 Angle de réfraction $i_2$ ($°$) &   &    &    &    &    &    &    &    &    &    \\ \hline
-\rule[-0.3cm]{0cm}{1cm}%
+\rule[-0.4cm]{0cm}{1cm}%
 $\sin(i_1)$  &   &    &    &    &    &    &    &    &    &    \\ \hline
-\rule[-0.3cm]{0cm}{1cm}%
+\rule[-0.4cm]{0cm}{1cm}%
 $\sin(i_2)$  &   &    &    &    &    &    &    &    &    &    \\ \hline
-\rule[-0.3cm]{0cm}{1cm}%
+\rule[-0.4cm]{0cm}{1cm}%
 $\displaystyle \frac{\sin(i_2)}{\sin(i_1)}$    &   &    &    &    &    &    &    &    &    &    \\ \hline %\rule[-1cm]{0cm}{2cm}
 \end{arraydata}
 
@@ -268,10 +279,18 @@ $\displaystyle \frac{\sin(i_2)}{\sin(i_1)}$    &   &    &    &    &    &    &   
 
 \item Conclusion.
 
+\item Expliquer pourquoi il n'y a pas changement de direction du rayon lumineux à la surface cylindrique séparant le plexiglas et l'air.
+
+
+\item Tracer $y = \sin(i_2)$ en fonction de $x = \sin(i_1)$. De quel type de fonction s'agit-il ? Donner son équation.
 
 \item Calculer l'indice de réfraction $n_1$ du plexiglas en supposant que l'indice de l'air vaut $n_2 = 1$.
 
-\item Mesurer puis calculer l'angle d'incidence limite ${i_1}_{lim}$ (s'il existe).
+\item Déduire la relation entre $n_1$, $n_2$, $i_1$ et $i_2$.
+
+\item Y a-t-il toujours réfraction lorsque l'on fait varier l'angle d'incidence $i_1$ de $0°$ à $90°$ ?
+
+\item Mesurer puis calculer l'angle d'incidence limite ${i_1}_{lim}$ pour lequel il y a encore réfraction (s'il existe).
 
 \item Mesurer puis calculer l'angle de réfraction limite ${i_2}_{lim}$ (s'il existe).
 
