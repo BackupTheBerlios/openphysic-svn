@@ -118,7 +118,7 @@ static gboolean realisation( GtkWidget *aire_de_dessin, GdkEventConfigure *event
     }
   }
 
-  uint_8 j;
+  uint8_t j;
   /* texte */
   if (my_rpm_function_type == rpm_func_linear) {
     if ( my_rpm_display_type == rpm_constant ) {
