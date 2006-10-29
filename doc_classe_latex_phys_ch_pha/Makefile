@@ -6,6 +6,7 @@ dvi_viewer=xdvi
 ps_viewer=gv
 pdf_viewer=gv #acroread #xpdf
 
+dvips=dvips -t a4
 ps2pdf=ps2pdf -sPAPERSIZE=a4
 
 do=view-ps
@@ -43,7 +44,7 @@ $(input).dvi: #$(input).tex s-celles.sty elec_intro/main2.tex elec_sin/main2.tex
 #	bibtex $(input)
 
 $(input).ps: $(input).dvi
-	dvips $< -o $@
+	$(dvips) $< -o $@
 
 $(input)_dvips.pdf: $(input).ps
 	$(ps2pdf) $< $@
@@ -157,7 +158,7 @@ only.dvi: only.tex
 #	bibtex only
 
 only.ps: only.dvi
-	dvips $< -o $@
+	$(dvips) $< -o $@
 
 only-ps: only.ps
 	$(ps_viewer) $< &
@@ -206,7 +207,7 @@ mini.dvi: mini.tex
 	latex $<
 
 mini.ps: mini.dvi
-	dvips $< -o $@
+	$(dvips) $< -o $@
 
 mini-ps: mini.ps
 	$(ps_viewer) $< &
@@ -282,7 +283,7 @@ presentation.dvi: presentation.tex
 	latex $<
 
 presentation.ps: presentation.dvi
-	dvips $< -o $@
+	$(dvips) $< -o $@
 
 presentation.pdf: presentation.ps
 	$(ps2pdf) $< $@
