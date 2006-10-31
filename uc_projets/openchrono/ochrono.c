@@ -74,6 +74,11 @@ uint8_t n_beep_alarm = 0;
 #include "display.c"
 #include "chrono.c"
 #include "keypad.c"
+#include "rpm.c"
+#include "engine.c"
+#include "track.c"
+
+
 
 /*
  * software init function
@@ -97,6 +102,30 @@ void init_sf(void)
 	 display_openchrono_center();
 }
 
+void init_hw_chrono(void) {
+    // Set Pin 6 (PD2) as the pin to use for this example
+    //PCMSK |= (1<<PIND2); // TO FIX
+    //PIND |= (1<<PIND2); // try scls:Error : read-only !!!
+
+    // interrupt on INT0 pin (sensor triggered)
+    //MCUCR |= (1<<ISC01) | (1<<ISC00); // rising edge ATmega8535
+    EICRA |= (1<<ISC01) | (1<<ISC00); // rising edge  ATmega128
+
+    // turn on interrupts!
+
+    //GICR |= (1<<INT0); //INT0  ATmega8535
+    EIMSK |= (1<<INT0); // ATmega128
+
+    //sei(); // enable interrupts
+}
+
+void init_hw_led(void) {
+    DDRC=0xFF; // set up PORT C pins 0 to 7 as output
+    //switch_on_all_leds();
+    switch_off_all_leds();
+}
+
+
 /*
  *  hardware init function
  */
@@ -116,27 +145,12 @@ void init_hw(void)
     // ********
     // * LEDs *
     // ********
-    DDRC=0xFF; // set up PORT C pins 0 to 7 as output
-    //switch_on_all_leds();
-    switch_off_all_leds();
+    init_hw_led();
 
     // *********************************
     // * Start/Stop chronometer (INT0) *
     // *********************************
-    // Set Pin 6 (PD2) as the pin to use for this example
-    //PCMSK |= (1<<PIND2); // TO FIX
-    //PIND |= (1<<PIND2); // try scls:Error : read-only !!!
-
-    // interrupt on INT0 pin (sensor triggered)
-    //MCUCR |= (1<<ISC01) | (1<<ISC00); // rising edge ATmega8535
-    EICRA |= (1<<ISC01) | (1<<ISC00); // rising edge  ATmega128
-
-    // turn on interrupts!
-
-    //GICR |= (1<<INT0); //INT0  ATmega8535
-    EIMSK |= (1<<INT0); // ATmega128
-
-    //sei(); // enable interrupts
+    init_hw_chrono();
 
     // *************************************************
     // * Conv Analog to Digital (CAN for RPM and Temp) *
@@ -153,9 +167,9 @@ void init_hw(void)
     ADMUX=(0<<REFS1)|(1<<REFS0)|(channel & 0x07); // channel & 0x07
 
     //ADCSRA=(1<<ADEN)|(1<<ADIE)|(1<<ADIF)|(1<<ADPS2); // interrupt ADIE=1
-    ADCSRA=(1<<ADEN)|(0<<ADIE)|(1<<ADIF)|(1<<ADPS2); // no interrupt ADIE=0
+    ADCSR=(1<<ADEN)|(0<<ADIE)|(1<<ADIF)|(1<<ADPS2); // no interrupt ADIE=0
 
-    ADCSRA |= (1 << (ADSC)); // start conversion
+    ADCSR |= (1 << (ADSC)); // start conversion
 
     DDRA=0x00;
     // make sure pull-up resistors are turned off
@@ -314,6 +328,7 @@ SIGNAL(SIG_OUTPUT_COMPARE1A)
 {
     inc_time(&current_time);
 }
+
 
 
 
