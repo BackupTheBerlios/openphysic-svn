@@ -71,8 +71,6 @@ void print_time_m_ss_xxx(time_typ * t)
 
 inline void inc_time(time_typ * time)
 {
-    if (running_chronometer)
-    {
         time->xx++;
         if(time->xx >= pow(10,CHR_PRECISION))
         {
@@ -94,7 +92,6 @@ inline void inc_time(time_typ * time)
             }
         }
         //_delay_ms(1); // use timer interrupts instead of delay
-    }
 }
 
 void copy_time(time_typ * time_source, time_typ * time_dest)
@@ -210,6 +207,7 @@ void print_diff_time(time_typ * time) {
             }
     }
 }
+
 
 
 

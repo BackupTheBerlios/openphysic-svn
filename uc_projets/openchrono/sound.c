@@ -18,6 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+uint8_t n_beep_alarm;
+
 /*
  * send a sound (on or more beep(s))
  */
@@ -51,4 +53,5 @@ void do_beep_alarm(void) {
         _delay_ms(50);
     }
 }
+
 

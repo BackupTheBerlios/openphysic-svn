@@ -19,6 +19,17 @@
  ***************************************************************************/
 
 /*
+ *  Chronometer mode
+ */
+bool running_chronometer;
+
+/*
+typedef enum { stop = 0, start} chronometer_mode;
+chronometer_mode my_chronometer_mode = stop;
+*/
+
+
+/*
  * start or stop chronometer
  */
 inline void StartStopChronometer(void)
@@ -72,6 +83,9 @@ void TestRunningChronometer(void)
         _delay_ms(100);
     }
 }
+
+
+
 
 
 

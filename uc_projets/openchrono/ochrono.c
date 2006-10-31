@@ -59,26 +59,19 @@ static FILE lcdout = FDEV_SETUP_STREAM( (void *)lcd_putc, NULL,_FDEV_SETUP_WRITE
 //#define N 50 // number between 0 and 255
 //#define Nmax 0xFF
 
-
 #define CHR_PRECISION 4 // precision 1/10000eme = 1/(10^4)
 #define CHR_DISPLAY 3 // display 1/1000  = 1/(10^3)
 
-uint8_t running_chronometer = false; // 0 false ; -1 true
-uint8_t n_led_alarm = 0;
-uint8_t n_beep_alarm = 0;
-
-#include "time_op.c"
 #include "ledmeter.c"
 #include "sound.c"
 #include "a2d.c"
-#include "display.c"
+#include "time_op.c"
 #include "chrono.c"
+#include "display.c"
 #include "keypad.c"
 #include "rpm.c"
 #include "engine.c"
 #include "track.c"
-
-
 
 /*
  * software init function
@@ -87,9 +80,11 @@ void init_sf(void)
 {
     // Leds
     //test_leds_up_off(); // uncomment for release or comment for debug
+    n_led_alarm = 0;
 
     // Sound
     //beep(3,100); // uncomment for release or comment for debug
+    n_beep_alarm = 0;
 
     // Time
     running_chronometer = false;
@@ -99,7 +94,7 @@ void init_sf(void)
     init_time(&best_time);
 
 	 // LCD
-	 display_openchrono_center();
+	 display_openchrono_center();	
 }
 
 void init_hw_chrono(void) {
@@ -313,6 +308,8 @@ ISR(INT0_vect)
 
 /*
  * interrupt handler for INT1 (KEYPAD)
+ * a OR function is made using diodes
+ * and is send to INT1
  */
 //SIGNAL(SIG_INTERRUPT1)
 ISR(INT1_vect)
@@ -323,25 +320,19 @@ ISR(INT1_vect)
 /*
  * interrupt handler for TIMER
  */
-SIGNAL(SIG_OUTPUT_COMPARE1A)
+//SIGNAL(SIG_OUTPUT_COMPARE1A)
 //ISR(TIM1_COMPA_vect)
+ISR(SIG_OUTPUT_COMPARE1A)
 {
-    inc_time(&current_time);
+    if (running_chronometer)
+    {
+    	inc_time(&current_time);
+    }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*
+ * interrupt handler for tachometer (RPM)
+ * an induction tension (a sort of peak)
+ */
 
 

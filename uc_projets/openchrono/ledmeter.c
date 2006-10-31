@@ -20,6 +20,8 @@
 
 #define Nleds 8  // number of leds connected to the uC
 
+uint8_t n_led_alarm;
+
 // 1=off
 // 0=on
 
@@ -200,6 +202,7 @@ void do_led_alarm(void) {
     }
     switch_off_all_leds();
 }
+
 
 
 
