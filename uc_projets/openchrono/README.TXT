@@ -193,9 +193,12 @@ voir : http://www.jelectronique.com/pwm.php
 
 Capteurs
 ========
+Quelques références sur les capteurs
+http://www.u-electronique.com/annuaire/cours_6.php
 
 Sonde à effet Hall
 ------------------
+Capteur LEM ?
 Choix final : 
 
 Interruption externe (INT0 sur PD2) via AO comparateur 0 5V
@@ -203,6 +206,8 @@ Interruption externe (INT0 sur PD2) via AO comparateur 0 5V
 
 Régime moteur
 =============
+Capteur inductif => tension induite en forme de pics => mise en forme du signal
+
 Choix final :
 
 Convertisseur analogique-numérique intégré au microcontrôleur
@@ -211,6 +216,8 @@ Convertisseur analogique-numérique intégré au microcontrôleur
 
 Sonde température
 -----------------
+Résistance ? Thermocouple ? Composant spécialisé : LM335
+
 Choix final : 
 
 Convertisseur analogique-numérique intégré au microcontrôleur
