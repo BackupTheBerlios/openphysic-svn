@@ -1,33 +1,50 @@
 // from http://www.jelectronique.com/pwm.php
 // pwm_atmega32 pour la génération du signal
 
-
+#define F_CPU 4000000UL
 
 #include <avr/io.h>
 
 #include <avr/interrupt.h>
 
+#include <stdio.h>
+#include "lcd.h"	//Fonction de gestion LCD (Fleury)
+#include "lcd.c"
+
 // Declare your global variables here
 
+uint8_t FREQ = 0;
+
+static FILE lcdout = FDEV_SETUP_STREAM( (void *)lcd_putc, NULL,_FDEV_SETUP_WRITE );
+
+void display(void) {
+   lcd_clrscr();
+
+   lcd_gotoxy(0,0); 	//Curseur  1ère colonne 1ère ligne
+   lcd_puts("Hello");
+   lcd_gotoxy(0,1);
+   printf("%d",FREQ);
+}
+
+void init_lcd(void) {
+   // Port des bits de données du lcd
+   PORTC=0x00;
+   DDRC=0xFF; //Port en sortie
+   // Port des bits de controles du lcd
+   PORTB=0x00;   // R/W=0
+   DDRB=0xFF;//Port en sortie
+
+   lcd_init(LCD_DISP_ON_CURSOR_BLINK); //Initialisation curseur clignotant
+   lcd_command(LCD_DISP_ON); //curseur éteint
+
+   stdout = &lcdout; // printf
+
+   lcd_clrscr(); //efface l'écran
+   //Active la gestion des accents français	éèêëàùçô
+   lcd_ChargeAccentsFrancais(); // Charge 8 caractères accentués dans la CGRAM et active leur utilisation
+}
+
 void init_signal(void) {
-// Input/Output Ports initialization
-// Port A initialization
-// Func7=In Func6=In Func5=In Func4=In Func3=In Func2=In Func1=In Func0=In
-// State7=T State6=T State5=T State4=T State3=T State2=T State1=T State0=T
-PORTA=0x00;
-DDRA=0x00;
-
-// Port B initialization
-// Func7=In Func6=In Func5=In Func4=In Func3=In Func2=In Func1=In Func0=In
-// State7=T State6=T State5=T State4=T State3=T State2=T State1=T State0=T
-PORTB=0x00;
-DDRB=0x00;
-
-// Port C initialization
-// Func7=In Func6=In Func5=In Func4=In Func3=In Func2=In Func1=In Func0=In
-// State7=T State6=T State5=T State4=T State3=T State2=T State1=T State0=T
-PORTC=0x00;
-DDRC=0x00;
 
 // Port D initialization
 // Func7=In Func6=In Func5=Out Func4=In Func3=In Func2=In Func1=In Func0=In
@@ -124,8 +141,12 @@ init_signal();
 
 init_frequencemeter();
 
+init_lcd();
+
+
 while (1)
       {
+      display();
       asm("nop");          // Inline assembly example
       asm("nop");          // Inline assembly example
       };
@@ -138,12 +159,16 @@ return 0;
  */
 ISR(INT0_vect)
 {
+	 FREQ = TCNT0;
+	
     //PORTA=~PORTA; // test interrupt
     PORTA=~TCNT0;
 
     // counter
     TCNT0=0x00; // initialize counter
 }
+
+
 
 
 
