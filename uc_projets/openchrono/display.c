@@ -18,8 +18,11 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+static FILE lcdout = FDEV_SETUP_STREAM( (void *)lcd_putc, NULL,_FDEV_SETUP_WRITE );
+//stdout = &lcdout;
+
 enum display_mode { lcd_char_16_2 = 0, lcd_char_20_2, lcd_graph};
-const enum display_mode my_display_type = lcd_char_16_2;
+const enum display_mode my_display_type = lcd_char_20_2;
 
 enum display_page { time_current_best_last_sgn_cmp = 0};
 enum display_page my_display_page = time_current_best_last_sgn_cmp;
@@ -153,15 +156,22 @@ inline void display_time_char_16_2(void)
 void display(void) {
    //display_openchrono_center();
 
-   //if ( my_display_type == lcd_char_20_2 )
-   //{
+   if ( my_display_type == lcd_char_16_2 )
+   {
      if ( my_display_page == time_current_best_last_sgn_cmp )
      {
        display_time_char_16_2();
      }
-   //}
-
+   }
+   if ( my_display_type == lcd_char_20_2 )
+   {
+     if ( my_display_page == time_current_best_last_sgn_cmp )
+     {
+       display_time_char_20_2();
+     }
+   }
 }
+
 
 
 

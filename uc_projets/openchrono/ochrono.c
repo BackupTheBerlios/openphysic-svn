@@ -30,7 +30,7 @@
 
 #include "lcd.h"	//Fonction de gestion LCD (Fleury)
 #include "lcd.c"
-static FILE lcdout = FDEV_SETUP_STREAM( (void *)lcd_putc, NULL,_FDEV_SETUP_WRITE );
+//static FILE lcdout = FDEV_SETUP_STREAM( (void *)lcd_putc, NULL,_FDEV_SETUP_WRITE );
 //stdout = &lcdout;
 
 #include <avr/io.h> // Most basic include files
@@ -334,5 +334,6 @@ ISR(SIG_OUTPUT_COMPARE1A)
  * interrupt handler for tachometer (RPM)
  * an induction tension (a sort of peak)
  */
+
 
 

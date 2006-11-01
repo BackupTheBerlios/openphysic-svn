@@ -151,12 +151,13 @@ R25 MINUS1 VSS 10K
 ;;;;;;;
 ;X[inst_name]  LCD(chars lines oscil_freq) RS RW E D7 D6 D5 D4 D3 D2 D1 D0
 ;X[inst_name]  TTY(baud_rate [n_bits] [parity] [odd_parity] [n_stop_bits] [rx_display_as]) node_tx node_rx
-X2 LCD(16 2 250K) PF5 PF6 PF7 PE7 PE6 PE5 PE4 PE3 PE2 PE1 PE0
+X2 LCD(20 2 250K) PF5 PF6 PF7 PE7 PE6 PE5 PE4 PE3 PE2 PE1 PE0
 ;X2 LCD(20 2 250K) PF5 PF6 PF7 PE7 PE6 PE5 PE4 PE3 PE2 PE1 PE0
 
 ; scope (PD0 et PD7)
 .PLOT V(PD0) V(PD1) V(PA0) V(PA1) V(PB0) V(PD5)
 ;.PLOT V(PD0) V(PD1) V(PD2) V(PD3) V(PD4) V(PD5) V(PD6) V(PD7)
+
 
 
 
