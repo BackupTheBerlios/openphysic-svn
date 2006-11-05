@@ -19,7 +19,17 @@
  ***************************************************************************/
 
 // Number of sectors on the track (nb of magnetic field)
-uint8_t track_sectors = 1;
+//uint8_t track_sectors = 1;
 
+typedef struct track_
+{
+	uint8_t sectors;
+}
+track;
 
+track current_track;
+
+void init_track(track* my_track) {
+   my_track->sectors = 1;
+}
 

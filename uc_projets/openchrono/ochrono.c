@@ -67,11 +67,12 @@
 #include "a2d.c"
 #include "time_op.c"
 #include "chrono.c"
-#include "display.c"
 #include "keypad.c"
-#include "rpm.c"
 #include "engine.c"
+#include "rpm.c"
 #include "track.c"
+#include "temperature.c"
+#include "display.c"
 
 /*
  * software init function
@@ -94,7 +95,15 @@ void init_sf(void)
     init_time(&best_time);
 
 	 // LCD
-	 display_openchrono_center();	
+	 display_openchrono_center();
+	
+	 // Track
+	 init_track(&current_track);	
+	 	
+	 // Engine
+	 init_engine(&current_engine);
+	
+	 // Pilot	
 }
 
 void init_hw_chrono(void) {
@@ -147,9 +156,9 @@ void init_hw(void)
     // *********************************
     init_hw_chrono();
 
-    // *************************************************
-    // * Conv Analog to Digital (CAN for RPM and Temp) *
-    // *************************************************
+    // *****************************************
+    // * Conv Analog to Digital (CAN for Temp) *
+    // *****************************************
 
     //volatile static int analog_result;
     //volatile static unsigned char analog_busy;
@@ -169,6 +178,8 @@ void init_hw(void)
     DDRA=0x00;
     // make sure pull-up resistors are turned off
     PORTA = 0x00;
+
+	 init_temperature();
 
 
     // **********
@@ -228,6 +239,10 @@ void init_hw(void)
 
     TIMSK|=(1<<OCIE1A);
 
+    // *******
+    // * RPM *
+    // *******
+    init_tachometer_16bits();
 
     // Sound
 
@@ -253,7 +268,7 @@ void loop(void)
 {
     //SeekButtons(); // use INT1 instead
 
-    // RPM
+    // Temp
     volatile double ch0 = adcConvert10bit(0);
     ch0 *= 0.09765625; // 0.09765625 = 100 / 2^10
     show_percent(ch0);
@@ -293,47 +308,10 @@ int main(void)
     while(1)
     { // Infinite loop; define here the
         loop(); // system behaviour
+        asm("nop");          // Inline assembly example
+        asm("nop");          // Inline assembly example
     }
     return 0;
 }
-
-/*
- * interrupt handler for INT0 (HALL PROBE)
- */
-//SIGNAL(SIG_INTERRUPT0)
-ISR(INT0_vect)
-{
-    StartStopChronometer();
-}
-
-/*
- * interrupt handler for INT1 (KEYPAD)
- * a OR function is made using diodes
- * and is send to INT1
- */
-//SIGNAL(SIG_INTERRUPT1)
-ISR(INT1_vect)
-{
-    SeekButtons();
-}
-
-/*
- * interrupt handler for TIMER
- */
-//SIGNAL(SIG_OUTPUT_COMPARE1A)
-//ISR(TIM1_COMPA_vect)
-ISR(SIG_OUTPUT_COMPARE1A)
-{
-    if (running_chronometer)
-    {
-    	inc_time(&current_time);
-    }
-}
-
-/*
- * interrupt handler for tachometer (RPM)
- * an induction tension (a sort of peak)
- */
-
 
 

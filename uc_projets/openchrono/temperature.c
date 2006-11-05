@@ -18,36 +18,11 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-// ignition (allumage)
-enum engine_mode { engine_two_strokes = 0, engine_four_strokes};
+int16_t TEMP1;
+int16_t TEMP2;
 
-uint8_t get_engine_const(const enum engine_mode my_engine_type) {
-   switch(my_engine_type)
-   {
-      case engine_two_strokes:
-        return 1;
-        break;
-      case engine_four_strokes:
-        return 2;
-        break;
-    default:
-        return 1;
-        break;
-   } 		
+void init_temperature(void) {
+   TEMP1=0;
+   TEMP2=0;
 }
 
-typedef struct engine_
-{
-	uint8_t number;
-	enum engine_mode type;
-   time_typ time;
-}
-engine;
-
-engine current_engine;
-
-void init_engine(engine* my_engine) {
-	my_engine->number = 2;
-	my_engine->type = engine_two_strokes;
-	init_time(&(my_engine->time));	
-}

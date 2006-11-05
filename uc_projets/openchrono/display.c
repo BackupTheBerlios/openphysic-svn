@@ -153,7 +153,26 @@ inline void display_time_char_16_2(void)
 
 }
 
-void display(void) {
+void print_temp_engine_char_line(void) {
+   printf("T1:%3d T2:%3d",TEMP1,TEMP2);
+   printf("  ");
+   print_time_hh_mm(&((&current_engine)->time));
+}
+
+void display_end_of_race(void) {
+   lcd_clrscr();
+   lcd_gotoxy(0,0);
+   printf("# # # # # # # # # # ");
+   lcd_gotoxy(0,1);
+   printf(" # # # # # # # # # #");
+   lcd_gotoxy(0,2);
+   printf("# # # # # # # # # # ");
+   lcd_gotoxy(0,3);
+   printf(" # # # # # # # # # #");
+}
+
+
+void display_time(void) {
    //display_openchrono_center();
 
    if ( my_display_type == lcd_char_16_2 )
@@ -170,7 +189,23 @@ void display(void) {
        display_time_char_20_2();
      }
    }
+
+   printf("\n");
+   //print_temp_engine_char_line();
+   print_rpm_char_line();
+   printf("\n");
+   //lcd_gotoxy(0,3);
+   print_temp_engine_char_line();
+   //print_rpm_char_line();
 }
+
+
+void display(void) {
+	display_time();
+   //display_end_of_race();
+}
+
+
 
 
 

@@ -85,6 +85,31 @@ void TestRunningChronometer(void)
 }
 
 
+/*
+ * interrupt handler for INT0 (HALL PROBE)
+ */
+//SIGNAL(SIG_INTERRUPT0)
+ISR(INT0_vect)
+{
+    StartStopChronometer();
+}
+
+
+
+/*
+ * interrupt handler for TIMER
+ */
+//SIGNAL(SIG_OUTPUT_COMPARE1A)
+//ISR(TIM1_COMPA_vect)
+ISR(SIG_OUTPUT_COMPARE1A)
+{
+    if (running_chronometer)
+    {
+    	inc_time(&current_time);
+    }
+}
+
+
 
 
 

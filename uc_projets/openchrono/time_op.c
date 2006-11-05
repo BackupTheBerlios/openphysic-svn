@@ -51,21 +51,42 @@ void def_time(time_typ * time, uint8_t _hh, uint8_t _mm, uint8_t _ss, unsigned s
     time->xx = _xx;
 }
 
+void print_time_hh_mm(time_typ * t)
+{
+   if (t->hh < 100) {
+      printf("%02i:%02i",t->hh,t->mm);
+   } else {
+      printf("++:++");
+   }
+}
+
 void print_time_hh_mm_ss_xxx(time_typ * t)
 {
-    printf("%02i:%02i:%02i:%03u",t->hh,t->mm,t->ss,t->xx/((int) pow(10,CHR_PRECISION-CHR_DISPLAY)));
+   if (t->hh < 100) {
+      printf("%02i:%02i",t->hh,t->mm);
+   } else {
+      printf("%02i:%02i:%02i:%03u",t->hh,t->mm,t->ss,t->xx/((int) pow(10,CHR_PRECISION-CHR_DISPLAY)));
+   }
 }
 
 void print_time_mm_ss_xxx(time_typ * t)
 {
     //printf("===%02i:%02i:%02i:%03u===\n",t->hh,t->mm,t->ss,t->xx/10);
     //lcd_printf("%02i:%02i:%02i:%03u",t->hh,t->mm,t->ss,t->xx/((int) pow(10,CHR_PRECISION-CHR_DISPLAY)));
-    printf("%02i:%02i:%03u",t->mm,t->ss,t->xx/((int) pow(10,CHR_PRECISION-CHR_DISPLAY)));
+    if (t->hh < 1) {
+       printf("%02i:%02i:%03u",t->mm,t->ss,t->xx/((int) pow(10,CHR_PRECISION-CHR_DISPLAY)));
+    } else {
+       printf("++:++:+++");
+    }
 }
 
 void print_time_m_ss_xxx(time_typ * t)
 {
-    printf("%01i:%02i:%03u",t->mm,t->ss,t->xx/((int) pow(10,CHR_PRECISION-CHR_DISPLAY)));
+   if (t->mm < 10) {
+      printf("%01i:%02i:%03u",t->mm,t->ss,t->xx/((int) pow(10,CHR_PRECISION-CHR_DISPLAY)));
+   } else {
+      printf("+:++:+++");
+   }
 }
 
 
@@ -207,6 +228,8 @@ void print_diff_time(time_typ * time) {
             }
     }
 }
+
+
 
 
 

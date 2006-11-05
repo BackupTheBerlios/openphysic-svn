@@ -17,7 +17,7 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
- 
+
 #define Nbuts 6
 #define B_OK 0
 #define B_CANCEL 1
@@ -58,4 +58,15 @@ inline void SeekButtons(void)
     { // DOWN
 
     }
+}
+
+/*
+ * interrupt handler for INT1 (KEYPAD)
+ * a OR function is made using diodes
+ * and is send to INT1
+ */
+//SIGNAL(SIG_INTERRUPT1)
+ISR(INT1_vect)
+{
+    SeekButtons();
 }
