@@ -25,4 +25,9 @@
 ; Define here the hardware around the micro
 ; ------------------------------------------------------------
 
-.PLOT V(PD5)
+
+
+.PLOT V(PD5) V(PD6)
+
+;V[inst_name]  node VSS PULSE(v_initial v_final t_delay t_rise t_fall t_width t_period)
+
