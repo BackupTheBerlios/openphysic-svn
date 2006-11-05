@@ -57,3 +57,13 @@ ProductName=
 ProductVersion=
 AutoIncBuildNr=0
 
+[Unit3]
+FileName=time_op.c
+CompileCpp=0
+Folder=UserInterface
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+

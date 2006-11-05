@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
+#include <stdbool.h>
 
-//#include <string.h>
 
 #define KEY_UP 'z'
 #define KEY_DOWN 'w'
@@ -11,6 +11,7 @@
 #define KEY_OK 'y'
 #define KEY_CANCEL 'n'
 
+/*
 enum {
      DONT_MOVE = 0,
      GO_PARENT,
@@ -18,20 +19,50 @@ enum {
      GO_BROTHER_PREVIOUS,
      GO_CHILD_FIRST,
 };
+uint8_t go = DONT_MOVE;
+*/
 
-uint8_t go = 0;
+/* 
+struct keypad_typ
+{
+   bool up;
+   bool down;
+   bool left;
+   bool right;
+   bool ok;
+   bool cancel;
+};
+
+struct keypad_typ key_pressed;
+
+void no_key_pressed() {
+   key_pressed.up=false;
+   key_pressed.down=false;
+   key_pressed.left=false;
+   key_pressed.right=false;
+   key_pressed.ok=false;
+   key_pressed.cancel=false;
+}
+*/
 
 struct page_typ
 {
    char* name;
+   
    struct page_typ * page_parent;
    struct page_typ * page_brother_next;
    struct page_typ * page_brother_previous;
    struct page_typ * page_child_first;
-   void (*display) (); // pointeur de fonction sur fonction d'affichage
-   void (*waitkeypad) (); // pointeur de fonction sur fonction d'attente de touches 
-};
 
+   void (*display) (); // pointeur de fonction sur fonction d'affichage
+
+   void (*on_up) ();     // ptr de fct sur evenement appui touche haut 
+   void (*on_down) ();   // ptr de fct sur evenement appui touche bas
+   void (*on_left) ();   // ptr de fct sur evenement appui touche gauche
+   void (*on_right) ();  // ptr de fct sur evenement appui touche droite
+   void (*on_ok) ();     // ptr de fct sur evenement appui touche ok
+   void (*on_cancel) (); // ptr de fct sur evenement appui touche cancel
+};
 
 struct page_typ page_time;
 struct page_typ page_reset_time;
@@ -44,58 +75,7 @@ struct page_typ page_recall_menu;
    
 struct page_typ * ptr_current_page;
 struct page_typ * ptr_page_goto;
-   
-void waitkey(void) {
-   char key;
-   key = 0;
-   
-   while(key!=KEY_OK && key!=KEY_CANCEL
-     && key!=KEY_UP && key!=KEY_DOWN
-     && key!=KEY_RIGHT && key!=KEY_LEFT) { 
 
-   key = getch();
-   
-   printf("%c",key);
-   
-   printf(" : ");
-   //printf("\n");
-  
-   switch(key) {
-      case KEY_OK:
-           printf("YES");
-           break;
-      case KEY_CANCEL:
-           printf("NO");
-           break;
-      case KEY_UP:
-           printf("UP");
-           break;
-      case KEY_DOWN:
-           printf("DOWN");
-           break;
-      case KEY_LEFT:
-           printf("LEFT");
-           break;
-      case KEY_RIGHT:
-           printf("RIGHT");
-           break;           
-      default:
-           printf("UNDEF");
-           break;
-   }
-      printf("\n");
-   }
-}
-
-
-
-void init_page(struct page_typ* page, char* pgname) {
-   page->name = pgname;
-   page->page_parent = NULL;
-   page->page_brother_next = NULL;
-   page->page_brother_previous = NULL;
-   page->page_child_first = NULL;
-}
 
 void display_page_name(struct page_typ* page) {
    printf("page->name=%s",page->name);
@@ -200,14 +180,10 @@ void display_page_recall_menu(void) {
    printf("\n");
 }
 
-
-// TO DO
-void page_key_interaction(void) {
+void update_key_pressed(void) {
    char key;
    key = 0;
-   
 
-   
    while(key!=KEY_OK && key!=KEY_CANCEL
       && key!=KEY_UP && key!=KEY_DOWN
       && key!=KEY_RIGHT && key!=KEY_LEFT) { 
@@ -216,80 +192,85 @@ void page_key_interaction(void) {
    
       switch(key) {
          case KEY_OK:
-            
+            //key_pressed.ok=true;
+            (ptr_current_page->on_ok)();  
             break;
          case KEY_CANCEL:
-
+            //key_pressed.cancel=true;
+            (ptr_current_page->on_cancel)(); 
             break;
          case KEY_UP:
-            //printf("PARENT ");
-            ptr_page_goto = ptr_current_page->page_parent; // TO FIX
+            //key_pressed.up=true;
+            (ptr_current_page->on_up)();
             break;
          case KEY_DOWN:
-            //printf("FIRST CHILD ");
-            ptr_page_goto = ptr_current_page->page_child_first; // TO FIX
+            //key_pressed.down=true;
+            (ptr_current_page->on_down)();
             break;
          case KEY_LEFT:
-            //printf("PREVIOUS BROTHER ");
-            ptr_page_goto = ptr_current_page->page_brother_previous; // TO FIX
-            //page_goto = &page_engine_menu;
+            //key_pressed.left=true;
+            (ptr_current_page->on_left)();
             break;
          case KEY_RIGHT:
-            //printf("NEXT BROTHER ");
-            ptr_page_goto = ptr_current_page->page_brother_next; // TO FIX
+            //key_pressed.right=true;
+            (ptr_current_page->on_right)();
             break;           
          default:
+            //no_key_pressed();
             ptr_page_goto = ptr_current_page;
             break;
       }
    }
    if (ptr_page_goto != NULL) {
-      //printf("NOT NULL");
-      ptr_current_page = ptr_page_goto;
-      //printf("page_goto :%p",ptr_page_goto);
-            
-   } else {
-      //printf("NULL");
-   }                      
+      ptr_current_page = ptr_page_goto;            
+   }                  
 }
 
+void navigate_on_up(void) {
+}
+
+void navigate_on_down(void) {
+}
+
+void navigate_on_left(void) {
+   ptr_page_goto = ptr_current_page->page_brother_previous;
+}
+
+void navigate_on_right(void) {
+   ptr_page_goto = ptr_current_page->page_brother_next;
+}
+
+void navigate_on_ok(void) {
+   ptr_page_goto = ptr_current_page->page_child_first;
+}
+
+void navigate_on_cancel(void) {
+   ptr_page_goto = ptr_current_page->page_parent;
+}
+
+//void init_key_function(void) {
+//}     
+
+void init_page(struct page_typ* page, char* pgname) {
+   page->name = pgname;
+   page->page_parent = NULL;
+   page->page_brother_next = NULL;
+   page->page_brother_previous = NULL;
+   page->page_child_first = NULL;
+   
+   page->display = &display_page_time;
+   
+   page->on_ok = &navigate_on_ok;
+   page->on_cancel = &navigate_on_cancel;
+   page->on_up = &navigate_on_up;
+   page->on_down = &navigate_on_down;
+   page->on_left = &navigate_on_left;
+   page->on_right = &navigate_on_right;   
+}
 
 int main(int argc, char *argv[])
 {
-   //char* strTitle;
-   //strTitle = "My user interface";
-   //printf("%s\n\n",strTitle);
-   
-/*  
-   struct page_typ current_page;
-   init_page(&current_page);   
-   (&current_page)->name="page1";
- 
-   (&current_page)->display = &disp_page_time; // initialise le pointeur de fonction d'affichage
-   ((&current_page)->display)(); // affiche la page
-*/     
- 
-/*
-   #define Npages 10 // ATTENTION, il faut changer le nb de pages Npages !
-   struct page_typ pages[Npages]; 
-   enum {
-      page_time = 0,
-      page_reset_time,
-      page_engine_menu,
-         page_engine_select,
-         page_engine_stroke,
-         page_engine_reset_time,
-      page_track_menu,
-      page_recall_menu,
-   };
-*/
-
-
-
-
-   init_page(&page_time, "page_time");  //(&pages[page_time])->name = "page_time";
-   //display_page_name(&pages[0]);
-   //(&current_page)->display=&disp_page_time;
+   init_page(&page_time, "page_time");
    
    init_page(&page_reset_time, "page_reset_time");
    
@@ -301,7 +282,6 @@ int main(int argc, char *argv[])
    init_page(&page_track_menu, "page_track_menu");   
 
    init_page(&page_recall_menu, "page_recall_menu");
-
    
    // parent init
    (&page_time)->page_parent = &page_time; //NULL;
@@ -353,43 +333,37 @@ int main(int argc, char *argv[])
    (&page_engine_reset_time)->display = &display_page_engine_reset_time;
    (&page_track_menu)->display = &display_page_track_menu;
    (&page_recall_menu)->display = &display_page_recall_menu;
+   
+   //init_key_function();
       
    // ask key init
    /*
-   (&page_time])->waitkeypad = &;
-   (&page_reset_time])->waitkeypad = &;
-   (&page_engine_menu])->waitkeypad = &;
-   (&page_engine_select])->waitkeypad = &;
-   (&page_engine_stroke])->waitkeypad = &;
-   (&page_engine_reset_time])->waitkeypad = &;
-   (&page_track_menu])->waitkeypad = &;
-   (&page_recall_menu])->waitkeypad = &;
+   (&page_time)->waitkeypad = &;
+   (&page_reset_time)->waitkeypad = &;
+   (&page_engine_menu)->waitkeypad = &;
+   (&page_engine_select)->waitkeypad = &;
+   (&page_engine_stroke)->waitkeypad = &;
+   (&page_engine_reset_time)->waitkeypad = &;
+   (&page_track_menu)->waitkeypad = &;
+   (&page_recall_menu)->waitkeypad = &;
    */
    
 
     ptr_current_page = &page_time; //&page_engine_menu;
-  
-/*
-   struct page_typ current_page;
-   current_page = page_time;
-*/
+
     
    while(1) {
-      //printf("%p",ptr_current_page);
-      //display_page_name(ptr_current_page);
-      //display_page_type(ptr_current_page);
+      system("cls");
       (ptr_current_page->display)();
-      page_key_interaction();
-/*
-      display_page_name(&current_page);
-      page_key_interaction(&current_page);
-*/
+      update_key_pressed();
+
       printf("\n");
    }
 
-   printf("\n");
-   
+/*
+   printf("\n");   
    waitkey();
+*/
   
    printf("\n\n");
    system("PAUSE");	
