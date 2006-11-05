@@ -10,7 +10,41 @@
 #define KEY_OK 'y'
 #define KEY_CANCEL 'n'
 
+enum {
+     GO_PARENT = 0,
+     GO_BROTHER_NEXT,
+     GO_BROTHER_PREVIOUS,
+     GO_CHILD_FIRST,
+};
 
+struct page_typ
+{
+   char* name;
+   struct page_typ * page_parent;
+   struct page_typ * page_brother_next;
+   struct page_typ * page_brother_previous;
+   struct page_typ * page_child_first;
+   void (*display) (); // pointeur de fonction sur fonction d'affichage
+   void (*waitkeypad) (); // pointeur de fonction sur fonction d'attente de touches 
+};
+
+
+
+void copy_page(struct page_typ * page_from, struct page_typ * page_to) {
+}
+
+struct page_typ page_time;
+struct page_typ page_reset_time;
+struct page_typ page_engine_menu;
+struct page_typ page_engine_select;
+struct page_typ page_engine_stroke;
+struct page_typ page_engine_reset_time;
+struct page_typ page_track_menu;
+struct page_typ page_recall_menu;
+   
+struct page_typ * ptr_current_page;
+struct page_typ * ptr_page_goto;
+   
 void waitkey(void) {
    char key;
    key = 0;
@@ -53,16 +87,7 @@ void waitkey(void) {
    }
 }
 
-struct page_typ
-{
-   char* name;
-   struct page_typ * page_parent;
-   struct page_typ * page_brother_next;
-   struct page_typ * page_brother_previous;
-   struct page_typ * page_child_first;
-   void (*display) (); // pointeur de fonction sur fonction d'affichage
-   void (*waitkeypad) (); // pointeur de fonction sur fonction d'attente de touches 
-};
+
 
 void init_page(struct page_typ* page, char* pgname) {
    page->name = pgname;
@@ -76,14 +101,60 @@ void display_page_name(struct page_typ* page) {
    printf("page->name=%s",page->name);
 }
 
+void display_page_type(struct page_typ* page) {
+   printf("page->name= %s\n",page->name);
+   struct page_typ* page_goto;
+
+   page_goto = page->page_parent;
+   printf(" parent= ");
+   if (page_goto != NULL ) { 
+      printf(" %s", page_goto->name);
+   } else {
+      printf("NULL");
+   }
+   
+   printf("\n");
+   
+   page_goto = page->page_brother_next;
+   printf(" next brother= ");
+   if (page_goto != NULL ) {
+      printf("%s", page_goto->name);
+   } else {
+      printf("NULL");
+   }
+   
+   printf("\n");
+
+   page_goto = page->page_brother_previous;
+   printf(" previous brother= ");
+   if (page_goto != NULL ) {
+      printf("%s", page_goto->name);
+   } else {
+      printf("NULL");
+   }
+   
+   printf("\n");
+   
+   page_goto = page->page_child_first;
+   printf(" child first= ");
+   if (page_goto != NULL ) {
+      printf("%s", page_goto->name);
+   } else {
+      printf("NULL");
+   }
+   
+   printf("\n");
+}
+
 void disp_page_time(void) {
    printf("disp_page_time");     
 }
 
 // TO DO
-void page_key_interaction(struct page_typ* page) {
+void page_key_interaction(void) {
    char key;
    key = 0;
+
    
    while(key!=KEY_OK && key!=KEY_CANCEL
       && key!=KEY_UP && key!=KEY_DOWN
@@ -99,22 +170,35 @@ void page_key_interaction(struct page_typ* page) {
 
             break;
          case KEY_UP:
-            page = page->page_parent; // TO FIX
+            //printf("PARENT ");
+            ptr_page_goto = ptr_current_page->page_parent; // TO FIX
             break;
          case KEY_DOWN:
-            page = page->page_child_first; // TO FIX
+            //printf("FIRST CHILD ");
+            ptr_page_goto = ptr_current_page->page_child_first; // TO FIX
             break;
          case KEY_LEFT:
-            page = page->page_brother_previous; // TO FIX
+            //printf("PREVIOUS BROTHER ");
+            ptr_page_goto = ptr_current_page->page_brother_previous; // TO FIX
+            //page_goto = &page_engine_menu;
             break;
          case KEY_RIGHT:
-            page = page->page_brother_next; // TO FIX
+            //printf("NEXT BROTHER ");
+            ptr_page_goto = ptr_current_page->page_brother_next; // TO FIX
             break;           
          default:
 
             break;
       }
    }
+   if (ptr_page_goto != NULL) {
+      //printf("NOT NULL");
+      ptr_current_page = ptr_page_goto;
+      //printf("page_goto :%p",ptr_page_goto);
+            
+   } else {
+      //printf("NULL");
+   }                      
 }
 
 
@@ -133,7 +217,7 @@ int main(int argc, char *argv[])
    ((&current_page)->display)(); // affiche la page
 */     
  
-
+/*
    #define Npages 10 // ATTENTION, il faut changer le nb de pages Npages !
    struct page_typ pages[Npages]; 
    enum {
@@ -146,110 +230,109 @@ int main(int argc, char *argv[])
       page_track_menu,
       page_recall_menu,
    };
-/*   
-   (&pages[page_time])-
-   (&pages[page_reset_time])-
-   (&pages[page_engine_menu])-
-   (&pages[page_engine_select])-
-   (&pages[page_engine_stroke])-
-   (&pages[page_engine_reset_time])-
-   (&pages[page_track_menu])-
-   (&pages[page_recall_menu])-
 */
 
-   init_page(&pages[page_time], "page_time");  //(&pages[page_time])->name = "page_time";
+
+
+
+   init_page(&page_time, "page_time");  //(&pages[page_time])->name = "page_time";
    //display_page_name(&pages[0]);
    //(&current_page)->display=&disp_page_time;
    
-   init_page(&pages[page_reset_time], "page_reset_time");
+   init_page(&page_reset_time, "page_reset_time");
    
-   init_page(&pages[page_engine_menu], "page_engine_menu");
-       init_page(&pages[page_engine_select], "page_engine_select");
-       init_page(&pages[page_engine_stroke], "page_engine_stroke");
-       init_page(&pages[page_engine_reset_time], "page_engine_reset_time");
+   init_page(&page_engine_menu, "page_engine_menu");
+       init_page(&page_engine_select, "page_engine_select");
+       init_page(&page_engine_stroke, "page_engine_stroke");
+       init_page(&page_engine_reset_time, "page_engine_reset_time");
 
-   init_page(&pages[page_track_menu], "page_track_menu");   
+   init_page(&page_track_menu, "page_track_menu");   
 
-   init_page(&pages[page_recall_menu], "page_recall_menu");
+   init_page(&page_recall_menu, "page_recall_menu");
 
    
    // parent init
-   (&pages[page_time])->page_parent = NULL;
-   (&pages[page_reset_time])->page_parent = NULL;
-   (&pages[page_engine_menu])->page_parent = NULL;
-      (&pages[page_engine_select])->page_parent = &pages[page_engine_menu];
-      (&pages[page_engine_stroke])->page_parent = &pages[page_engine_menu];
-      (&pages[page_engine_reset_time])->page_parent = &pages[page_engine_menu];
-   (&pages[page_track_menu])->page_parent = NULL;
-   (&pages[page_recall_menu])->page_parent = NULL;
+   (&page_time)->page_parent = &page_time; //NULL;
+   (&page_reset_time)->page_parent = &page_time; //NULL;
+   (&page_engine_menu)->page_parent = &page_time; //NULL;
+      (&page_engine_select)->page_parent = &page_engine_menu;
+      (&page_engine_stroke)->page_parent = &page_engine_menu;
+      (&page_engine_reset_time)->page_parent = &page_engine_menu;
+   (&page_track_menu)->page_parent = &page_time; //NULL;
+   (&page_recall_menu)->page_parent = &page_time; //NULL;
    
 
    // first child initialisation 
-   (&pages[page_time])->page_child_first = NULL;
-   (&pages[page_reset_time])->page_child_first = NULL;
-   (&pages[page_engine_menu])->page_child_first = (&pages[page_engine_select]);
-      (&pages[page_engine_select])->page_child_first = NULL;
-      (&pages[page_engine_stroke])->page_child_first = NULL;
-      (&pages[page_engine_reset_time])->page_child_first = NULL;   
-   (&pages[page_track_menu])->page_child_first = NULL;
-   (&pages[page_recall_menu])->page_child_first = NULL;
+   (&page_time)->page_child_first = NULL;
+   (&page_reset_time)->page_child_first = NULL;
+   (&page_engine_menu)->page_child_first = (&page_engine_select);
+      (&page_engine_select)->page_child_first = NULL;
+      (&page_engine_stroke)->page_child_first = NULL;
+      (&page_engine_reset_time)->page_child_first = NULL;   
+   (&page_track_menu)->page_child_first = NULL;
+   (&page_recall_menu)->page_child_first = NULL;
    
    // next brother init 
-   (&pages[page_time])->page_brother_next = &pages[page_reset_time];
-   (&pages[page_reset_time])->page_brother_next = &pages[page_engine_menu];
-   (&pages[page_engine_menu])->page_brother_next = &pages[page_track_menu];
-      (&pages[page_engine_select])->page_brother_next = &pages[page_engine_stroke];
-      (&pages[page_engine_stroke])->page_brother_next = &pages[page_engine_reset_time];
-      (&pages[page_engine_reset_time])->page_brother_next = &pages[page_engine_select];
-   (&pages[page_track_menu])->page_brother_next = &pages[page_recall_menu];
-   (&pages[page_recall_menu])->page_brother_next = &pages[page_time];
+   (&page_time)->page_brother_next = &page_reset_time;
+   (&page_reset_time)->page_brother_next = &page_engine_menu;
+   (&page_engine_menu)->page_brother_next = &page_track_menu;
+      (&page_engine_select)->page_brother_next = &page_engine_stroke;
+      (&page_engine_stroke)->page_brother_next = &page_engine_reset_time;
+      (&page_engine_reset_time)->page_brother_next = &page_engine_select;
+   (&page_track_menu)->page_brother_next = &page_recall_menu;
+   (&page_recall_menu)->page_brother_next = &page_time;
    
    // previous brother init
-   (&pages[page_time])->page_brother_previous = &pages[page_recall_menu];
-   (&pages[page_reset_time])->page_brother_previous = &pages[page_time];
-   (&pages[page_engine_menu])->page_brother_previous = &pages[page_reset_time];
-      (&pages[page_engine_select])->page_brother_previous = &pages[page_engine_reset_time];
-      (&pages[page_engine_stroke])->page_brother_previous = &pages[page_engine_select];
-      (&pages[page_engine_reset_time])->page_brother_previous = &pages[page_engine_select];
-   (&pages[page_track_menu])->page_brother_previous = &pages[page_engine_menu];
-   (&pages[page_recall_menu])->page_brother_previous = &pages[page_track_menu];
+   (&page_time)->page_brother_previous = &page_recall_menu;
+   (&page_reset_time)->page_brother_previous = &page_time;
+   (&page_engine_menu)->page_brother_previous = &page_reset_time;
+      (&page_engine_select)->page_brother_previous = &page_engine_reset_time;
+      (&page_engine_stroke)->page_brother_previous = &page_engine_select;
+      (&page_engine_reset_time)->page_brother_previous = &page_engine_select;
+   (&page_track_menu)->page_brother_previous = &page_engine_menu;
+   (&page_recall_menu)->page_brother_previous = &page_track_menu;
    
    // display init
    /*
-   (&pages[page_time])->display = &;
-   (&pages[page_reset_time])->display = &;
-   (&pages[page_engine_menu])->display = &;
-   (&pages[page_engine_select])->display = &;
-   (&pages[page_engine_stroke])->display = &;
-   (&pages[page_engine_reset_time])->display = &;
-   (&pages[page_track_menu])->display = &;
-   (&pages[page_recall_menu])->display = &;
+   (&page_time)->display = &;
+   (&page_reset_time)->display = &;
+   (&page_engine_menu)->display = &;
+   (&page_engine_select)->display = &;
+   (&page_engine_stroke)->display = &;
+   (&page_engine_reset_time)->display = &;
+   (&page_track_menu)->display = &;
+   (&page_recall_menu)->display = &;
    */
       
    // ask key init
    /*
-   (&pages[page_time])->waitkeypad = &;
-   (&pages[page_reset_time])->waitkeypad = &;
-   (&pages[page_engine_menu])->waitkeypad = &;
-   (&pages[page_engine_select])->waitkeypad = &;
-   (&pages[page_engine_stroke])->waitkeypad = &;
-   (&pages[page_engine_reset_time])->waitkeypad = &;
-   (&pages[page_track_menu])->waitkeypad = &;
-   (&pages[page_recall_menu])->waitkeypad = &;
+   (&page_time])->waitkeypad = &;
+   (&page_reset_time])->waitkeypad = &;
+   (&page_engine_menu])->waitkeypad = &;
+   (&page_engine_select])->waitkeypad = &;
+   (&page_engine_stroke])->waitkeypad = &;
+   (&page_engine_reset_time])->waitkeypad = &;
+   (&page_track_menu])->waitkeypad = &;
+   (&page_recall_menu])->waitkeypad = &;
    */
    
-   struct page_typ* ptr_current_page;
-   ptr_current_page = &pages[page_time];
 
+    ptr_current_page = &page_time; //&page_engine_menu;
+  
+/*
+   struct page_typ current_page;
+   current_page = page_time;
+*/
     
    while(1) {
-      display_page_name(ptr_current_page);
-      page_key_interaction(ptr_current_page);
-
-      /*      
+      //printf("%p",ptr_current_page);
+      //display_page_name(ptr_current_page);
+      display_page_type(ptr_current_page);
+      page_key_interaction();
+/*
       display_page_name(&current_page);
       page_key_interaction(&current_page);
-      */
+*/
       printf("\n");
    }
 
