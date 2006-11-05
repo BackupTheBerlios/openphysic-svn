@@ -28,7 +28,7 @@ enum display_page { time_current_best_last_sgn_cmp = 0};
 enum display_page my_display_page = time_current_best_last_sgn_cmp;
 
 inline void display_openchrono_center(void) {
-   lcd_clrscr();
+
  //lcd_EcrisAuCentre("12345678901234567890",0);
  //lcd_EcrisAuCentre("===OpenChrono===",0);
  //lcd_EcrisAuCentre("----S.CELLES----",1);
@@ -38,7 +38,7 @@ inline void display_openchrono_center(void) {
 }
 
 inline void display_openchrono(void) {
-   lcd_clrscr();
+   //lcd_clrscr();
 
    lcd_gotoxy(0,0); 	//Curseur  1ère colonne 1ère ligne
    lcd_puts("OpenChrono");
@@ -54,7 +54,7 @@ inline void display_openchrono(void) {
 inline void display_time_char_20_2(void)
 {
     // clear screen
-    lcd_clrscr();
+    //lcd_clrscr();
 
     // line 1
 
@@ -106,7 +106,7 @@ inline void display_time_char_20_2(void)
 inline void display_time_char_16_2(void)
 {
     // clear screen
-    lcd_clrscr();
+    //lcd_clrscr();
 
     // line 1
 
@@ -160,7 +160,7 @@ void print_temp_engine_char_line(void) {
 }
 
 void display_end_of_race(void) {
-   lcd_clrscr();
+   //lcd_clrscr();
    lcd_gotoxy(0,0);
    printf("# # # # # # # # # # ");
    lcd_gotoxy(0,1);
@@ -172,7 +172,7 @@ void display_end_of_race(void) {
 }
 
 
-void display_time(void) {
+void display_page_time(void) {
    //display_openchrono_center();
 
    if ( my_display_type == lcd_char_16_2 )
@@ -200,14 +200,221 @@ void display_time(void) {
 }
 
 
-void display(void) {
-	display_time();
-   //display_end_of_race();
+struct page_typ
+{
+   char* name;
+
+   struct page_typ * page_parent;
+   struct page_typ * page_brother_next;
+   struct page_typ * page_brother_previous;
+   struct page_typ * page_child_first;
+
+   void (*display) (); // pointeur de fonction sur fonction d'affichage
+
+   void (*on_up) ();     // ptr de fct sur evenement appui touche haut
+   void (*on_down) ();   // ptr de fct sur evenement appui touche bas
+   void (*on_left) ();   // ptr de fct sur evenement appui touche gauche
+   void (*on_right) ();  // ptr de fct sur evenement appui touche droite
+   void (*on_ok) ();     // ptr de fct sur evenement appui touche ok
+   void (*on_cancel) (); // ptr de fct sur evenement appui touche cancel
+};
+
+struct page_typ page_time;
+struct page_typ page_reset_time;
+struct page_typ page_engine_menu;
+struct page_typ page_engine_select;
+struct page_typ page_engine_stroke;
+struct page_typ page_engine_reset_time;
+struct page_typ page_track_menu;
+struct page_typ page_recall_menu;
+
+struct page_typ * ptr_current_page;
+struct page_typ * ptr_page_goto;
+
+void display_page_reset_time(void) {
+   printf("RESET TIME");
+   printf("\n");
+   printf("(OK/CANCEL?)");
+   printf("\n");
+}
+
+void display_page_engine_menu(void) {
+   printf("ENGINE MENU");
+   printf("\n");
+}
+
+void display_page_engine_select(void) {
+   printf("SELECT ENGINE");
+   printf("\n");
+   printf("1"); // TO FIX
+   printf("\n");
+   printf("(UP/DOWN?)");
+   printf("\n");
+}
+
+void display_page_engine_stroke(void) {
+   printf("ENGINE 1"); // TO FIX
+   printf("\n");
+   printf("2 (UP/DOWN?)"); // TO FIX
+   printf("\n");
+   printf("STROKES");
+   printf("\n");
+}
+
+void display_page_engine_reset_time(void) {
+   printf("ENGINE 1"); // TO FIX
+   printf("\n");
+   printf("RESET ENGINE TIME");
+   printf("\n");
+   printf("(OK/CANCEL?)");
+   printf("\n");
+}
+
+void display_page_track_menu(void) {
+   printf("TRACK MENU");
+   printf("\n");
+}
+
+void display_page_recall_menu(void) {
+   printf("RECALL MENU");
+   printf("\n");
+}
+
+
+
+void navigate_on_up(void) {
+}
+
+void navigate_on_down(void) {
+}
+
+void navigate_on_left(void) {
+   ptr_page_goto = ptr_current_page->page_brother_previous;
+}
+
+void navigate_on_right(void) {
+   ptr_page_goto = ptr_current_page->page_brother_next;
+}
+
+void navigate_on_ok(void) {
+   ptr_page_goto = ptr_current_page->page_child_first;
+}
+
+void navigate_on_cancel(void) {
+   ptr_page_goto = ptr_current_page->page_parent;
+}
+
+void init_page(struct page_typ* page, char* pgname) {
+   page->name = pgname;
+   page->page_parent = NULL;
+   page->page_brother_next = NULL;
+   page->page_brother_previous = NULL;
+   page->page_child_first = NULL;
+
+   page->display = &display_page_time;
+
+   page->on_ok = &navigate_on_ok;
+   page->on_cancel = &navigate_on_cancel;
+   page->on_up = &navigate_on_up;
+   page->on_down = &navigate_on_down;
+   page->on_left = &navigate_on_left;
+   page->on_right = &navigate_on_right;
+}
+
+void init_pages(void)  {
+   init_page(&page_time, "page_time");
+
+   init_page(&page_reset_time, "page_reset_time");
+
+   init_page(&page_engine_menu, "page_engine_menu");
+       init_page(&page_engine_select, "page_engine_select");
+       init_page(&page_engine_stroke, "page_engine_stroke");
+       init_page(&page_engine_reset_time, "page_engine_reset_time");
+
+   init_page(&page_track_menu, "page_track_menu");
+
+   init_page(&page_recall_menu, "page_recall_menu");
+
+   // parent init
+   (&page_time)->page_parent = &page_time; //NULL;
+   (&page_reset_time)->page_parent = &page_time; //NULL;
+   (&page_engine_menu)->page_parent = &page_time; //NULL;
+      (&page_engine_select)->page_parent = &page_engine_menu;
+      (&page_engine_stroke)->page_parent = &page_engine_menu;
+      (&page_engine_reset_time)->page_parent = &page_engine_menu;
+   (&page_track_menu)->page_parent = &page_time; //NULL;
+   (&page_recall_menu)->page_parent = &page_time; //NULL;
+
+
+   // first child initialisation
+   (&page_time)->page_child_first = NULL;
+   (&page_reset_time)->page_child_first = NULL;
+   (&page_engine_menu)->page_child_first = (&page_engine_select);
+      (&page_engine_select)->page_child_first = NULL;
+      (&page_engine_stroke)->page_child_first = NULL;
+      (&page_engine_reset_time)->page_child_first = NULL;
+   (&page_track_menu)->page_child_first = NULL;
+   (&page_recall_menu)->page_child_first = NULL;
+
+   // next brother init
+   (&page_time)->page_brother_next = &page_reset_time;
+   (&page_reset_time)->page_brother_next = &page_engine_menu;
+   (&page_engine_menu)->page_brother_next = &page_track_menu;
+      (&page_engine_select)->page_brother_next = &page_engine_stroke;
+      (&page_engine_stroke)->page_brother_next = &page_engine_reset_time;
+      (&page_engine_reset_time)->page_brother_next = &page_engine_select;
+   (&page_track_menu)->page_brother_next = &page_recall_menu;
+   (&page_recall_menu)->page_brother_next = &page_time;
+
+   // previous brother init
+   (&page_time)->page_brother_previous = &page_recall_menu;
+   (&page_reset_time)->page_brother_previous = &page_time;
+   (&page_engine_menu)->page_brother_previous = &page_reset_time;
+      (&page_engine_select)->page_brother_previous = &page_engine_reset_time;
+      (&page_engine_stroke)->page_brother_previous = &page_engine_select;
+      (&page_engine_reset_time)->page_brother_previous = &page_engine_select;
+   (&page_track_menu)->page_brother_previous = &page_engine_menu;
+   (&page_recall_menu)->page_brother_previous = &page_track_menu;
+
+   // display init
+   (&page_time)->display = &display_page_time;
+   (&page_reset_time)->display = &display_page_reset_time;
+   (&page_engine_menu)->display = &display_page_engine_menu;
+   (&page_engine_select)->display = &display_page_engine_select;
+   (&page_engine_stroke)->display = &display_page_engine_stroke;
+   (&page_engine_reset_time)->display = &display_page_engine_reset_time;
+   (&page_track_menu)->display = &display_page_track_menu;
+   (&page_recall_menu)->display = &display_page_recall_menu;
+
+   //init_key_function();
+
+   // ask key init
+   /*
+   (&page_time)->waitkeypad = &;
+   (&page_reset_time)->waitkeypad = &;
+   (&page_engine_menu)->waitkeypad = &;
+   (&page_engine_select)->waitkeypad = &;
+   (&page_engine_stroke)->waitkeypad = &;
+   (&page_engine_reset_time)->waitkeypad = &;
+   (&page_track_menu)->waitkeypad = &;
+   (&page_recall_menu)->waitkeypad = &;
+   */
+
+
+    ptr_current_page = &page_time; //&page_engine_menu;
 }
 
 
 
 
 
+void display(void) {
+   lcd_clrscr(); // efface ecran
 
+	//display_page_time();
+   //display_end_of_race();
+
+   (ptr_current_page->display)();
+   //update_key_pressed(); // TO DO !!!!!
+}
 

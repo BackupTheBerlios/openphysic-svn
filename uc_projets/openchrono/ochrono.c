@@ -96,6 +96,7 @@ void init_sf(void)
 
 	 // LCD
 	 display_openchrono_center();
+	 init_pages();
 	
 	 // Track
 	 init_track(&current_track);	
@@ -313,5 +314,6 @@ int main(void)
     }
     return 0;
 }
+
 
 
