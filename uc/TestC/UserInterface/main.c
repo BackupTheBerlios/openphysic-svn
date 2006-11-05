@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdint.h>
 
 //#include <string.h>
 
@@ -11,11 +12,14 @@
 #define KEY_CANCEL 'n'
 
 enum {
-     GO_PARENT = 0,
+     DONT_MOVE = 0,
+     GO_PARENT,
      GO_BROTHER_NEXT,
      GO_BROTHER_PREVIOUS,
      GO_CHILD_FIRST,
 };
+
+uint8_t go = 0;
 
 struct page_typ
 {
@@ -28,10 +32,6 @@ struct page_typ
    void (*waitkeypad) (); // pointeur de fonction sur fonction d'attente de touches 
 };
 
-
-
-void copy_page(struct page_typ * page_from, struct page_typ * page_to) {
-}
 
 struct page_typ page_time;
 struct page_typ page_reset_time;
@@ -146,14 +146,66 @@ void display_page_type(struct page_typ* page) {
    printf("\n");
 }
 
-void disp_page_time(void) {
-   printf("disp_page_time");     
+void display_page_time(void) {
+   printf("display_page_time");
+   printf("\n");     
 }
+
+void display_page_reset_time(void) {
+   printf("RESET TIME");
+   printf("\n");
+   printf("(OK/CANCEL?)");
+   printf("\n");
+}
+
+void display_page_engine_menu(void) {
+   printf("ENGINE MENU");
+   printf("\n");
+}
+
+void display_page_engine_select(void) {
+   printf("SELECT ENGINE");
+   printf("\n");
+   printf("1"); // TO FIX
+   printf("\n");
+   printf("(UP/DOWN?)");   
+   printf("\n");
+}
+
+void display_page_engine_stroke(void) {
+   printf("ENGINE 1"); // TO FIX
+   printf("\n");
+   printf("2 (UP/DOWN?)"); // TO FIX   
+   printf("\n");
+   printf("STROKES");
+   printf("\n");
+}
+
+void display_page_engine_reset_time(void) {
+   printf("ENGINE 1"); // TO FIX
+   printf("\n");
+   printf("RESET ENGINE TIME");   
+   printf("\n");
+   printf("(OK/CANCEL?)");   
+   printf("\n");
+}
+
+void display_page_track_menu(void) {
+   printf("TRACK MENU");
+   printf("\n");
+}
+
+void display_page_recall_menu(void) {
+   printf("RECALL MENU");
+   printf("\n");
+}
+
 
 // TO DO
 void page_key_interaction(void) {
    char key;
    key = 0;
+   
 
    
    while(key!=KEY_OK && key!=KEY_CANCEL
@@ -187,7 +239,7 @@ void page_key_interaction(void) {
             ptr_page_goto = ptr_current_page->page_brother_next; // TO FIX
             break;           
          default:
-
+            ptr_page_goto = ptr_current_page;
             break;
       }
    }
@@ -204,9 +256,9 @@ void page_key_interaction(void) {
 
 int main(int argc, char *argv[])
 {
-   char* strTitle;
-   strTitle = "My user interface";
-   printf("%s\n\n",strTitle);
+   //char* strTitle;
+   //strTitle = "My user interface";
+   //printf("%s\n\n",strTitle);
    
 /*  
    struct page_typ current_page;
@@ -293,16 +345,14 @@ int main(int argc, char *argv[])
    (&page_recall_menu)->page_brother_previous = &page_track_menu;
    
    // display init
-   /*
-   (&page_time)->display = &;
-   (&page_reset_time)->display = &;
-   (&page_engine_menu)->display = &;
-   (&page_engine_select)->display = &;
-   (&page_engine_stroke)->display = &;
-   (&page_engine_reset_time)->display = &;
-   (&page_track_menu)->display = &;
-   (&page_recall_menu)->display = &;
-   */
+   (&page_time)->display = &display_page_time;
+   (&page_reset_time)->display = &display_page_reset_time;
+   (&page_engine_menu)->display = &display_page_engine_menu;
+   (&page_engine_select)->display = &display_page_engine_select;
+   (&page_engine_stroke)->display = &display_page_engine_stroke;
+   (&page_engine_reset_time)->display = &display_page_engine_reset_time;
+   (&page_track_menu)->display = &display_page_track_menu;
+   (&page_recall_menu)->display = &display_page_recall_menu;
       
    // ask key init
    /*
@@ -327,7 +377,8 @@ int main(int argc, char *argv[])
    while(1) {
       //printf("%p",ptr_current_page);
       //display_page_name(ptr_current_page);
-      display_page_type(ptr_current_page);
+      //display_page_type(ptr_current_page);
+      (ptr_current_page->display)();
       page_key_interaction();
 /*
       display_page_name(&current_page);
