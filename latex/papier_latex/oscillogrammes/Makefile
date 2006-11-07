@@ -24,14 +24,14 @@ pdf:
 	xpdf $(input).pdf
 
 pdf2pages:
-	ps2pdf main.ps main.pdf
+	ps2pdf $(input).ps $(input).pdf
 	#pdflatex $(input).tex
 	pdfnup --nup 2 $(input).pdf --orient landscape --outfile $(input)_suite_2.pdf
 	xpdf $(input)_suite_2.pdf
 
 ps2pages:
 	latex $(input).tex
-	dvips $(input)
+	dvips $(input) -o $(input).dvi
 	psnup -n 2 $(input).ps > $(input)_suite_2.ps
 	gv $(input)_suite_2.ps
 
