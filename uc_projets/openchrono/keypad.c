@@ -56,78 +56,43 @@ inline void SeekButtons(void)
 	// TO FIX !!!!
 	
    //~ !
-   switch((~PINB)) {
-      case (1<<B_OK):
-         switch_on_led(B_OK);
+	uint8_t tmpKEY;
+	tmpKEY = ~PINB;
+	
+   //switch(~PINB) { // don't work (PINB is changing)
+   switch(tmpKEY) {
+      case (1<<B_OK): // Only OK button
+         //switch_on_led(B_OK+1);
          (ptr_current_page->on_ok)();
          break;
-      case (1<<B_CANCEL):
-         switch_on_led(B_CANCEL);
+      case (1<<B_CANCEL): // Only Cancel button
+         //switch_on_led(B_CANCEL+1);
          (ptr_current_page->on_cancel)();
          break;
-      case 1<<B_LEFT:
-         //switch_on_led(B_LEFT);
+      case (1<<B_LEFT): // Only Left button
+         //switch_on_led(B_LEFT+1);
          (ptr_current_page->on_left)();
          break;
-      case 1<<B_RIGHT:
-         //switch_on_led(B_RIGHT);
+      case (1<<B_RIGHT): // Only Right button
+         //switch_on_led(B_RIGHT+1);
          (ptr_current_page->on_right)();
          break;
-      case 1<<B_UP:
-         //switch_on_led(B_UP);
+      case (1<<B_UP): // Only Up button
+         //switch_on_led(B_UP+1);
          (ptr_current_page->on_up)();
          break;
-      case 1<<B_DOWN:
-         //switch_on_led(B_DOWN);
+      case (1<<B_DOWN): // Only Down button
+         //switch_on_led(B_DOWN+1);
          (ptr_current_page->on_down)();
          break;
-      default:
+      //case (1<<B_OK)|(1<<B_CANCEL): // combinaison de 2 touches (OK & CANCEL)
+      //   break;
+      default: // Undefined
          //switch_off_all_leds();
          ptr_page_goto = ptr_current_page;
          break;
    }
 
-    //if ( ((PINB>>B_OK) & 0x01) == 0x00 )
-    /*
-    if ( PINB == 0xFE )
-    { // OK
-    	  //TestButton(B_OK);
-    	  switch_on_led(B_OK);
-        //StartStopChronometer();
-        //ptr_current_page = &page_engine_menu;
-        (ptr_current_page->on_ok)();
-    }
-
-    if ( PINB == 0xFD )
-    { // CANCEL
-        switch_on_led(B_CANCEL);
-        (ptr_current_page->on_cancel)();
-    }
-
-    if ( PINB == ~(1<<B_LEFT)-1 )
-    { // LEFT
-        switch_on_led(B_LEFT);
-        (ptr_current_page->on_left)();
-    }
-
-    if ( PINB == ~(1<<B_RIGHT)-1 )
-    { // RIGHT
-        switch_on_led(B_RIGHT);
-        (ptr_current_page->on_right)();
-    }
-
-    if ( PINB == ~(1<<B_UP)-1 )
-    { // UP
-        switch_on_led(B_UP);
-        (ptr_current_page->on_up)();
-    }
-
-    if ( PINB == ~(1<<B_DOWN)-1 )
-    { // DOWN
-        switch_on_led(B_DOWN);
-        (ptr_current_page->on_down)();
-    }
-    */
 
 // changement de page d'affichage
    if (ptr_page_goto != NULL) {
@@ -146,6 +111,7 @@ ISR(INT1_vect)
     //PORTC = 0x00;  // TO FIX
     SeekButtons();
 }
+
 
 
 
