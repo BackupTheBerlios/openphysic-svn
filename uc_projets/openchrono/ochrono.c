@@ -94,17 +94,21 @@ void init_sf(void)
     init_time(&before_last_time);
     init_time(&best_time);
 
-	 // LCD
-	 display_openchrono_center();
-	 init_all_the_pages();
-	
 	 // Track
 	 init_track(&current_track);	
 	 	
 	 // Engine
 	 init_engine(&current_engine);
 	
-	 // Pilot	
+	 // Pilot
+	
+	 // LCD
+	 init_all_the_pages();
+	 ptr_current_page = &page_title;
+	 display();
+	 //_delay_ms(500);	
+	 ptr_current_page = &page_time;
+	 //display();	
 }
 
 void init_hw_chrono(void) {
@@ -274,6 +278,7 @@ int main(void)
     }
     return 0;
 }
+
 
 
 

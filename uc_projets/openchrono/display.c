@@ -46,18 +46,17 @@ void init_hw_display(void) {
 }
 
 inline void display_openchrono_center(void) {
-
  //lcd_EcrisAuCentre("12345678901234567890",0);
  //lcd_EcrisAuCentre("===OpenChrono===",0);
  //lcd_EcrisAuCentre("----S.CELLES----",1);
    //lcd_printf("OpenChrono");
    lcd_EcrisAuCentre("OpenChrono",0);
-   lcd_EcrisAuCentre("S.Celles",1);
+   lcd_EcrisAuCentre("S. CELLES",1);
+   lcd_EcrisAuCentre("v 0.0.1",2);
+   //_delay_ms(250);
 }
 
 inline void display_openchrono(void) {
-   //lcd_clrscr();
-
    lcd_gotoxy(0,0); 	//Curseur  1ère colonne 1ère ligne
    lcd_puts("OpenChrono");
    lcd_gotoxy(0,1);
@@ -238,6 +237,7 @@ struct page_typ
 
 };
 
+struct page_typ page_title;
 struct page_typ page_time;
 struct page_typ page_reset_time;
 struct page_typ page_engine_menu;
@@ -340,6 +340,8 @@ void init_page(struct page_typ* page, char* pgname) {
 }
 
 void init_all_the_pages(void)  {
+   init_page(&page_title, "page_title");
+
    init_page(&page_time, "page_time");
 
    init_page(&page_reset_time, "page_reset_time");
@@ -395,6 +397,7 @@ void init_all_the_pages(void)  {
    (&page_recall_menu)->page_brother_previous = &page_track_menu;
 
    // display init
+   (&page_title)->display = &display_openchrono_center;
    (&page_time)->display = &display_page_time;
    (&page_reset_time)->display = &display_page_reset_time;
    (&page_engine_menu)->display = &display_page_engine_menu;
@@ -419,7 +422,7 @@ void init_all_the_pages(void)  {
    */
 
 
-    ptr_current_page = &page_time; //&page_engine_menu;
+    //ptr_current_page = &page_time; //&page_engine_menu;
 }
 
 
@@ -435,6 +438,7 @@ void display(void) {
    (ptr_current_page->display)();
    //update_key_pressed(); // TO DO !!!!!
 }
+
 
 
 
