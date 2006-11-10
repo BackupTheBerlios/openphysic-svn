@@ -15,9 +15,8 @@
 #define KEY7 7
 
 
-ISR(SIG_INTERRUPT0) {	
-	//PORTB = PINC;	
-
+void multiple_key(void)
+{
 	if ( (PINC>>KEY0) & 0x01 ) {
 	   PORTB |= (1<<KEY0);
 	}
@@ -73,7 +72,48 @@ ISR(SIG_INTERRUPT0) {
 	else {
 	   PORTB &= (~(1<<KEY7));
 	}
+}
+
+void only_one_key(void)
+{
+	uint8_t tmpKEY;
+	tmpKEY = ~PINC;
 	
+   //switch(~PINC) {  // ATTENTION PINC change pendant l'exécution
+   switch(tmpKEY) {
+      case (1<<KEY0):
+         PORTB = ~(1<<KEY0);
+         break;
+      case (1<<KEY1):
+         PORTB = ~(1<<KEY2);
+         break;
+      case (1<<KEY2):
+         PORTB = ~(1<<KEY2);
+         break;
+      case (1<<KEY3):
+         PORTB = ~(1<<KEY3);
+         break;
+      case (1<<KEY4):
+         PORTB = ~(1<<KEY4);
+         break;
+      case (1<<KEY5):
+         PORTB = ~(1<<KEY5);
+         break;
+      case (1<<KEY6):
+         PORTB = ~(1<<KEY6);
+         break;
+      case (1<<KEY7):
+         PORTB = ~(1<<KEY7);
+         break;
+      default:
+         break;
+   }
+}
+
+ISR(SIG_INTERRUPT0) {	
+   //PORTB = PINC;	
+   //multiple_key();
+   only_one_key();	
 }
 
 int main(void) {
@@ -100,6 +140,7 @@ int main(void) {
    }
 
 }
+
 
 
 
