@@ -53,6 +53,7 @@ void On_simulation_begin() {
    set_output();
 }
 
+
 void On_digital_in_edge(PIN pDigitalIn, EDGE pEdge, double pTime)
 {
    set_output();
@@ -60,15 +61,12 @@ void On_digital_in_edge(PIN pDigitalIn, EDGE pEdge, double pTime)
 
 void On_gadget_notify(GADGET pGadgetId, int pCode)
 {
-   set_output();
 }
 
 void On_time_step(double pTime)
 {
-   set_output();
 }
 
 void On_remind_me(double pTime, int pData)
 {
-   set_output();
 }
