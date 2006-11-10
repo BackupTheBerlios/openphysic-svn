@@ -28,6 +28,26 @@ typedef enum { stop = 0, start} chronometer_mode;
 chronometer_mode my_chronometer_mode = stop;
 */
 
+void init_hw_timer(void)
+{
+    //FPWM=Fquartz/(N.256) with N={1,8,64,256,1024}
+    //N=Fquartz/(FPWM.256)
+    //http://www.jelectronique.com/pwm.php
+    // here Fquartz = F_CPU = 1MHz
+    // here T = 0.1ms so FPWM = 10 000 Hz  = 10 kHZ
+    // That's a  bab idea because
+    // we need a variable number of step in the timer TCNT1=ICR1
+    //FPWM=Fquartz/((N.(1+TOP))
+    //TOP=Fquartz/(FPWM.N)-1
+    // N=1 SO TOP=99=Ox63=ICR1 (2 registres de 8 bits)
+
+    OCR1AH=0x03; //Ox00
+    OCR1AL=0x20; //0x63
+
+    TCCR1B |=(1<<WGM12)|(0<<CS11)|(1<<CS10); //CTC division F_CPU 1  (1<<WGM12)|(1<<CS11)|(1<<CS10)
+
+    TIMSK|=(1<<OCIE1A);
+}
 
 /*
  * start or stop chronometer
@@ -108,6 +128,7 @@ ISR(SIG_OUTPUT_COMPARE1A)
     	inc_time(&current_time);
     }
 }
+
 
 
 

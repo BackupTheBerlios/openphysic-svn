@@ -27,6 +27,24 @@ const enum display_mode my_display_type = lcd_char_20_2;
 enum display_page { time_current_best_last_sgn_cmp = 0};
 enum display_page my_display_page = time_current_best_last_sgn_cmp;
 
+void init_hw_display(void) {
+    // Port des bits de données du lcd
+    PORTE=0x00; // PORTC
+    DDRE=0xFF; //Port en sortie DDRC
+    // Port des bits de controles du lcd
+    PORTF=0x00;   // R/W=0 // PORTD
+    DDRF=0xFF;//Port en sortie
+
+    stdout = &lcdout; // Peter Fleury hack for printf
+
+    lcd_init(LCD_DISP_ON_CURSOR_BLINK); //Initialisation curseur clignotant
+    lcd_command(LCD_DISP_ON); //curseur éteint
+
+    lcd_clrscr(); //efface l'écran
+    //Active la gestion des accents français	éèêëàùçô
+    lcd_ChargeAccentsFrancais(); // Charge 8 caractères accentués dans la CGRAM et active leur utilisation
+}
+
 inline void display_openchrono_center(void) {
 
  //lcd_EcrisAuCentre("12345678901234567890",0);
@@ -417,4 +435,5 @@ void display(void) {
    (ptr_current_page->display)();
    //update_key_pressed(); // TO DO !!!!!
 }
+
 

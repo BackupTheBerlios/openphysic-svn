@@ -186,59 +186,18 @@ void init_hw(void)
     // **********
     // * Keypad *
     // **********
-    // 1 joystick button (4 directions, up, down, left, right)
-    // 2 push buttons (ok, cancel)
-    // keypad input
-    DDRB=0x00;
-    PORTB=0xFF;
-    // keypad interrupt with OR output on INT1
-    //MCUCR |= (1<<ISC11) | (0<<ISC10); // falling edge ATmega8535
-    EICRA |= (1<<ISC11) | (0<<ISC10); // falling edge ATmega8535
-    //MCUCR |= (0<<ISC11) | (0<<ISC10); // low level (for test)
-
-    //GICR |= (1<<INT1); // turn on interrupts INT1  (ATmega8535)
-    EIMSK |= (1<<INT1); // ATmega128
+	 init_hw_keypad();
 
 
     // ***********
     // * Display *
     // ***********
-    // Port des bits de données du lcd
-    PORTE=0x00; // PORTC
-    DDRE=0xFF; //Port en sortie DDRC
-    // Port des bits de controles du lcd
-    PORTF=0x00;   // R/W=0 // PORTD
-    DDRF=0xFF;//Port en sortie
-
-    stdout = &lcdout; // Peter Fleury hack for printf
-
-    lcd_init(LCD_DISP_ON_CURSOR_BLINK); //Initialisation curseur clignotant
-    lcd_command(LCD_DISP_ON); //curseur éteint
-
-    lcd_clrscr(); //efface l'écran
-    //Active la gestion des accents français	éèêëàùçô
-    lcd_ChargeAccentsFrancais(); // Charge 8 caractères accentués dans la CGRAM et active leur utilisation
+	 init_hw_display();
 
     // *********
     // * Timer *
     // *********
-    //FPWM=Fquartz/(N.256) with N={1,8,64,256,1024}
-    //N=Fquartz/(FPWM.256)
-    //http://www.jelectronique.com/pwm.php
-    // here Fquartz = F_CPU = 1MHz
-    // here T = 0.1ms so FPWM = 10 000 Hz  = 10 kHZ
-    // That's a  bab idea because
-    // we need a variable number of step in the timer TCNT1=ICR1
-    //FPWM=Fquartz/((N.(1+TOP))
-    //TOP=Fquartz/(FPWM.N)-1
-    // N=1 SO TOP=99=Ox63=ICR1 (2 registres de 8 bits)
-
-    OCR1AH=0x03; //Ox00
-    OCR1AL=0x20; //0x63
-
-    TCCR1B |=(1<<WGM12)|(0<<CS11)|(1<<CS10); //CTC division F_CPU 1  (1<<WGM12)|(1<<CS11)|(1<<CS10)
-
-    TIMSK|=(1<<OCIE1A);
+    init_hw_timer();
 
     // *******
     // * RPM *
@@ -314,6 +273,7 @@ int main(void)
     }
     return 0;
 }
+
 
 
 
