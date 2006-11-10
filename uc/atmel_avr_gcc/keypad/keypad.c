@@ -32,7 +32,47 @@ ISR(SIG_INTERRUPT0) {
 	   PORTB &= (~(1<<KEY1));
 	}
 	
+	if ( PINC & (1<<KEY2) ) {
+	   PORTB |= (1<<KEY2);
+	}
+	else {
+	   PORTB &= (~(1<<KEY2));
+	}
 
+	if ( PINC & (1<<KEY3) ) {
+	   PORTB |= (1<<KEY3);
+	}
+	else {
+	   PORTB &= (~(1<<KEY3));
+	}
+
+	if ( PINC & (1<<KEY4) ) {
+	   PORTB |= (1<<KEY4);
+	}
+	else {
+	   PORTB &= (~(1<<KEY4));
+	}
+	
+	if ( PINC & (1<<KEY5) ) {
+	   PORTB |= (1<<KEY5);
+	}
+	else {
+	   PORTB &= (~(1<<KEY5));
+	}
+
+	if ( PINC & (1<<KEY6) ) {
+	   PORTB |= (1<<KEY6);
+	}
+	else {
+	   PORTB &= (~(1<<KEY6));
+	}
+
+	if ( PINC & (1<<KEY7) ) {
+	   PORTB |= (1<<KEY7);
+	}
+	else {
+	   PORTB &= (~(1<<KEY7));
+	}
 	
 }
 
@@ -60,5 +100,6 @@ int main(void) {
    }
 
 }
+
 
 
