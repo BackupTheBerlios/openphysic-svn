@@ -56,8 +56,8 @@ K7 VSS PC7
 
 ;X0123 ND2 NODEKEY01 NODEKEY23 NODEINT0
 
-;Xuser1 _nand8 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 NODEINT0
-Xuser1 _nand8 PC0 PC1 PC2 PC3 PC4 PC5 VDD VDD NODEINT0
+Xuser1 _nand8 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 NODEINT0
+;Xuser1 _nand8 PC0 PC1 PC2 PC3 PC4 PC5 VDD VDD NODEINT0
    ; Attention pour n'activer que 6 entrées
    ; Il faut mettre à VSS (+5V) les 2 autres (et pas 0V)
 
@@ -96,6 +96,7 @@ D8 VDD NODE8  ; x: Panel LEDs 1 - 8
 R8 NODE8 PB7 1k
 
 .PLOT V(PD2) V(PC0) V(PC1) V(PC2) V(PC3) V(PC4) V(PC5) V(PC6) V(PC7)
+
 
 
 
