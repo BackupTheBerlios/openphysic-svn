@@ -226,10 +226,12 @@ void update_key_pressed(void) {
    }                  
 }
 
-void navigate_on_up(void) {
+void navigate_on_ok(void) {
+   ptr_page_goto = ptr_current_page->page_child_first;
 }
 
-void navigate_on_down(void) {
+void navigate_on_cancel(void) {
+   ptr_page_goto = ptr_current_page->page_parent;
 }
 
 void navigate_on_left(void) {
@@ -240,13 +242,12 @@ void navigate_on_right(void) {
    ptr_page_goto = ptr_current_page->page_brother_next;
 }
 
-void navigate_on_ok(void) {
-   ptr_page_goto = ptr_current_page->page_child_first;
+void navigate_on_up(void) {
 }
 
-void navigate_on_cancel(void) {
-   ptr_page_goto = ptr_current_page->page_parent;
+void navigate_on_down(void) {
 }
+
 
 //void init_key_function(void) {
 //}     
@@ -262,10 +263,10 @@ void init_page(struct page_typ* page, char* pgname) {
    
    page->on_ok = &navigate_on_ok;
    page->on_cancel = &navigate_on_cancel;
-   page->on_up = &navigate_on_up;
-   page->on_down = &navigate_on_down;
    page->on_left = &navigate_on_left;
    page->on_right = &navigate_on_right;   
+   page->on_up = &navigate_on_up;
+   page->on_down = &navigate_on_down;
 }
 
 int main(int argc, char *argv[])
