@@ -67,13 +67,13 @@
 #include "a2d.c"
 #include "time_op.c"
 #include "chrono.c"
-#include "keypad.c"
+
 #include "engine.c"
 #include "rpm.c"
 #include "track.c"
 #include "temperature.c"
 #include "display.c"
-
+#include "keypad.c"
 /*
  * software init function
  */
@@ -273,6 +273,7 @@ int main(void)
     }
     return 0;
 }
+
 
 
 

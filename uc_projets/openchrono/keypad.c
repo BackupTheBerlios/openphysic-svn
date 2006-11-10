@@ -47,32 +47,33 @@ inline void SeekButtons(void)
 {
     if ( (PINB>>B_OK)&0x01 )
     { // OK
-        StartStopChronometer();
+        //StartStopChronometer();
+        (ptr_current_page->on_ok)();
     }
 
     if ( (PINB>>B_CANCEL)&0x01 )
     { // CANCEL
-
+        (ptr_current_page->on_cancel)();
     }
 
     if ( (PINB>>B_LEFT)&0x01 )
     { // LEFT
-
+        (ptr_current_page->on_left)();
     }
 
     if ( (PINB>>B_RIGHT)&0x01 )
     { // RIGHT
-
+        (ptr_current_page->on_right)();
     }
 
     if ( (PINB>>B_UP)&0x01 )
     { // UP
-
+        (ptr_current_page->on_up)();
     }
 
     if ( (PINB>>B_DOWN)&0x01 )
     { // DOWN
-
+        (ptr_current_page->on_down)();
     }
 }
 
@@ -87,5 +88,6 @@ ISR(INT1_vect)
     //PORTC = 0x00;
     SeekButtons();
 }
+
 
 
