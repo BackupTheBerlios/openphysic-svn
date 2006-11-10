@@ -96,7 +96,7 @@ void init_sf(void)
 
 	 // LCD
 	 display_openchrono_center();
-	 init_pages();
+	 init_all_the_pages();
 	
 	 // Track
 	 init_track(&current_track);	
@@ -139,7 +139,7 @@ void init_hw(void)
     // **************
     // * Oscillator *
     // **************
-    // internal oscillator set as 1MHz
+    // internal oscillator set as 8MHz
     // CKSEL
 
     // ******************
@@ -218,6 +218,7 @@ void init(void)
 {
     init_hw();
     init_sf();
+    //sei();
 }
 
 
@@ -273,6 +274,9 @@ int main(void)
     }
     return 0;
 }
+
+
+
 
 
 

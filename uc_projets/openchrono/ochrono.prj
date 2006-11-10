@@ -184,7 +184,9 @@ K9 VSS PB5 ; down   9  ..
 
 ; user defined component (userlib nand8.dll)
 ; see http://svn.berlios.de/wsvn/openphysic/uc/atmel_avr_gcc/vmlab_userlib
-XNAND8 _nand8 PB0 PB1 PB2 PB3 PB4 PB5 VDD VDD PD1
+XNAND8 _nand8 PB0 PB1 PB2 PB3 PB4 PB5 VDD VDD INTKEY;PD1
+RINTKEY INTKEY PD1 1k
+CINTKEY INTKEY VSS 1u
 
 
 ;;;;;;;
@@ -196,8 +198,9 @@ X2 LCD(20 4 250K) PF5 PF6 PF7 PE7 PE6 PE5 PE4 PE3 PE2 PE1 PE0
 ;X2 LCD(20 2 250K) PF5 PF6 PF7 PE7 PE6 PE5 PE4 PE3 PE2 PE1 PE0
 
 ; scope (PD0 et PD7)
-.PLOT V(PD0) V(PD1) V(PB0) V(PA0) V(PA1) V(PB0) V(PD5) V(PD2)
+.PLOT V(PD0) V(PD1) V(PB0) V(PA0) V(PA1) V(PD5) V(PD2)
 ;.PLOT V(PD0) V(PD1) V(PD2) V(PD3) V(PD4) V(PD5) V(PD6) V(PD7)
+
 
 
 

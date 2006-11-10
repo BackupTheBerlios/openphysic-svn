@@ -229,12 +229,13 @@ struct page_typ
 
    void (*display) (); // pointeur de fonction sur fonction d'affichage
 
-   void (*on_up) ();     // ptr de fct sur evenement appui touche haut
-   void (*on_down) ();   // ptr de fct sur evenement appui touche bas
-   void (*on_left) ();   // ptr de fct sur evenement appui touche gauche
-   void (*on_right) ();  // ptr de fct sur evenement appui touche droite
    void (*on_ok) ();     // ptr de fct sur evenement appui touche ok
    void (*on_cancel) (); // ptr de fct sur evenement appui touche cancel
+   void (*on_left) ();   // ptr de fct sur evenement appui touche gauche
+   void (*on_right) ();  // ptr de fct sur evenement appui touche droite
+   void (*on_up) ();     // ptr de fct sur evenement appui touche haut
+   void (*on_down) ();   // ptr de fct sur evenement appui touche bas
+
 };
 
 struct page_typ page_time;
@@ -298,12 +299,13 @@ void display_page_recall_menu(void) {
    printf("\n");
 }
 
-
-
-void navigate_on_up(void) {
+void navigate_on_ok(void) {
+   //ptr_current_page = &page_engine_menu;
+   ptr_page_goto = ptr_current_page->page_child_first;
 }
 
-void navigate_on_down(void) {
+void navigate_on_cancel(void) {
+   ptr_page_goto = ptr_current_page->page_parent;
 }
 
 void navigate_on_left(void) {
@@ -314,12 +316,10 @@ void navigate_on_right(void) {
    ptr_page_goto = ptr_current_page->page_brother_next;
 }
 
-void navigate_on_ok(void) {
-   ptr_page_goto = ptr_current_page->page_child_first;
+void navigate_on_up(void) {
 }
 
-void navigate_on_cancel(void) {
-   ptr_page_goto = ptr_current_page->page_parent;
+void navigate_on_down(void) {
 }
 
 void init_page(struct page_typ* page, char* pgname) {
@@ -333,13 +333,13 @@ void init_page(struct page_typ* page, char* pgname) {
 
    page->on_ok = &navigate_on_ok;
    page->on_cancel = &navigate_on_cancel;
-   page->on_up = &navigate_on_up;
-   page->on_down = &navigate_on_down;
    page->on_left = &navigate_on_left;
    page->on_right = &navigate_on_right;
+   page->on_up = &navigate_on_up;
+   page->on_down = &navigate_on_down;
 }
 
-void init_pages(void)  {
+void init_all_the_pages(void)  {
    init_page(&page_time, "page_time");
 
    init_page(&page_reset_time, "page_reset_time");
@@ -435,5 +435,6 @@ void display(void) {
    (ptr_current_page->display)();
    //update_key_pressed(); // TO DO !!!!!
 }
+
 
 
