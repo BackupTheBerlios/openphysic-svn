@@ -36,7 +36,17 @@ void On_destroy() {
 void set_output() {
    //SET_LOGIC(SIG_OUT, 1);
    //SET_LOGIC(SIG_OUT, !(GET_LOGIC(SIG_IN1) && GET_LOGIC(SIG_IN2)));
-   SET_LOGIC(SIG_OUT, !(GET_LOGIC(SIG_IN1) && GET_LOGIC(SIG_IN2) && GET_LOGIC(SIG_IN2) && GET_LOGIC(SIG_IN3) && GET_LOGIC(SIG_IN4) && GET_LOGIC(SIG_IN5) && GET_LOGIC(SIG_IN6) && GET_LOGIC(SIG_IN7))); // Initializes output
+   SET_LOGIC(SIG_OUT,
+      !( GET_LOGIC(SIG_IN1)
+      && GET_LOGIC(SIG_IN2)
+      && GET_LOGIC(SIG_IN3)
+      && GET_LOGIC(SIG_IN4)
+      && GET_LOGIC(SIG_IN5)
+      && GET_LOGIC(SIG_IN6)
+      && GET_LOGIC(SIG_IN7)
+      && GET_LOGIC(SIG_IN8)
+      )
+    ); // Initializes output
 }
 
 void On_simulation_begin() {
