@@ -2,27 +2,48 @@
 
 set border# bordure
 set grid # grille
-set key # légende (activer légende=set, pas de légende=unset)
+unset key # légende (activer légende=set, pas de légende=unset)
 
 # set xrange [-5:5] # intervalle de x
 # set yrange [0:20] # intervalle de y
-set yrange [0:15000]
 
 # set xtics 1
 # set ytics 5
 
 set xlabel "temps (s)" # titre des x
 
-set ylabel "RPM (tr/min)" # titre des y
-
+set multiplot
+set size 0.3,0.5
+set origin 0.0,0.5
 # plot 'main.dat' using 1:2,x**2 # using 1:2 sert à choisir la colonne
-plot 'main.dat' using 1:2
+set yrange [0:15000]
+set ylabel "RPM (tr/min)" # titre des y
+plot 'main.dat' using 1:2 with dots
 
-#set ylabel "V (km/h)" # titre des y
-#plot 'main.dat' using 1:3
+set origin 0.0,0.0
+set yrange [0:150]
+set ylabel "V (km/h)" 
+plot 'main.dat' using 1:3 with dots
 
-#set ylabel "Ax (m/s^2)" # titre des y
-#plot 'main.dat' using 1:4
+set origin 0.25,0.5
+set yrange [-25:25]
+set ylabel "Ax (m/s^2)"
+plot 'main.dat' using 1:4 with dots
 
-#set ylabel "Ay (m/s^2)" # titre des y
-#plot 'main.dat' using 1:5
+set origin 0.25,0.0
+set yrange [-25:25]
+set ylabel "Ay (m/s^2)"
+plot 'main.dat' using 1:5 with dots
+
+set size 0.5,0.5
+set origin 0.5,0.25
+set size square
+set xrange [-500:500]
+set yrange [-500:500]
+set xlabel "x (m)"
+set ylabel "y (m)"
+plot 'main.dat' using 1:2 with dots
+
+unset multiplot
+
+
