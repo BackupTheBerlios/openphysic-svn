@@ -24,7 +24,7 @@ class GenData {
 	
 	while( t < 10 ) {
 	    t += delta_t;
-	    System.out.println(t);
+	    System.out.println(t); // TO FIX
 	}
 
     }
