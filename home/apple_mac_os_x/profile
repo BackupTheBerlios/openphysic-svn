@@ -48,3 +48,4 @@ alias j='java CMain'
 alias av='appletviewer index.html'
 
 
+export LD_LIBRARY_PATH=/usr/local/include/wx-2.8/
