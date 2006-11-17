@@ -13,9 +13,8 @@ Logiciel propriŽétaire tŽélŽéchargeable gratuitement sur
 http://www.adobe.com/fr/products/acrobat/readstep2.html
 
 Il existe deux versions des fichiers pdf
- - fichier.pdf
- - fichier_livret.pdf (une version imprimŽée pour obtenir un mini livret)
+ - doc_fichier.pdf
+ - doc_fichier_book.pdf (une version imprimŽée pour obtenir un mini livret)
 
 La version livret a ŽétŽé obtenue Žà l'aide de la commande pdf2book qui utilise elle-mŽême la commande psbook du paquet psutils. 
-$ pdf2book fichier.pdf fichier_livret.pdf
-
+$ pdf2book doc_fichier.pdf
