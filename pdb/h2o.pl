@@ -33,17 +33,10 @@ print FILE "HEAD"."\n";
 
 
 # Partie centrale du fichier .pdb (ex : molécule d'eau)
-#&print_atom(numéro_atome_dans_le_fichier_pdb, symbole_de_l_atome,
-#	    x,
-#	    y,
-#	    z
-#	   );
-            
-&print_atom(1, O, 0, 0, 0);
-
-&print_atom(2, H, $l_OH, 0, 0);
-
-&print_atom(3, C, $l_OH * cos($alpha), $l_OH * sin($alpha), 0);
+#&print_atom(numéro_atome_dans_le_fichier_pdb,symbole_de_l_atome,x,y,z);
+&print_atom(1,O,0,0,0); # ne pas confondre O et 0
+&print_atom(2,H,$l_OH,0,0);
+&print_atom(3,H,$l_OH * cos($alpha),$l_OH * sin($alpha),0);
 
 print FILE "CONECT    1    2    3"."\n";
 
