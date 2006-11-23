@@ -1,20 +1,22 @@
 #!/usr/bin/perl
 #
-# Fichier permettant de générer
-# plusieurs molécules d'eau
-# =============================
+# ************************************************************
+# * Script permettant de générer une molécule d'eau à partir *
+# * de calculs lorsque l'on connait la taille des liaisons   *
+# * et les angles                                            *
+# ************************************************************
 
 open(FILE,">h2o_calc.pdb") or die("Erreur d'écriture");
 
-# définition de la fonction qui ajoute un atome
+# définition de la fonction qui ajoute un atome dans le fichier .pdb
 sub print_atom {
   printf(FILE "ATOM      %d  %s                  %1.3f   %1.3f   %1.3f"."\n",$_[0],$_[1],$_[2],$_[3],$_[4]);
 }
 
 
-$pi = 4*atan2(1, 1);
+$pi = 4*atan2(1, 1); # calcul de pi (petite astuce vieille comme le monde informatique)
 
-# Définition des contantes
+# Définition des constantes
 # liaison O-H  0.0957nm = 0.957A (et pas 0,957)
 # angle 104.52°
 $l_OH = 0.957;
@@ -26,7 +28,7 @@ print FILE "COMPND    H2Os"."\n";
 print FILE "HEAD"."\n";
 
 
-# partie centrale (molécules d'eau)            
+# partie centrale du fichier .pdb (ex : molécule d'eau)            
 &print_atom(1, O,
    0,
    0,
