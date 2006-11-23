@@ -4,12 +4,6 @@
 # plusieurs molécules d'eau
 # =============================
 
-# TO FIX :
-# file output
-# generate many molecules
-# 0.926 ? -0.240 ?
-# arrondi
-
 open(FILE,">h2o_calc.pdb") or die("Erreur d'écriture");
 
 sub print_atom {
