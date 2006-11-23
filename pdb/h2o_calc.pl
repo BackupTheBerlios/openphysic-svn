@@ -13,8 +13,9 @@ open(FILE,">h2o_calc.pdb") or die("Erreur d'écriture");
 
 # Définition de la fonction qui ajoute un atome dans le fichier .pdb
 sub print_atom {
-  printf(FILE "ATOM      %d  %s                   %1.3f   %1.3f   %1.3f"."\n",
-	 $_[0],$_[1],$_[2],$_[3],$_[4]);
+($AtomNumber,$AtomSymbol,$x,$y,$z)=($_[0],$_[1],$_[2],$_[3],$_[4]);
+  printf(FILE "ATOM      %d  %s                  % 1.3f  % 1.3f  % 1.3f"."\n",
+	 $AtomNumber,$AtomSymbol,$x,$y,$z);
 }
 
 # Calcul de pi (petite astuce vieille comme le monde informatique)  
@@ -34,9 +35,9 @@ print FILE "HEAD"."\n";
 
 # Partie centrale du fichier .pdb (ex : molécule d'eau)
 #&print_atom(numéro_atome_dans_le_fichier_pdb,symbole_de_l_atome,x,y,z);
-&print_atom(1,O,0,0,0); # ne pas confondre O et 0
-&print_atom(2,H,$l_OH,0,0);
-&print_atom(3,H,$l_OH * cos($alpha),$l_OH * sin($alpha),0);
+&print_atom(1,"O",0,0,0); # ne pas confondre O et 0
+&print_atom(2,"H",$l_OH,0,0);
+&print_atom(3,"H",$l_OH*cos($alpha),$l_OH*sin($alpha),0);
 
 print FILE "CONECT    1    2    3"."\n";
 
