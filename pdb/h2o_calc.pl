@@ -5,7 +5,7 @@
 # * de calculs lorsque l'on connait la taille des liaisons   *
 # * et les angles                                            *
 # * Auteur : Sébastien CELLES                                *
-# * License : GNU General Public Licence v2 and above        *
+# * Licence : GNU General Public License v2 and above        *
 # ************************************************************
 
 # Ouverture du fichier en mode écriture (>) ou affichage d'erreur
