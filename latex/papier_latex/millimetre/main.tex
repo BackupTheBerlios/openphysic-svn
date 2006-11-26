@@ -1,0 +1,57 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage[francais]{babel}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{pst-plot}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+
+\usepackage{geometry}
+\geometry{ hmargin=0cm, vmargin=0cm,lmargin=0cm }
+
+ \edef\PstAtCode{\the\catcode`\@}
+ \catcode`\@=11\relax
+
+
+\def\psmili{%
+  \begingroup%
+  \psset{linecolor=bistre}%
+  \def\pst@par{}%
+  \begin@SpecialObj%
+    \pssetxlength\pst@dimg{1cm}
+    \pssetylength\pst@dimh{1cm}
+    \addto@pscode{%
+      /x0 \pst@number\pst@dima \pst@number\pst@dimg div round \pst@number\pst@dimg mul def%
+      /y0 \pst@number\pst@dimb \pst@number\pst@dimh div round \pst@number\pst@dimh mul def%
+      /x1 \pst@number\pst@dimc \pst@number\pst@dimg div round \pst@number\pst@dimg mul def%
+      /y1 \pst@number\pst@dimd \pst@number\pst@dimh div round \pst@number\pst@dimh mul def}%
+    \addto@pscode{.75 SLW x0 \pst@number\pst@dimg x1 {dup y0 moveto y1 lineto} for stroke}%
+    \addto@pscode{.75 SLW newpath y0 \pst@number\pst@dimg y1 {dup x0 exch moveto x1 exch lineto} for stroke}%
+    \addto@pscode{.3 SLW newpath x0 \pst@number\pst@dimg 2 div x1 {dup y0 moveto y1 lineto} for stroke}%
+    \addto@pscode{.3 SLW newpath y0 \pst@number\pst@dimh 2 div y1 {dup x0 exch moveto x1 exch lineto} for stroke}%
+    \addto@pscode{.15 SLW newpath x0 \pst@number\pst@dimh 10 div x1 {dup y0 moveto y1 lineto} for stroke}%
+    \addto@pscode{.15 SLW newpath y0 \pst@number\pst@dimh 10 div y1 {dup x0 exch moveto x1 exch lineto} for stroke}%
+  \end@SpecialObj%
+  \endgroup}%
+     
+\newrgbcolor{bistre}{.75 .50 .30}
+
+
+\begin{document}
+
+%\vspace*{\stretch{1}}
+\vspace*{1.2cm} \hspace{1cm}
+
+\begin{center}
+
+\begin{pspicture}(-10,-13)(10,14)
+  \psmili
+\end{pspicture}
+
+\end{center}
+
+%\vspace*{\stretch{1}}
+
+\end{document}
