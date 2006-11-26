@@ -15,9 +15,11 @@
  \catcode`\@=11\relax
 
 
-\def\psmili{%
+\newrgbcolor{color}{0 0 0} % black
+
+\def\psmillidef{%
   \begingroup%
-  \psset{linecolor=bistre}%
+  \psset{linecolor=color}%
   \def\pst@par{}%
   \begin@SpecialObj%
     \pssetxlength\pst@dimg{1cm}
@@ -36,8 +38,32 @@
   \end@SpecialObj%
   \endgroup}%
      
-\newrgbcolor{bistre}{.75 .50 .30}
-\newrgbcolor{black}{.0 .0 .0}
+
+\newcommand{\psmilli}{%
+%  \psmilliblack
+%  \psmillicolor
+  \psmilligray{0.5}
+}
+
+
+\newcommand{\psmilliblack}{%
+  \newrgbcolor{color}{0 0 0}
+  \psmillidef
+}
+
+\newcommand{\psmillicolor}{%
+  \newrgbcolor{color}{.75 .50 .30} % bistre
+  \psmillidef
+}
+
+\newcommand{\psmilligray}[1]{%
+  \newrgbcolor{color}{#1 #1 #1}
+  \psmillidef
+}
+%\psmilligray{0.25} % gris foncé
+%\psmilligray{0.75} % gris clair
+
+
 
 \begin{document}
 
@@ -47,7 +73,10 @@
 \begin{center}
 
 \begin{pspicture}(-10,-13)(10,14)
-  \psmili
+  \psmilli
+%  \psmilliblack
+%  \psmillicolor
+%  \psmilligray{0.5}
 \end{pspicture}
 
 \end{center}
