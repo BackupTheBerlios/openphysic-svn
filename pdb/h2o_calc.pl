@@ -16,6 +16,10 @@ sub print_atom {
 ($AtomNumber,$AtomSymbol,$x,$y,$z)=($_[0],$_[1],$_[2],$_[3],$_[4]);
   printf(FILE "ATOM      %d  %s                  % 1.3f  % 1.3f  % 1.3f"."\n",
 	 $AtomNumber,$AtomSymbol,$x,$y,$z);
+# perldoc -f sprintf  pour %x.yf
+# x longueur *totale* *minimale* du champ contenant un nombre
+#  (et non celle de sa partie entière)
+# y longueur partie décimale
 }
 
 # Calcul de pi (petite astuce vieille comme le monde informatique)  
