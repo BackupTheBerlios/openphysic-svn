@@ -1,2 +1,2 @@
 all:
-	g++  -o wxhello `wx-config --libs` `wx-config --cxxflags` wxhello.cpp
+	g++  -o wxhello `wx-config --libs` `wx-config --cxxflags` -Wall -W -ansi wxhello.cpp
