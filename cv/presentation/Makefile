@@ -11,6 +11,7 @@ all:
 
 $(input).dvi: $(input).tex
 	latex $(input).tex
+	latex $(input).tex
 
 $(input).ps: $(input).dvi
 	dvips $< -o $@
