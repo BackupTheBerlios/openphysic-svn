@@ -35,7 +35,7 @@ view-pdf: $(input).pdf
 	$(pdf_viewer) $< &
 
 clean:
-	$(RM) *.aux *.log *.dvi *.ps *.pdf *~ *.out
+	$(RM) *.aux *.log *.dvi *.ps *.pdf *~ *.out *.nav *.toc *.snm
 
 transparents:
 	# Modifier \documentclass dans le document
