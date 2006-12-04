@@ -27,11 +27,15 @@
 
 \renewcommand{\emph}[1]{\textcolor{red}{\underline{\textit{\textcolor{black}{#1}}}}}
 
-\newcommand{\inclure}[1]{
-  \graphicspath{%
-    {#1/}%
-  }
-  \input{#1/main2.tex}
+%\newcommand{\inclure}[1]{
+%  \graphicspath{%
+%    {#1/}%
+%  }
+%  \input{#1/main2.tex}
+%}
+
+\graphicspath{%
+  {../frames/}%
 }
 
 % PSTricks
@@ -84,7 +88,7 @@
 
 
 % enseignement
-\input{../enseignement.tex}
+\input{../frames/enseignement.tex}
 
 
 \section{En quoi mon parcours est-il adapté à ce poste ?}
@@ -107,27 +111,27 @@
 % info générale
 
 % langage C
-\input{../langage_c.tex}
+\input{../frames/langage_c.tex}
 
 % info indus (microcontroleurs)
-\input{../microcontroleurs.tex}
+\input{../frames/microcontroleurs.tex}
 
 % réseau
-\input{../reseau.tex}
+\input{../frames/reseau.tex}
 
 % serveurs
-\input{../serveurs.tex}
+\input{../frames/serveurs.tex}
 
 % telecom
-\input{../telecom.tex}
+\input{../frames/telecom.tex}
 
 % unix linux
-\input{../unix_linux.tex}
+\input{../frames/unix_linux.tex}
 
 % logiciels libres
-\input{../logiciels_libres.tex}
+\input{../frames/logiciels_libres.tex}
 
-\input{../informatique.tex}
+\input{../frames/informatique.tex}
 
 % conclusion
 \conclusion
