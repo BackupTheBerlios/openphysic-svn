@@ -1,8 +1,12 @@
 SOURCES := $(wildcard *.tex)
-IMAGES := $(patsubst %.tex,%.eps,$(wildcard *.tex))
+IMAGES_EPS := $(patsubst %.tex,%.eps,$(wildcard *.tex))
+IMAGES_PNG := $(patsubst %.tex,%.png,$(wildcard *.tex))
 
-all : $(IMAGES) son.sty
+all : $(IMAGES_PNG) son.sty
 	$(MAKE) $<
+
+%.png : %.eps
+	convert $< $@
 
 %.dvi : %.tex son.sty
 	latex $<
@@ -24,4 +28,4 @@ cleantemp:
 	$(RM) *.aux *~ *.log *.dvi
 
 clean :
-	$(RM) *.aux *~ *.log *.dvi *.eps
+	$(RM) *.aux *~ *.log *.dvi *.eps *.png
