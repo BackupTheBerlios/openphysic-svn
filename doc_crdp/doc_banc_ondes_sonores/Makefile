@@ -1,10 +1,10 @@
 SOURCES := $(wildcard *.tex)
 IMAGES := $(patsubst %.tex,%.eps,$(wildcard *.tex))
 
-all : $(IMAGES)
+all : $(IMAGES) son.sty
 	$(MAKE) $<
 
-%.dvi : %.tex
+%.dvi : %.tex son.sty
 	latex $<
 
 %.eps : %.dvi
