@@ -28,4 +28,4 @@ cleantemp:
 	$(RM) *.aux *~ *.log *.dvi
 
 clean :
-	$(RM) *.aux *~ *.log *.dvi *.eps *.png
+	$(RM) *.aux *~ *.log *.dvi *.png #*.eps
