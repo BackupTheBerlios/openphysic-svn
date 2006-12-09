@@ -19,6 +19,7 @@ struct signal
 struct signal sgn;
 
 
+
 inline void func_test_signal(void) {
    i++;
    PORTB = i;
@@ -35,6 +36,30 @@ inline void func_test_max(void) {
 inline void func_test_mid(void) {
    PORTB = MID;
 }
+
+void func_sin(void) {
+   // TO DO
+}
+
+void func_square(void) {
+   // TO DO
+}
+
+void func_triangle(void) {
+   // TO DO
+}
+
+void func_rampe_croissante(void) {
+   // TO DO
+   // triangle avec alpha = 0
+}
+
+void func_rampe_decroissante(void) {
+   // TO DO
+   // triangle avec alpha = 1
+}
+
+
 
 void init_signal(void) {
 	(&sgn)->freq = 5000.0;
@@ -54,18 +79,17 @@ int main(void) {
 
    PORTB = 0xFF; // TO FIX DAC problem
 
+   /* variable for test purpose */
    i = 0;
 
-	init_signal();
+   /* init counter */
+   
+   /* init signal */
+   init_signal();
 
    while(1) {
-   	//PORTB = 0x00; //0xFF;
-      //func_test_signal();
-      //func_test_mid();
       (&sgn)->calculate();
    }
 
 }
-
-
 
