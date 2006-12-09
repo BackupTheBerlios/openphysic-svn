@@ -27,7 +27,12 @@ void On_destroy() {
 }
 
 void set_output() {
-   SET_LOGIC(SIG_OUT, !(GET_LOGIC(SIG_IN1)));
+   if ( GET_LOGIC(SIG_IN1) == TRUE ) {
+      SET_LOGIC(SIG_OUT, FALSE);
+   } else {
+      SET_LOGIC(SIG_OUT, TRUE);
+   }
+//   SET_LOGIC(SIG_OUT, !(GET_LOGIC(SIG_IN1)));
 }
 
 void On_simulation_begin() {
