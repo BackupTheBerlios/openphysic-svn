@@ -41,49 +41,64 @@ inline void func_test_signal_dec(void) {
 }
 
 
+void init_func_constant() {
+   uint8_t j = 0;
+	do {
+	   tab_signal[j] = MID; // MIN MAX MID //(&sgn)->offset;
+	   j++;
+	} while(j!=0);
+}
+
+
 // sine wave
+//void init_func_sin2(void) {
+//   uint16_t j;  // uint16_t instead of uint8_t to fix the problem of limits
+//   tab_signal[0] = 0; // to fix the problem of 0
+//	for(j = 1 ; j<N ; j++ ) {
+//	   tab_signal[j] = -(MID-1) * cos(2*PI/N*j) + MID;	// - is to fix the problem
+//	}
+//}
+
+void init_func_sin(void) {
+   uint8_t j = 0;
+   tab_signal[0] = 0; // to fix the problem of 0
+   j = 1;
+	do {
+	   tab_signal[j] = -(MID-1) * cos(2*PI/N*j) + MID;	// - is to fix the problem
+	   j++;
+	} while(j!=0);
+}
+
 // square
+void init_func_square(void) {
+   uint8_t j = 0;
+   uint8_t Nmid;
+   Nmid = N*(&sgn)->alpha;
+
+	do {
+	   tab_signal[j] = MAX;
+	   j++;
+	} while(j!=Nmid);
+	
+	do {
+	   tab_signal[j] = MID;
+	   j++;
+	} while(j!=0);	
+}
+
 // triangle
 // sawtooth
 // inverted sawtooth
-
-void init_func_sin(void) {
-   uint16_t j;
-   uint8_t tmp;
-	for(j = 0 ; j<N ; j++ ) {
-	   tmp = MID * sin(2*PI/N*j) + MID;
-	   tab_signal[j] = tmp;	
-	}
-}
-
-void init_func_min(void) {
-   uint16_t j;
-	for(j = 0 ; j<N ; j++ ) {
-	   tab_signal[j] = MIN;	
-	}
-}	
-
-void init_func_max(void) {
-   uint16_t j;
-	for(j = 0 ; j<N ; j++ ) {
-	   tab_signal[j] = MAX;	
-	}
-}
-
-void init_func_mid(void) {
-   uint16_t j;
-	for(j = 0 ; j<N ; j++ ) {
-	   tab_signal[j] = MID;	
-	}
-}
 	
 void init_signal(void) {
 	(&sgn)->freq = 5000.0;
 	(&sgn)->alpha = 0.5;
 	(&sgn)->amplitude = 1.0;
-	(&sgn)->offset = 0.0;
+	(&sgn)->offset = 0.0; // MIN MAX MED
 
-	(&sgn)->init = &init_func_sin;
+	//(&sgn)->init = &init_func_sin;
+	(&sgn)->init = &init_func_square;
+	//(&sgn)->init = &init_func_constant;
 	
 	(&sgn)->init();
 }
@@ -143,4 +158,5 @@ ISR(SIG_OUTPUT_COMPARE1A)
 {
 // TO DO
 }
+
 
