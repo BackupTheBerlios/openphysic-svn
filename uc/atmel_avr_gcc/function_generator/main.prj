@@ -18,7 +18,7 @@
 ; exactly these values are taken by default
 ; ------------------------------------------------------------
 .POWER VDD=5 VSS=0  ; Power nodes
-.CLOCK 1meg         ; Micro clock
+.CLOCK 8meg         ; Micro clock
 .STORE 250m         ; Trace (micro+signals) storage time
 
 ; Micro nodes: RESET, AREF, PB0-PB7, PC0-PC6, PD0-PD7, ACO, TIM1OVF, ADC6, ADC7
