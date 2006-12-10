@@ -2,6 +2,7 @@
 #include <avr/interrupt.h>
 
 #include <math.h>
+#define PI 4*atan(1)
 
 #define F_CPU 8000000UL  // 8 MHz
 
@@ -11,9 +12,13 @@
 
 #define PORTOUT PORTB
 
-//uint8_t i;
+uint8_t i;
 
 double time;
+
+#define N 256 // nb de valeurs precalculees
+uint8_t tab_signal[N];
+//uint8_t * ptr_tab_signal[];
 
 
 struct signal
@@ -22,16 +27,12 @@ struct signal
    double alpha;
    double amplitude;
    double offset;
-   void (*calculate) ();     // ptr de fct sur fonction de calcul
+   void (*init) ();     // ptr de fct sur fonction de calcul
 };
 
 struct signal sgn;
 
-
-
 inline void func_test_signal_inc(void) {
-   //i++;
-   //PORTOUT = i;
    PORTOUT++;
 }
 
@@ -39,55 +40,52 @@ inline void func_test_signal_dec(void) {
    PORTOUT--;
 }
 
-inline void func_test_min(void) {
-   PORTOUT = MIN;
+
+// sine wave
+// square
+// triangle
+// sawtooth
+// inverted sawtooth
+
+void init_func_sin(void) {
+   uint16_t j;
+   uint8_t tmp;
+	for(j = 0 ; j<N ; j++ ) {
+	   tmp = MID * sin(2*PI/N*j) + MID;
+	   tab_signal[j] = tmp;	
+	}
 }
 
-inline void func_test_max(void) {
-   PORTOUT = MAX;
+void init_func_min(void) {
+   uint16_t j;
+	for(j = 0 ; j<N ; j++ ) {
+	   tab_signal[j] = MIN;	
+	}
+}	
+
+void init_func_max(void) {
+   uint16_t j;
+	for(j = 0 ; j<N ; j++ ) {
+	   tab_signal[j] = MAX;	
+	}
 }
 
-inline void func_test_mid(void) {
-   PORTOUT = MID;
+void init_func_mid(void) {
+   uint16_t j;
+	for(j = 0 ; j<N ; j++ ) {
+	   tab_signal[j] = MID;	
+	}
 }
-
-void func_sin(void) {
-   // TO DO
-   PORTOUT = MID*sin(time)+MID;
-}
-
-void func_square(void) {
-   // TO DO
-}
-
-void func_triangle(void) {
-   // TO DO
-}
-
-void func_rampe_croissante(void) {
-   // TO DO
-   // triangle avec alpha = 0
-}
-
-void func_rampe_decroissante(void) {
-   // TO DO
-   // triangle avec alpha = 1
-}
-
-
-
+	
 void init_signal(void) {
 	(&sgn)->freq = 5000.0;
 	(&sgn)->alpha = 0.5;
 	(&sgn)->amplitude = 1.0;
 	(&sgn)->offset = 0.0;
 
-   //(&sgn)->calculate = &func_test_signal_inc;
-   //(&sgn)->calculate = &func_test_signal_dec;
-	//(&sgn)->calculate = &func_test_min;
-	//(&sgn)->calculate = &func_test_max;
-	//(&sgn)->calculate = &func_test_mid;
-	(&sgn)->calculate = &func_sin;
+	(&sgn)->init = &init_func_sin;
+	
+	(&sgn)->init();
 }
 
 int main(void) {
@@ -95,6 +93,7 @@ int main(void) {
    DDRB = 0xFF;
 
    PORTOUT = 0xFF; // PORTB TO FIX DAC problem
+   PORTOUT = 0x00;
 
    /* variable for test purpose */
    //i = 0;
@@ -119,14 +118,16 @@ int main(void) {
    /* init signal */
    init_signal();
 
-	uint8_t tmrh;
-	uint8_t tmrl;
+	//uint8_t tmrh;
+	//uint8_t tmrl;
    while(1) {
-   	tmrh = TCNT1H;
-   	tmrl = TCNT1L;
-		time = (double) (((tmrh<<8) + tmrl)/pow(2,16)); // TO FIX
+   	//tmrh = TCNT1H;
+   	//tmrl = TCNT1L;
+		//time = (double) (((tmrh<<8) + tmrl)/pow(2,16)); // TO FIX
 
-      (&sgn)->calculate();
+      //(&sgn)->calculate();
+      i++;
+      PORTOUT = tab_signal[i];
    }
 
 }
@@ -142,3 +143,4 @@ ISR(SIG_OUTPUT_COMPARE1A)
 {
 // TO DO
 }
+
