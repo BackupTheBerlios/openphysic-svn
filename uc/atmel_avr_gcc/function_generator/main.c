@@ -27,7 +27,7 @@ struct signal
    double alpha;
    double amplitude;
    double offset;
-   void (*init) ();     // ptr de fct sur fonction de calcul
+   void (*init) (void);     // ptr de fct sur fonction de calcul
 };
 
 struct signal sgn;
@@ -41,7 +41,7 @@ inline void func_test_signal_dec(void) {
 }
 
 
-void init_func_constant() {
+void init_func_constant(void) {
    uint8_t j = 0;
 	do {
 	   tab_signal[j] = MID; // MIN MAX MID //(&sgn)->offset;
@@ -86,9 +86,42 @@ void init_func_square(void) {
 	} while(j!=0);	
 }
 
+// sawtooth (dent de scie croissante)
+void init_func_sawtooth(void) {
+   uint8_t j = 0;
+
+	do {
+	   tab_signal[j] = j;
+	   j++;
+	} while(j!=0);
+}
+
+// inverted sawtooth (dent de scie décroissante)
+void init_func_sawtooth_inv(void) {
+   uint8_t j = 0;
+
+	do {
+	   tab_signal[j] = 255-j;
+	   j++;
+	} while(j!=0);
+}
+
 // triangle
-// sawtooth
-// inverted sawtooth
+void init_func_triangle(void) {
+   uint8_t j = 0;
+   uint8_t Nmid;
+   Nmid = N*(&sgn)->alpha;
+
+	do {
+	   tab_signal[j] = j/(&sgn)->alpha;
+	   j++;
+	} while(j!=Nmid);
+	
+	do {
+	   tab_signal[j] = 255-(j-Nmid)/(1-(&sgn)->alpha);
+	   j++;
+	} while(j!=0);	
+}
 	
 void init_signal(void) {
 	(&sgn)->freq = 5000.0;
@@ -97,8 +130,11 @@ void init_signal(void) {
 	(&sgn)->offset = 0.0; // MIN MAX MED
 
 	//(&sgn)->init = &init_func_sin;
-	(&sgn)->init = &init_func_square;
+	//(&sgn)->init = &init_func_square;
 	//(&sgn)->init = &init_func_constant;
+	//(&sgn)->init = &init_func_sawtooth;
+	//(&sgn)->init = &init_func_sawtooth_inv;
+	(&sgn)->init = &init_func_triangle;
 	
 	(&sgn)->init();
 }
@@ -158,5 +194,6 @@ ISR(SIG_OUTPUT_COMPARE1A)
 {
 // TO DO
 }
+
 
 
