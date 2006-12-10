@@ -1,3 +1,21 @@
+/*
+ * Générateur de Signaux Basses Fréquence
+ *
+ * Function Generator
+ *  http://en.wikipedia.org/wiki/Function_generator
+ *
+ * Sébastien CELLES
+ *
+ * Under GNU General Public License v2 and above
+ *
+ * See also this project
+ *  http://www.scienceprog.com/avr-dds-signal-generator-v10
+ */
+
+/* TO DO
+Gestion de la fréquence
+ */
+
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
@@ -81,7 +99,7 @@ void init_func_square(void) {
 	} while(j!=Nmid);
 	
 	do {
-	   tab_signal[j] = MID;
+	   tab_signal[j] = MIN;
 	   j++;
 	} while(j!=0);	
 }
@@ -129,12 +147,13 @@ void init_signal(void) {
 	(&sgn)->amplitude = 1.0;
 	(&sgn)->offset = 0.0; // MIN MAX MED
 
-	//(&sgn)->init = &init_func_sin;
+	(&sgn)->init = &init_func_sin;
 	//(&sgn)->init = &init_func_square;
 	//(&sgn)->init = &init_func_constant;
 	//(&sgn)->init = &init_func_sawtooth;
 	//(&sgn)->init = &init_func_sawtooth_inv;
-	(&sgn)->init = &init_func_triangle;
+	//(&sgn)->init = &init_func_triangle;
+	// random
 	
 	(&sgn)->init();
 }
@@ -156,7 +175,7 @@ int main(void) {
    //OCR1AL=0x20; //0x63
 
 	TCCR1A = 0x00;
-	TCCR1B = (0<<CS12)|(0<<CS11)|(1<<CS10);
+	TCCR1B = (0<<CS12)|(1<<CS11)|(1<<CS10); //(0<<CS12)|(0<<CS11)|(1<<CS10);
 	
    //TCCR1B |=(1<<WGM12)|(0<<CS11)|(1<<CS10); //CTC division F_CPU 1  (1<<WGM12)|(1<<CS11)|(1<<CS10)
 
@@ -177,8 +196,11 @@ int main(void) {
 		//time = (double) (((tmrh<<8) + tmrl)/pow(2,16)); // TO FIX
 
       //(&sgn)->calculate();
-      i++;
-      PORTOUT = tab_signal[i];
+
+      //i++;
+      //PORTOUT = tab_signal[i];
+
+      PORTOUT = tab_signal[TCNT1L];
    }
 
 }
