@@ -21,14 +21,17 @@ Gestion de la fréquence
 
 #include <math.h>
 #define PI 4*atan(1)
+#include <stdlib.h> // for rand()
 
 #define F_CPU 8000000UL  // 8 MHz
+//#define RESOLUTION F_CPU/(9*16777216);
+#define RESOLUTION 0.052981906467013888888888888888889
 
 #define MIN 0x00
 #define MAX 0xFF
 #define MID 0x80
 
-#define PORTOUT PORTB
+#define PORTOUT PORTD
 
 uint8_t i;
 
@@ -41,7 +44,8 @@ uint8_t tab_signal[N];
 
 struct signal
 {
-   double freq;
+	uint32_t freq;
+   //double freq;
    double alpha;
    double amplitude;
    double offset;
@@ -142,7 +146,7 @@ void init_func_triangle(void) {
 }
 	
 void init_signal(void) {
-	(&sgn)->freq = 5000.0;
+	(&sgn)->freq = 1000; //.0;
 	(&sgn)->alpha = 0.5;
 	(&sgn)->amplitude = 1.0;
 	(&sgn)->offset = 0.0; // MIN MAX MED
@@ -158,9 +162,26 @@ void init_signal(void) {
 	(&sgn)->init();
 }
 
+void static inline signalOUT(uint8_t *tab_sgn, uint8_t ad2, uint8_t ad1, uint8_t ad0)
+{
+asm volatile(	"eor r18, r18 	;r18<-0"	"\n\t"
+				"eor r19, r19 	;r19<-0"	"\n\t"
+				"1:"						"\n\t"
+				"add r18, %0	;1 cycle"			"\n\t"
+				"adc r19, %1	;1 cycle"			"\n\t"	
+				"adc %A3, %2	;1 cycle"			"\n\t"
+				"lpm 			;3 cycles" 	"\n\t"
+				"out %4, __tmp_reg__	;1 cycle"	"\n\t"
+				"rjmp 1b		;2 cycles. Total 9 cycles"	"\n\t"
+				:
+				:"r" (ad0),"r" (ad1),"r" (ad2),"e" (tab_sgn),"I" (_SFR_IO_ADDR(PORTOUT))
+				:"r18", "r19"
+	);
+}
+
 int main(void) {
-   /* enable PORT Bx as output (led) */
-   DDRB = 0xFF;
+   /* enable PORT Dx as output (led) */
+   DDRD = 0xFF;
 
    PORTOUT = 0xFF; // PORTB TO FIX DAC problem
    PORTOUT = 0x00;
@@ -190,17 +211,36 @@ int main(void) {
 
 	//uint8_t tmrh;
 	//uint8_t tmrl;
+	
+   /*
+   uint8_t freq1 = 0xE8; // 1kHz = 0x0003E8
+   uint8_t freq2 = 0x03;
+   uint8_t freq3 = 0x00;
+   uint32_t frequency=(((uint32_t)(freq3)<<16)|((uint32_t)(freq2)<<8)|((uint32_t)(freq1)));
+   uint32_t temp = (uint32_t) (frequency/RESOLUTION);
+   uint8_t tfreq1 = (uint8_t) (temp);
+   uint8_t tfreq2 = (uint8_t) (temp>>8);
+   uint8_t tfreq3 = (uint8_t) (temp>>16);
+   */	
+	
    while(1) {
+
    	//tmrh = TCNT1H;
    	//tmrl = TCNT1L;
 		//time = (double) (((tmrh<<8) + tmrl)/pow(2,16)); // TO FIX
 
       //(&sgn)->calculate();
 
+      //PORTOUT = rand();
+
       //i++;
       //PORTOUT = tab_signal[i];
 
       PORTOUT = tab_signal[TCNT1L];
+
+      //signalOUT(tab_signal, tfreq3, tfreq2, tfreq1);
+      //signalOUT(tab_signal, 0x00, 0x03, 0xE8);
+      //signalOUT(tab_signal, 0x80, 0xFF, 0xFF);
    }
 
 }
@@ -216,6 +256,7 @@ ISR(SIG_OUTPUT_COMPARE1A)
 {
 // TO DO
 }
+
 
 
 

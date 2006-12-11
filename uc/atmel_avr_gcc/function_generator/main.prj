@@ -28,7 +28,9 @@
 
 ;Kx node1 node2 [type(delay)] ; x: Buttons 0 - F. Optional type: MONOSTABLE(t_delay), LATCHED
 
-X1 D2A8 PB7 PB6 PB5 PB4 PB3 PB2 PB1 PB0 Vout
+;X1 D2A8 PB7 PB6 PB5 PB4 PB3 PB2 PB1 PB0 Vout
+X1 D2A8 PD7 PD6 PD5 PD4 PD3 PD2 PD1 PD0 Vout
 
 
 .PLOT V(Vout)
+
