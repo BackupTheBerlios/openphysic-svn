@@ -59,9 +59,9 @@ int main (void)
       liste_sync[(i-i_level)%N] = y;
     } else {
       if ( ( (rising_level)
-	     && ( liste[(i+1+pre_level)%N] > liste[(i+pre_level)%N] )
-	     && ( liste[(i+1+pre_level)%N] >= level )
-	     && ( liste[(i+pre_level)%N] < level ) )
+	        && ( liste[(i+1+pre_level)%N] > liste[(i+pre_level)%N] )
+	        && ( liste[(i+1+pre_level)%N] >= level )
+	        && ( liste[(i+pre_level)%N] < level ) )
 	   || ( (!rising_level)
 		&& ( liste[(i+1+pre_level)%N] < liste[(i+pre_level)%N] )
 		&& ( liste[(i+1+pre_level)%N] <= level )
