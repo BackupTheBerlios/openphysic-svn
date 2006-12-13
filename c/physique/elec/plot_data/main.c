@@ -1,5 +1,5 @@
 /*
-Un petit essai sur la fonction synchronisation de signal d'un oscilloscope
+  Un petit essai sur la fonction synchronisation de signal d'un oscilloscope
  */
 
 #include <stdio.h>
@@ -36,10 +36,9 @@ int main (void)
   //printf("N=%i\n", N);
 
 
-  uint16_t level = 100; // niveau de declenchement
+  uint16_t level = 200; // niveau de declenchement
   bool rising_level = false; // front montant (true) ou descendant (false)
-  uint16_t level_prec = 2; // precision
-
+  uint16_t pre_level = 0; // declenche x pts avant
 
   bool level_is_set = false;
   uint16_t i = 0;
@@ -59,18 +58,17 @@ int main (void)
     if (level_is_set) {
       liste_sync[(i-i_level)%N] = y;
     } else {
-      if ( (liste[i%N] < level+level_prec )
-	   && ( liste[i%N] > level-level_prec ) ) {
-	if ( (rising_level) // front montant
-	     && ( liste[i%N] >  liste[(i-1)%N] ) ) {
-	  i_level = i;
-	  level_is_set = true;
-	}
-	if ( (!rising_level) // front descendant
-	     && ( liste[i%N] <  liste[(i-1)%N] ) ) {
-	  i_level = i;
-	  level_is_set = true;
-	}
+      if ( ( (rising_level)
+	     && ( liste[(i+1+pre_level)%N] > liste[(i+pre_level)%N] )
+	     && ( liste[(i+1+pre_level)%N] >= level )
+	     && ( liste[(i+pre_level)%N] < level ) )
+	   || ( (!rising_level)
+		&& ( liste[(i+1+pre_level)%N] < liste[(i+pre_level)%N] )
+		&& ( liste[(i+1+pre_level)%N] <= level )
+		&& ( liste[(i+pre_level)%N] > level ) )		  
+	   ) {
+	i_level = i;
+	level_is_set = true;
       }
     }
     i++;
