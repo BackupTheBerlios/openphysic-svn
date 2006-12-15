@@ -1,0 +1,39 @@
+\documentclass[a4paper]{article}
+\usepackage{pstricks}
+\usepackage{multido}
+\usepackage{geometry}
+\geometry{ hmargin=0.5cm, vmargin=0.5cm }
+
+\pagestyle{empty}
+\SpecialCoor
+\begin{document}
+
+\vspace*{1cm}
+
+\begin{center}
+
+\begin{pspicture}(-2,-14)(2,13)
+%\psgrid[subgriddiv=1,griddots=5,gridlabels=0pt]
+%\psset{xunit=1} \psset{yunit=1}
+
+% graduations cm
+\multido{\d=-14cm+1cm}{28}{%
+ \psline[linewidth=.01](-2,\d)(-1.75,\d)
+ \psline[linewidth=.01](2,\d)(1.75,\d)
+}
+
+% nombres
+\multido{\i=0+1}{28}{%
+ \rput{0}(0,13){%
+  \rput{0}(1.5,-\i){\i}
+ }
+ \rput{0}(0,-14){%
+  \rput{0}(-1.5,\i){\i}
+ }
+}
+
+\end{pspicture}
+
+\end{center}
+
+\end{document}
