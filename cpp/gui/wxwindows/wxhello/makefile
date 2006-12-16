@@ -1,2 +1,12 @@
+input=wxhello
+CC=g++
+
 all:
-	g++  -o wxhello `wx-config --libs` `wx-config --cxxflags` -Wall -W -ansi wxhello.cpp
+	$(CC)  -o $(input) `wx-config --libs` `wx-config --cxxflags` -Wall -W -ansi $(input).cpp
+
+clean:
+	$(RM) $(input) *~
+
+run:
+	./$(input)
+
