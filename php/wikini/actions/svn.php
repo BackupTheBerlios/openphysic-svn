@@ -7,8 +7,9 @@ if (!defined("WIKINI_VERSION"))
 }
 
 // recuperation des parametres
-$mode = $this->GetParameter("mode");
+$mode = $this->GetParameter("mode"); // browse download getsource checkout anonymous devel 
 $url = $this->GetParameter("url");
+$label = $this->GetParameter("label");
 
 
 //strWeb = "http://svn.berlios.de/wsvn/openphysic";  // websvn
@@ -19,30 +20,37 @@ $strDevel = "svn checkout svn+ssh://scls19fr@svn.berlios.de/svnroot/repos/openph
 
 
 if (empty($mode)) {
-	$mode = "web"; // parametres par defaut
+	$mode = "browse"; // parametres par defaut
 }
 
 
 
 
-if ( $mode == "web" ) {
-	$str = $strWeb;
-	echo $str.$url;
+if ( $mode == "browse" or $mode == "web" ) {
+  if (empty($label)) {
+    $label = $strWeb.$url; // parametres par defaut
+  }
+	echo '<a href="'.$strWeb.$url.'">'.$label."</a>";
 }
+
+if ( $mode == "download" ) {
+  if (empty($label)) {
+    $label = $strCheckout.$url; // parametres par defaut
+  }
+	echo '<a href="'.$strCheckout.$url.'">'.$label."</a>";
+}
+
 
 else if ( $mode == "checkout" ) {
-	$str = $strCheckout;
-	echo $str.$url;
+	echo $strCheckout.$url;
 }
 
 else if ( $mode == "anonymous" ) {
-	$str = $strAnonymous;
-	echo $str.$url;
+	echo $strAnonymous.$url;
 }
 
 else if ( $mode == "devel" ) {
-	$str = $strDevel;
-	echo $str.$url;
+	echo $strDevel.$url;
 }
 
 else if ( $mode == "getsource" ) {
