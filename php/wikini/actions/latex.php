@@ -1,6 +1,6 @@
 <?php
 /* 
-titre: Action Math pour Wikini
+titre: Action LaTeX pour Wikini
 Auteur: Sébastien Celles (mimetex)
 License: GPL
 */
