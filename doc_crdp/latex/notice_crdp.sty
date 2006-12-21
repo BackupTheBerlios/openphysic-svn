@@ -4,6 +4,8 @@
 \usepackage[latin1]{inputenc}   % entree clavier latin1
 \usepackage[T1]{fontenc}        % sortie
 
+\usepackage{xcolor}
+
 \usepackage{graphicx}
 \usepackage{pstricks}
 
@@ -53,15 +55,26 @@ xx & xx \\
 \hline
 \end{tabular}
 
+\vspace*{0.5cm}
+
 \docnoncont
 \end{flushright}
 
 
 \vspace{\stretch{1}}
 
-\begin{flushright}
-{\large FICHE N° xx}
-\end{flushright}
+\begin{center}
+\begin{pspicture}(0,0)(18,1)
+%\psgrid[subgriddiv=1,griddots=5,gridlabels=0pt]
+\rput{0}(0,-2){%
+\psframe*(0,0)(18,0.8)
+\rput{0}(15.5,0.4){%
+\textcolor{white}{\textbf{\large FICHE N° }}\colorbox{white}{ x }
+}
+}
+%{\large FICHE N°}
+\end{pspicture}
+\end{center}
 
 \end{titlepage}
 %\newpage
