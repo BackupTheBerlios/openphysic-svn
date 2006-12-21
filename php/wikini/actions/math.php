@@ -12,8 +12,7 @@ if (!defined("WIKINI_VERSION"))
  }
  
 $expression = $this->GetParameter("expression");
-//$baseurl = "http://www.algebra.com/cgi-bin/plot-formula.mpl?expression=";
-$baseurl = "http://www.forkosh.com/mimetex.cgi?";
+$baseurl = "http://www.algebra.com/cgi-bin/plot-formula.mpl?expression=";
 $fullurl = $baseurl . rawurlencode($expression);
 
 echo "<img src=\"$fullurl\" alt=\"expression math\" valign=\"middle\"/>";
