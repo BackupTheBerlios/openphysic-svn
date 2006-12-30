@@ -1,15 +1,17 @@
+/* #include <curses.h> */ /* getch  */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
 #include <stdbool.h>
 
 
-#define KEY_UP 'z'
-#define KEY_DOWN 'w'
-#define KEY_LEFT 'q'
-#define KEY_RIGHT 's'
-#define KEY_OK 'y'
-#define KEY_CANCEL 'n'
+#define KEYPAD_UP 'z'
+#define KEYPAD_DOWN 'w'
+#define KEYPAD_LEFT 'q'
+#define KEYPAD_RIGHT 's'
+#define KEYPAD_OK 'y'
+#define KEYPAD_CANCEL 'n'
 
 /*
 enum {
@@ -184,34 +186,36 @@ void update_key_pressed(void) {
    char key;
    key = 0;
 
-   while(key!=KEY_OK && key!=KEY_CANCEL
-      && key!=KEY_UP && key!=KEY_DOWN
-      && key!=KEY_RIGHT && key!=KEY_LEFT) { 
+   while(key!=KEYPAD_OK && key!=KEYPAD_CANCEL
+      && key!=KEYPAD_UP && key!=KEYPAD_DOWN
+      && key!=KEYPAD_RIGHT && key!=KEYPAD_LEFT) { 
 
-      key = getch();
+     //key = getch(); // conio.h
+     key = getchar(); // stdio.h
+     //scanf("%c",&key);
    
       switch(key) {
-         case KEY_OK:
+         case KEYPAD_OK:
             //key_pressed.ok=true;
             (ptr_current_page->on_ok)();  
             break;
-         case KEY_CANCEL:
+         case KEYPAD_CANCEL:
             //key_pressed.cancel=true;
             (ptr_current_page->on_cancel)(); 
             break;
-         case KEY_UP:
+         case KEYPAD_UP:
             //key_pressed.up=true;
             (ptr_current_page->on_up)();
             break;
-         case KEY_DOWN:
+         case KEYPAD_DOWN:
             //key_pressed.down=true;
             (ptr_current_page->on_down)();
             break;
-         case KEY_LEFT:
+         case KEYPAD_LEFT:
             //key_pressed.left=true;
             (ptr_current_page->on_left)();
             break;
-         case KEY_RIGHT:
+         case KEYPAD_RIGHT:
             //key_pressed.right=true;
             (ptr_current_page->on_right)();
             break;           
@@ -269,7 +273,8 @@ void init_page(struct page_typ* page, char* pgname) {
    page->on_down = &navigate_on_down;
 }
 
-int main(int argc, char *argv[])
+//int main(int argc, char *argv[])
+int main(void)
 {
    init_page(&page_time, "page_time");
    
@@ -354,7 +359,8 @@ int main(int argc, char *argv[])
 
     
    while(1) {
-      system("cls");
+     //system("cls");
+      system("clear");
       (ptr_current_page->display)();
       update_key_pressed();
 
