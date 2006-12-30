@@ -1,4 +1,4 @@
 input=hello
 
 all: 
-	gcc $(input).c -o $(input)
+	gcc $(input).c -o $(input) #-lconio
