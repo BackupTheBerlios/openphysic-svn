@@ -1,2 +1,4 @@
+input=hello
+
 all: 
-	gcc hello.c -o hello
+	gcc $(input).c -o $(input)
