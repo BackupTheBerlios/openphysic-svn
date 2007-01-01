@@ -1,14 +1,16 @@
 #include <stdio.h>
+#define putchar(c) putc((c), stdout)
 
 int main(void)
 { 
-  FILE * fic;
+  FILE * file;
   char c;
+  file = fopen("main.txt", "r"); /* Ouverture du fichier fcntl.h */
+  while( (c = getc(file)) != EOF ) {
+    putchar(c);
+  }
   
-  fic = fopen("main.txt", "r"); // Ouverture du fichier
-  //fscanf
-  // to do
-  fclose(fic); // Fermeture du fichier
+  fclose(file); /* Fermeture du fichier */
 
   return 0;
 }
