@@ -17,17 +17,46 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#ifndef __u_DISPLAY_H__
-#define __u_DISPLAY_H__
+#ifndef __U_ENUMS_H__
+#define __U_ENUMS_H__
 
-#define DISP_XSIZE (320) /* horizontal resolution */
-#define DISP_YSIZE (240) /* vertical resolution */
+//#include <glib-object.h>
 
-#define DISP_XORG (0)    /* horizontal offset position on the screen */
-#define DISP_YORG (0)    /* vertical offset position on the screen */
 
-#define DISP_COLORS_BITS (1) /* number of bits for colors
-			      * DISP_COLORS_BITS = 1 means 2 colors (b/w)
-			      */
+/* Button box styles */
+/*
+typedef enum 
+{
+  GTK_BUTTONBOX_DEFAULT_STYLE,
+  GTK_BUTTONBOX_SPREAD,
+  GTK_BUTTONBOX_EDGE,
+  GTK_BUTTONBOX_START,
+  GTK_BUTTONBOX_END
+} GtkButtonBoxStyle;
+*/
 
-#endif /* __u_DISPLAY_H__ */
+/* Focus movement types */
+/*
+typedef enum
+{
+  GTK_DIR_TAB_FORWARD,
+  GTK_DIR_TAB_BACKWARD,
+  GTK_DIR_UP,
+  GTK_DIR_DOWN,
+  GTK_DIR_LEFT,
+  GTK_DIR_RIGHT
+} GtkDirectionType;
+*/
+
+/* Widget states */
+typedef enum
+{
+  GTK_STATE_NORMAL,
+  GTK_STATE_ACTIVE,
+  GTK_STATE_PRELIGHT,
+  GTK_STATE_SELECTED,
+  GTK_STATE_INSENSITIVE
+} GtkStateType;
+
+
+#endif /* __U_ENUMS_H__ */

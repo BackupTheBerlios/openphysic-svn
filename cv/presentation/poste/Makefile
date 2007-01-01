@@ -7,9 +7,9 @@ pdf_viewer=open #acroread #xpdf
 all:
 	$(MAKE) view-pdf
 
-.PHONY: clean view-ps view-pdf view-pdf-dvips view-pdf-pdflatex view-ps-2
+.PHONY: clean view-ps view-pdf view-pdf-dvips view-pdf-pdflatex view-ps-2 $(input).dvi
 
-$(input).dvi: $(input).tex
+$(input).dvi: #$(input).tex
 	latex $(input).tex
 	latex $(input).tex
 

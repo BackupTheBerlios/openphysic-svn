@@ -94,21 +94,21 @@ void init_sf(void)
     init_time(&before_last_time);
     init_time(&best_time);
 
-	 // Track
-	 init_track(&current_track);	
+    // Track
+    init_track(&current_track);	
 	 	
-	 // Engine
-	 init_engine(&current_engine);
+    // Engine
+    init_engine(&current_engine);
+    
+    // Pilot
 	
-	 // Pilot
-	
-	 // LCD
-	 init_all_the_pages();
-	 ptr_current_page = &page_title;
-	 display();
-	 //_delay_ms(500);	
-	 ptr_current_page = &page_time;
-	 //display();	
+    // LCD
+    init_all_the_pages();
+    ptr_current_page = &page_title;
+    display();
+    //_delay_ms(500);	
+    ptr_current_page = &page_time;
+    //display();	
 }
 
 void init_hw_chrono(void) {
@@ -184,19 +184,19 @@ void init_hw(void)
     // make sure pull-up resistors are turned off
     PORTA = 0x00;
 
-	 init_temperature();
+    init_temperature();
 
 
     // **********
     // * Keypad *
     // **********
-	 init_hw_keypad();
+    init_hw_keypad();
 
 
     // ***********
     // * Display *
     // ***********
-	 init_hw_display();
+    init_hw_display();
 
     // *********
     // * Timer *

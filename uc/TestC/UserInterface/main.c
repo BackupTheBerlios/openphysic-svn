@@ -13,6 +13,9 @@
 #define KEYPAD_OK 'y'
 #define KEYPAD_CANCEL 'n'
 
+#define CLS system("clear") //system("cls");
+#define PAUSE system("pause")
+
 /*
 enum {
      DONT_MOVE = 0,
@@ -212,10 +215,12 @@ void update_key_pressed(void) {
             (ptr_current_page->on_down)();
             break;
          case KEYPAD_LEFT:
+	    //printf("left");
             //key_pressed.left=true;
             (ptr_current_page->on_left)();
             break;
          case KEYPAD_RIGHT:
+	    //printf("right");
             //key_pressed.right=true;
             (ptr_current_page->on_right)();
             break;           
@@ -252,18 +257,17 @@ void navigate_on_up(void) {
 void navigate_on_down(void) {
 }
 
-
 //void init_key_function(void) {
 //}     
 
-void init_page(struct page_typ* page, char* pgname) {
+void init_page(struct page_typ* page, char* pgname, void* display) {
    page->name = pgname;
-   page->page_parent = NULL;
+   page->page_parent = &page_time; //NULL;
    page->page_brother_next = NULL;
    page->page_brother_previous = NULL;
    page->page_child_first = NULL;
    
-   page->display = &display_page_time;
+   page->display = display; //display_page_time;
    
    page->on_ok = &navigate_on_ok;
    page->on_cancel = &navigate_on_cancel;
@@ -273,22 +277,8 @@ void init_page(struct page_typ* page, char* pgname) {
    page->on_down = &navigate_on_down;
 }
 
-//int main(int argc, char *argv[])
-int main(void)
-{
-   init_page(&page_time, "page_time");
-   
-   init_page(&page_reset_time, "page_reset_time");
-   
-   init_page(&page_engine_menu, "page_engine_menu");
-       init_page(&page_engine_select, "page_engine_select");
-       init_page(&page_engine_stroke, "page_engine_stroke");
-       init_page(&page_engine_reset_time, "page_engine_reset_time");
-
-   init_page(&page_track_menu, "page_track_menu");   
-
-   init_page(&page_recall_menu, "page_recall_menu");
-   
+/*
+void init_pages_relations(void) {
    // parent init
    (&page_time)->page_parent = &page_time; //NULL;
    (&page_reset_time)->page_parent = &page_time; //NULL;
@@ -328,9 +318,58 @@ int main(void)
       (&page_engine_stroke)->page_brother_previous = &page_engine_select;
       (&page_engine_reset_time)->page_brother_previous = &page_engine_select;
    (&page_track_menu)->page_brother_previous = &page_engine_menu;
-   (&page_recall_menu)->page_brother_previous = &page_track_menu;
-   
+   (&page_recall_menu)->page_brother_previous = &page_track_menu;   
+}
+*/
+
+void page_new_brother(struct page_typ * previous, struct page_typ * next) {
+  previous->page_brother_next = next;
+  next->page_brother_previous = previous;
+  next->page_parent = previous->page_parent;
+}
+
+void page_is_last_brother(struct page_typ * last, struct page_typ * first) {
+  last->page_brother_next = first;
+  first->page_brother_previous = last;
+}
+
+void page_new_first_child(struct page_typ * parent, struct page_typ * first_child) {
+  parent->page_child_first = first_child;
+  first_child->page_parent = parent;
+}
+
+void init_pages(void) {
+  init_page(&page_time, "page_time", &display_page_time);
+  init_page(&page_reset_time, "page_reset_time", &display_page_reset_time);
+  init_page(&page_engine_menu, "page_engine_menu", &display_page_engine_menu);
+     init_page(&page_engine_select, "page_engine_select", &display_page_engine_select);
+     init_page(&page_engine_stroke, "page_engine_stroke", &display_page_engine_stroke);
+     init_page(&page_engine_reset_time, "page_engine_reset_time", &display_page_engine_reset_time);
+  init_page(&page_track_menu, "page_track_menu", &display_page_track_menu);   
+  init_page(&page_recall_menu, "page_recall_menu", &display_page_recall_menu);
+}
+
+void init_pages_relations(void) {
+   page_new_brother(&page_time, &page_reset_time);
+   page_new_brother(&page_reset_time, &page_engine_menu);
+        page_new_first_child(&page_engine_menu, &page_engine_select);
+        page_new_brother(&page_engine_select, &page_engine_stroke);
+        page_new_brother(&page_engine_stroke, &page_engine_reset_time);
+	page_is_last_brother(&page_engine_reset_time, &page_engine_select);
+   page_new_brother(&page_engine_menu, &page_track_menu);
+   page_new_brother(&page_track_menu, &page_recall_menu);
+   page_is_last_brother(&page_recall_menu, &page_time);
+}
+
+//int main(int argc, char *argv[])
+int main(void)
+{
+   init_pages();
+
+   init_pages_relations();
+
    // display init
+   /*
    (&page_time)->display = &display_page_time;
    (&page_reset_time)->display = &display_page_reset_time;
    (&page_engine_menu)->display = &display_page_engine_menu;
@@ -339,6 +378,7 @@ int main(void)
    (&page_engine_reset_time)->display = &display_page_engine_reset_time;
    (&page_track_menu)->display = &display_page_track_menu;
    (&page_recall_menu)->display = &display_page_recall_menu;
+   */
    
    //init_key_function();
       
@@ -353,14 +393,12 @@ int main(void)
    (&page_track_menu)->waitkeypad = &;
    (&page_recall_menu)->waitkeypad = &;
    */
-   
 
-    ptr_current_page = &page_time; //&page_engine_menu;
+   ptr_current_page = &page_time; //&page_engine_menu;
 
     
-   while(1) {
-     //system("cls");
-      system("clear");
+   while(true) {
+      CLS;
       (ptr_current_page->display)();
       update_key_pressed();
 
@@ -373,7 +411,7 @@ int main(void)
 */
   
    printf("\n\n");
-   system("PAUSE");	
+   PAUSE;	
    return 0;
 }
 

@@ -17,17 +17,20 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#ifndef __u_DISPLAY_H__
-#define __u_DISPLAY_H__
+#ifndef __u_LABEL_H__
+#define __u_LABEL_H__
 
-#define DISP_XSIZE (320) /* horizontal resolution */
-#define DISP_YSIZE (240) /* vertical resolution */
+#include "uwidgets.h"
 
-#define DISP_XORG (0)    /* horizontal offset position on the screen */
-#define DISP_YORG (0)    /* vertical offset position on the screen */
+typedef struct _uLabel uLabel;
+typedef struct _uLabelClass uLabelClass;
 
-#define DISP_COLORS_BITS (1) /* number of bits for colors
-			      * DISP_COLORS_BITS = 1 means 2 colors (b/w)
-			      */
+struct _uLabel {
+  uWidget widget;
+};
 
-#endif /* __u_DISPLAY_H__ */
+struct _uLabelClass {
+  uWidgetClass parent_class;
+};
+
+#endif /* __u_LABEL_H__ */

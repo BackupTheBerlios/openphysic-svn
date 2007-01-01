@@ -17,17 +17,25 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#ifndef __u_DISPLAY_H__
-#define __u_DISPLAY_H__
+#include "ubutton.h"
 
-#define DISP_XSIZE (320) /* horizontal resolution */
-#define DISP_YSIZE (240) /* vertical resolution */
+/* Forward declarations */
+static void u_button_class_init (uButtonClass *class);
+static void u_button_init (uButton *but);
 
-#define DISP_XORG (0)    /* horizontal offset position on the screen */
-#define DISP_YORG (0)    /* vertical offset position on the screen */
+void u_button_expose(uWidget *widget);
 
-#define DISP_COLORS_BITS (1) /* number of bits for colors
-			      * DISP_COLORS_BITS = 1 means 2 colors (b/w)
-			      */
 
-#endif /* __u_DISPLAY_H__ */
+void u_button_expose(uWidget *widget) {
+
+}
+
+
+static void u_button_class_init (uButtonClass *class) {
+  //  widget_class->realize = gtk_dial_realize;
+  //  widget_class->expose_event = gtk_dial_expose;
+}
+
+static void u_button_init (uButton *but) {
+
+}

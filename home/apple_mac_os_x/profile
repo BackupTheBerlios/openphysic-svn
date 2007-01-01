@@ -47,5 +47,16 @@ alias rc='rm *.class'
 alias j='java CMain'
 alias av='appletviewer index.html'
 
+#alias pour C
+alias cgcc='gcc *.c -W -Wall'
+
+#alias pour C++
+alias cg++='g++ *.cpp *.cc -W -Wall'
+
+#run
+alias run='./a.out'
+
+#rm tmp
+alias rmtmp='rm *.o'
 
 export LD_LIBRARY_PATH=/usr/local/include/wx-2.8/

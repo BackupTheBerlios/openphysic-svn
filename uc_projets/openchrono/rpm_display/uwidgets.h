@@ -1,4 +1,4 @@
-/* microWidgets
+/* uWidgets - the microWidgets Toolkit
  * Copyright (C) 2007 Sebastien Celles
  *
  * This library is free software; you can redistribute it and/or
@@ -21,9 +21,9 @@
   Describe the embedded display 
  */
 
-#ifndef __u_DISPLAY_H__
-#define __u_DISPLAY_H__
+#ifndef __u_WIDGETS_H__
+#define __u_WIDGETS_H__
 
+#include "uwidget.h"
 
-
-#endif /* __u_DISPLAY_H__ */
+#endif /* __u_WIDGETS_H__ */

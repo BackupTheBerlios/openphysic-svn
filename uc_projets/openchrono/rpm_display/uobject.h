@@ -17,17 +17,18 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#ifndef __u_DISPLAY_H__
-#define __u_DISPLAY_H__
+#ifndef __u_OBJECT_H__
+#define __u_OBJECT_H__
 
-#define DISP_XSIZE (320) /* horizontal resolution */
-#define DISP_YSIZE (240) /* vertical resolution */
+typedef struct _uObject uObject;
+typedef struct _uObjectClass uObjectClass;
 
-#define DISP_XORG (0)    /* horizontal offset position on the screen */
-#define DISP_YORG (0)    /* vertical offset position on the screen */
+struct _uObject {
 
-#define DISP_COLORS_BITS (1) /* number of bits for colors
-			      * DISP_COLORS_BITS = 1 means 2 colors (b/w)
-			      */
+};
 
-#endif /* __u_DISPLAY_H__ */
+struct _uObjectClass {
+
+};
+
+#endif /* __u_OBJECT_H__ */
