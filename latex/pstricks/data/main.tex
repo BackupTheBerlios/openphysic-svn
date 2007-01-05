@@ -1,0 +1,14 @@
+\documentclass[a4paper]{article}
+\usepackage{pst-plot}
+\usepackage{pst-node}
+
+\begin{document}
+
+\readdata{\Data}{main.dat}
+
+\begin{pspicture}(0,0)(5,5)
+\psgrid[subgriddiv=0, griddots=5]
+\dataplot[plotstyle=dots]{\Data}
+\end{pspicture}
+
+\end{document}
