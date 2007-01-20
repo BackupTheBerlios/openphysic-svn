@@ -20,7 +20,7 @@ if (empty($engine)) {
 
 if ($engine=="google") {
   $strWeb = "http://www.google.fr/search?q=";
-  echo '<a href="'.$strWeb.rawurlencode($search).'">'.'Rechercher "'.$search.'" sur Google.fr'.'</a>';
+  echo '<a href="'.$strWeb.rawurlencode(str_replace(" ","+",$search)).'">'.'Rechercher "'.$search.'" sur Google.fr'.'</a>';
 }
 
 ?>
