@@ -1,5 +1,5 @@
 n=20; // n secondes
-fs=22050; // frq = 44kHz
+fs=22050; // frq echantillonnage en Hz
 t=soundsec(n, fs);
 f1=440; // frq fondamental
 s=cos(2*%pi*f1*t)/10;
