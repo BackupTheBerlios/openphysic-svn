@@ -1,10 +1,10 @@
-son=loadwave("son.wav");
+s=loadwave("son.wav");
 fs=44100;
-plot(son);
+plot(s);
 halt();
 xbasc();
-analyze(son);
+analyze(s);
 halt();
 xbasc();
-mapsound(son);
-//playsnd(son);
+mapsound(s,dt=0.1,simpl=1,fmin=100,fmax=3000,rate=fs);
+//playsnd(s);
