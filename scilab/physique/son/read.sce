@@ -1,4 +1,5 @@
 son=loadwave("son.wav");
+fs=44100;
 plot(son);
 halt();
 xbasc();
