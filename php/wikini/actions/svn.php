@@ -76,4 +76,24 @@ if (!empty($url)) {
 */
 
 
+?>="'.$strWeb.$url.'">'.$strWeb.$url.'</a><br />';
+echo '<br />';
+echo '<h5> Accès anonyme </h5>';
+echo '<tt>'.$strAnonymous.$url.'</tt><br />';
+echo '<br />';
+echo '<h5> Accès développeur </h5>';
+echo '<tt>'.$strDevel.$url.'</tt>';
+}
+
+else {
+	$str = $strWeb;
+}
+
+/*
+if (!empty($url)) {
+	$str = $str.$url;
+}
+*/
+
+
 ?>
