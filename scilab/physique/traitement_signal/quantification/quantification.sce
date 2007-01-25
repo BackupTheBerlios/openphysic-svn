@@ -11,6 +11,6 @@ rate=44100; // frq echantillonnage
 t=soundsec(n, rate);
 s=2^N*(sin(2*%pi*f*t)+1)/2; // signal échantillonné mais pas quantifié
 sq=quantif(s,N); // signal quantifié
-err=abs(s-sq); // erreur (bruit) de quantification 
+err=abs(s-sq)^2; // erreur (bruit) de quantification 
 plot(t,s,t,sq,t,err);
 
