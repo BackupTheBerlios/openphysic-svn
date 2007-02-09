@@ -2,7 +2,7 @@
 // S. CELLES - 09/02/2007
 
 // theta.. + g/l * sin(theta) = 0
-// theta.. = - omega0^2 * sin(theta)
+// theta.. = -2*lambda*theta. - omega0^2 * sin(theta)
 
 clear;
 
@@ -12,17 +12,19 @@ g = 9.81; // N/kg ou m/s^2
 
 %omega0 = sqrt(g/l);
 
-// on pose u1=x et u2=x'=v
+%lambda = 0; // frottements
+
+// on pose u1=theta et u2=theta'=v/l
 
 function [f]=MonSecondMembre(t,u)
   f(1) = u(2)
-  f(2) = - %omega0^2*sin(u(1));
+  f(2) = -2*%lambda*u(2) - %omega0^2*sin(u(1));
 endfunction
 
 t0=0;
-t=0:0.01:5;
-theta0 = 70*%pi/360;
-thetadot0 = 0; // thetadot = v/l
+t=0:0.01:50;
+theta0 = 160*%pi/360;
+thetadot0 = 10; // thetadot = v/l
 u0 = [theta0 ; thetadot0];
 
 [u]=ode(u0,t0,t,MonSecondMembre);
