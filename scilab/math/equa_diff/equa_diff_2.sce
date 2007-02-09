@@ -4,6 +4,8 @@
 // S. Celles
 // 08/12/2004
 
+clear
+
 x_ini=0;   // MODIFIABLE defaut : x_ini=0;
 x_pas=0.1;	// MODIFIABLE defaut : x_pas=0.1;
 x_fin=10;  // MODIFIABLE defaut : x_fin=10;

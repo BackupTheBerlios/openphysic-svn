@@ -6,6 +6,8 @@
 // S. Celles
 // 09/02/2007
 
+clear
+
 b = 1; // MODIFIABLE
 c = 1; // MODIFIABLE
 
