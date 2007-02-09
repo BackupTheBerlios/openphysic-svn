@@ -1,3 +1,5 @@
+clear
+
 A0=0; // Valeur moyenne
 f1=100; // Fréquence du fondamental
 

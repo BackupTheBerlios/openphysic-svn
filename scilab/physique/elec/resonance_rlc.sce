@@ -1,3 +1,5 @@
+clear
+
 // définition des valeurs numériques des composants
 R=1E3;
 L=1;

@@ -1,3 +1,4 @@
+clear;
 V=5;
 R=0.35;
 OMEGA=V/R;

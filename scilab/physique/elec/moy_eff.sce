@@ -1,3 +1,4 @@
+clear
 T=1;  // periode
 N=10000; // N = nombre de points de calcul -1
 t=[0:T/N:T]'; // temps

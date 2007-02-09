@@ -1,3 +1,5 @@
+clear
+
 // Position des charges
 
 //Charge positive seule

@@ -1,3 +1,4 @@
+clear;
 s=loadwave("son.wav");
 fs=44100;
 plot(s);

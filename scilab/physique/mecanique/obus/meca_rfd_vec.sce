@@ -43,6 +43,8 @@
 //   *------------------------*--  y
 //                              /
 
+clear;
+
 function [v]=crossP(v1,v2)
 // le produit vectoriel en vectoriel...
 // v1 et v2 doivent etre des matrices (3,n)

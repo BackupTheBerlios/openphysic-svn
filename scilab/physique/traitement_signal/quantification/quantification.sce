@@ -1,3 +1,5 @@
+clear;
+
 function sq=quantif(s,N)
 	 sq=round(s)
 endfunction

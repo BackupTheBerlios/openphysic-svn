@@ -1,3 +1,4 @@
+clear
 %theta_deg=[0:5:360]';
 %theta=%theta_deg*2*%pi/360;
 v1=sin(%theta);

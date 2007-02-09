@@ -1,3 +1,5 @@
+clear;
+
 n=4; // 4 secondes
 f1=6000; // frq fondamental
 fmin=20

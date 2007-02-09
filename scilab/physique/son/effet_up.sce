@@ -1,3 +1,4 @@
+clear;
 n=20; // n secondes
 fs=22050; // frq echantillonnage en Hz
 t=soundsec(n, fs);

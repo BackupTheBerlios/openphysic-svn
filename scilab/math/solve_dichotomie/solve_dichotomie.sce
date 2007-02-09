@@ -1,6 +1,8 @@
 // Résolution de f(x)=0
 // par dichotomie
 
+clear
+
 function [y]=f(x)
 	y=x^2-1
 endfunction

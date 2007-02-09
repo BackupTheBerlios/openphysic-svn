@@ -1,5 +1,7 @@
 // Termes d'une suite recurrente
 
+clear
+
 function [y]=f(x)
 	// u_n+1 = sqrt ( u_n +2 )
 	 y=sqrt(x+2)

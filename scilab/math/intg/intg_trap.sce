@@ -1,6 +1,8 @@
 // Calcul d'une intégrale
 // Méthode des trapèzes
 
+clear
+
 function [y]=f(x)
 	y=x^2; // MODIFIABLE
 endfunction

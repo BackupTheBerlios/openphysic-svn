@@ -38,6 +38,7 @@
 //    |th>\
 //    |    *
 
+clear;
 
 function [F_t0] = calcul_force(F_t0)
 // Poids

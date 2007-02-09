@@ -4,7 +4,7 @@
 // S. Celles
 // 15/08/2005
 
-
+clear;
 
 // ceci n'est que la partie affichage...
 // ça n'est pas ça le plus important.

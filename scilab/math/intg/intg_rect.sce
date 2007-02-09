@@ -1,6 +1,8 @@
 // Calcul d'une intégrale
 // Méthode des rectangles
 
+clear
+
 function [y]=f(x)
 	y=x^2; // MODIFIABLE
 endfunction
