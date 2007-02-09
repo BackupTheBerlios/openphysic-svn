@@ -6,6 +6,8 @@
 // S. Celles
 // 09/02/2007
 
+clear
+
 b = 1; // MODIFIABLE
 c = 1; // MODIFIABLE
 d = 1; // MODIFIABLE
@@ -15,15 +17,19 @@ d = 1; // MODIFIABLE
 // on utilise une représentation d'état (voir espace d'état)
 // c'est à dire on remplace l'équa diff du second ordre
 // par un système de deux équations différentielles du premier ordre
-// on pose u1 = y et u2=y'
+// on pose u1=y et u2=y'
 
-function f=f(t,u)
-  f = d - b*y(2) - c*u(1);
+function [f]=MonSecondMembre(t,u)
+  f(1) = u(2)
+  f(2) = d - b*u(2) - c*u(1);
 endfunction
 
 t0=0;
 t=0:0.1:10;
-u0 = [1 ; 0]; // y0=1 et y'0=0
-y=ode(u0,t0,t,f);
+u0 = [0 ; 0]; // y0=1 et y'0=0
 
-//plot(t,y);
+[U]=ode(u0,t0,t,MonSecondMembre);
+
+y = U(1,:); // extraction ligne 1
+
+plot(t,y);
