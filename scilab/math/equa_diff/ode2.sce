@@ -26,7 +26,7 @@ endfunction
 
 t0=0;
 t=0:0.1:10;
-u0 = [0 ; 0]; // y0=1 et y'0=0
+u0 = [0 ; 0]; // y0=0 et y'0=0
 
 [U]=ode(u0,t0,t,MonSecondMembre);
 
