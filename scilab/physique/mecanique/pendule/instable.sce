@@ -12,7 +12,7 @@ g = 9.81; // N/kg ou m/s^2
 
 %omega0 = sqrt(g/l);
 
-%lambda = 0; // frottements
+%lambda = 0.1; // frottements
 
 // on pose u1=theta et u2=theta'=v/l
 
@@ -27,9 +27,9 @@ function [f]=MonSecondMembre(t,u)
 endfunction
 
 t0=0;
-t=0:0.01:30;
-theta0 = 30*%pi/360;
-thetadot0 = 0; // thetadot = v/l
+t=0:0.01:100;
+theta0 = 178*%pi/360;
+thetadot0 = -20; // thetadot = v/l
 u0 = [theta0 ; thetadot0];
 
 [u]=ode(u0,t0,t,MonSecondMembre);
