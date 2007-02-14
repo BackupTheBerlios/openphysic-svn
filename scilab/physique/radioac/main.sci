@@ -68,7 +68,7 @@ sqrtN = 25; // sqrtN = 25 : 25 lignes et 25 colonnes soit 625 éléments (Nb de li
 Nini = sqrtN^2
 
 
-lambda = 0.2
+p0 = 0.2
 
 // Initialisation
 
@@ -94,8 +94,8 @@ while (sum(ELT)>0)
   j=j+1;
 
   for i=1:Nini
-  	 rnd = rand(); // tirage au sort d'un nombre rnd entre 0 et 1
-  	 if rnd<lambda	 // rnd est inférieur à lamdba le noyau est désintégré
+  	 p = rand(); // tirage au sort d'un nombre rnd entre 0 et 1
+  	 if p<p0	 // p est inférieur à p0 le noyau est désintégré
       ELT(i,1) = 0;
     end
    	// sinon il reste tel quel ! (on ne fait rien)
