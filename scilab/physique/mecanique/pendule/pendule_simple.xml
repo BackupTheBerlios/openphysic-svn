@@ -3,9 +3,9 @@
 "http://www.xmllab.org/dtd/1.5/fr/simulation.dtd">
 <simulation>
   <header>
-    <title>Période d'un pendule simple (avec animation)</title>
+    <title>Periode d'un pendule simple (avec animation)</title>
 
-    <author>Sébastien CELLES</author>
+    <author>Sebastien CELLES</author>
 
     <date>Wed Feb 14 09:00:00 CEST 2006</date>
 
@@ -15,13 +15,13 @@
 
   <notes>
     <p>Il s'agit d'une simulation d'un pendule simple. On visualise une
-    animation représentant un pendule simple et on mesure la période du
+    animation representant un pendule simple et on mesure la periode du
 	 mouvement de ce pendule.</p>
   </notes>
 
   <parameters widget="notebook">
     <section>
-      <title>Paramètres du pendule</title>
+      <title>Parametres du pendule</title>
 
       <scalar label="L" unit="m">
         <name>Longueur du pendule (m)</name>
@@ -37,7 +37,7 @@
       </scalar>
 
       <scalar label="g0" unit="ms^-2">
-        <name>Accélération de la pesanteur (N/kg)</name>
+        <name>Acceleration de la pesanteur (N/kg)</name>
 
         <value>9.81</value>
       </scalar>
@@ -55,7 +55,7 @@
     </section>
 
     <section>
-      <title>Paramètres de résolution</title>
+      <title>Parametres de resolution</title>
 
       <scalar label="tf" unit="s">
         <name>Temps final</name>
@@ -88,18 +88,18 @@
       <refdomain1d ref="t" />
 
       <states>
-        <state label="theta" unit="rad">
+        <state label="theta" unit="deg">
           <name>Angle du pendule</name>
 
           <derivative>theta_point</derivative>
 
-          <initialcondition>theta_0_deg*%pi/180</initialcondition>
+          <initialcondition>theta_0_deg</initialcondition>
         </state>
 
-        <state label="theta_point" unit="rad">
-          <name>dérivée de l'angle</name>
+        <state label="theta_point" unit="deg">
+          <name>Derivee de l'angle</name>
 
-          <derivative>-g0/L*sin(theta)</derivative>
+          <derivative>-180/%pi*g0/L*sin(theta*%pi/180)</derivative>
 
           <initialcondition>0</initialcondition>
         </state>
@@ -112,18 +112,18 @@
       <refdomain1d ref="tc" />
 
       <x1>
-        <value>L*sin(theta(iv))+cos(tc)*L/20</value>
+        <value>L*sin(theta(iv)*%pi/180)+cos(tc)*L/20</value>
       </x1>
 
       <x2>
-        <value>-L*cos(theta(iv))+sin(tc)*L/20</value>
+        <value>-L*cos(theta(iv)*%pi/180)+sin(tc)*L/20</value>
       </x2>
     </parametriccurve2d>
 
     <polyline label="pendule_nonlin">
       <vertex x1="0" x2="0"></vertex>
 
-      <vertex x1="L*sin(theta(iv))" x2="-L*cos(theta(iv))"></vertex>
+      <vertex x1="L*sin(theta(iv)*%pi/180)" x2="-L*cos(theta(iv)*%pi/180)"></vertex>
     </polyline>
 
     <parametriccurve2d label="pph1">
@@ -141,8 +141,8 @@
     <window dependencies="theta_0_deg tf L g0">
       <title>Portrait de phase</title>
 
-      <axis2d iso="yes" xmax="theta_0_deg*%pi/180" xmin="-theta_0_deg*%pi/180" ymax="theta_0_deg*%pi/180"
-              ymin="-theta_0_deg*%pi/180">
+      <axis2d iso="yes" xmax="theta_0_deg" xmin="-theta_0_deg" ymax="theta_0_deg"
+              ymin="-theta_0_deg">
         <drawcurve2d color="red" ref="pph1" thickness="2" />
       </axis2d>
     </window>
@@ -150,8 +150,8 @@
     <window dependencies="theta_0_deg tf L g0">
       <title>Angle du pendule en fonction du temps</title>
 
-      <axis2d xmax="tf" xmin="0" ymax="theta_0_deg*%pi/180"
-              ymin="-theta_0_deg*%pi/180">
+      <axis2d xmax="tf" xmin="0" ymax="theta_0_deg"
+              ymin="-theta_0_deg">
         <drawcurve2d color="red" ref="theta" thickness="2" />
       </axis2d>
     </window>
