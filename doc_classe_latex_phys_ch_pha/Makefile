@@ -4,7 +4,7 @@ page=0
 
 dvi_viewer=xdvi
 ps_viewer=gv
-pdf_viewer=gv #acroread #xpdf
+pdf_viewer=open #open #gv #acroread #xpdf
 
 dvips=dvips -t a4
 ps2pdf=ps2pdf -sPAPERSIZE=a4
