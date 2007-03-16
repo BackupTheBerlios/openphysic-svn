@@ -21,6 +21,7 @@ $(input)_dvips.pdf: $(input).ps
 
 $(input).pdf: $(input)_dvips.pdf
 	mv $(input)_dvips.pdf $(input).pdf
+	$(RM) $(input).ps
 
 #$(input).pdf: $(input).tex
 #	pdflatex $(input).tex

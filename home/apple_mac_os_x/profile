@@ -25,6 +25,9 @@ export PATH=$PATH:/sw/bin
 # others
 export PATH=$PATH:/usr/local/bin
 
+#Mac Apps
+export PATH=$PATH:/Applications/XMLlab/Darwin/i386/bin
+
 # Crossover apps
 export PATH=$PATH:/Users/scls/Library/Application\ Support/CrossOver/Bottles/win2000/drive_c/WinAVR/bin/
 
@@ -57,6 +60,6 @@ alias cg++='g++ *.cpp *.cc -W -Wall'
 alias run='./a.out'
 
 #rm tmp
-alias rmtmp='rm *.o'
+alias rmtmp='rm *~ *.o a.out'
 
 export LD_LIBRARY_PATH=/usr/local/include/wx-2.8/
