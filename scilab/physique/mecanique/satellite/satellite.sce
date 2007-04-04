@@ -26,18 +26,18 @@ mB = 100; // kg masse du point B
 
 d_sat_geo = 35786E3+Rterre; // m // 36000km = distance Terre-Sat pour sat geostationnaire
 v_sat_geo = 3.07E3; // m/s // vitesse sat geostationnaire
-//d = d_sat_geo;
-//v = v_sat_geo;;
+d = d_sat_geo;
+v = v_sat_geo;;
 
 //d = 16000E3;
 //v = 3.08E3;
 
-d = 50000E3;
-v = 5E3;
+//d = 50000E3;
+//v = 5E3;
 
 OB_0 = [0 d 0]; // position du point B
 vB_0 = [v 0 0]; // m/s // vitesse du point B
-vB_0 = [v*cos(45) -v*sin(45) 0];
+//vB_0 = [v*cos(45) -v*sin(45) 0];
 
 // init A
 OA = OA_0;
