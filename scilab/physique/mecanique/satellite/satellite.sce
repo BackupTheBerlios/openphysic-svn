@@ -11,7 +11,8 @@ Mterre = 5.9736E24; // kg // masse de la Terre
 
 // temps
 t0 = 0;
-t = [t0:60:t0+3600*2.7];
+t = [t0:60:t0+3600*24];
+//t = [t0:60:t0+3600*2.7];
 N = size(t,'c'); // nb de points
 
 
@@ -28,8 +29,8 @@ v_sat_geo = 3.07E3; // m/s // vitesse sat geostationnaire
 d = d_sat_geo;
 v = v_sat_geo;;
 
-d = 16000E3;
-v = 3.08E3;
+//d = 16000E3;
+//v = 3.08E3;
 
 OB_0 = [0 d 0]; // position du point B
 vB_0 = [v 0 0]; // m/s // vitesse du point B
