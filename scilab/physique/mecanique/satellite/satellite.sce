@@ -68,6 +68,7 @@ endfunction
 
 ETAT_B = ode(ETAT_B_0,t0,t,MonSecondMembre);
 POS_B = ETAT_B(1,:);
+VIT_B = ETAT_B(2,:);
 // size(POS_B) = 1 ligne et 4323 colonnes (4323=3*1441)
 
 // tranformation en 3 vecteurs colonnes de 1441 lignes
@@ -83,9 +84,20 @@ M_POS_B = matrix(POS_B',3,N)';
 X_B = M_POS_B(:,1);
 Y_B = M_POS_B(:,2);
 Z_B = M_POS_B(:,3);
+r_B = sqrt(X_B^2+Y_B^2+Z_B^2);
+
+M_VIT_B = matrix(VIT_B',3,N)';
+VX_B = M_VIT_B(:,1);
+VY_B = M_VIT_B(:,2);
+VZ_B = M_VIT_B(:,3);
+V_B = sqrt(VX_B^2+VY_B^2+VZ_B^2);
 
 
 isoview(min(X_B),max(X_B),min(Y_B),max(Y_B));
-plot2d(X_B,Y_B,style=0);
+plot2d(X_B,Y_B,style=0); // trajectoire du satellite
 
 xarc(-Rterre/2,Rterre/2,Rterre,Rterre,0,360*64); // dessin de la Terre
+
+//halt()
+//xbasc()
+//plot2d(r_B,V_B,style=0); // plan de phase
