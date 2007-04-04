@@ -11,13 +11,13 @@ Mterre = 5.9736E24; // kg // masse de la Terre
 
 // temps
 t0 = 0;
-t = [t0:60:t0+3600*24];
+t = [t0:60:t0+3600*2.7];
 N = size(t,'c'); // nb de points
 
 
 // Planète A
 mA = Mterre; // kg // masse du point A
-//OA_0 = [0 0 0]; // m // position du point A
+OA_0 = [0 0 0]; // m // position du point A
 //vA_0 = [0 0 0]; // m/s // vitesse du point A
 
 // Satellite B
@@ -28,14 +28,14 @@ v_sat_geo = 3.07E3; // m/s // vitesse sat geostationnaire
 d = d_sat_geo;
 v = v_sat_geo;;
 
-//d = 16000E3;
-//v = 3.08E3;
+d = 16000E3;
+v = 3.08E3;
 
 OB_0 = [0 d 0]; // position du point B
 vB_0 = [v 0 0]; // m/s // vitesse du point B
 
 // init A
-//OA = OA_0;
+OA = OA_0;
 //vA = vA_0;
 
 // init B
@@ -47,7 +47,7 @@ vB = vB_0;
 ETAT_B_0 = [OB_0 ; vB_0];
 
 // init ETAT
-ETAT_A = ETAT_A_0;
+//ETAT_A = ETAT_A_0;
 ETAT_B = ETAT_B_0;
 
 function [f]=MonSecondMembre(t,ETAT)
