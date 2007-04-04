@@ -11,8 +11,9 @@ Mterre = 5.9736E24; // kg // masse de la Terre
 
 // temps
 t0 = 0;
-t = [t0:60:t0+3600*24];
-//t = [t0:60:t0+3600*2.7];
+delta_t = 60;
+tmax = 3600*24;
+t = [t0:delta_t:tmax];
 N = size(t,'c'); // nb de points
 
 
@@ -24,7 +25,7 @@ OA_0 = [0 0 0]; // m // position du point A
 // Satellite B
 mB = 100; // kg masse du point B
 
-d_sat_geo = 35786E3+Rterre; // m // 36000km = distance Terre-Sat pour sat geostationnaire
+d_sat_geo = 35786E3+Rterre; // m // 36000km = hauteur Sat pour sat geostationnaire (par rapport au niveau du sol de la Terre)
 v_sat_geo = 3.07E3; // m/s // vitesse sat geostationnaire
 d = d_sat_geo;
 v = v_sat_geo;;
