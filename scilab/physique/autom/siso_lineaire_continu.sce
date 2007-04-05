@@ -1,15 +1,34 @@
 clear;
 xdel;
 
-s=poly(0,'s');
+s=poly(0,'s'); // ou s=%s
 tau1=1;
 H=syslin('c',1/(1+tau1*s));
 
 // Correcteur
 // ==========
-//C=syslin('c',1);
+// K = 1;
+// Ti = 1;
+// Td = 1;
+// a = ;
+//NoC=syslin('c',1);
+//Cp = syslin('c',K); // correcteur proportionnel
+//Cav_ph = K*(1+a*s)/(1+T*s); // correcteur a avance de phase
+//Cret_ph = K*(1+s)/(1+a*T*s); // correcteur a retard de phase
+//Cpi = K*(1 + 1/(Ti*s));
+//Cpd = K*(1 + Td*s);
+//Cpid = K*(1+1/(Ti*s)+Td*s);
+//Cpir = // predicteur de Smith
+//C = NoC
 
-// Réponse fréquentielle
+// Retard : voir approximation de Pade
+function y=exp_pade(x) // approximation de Pade
+ y = syslin('c',(1+x/2)/(1-x/2)); // ordre 1
+ //y = syslin('c',(1+x/2+x^2/12)/(1-x/2+x^2/12)); // ordre 2
+ //y = syslin('c',(1+x/2+x^2/10+x^3/120)/(1-x/2+x^2/10-x^3/120)); // ordre 3
+endfunction
+
+// Reponse frequentielle
 // =====================
 //bode(H,1E-2,1E2);
 //black(H)
@@ -20,9 +39,9 @@ H=syslin('c',1/(1+tau1*s));
 
 // Calculs
 // =======
-//pôles et zéros (roots) d'un polynome (voir aussi poly)
+//oles et eros (roots) d'un polynome (voir aussi poly)
 
-// Réponse temporelle
+// Reponse temporelle
 // ==================
 t=(0:0.01:5)';
 y=csim('step',t,H);
