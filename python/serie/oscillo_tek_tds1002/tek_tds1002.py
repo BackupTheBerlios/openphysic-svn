@@ -11,7 +11,7 @@ import serial
 
 # Initial serial port setting
 port  = "com1"   # Default serial port
-baudrate = 9600 # Liberlab firmware works at 57600 Bauds
+baudrate = 9600
 echo = 0
 rtscts = 0
 xonxoff = 0
@@ -20,12 +20,15 @@ repr_mode = 1
 # buffer
 buff_size = 50
 
-#print s.portstr       #check which port was realy used
+print s.portstr       #check which port was realy used
 s = serial.Serial(port, baudrate, rtscts=rtscts, xonxoff=xonxoff, timeout=1)
 
-s.write("*IDN?\n")      #write a string
+s.write("*IDN?\n")      #write a string on the oscillo
 
-buff = s.read(buff_size)
+buff = s.read(buff_size) #read a string from the oscillo
 print buff
+
+# it should show
+# TEKTRONIX,TDS 1002,0,CF:91.1CT FV:v2.06 TDS2CM:CMV
 
 s.close()
