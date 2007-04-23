@@ -18,7 +18,7 @@ xonxoff = 0
 repr_mode = 1
 
 # buffer
-buff_size = 50
+buff_size = 64
 
 print s.portstr       #check which port was realy used
 s = serial.Serial(port, baudrate, rtscts=rtscts, xonxoff=xonxoff, timeout=1)
