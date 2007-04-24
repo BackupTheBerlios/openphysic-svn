@@ -22,7 +22,8 @@
 
 from visa import * #from Gpib import *
 
-from matplotlib import * # from matplotlib.matlab import *
+from pylab import *
+#from matplotlib import * # from matplotlib.matlab import *
 from string import *
 from time import *
 from struct import *
