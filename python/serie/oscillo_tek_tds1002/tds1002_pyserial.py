@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 # Communication serie avec
 # Oscilloscope Tektronix TDS 1002
 # Sebastien CELLES
