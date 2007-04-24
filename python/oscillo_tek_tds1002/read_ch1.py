@@ -1,8 +1,10 @@
 #!/usr/bin/env python
 
 import numpy
-import pylab
+from pylab import *
 from visa import *
+from string import * # split string
+
 hw = instrument("COM1")
 
 # Clear status
@@ -34,16 +36,21 @@ hw.write("ACQuire:MODe AVErage")
 #hw.write("*opc?")
 
 hw.write("CH1:SCA?")
-scale[1] = hw.read()
-print scale[1]
+scale1 = hw.read()
+print scale1
 
-#hw.write("data:encdg ascii")
-#hw.write("curve?")
+hw.write("data:encdg ascii")
+hw.write("curve?")
 
 #raw_data = ''
 
-#tmp_data = hw.read()
-#raw_data = raw_data + tmp_data
+tmp1_data = hw.read()
+tmp2_data = hw.read()
+raw_data = tmp1_data + tmp2_data
+data = split(raw_data, ',')
+
+plot(data)
+show()
 
 # Close hardware
 #hw.close()
