@@ -161,7 +161,7 @@
 </table>
 	</p>
 	<p align="center" id="footer">
-		Maintenance du réseau informatique - Lycée DAUTRY - <a href="http://s.cls.free.fr/wikini/wakka.php?wiki=Contact">S&eacute;bastien CELLES</a>
+		Maintenance du réseau informatique - Lycée DAUTRY - <a href="http://www.celles.net/wikini/wakka.php?wiki=Contact">S&eacute;bastien CELLES</a>
 	</p>
 </body>
 </html>
