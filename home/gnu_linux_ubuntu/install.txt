@@ -1,0 +1,5 @@
+subversion
+emacs
+tetex-base
+tetex-extra
+
