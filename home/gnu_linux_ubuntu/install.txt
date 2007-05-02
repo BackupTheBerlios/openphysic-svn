@@ -14,6 +14,8 @@ texmaker
 gv
 xpdf
 psutils
+pdfjam
+pdftk
 a2ps
 gsfonts-x11
 
@@ -36,7 +38,6 @@ gdb
 ddd
 
 sun-java6-jdk
-netbeans*
 eclipse
 
 monodevelop
