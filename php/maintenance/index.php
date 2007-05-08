@@ -191,7 +191,7 @@
 		<tr>
 			<td>
 				<form action="login.php" method="post">
-					<input type="submit" value="Accés Administrateur" title="Accédez à la page d'administration" name="submit4" />
+					<input type="submit" value="Accès Administrateur" title="Accédez à la page d'administration" name="submit4" />
 				</form>
 			</td>
 			<td>

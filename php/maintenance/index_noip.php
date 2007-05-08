@@ -154,7 +154,7 @@
 	<p align="center" id="footer">
 <table align="center">
   <tr>
-		<td><form action="login.php" method="post"><input type="submit" value="Accés Administrateur" title="Accédez à la page d'administration" name="submit4"></form></td>
+		<td><form action="login.php" method="post"><input type="submit" value="Accès Administrateur" title="Accédez à la page d'administration" name="submit4"></form></td>
 		<td><form action="attente.php" method="post"><input type="submit" value="Demandes en attente" title="Visualisez les demandes d'interventions en attente" name="submit5"></form></td>
 		<td><form action="execute.php" method="post"><input type="submit" value="Dernières demandes exécutées" title="Vérifiez si votre demande a été effectuée" name="submit5"></form></td>
   </tr>
