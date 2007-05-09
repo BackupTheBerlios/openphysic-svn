@@ -5,7 +5,8 @@ from pylab import *
 from visa import *
 from string import * # split string
 
-hw = instrument("COM1")
+hw = instrument("ASRL1")
+#hw = instrument("COM1")
 
 # Clear status
 hw.write("*CLS")
@@ -37,7 +38,7 @@ hw.write("ACQuire:MODe AVErage")
 
 hw.write("CH1:SCA?")
 scale1 = hw.read()
-print scale1
+#print scale1
 
 hw.write("data:encdg ascii")
 hw.write("curve?")
