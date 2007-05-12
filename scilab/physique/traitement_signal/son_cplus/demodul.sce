@@ -1,4 +1,5 @@
 clear;
+xdel;
 
 filename = "son2";
 s1 = loadwave(filename+"_code.wav");
@@ -10,6 +11,7 @@ fs = 44100; // frq = 44kHz // echantillonnage
 n = 1/fs * size(s1,'c'); // duree en s
 
 //analyze(s1,fmin,fmax,rate=fs);
+//mapsound(s1,0.1,fmin,fmax,simpl=1,rate=fs);
 
 t = soundsec(n, fs);
 
@@ -31,5 +33,9 @@ s3 = s2.*cos(2*%pi*fM*t);
 s4 = flts(s3,hz);
 //analyze(s4,fmin,fmax,rate=fs);
 
+//mapsound(s4,0.1,fmin,fmax,simpl=1,rate=fs);
+
 // sauvegarde du son
 savewave(filename+"_decode.wav",s4,fs);
+
+
