@@ -1,6 +1,7 @@
 clear;
 
-s1 = loadwave("son1_code.wav");
+s1 = loadwave("son2_code.wav");
+s1 = s1(1,:); // mono ou voie 1 si stereo
 //plot(s);
 fmin = 20;
 fmax = 20000;
@@ -26,8 +27,8 @@ s3 = s2.*cos(2*%pi*fM*t);
 
 // filtre passe-bas avec frequence coupure 12800 Hz
 // (c'est le meme filtre)
-s4 = flts(s3,hz)
-analyze(s4,fmin,fmax,rate=fs);
+s4 = flts(s3,hz);
+//analyze(s4,fmin,fmax,rate=fs);
 
 // sauvegarde du son
-savewave("son1_decode.wav",s4,fs);
+savewave("son2_decode.wav",s4,fs);
