@@ -1,7 +1,10 @@
 clear;
 
+fc = 12800; // freq de coupure filtre passe-bas
+fs = 44100; // freq echantillonnage
+
 // filtre passe bas analogique
-//hs=analpf(20,'ellip',[1E-4 1E-4],12800);
+//hs=analpf(20,'ellip',[1E-4 1E-4],fc);
 //fr=20:100:20000;
 //hf=freq(hs(2),hs(3),%i*fr);
 //hm=abs(hf);
@@ -21,9 +24,20 @@ clear;
 //de sortie calculées précédemment. Si l'on applique une impulsion en
 //entrée de ce filtre, la sortie peut ne jamais se stabiliser, d'où
 //cette idée de réponse infinie à une impulsion.
-[hz]=iir(15,'lp','ellip',[0.1 0],[1E-4 1E-4]);
+//[hz]=iir(15,'lp','ellip',[0.1 0],[1E-4 1E-4]);
+//[hzm,fr]=frmag(hz,256);
+//plot2d(fr',hzm');
+
+
+[hz]=iir(15,'lp','ellip',[fc/fs 0],[1E-4 1E-4]);
 [hzm,fr]=frmag(hz,256);
 plot2d(fr',hzm');
+
+// ???
+//[cells,fact,zzeros,zpoles]=eqiir('lp','ellip',[2*%pi*fc,2*%pi*2*fc],1E-6,1E-6);
+//hz=fact*poly(zzeros,'z')/poly(zpoles,'z');
+//[hzm,fr]=frmag(hz,256);
+//plot2d(fr',hzm');
 
 // filtre numerique RIF passe-bas (low-pass)
 //On parle de réponse finie quand le mode de calcul du flot de sortie
