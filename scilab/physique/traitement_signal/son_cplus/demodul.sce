@@ -1,6 +1,7 @@
 clear;
 
-s1 = loadwave("son2_code.wav");
+filename = "son2";
+s1 = loadwave(filename+"_code.wav");
 s1 = s1(1,:); // mono ou voie 1 si stereo
 //plot(s);
 fmin = 20;
@@ -31,4 +32,4 @@ s4 = flts(s3,hz);
 //analyze(s4,fmin,fmax,rate=fs);
 
 // sauvegarde du son
-savewave("son2_decode.wav",s4,fs);
+savewave(filename+"_decode.wav",s4,fs);
