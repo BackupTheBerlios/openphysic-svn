@@ -20,8 +20,9 @@
 ****************************************************************************/
 
 #include "about.h"
+//#include <qtopia/qtopiaapplication.h>
 #include <qtopiaapplication.h>
 
-QTOPIA_ADD_APPLICATION("openchono", Example)
+QTOPIA_ADD_APPLICATION("openchono", OpenChrono)
 QTOPIA_MAIN
 

@@ -36,9 +36,9 @@ help.hint=help
 INSTALLS+=help
 
 # Package information (used for make packages)
-pkg.name=example
-pkg.desc=Example Application
+pkg.name=openchrono
+pkg.desc=OpenChrono
 pkg.version=1.0.0-1
-pkg.maintainer=Trolltech (www.trolltech.com)
-pkg.license=Commercial
+pkg.maintainer=Sebastien CELLES
+pkg.license=GPL
 pkg.domain=window
