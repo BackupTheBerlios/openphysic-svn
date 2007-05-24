@@ -9,24 +9,25 @@
 #include "aboutimpl.h"
 #include "testwinimpl.h"
 
-// 
+//
 #include "data.h"
 //
 
 int main(int argc, char ** argv)
 {
-	QApplication app( argc, argv );
-	
-	//DialogImpl win;
-	//AboutImpl win;
-	MainWinImpl win;
-	TestWinImpl wintest;
-	
-	Data myCurrentData;
-	
-	win.show(); 
-	wintest.show();
-	
-	app.connect( &app, SIGNAL( lastWindowClosed() ), &app, SLOT( quit() ) );
-	return app.exec();
+    QApplication app( argc, argv );
+
+    Data myCurrentData;
+
+    //DialogImpl win;
+    //AboutImpl win;
+    MainWinImpl win;
+    TestWinImpl wintest;
+    //win.myCurrentData = myCurrentData;
+
+    win.show();
+    wintest.show();
+
+    app.connect( &app, SIGNAL( lastWindowClosed() ), &app, SLOT( quit() ) );
+    return app.exec();
 }
