@@ -26,23 +26,19 @@ AboutImpl::AboutImpl( QWidget * parent, Qt::WFlags f) : QWidget(parent, f)
 /*  
  *  Destroys the object and frees any allocated resources
  */
- /*
 AboutImpl::~AboutImpl()
 {
 	// no need to delete child widgets, Qt does it all for us
 }
-*/
 
 
 /*
  *  A simple slot... not very interesting.
  */
- /*
 void AboutImpl::goodBye()
 {
     close();
 }
-*/
 //
 
 

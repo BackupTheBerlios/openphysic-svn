@@ -1,6 +1,6 @@
 <ui version="4.0" >
- <class>Dialog</class>
- <widget class="QDialog" name="Dialog" >
+ <class>TestWin</class>
+ <widget class="QDialog" name="TestWin" >
   <property name="geometry" >
    <rect>
     <x>0</x>
@@ -28,12 +28,25 @@
     <set>QDialogButtonBox::Cancel|QDialogButtonBox::NoButton|QDialogButtonBox::Ok</set>
    </property>
   </widget>
+  <widget class="QPushButton" name="StartStop" >
+   <property name="geometry" >
+    <rect>
+     <x>80</x>
+     <y>30</y>
+     <width>81</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Start / stop</string>
+   </property>
+  </widget>
   <widget class="QWidget" name="verticalLayout" >
    <property name="geometry" >
     <rect>
-     <x>40</x>
+     <x>25</x>
      <y>30</y>
-     <width>26</width>
+     <width>41</width>
      <height>201</height>
     </rect>
    </property>
@@ -69,53 +82,12 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="verticalLayout_2" >
-   <property name="geometry" >
-    <rect>
-     <x>180</x>
-     <y>30</y>
-     <width>26</width>
-     <height>201</height>
-    </rect>
-   </property>
-   <layout class="QVBoxLayout" >
-    <property name="margin" >
-     <number>-1</number>
-    </property>
-    <property name="spacing" >
-     <number>6</number>
-    </property>
-    <item>
-     <widget class="QLabel" name="label_2" >
-      <property name="text" >
-       <string>T1</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QSlider" name="SliderTemp1" >
-      <property name="maximum" >
-       <number>20000</number>
-      </property>
-      <property name="singleStep" >
-       <number>10</number>
-      </property>
-      <property name="pageStep" >
-       <number>100</number>
-      </property>
-      <property name="orientation" >
-       <enum>Qt::Vertical</enum>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
   <widget class="QWidget" name="verticalLayout_3" >
    <property name="geometry" >
     <rect>
      <x>220</x>
      <y>30</y>
-     <width>26</width>
+     <width>31</width>
      <height>201</height>
     </rect>
    </property>
@@ -151,18 +123,46 @@
     </item>
    </layout>
   </widget>
-  <widget class="QPushButton" name="StartStop" >
+  <widget class="QWidget" name="verticalLayout_2" >
    <property name="geometry" >
     <rect>
-     <x>80</x>
+     <x>180</x>
      <y>30</y>
-     <width>81</width>
-     <height>27</height>
+     <width>31</width>
+     <height>201</height>
     </rect>
    </property>
-   <property name="text" >
-    <string>Start / stop</string>
-   </property>
+   <layout class="QVBoxLayout" >
+    <property name="margin" >
+     <number>-1</number>
+    </property>
+    <property name="spacing" >
+     <number>6</number>
+    </property>
+    <item>
+     <widget class="QLabel" name="label_2" >
+      <property name="text" >
+       <string>T1</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QSlider" name="SliderTemp1" >
+      <property name="maximum" >
+       <number>20000</number>
+      </property>
+      <property name="singleStep" >
+       <number>10</number>
+      </property>
+      <property name="pageStep" >
+       <number>100</number>
+      </property>
+      <property name="orientation" >
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>
@@ -170,7 +170,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>accepted()</signal>
-   <receiver>Dialog</receiver>
+   <receiver>TestWin</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel" >
@@ -186,7 +186,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>rejected()</signal>
-   <receiver>Dialog</receiver>
+   <receiver>TestWin</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel" >

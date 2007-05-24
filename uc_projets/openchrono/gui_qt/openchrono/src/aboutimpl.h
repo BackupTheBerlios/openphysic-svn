@@ -8,6 +8,8 @@ class AboutImpl : public QWidget, public Ui::About
 Q_OBJECT
 public:
 	AboutImpl( QWidget * parent = 0, Qt::WFlags f = 0 );
+    virtual ~AboutImpl();
 private slots:
+    void goodBye();
 };
 #endif

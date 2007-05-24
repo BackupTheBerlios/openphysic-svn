@@ -15,8 +15,12 @@ FORMS +=   ui/dialog.ui \
   ui/testwin.ui
 HEADERS +=   src/dialogimpl.h \
   src/mainwinimpl.h \
-  src/aboutimpl.h
+  src/aboutimpl.h \
+  src/testwinimpl.h \
+  src/data.h
 SOURCES +=   src/dialogimpl.cpp \
   src/main.cpp \
   src/mainwinimpl.cpp \
-  src/aboutimpl.cpp
+  src/aboutimpl.cpp \
+  src/testwinimpl.cpp \
+  src/data.cpp
