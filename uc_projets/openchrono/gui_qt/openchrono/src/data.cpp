@@ -21,9 +21,34 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 Data::Data(  ) 
 {
-	RPM = 5000.0;
-	T1 = 50.0;
-	T2 = 60.0;
-	// TODO
+	set_RPM(5000.0);
+	set_T1(50.0);
+	set_T2(60.0);
 }
+
+void Data::set_RPM(double const RPM)
+{
+	m_RPM=RPM;
+}
+
+double Data::get_T1(void)
+{
+	return m_T1;
+}
+
+void Data::set_T1(double const T1)
+{
+	m_T1=T1;
+}
+
+double Data::get_T2(void)
+{
+	return m_T2;
+}
+
+void Data::set_T2(double const T2)
+{
+	m_T2=T2;
+}
+
 //

@@ -27,11 +27,21 @@ class Data
 
 public:
 	Data();
+
+	double get_RPM(void);
+	void set_RPM(double const RPM);
+
+	double get_T1(void);
+	void set_T1(double const T1);
+
+	double get_T2(void);
+	void set_T2(double const T2);
+
+private:	
+	double m_RPM;
 	
-	double RPM;
-	
-	double T1;
-	double T2;
+	double m_T1;
+	double m_T2;
 	
 
 };
