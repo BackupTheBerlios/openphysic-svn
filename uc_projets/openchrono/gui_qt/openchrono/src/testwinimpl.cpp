@@ -19,8 +19,30 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "testwinimpl.h"
 //
-TestWinImpl::TestWinImpl( QWidget * parent, Qt::WFlags f ) : QDialog(parent, f)
+TestWinImpl::TestWinImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QDialog(parent, f)
 {
 	setupUi(this);
+	m_Data = data;
+	
+	// connect signals and slots
+	//connect(slider, SIGNAL(valueChanged(int)),
+    //         lcd, SLOT(display(int)));
+	//QObject::connect(SliderRPM, SIGNAL(valueChanged(int)), progressBar, SLOT(setValue(int)));
+	//QObject::connect(SliderRPM, SIGNAL(valueChanged(int)), lblRPM, SLOT(setNum(int)));
+	
+	Update();
 }
 //
+
+void TestWinImpl::Update(void) {
+	SliderRPM->setValue(2000);
+	SliderTemp1->setValue(50);
+	SliderTemp2->setValue(50);	
+}
+
+/*
+Color RGB
+Vert  :   0 255   0 
+Jaune : 255 255   0
+Rouge : 255   0   0
+*/

@@ -19,8 +19,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "dialogimpl.h"
 //
-DialogImpl::DialogImpl( QWidget * parent, Qt::WFlags f ) : QDialog(parent, f)
+DialogImpl::DialogImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QDialog(parent, f)
 {
 	setupUi(this);
+	m_Data = data;
 }
 //

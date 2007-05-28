@@ -22,13 +22,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 #include "ui_about.h"
 //
+#include "data.h"
+
 class AboutImpl : public QWidget, public Ui::About
 {
 Q_OBJECT
+
 public:
-	AboutImpl( QWidget * parent = 0, Qt::WFlags f = 0 );
+	AboutImpl( QWidget * parent = 0, Qt::WFlags f = 0, Data * data = 0 );
     virtual ~AboutImpl();
+
 private slots:
     void goodBye();
+
+private:
+	Data * m_Data;
 };
 #endif

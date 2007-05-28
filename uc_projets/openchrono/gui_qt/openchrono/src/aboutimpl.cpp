@@ -24,9 +24,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  *  Constructs a about box which is a child of 'parent', with the 
  *  name 'name' and widget flags set to 'f' 
  */
-AboutImpl::AboutImpl( QWidget * parent, Qt::WFlags f) : QWidget(parent, f)
+AboutImpl::AboutImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QWidget(parent, f)
 {
 	setupUi(this);
+	m_Data = data;
+	
+	//textBrowser->setHtml("Hello");
+	
 	connect(quit, SIGNAL(clicked()), this, SLOT(goodBye()));
 }
 

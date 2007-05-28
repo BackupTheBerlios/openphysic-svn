@@ -29,11 +29,23 @@ class MainWinImpl : public QMainWindow, public Ui::MainWin
 {
 Q_OBJECT
 public:
-	MainWinImpl( QWidget * parent = 0, Qt::WFlags f = 0 );
+	MainWinImpl( QWidget * parent = 0, Qt::WFlags f = 0, Data * myData = 0 );	
+	void TestWin(void);
 	
-private slots:	
+//private slots:
+public slots:
+	void slotRPM(void);
+	void slotT1(void);
+	void slotT2(void);
+	void slotCurrentTime(void);
+	void slotLastTime(void);
+	void slotBestTime(void);
+	void slotLap(void);
+	void slotEtap(void);
 
 private:
-	//Data & myCurrentData;
+	Data * m_Data;
+	
+	void UpdateAll();
 };
 #endif

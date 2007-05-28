@@ -21,34 +21,59 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 Data::Data(  ) 
 {
-	set_RPM(5000.0);
-	set_T1(50.0);
-	set_T2(60.0);
+	setRPM(0.0);
+	setT1(0.0);
+	setT2(0.0);
 }
 
-void Data::set_RPM(double const RPM)
+
+double Data::getRPM(void)
+{
+	return m_RPM;
+}
+
+void Data::setRPM(double const RPM)
 {
 	m_RPM=RPM;
 }
 
-double Data::get_T1(void)
+
+double Data::getT1(void)
 {
 	return m_T1;
 }
 
-void Data::set_T1(double const T1)
+void Data::setT1(double const T1)
 {
 	m_T1=T1;
 }
 
-double Data::get_T2(void)
+
+double Data::getT2(void)
 {
 	return m_T2;
 }
 
-void Data::set_T2(double const T2)
+void Data::setT2(double const T2)
 {
 	m_T2=T2;
 }
 
+
+void Data::start(void)
+{
+	// on a line (start stop or etap)
+}
+
 //
+
+
+// slots fot TestWin
+/*
+void slotRPM_TestWin(int RPM) {
+	setRPM( (double) RPM );
+}
+*/
+
+
+// slots for captors

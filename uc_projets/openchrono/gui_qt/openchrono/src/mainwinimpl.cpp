@@ -19,8 +19,76 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "mainwinimpl.h"
 //
-MainWinImpl::MainWinImpl( QWidget * parent, Qt::WFlags f ) : QMainWindow(parent, f)
-{
-	setupUi(this);
+MainWinImpl::MainWinImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QMainWindow(parent, f)
+{	
+	setupUi(this); //ui.setupUi(this);
+	m_Data = data;
+	
+	setGeometry(100,100,320,240);
+
+	//setLayout(verticalLayout);
+	
+	//TestWin();
+	
+	//UpdateAll();
 }
 //
+
+void MainWinImpl::TestWin(void) {
+	lblMessage->setText("XXXXXXXXXXXXXXXXXX");
+
+	GraphicRPM->setValue(16000);
+	
+	lblCurrTime->setText("XX:XX:XXX");
+	lblBestTime->setText("XX:XX:XXX");
+	lblLastTime->setText("XX:XX:XXX");
+
+	lblLap->setText("XXX");
+	lblEtap->setText("XX / XX");
+	
+	lblTemp1->setText("XXXXX");
+	lblTemp2->setText("XXXXX");	
+}
+
+void MainWinImpl::slotRPM(void) {
+	GraphicRPM->setValue((int) m_Data->getRPM());
+}
+
+void MainWinImpl::slotT1(void) {
+	// ToDo
+}
+
+void MainWinImpl::slotT2(void) {
+	// ToDo
+}
+
+void MainWinImpl::slotCurrentTime(void) {
+	// ToDo
+}
+
+void MainWinImpl::slotLastTime(void) {
+	// ToDo
+}
+
+void MainWinImpl::slotBestTime(void) {
+	// ToDo
+}
+
+void MainWinImpl::slotLap(void) {
+	// ToDo
+}
+
+void MainWinImpl::slotEtap(void) {
+	// ToDo
+}
+
+void MainWinImpl::UpdateAll(void) {
+	slotRPM();
+	slotT1();
+	slotT2();
+	slotCurrentTime();
+	slotLastTime();
+	slotBestTime();
+	slotLap();
+	slotEtap();
+}

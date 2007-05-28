@@ -22,12 +22,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 #include "ui_dialog.h"
 //
+#include "data.h"
+
 class DialogImpl : public QDialog, public Ui::Dialog
 {
 Q_OBJECT
+
 public:
-	DialogImpl( QWidget * parent = 0, Qt::WFlags f = 0 );
+	DialogImpl( QWidget * parent = 0, Qt::WFlags f = 0, Data * data = 0 );
+
 private slots:
+
+private:
+	Data * m_Data;
 };
 #endif
 

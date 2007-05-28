@@ -20,29 +20,60 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef DATA_H
 #define DATA_H
 //
-
+//#include <qt>
 //
-class Data  
+class Data //: public QObject
 {
+//Q_OBJECT
 
 public:
 	Data();
 
-	double get_RPM(void);
-	void set_RPM(double const RPM);
+	double getRPM(void);
+	void setRPM(double const RPM);
 
-	double get_T1(void);
-	void set_T1(double const T1);
+	double getT1(void);
+	void setT1(double const T1);
 
-	double get_T2(void);
-	void set_T2(double const T2);
+	double getT2(void);
+	void setT2(double const T2);
+	
+	void start(void);
 
 private:	
 	double m_RPM;
 	
 	double m_T1;
 	double m_T2;
-	
+
+/*
+public slots:
+	void slotRPM_TestWin(int);
+*/
+
+/*
+	void slotT1(int);
+	void slotT2(int);
+*/
+/*
+	void slotCurrentTime(void);
+	void slotLastTime(void);
+	void slotBestTime(void);
+	void slotLap(void);
+	void slotEtap(void);
+*/
+
+/*
+public signals:
+	void RPMChanged(void);
+	void T1Changed(void);
+	void T2Changed(void);
+	void CurrentTimeChanged(void);
+	void LastTimeChanged(void);
+	void BestTimeChanged(void);
+	void LapChanged(void);
+	void EtapChanged(void);
+*/
 
 };
 #endif
