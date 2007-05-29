@@ -22,8 +22,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 Data::Data(  )
 {
     setRPM(0.0);
+    setRPMmax(16000.0);
+    setRPMmin(0.0);
+
     setT1(0.0);
     setT2(0.0);
+
+
 }
 
 
@@ -35,6 +40,28 @@ double Data::getRPM(void)
 void Data::setRPM(double const RPM)
 {
     m_RPM=RPM;
+}
+
+
+double Data::getRPMmax(void)
+{
+    return m_RPMmax;
+}
+
+void Data::setRPMmax(double const RPM)
+{
+    m_RPMmax=RPM;
+}
+
+
+double Data::getRPMmin(void)
+{
+    return m_RPMmin;
+}
+
+void Data::setRPMmin(double const RPM)
+{
+    m_RPMmin=RPM;
 }
 
 

@@ -31,6 +31,10 @@ public:
 
     double getRPM(void);
     void setRPM(double const RPM);
+    double getRPMmax(void);
+    void setRPMmax(double const RPM);
+    double getRPMmin(void);
+    void setRPMmin(double const RPM);
 
     double getT1(void);
     void setT1(double const T1);
@@ -42,6 +46,8 @@ public:
 
 private:
     double m_RPM;
+    double m_RPMmax;
+    double m_RPMmin;
 
     double m_T1;
     double m_T2;

@@ -46,6 +46,6 @@ public slots:
 private:
     Data * m_Data;
 
-    void UpdateAll();
+    void UpdateData();
 };
 #endif

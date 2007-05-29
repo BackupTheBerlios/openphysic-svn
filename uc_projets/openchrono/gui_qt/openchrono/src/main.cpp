@@ -65,11 +65,10 @@ int main(int argc, char ** argv)
 
 
     // connection directe testwin -> mainwin (test)
-    /*
     app.connect(	(&winTest)->SliderRPM	, SIGNAL( valueChanged(int) ),
-    				(&winMain)->GraphicRPM	, SLOT( setValue(int) )			);
-    				*/
-
+			(&winMain)->GraphicRPM	, SLOT( setValue(int) )			);   	
+//			(&winMain)->GraphicRPM	, SLOT( slotRPM(int) )			);   	
+	       
     winMain.show();
     winTest.show();
     //winAbout.show();

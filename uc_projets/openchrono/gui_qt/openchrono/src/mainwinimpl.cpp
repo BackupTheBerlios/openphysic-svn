@@ -30,7 +30,11 @@ MainWinImpl::MainWinImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QMainW
 
     //TestWin();
 
-    //UpdateAll();
+    //UpdateData();
+
+    // update RPM
+    GraphicRPM->setMaximum((int) m_Data->getRPMmax());
+    GraphicRPM->setMinimum((int) m_Data->getRPMmin());
 }
 //
 
@@ -82,7 +86,7 @@ void MainWinImpl::slotEtap(void) {
     // ToDo
 }
 
-void MainWinImpl::UpdateAll(void) {
+void MainWinImpl::UpdateData(void) {
     slotRPM();
     slotT1();
     slotT2();
