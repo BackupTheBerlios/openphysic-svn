@@ -1,3 +1,4 @@
+
 # my bin
 export PATH=$PATH:~/bin
 
@@ -15,6 +16,10 @@ export DISPLAY=:0
 #/usr/sbin
 #/usr/X11R6/bin
 
+# QT
+export PATH=$PATH:/Developer/Tools/Qt
+#export PATH=$PATH:/usr/local/Trolltech/Qt-4.2.3/bin
+
 # darwinports path
 export PATH=$PATH:/opt/local/bin
 export PATH=$PATH:/opt/local/sbin
@@ -30,6 +35,7 @@ export PATH=$PATH:/Applications/XMLlab/Darwin/i386/bin
 
 # Crossover apps
 export PATH=$PATH:/Users/scls/Library/Application\ Support/CrossOver/Bottles/win2000/drive_c/WinAVR/bin/
+
 
 
 # BerliOS SVN - OpenPhysic
