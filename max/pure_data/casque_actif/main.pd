@@ -1,7 +1,7 @@
-#N canvas 342 335 458 308 10;
+#N canvas 342 335 565 310 10;
 #X obj 147 84 adc~;
 #X text 225 76 entree micro;
-#X text 62 206;
+#X text 62 206 comment;
 #X text 239 266 sortie casque;
 #X obj 146 267 dac~;
 #X obj 147 150 *~;
