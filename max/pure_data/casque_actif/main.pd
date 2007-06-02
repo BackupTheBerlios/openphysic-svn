@@ -1,0 +1,14 @@
+#N canvas 342 335 458 308 10;
+#X obj 136 44 adc~;
+#X text 214 36 entree micro;
+#X text 62 206;
+#X text 228 226 sortie casque;
+#X obj 135 227 dac~;
+#X obj 136 110 *~;
+#X floatatom 170 79 5 0 0 0 - - -;
+#X text 223 93 dephasage 180 degres;
+#X connect 0 0 5 0;
+#X connect 0 1 5 0;
+#X connect 5 0 4 0;
+#X connect 5 0 4 1;
+#X connect 6 0 5 1;
