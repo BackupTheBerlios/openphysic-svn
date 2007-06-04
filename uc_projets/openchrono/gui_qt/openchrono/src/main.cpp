@@ -30,7 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 // GUI
 #include "mainwinimpl.h"
-//#include "aboutimpl.h"
+#include "aboutimpl.h"
 #include "testwinimpl.h"
 //
 #include "data.h"
@@ -47,10 +47,10 @@ int main(int argc, char ** argv)
     myCurrentData.setT2(60.0);
     //myCurrentData.start();
 
-    OCWindows * win;
+    //OCWindows * win;
 
-    //DialogImpl winDialog(0, 0, &myCurrentData);
-    //AboutImpl winAbout(0, 0, &myCurrentData);
+    DialogImpl winDialog(0, 0, &myCurrentData);
+    AboutImpl winAbout(0, 0, &myCurrentData);
     MainWinImpl winMain(0, 0, &myCurrentData);
     TestWinImpl winTest(0, 0, &myCurrentData);
 
@@ -83,6 +83,10 @@ int main(int argc, char ** argv)
     (&winMain)->page_brother_previous = NULL; // ToDo
 
     
+    //winAbout.show();
+    //winDialog.show();
+
+
     //win = &winMain;
 
     //(&win)->page_current = &winMain;
@@ -92,7 +96,7 @@ int main(int argc, char ** argv)
 
 
     winTest.show();
-    //winAbout.show();
+
 
 
     /*
