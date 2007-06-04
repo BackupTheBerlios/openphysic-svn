@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "data.h"
 #include "ocwindows.h"
 
-class MainWinImpl : public QMainWindow, public Ui::MainWin, public OCWindows
+class MainWinImpl : public QWidget, public Ui::MainWin, public OCWindows
 {
     Q_OBJECT
 public:

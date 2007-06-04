@@ -19,14 +19,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "mainwinimpl.h"
 //
-MainWinImpl::MainWinImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QMainWindow(parent, f)
+MainWinImpl::MainWinImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QWidget(parent, f)
 {
     setupUi(this); //ui.setupUi(this);
     m_Data = data;
 
     setGeometry(100,100,320,240);
-
-    //setLayout(verticalLayout);
 
     //TestWin();
 
@@ -35,6 +33,9 @@ MainWinImpl::MainWinImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QMainW
     // update RPM
     GraphicRPM->setMaximum((int) m_Data->getRPMmax());
     GraphicRPM->setMinimum((int) m_Data->getRPMmin());
+    
+    //delete layout();
+    //setLayout(verticalLayout);
 }
 //
 
