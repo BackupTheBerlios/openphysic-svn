@@ -4,7 +4,7 @@
 #X text 239 266 sortie casque;
 #X obj 146 267 dac~;
 #X obj 147 150 *~;
-#X floatatom 181 119 5 0 0 0 - - -;
+#X floatatom 181 118 5 -1 1 0 - - -;
 #X text 234 133 dephasage 180 degres;
 #X text 68 1 Casque antibruit actif;
 #X text 69 15 Noise-cancelling headphone;
