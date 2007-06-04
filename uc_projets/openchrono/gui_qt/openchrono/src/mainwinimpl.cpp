@@ -35,7 +35,7 @@ MainWinImpl::MainWinImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QWidge
     GraphicRPM->setMinimum((int) m_Data->getRPMmin());
     
     //delete layout();
-    //setLayout(verticalLayout);
+    //setLayout(vboxLayout);
 }
 //
 
