@@ -17,10 +17,12 @@ HEADERS +=   src/dialogimpl.h \
   src/mainwinimpl.h \
   src/aboutimpl.h \
   src/testwinimpl.h \
+  src/ocwindows.h \
   src/data.h
 SOURCES +=   src/dialogimpl.cpp \
   src/main.cpp \
   src/mainwinimpl.cpp \
   src/aboutimpl.cpp \
   src/testwinimpl.cpp \
+  src/ocwindows.cpp \
   src/data.cpp

@@ -17,36 +17,27 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-#ifndef MAINWINIMPL_H
-#define MAINWINIMPL_H
+#ifndef OCWINDOWS_H
+#define OCWINDOWS_H
 //
-#include "ui_mainwin.h"
+//#include <QApplication>
 //
 
-#include "data.h"
-#include "ocwindows.h"
-
-class MainWinImpl : public QMainWindow, public Ui::MainWin, public OCWindows
+class OCWindows //: public QMainWindow
 {
-    Q_OBJECT
-public:
-    MainWinImpl( QWidget * parent = 0, Qt::WFlags f = 0, Data * myData = 0 );
-    void TestWin(void);
+ public:
+  //OCWindows * page_current;
 
-//private slots:
-public slots:
-    void slotRPM(void);
-    void slotT1(void);
-    void slotT2(void);
-    void slotCurrentTime(void);
-    void slotLastTime(void);
-    void slotBestTime(void);
-    void slotLap(void);
-    void slotEtap(void);
+  //char* ocname;
+  OCWindows * page_parent;
+  OCWindows * page_brother_next;
+  OCWindows * page_brother_previous;
+  OCWindows * page_child_first;
 
-private:
-    Data * m_Data;
-
-    void UpdateData();
+  void navigate_on_ok(void);
+  void navigate_on_cancel(void);
+  void navigate_on_left(void);
+  void navigate_on_right(void);
 };
+
 #endif

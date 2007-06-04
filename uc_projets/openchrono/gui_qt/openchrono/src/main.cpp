@@ -32,10 +32,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "mainwinimpl.h"
 //#include "aboutimpl.h"
 #include "testwinimpl.h"
-
 //
 #include "data.h"
 //
+#include "ocwindows.h"
 
 int main(int argc, char ** argv)
 {
@@ -46,6 +46,8 @@ int main(int argc, char ** argv)
     myCurrentData.setT1(50.0);
     myCurrentData.setT2(60.0);
     //myCurrentData.start();
+
+    OCWindows * win;
 
     //DialogImpl winDialog(0, 0, &myCurrentData);
     //AboutImpl winAbout(0, 0, &myCurrentData);
@@ -68,8 +70,27 @@ int main(int argc, char ** argv)
     app.connect(	(&winTest)->SliderRPM	, SIGNAL( valueChanged(int) ),
 			(&winMain)->GraphicRPM	, SLOT( setValue(int) )			);   	
 //			(&winMain)->GraphicRPM	, SLOT( slotRPM(int) )			);   	
-	       
+
+
+    // Init pages relations
+    //  -> parent init
+    (&winMain)->page_parent = &winMain; // page time
+    //  -> first child init
+    (&winMain)->page_child_first = NULL; // ToDo
+    //  -> next brother init
+    (&winMain)->page_brother_next = NULL; // ToDo
+    //  -> previous brother init
+    (&winMain)->page_brother_previous = NULL; // ToDo
+
+    
+    //win = &winMain;
+
+    //(&win)->page_current = &winMain;
+
     winMain.show();
+    //win->show();
+
+
     winTest.show();
     //winAbout.show();
 
