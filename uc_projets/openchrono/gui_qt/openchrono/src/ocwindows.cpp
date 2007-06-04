@@ -19,6 +19,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "ocwindows.h"
 
+OCWindows::OCWindows(void) {
+  // contruct
+}
+
+OCWindows::~OCWindows(void) {
+  // destruct
+}
+
 void OCWindows::navigate_on_ok(void) {
   //ptr_current_page = &page_engine_menu;
   //ptr_page_goto = ptr_current_page->page_child_first;

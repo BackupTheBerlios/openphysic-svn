@@ -26,6 +26,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 class OCWindows //: public QMainWindow
 {
  public:
+  OCWindows();
+  ~OCWindows();
+
   //OCWindows * page_current;
 
   //char* ocname;
