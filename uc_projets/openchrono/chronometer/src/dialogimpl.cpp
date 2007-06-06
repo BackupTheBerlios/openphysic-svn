@@ -41,14 +41,15 @@ void DialogImpl::on_show(void)
 {
 	gettimeofday(&tv2, &tz);
 	
-	QString msg;
+	QString strMsg;
+	QString strTime;
 	
 	
 	if (running) {
-		msg = QString("RUNNING");
+		strMsg = QString("RUNNING");
 	}
 	else {
-		msg = QString("NOT RUNNING");
+		strMsg = QString("NOT RUNNING");
 	}
 	
 	
@@ -57,8 +58,13 @@ void DialogImpl::on_show(void)
     	
 	//msg = QString(sprintf(diff,"%L"));
 
-	//msg = QString("Test");	
-	lblTime->setText(msg);
+	//msg = QString("Test");
+	
+	strTime = QString("ToDo");
+	
+	lblTime->setText(strTime);
+	
+	lblMsg->setText(strMsg);
 	
 	//ToDo
 }
