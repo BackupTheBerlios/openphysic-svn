@@ -11,11 +11,11 @@ DialogImpl::DialogImpl( QWidget * parent, Qt::WFlags f) : QDialog(parent, f)
 	
 	running = false;
 	on_clear();
-	on_show();
+	//on_show();
 	
 	QObject::connect(butStartStop, SIGNAL(clicked()), this, SLOT(on_start_stop()));
 	QObject::connect(butClear, SIGNAL(clicked()), this, SLOT(on_clear()));
-	QObject::connect(butShow, SIGNAL(clicked()), this, SLOT(on_show()));
+	//QObject::connect(butShow, SIGNAL(clicked()), this, SLOT(on_show()));
 	
 	QTimer * timer = new QTimer(this);
 	connect( timer, SIGNAL(timeout()), this, SLOT(on_show()) );

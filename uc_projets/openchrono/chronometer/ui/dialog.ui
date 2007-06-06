@@ -60,7 +60,7 @@
   <widget class="QPushButton" name="butStartStop" >
    <property name="geometry" >
     <rect>
-     <x>170</x>
+     <x>280</x>
      <y>50</y>
      <width>83</width>
      <height>27</height>
@@ -73,7 +73,7 @@
   <widget class="QPushButton" name="butClear" >
    <property name="geometry" >
     <rect>
-     <x>170</x>
+     <x>280</x>
      <y>100</y>
      <width>83</width>
      <height>27</height>
@@ -83,25 +83,12 @@
     <string>Clear</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="butShow" >
-   <property name="geometry" >
-    <rect>
-     <x>270</x>
-     <y>70</y>
-     <width>83</width>
-     <height>27</height>
-    </rect>
-   </property>
-   <property name="text" >
-    <string>Show</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="lblTime" >
    <property name="geometry" >
     <rect>
      <x>50</x>
      <y>50</y>
-     <width>121</width>
+     <width>211</width>
      <height>41</height>
     </rect>
    </property>
@@ -112,6 +99,9 @@
    </property>
    <property name="text" >
     <string>TextLabel</string>
+   </property>
+   <property name="alignment" >
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
  </widget>
