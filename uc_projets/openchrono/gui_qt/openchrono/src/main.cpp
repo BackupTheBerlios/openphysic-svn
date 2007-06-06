@@ -48,6 +48,7 @@ int main(int argc, char ** argv)
     //myCurrentData.start();
 
     //OCWindows * win;
+    OCWindows win;
 
     DialogImpl winDialog(0, 0, &myCurrentData);
     AboutImpl winAbout(0, 0, &myCurrentData);
@@ -87,14 +88,19 @@ int main(int argc, char ** argv)
     //winDialog.show();
 
 
-    //win = &winMain;
+    (&win)->page_current = &winMain;
+    //(&win)->page_current = &winAbout;
+    //(&win)->page_current = &winDialog;
 
     //(&win)->page_current = &winMain;
 
-    winMain.show();
+    //winMain.show();
     //win->show();
 
+    ((&win)->page_current)->show();
 
+    
+    // fenetre de test
     winTest.show();
 
 
