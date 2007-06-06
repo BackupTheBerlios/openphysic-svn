@@ -20,7 +20,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef OCWINDOWS_H
 #define OCWINDOWS_H
 //
-//#include <QApplication>
+#include <QApplication>
 //
 
 class OCWindows //: public QMainWindow
@@ -30,6 +30,7 @@ class OCWindows //: public QMainWindow
   ~OCWindows();
 
   //OCWindows * page_current;
+  QWidget * page_current;
 
   //char* ocname;
   OCWindows * page_parent;
