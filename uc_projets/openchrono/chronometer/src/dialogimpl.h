@@ -12,14 +12,16 @@ Q_OBJECT
 public:
 	DialogImpl( QWidget * parent = 0, Qt::WFlags f = 0 );
 	
-	struct timeval tv1,tv2;
+	struct timeval tv1, tv2, tvdiff;
   	//struct timezone tz;
   	//long long diff;
   	bool running;
   	
   	struct tm* ptm;
-  	char time_string[40];
+  	char time_string[15]; //40
  	long milliseconds;
+ 	
+ 	int timeval_subtract (struct timeval *result, struct timeval *x, struct timeval *y);
 	
 private slots:
 	void on_clear(void);

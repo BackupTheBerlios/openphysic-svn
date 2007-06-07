@@ -38,9 +38,35 @@ void DialogImpl::on_start_stop(void)
 	gettimeofday(&tv2, NULL);
 }
 
+int timeval_subtract (struct timeval *result, struct timeval *x, struct timeval *y)
+{
+// see http://www.gnu.org/software/libc/manual/html_node/Elapsed-Time.html	
+	
+	/* Perform the carry for the later subtraction by updating y. */
+	if (x->tv_usec < y->tv_usec) {
+		int nsec = (y->tv_usec - x->tv_usec) / 1000000 + 1;
+		y->tv_usec -= 1000000 * nsec;
+		y->tv_sec += nsec;
+	}
+	if (x->tv_usec - y->tv_usec > 1000000) {
+		int nsec = (x->tv_usec - y->tv_usec) / 1000000;
+		y->tv_usec += 1000000 * nsec;
+		y->tv_sec -= nsec;
+	}
+     
+	/* Compute the time remaining to wait.
+		tv_usec is certainly positive. */
+	result->tv_sec = x->tv_sec - y->tv_sec;
+	result->tv_usec = x->tv_usec - y->tv_usec;
+     
+	/* Return 1 if result is negative. */
+	return x->tv_sec < y->tv_sec;
+	}
+
 void DialogImpl::on_show(void) 
 {
 	gettimeofday(&tv2, NULL);
+	gettimeofday(&tvdiff, NULL); // to delete
 	
 	QString strMsg;
 	QString strTime;
@@ -54,16 +80,17 @@ void DialogImpl::on_show(void)
 	}
 	lblMsg->setText(strMsg);
 	
+	//timeval_subtract (&tvdiff, &tv1, &tv2);
 	
-	//diff = (tv2.tv_sec-tv1.tv_sec) * 1000000L + (tv2.tv_usec-tv1.tv_usec); // en us
-    
-    strTime = QString("ToDo");
+	//diff = (tv2.tv_sec-tv1.tv_sec) * 1000000L + (tv2.tv_usec-tv1.tv_usec); // en us    
 	//strTime = QString(sprintf(diff,"%L"));
 	
-	ptm = localtime (&tv2.tv_sec);
-	//strftime (time_string, sizeof (time_string), "%Y-%m-%d %H:%M:%S", ptm);
-	strftime (time_string, sizeof (time_string), "%M:%S", ptm);
-	milliseconds = tv2.tv_usec / 1000;
+	//&tvdiff = &tv2;
+	
+	// see http://www.quepublishing.com/articles/article.asp?p=23618&seqNum=8&rl=1
+	ptm = localtime (&tvdiff.tv_sec);
+	strftime (time_string, sizeof (time_string), "%M:%S", ptm); //"%Y-%m-%d %H:%M:%S"
+	milliseconds = tvdiff.tv_usec / 1000;
 	strTime.sprintf("%s.%03ld\n", time_string, milliseconds);	 
 	lblTime->setText(strTime);
 
