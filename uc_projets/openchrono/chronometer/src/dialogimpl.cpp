@@ -64,7 +64,7 @@ void DialogImpl::on_show(void)
 	//strftime (time_string, sizeof (time_string), "%Y-%m-%d %H:%M:%S", ptm);
 	strftime (time_string, sizeof (time_string), "%M:%S", ptm);
 	milliseconds = tv2.tv_usec / 1000;
-	(&strTime)->sprintf("%s.%03ld\n", time_string, milliseconds);	 
+	strTime.sprintf("%s.%03ld\n", time_string, milliseconds);	 
 	lblTime->setText(strTime);
 
 	

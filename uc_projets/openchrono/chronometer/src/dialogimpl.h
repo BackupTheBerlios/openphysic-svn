@@ -14,7 +14,7 @@ public:
 	
 	struct timeval tv1,tv2;
   	//struct timezone tz;
-  	long long diff;
+  	//long long diff;
   	bool running;
   	
   	struct tm* ptm;
