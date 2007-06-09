@@ -29,6 +29,7 @@ void DialogImpl::on_clear(void)
     gettimeofday(&tv1, NULL);
     gettimeofday(&tv2, NULL); // ToFiX tv2 should be a copy of tv1
     //&tv2 = &tv1;
+    //timeval_subtract (&tvdiff, &tv2, &tv1);
   }
 }
 
@@ -38,6 +39,7 @@ void DialogImpl::on_start_stop(void)
     gettimeofday(&tv2, NULL);
   } else {
     gettimeofday(&tv1, NULL);
+    timeval_subtract (&tv1, &tv1, &tvdiff);
   }
 
   running = !running;
