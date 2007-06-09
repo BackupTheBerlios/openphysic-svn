@@ -19,6 +19,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "mainwinimpl.h"
 //
+
+#include <QTimer>
+
 MainWinImpl::MainWinImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QWidget(parent, f)
 {
     setupUi(this); //ui.setupUi(this);
@@ -36,6 +39,11 @@ MainWinImpl::MainWinImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QWidge
     
     //delete layout();
     //setLayout(vboxLayout);
+
+    QTimer * timer = new QTimer(this);
+    connect( timer, SIGNAL(timeout()), this, SLOT(UpdateData()) );
+    timer->start(25);
+
 }
 //
 
@@ -55,45 +63,50 @@ void MainWinImpl::TestWin(void) {
     lblTemp2->setText("XXXXX");
 }
 
-void MainWinImpl::slotRPM(void) {
-    GraphicRPM->setValue((int) m_Data->getRPM());
+void MainWinImpl::showRPM(void) {
+    //GraphicRPM->setValue((int) m_Data->getRPM()); // ToFiX
 }
 
-void MainWinImpl::slotT1(void) {
+void MainWinImpl::showT1(void) {
     // ToDo
 }
 
-void MainWinImpl::slotT2(void) {
+void MainWinImpl::showT2(void) {
     // ToDo
 }
 
-void MainWinImpl::slotCurrentTime(void) {
+void MainWinImpl::showCurrentTime(void) {
+    // ToDo
+    lblCurrTime->setText("XY:XY:XYZ");
+}
+
+void MainWinImpl::showLastTime(void) {
     // ToDo
 }
 
-void MainWinImpl::slotLastTime(void) {
+void MainWinImpl::showBestTime(void) {
     // ToDo
 }
 
-void MainWinImpl::slotBestTime(void) {
+void MainWinImpl::showLap(void) {
     // ToDo
 }
 
-void MainWinImpl::slotLap(void) {
+void MainWinImpl::showEtap(void) {
     // ToDo
 }
 
-void MainWinImpl::slotEtap(void) {
-    // ToDo
+void MainWinImpl::start(void) {
+    m_Data->start();
 }
 
 void MainWinImpl::UpdateData(void) {
-    slotRPM();
-    slotT1();
-    slotT2();
-    slotCurrentTime();
-    slotLastTime();
-    slotBestTime();
-    slotLap();
-    slotEtap();
+    showRPM();
+    showT1();
+    showT2();
+    showCurrentTime();
+    showLastTime();
+    showBestTime();
+    showLap();
+    showEtap();
 }

@@ -67,10 +67,10 @@ void Chrono::stop(void)
 void Chrono::start_stop(void)
 {
   if (running) {
-    gettimeofday(&tv2, NULL);
+    gettimeofday(&tv_current, NULL);
   } else {
-    gettimeofday(&tv1, NULL);
-    timeval_subtract (&tv1, &tv1, &tvdiff);
+    gettimeofday(&tv_initial, NULL);
+    timeval_subtract (&tv_initial, &tv_initial, &current_lap_time);
   }
 
   running = !running;
@@ -78,8 +78,9 @@ void Chrono::start_stop(void)
 
 void Chrono::clear(void)
 {
-  gettimeofday(&tv1, NULL);
-  //memcpy(&tv2, &tv1, sizeof(tv1)); //ToFiX ‘memcpy’ was not declared in this scope
+  gettimeofday(&tv_initial, NULL);
+  gettimeofday(&tv_current, NULL); // ToFiX = use memcpy
+  //memcpy(&tv_current, &tv_initial, sizeof(tv_initial)); //ToFiX ‘memcpy’ was not declared in this scope
 }
 
 bool Chrono::is_running(void)
@@ -87,9 +88,31 @@ bool Chrono::is_running(void)
   return running;
 }
 
+/*
 void Chrono::get_current_time(struct timeval * time)
 {
-  //timeval_subtract (&tvdiff, &tv2, &tv1);
-  timeval_subtract (time, &tv2, &tv1);
+  //timeval_subtract (&tv_diff, &tv_current, &tv_ini);
+  timeval_subtract (time, &tv_current, &tv_initial);
 }
+*/
 
+struct timeval * Chrono::get_current_lap_time(void) {
+  timeval_subtract (&current_lap_time, &tv_current, &tv_initial);
+  return &current_lap_time;
+};
+
+struct timeval * Chrono::get_current_etap_time(void) {
+  timeval_subtract (&current_etap_time, &tv_current, &tv_interm);
+  return &current_etap_time;
+};
+
+QString Chrono::getStrTimeMmSsXxx(struct timeval * tv) {
+  QString strTime;
+/* ToFix
+  ptm = localtime (tv->tv_sec);
+  strftime (time_string, sizeof (time_string), "%M:%S", ptm); //"%Y-%m-%d %H:%M:%S"
+  milliseconds = tv->tv_usec / 1000;
+  strTime.sprintf("%s.%03ld\n", time_string, milliseconds);
+  return strTime;
+*/
+}

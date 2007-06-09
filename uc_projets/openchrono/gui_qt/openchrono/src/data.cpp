@@ -19,6 +19,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "data.h"
 //
+
+#include <iostream> // ForTest std::cout << "Test" << std::endl;
+
 Data::Data(  )
 {
     setRPM(0.0);
@@ -27,8 +30,6 @@ Data::Data(  )
 
     setT1(0.0);
     setT2(0.0);
-
-
 }
 
 
@@ -89,7 +90,14 @@ void Data::setT2(double const T2)
 
 void Data::start(void)
 {
+  std::cout << "Start or stop or etap" << std::endl;
     // on a line (start stop or etap)
+
+  chrono.start();
+  chrono.clear();
+
+
+
 }
 
 //

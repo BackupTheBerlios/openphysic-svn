@@ -33,20 +33,21 @@ public:
     MainWinImpl( QWidget * parent = 0, Qt::WFlags f = 0, Data * myData = 0 );
     void TestWin(void);
 
-//private slots:
-public slots:
-    void slotRPM(void);
-    void slotT1(void);
-    void slotT2(void);
-    void slotCurrentTime(void);
-    void slotLastTime(void);
-    void slotBestTime(void);
-    void slotLap(void);
-    void slotEtap(void);
+private slots:
+    void start(void); // passage sur une ligne
+    void UpdateData();
 
 private:
     Data * m_Data;
 
-    void UpdateData();
+    void showRPM(void);
+    void showT1(void);
+    void showT2(void);
+    void showCurrentTime(void);
+    void showLastTime(void);
+    void showBestTime(void);
+    void showLap(void);
+    void showEtap(void);
+
 };
 #endif

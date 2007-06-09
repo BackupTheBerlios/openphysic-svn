@@ -70,7 +70,13 @@ int main(int argc, char ** argv)
     // connection directe testwin -> mainwin (test)
     app.connect(	(&winTest)->SliderRPM	, SIGNAL( valueChanged(int) ),
 			(&winMain)->GraphicRPM	, SLOT( setValue(int) )			);   	
-//			(&winMain)->GraphicRPM	, SLOT( slotRPM(int) )			);   	
+//			(&winMain)->GraphicRPM	, SLOT( slotRPM(int) )			);
+
+    // connection bouton StartStop page de test
+    app.connect(        (&winTest)->StartStop	, SIGNAL( clicked() ),
+                        &winMain                , SLOT( start() )                       );
+//                        &myCurrentData          , SLOT( start() )                       );
+//                        &winTest                , SLOT( Update() )                       );
 
 
     // Init pages relations

@@ -20,15 +20,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef DATA_H
 #define DATA_H
 //
-//#include <qt>
+//#include <Qt> // ToFix
 //
+#include "chrono.h"
+
 class Data //: public QObject
 {
 //Q_OBJECT
 
 public:
     Data();
+    //virtual ~Data(){  };
 
+
+    // RPM rpm;
     double getRPM(void);
     void setRPM(double const RPM);
     double getRPMmax(void);
@@ -36,13 +41,19 @@ public:
     double getRPMmin(void);
     void setRPMmin(double const RPM);
 
+
+    // Temperature temperature;
     double getT1(void);
     void setT1(double const T1);
 
     double getT2(void);
     void setT2(double const T2);
 
+
     void start(void);
+
+    Chrono chrono;
+
 
 private:
     double m_RPM;
@@ -51,35 +62,6 @@ private:
 
     double m_T1;
     double m_T2;
-
-    /*
-    public slots:
-    	void slotRPM_TestWin(int);
-    */
-
-    /*
-    	void slotT1(int);
-    	void slotT2(int);
-    */
-    /*
-    	void slotCurrentTime(void);
-    	void slotLastTime(void);
-    	void slotBestTime(void);
-    	void slotLap(void);
-    	void slotEtap(void);
-    */
-
-    /*
-    public signals:
-    	void RPMChanged(void);
-    	void T1Changed(void);
-    	void T2Changed(void);
-    	void CurrentTimeChanged(void);
-    	void LastTimeChanged(void);
-    	void BestTimeChanged(void);
-    	void LapChanged(void);
-    	void EtapChanged(void);
-    */
 
 };
 #endif
