@@ -27,7 +27,8 @@ void DialogImpl::on_clear(void)
 {	
   if (!running) {
     gettimeofday(&tv1, NULL);
-    memcpy(&tv1, &tv2, sizeof(tv1));
+    memcpy(&tv2, &tv1, sizeof(tv1));
+    //void * memcpy ( void * destination, const void * source, size_t num );
   }
 }
 
