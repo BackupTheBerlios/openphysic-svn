@@ -27,7 +27,8 @@ void DialogImpl::on_clear(void)
 {	
   if (!running) {
     gettimeofday(&tv1, NULL);
-    gettimeofday(&tv2, NULL); // ToFiX tv2 should be a copy of tv1
+    //gettimeofday(&tv2, NULL); // ToFiX tv2 should be a copy of tv1
+    memcpy(&tv1, &tv2, sizeof(tv1));
     //&tv2 = &tv1;
     //timeval_subtract (&tvdiff, &tv2, &tv1);
   }
