@@ -22,6 +22,7 @@ class DialogImpl : public QDialog, public Ui::Dialog
   long milliseconds;
  	
   int timeval_subtract (struct timeval *result, struct timeval *x, struct timeval *y);
+  QString getStrTimeMmSsXxx(struct timeval tv);
 	
  private slots:
   void on_clear(void);

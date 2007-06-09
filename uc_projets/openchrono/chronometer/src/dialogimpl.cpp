@@ -69,12 +69,19 @@ int DialogImpl::timeval_subtract (struct timeval *result, struct timeval *x, str
   return x->tv_sec < y->tv_sec;
 }
 
+QString DialogImpl::getStrTimeMmSsXxx(struct timeval tv) {
+  // see http://www.quepublishing.com/articles/article.asp?p=23618&seqNum=8&rl=1
+  QString strTime;
+  ptm = localtime (&tv.tv_sec);
+  strftime (time_string, sizeof (time_string), "%M:%S", ptm); //"%Y-%m-%d %H:%M:%S"
+  milliseconds = tv.tv_usec / 1000;
+  strTime.sprintf("%s.%03ld\n", time_string, milliseconds);
+  return strTime;
+}
+
 void DialogImpl::on_show(void) 
 {	
-  QString strMsg;
-  QString strTime;
-  
-  
+  QString strMsg;  
   if (running) {
     strMsg = QString("RUNNING");
     gettimeofday(&tv2, NULL);
@@ -82,18 +89,9 @@ void DialogImpl::on_show(void)
   else {
     strMsg = QString("NOT RUNNING");
   }
-  
   lblMsg->setText(strMsg);
   
-  
+
   timeval_subtract (&tvdiff, &tv2, &tv1);
-  
-  
-  // see http://www.quepublishing.com/articles/article.asp?p=23618&seqNum=8&rl=1
-  ptm = localtime (&tvdiff.tv_sec);
-  strftime (time_string, sizeof (time_string), "%M:%S", ptm); //"%Y-%m-%d %H:%M:%S"
-  milliseconds = tvdiff.tv_usec / 1000;
-  strTime.sprintf("%s.%03ld\n", time_string, milliseconds);
-  lblTime->setText(strTime);
-	
+  lblTime->setText(getStrTimeMmSsXxx(tvdiff));	
 }
