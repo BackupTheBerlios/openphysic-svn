@@ -28,8 +28,8 @@ Data::Data(  )
     setRPMmax(16000.0);
     setRPMmin(0.0);
 
-    setT1(0.0);
-    setT2(0.0);
+    setTemp1(0.0);
+    setTemp2(0.0);
 }
 
 
@@ -66,23 +66,23 @@ void Data::setRPMmin(double const RPM)
 }
 
 
-double Data::getT1(void)
+double Data::getTemp1(void)
 {
     return m_T1;
 }
 
-void Data::setT1(double const T1)
+void Data::setTemp1(double const T1)
 {
     m_T1=T1;
 }
 
 
-double Data::getT2(void)
+double Data::getTemp2(void)
 {
     return m_T2;
 }
 
-void Data::setT2(double const T2)
+void Data::setTemp2(double const T2)
 {
     m_T2=T2;
 }
@@ -98,6 +98,12 @@ void Data::start(void)
 
 
 
+}
+
+
+void Data::Test(void)
+{
+  std::cout << "Test data" << std::endl;
 }
 
 //

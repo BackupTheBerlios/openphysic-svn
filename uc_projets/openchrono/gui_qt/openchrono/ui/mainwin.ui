@@ -94,12 +94,12 @@
            </font>
           </property>
           <property name="text" >
-           <string>Last time</string>
+           <string>Last lap time</string>
           </property>
          </widget>
         </item>
         <item row="1" column="1" >
-         <widget class="QLabel" name="lblBestTime" >
+         <widget class="QLabel" name="lblBestLapTime" >
           <property name="text" >
            <string>00:00:000</string>
           </property>
@@ -116,12 +116,12 @@
            </font>
           </property>
           <property name="text" >
-           <string>Current time</string>
+           <string>Current lap time</string>
           </property>
          </widget>
         </item>
         <item row="1" column="0" >
-         <widget class="QLabel" name="lblCurrTime" >
+         <widget class="QLabel" name="lblCurrLapTime" >
           <property name="font" >
            <font>
             <pointsize>12</pointsize>
@@ -145,12 +145,12 @@
            </font>
           </property>
           <property name="text" >
-           <string>Best time</string>
+           <string>Best lap time</string>
           </property>
          </widget>
         </item>
         <item row="3" column="0" >
-         <widget class="QLabel" name="lblLastTime" >
+         <widget class="QLabel" name="lblLastLapTime" >
           <property name="text" >
            <string>00:00:000</string>
           </property>

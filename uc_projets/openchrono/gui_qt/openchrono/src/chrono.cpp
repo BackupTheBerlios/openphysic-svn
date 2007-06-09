@@ -26,6 +26,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 Chrono::Chrono( )
 {
+  running = false;
+
+  //clear();
+  // current lap time
+  gettimeofday(&tv_initial, NULL);
+  gettimeofday(&tv_current, NULL); // ToFiX = use memcpy
+
+  // best lap time
+
+  // last lap time
 
 }
 
@@ -96,24 +106,49 @@ void Chrono::get_current_time(struct timeval * time)
 }
 */
 
-struct timeval * Chrono::get_current_lap_time(void) {
+struct timeval Chrono::get_current_lap_time(void) {
+  if (running) {
+    gettimeofday(&tv_current, NULL);
+  }
   timeval_subtract (&current_lap_time, &tv_current, &tv_initial);
-  return &current_lap_time;
+  return current_lap_time;
 };
 
-struct timeval * Chrono::get_current_etap_time(void) {
+struct timeval Chrono::get_current_etap_time(void) {
+  if (running) {
+    gettimeofday(&tv_current, NULL);
+  }
   timeval_subtract (&current_etap_time, &tv_current, &tv_interm);
-  return &current_etap_time;
+  return current_etap_time;
 };
 
-QString Chrono::getStrTimeMmSsXxx(struct timeval * tv) {
-  tv; // ToAvoidWarning ToFiX
+struct timeval Chrono::get_last_lap_time(void) {
+  return last_lap_time;
+};
+
+struct timeval Chrono::get_best_lap_time(void) {
+  return best_lap_time;
+};
+
+
+QString Chrono::getStrTimeMmSsXxx(struct timeval tv) {
+  // see http://www.quepublishing.com/articles/article.asp?p=23618&seqNum=8&rl=1
   QString strTime;
-/* ToFix
-  ptm = localtime (tv->tv_sec);
+  ptm = localtime (&tv.tv_sec);
   strftime (time_string, sizeof (time_string), "%M:%S", ptm); //"%Y-%m-%d %H:%M:%S"
-  milliseconds = tv->tv_usec / 1000;
+  milliseconds = tv.tv_usec / 1000;
   strTime.sprintf("%s.%03ld\n", time_string, milliseconds);
-*/
   return strTime;
+}
+
+QString Chrono::getStrCurrentLapTime(void) {
+  return getStrTimeMmSsXxx(get_current_lap_time());
+}
+
+QString Chrono::getStrBestLapTime(void) {
+  return getStrTimeMmSsXxx(get_best_lap_time());
+}
+
+QString Chrono::getStrLastLapTime(void) {
+  return getStrTimeMmSsXxx(get_last_lap_time());
 }

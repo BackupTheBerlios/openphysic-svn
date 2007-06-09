@@ -19,6 +19,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "testwinimpl.h"
 //
+#include <QTimer>
+
+#include <iostream> //for test
+
 TestWinImpl::TestWinImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QDialog(parent, f)
 {
     setupUi(this);
@@ -29,16 +33,33 @@ TestWinImpl::TestWinImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QDialo
     //         lcd, SLOT(display(int)));
     //QObject::connect(SliderRPM, SIGNAL(valueChanged(int)), progressBar, SLOT(setValue(int)));
     //QObject::connect(SliderRPM, SIGNAL(valueChanged(int)), lblRPM, SLOT(setNum(int)));
+    connect(butTest, SIGNAL( clicked() ), this, SLOT( Test() ) );
 
-    Update();
+    Init();
+
+    QTimer * timer = new QTimer(this);
+    connect( timer, SIGNAL( timeout() ), this, SLOT( Update() ) );
+    timer->start(25);
 }
 //
 
-void TestWinImpl::Update(void) {
+void TestWinImpl::Init(void) {
     SliderRPM->setValue(2000);
-    SliderTemp1->setValue(50);
-    SliderTemp2->setValue(50);
+    SliderTemp1->setValue(51);
+    SliderTemp2->setValue(52);
 }
+
+void TestWinImpl::Update(void) {
+    m_Data->setRPM(SliderRPM->value());
+    m_Data->setTemp1(SliderTemp1->value());
+    m_Data->setTemp2(SliderTemp2->value());
+}
+
+void TestWinImpl::Test(void) {
+    std::cout << "Test Win" << std::endl;
+    m_Data->Test();
+}
+
 
 /*
 Color RGB

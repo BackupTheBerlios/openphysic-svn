@@ -44,11 +44,17 @@ public:
 	//void get_current_time(struct timeval * time);
 	//void get_string_time(void);
 
-	struct timeval * get_current_lap_time(void);
-	struct timeval * get_current_etap_time(void);
+	struct timeval get_current_lap_time(void);
+	struct timeval get_current_etap_time(void);
+	struct timeval get_last_lap_time(void);
+	struct timeval get_best_lap_time(void);
 
-	QString getStrTimeMmSsXxx(struct timeval * tv); // mm:ss:xxx
-	//QString getStrTimeHhMm(struct timeval * tv);  // hh:mm
+	QString getStrTimeMmSsXxx(struct timeval tv); // mm:ss:xxx
+	//QString getStrTimeHhMm(struct timeval tv);  // hh:mm
+
+	QString getStrCurrentLapTime(void);
+	QString getStrLastLapTime(void);
+	QString getStrBestLapTime(void);
 
 	
 	

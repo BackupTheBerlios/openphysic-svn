@@ -42,9 +42,11 @@ int main(int argc, char ** argv)
     QApplication app( argc, argv );
 
     Data myCurrentData;
+
     myCurrentData.setRPM(2000.0);
-    myCurrentData.setT1(50.0);
-    myCurrentData.setT2(60.0);
+    myCurrentData.setTemp1(50.0);
+    myCurrentData.setTemp2(60.0);
+
     //myCurrentData.start();
 
     //OCWindows * win;
@@ -68,8 +70,8 @@ int main(int argc, char ** argv)
 
 
     // connection directe testwin -> mainwin (test)
-    app.connect(	(&winTest)->SliderRPM	, SIGNAL( valueChanged(int) ),
-			(&winMain)->GraphicRPM	, SLOT( setValue(int) )			);   	
+//    app.connect(	(&winTest)->SliderRPM	, SIGNAL( valueChanged(int) ),
+//			(&winMain)->GraphicRPM	, SLOT( setValue(int) )			);   	
 //			(&winMain)->GraphicRPM	, SLOT( slotRPM(int) )			);
 
     // connection bouton StartStop page de test

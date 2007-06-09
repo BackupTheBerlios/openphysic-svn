@@ -52,9 +52,9 @@ void MainWinImpl::TestWin(void) {
 
     GraphicRPM->setValue(16000);
 
-    lblCurrTime->setText("XX:XX:XXX");
-    lblBestTime->setText("XX:XX:XXX");
-    lblLastTime->setText("XX:XX:XXX");
+    lblCurrLapTime->setText("XX:XX:XXX");
+    lblBestLapTime->setText("XX:XX:XXX");
+    lblLastLapTime->setText("XX:XX:XXX");
 
     lblLap->setText("XXX");
     lblEtap->setText("XX / XX");
@@ -64,28 +64,29 @@ void MainWinImpl::TestWin(void) {
 }
 
 void MainWinImpl::showRPM(void) {
-    //GraphicRPM->setValue((int) m_Data->getRPM()); // ToFiX
+    GraphicRPM->setValue((int) m_Data->getRPM()); // ToFiX
 }
 
 void MainWinImpl::showT1(void) {
     // ToDo
+    lblTemp1->setText("62 C");
 }
 
 void MainWinImpl::showT2(void) {
     // ToDo
+    lblTemp2->setText("65 C");
 }
 
-void MainWinImpl::showCurrentTime(void) {
-    // ToDo
-    lblCurrTime->setText("XY:XY:XYZ");
+void MainWinImpl::showCurrentLapTime(void) {
+  lblCurrLapTime->setText(m_Data->chrono.getStrCurrentLapTime());
 }
 
-void MainWinImpl::showLastTime(void) {
-    // ToDo
+void MainWinImpl::showLastLapTime(void) {
+  lblLastLapTime->setText(m_Data->chrono.getStrLastLapTime());
 }
 
-void MainWinImpl::showBestTime(void) {
-    // ToDo
+void MainWinImpl::showBestLapTime(void) {
+  lblBestLapTime->setText(m_Data->chrono.getStrBestLapTime());
 }
 
 void MainWinImpl::showLap(void) {
@@ -104,9 +105,9 @@ void MainWinImpl::UpdateData(void) {
     showRPM();
     showT1();
     showT2();
-    showCurrentTime();
-    showLastTime();
-    showBestTime();
+    showCurrentLapTime();
+    showLastLapTime();
+    showBestLapTime();
     showLap();
     showEtap();
 }

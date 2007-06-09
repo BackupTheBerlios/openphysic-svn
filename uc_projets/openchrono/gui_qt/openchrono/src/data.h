@@ -43,17 +43,29 @@ public:
 
 
     // Temperature temperature;
-    double getT1(void);
-    void setT1(double const T1);
+    // °C ou F ou ...
+    double getTemp1(void);
+    void setTemp1(double const T1);
 
-    double getT2(void);
-    void setT2(double const T2);
+    double getTemp2(void);
+    void setTemp2(double const T2);
 
+    // Track
+    //  name
+    //  nb etap
+    //  nb of lap (could be set to undef = -1)
+
+    // Position
+    //  etap (/nb etap)
+    //  lap
+
+    // Engine
 
     void start(void);
 
     Chrono chrono;
 
+    void Test(void);
 
 private:
     double m_RPM;

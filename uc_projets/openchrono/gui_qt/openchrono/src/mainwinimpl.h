@@ -43,9 +43,9 @@ private:
     void showRPM(void);
     void showT1(void);
     void showT2(void);
-    void showCurrentTime(void);
-    void showLastTime(void);
-    void showBestTime(void);
+    void showCurrentLapTime(void);
+    void showLastLapTime(void);
+    void showBestLapTime(void);
     void showLap(void);
     void showEtap(void);
 
