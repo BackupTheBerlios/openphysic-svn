@@ -107,12 +107,13 @@ struct timeval * Chrono::get_current_etap_time(void) {
 };
 
 QString Chrono::getStrTimeMmSsXxx(struct timeval * tv) {
+  tv; // ToAvoidWarning ToFiX
   QString strTime;
 /* ToFix
   ptm = localtime (tv->tv_sec);
   strftime (time_string, sizeof (time_string), "%M:%S", ptm); //"%Y-%m-%d %H:%M:%S"
   milliseconds = tv->tv_usec / 1000;
   strTime.sprintf("%s.%03ld\n", time_string, milliseconds);
-  return strTime;
 */
+  return strTime;
 }
