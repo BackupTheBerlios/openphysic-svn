@@ -18,11 +18,14 @@ HEADERS +=   src/dialogimpl.h \
   src/aboutimpl.h \
   src/testwinimpl.h \
   src/ocwindows.h \
-  src/data.h
+  src/data.h \
+  src/chrono.h 
 SOURCES +=   src/dialogimpl.cpp \
   src/main.cpp \
   src/mainwinimpl.cpp \
   src/aboutimpl.cpp \
   src/testwinimpl.cpp \
   src/ocwindows.cpp \
-  src/data.cpp
+  src/data.cpp \
+  src/chrono.cpp
+
