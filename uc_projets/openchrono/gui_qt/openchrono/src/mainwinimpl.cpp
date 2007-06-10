@@ -27,7 +27,7 @@ MainWinImpl::MainWinImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QWidge
   setupUi(this); //ui.setupUi(this);
   m_Data = data;
 
-  setGeometry(100,100,320,240);
+  setGeometry(50,50,320,240);
 
   //TestWin();
 

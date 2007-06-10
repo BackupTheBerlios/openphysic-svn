@@ -28,6 +28,8 @@ TestWinImpl::TestWinImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QDialo
   setupUi(this);
   m_Data = data;
 
+  setGeometry(400,200,330,300);
+
   // connect signals and slots
   //connect(slider, SIGNAL(valueChanged(int)),
   //         lcd, SLOT(display(int)));
