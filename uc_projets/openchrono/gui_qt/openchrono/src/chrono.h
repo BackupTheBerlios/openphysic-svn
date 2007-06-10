@@ -49,7 +49,10 @@ class Chrono
     struct timeval get_last_lap_time(void);
     struct timeval get_best_lap_time(void);
 
+    void update_last_and_best_lap_time(void);
+
     QString getStrTimeMmSsXxx(struct timeval tv); // mm:ss:xxx
+    QString getStrTimeMSsXxx(struct timeval tv); //  m:ss:xxx
     //QString getStrTimeHhMm(struct timeval tv);  // hh:mm
 
     QString getStrCurrentLapTime(void);
@@ -71,10 +74,15 @@ class Chrono
     // Durées
     struct timeval current_lap_time, best_lap_time, last_lap_time, current_etap_time;
 
+    // Ecart
+    struct timeval diff_best, diff_last;
+
     bool running;
     struct tm * ptm;
     char time_string[15];
     long milliseconds;
+
+    struct timeval max_lap_time(void);
 
   };
 #endif

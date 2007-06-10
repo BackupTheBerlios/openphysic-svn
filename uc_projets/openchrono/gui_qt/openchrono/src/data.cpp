@@ -32,6 +32,8 @@ void Data::start(void)
 
   if ( position.etap() == track.etaps() ) // passage ligne depart/arrivee
     {
+      chrono.update_last_and_best_lap_time();
+
       chrono.start();
       chrono.clear();
 

@@ -31,13 +31,30 @@ Chrono::Chrono( )
   //clear();
   // current lap time
   gettimeofday(&tv_initial, NULL);
-  gettimeofday(&tv_current, NULL); // ToFiX = use memcpy
+  //gettimeofday(&tv_current, NULL); // FiXeD = use memcpy
+  memcpy(&tv_current, &tv_initial, sizeof(tv_initial)); 
 
   // best lap time
+  best_lap_time = max_lap_time();
 
   // last lap time
+  last_lap_time = max_lap_time();
 
 }
+
+struct timeval Chrono::max_lap_time(void)
+{
+   struct timeval tv;
+   tv = timeval();
+
+   //tv.tv_sec = 60*10; // 10:00:000 = 10 minutes
+
+   tv.tv_sec = 60*9+59; // 10 minutes moins 1 ms
+   tv.tv_usec = 999*1000; 
+
+   return tv;
+}
+
 
 int Chrono::timeval_subtract (struct timeval *result, struct timeval *x, struct timeval *y)
 {
@@ -85,7 +102,7 @@ void Chrono::start_stop(void)
   else
     {
       gettimeofday(&tv_initial, NULL);
-      timeval_subtract (&tv_initial, &tv_initial, &current_lap_time);
+      timeval_subtract(&tv_initial, &tv_initial, &current_lap_time);
     }
 
   running = !running;
@@ -94,8 +111,8 @@ void Chrono::start_stop(void)
 void Chrono::clear(void)
 {
   gettimeofday(&tv_initial, NULL);
-  gettimeofday(&tv_current, NULL); // ToFiX = use memcpy
-  //memcpy(&tv_current, &tv_initial, sizeof(tv_initial)); //ToFiX ‘memcpy’ was not declared in this scope
+  //gettimeofday(&tv_current, NULL); // FiXeD = use memcpy
+  memcpy(&tv_current, &tv_initial, sizeof(tv_initial));
 }
 
 bool Chrono::is_running(void)
@@ -117,7 +134,7 @@ struct timeval Chrono::get_current_lap_time(void)
       {
         gettimeofday(&tv_current, NULL);
       }
-    timeval_subtract (&current_lap_time, &tv_current, &tv_initial);
+    timeval_subtract(&current_lap_time, &tv_current, &tv_initial);
     return current_lap_time;
   };
 
@@ -127,7 +144,7 @@ struct timeval Chrono::get_current_etap_time(void)
       {
         gettimeofday(&tv_current, NULL);
       }
-    timeval_subtract (&current_etap_time, &tv_current, &tv_interm);
+    timeval_subtract(&current_etap_time, &tv_current, &tv_interm);
     return current_etap_time;
   };
 
@@ -142,6 +159,14 @@ struct timeval Chrono::get_best_lap_time(void)
   };
 
 
+QString Chrono::getStrTimeMSsXxx(struct timeval tv)
+{
+  QString strTime;
+  strTime = getStrTimeMmSsXxx(tv);
+  strTime.remove(0,1);
+  return strTime;
+}
+
 QString Chrono::getStrTimeMmSsXxx(struct timeval tv)
 {
   // see http://www.quepublishing.com/articles/article.asp?p=23618&seqNum=8&rl=1
@@ -155,16 +180,37 @@ QString Chrono::getStrTimeMmSsXxx(struct timeval tv)
 
 QString Chrono::getStrCurrentLapTime(void)
 {
-  return getStrTimeMmSsXxx(get_current_lap_time());
+  return getStrTimeMSsXxx(get_current_lap_time());
 }
 
 QString Chrono::getStrBestLapTime(void)
 {
-  return getStrTimeMmSsXxx(get_best_lap_time());
+  return getStrTimeMSsXxx(get_best_lap_time());
 }
 
 QString Chrono::getStrLastLapTime(void)
 {
-  return getStrTimeMmSsXxx(get_last_lap_time());
+  return getStrTimeMSsXxx(get_last_lap_time());
 }
+
+void Chrono::update_last_and_best_lap_time(void)
+{
+  if ( is_running() )
+  { 
+    memcpy(&last_lap_time, &current_lap_time, sizeof(tv_initial));
+
+    if ( timeval_subtract(&diff_best, &current_lap_time, &best_lap_time) == -1 ) // meilleur temps au tour (calcul ecart)
+    {
+      memcpy(&best_lap_time, &current_lap_time, sizeof(tv_initial));
+    }
+
+    timeval_subtract(&diff_last, &current_lap_time, &last_lap_time); // calcul ecart par rapport au dernier tour
+  }
+}
+
+
+/* About Time and Linux
+http://www.haypocalc.com/wiki/Temps
+*/
+
 
