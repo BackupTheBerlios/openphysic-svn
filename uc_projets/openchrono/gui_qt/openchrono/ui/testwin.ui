@@ -347,6 +347,20 @@
    </property>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>SliderRPM</tabstop>
+  <tabstop>StartStop</tabstop>
+  <tabstop>SliderTemp1</tabstop>
+  <tabstop>SliderTemp2</tabstop>
+  <tabstop>butLeft</tabstop>
+  <tabstop>butDown</tabstop>
+  <tabstop>butRight</tabstop>
+  <tabstop>butUp</tabstop>
+  <tabstop>butOk</tabstop>
+  <tabstop>butCancel</tabstop>
+  <tabstop>butTest</tabstop>
+  <tabstop>buttonBox</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>
