@@ -17,46 +17,32 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-#include "rpm.h"
+#include "position.h"
 //
 
-Rpm::Rpm(  )
+
+Position::Position(  )
 {
-    set(0.0);
-    setMax(16000.0);
-    setMin(0.0);
 }
 
-double Rpm::value(void) const
+int Position::lap(void) const
 {
-    return m_RPM;
+    return m_lap;
 }
 
-void Rpm::set(double const RPM)
+void Position::setLap(const int lap)
 {
-    m_RPM=RPM;
+    m_lap = lap;
 }
 
-
-double Rpm::max(void) const
+int Position::etap(void) const
 {
-    return m_RPMmax;
+    return m_etap;
 }
 
-void Rpm::setMax(double const RPM)
+void Position::setEtap(const int etap)
 {
-    m_RPMmax=RPM;
-}
-
-
-double Rpm::min(void) const
-{
-    return m_RPMmin;
-}
-
-void Rpm::setMin(double const RPM)
-{
-    m_RPMmin=RPM;
+    m_etap = etap;
 }
 
 

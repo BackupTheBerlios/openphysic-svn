@@ -22,6 +22,8 @@ HEADERS +=   src/dialogimpl.h \
   src/rpm.h \
   src/temperature.h \
   src/track.h \
+  src/position.h \
+  src/engine.h \
   src/chrono.h 
 SOURCES +=   src/dialogimpl.cpp \
   src/main.cpp \
@@ -33,5 +35,7 @@ SOURCES +=   src/dialogimpl.cpp \
   src/rpm.cpp \
   src/temperature.cpp \
   src/track.cpp \
+  src/position.cpp \
+  src/engine.cpp \
   src/chrono.cpp
 

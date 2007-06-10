@@ -48,12 +48,12 @@ double Temperature::valueFahrenheit(void) const
 }
 */
 
-void Temperature::set(double const temperatureCelsius)
+void Temperature::set(const double temperatureCelsius)
 {
     m_T=temperatureCelsius;
 }
 
-void Temperature::setCelsius(double const temperatureCelsius)
+void Temperature::setCelsius(const double temperatureCelsius)
 {
     m_T=temperatureCelsius;
 }

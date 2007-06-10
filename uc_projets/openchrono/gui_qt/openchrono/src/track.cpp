@@ -31,32 +31,32 @@ Track::Track(  )
 */
 }
 
-QString Track::name(void)
+QString Track::name(void) const
 {
     return m_name;
 }
 
-void Track::setName(QString name)
+void Track::setName(const QString name)
 {
     m_name = name;
 }
 
-int Track::laps_number(void)
+int Track::laps_number(void) const
 {
     return m_laps_number;
 }
 
-void Track::setLaps_number(int laps)
+void Track::setLaps_number(const int laps)
 {
     m_laps_number = laps;
 }
 
-int Track::etaps_number(void)
+int Track::etaps_number(void) const
 {
     return m_etaps_number;
 }
 
-void Track::setEtaps_number(int etaps)
+void Track::setEtaps_number(const int etaps)
 {
     m_etaps_number = etaps;
 }

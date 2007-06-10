@@ -25,11 +25,11 @@ class Rpm
 public:
     Rpm( );
 
-    double value(void);
+    double value(void) const;
     void set(double const RPM);
-    double max(void);
+    double max(void) const;
     void setMax(double const RPM);
-    double min(void);
+    double min(void) const;
     void setMin(double const RPM);
 
 private:

@@ -27,14 +27,14 @@ class Track
 public:
     Track( );
 
-    QString name(void);
-    void setName(QString name);
+    QString name(void) const;
+    void setName(const QString name);
 
-    int laps_number(void);
-    void setLaps_number(int laps);
+    int laps_number(void) const;
+    void setLaps_number(const int laps);
 
-    int etaps_number(void);
-    void setEtaps_number(int etaps);
+    int etaps_number(void) const;
+    void setEtaps_number(const int etaps);
 
 private:
     QString m_name;

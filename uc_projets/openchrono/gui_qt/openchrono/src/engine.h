@@ -17,46 +17,33 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-#include "rpm.h"
-//
+#ifndef ENGINE_H
+#define ENGINE_H
 
-Rpm::Rpm(  )
+#include <QString>
+
+class Engine
 {
-    set(0.0);
-    setMax(16000.0);
-    setMin(0.0);
-}
+public:
+    Engine( );
 
-double Rpm::value(void) const
-{
-    return m_RPM;
-}
+    QString name(void) const;
+    void setName(const QString name);
 
-void Rpm::set(double const RPM)
-{
-    m_RPM=RPM;
-}
+    void set_two_strokes(void);
+    void set_four_stroke(void);
 
+    int strokes(void) const;
 
-double Rpm::max(void) const
-{
-    return m_RPMmax;
-}
+    int rpm_factor(void);
 
-void Rpm::setMax(double const RPM)
-{
-    m_RPMmax=RPM;
-}
+private:
+    QString m_name;
 
+    enum Engine_mode { engine_two_strokes = 0, engine_four_strokes};
 
-double Rpm::min(void) const
-{
-    return m_RPMmin;
-}
+    Engine_mode m_mode;
 
-void Rpm::setMin(double const RPM)
-{
-    m_RPMmin=RPM;
-}
+};
 
-
+#endif

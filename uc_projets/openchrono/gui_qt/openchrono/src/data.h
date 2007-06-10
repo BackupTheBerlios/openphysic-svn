@@ -26,6 +26,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "rpm.h"
 #include "temperature.h"
 #include "track.h"
+#include "position.h"
+#include "engine.h"
 
 class Data //: public QObject
 {
@@ -42,16 +44,11 @@ public:
 
     Track track;
 
-    // Position
-    //  etap (/nb etap)
-    //  lap
+    Position position;
 
-    // Engine
-    //  number
-    //  total time
+    Engine engine;
 
     void start(void);
-
     Chrono chrono;
 
     void test(void);

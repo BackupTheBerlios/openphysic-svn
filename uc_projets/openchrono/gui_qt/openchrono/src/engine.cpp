@@ -17,46 +17,64 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-#include "rpm.h"
+#include "engine.h"
 //
 
-Rpm::Rpm(  )
+Engine::Engine(  )
 {
-    set(0.0);
-    setMax(16000.0);
-    setMin(0.0);
+    setName("Engine1");
+    set_two_strokes();
 }
 
-double Rpm::value(void) const
+QString Engine::name(void) const
 {
-    return m_RPM;
+    return m_name;
 }
 
-void Rpm::set(double const RPM)
+void Engine::setName(const QString name)
 {
-    m_RPM=RPM;
+    m_name = name;
 }
 
-
-double Rpm::max(void) const
+void Engine::set_two_strokes(void)
 {
-    return m_RPMmax;
+    m_mode = engine_two_strokes;
 }
 
-void Rpm::setMax(double const RPM)
+void Engine::set_four_stroke(void)
 {
-    m_RPMmax=RPM;
+    m_mode = engine_four_strokes;
 }
 
-
-double Rpm::min(void) const
+int Engine::strokes(void) const
 {
-    return m_RPMmin;
+    if ( m_mode == engine_two_strokes )
+    {
+      return 2;
+    } 
+    else if ( m_mode == engine_four_strokes )
+    {
+      return 4;
+    }       
+    else
+    {
+      return 0;
+    }
 }
 
-void Rpm::setMin(double const RPM)
+int Engine::rpm_factor(void)
 {
-    m_RPMmin=RPM;
+    if ( m_mode == engine_two_strokes )
+    {
+      return 2;
+    } 
+    else if ( m_mode == engine_four_strokes )
+    {
+      return 1;
+    }       
+    else
+    {
+      return 0;
+    }
 }
-
 
