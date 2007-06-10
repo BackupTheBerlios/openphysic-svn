@@ -35,17 +35,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 #include "data.h"
 //
-#include "ocwindows.h"
+#include "ocwindows.h" // ocview ocdocument
 
 int main(int argc, char ** argv)
 {
   QApplication app( argc, argv );
 
   Data myCurrentData;
-
-  myCurrentData.rpm.set(2000.0);
-  myCurrentData.temperature_1.set(50.0);
-  myCurrentData.temperature_2.set(60.0);
 
   //myCurrentData.start();
 
@@ -57,28 +53,10 @@ int main(int argc, char ** argv)
   MainWinImpl winMain(0, 0, &myCurrentData);
   TestWinImpl winTest(0, 0, &myCurrentData);
 
-  // connection testwin -> data
-  //connect( &winTest, SIGNAL( SliderChanged() ), &winMain, SLOT( slotRPM() );
-  /*
-  app.connect(	(&winTest)->SliderRPM	, SIGNAL( valueChanged(int) ),
-  				&myCurrentData			, SLOT( slotRPM_TestWin(int) )			);
-  */
-
-
-  // connection data -> mainwin
-  //connect( &myCurrentData, SIGNAL( signalRPMChanged() ), &winMain, SLOT( slotRPM() );
-
-
-  // connection directe testwin -> mainwin (test)
-//    app.connect(	(&winTest)->SliderRPM	, SIGNAL( valueChanged(int) ),
-//			(&winMain)->GraphicRPM	, SLOT( setValue(int) )			);
-//			(&winMain)->GraphicRPM	, SLOT( slotRPM(int) )			);
 
   // connection bouton StartStop page de test
   app.connect(        (&winTest)->StartStop	, SIGNAL( clicked() ),
                       &winMain                , SLOT( start() )                       );
-//                        &myCurrentData          , SLOT( start() )                       );
-//                        &winTest                , SLOT( Update() )                       );
 
 
   // Init pages relations
@@ -111,13 +89,6 @@ int main(int argc, char ** argv)
   // fenetre de test
   winTest.show();
 
-
-
-  /*
-  myCurrentData.setRPM(2500.0);
-  myCurrentData.setT1(51.0);
-  myCurrentData.setT2(61.0);
-  */
 
   app.connect( &app, SIGNAL( lastWindowClosed() ), &app, SLOT( quit() ) );
 

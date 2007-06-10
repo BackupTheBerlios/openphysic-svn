@@ -24,6 +24,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <cstdlib> // memcpy
 
+#include <iostream>
+
+
 Chrono::Chrono( )
 {
   running = false;
@@ -32,7 +35,7 @@ Chrono::Chrono( )
   // current lap time
   gettimeofday(&tv_initial, NULL);
   //gettimeofday(&tv_current, NULL); // FiXeD = use memcpy
-  memcpy(&tv_current, &tv_initial, sizeof(tv_initial)); 
+  memcpy(&tv_current, &tv_initial, sizeof(struct timeval)); 
 
   // best lap time
   best_lap_time = max_lap_time();
@@ -56,9 +59,10 @@ struct timeval Chrono::max_lap_time(void)
 }
 
 
-int Chrono::timeval_subtract (struct timeval *result, struct timeval *x, struct timeval *y)
+int Chrono::timeval_subtract (struct timeval *result, const struct timeval *x, struct timeval *y)
 {
   // see http://www.gnu.org/software/libc/manual/html_node/Elapsed-Time.html
+  // ATTENTION ! y est modifié !!!
 
   /* Perform the carry for the later subtraction by updating y. */
   if (x->tv_usec < y->tv_usec)
@@ -93,6 +97,7 @@ void Chrono::stop(void)
   running = false;
 }
 
+/*
 void Chrono::start_stop(void)
 {
   if (running)
@@ -107,12 +112,13 @@ void Chrono::start_stop(void)
 
   running = !running;
 }
+*/
 
 void Chrono::clear(void)
 {
   gettimeofday(&tv_initial, NULL);
   //gettimeofday(&tv_current, NULL); // FiXeD = use memcpy
-  memcpy(&tv_current, &tv_initial, sizeof(tv_initial));
+  memcpy(&tv_current, &tv_initial, sizeof(struct timeval));
 }
 
 bool Chrono::is_running(void)
@@ -196,15 +202,31 @@ QString Chrono::getStrLastLapTime(void)
 void Chrono::update_last_and_best_lap_time(void)
 {
   if ( is_running() )
-  { 
-    memcpy(&last_lap_time, &current_lap_time, sizeof(tv_initial));
+  {
+    const struct timeval current = current_lap_time;
+    const struct timeval last = last_lap_time;
+    const struct timeval best = best_lap_time;
 
-    if ( timeval_subtract(&diff_best, &current_lap_time, &best_lap_time) == -1 ) // meilleur temps au tour (calcul ecart)
+
+    if ( timeval_subtract(&diff_best, &current, &best_lap_time) ) // meilleur temps au tour (calcul ecart)
     {
-      memcpy(&best_lap_time, &current_lap_time, sizeof(tv_initial));
+      std::cout << "record du tour battu" << std::endl;
+      memcpy(&best_lap_time, &current, sizeof(struct timeval));
+    } else {
+      std::cout << "toujours le même record du tour" << std::endl;
+      memcpy(&best_lap_time, &best, sizeof(struct timeval));
     }
 
-    timeval_subtract(&diff_last, &current_lap_time, &last_lap_time); // calcul ecart par rapport au dernier tour
+
+    if ( timeval_subtract(&diff_last, &current, &last_lap_time) ) // calcul ecart par rapport au dernier tour
+    {
+      std::cout << "dernier temps au tour battu" << std::endl;
+      
+    } else {
+      std::cout << "dernier temps au tour non battu" << std::endl;
+    }
+    memcpy(&last_lap_time, &current, sizeof(struct timeval)); // temps du dernier tour 
+
   }
 }
 

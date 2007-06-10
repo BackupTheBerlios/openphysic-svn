@@ -63,7 +63,7 @@ class Chrono
 
 
   private:
-    int timeval_subtract (struct timeval *result, struct timeval *x, struct timeval *y);
+    int timeval_subtract (struct timeval *result, const struct timeval *x, struct timeval *y);
 
     // Instants
     struct timeval tv_initial, tv_current, tv_interm;
