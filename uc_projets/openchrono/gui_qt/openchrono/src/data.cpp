@@ -24,69 +24,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 Data::Data(  )
 {
-    setRPM(0.0);
-    setRPMmax(16000.0);
-    setRPMmin(0.0);
 
-    setTemp1(0.0);
-    setTemp2(0.0);
 }
-
-
-double Data::getRPM(void)
-{
-    return m_RPM;
-}
-
-void Data::setRPM(double const RPM)
-{
-    m_RPM=RPM;
-}
-
-
-double Data::getRPMmax(void)
-{
-    return m_RPMmax;
-}
-
-void Data::setRPMmax(double const RPM)
-{
-    m_RPMmax=RPM;
-}
-
-
-double Data::getRPMmin(void)
-{
-    return m_RPMmin;
-}
-
-void Data::setRPMmin(double const RPM)
-{
-    m_RPMmin=RPM;
-}
-
-
-double Data::getTemp1(void)
-{
-    return m_T1;
-}
-
-void Data::setTemp1(double const T1)
-{
-    m_T1=T1;
-}
-
-
-double Data::getTemp2(void)
-{
-    return m_T2;
-}
-
-void Data::setTemp2(double const T2)
-{
-    m_T2=T2;
-}
-
 
 void Data::start(void)
 {
@@ -95,26 +34,13 @@ void Data::start(void)
 
   chrono.start();
   chrono.clear();
-
-
-
 }
 
 
-void Data::Test(void)
+void Data::test(void)
 {
-  std::cout << "Test data" << std::endl;
+  std::cout << "Test Data" << std::endl;
 }
 
 //
 
-
-// slots fot TestWin
-/*
-void slotRPM_TestWin(int RPM) {
-	setRPM( (double) RPM );
-}
-*/
-
-
-// slots for captors

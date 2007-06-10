@@ -17,13 +17,31 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-#include "dialogimpl.h"
-//
+#ifndef TRACK_H
+#define TRACK_H
 
-DialogImpl::DialogImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QDialog(parent, f)
+#include <QString>
+
+class Track
 {
-    setupUi(this);
-    m_Data = data;
-}
-//
+public:
+    Track( );
+
+    QString name(void);
+    void setName(QString name);
+
+    int laps_number(void);
+    void setLaps_number(int laps);
+
+    int etaps_number(void);
+    void setEtaps_number(int etaps);
+
+private:
+    QString m_name;
+    int m_laps_number;	
+    int m_etaps_number;
+
+};
+
+#endif
 

@@ -17,13 +17,47 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-#include "dialogimpl.h"
+#include "track.h"
 //
 
-DialogImpl::DialogImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QDialog(parent, f)
+#include <QString>
+
+Track::Track(  )
 {
-    setupUi(this);
-    m_Data = data;
+/*
+    setName("MyTrack");
+    setLaps_number(50);
+    setEtaps_number(1);
+*/
 }
-//
+
+QString Track::name(void)
+{
+    return m_name;
+}
+
+void Track::setName(QString name)
+{
+    m_name = name;
+}
+
+int Track::laps_number(void)
+{
+    return m_laps_number;
+}
+
+void Track::setLaps_number(int laps)
+{
+    m_laps_number = laps;
+}
+
+int Track::etaps_number(void)
+{
+    return m_etaps_number;
+}
+
+void Track::setEtaps_number(int etaps)
+{
+    m_etaps_number = etaps;
+}
 

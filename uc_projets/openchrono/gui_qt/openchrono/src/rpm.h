@@ -17,13 +17,27 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-#include "dialogimpl.h"
-//
+#ifndef RPM_H
+#define RPM_H
 
-DialogImpl::DialogImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QDialog(parent, f)
+class Rpm
 {
-    setupUi(this);
-    m_Data = data;
-}
-//
+public:
+    Rpm( );
+
+    double value(void);
+    void set(double const RPM);
+    double max(void);
+    void setMax(double const RPM);
+    double min(void);
+    void setMin(double const RPM);
+
+private:
+    double m_RPM;
+    double m_RPMmax;
+    double m_RPMmin;
+};
+
+#endif
+
 

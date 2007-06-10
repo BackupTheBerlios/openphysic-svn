@@ -33,31 +33,31 @@ TestWinImpl::TestWinImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QDialo
     //         lcd, SLOT(display(int)));
     //QObject::connect(SliderRPM, SIGNAL(valueChanged(int)), progressBar, SLOT(setValue(int)));
     //QObject::connect(SliderRPM, SIGNAL(valueChanged(int)), lblRPM, SLOT(setNum(int)));
-    connect(butTest, SIGNAL( clicked() ), this, SLOT( Test() ) );
+    connect(butTest, SIGNAL( clicked() ), this, SLOT( test() ) );
 
-    Init();
+    init();
 
     QTimer * timer = new QTimer(this);
-    connect( timer, SIGNAL( timeout() ), this, SLOT( Update() ) );
+    connect( timer, SIGNAL( timeout() ), this, SLOT( update() ) );
     timer->start(25);
 }
 //
 
-void TestWinImpl::Init(void) {
+void TestWinImpl::init(void) {
     SliderRPM->setValue(2000);
     SliderTemp1->setValue(51);
     SliderTemp2->setValue(52);
 }
 
-void TestWinImpl::Update(void) {
-    m_Data->setRPM(SliderRPM->value());
-    m_Data->setTemp1(SliderTemp1->value());
-    m_Data->setTemp2(SliderTemp2->value());
+void TestWinImpl::update(void) {
+    m_Data->rpm.set(SliderRPM->value());
+    m_Data->temperature_1.set(SliderTemp1->value());
+    m_Data->temperature_2.set(SliderTemp2->value());
 }
 
-void TestWinImpl::Test(void) {
+void TestWinImpl::test(void) {
     std::cout << "Test Win" << std::endl;
-    m_Data->Test();
+    m_Data->test();
 }
 
 

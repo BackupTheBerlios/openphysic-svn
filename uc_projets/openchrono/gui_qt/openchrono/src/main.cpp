@@ -43,9 +43,9 @@ int main(int argc, char ** argv)
 
     Data myCurrentData;
 
-    myCurrentData.setRPM(2000.0);
-    myCurrentData.setTemp1(50.0);
-    myCurrentData.setTemp2(60.0);
+    myCurrentData.rpm.set(2000.0);
+    myCurrentData.temperature_1.set(50.0);
+    myCurrentData.temperature_2.set(60.0);
 
     //myCurrentData.start();
 

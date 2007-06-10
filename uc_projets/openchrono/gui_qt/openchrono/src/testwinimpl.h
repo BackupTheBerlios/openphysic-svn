@@ -30,12 +30,12 @@ class TestWinImpl : public QDialog, public Ui::TestWin
 public:
     TestWinImpl( QWidget * parent = 0, Qt::WFlags f = 0, Data * data = 0 );
 private slots:
-    void Test(void);
+    void test(void);
+    void update(void);
 
 private:
     Data * m_Data;
-    void Update(void);
-    void Init(void);
+    void init(void);
 
 };
 #endif

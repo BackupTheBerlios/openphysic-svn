@@ -23,6 +23,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //#include <Qt> // ToFix
 //
 #include "chrono.h"
+#include "rpm.h"
+#include "temperature.h"
+#include "track.h"
 
 class Data //: public QObject
 {
@@ -32,48 +35,28 @@ public:
     Data();
     //virtual ~Data(){  };
 
+    Rpm rpm;
 
-    // RPM rpm;
-    double getRPM(void);
-    void setRPM(double const RPM);
-    double getRPMmax(void);
-    void setRPMmax(double const RPM);
-    double getRPMmin(void);
-    void setRPMmin(double const RPM);
+    Temperature temperature_1;
+    Temperature temperature_2;
 
-
-    // Temperature temperature;
-    // °C ou F ou ...
-    double getTemp1(void);
-    void setTemp1(double const T1);
-
-    double getTemp2(void);
-    void setTemp2(double const T2);
-
-    // Track
-    //  name
-    //  nb etap
-    //  nb of lap (could be set to undef = -1)
+    Track track;
 
     // Position
     //  etap (/nb etap)
     //  lap
 
     // Engine
+    //  number
+    //  total time
 
     void start(void);
 
     Chrono chrono;
 
-    void Test(void);
+    void test(void);
 
 private:
-    double m_RPM;
-    double m_RPMmax;
-    double m_RPMmin;
-
-    double m_T1;
-    double m_T2;
 
 };
 #endif

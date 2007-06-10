@@ -19,6 +19,9 @@ HEADERS +=   src/dialogimpl.h \
   src/testwinimpl.h \
   src/ocwindows.h \
   src/data.h \
+  src/rpm.h \
+  src/temperature.h \
+  src/track.h \
   src/chrono.h 
 SOURCES +=   src/dialogimpl.cpp \
   src/main.cpp \
@@ -27,5 +30,8 @@ SOURCES +=   src/dialogimpl.cpp \
   src/testwinimpl.cpp \
   src/ocwindows.cpp \
   src/data.cpp \
+  src/rpm.cpp \
+  src/temperature.cpp \
+  src/track.cpp \
   src/chrono.cpp
 

@@ -152,3 +152,4 @@ QString Chrono::getStrBestLapTime(void) {
 QString Chrono::getStrLastLapTime(void) {
   return getStrTimeMmSsXxx(get_last_lap_time());
 }
+
