@@ -30,11 +30,11 @@ public:
     QString name(void) const;
     void setName(const QString name);
 
-    int laps_number(void) const;
-    void setLaps_number(const int laps);
+    int laps(void) const;
+    void setLaps(const int laps);
 
-    int etaps_number(void) const;
-    void setEtaps_number(const int etaps);
+    int etaps(void) const;
+    void setEtaps(const int etaps);
 
 private:
     QString m_name;

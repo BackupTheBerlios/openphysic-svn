@@ -32,8 +32,19 @@ void Data::start(void)
   std::cout << "Start or stop or etap" << std::endl;
     // on a line (start stop or etap)
 
-  chrono.start();
-  chrono.clear();
+  if ( position.etap() == track.etaps() ) // passage ligne depart/arrivee
+  {
+    chrono.start();
+    chrono.clear();
+
+    position.clearEtap();
+    position.newLap();
+  }
+  else
+  {
+    position.newEtap();
+  }
+
 }
 
 

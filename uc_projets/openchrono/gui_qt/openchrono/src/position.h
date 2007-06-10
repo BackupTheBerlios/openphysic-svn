@@ -28,9 +28,14 @@ public:
 
     int lap(void) const;
     void setLap(const int lap);
+    void clearLap(void);
+    void newLap(void);
 
     int etap(void) const;
     void setEtap(const int etap);
+    void clearEtap(void);
+    void newEtap(void);
+
 
 private:
     int m_etap;

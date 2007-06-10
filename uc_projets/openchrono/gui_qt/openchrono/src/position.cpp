@@ -23,6 +23,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 Position::Position(  )
 {
+    clearLap();
+    clearEtap();
+//    setLap(0);
+//    setEtap(1);
 }
 
 int Position::lap(void) const
@@ -35,6 +39,16 @@ void Position::setLap(const int lap)
     m_lap = lap;
 }
 
+void Position::clearLap(void)
+{
+    m_lap = 0;
+}
+
+void Position::newLap(void)
+{
+    m_lap++;
+}
+
 int Position::etap(void) const
 {
     return m_etap;
@@ -45,4 +59,12 @@ void Position::setEtap(const int etap)
     m_etap = etap;
 }
 
+void Position::clearEtap(void)
+{
+    m_etap = 1;
+}
 
+void Position::newEtap(void)
+{
+    m_etap++;
+}

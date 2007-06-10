@@ -75,12 +75,10 @@ void MainWinImpl::showRPM(void) {
 }
 
 void MainWinImpl::showT1(void) {
-    // ToDo
     lblTemp1->setText(m_Data->temperature_1.getStr());
 }
 
 void MainWinImpl::showT2(void) {
-    // ToDo
     lblTemp2->setText(m_Data->temperature_2.getStr());
 }
 
@@ -97,11 +95,15 @@ void MainWinImpl::showBestLapTime(void) {
 }
 
 void MainWinImpl::showLap(void) {
-    // ToDo
+  QString strLap;
+  strLap.sprintf("%d / %d",m_Data->position.lap(),m_Data->track.laps());
+  lblLap->setText(strLap);
 }
 
 void MainWinImpl::showEtap(void) {
-    // ToDo
+  QString strEtap;
+  strEtap.sprintf("%d / %d",m_Data->position.etap(),m_Data->track.etaps());
+  lblEtap->setText(strEtap);
 }
 
 void MainWinImpl::start(void) {
