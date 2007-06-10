@@ -74,7 +74,9 @@ QString Temperature::getStrCelsius(void) const
   {
     QString str;
     //str.setNum(valueCelsius());
-    str.sprintf("%g C",valueCelsius());
+    str.sprintf("%g ",valueCelsius());
+    str = (str+QChar(0xB0))+QChar('C'); // °C (2 caractère)
+    //str += QChar(0x2103); // °C (1 caractère unicode)
     return str;
   }
 
@@ -82,7 +84,8 @@ QString Temperature::getStrCelsius(void) const
 QString Temperature::getStrFahrenheit(void) const
 {
     QString str;
-    str.sprintf("%g F",valueFahrenheit());
+    str.sprintf("%g ",valueFahrenheit());
+    str += QChar(0x2109); // °F
     return str;
 }
 */
