@@ -281,6 +281,22 @@
        </widget>
       </item>
       <item>
+       <spacer>
+        <property name="orientation" >
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType" >
+         <enum>QSizePolicy::Ignored</enum>
+        </property>
+        <property name="sizeHint" >
+         <size>
+          <width>63</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
        <widget class="QPushButton" name="butCancel" >
         <property name="text" >
          <string>Cancel</string>
