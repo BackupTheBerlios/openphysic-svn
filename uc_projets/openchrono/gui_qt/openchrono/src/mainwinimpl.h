@@ -27,17 +27,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "ocwindows.h"
 
 class MainWinImpl : public QWidget, public Ui::MainWin, public OCWindows
-{
+  {
     Q_OBJECT
-public:
+  public:
     MainWinImpl( QWidget * parent = 0, Qt::WFlags f = 0, Data * myData = 0 );
     void TestWin(void);
 
-private slots:
+  private slots:
     void start(void); // passage sur une ligne
     void UpdateData();
 
-private:
+  private:
     Data * m_Data;
 
     void showRPM(void);
@@ -49,5 +49,5 @@ private:
     void showLap(void);
     void showEtap(void);
 
-};
+  };
 #endif

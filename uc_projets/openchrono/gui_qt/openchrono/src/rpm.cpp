@@ -22,41 +22,41 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 Rpm::Rpm(  )
 {
-    set(0.0);
-    setMax(16000.0);
-    setMin(0.0);
+  set(0.0);
+  setMax(16000.0);
+  setMin(0.0);
 }
 
 double Rpm::value(void) const
-{
+  {
     return m_RPM;
-}
+  }
 
 void Rpm::set(double const RPM)
-{
+  {
     m_RPM=RPM;
-}
+  }
 
 
 double Rpm::max(void) const
-{
+  {
     return m_RPMmax;
-}
+  }
 
 void Rpm::setMax(double const RPM)
 {
-    m_RPMmax=RPM;
+  m_RPMmax=RPM;
 }
 
 
 double Rpm::min(void) const
-{
+  {
     return m_RPMmin;
-}
+  }
 
 void Rpm::setMin(double const RPM)
 {
-    m_RPMmin=RPM;
+  m_RPMmin=RPM;
 }
 
 

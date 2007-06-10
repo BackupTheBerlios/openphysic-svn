@@ -23,8 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <QString>
 
 class Track
-{
-public:
+  {
+  public:
     Track( );
 
     QString name(void) const;
@@ -36,12 +36,12 @@ public:
     int etaps(void) const;
     void setEtaps(const int etaps);
 
-private:
+  private:
     QString m_name;
-    int m_laps_number;	
+    int m_laps_number;
     int m_etaps_number;
 
-};
+  };
 
 #endif
 

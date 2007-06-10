@@ -30,10 +30,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "engine.h"
 
 class Data //: public QObject
-{
+  {
 //Q_OBJECT
 
-public:
+  public:
     Data();
     //virtual ~Data(){  };
 
@@ -53,7 +53,15 @@ public:
 
     void test(void);
 
-private:
+    // Alarms / message ToDo
+    // Log des données mesurees
+    // Log des temps (interm et tour)
 
-};
+    // Speed (calculée avec diametre couronne et RPM)
+    // Speed (mesurée avec impulsion sur roue avant)
+    // Accelerometre (accélération longitudinal / accélération latérale)
+
+  private:
+
+  };
 #endif

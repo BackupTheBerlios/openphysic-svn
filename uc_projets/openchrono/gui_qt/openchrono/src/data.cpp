@@ -23,27 +23,32 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <iostream> // ForTest std::cout << "Test" << std::endl;
 
 Data::Data(  )
-{
-
-}
+{}
 
 void Data::start(void)
 {
   std::cout << "Start or stop or etap" << std::endl;
-    // on a line (start stop or etap)
+  // on a line (start stop or etap)
 
   if ( position.etap() == track.etaps() ) // passage ligne depart/arrivee
-  {
-    chrono.start();
-    chrono.clear();
+    {
+      chrono.start();
+      chrono.clear();
 
-    position.clearEtap();
-    position.newLap();
-  }
-  else
-  {
-    position.newEtap();
-  }
+      position.clearEtap();
+
+      if ( position.lap() == track.laps() ) // dernier tour de course
+        {
+          position.clearLap();
+        } else
+        { // un tour normal
+          position.newLap();
+
+        }
+    } else // passage ligne temps intermediaire
+    {
+      position.newEtap();
+    }
 
 }
 

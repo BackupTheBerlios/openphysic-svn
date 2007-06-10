@@ -24,38 +24,38 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 Track::Track(  )
 {
-    setName("MyTrack");
-    setLaps(50);
-    setEtaps(2);
+  setName("MyTrack");
+  setLaps(50);
+  setEtaps(2);
 }
 
 QString Track::name(void) const
-{
+  {
     return m_name;
-}
+  }
 
 void Track::setName(const QString name)
 {
-    m_name = name;
+  m_name = name;
 }
 
 int Track::laps(void) const
-{
+  {
     return m_laps_number;
-}
+  }
 
 void Track::setLaps(const int laps)
 {
-    m_laps_number = laps;
+  m_laps_number = laps;
 }
 
 int Track::etaps(void) const
-{
+  {
     return m_etaps_number;
-}
+  }
 
 void Track::setEtaps(const int etaps)
 {
-    m_etaps_number = etaps;
+  m_etaps_number = etaps;
 }
 

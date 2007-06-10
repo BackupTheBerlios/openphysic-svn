@@ -19,27 +19,33 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "ocwindows.h"
 
-OCWindows::OCWindows(void) {
+OCWindows::OCWindows(void)
+{
   // contruct
 }
 
-OCWindows::~OCWindows(void) {
+OCWindows::~OCWindows(void)
+{
   // destruct
 }
 
-void OCWindows::navigate_on_ok(void) {
+void OCWindows::navigate_on_ok(void)
+{
   //ptr_current_page = &page_engine_menu;
   //ptr_page_goto = ptr_current_page->page_child_first;
 }
 
-void OCWindows::navigate_on_cancel(void) {
+void OCWindows::navigate_on_cancel(void)
+{
   //ptr_page_goto = ptr_current_page->page_parent;
 }
 
-void OCWindows::navigate_on_left(void) {
+void OCWindows::navigate_on_left(void)
+{
   //ptr_page_goto = ptr_current_page->page_brother_previous;
 }
 
-void OCWindows::navigate_on_right(void) {
+void OCWindows::navigate_on_right(void)
+{
   //ptr_page_goto = ptr_current_page->page_brother_next;
 }

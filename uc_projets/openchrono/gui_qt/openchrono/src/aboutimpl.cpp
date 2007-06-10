@@ -26,12 +26,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 AboutImpl::AboutImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QWidget(parent, f)
 {
-    setupUi(this);
-    m_Data = data;
+  setupUi(this);
+  m_Data = data;
 
-    //textBrowser->setHtml("Hello");
+  //textBrowser->setHtml("Hello");
 
-    connect(quit, SIGNAL(clicked()), this, SLOT(goodBye()));
+  connect(quit, SIGNAL(clicked()), this, SLOT(goodBye()));
 }
 
 /*
@@ -39,7 +39,7 @@ AboutImpl::AboutImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QWidget(pa
  */
 AboutImpl::~AboutImpl()
 {
-    // no need to delete child widgets, Qt does it all for us
+  // no need to delete child widgets, Qt does it all for us
 }
 
 
@@ -48,7 +48,7 @@ AboutImpl::~AboutImpl()
  */
 void AboutImpl::goodBye()
 {
-    close();
+  close();
 }
 //
 

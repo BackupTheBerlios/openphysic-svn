@@ -41,25 +41,27 @@ Chrono::Chrono( )
 
 int Chrono::timeval_subtract (struct timeval *result, struct timeval *x, struct timeval *y)
 {
-  // see http://www.gnu.org/software/libc/manual/html_node/Elapsed-Time.html	
-	
+  // see http://www.gnu.org/software/libc/manual/html_node/Elapsed-Time.html
+
   /* Perform the carry for the later subtraction by updating y. */
-  if (x->tv_usec < y->tv_usec) {
-    int nsec = (y->tv_usec - x->tv_usec) / 1000000 + 1;
-    y->tv_usec -= 1000000 * nsec;
-    y->tv_sec += nsec;
-  }
-  if (x->tv_usec - y->tv_usec > 1000000) {
-    int nsec = (x->tv_usec - y->tv_usec) / 1000000;
-    y->tv_usec += 1000000 * nsec;
-    y->tv_sec -= nsec;
-  }
-     
+  if (x->tv_usec < y->tv_usec)
+    {
+      int nsec = (y->tv_usec - x->tv_usec) / 1000000 + 1;
+      y->tv_usec -= 1000000 * nsec;
+      y->tv_sec += nsec;
+    }
+  if (x->tv_usec - y->tv_usec > 1000000)
+    {
+      int nsec = (x->tv_usec - y->tv_usec) / 1000000;
+      y->tv_usec += 1000000 * nsec;
+      y->tv_sec -= nsec;
+    }
+
   /* Compute the time remaining to wait.
      tv_usec is certainly positive. */
   result->tv_sec = x->tv_sec - y->tv_sec;
   result->tv_usec = x->tv_usec - y->tv_usec;
-     
+
   /* Return 1 if result is negative. */
   return x->tv_sec < y->tv_sec;
 }
@@ -76,12 +78,15 @@ void Chrono::stop(void)
 
 void Chrono::start_stop(void)
 {
-  if (running) {
-    gettimeofday(&tv_current, NULL);
-  } else {
-    gettimeofday(&tv_initial, NULL);
-    timeval_subtract (&tv_initial, &tv_initial, &current_lap_time);
-  }
+  if (running)
+    {
+      gettimeofday(&tv_current, NULL);
+    }
+  else
+    {
+      gettimeofday(&tv_initial, NULL);
+      timeval_subtract (&tv_initial, &tv_initial, &current_lap_time);
+    }
 
   running = !running;
 }
@@ -106,32 +111,39 @@ void Chrono::get_current_time(struct timeval * time)
 }
 */
 
-struct timeval Chrono::get_current_lap_time(void) {
-  if (running) {
-    gettimeofday(&tv_current, NULL);
-  }
-  timeval_subtract (&current_lap_time, &tv_current, &tv_initial);
-  return current_lap_time;
-};
+struct timeval Chrono::get_current_lap_time(void)
+  {
+    if (running)
+      {
+        gettimeofday(&tv_current, NULL);
+      }
+    timeval_subtract (&current_lap_time, &tv_current, &tv_initial);
+    return current_lap_time;
+  };
 
-struct timeval Chrono::get_current_etap_time(void) {
-  if (running) {
-    gettimeofday(&tv_current, NULL);
-  }
-  timeval_subtract (&current_etap_time, &tv_current, &tv_interm);
-  return current_etap_time;
-};
+struct timeval Chrono::get_current_etap_time(void)
+  {
+    if (running)
+      {
+        gettimeofday(&tv_current, NULL);
+      }
+    timeval_subtract (&current_etap_time, &tv_current, &tv_interm);
+    return current_etap_time;
+  };
 
-struct timeval Chrono::get_last_lap_time(void) {
-  return last_lap_time;
-};
+struct timeval Chrono::get_last_lap_time(void)
+  {
+    return last_lap_time;
+  };
 
-struct timeval Chrono::get_best_lap_time(void) {
-  return best_lap_time;
-};
+struct timeval Chrono::get_best_lap_time(void)
+  {
+    return best_lap_time;
+  };
 
 
-QString Chrono::getStrTimeMmSsXxx(struct timeval tv) {
+QString Chrono::getStrTimeMmSsXxx(struct timeval tv)
+{
   // see http://www.quepublishing.com/articles/article.asp?p=23618&seqNum=8&rl=1
   QString strTime;
   ptm = localtime (&tv.tv_sec);
@@ -141,15 +153,18 @@ QString Chrono::getStrTimeMmSsXxx(struct timeval tv) {
   return strTime;
 }
 
-QString Chrono::getStrCurrentLapTime(void) {
+QString Chrono::getStrCurrentLapTime(void)
+{
   return getStrTimeMmSsXxx(get_current_lap_time());
 }
 
-QString Chrono::getStrBestLapTime(void) {
+QString Chrono::getStrBestLapTime(void)
+{
   return getStrTimeMmSsXxx(get_best_lap_time());
 }
 
-QString Chrono::getStrLastLapTime(void) {
+QString Chrono::getStrLastLapTime(void)
+{
   return getStrTimeMmSsXxx(get_last_lap_time());
 }
 

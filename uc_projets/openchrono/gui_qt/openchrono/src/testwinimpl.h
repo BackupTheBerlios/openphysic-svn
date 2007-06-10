@@ -25,17 +25,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "data.h"
 
 class TestWinImpl : public QDialog, public Ui::TestWin
-{
+  {
     Q_OBJECT
-public:
+  public:
     TestWinImpl( QWidget * parent = 0, Qt::WFlags f = 0, Data * data = 0 );
-private slots:
+  private slots:
     void test(void);
     void update(void);
 
-private:
+  private:
     Data * m_Data;
     void init(void);
 
-};
+  };
 #endif

@@ -39,87 +39,87 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 int main(int argc, char ** argv)
 {
-    QApplication app( argc, argv );
+  QApplication app( argc, argv );
 
-    Data myCurrentData;
+  Data myCurrentData;
 
-    myCurrentData.rpm.set(2000.0);
-    myCurrentData.temperature_1.set(50.0);
-    myCurrentData.temperature_2.set(60.0);
+  myCurrentData.rpm.set(2000.0);
+  myCurrentData.temperature_1.set(50.0);
+  myCurrentData.temperature_2.set(60.0);
 
-    //myCurrentData.start();
+  //myCurrentData.start();
 
-    //OCWindows * win;
-    OCWindows win;
+  //OCWindows * win;
+  OCWindows win;
 
-    DialogImpl winDialog(0, 0, &myCurrentData);
-    AboutImpl winAbout(0, 0, &myCurrentData);
-    MainWinImpl winMain(0, 0, &myCurrentData);
-    TestWinImpl winTest(0, 0, &myCurrentData);
+  DialogImpl winDialog(0, 0, &myCurrentData);
+  AboutImpl winAbout(0, 0, &myCurrentData);
+  MainWinImpl winMain(0, 0, &myCurrentData);
+  TestWinImpl winTest(0, 0, &myCurrentData);
 
-    // connection testwin -> data
-    //connect( &winTest, SIGNAL( SliderChanged() ), &winMain, SLOT( slotRPM() );
-    /*
-    app.connect(	(&winTest)->SliderRPM	, SIGNAL( valueChanged(int) ),
-    				&myCurrentData			, SLOT( slotRPM_TestWin(int) )			);
-    */
-
-
-    // connection data -> mainwin
-    //connect( &myCurrentData, SIGNAL( signalRPMChanged() ), &winMain, SLOT( slotRPM() );
+  // connection testwin -> data
+  //connect( &winTest, SIGNAL( SliderChanged() ), &winMain, SLOT( slotRPM() );
+  /*
+  app.connect(	(&winTest)->SliderRPM	, SIGNAL( valueChanged(int) ),
+  				&myCurrentData			, SLOT( slotRPM_TestWin(int) )			);
+  */
 
 
-    // connection directe testwin -> mainwin (test)
+  // connection data -> mainwin
+  //connect( &myCurrentData, SIGNAL( signalRPMChanged() ), &winMain, SLOT( slotRPM() );
+
+
+  // connection directe testwin -> mainwin (test)
 //    app.connect(	(&winTest)->SliderRPM	, SIGNAL( valueChanged(int) ),
-//			(&winMain)->GraphicRPM	, SLOT( setValue(int) )			);   	
+//			(&winMain)->GraphicRPM	, SLOT( setValue(int) )			);
 //			(&winMain)->GraphicRPM	, SLOT( slotRPM(int) )			);
 
-    // connection bouton StartStop page de test
-    app.connect(        (&winTest)->StartStop	, SIGNAL( clicked() ),
-                        &winMain                , SLOT( start() )                       );
+  // connection bouton StartStop page de test
+  app.connect(        (&winTest)->StartStop	, SIGNAL( clicked() ),
+                      &winMain                , SLOT( start() )                       );
 //                        &myCurrentData          , SLOT( start() )                       );
 //                        &winTest                , SLOT( Update() )                       );
 
 
-    // Init pages relations
-    //  -> parent init
-    (&winMain)->page_parent = &winMain; // page time
-    //  -> first child init
-    (&winMain)->page_child_first = NULL; // ToDo
-    //  -> next brother init
-    (&winMain)->page_brother_next = NULL; // ToDo
-    //  -> previous brother init
-    (&winMain)->page_brother_previous = NULL; // ToDo
-
-    
-    //winAbout.show();
-    //winDialog.show();
+  // Init pages relations
+  //  -> parent init
+  (&winMain)->page_parent = &winMain; // page time
+  //  -> first child init
+  (&winMain)->page_child_first = NULL; // ToDo
+  //  -> next brother init
+  (&winMain)->page_brother_next = NULL; // ToDo
+  //  -> previous brother init
+  (&winMain)->page_brother_previous = NULL; // ToDo
 
 
-    (&win)->page_current = &winMain;
-    //(&win)->page_current = &winAbout;
-    //(&win)->page_current = &winDialog;
-
-    //(&win)->page_current = &winMain;
-
-    //winMain.show();
-    //win->show();
-
-    ((&win)->page_current)->show();
-
-    
-    // fenetre de test
-    winTest.show();
+  //winAbout.show();
+  //winDialog.show();
 
 
+  (&win)->page_current = &winMain;
+  //(&win)->page_current = &winAbout;
+  //(&win)->page_current = &winDialog;
 
-    /*
-    myCurrentData.setRPM(2500.0);
-    myCurrentData.setT1(51.0);
-    myCurrentData.setT2(61.0);
-    */
+  //(&win)->page_current = &winMain;
 
-    app.connect( &app, SIGNAL( lastWindowClosed() ), &app, SLOT( quit() ) );
+  //winMain.show();
+  //win->show();
 
-    return app.exec();
+  ((&win)->page_current)->show();
+
+
+  // fenetre de test
+  winTest.show();
+
+
+
+  /*
+  myCurrentData.setRPM(2500.0);
+  myCurrentData.setT1(51.0);
+  myCurrentData.setT2(61.0);
+  */
+
+  app.connect( &app, SIGNAL( lastWindowClosed() ), &app, SLOT( quit() ) );
+
+  return app.exec();
 }

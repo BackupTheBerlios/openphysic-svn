@@ -24,99 +24,113 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 MainWinImpl::MainWinImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QWidget(parent, f)
 {
-    setupUi(this); //ui.setupUi(this);
-    m_Data = data;
+  setupUi(this); //ui.setupUi(this);
+  m_Data = data;
 
-    setGeometry(100,100,320,240);
+  setGeometry(100,100,320,240);
 
-    //TestWin();
+  //TestWin();
 
-    //UpdateData();
+  //UpdateData();
 
-    // update RPM
-    GraphicRPM->setMaximum((int) m_Data->rpm.max());
-    GraphicRPM->setMinimum((int) m_Data->rpm.min());
-    
-    //delete layout();
-    //setLayout(vboxLayout);
+  // update RPM
+  GraphicRPM->setMaximum((int) m_Data->rpm.max());
+  GraphicRPM->setMinimum((int) m_Data->rpm.min());
 
-    QTimer * timer = new QTimer(this);
-    connect( timer, SIGNAL(timeout()), this, SLOT(UpdateData()) );
-    timer->start(25);
+  //delete layout();
+  //setLayout(vboxLayout);
+
+  QTimer * timer = new QTimer(this);
+  connect( timer, SIGNAL(timeout()), this, SLOT(UpdateData()) );
+  timer->start(25);
 
 }
 //
 
-void MainWinImpl::TestWin(void) {
-    lblMessage->setText("XXXXXXXXXXXXXXXXXX");
+void MainWinImpl::TestWin(void)
+{
+  lblMessage->setText("XXXXXXXXXXXXXXXXXX");
 
-    GraphicRPM->setValue(16000);
+  GraphicRPM->setValue(16000);
 
-    lblCurrLapTime->setText("XX:XX:XXX");
-    lblBestLapTime->setText("XX:XX:XXX");
-    lblLastLapTime->setText("XX:XX:XXX");
+  lblCurrLapTime->setText("XX:XX:XXX");
+  lblBestLapTime->setText("XX:XX:XXX");
+  lblLastLapTime->setText("XX:XX:XXX");
 
-    lblLap->setText("XXX");
-    lblEtap->setText("XX / XX");
+  lblLap->setText("XXX");
+  lblEtap->setText("XX / XX");
 
-    lblTemp1->setText("XXXXX");
-    lblTemp2->setText("XXXXX");
+  lblTemp1->setText("XXXXX");
+  lblTemp2->setText("XXXXX");
 }
 
-void MainWinImpl::showRPM(void) {
-    double rpm = m_Data->rpm.value();
-    double rpmMax = m_Data->rpm.max();
+void MainWinImpl::showRPM(void)
+{
+  double rpm = m_Data->rpm.value();
+  double rpmMax = m_Data->rpm.max();
 
-    if ( rpm <= rpmMax ) {
+  if ( rpm <= rpmMax )
+    {
       GraphicRPM->setValue((int) rpm);
-    } else {
+    }
+  else
+    {
       GraphicRPM->setValue((int) rpmMax);
     }
 }
 
-void MainWinImpl::showT1(void) {
-    lblTemp1->setText(m_Data->temperature_1.getStr());
+void MainWinImpl::showT1(void)
+{
+  lblTemp1->setText(m_Data->temperature_1.getStr());
 }
 
-void MainWinImpl::showT2(void) {
-    lblTemp2->setText(m_Data->temperature_2.getStr());
+void MainWinImpl::showT2(void)
+{
+  lblTemp2->setText(m_Data->temperature_2.getStr());
 }
 
-void MainWinImpl::showCurrentLapTime(void) {
+void MainWinImpl::showCurrentLapTime(void)
+{
   lblCurrLapTime->setText(m_Data->chrono.getStrCurrentLapTime());
 }
 
-void MainWinImpl::showLastLapTime(void) {
+void MainWinImpl::showLastLapTime(void)
+{
   lblLastLapTime->setText(m_Data->chrono.getStrLastLapTime());
 }
 
-void MainWinImpl::showBestLapTime(void) {
+void MainWinImpl::showBestLapTime(void)
+{
   lblBestLapTime->setText(m_Data->chrono.getStrBestLapTime());
 }
 
-void MainWinImpl::showLap(void) {
+void MainWinImpl::showLap(void)
+{
   QString strLap;
   strLap.sprintf("%d / %d",m_Data->position.lap(),m_Data->track.laps());
   lblLap->setText(strLap);
 }
 
-void MainWinImpl::showEtap(void) {
+void MainWinImpl::showEtap(void)
+{
   QString strEtap;
   strEtap.sprintf("%d / %d",m_Data->position.etap(),m_Data->track.etaps());
   lblEtap->setText(strEtap);
 }
 
-void MainWinImpl::start(void) {
-    m_Data->start();
+void MainWinImpl::start(void)
+{
+  m_Data->start();
 }
 
-void MainWinImpl::UpdateData(void) {
-    showRPM();
-    showT1();
-    showT2();
-    showCurrentLapTime();
-    showLastLapTime();
-    showBestLapTime();
-    showLap();
-    showEtap();
+void MainWinImpl::UpdateData(void)
+{
+  showRPM();
+  showT1();
+  showT2();
+  showCurrentLapTime();
+  showLastLapTime();
+  showBestLapTime();
+  showLap();
+  showEtap();
 }

@@ -22,8 +22,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 DialogImpl::DialogImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QDialog(parent, f)
 {
-    setupUi(this);
-    m_Data = data;
+  setupUi(this);
+  m_Data = data;
 }
 //
 

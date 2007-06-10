@@ -28,53 +28,53 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <cstdlib> // memcpy
 
 class Chrono
-{
-public:
-	Chrono( );
+  {
+  public:
+    Chrono( );
 
-	void start(void);
-	void stop(void);
-	//void start_and_go(void);
-	void start_stop(void);
+    void start(void);
+    void stop(void);
+    //void start_and_go(void);
+    void start_stop(void);
 
-	void clear(void);
-	bool is_running(void);
+    void clear(void);
+    bool is_running(void);
 
 
-	//void get_current_time(struct timeval * time);
-	//void get_string_time(void);
+    //void get_current_time(struct timeval * time);
+    //void get_string_time(void);
 
-	struct timeval get_current_lap_time(void);
-	struct timeval get_current_etap_time(void);
-	struct timeval get_last_lap_time(void);
-	struct timeval get_best_lap_time(void);
+    struct timeval get_current_lap_time(void);
+    struct timeval get_current_etap_time(void);
+    struct timeval get_last_lap_time(void);
+    struct timeval get_best_lap_time(void);
 
-	QString getStrTimeMmSsXxx(struct timeval tv); // mm:ss:xxx
-	//QString getStrTimeHhMm(struct timeval tv);  // hh:mm
+    QString getStrTimeMmSsXxx(struct timeval tv); // mm:ss:xxx
+    //QString getStrTimeHhMm(struct timeval tv);  // hh:mm
 
-	QString getStrCurrentLapTime(void);
-	QString getStrLastLapTime(void);
-	QString getStrBestLapTime(void);
+    QString getStrCurrentLapTime(void);
+    QString getStrLastLapTime(void);
+    QString getStrBestLapTime(void);
 
-	
-	
 
-private:
-	int timeval_subtract (struct timeval *result, struct timeval *x, struct timeval *y);
 
-	// Instants
-	struct timeval tv_initial, tv_current, tv_interm;
-	 // initial = instant passage ligne
-	 // current = instant courant
-	 // interm = instant de ref temps intermediaire 
 
-	// Durées
-	struct timeval current_lap_time, best_lap_time, last_lap_time, current_etap_time;	
+  private:
+    int timeval_subtract (struct timeval *result, struct timeval *x, struct timeval *y);
 
-	bool running;
-	struct tm * ptm;
-	char time_string[15];
-	long milliseconds;
+    // Instants
+    struct timeval tv_initial, tv_current, tv_interm;
+    // initial = instant passage ligne
+    // current = instant courant
+    // interm = instant de ref temps intermediaire
 
-};
+    // Durées
+    struct timeval current_lap_time, best_lap_time, last_lap_time, current_etap_time;
+
+    bool running;
+    struct tm * ptm;
+    char time_string[15];
+    long milliseconds;
+
+  };
 #endif

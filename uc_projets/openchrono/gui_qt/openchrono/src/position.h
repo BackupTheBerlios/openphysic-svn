@@ -22,8 +22,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 
 class Position
-{
-public:
+  {
+  public:
     Position( );
 
     int lap(void) const;
@@ -37,10 +37,10 @@ public:
     void newEtap(void);
 
 
-private:
+  private:
     int m_etap;
     int m_lap;
 
-};
+  };
 
 #endif

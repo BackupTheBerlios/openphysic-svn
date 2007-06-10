@@ -21,8 +21,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define RPM_H
 
 class Rpm
-{
-public:
+  {
+  public:
     Rpm( );
 
     double value(void) const;
@@ -32,11 +32,11 @@ public:
     double min(void) const;
     void setMin(double const RPM);
 
-private:
+  private:
     double m_RPM;
     double m_RPMmax;
     double m_RPMmin;
-};
+  };
 
 #endif
 

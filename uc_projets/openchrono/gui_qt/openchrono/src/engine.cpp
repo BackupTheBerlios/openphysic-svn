@@ -22,57 +22,57 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 Engine::Engine(  )
 {
-    setName("Engine1");
-    set_two_strokes();
+  setName("Engine1");
+  set_two_strokes();
 }
 
 QString Engine::name(void) const
-{
+  {
     return m_name;
-}
+  }
 
 void Engine::setName(const QString name)
 {
-    m_name = name;
+  m_name = name;
 }
 
 void Engine::set_two_strokes(void)
 {
-    m_mode = engine_two_strokes;
+  m_mode = engine_two_strokes;
 }
 
 void Engine::set_four_stroke(void)
 {
-    m_mode = engine_four_strokes;
+  m_mode = engine_four_strokes;
 }
 
 int Engine::strokes(void) const
-{
+  {
     if ( m_mode == engine_two_strokes )
-    {
-      return 2;
-    } 
+      {
+        return 2;
+      }
     else if ( m_mode == engine_four_strokes )
-    {
-      return 4;
-    }       
+      {
+        return 4;
+      }
     else
-    {
-      return 0;
-    }
-}
+      {
+        return 0;
+      }
+  }
 
 int Engine::rpm_factor(void)
 {
-    if ( m_mode == engine_two_strokes )
+  if ( m_mode == engine_two_strokes )
     {
       return 2;
-    } 
-    else if ( m_mode == engine_four_strokes )
+    }
+  else if ( m_mode == engine_four_strokes )
     {
       return 1;
-    }       
-    else
+    }
+  else
     {
       return 0;
     }

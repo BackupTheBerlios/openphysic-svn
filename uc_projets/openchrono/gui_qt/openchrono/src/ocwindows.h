@@ -24,24 +24,24 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 
 class OCWindows //: public QMainWindow
-{
- public:
-  OCWindows();
-  ~OCWindows();
+  {
+  public:
+    OCWindows();
+    ~OCWindows();
 
-  //OCWindows * page_current;
-  QWidget * page_current;
+    //OCWindows * page_current;
+    QWidget * page_current;
 
-  //char* ocname;
-  OCWindows * page_parent;
-  OCWindows * page_brother_next;
-  OCWindows * page_brother_previous;
-  OCWindows * page_child_first;
+    //char* ocname;
+    OCWindows * page_parent;
+    OCWindows * page_brother_next;
+    OCWindows * page_brother_previous;
+    OCWindows * page_child_first;
 
-  void navigate_on_ok(void);
-  void navigate_on_cancel(void);
-  void navigate_on_left(void);
-  void navigate_on_right(void);
-};
+    void navigate_on_ok(void);
+    void navigate_on_cancel(void);
+    void navigate_on_left(void);
+    void navigate_on_right(void);
+  };
 
 #endif

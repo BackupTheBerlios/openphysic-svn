@@ -23,8 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <QString>
 
 class Engine
-{
-public:
+  {
+  public:
     Engine( );
 
     QString name(void) const;
@@ -37,13 +37,13 @@ public:
 
     int rpm_factor(void);
 
-private:
+  private:
     QString m_name;
 
     enum Engine_mode { engine_two_strokes = 0, engine_four_strokes};
 
     Engine_mode m_mode;
 
-};
+  };
 
 #endif

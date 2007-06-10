@@ -23,19 +23,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <QString>
 
 class Temperature
-{
-public:
+  {
+  public:
     Temperature( );
 
     double value(void) const; // in celcius
     void set(double const temperatureCelsius);
 
-/* ToDo Temperature alarm
-    double max(void);
-    void setMax(double const temperature);
-    double min(void);
-    void setMin(double const temperature);
-*/
+    /* ToDo Temperature alarm
+        double max(void);
+        void setMax(double const temperature);
+        double min(void);
+        void setMin(double const temperature);
+    */
 
     double valueCelsius(void) const;
 //    double valueFahrenheit(void);
@@ -43,17 +43,17 @@ public:
     void setCelsius(double const temperatureCelsius);
 //    void setFarenheit(double const temperatureFahrenheit);
 
-    QString getStr(void) const; 
+    QString getStr(void) const;
     QString getStrCelsius(void) const;
 //    QString getStrFahrenheit(void) const;
 
-private:
+  private:
     double m_T;
 //    double m_Tmax;
 //    double m_Tmin;
 
-//    bool alarm; 
-};
+//    bool alarm;
+  };
 
 /*
 °C = (°F − 32) / 1,8

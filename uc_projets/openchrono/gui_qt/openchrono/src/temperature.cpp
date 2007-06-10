@@ -28,18 +28,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 Temperature::Temperature(  )
 {
-    set(20.0);
+  set(20.0);
 }
 
 double Temperature::value(void) const
-{
+  {
     return m_T;
-}
+  }
 
 double Temperature::valueCelsius(void) const
-{
+  {
     return m_T;
-}
+  }
 
 /*
 double Temperature::valueFahrenheit(void) const
@@ -49,13 +49,13 @@ double Temperature::valueFahrenheit(void) const
 */
 
 void Temperature::set(const double temperatureCelsius)
-{
+  {
     m_T=temperatureCelsius;
-}
+  }
 
 void Temperature::setCelsius(const double temperatureCelsius)
 {
-    m_T=temperatureCelsius;
+  m_T=temperatureCelsius;
 }
 
 /*
@@ -66,22 +66,24 @@ void Temperature::setFahrenheit(double const temperatureFahrenheit)
 */
 
 QString Temperature::getStr(void) const
-{
+  {
     return getStrCelsius();
-}
+  }
 
 QString Temperature::getStrCelsius(void) const
-{
+  {
     QString str;
     //str.setNum(valueCelsius());
     str.sprintf("%g C",valueCelsius());
     return str;
-}
+  }
 
 /*
 QString Temperature::getStrFahrenheit(void) const
 {
-    return QString("ToDo");
+    QString str;
+    str.sprintf("%g F",valueFahrenheit());
+    return str;
 }
 */
 
