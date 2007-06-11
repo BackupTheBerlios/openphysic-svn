@@ -34,8 +34,8 @@ MainWinImpl::MainWinImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QWidge
   //UpdateData();
 
   // update RPM
-  GraphicRPM->setMaximum((int) m_Data->rpm.max());
-  GraphicRPM->setMinimum((int) m_Data->rpm.min());
+  GraphicRPM->setMaximum((int) m_Data->vehicule.rpm.max());
+  GraphicRPM->setMinimum((int) m_Data->vehicule.rpm.min());
 
   //delete layout();
   //setLayout(vboxLayout);
@@ -66,8 +66,8 @@ void MainWinImpl::TestWin(void)
 
 void MainWinImpl::showRPM(void)
 {
-  double rpm = m_Data->rpm.value();
-  double rpmMax = m_Data->rpm.max();
+  double rpm = m_Data->vehicule.rpm.value();
+  double rpmMax = m_Data->vehicule.rpm.max();
 
   if ( rpm <= rpmMax )
     {
@@ -81,12 +81,12 @@ void MainWinImpl::showRPM(void)
 
 void MainWinImpl::showT1(void)
 {
-  lblTemp1->setText(m_Data->temperature_1.getStr());
+  lblTemp1->setText(m_Data->vehicule.temperature_1.getStr());
 }
 
 void MainWinImpl::showT2(void)
 {
-  lblTemp2->setText(m_Data->temperature_2.getStr());
+  lblTemp2->setText(m_Data->vehicule.temperature_2.getStr());
 }
 
 void MainWinImpl::showCurrentLapTime(void)

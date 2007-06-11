@@ -54,9 +54,9 @@ void TestWinImpl::init(void)
 
 void TestWinImpl::update(void)
 {
-  m_Data->rpm.set(SliderRPM->value());
-  m_Data->temperature_1.set(SliderTemp1->value());
-  m_Data->temperature_2.set(SliderTemp2->value());
+  m_Data->vehicule.rpm.set(SliderRPM->value());
+  m_Data->vehicule.temperature_1.set(SliderTemp1->value());
+  m_Data->vehicule.temperature_2.set(SliderTemp2->value());
 }
 
 void TestWinImpl::test(void)

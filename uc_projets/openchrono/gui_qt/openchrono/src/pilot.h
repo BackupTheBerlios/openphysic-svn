@@ -17,46 +17,24 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-#ifndef DATA_H
-#define DATA_H
-//
-//#include <Qt> // ToFix
-//
-#include "chrono.h"
-#include "track.h"
-#include "position.h"
-#include "pilot.h"
-#include "vehicule.h"
+#ifndef PILOT_H
+#define PILOT_H
 
-class Data //: public QObject
+#include <QString>
+
+class Pilot
   {
-//Q_OBJECT
-
   public:
-    Data();
-    //virtual ~Data(){  };
+    Pilot( );
 
-    Track track;
-
-    Position position;
-
-    Pilot pilot;
-    Vehicule vehicule;
-
-    void start(void);
-    Chrono chrono;
-
-    void test(void);
-
-    // Alarms / message ToDo
-    // Log des données mesurees
-    // Log des temps (interm et tour)
-
-    // Speed (calculée avec diametre couronne et RPM)
-    // Speed (mesurée avec impulsion sur roue avant)
-    // Accelerometre (accélération longitudinal / accélération latérale)
+    QString name(void) const;
+    void setName(const QString name);
 
   private:
+    QString m_name;
+    //QString m_password;
 
   };
+
 #endif
+
