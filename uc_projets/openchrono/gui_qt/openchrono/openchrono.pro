@@ -26,6 +26,7 @@ HEADERS +=   src/dialogimpl.h \
   src/engine.h \
   src/pilot.h \
   src/vehicule.h \
+  src/engine_state.h \
   src/chrono.h 
 SOURCES +=   src/dialogimpl.cpp \
   src/main.cpp \
@@ -41,5 +42,6 @@ SOURCES +=   src/dialogimpl.cpp \
   src/engine.cpp \
   src/pilot.cpp \
   src/vehicule.cpp \
+  src/engine_state.cpp \
   src/chrono.cpp
 

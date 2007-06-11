@@ -17,44 +17,33 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-#ifndef ENGINE_H
-#define ENGINE_H
-
-#include <QString>
-
-#include "rpm.h"
-#include "temperature.h"
 #include "engine_state.h"
+//
 
-class Engine
-  {
-  public:
-    Engine( );
+Engine_State::Engine_State(  )
+{
+  switch_off();
+  set_idle();
+}
 
-    QString name(void) const;
-    void setName(const QString name);
+void switch_on(void)
+{
+  m_on = true;
+}
 
-    void set_two_strokes(void);
-    void set_four_stroke(void);
+void switch_off(void)
+{
+  set_idle();
+  m_on = false;
+}
 
-    int strokes(void) const;
+void set_idle(void)
+{
+  m_idle = true;
+}
 
-    int rpm_factor(void);
+void unset_idle(void)
+{
+  m_idle = false;  
+}
 
-    Rpm rpm;
-    Temperature temperature_1;
-    Temperature temperature_2;
-
-    Engine_State engine_state;
-
-
-  private:
-    QString m_name;
-
-    enum Engine_mode { engine_two_strokes = 0, engine_four_strokes};
-
-    Engine_mode m_mode;
-
-  };
-
-#endif

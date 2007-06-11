@@ -22,8 +22,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <QString>
 
-#include "rpm.h"
-#include "temperature.h"
 #include "engine.h"
 
 class Vehicule
@@ -34,11 +32,7 @@ class Vehicule
     QString name(void) const;
     void setName(const QString name);
 
-    Rpm rpm;
     Engine engine;
-
-    Temperature temperature_1;
-    Temperature temperature_2;
 
   private:
     QString m_name;
