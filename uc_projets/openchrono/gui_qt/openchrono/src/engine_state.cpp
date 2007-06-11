@@ -26,23 +26,23 @@ Engine_State::Engine_State(  )
   set_idle();
 }
 
-void switch_on(void)
+void Engine_State::switch_on(void)
 {
   m_on = true;
 }
 
-void switch_off(void)
+void Engine_State::switch_off(void)
 {
   set_idle();
   m_on = false;
 }
 
-void set_idle(void)
+void Engine_State::set_idle(void)
 {
   m_idle = true;
 }
 
-void unset_idle(void)
+void Engine_State::unset_idle(void)
 {
   m_idle = false;  
 }

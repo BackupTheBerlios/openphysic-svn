@@ -20,6 +20,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "rpm.h"
 //
 
+#include "engine_state.h"
+
 Rpm::Rpm(  )
 {
   set(0.0);
@@ -35,6 +37,11 @@ double Rpm::value(void) const
 void Rpm::set(double const RPM)
   {
     m_RPM=RPM;
+
+    //const double rpmIdle = 100;
+
+
+
   }
 
 

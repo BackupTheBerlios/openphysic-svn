@@ -41,11 +41,12 @@ class Engine
 
     int rpm_factor(void);
 
+    Engine_State engine_state;
+
     Rpm rpm;
     Temperature temperature_1;
     Temperature temperature_2;
 
-    Engine_State engine_state;
 
 
   private:

@@ -20,6 +20,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef RPM_H
 #define RPM_H
 
+#include "engine_state.h"
+
 class Rpm
   {
   public:
@@ -32,10 +34,13 @@ class Rpm
     double min(void) const;
     void setMin(double const RPM);
 
+    Engine_State * m_engine_state;
+
   private:
     double m_RPM;
     double m_RPMmax;
     double m_RPMmin;
+
   };
 
 #endif
