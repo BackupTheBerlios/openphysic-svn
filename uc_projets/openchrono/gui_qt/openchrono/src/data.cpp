@@ -61,9 +61,9 @@ void Data::start(void)
       if ( position.lap() == track.laps() ) // fin du dernier tour de course
         {
           position.clearLap();
-	  //if ( track.laps() > 1 ) {
+	  if ( track.laps() > 1 ) {
 	  emit race_is_over();
-	    //}
+	    }
         }
 
       position.newLap();
@@ -91,7 +91,7 @@ void Data::on_starting_first_lap(void)
 
 void Data::on_new_etap(void)
 {
-  std::cout << "New etap" << std::endl;
+  std::cout << " New etap" << std::endl;
 }
 
 void Data::on_new_lap(void)
