@@ -23,10 +23,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <iostream> //for test
 
-TestWinImpl::TestWinImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QDialog(parent, f)
+#include "mainwinimpl.h"
+
+TestWinImpl::TestWinImpl( QWidget * parent, Qt::WFlags f, Data * data, MainWinImpl * win ) : QDialog(parent, f)
 {
   setupUi(this);
   m_Data = data;
+  m_win = win;
 
   setGeometry(400,200,600,300);
 
@@ -35,10 +38,21 @@ TestWinImpl::TestWinImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QDialo
   //         lcd, SLOT(display(int)));
   //QObject::connect(SliderRPM, SIGNAL(valueChanged(int)), progressBar, SLOT(setValue(int)));
   //QObject::connect(SliderRPM, SIGNAL(valueChanged(int)), lblRPM, SLOT(setNum(int)));
-  connect(butTest, SIGNAL( clicked() ), this, SLOT( test() ) );
 
-  init();
+  connect(butTest, SIGNAL( clicked() ), this, SLOT( test() ) ); // test button
 
+  // connect keyboard (on the test window to the app)
+  connect(butOk, SIGNAL( clicked() ), m_win, SLOT( on_ok() ) );
+  connect(butCancel, SIGNAL( clicked() ), m_win, SLOT( on_cancel() ) );
+  connect(butUp, SIGNAL( clicked() ), m_win, SLOT( on_up() ) );
+  connect(butDown, SIGNAL( clicked() ), m_win, SLOT( on_down() ) );
+  connect(butLeft, SIGNAL( clicked() ), m_win, SLOT( on_left() ) );
+  connect(butRight, SIGNAL( clicked() ), m_win, SLOT( on_right() ) );
+
+
+  init(); // initial values of the test window
+
+  // Timer to update data entered using the test window
   QTimer * timer = new QTimer(this);
   connect( timer, SIGNAL( timeout() ), this, SLOT( update() ) );
   timer->start(25);
@@ -63,6 +77,7 @@ void TestWinImpl::test(void)
 {
   std::cout << "Test Win" << std::endl;
   m_Data->test();
+  m_Data->vehicule.engine.engine_state.show();
 }
 
 

@@ -6,7 +6,7 @@
     <x>0</x>
     <y>0</y>
     <width>320</width>
-    <height>176</height>
+    <height>240</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -18,7 +18,7 @@
      <x>0</x>
      <y>0</y>
      <width>321</width>
-     <height>138</height>
+     <height>141</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" >
@@ -250,7 +250,7 @@
              </font>
             </property>
             <property name="text" >
-             <string>Temp 1</string>
+             <string>T 1</string>
             </property>
             <property name="alignment" >
              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -259,8 +259,25 @@
           </item>
           <item>
            <widget class="QLabel" name="lblTemp1" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>5</vsizetype>
+              <horstretch>1</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize" >
+             <size>
+              <width>42</width>
+              <height>0</height>
+             </size>
+            </property>
             <property name="text" >
-             <string>150°C</string>
+             <string>50°C</string>
+            </property>
+            <property name="alignment" >
+             <set>Qt::AlignCenter</set>
             </property>
            </widget>
           </item>
@@ -280,7 +297,7 @@
              </font>
             </property>
             <property name="text" >
-             <string>Temp 2</string>
+             <string>T 2</string>
             </property>
             <property name="alignment" >
              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -289,8 +306,25 @@
           </item>
           <item>
            <widget class="QLabel" name="lblTemp2" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>5</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize" >
+             <size>
+              <width>42</width>
+              <height>0</height>
+             </size>
+            </property>
             <property name="text" >
-             <string>150°C</string>
+             <string>250°C</string>
+            </property>
+            <property name="alignment" >
+             <set>Qt::AlignCenter</set>
             </property>
            </widget>
           </item>

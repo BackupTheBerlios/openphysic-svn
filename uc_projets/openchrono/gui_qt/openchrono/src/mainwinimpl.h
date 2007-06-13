@@ -37,6 +37,14 @@ class MainWinImpl : public QWidget, public Ui::MainWin, public OCWindows
     void start(void); // passage sur une ligne
     void UpdateData();
 
+    void on_ok(void);
+    void on_cancel(void);
+    void on_up(void);
+    void on_down(void);
+    void on_left(void);
+    void on_right(void);
+
+
   private:
     Data * m_Data;
 

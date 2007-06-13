@@ -34,6 +34,8 @@ class Engine_State
     void set_idle(void);
     void unset_idle(void);
 
+    void show(void);
+
   private:
     bool m_on;
     bool m_idle;

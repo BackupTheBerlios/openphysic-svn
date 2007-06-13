@@ -28,7 +28,7 @@ Engine::Engine(  )
   setName("Engine1");
   set_two_strokes();
 
-  //rpm.m_engine_state = &engine_state;
+  rpm.m_engine_state = &engine_state;
 }
 
 QString Engine::name(void) const

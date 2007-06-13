@@ -51,7 +51,7 @@ int main(int argc, char ** argv)
   DialogImpl winDialog(0, 0, &myCurrentData);
   AboutImpl winAbout(0, 0, &myCurrentData);
   MainWinImpl winMain(0, 0, &myCurrentData);
-  TestWinImpl winTest(0, 0, &myCurrentData);
+  TestWinImpl winTest(0, 0, &myCurrentData, &winMain);
 
 
   // connection bouton StartStop page de test

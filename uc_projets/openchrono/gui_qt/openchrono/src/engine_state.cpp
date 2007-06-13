@@ -20,6 +20,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "engine_state.h"
 //
 
+#include <iostream>
+
 Engine_State::Engine_State(  )
 {
   switch_off();
@@ -46,4 +48,11 @@ void Engine_State::unset_idle(void)
 {
   m_idle = false;  
 }
+
+
+void Engine_State::show(void)
+{
+  std::cout << "ON " << m_on << " ; " << "IDLE " << m_idle << std::endl;
+}
+
 

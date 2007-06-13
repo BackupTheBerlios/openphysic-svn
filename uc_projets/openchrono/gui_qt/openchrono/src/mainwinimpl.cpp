@@ -20,6 +20,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "mainwinimpl.h"
 //
 
+#include <iostream>
+
 #include <QTimer>
 
 MainWinImpl::MainWinImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QWidget(parent, f)
@@ -134,3 +136,34 @@ void MainWinImpl::UpdateData(void)
   showLap();
   showEtap();
 }
+
+void MainWinImpl::on_ok(void)
+{
+  std::cout << "ok" << std::endl;
+}
+
+void MainWinImpl::on_cancel(void)
+{
+  std::cout << "cancel" << std::endl;
+}
+
+void MainWinImpl::on_up(void)
+{
+  std::cout << "up" << std::endl;
+}
+
+void MainWinImpl::on_down(void)
+{
+  std::cout << "down" << std::endl;
+}
+
+void MainWinImpl::on_left(void)
+{
+  std::cout << "left" << std::endl;
+}
+
+void MainWinImpl::on_right(void)
+{
+  std::cout << "right" << std::endl;
+}
+
