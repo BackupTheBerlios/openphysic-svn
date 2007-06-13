@@ -34,7 +34,6 @@ class MainWinImpl : public QWidget, public Ui::MainWin, public OCWindows
     void TestWin(void);
 
   private slots:
-    void start(void); // passage sur une ligne
     void UpdateData();
 
     void on_ok(void);

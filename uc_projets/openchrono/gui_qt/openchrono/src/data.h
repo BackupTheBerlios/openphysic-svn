@@ -20,7 +20,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef DATA_H
 #define DATA_H
 //
-//#include <Qt> // ToFix
+#include <QObject>
 //
 #include "chrono.h"
 #include "track.h"
@@ -28,13 +28,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "pilot.h"
 #include "vehicule.h"
 
-class Data //: public QObject
+class Data : public QObject
   {
-//Q_OBJECT
+Q_OBJECT
 
   public:
     Data();
-    //virtual ~Data(){  };
+    virtual ~Data(){  };
 
     Track track;
 
@@ -43,7 +43,6 @@ class Data //: public QObject
     Pilot pilot;
     Vehicule vehicule;
 
-    void start(void);
     Chrono chrono;
 
     void test(void);
@@ -55,6 +54,9 @@ class Data //: public QObject
     // Speed (calculée avec diametre couronne et RPM)
     // Speed (mesurée avec impulsion sur roue avant)
     // Accelerometre (accélération longitudinal / accélération latérale)
+
+  public slots:
+    void start(void);
 
   private:
 

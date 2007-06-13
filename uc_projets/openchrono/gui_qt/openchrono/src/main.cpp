@@ -56,7 +56,8 @@ int main(int argc, char ** argv)
 
   // connection bouton StartStop page de test
   app.connect(        (&winTest)->StartStop	, SIGNAL( clicked() ),
-                      &winMain                , SLOT( start() )                       );
+                      &myCurrentData                , SLOT( start() )                       );
+
 
 
   // Init pages relations

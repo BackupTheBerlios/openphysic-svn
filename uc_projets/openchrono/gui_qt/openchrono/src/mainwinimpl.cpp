@@ -120,11 +120,6 @@ void MainWinImpl::showEtap(void)
   lblEtap->setText(strEtap);
 }
 
-void MainWinImpl::start(void)
-{
-  m_Data->start();
-}
-
 void MainWinImpl::UpdateData(void)
 {
   showRPM();
