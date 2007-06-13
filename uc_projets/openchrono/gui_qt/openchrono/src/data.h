@@ -63,6 +63,19 @@ class Data : public QObject
   public slots:
     void start(void);
 
+    void on_starting_first_lap(void);
+    void on_new_etap(void);
+    void on_new_lap(void);
+    void on_last_lap(void);
+    void on_race_over(void);
+
+  signals:
+    void starting_first_lap(void);
+    void is_new_etap(void);
+    void is_new_lap(void);
+    void is_last_lap(void);
+    void race_is_over(void);
+
   private:
 
   };

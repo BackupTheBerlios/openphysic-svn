@@ -24,7 +24,7 @@ Track::Track(  )
 {
   setName("MyTrack");
   setLaps(10);
-  setEtaps(1);
+  setEtaps(2);
 }
 
 QString Track::name(void) const

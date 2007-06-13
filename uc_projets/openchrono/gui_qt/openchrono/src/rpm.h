@@ -26,9 +26,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "engine_state.h"
 
-class Rpm //: public QObject
+class Rpm : public QObject
   {
-//Q_OBJECT
+Q_OBJECT
 
   public:
     Rpm( );

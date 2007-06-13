@@ -41,10 +41,6 @@ class Position : public QObject
     void clearEtap(void);
     void newEtap(void);
 
-  signals:
-    void is_newEtap();
-    void is_newLap();
-
   private:
     int m_etap;
     int m_lap;
