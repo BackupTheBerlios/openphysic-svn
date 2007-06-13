@@ -20,7 +20,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "data.h"
 //
 
-#include <iostream> // ForTest std::cout << "Test" << std::endl;
 
 Data::Data(  )
 {}
@@ -45,7 +44,6 @@ void Data::start(void)
         } else
         { // un tour normal
           position.newLap();
-
         }
     } else // passage ligne temps intermediaire
     {

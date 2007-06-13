@@ -20,33 +20,43 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "engine_state.h"
 //
 
-#include <iostream>
-
 Engine_State::Engine_State(  )
 {
-  switch_off();
-  set_idle();
+  m_on = false; // motor is off
+  m_idle = true; // motor is idle
 }
 
 void Engine_State::switch_on(void)
 {
-  m_on = true;
+  if (m_on == false) {
+    m_on = true;
+    emit switched_on();
+  }
 }
 
 void Engine_State::switch_off(void)
 {
-  set_idle();
-  m_on = false;
+  if ( m_on == true ) {
+    set_to_idle();
+    m_on = false;
+    emit switched_off();
+  }
 }
 
-void Engine_State::set_idle(void)
+void Engine_State::set_to_idle(void)
 {
-  m_idle = true;
+  if ( m_idle == false ) {
+    m_idle = true;
+    emit was_set_to_idle();
+  }
 }
 
 void Engine_State::unset_idle(void)
 {
-  m_idle = false;  
+  if ( m_idle == true ) {
+    m_idle = false;
+    emit was_unset_to_idle();
+  }
 }
 
 

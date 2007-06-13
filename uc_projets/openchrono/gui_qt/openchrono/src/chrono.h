@@ -20,15 +20,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef CHRONO_H
 #define CHRONO_H
 
+//
 #include <QString>
+#include <QObject>
+//
 
 #include <sys/time.h>
 #include <unistd.h>
 
 #include <cstdlib> // memcpy
 
-class Chrono
+class Chrono : public QObject
   {
+    Q_OBJECT
+
   public:
     Chrono( );
 

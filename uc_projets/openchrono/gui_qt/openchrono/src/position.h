@@ -20,9 +20,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef POSITION_H
 #define POSITION_H
 
+//
+#include <QObject>
+//
 
-class Position
+class Position : public QObject
   {
+    Q_OBJECT
+
   public:
     Position( );
 
@@ -36,6 +41,9 @@ class Position
     void clearEtap(void);
     void newEtap(void);
 
+  signals:
+    void is_newEtap();
+    void is_newLap();
 
   private:
     int m_etap;

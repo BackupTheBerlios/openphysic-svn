@@ -2,7 +2,7 @@ TEMPLATE =   app
 QT +=   gui \
   core
 CONFIG +=   qt \
-  release \
+  debug \
   warn_on \
   console
 DESTDIR +=   bin

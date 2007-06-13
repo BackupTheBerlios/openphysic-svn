@@ -37,16 +37,19 @@ int Position::lap(void) const
 void Position::setLap(const int lap)
 {
   m_lap = lap;
+  emit is_newLap();
 }
 
 void Position::clearLap(void)
 {
   m_lap = 0;
+  emit is_newLap();
 }
 
 void Position::newLap(void)
 {
   m_lap++;
+  emit is_newLap();
 }
 
 int Position::etap(void) const
@@ -57,14 +60,17 @@ int Position::etap(void) const
 void Position::setEtap(const int etap)
 {
   m_etap = etap;
+  emit is_newEtap();
 }
 
 void Position::clearEtap(void)
 {
   m_etap = 1;
+  emit is_newEtap();
 }
 
 void Position::newEtap(void)
 {
   m_etap++;
+  emit is_newEtap();
 }

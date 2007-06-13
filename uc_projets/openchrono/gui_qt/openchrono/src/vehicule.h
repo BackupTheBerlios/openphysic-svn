@@ -20,12 +20,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef VEHICULE_H
 #define VEHICULE_H
 
+//
 #include <QString>
+#include <QObject>
+//
 
 #include "engine.h"
 
-class Vehicule
+class Vehicule //: public QObject
   {
+//    Q_OBJECT
+
   public:
     Vehicule( );
 

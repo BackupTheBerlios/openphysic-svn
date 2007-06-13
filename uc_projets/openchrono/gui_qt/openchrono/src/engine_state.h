@@ -20,21 +20,36 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef ENGINE_STATE_H
 #define ENGINE_STATE_H
 
-class Engine_State
+//
+#include <QObject>
+//
+
+#include <iostream>
+
+class Engine_State : public QObject
   {
+    Q_OBJECT
+
   public:
     Engine_State( );
-    
+
     bool on(void);
     bool off(void);
     bool idle(void);
 
     void switch_on(void);
     void switch_off(void);
-    void set_idle(void);
+    void set_to_idle(void);
     void unset_idle(void);
 
     void show(void);
+
+
+  signals:
+    void switched_on(void);
+    void switched_off(void);
+    void was_set_to_idle(void);
+    void was_unset_to_idle(void);
 
   private:
     bool m_on;

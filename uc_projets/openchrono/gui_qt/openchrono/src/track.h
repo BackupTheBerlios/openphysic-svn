@@ -20,10 +20,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef TRACK_H
 #define TRACK_H
 
+//
+#include <QObject>
 #include <QString>
+//
 
-class Track
+class Track //: public QObject
   {
+//Q_OBJECT
+
   public:
     Track( );
 

@@ -20,10 +20,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef RPM_H
 #define RPM_H
 
+//
+#include <QObject>
+//
+
 #include "engine_state.h"
 
-class Rpm
+class Rpm //: public QObject
   {
+//Q_OBJECT
+
   public:
     Rpm( );
 

@@ -20,14 +20,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef ENGINE_H
 #define ENGINE_H
 
+//
+#include <QObject>
 #include <QString>
-
+//
 #include "rpm.h"
 #include "temperature.h"
 #include "engine_state.h"
 
-class Engine
+class Engine //: public QObject
   {
+//    Q_OBJECT
+
   public:
     Engine( );
 

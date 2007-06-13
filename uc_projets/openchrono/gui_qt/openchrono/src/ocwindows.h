@@ -22,12 +22,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 #include <QApplication>
 //
+//#include <QObject>
 
-class OCWindows //: public QMainWindow
+class OCWindows //: public QObject
   {
+    //Q_OBJECT
+
   public:
     OCWindows();
-    ~OCWindows();
+    virtual ~OCWindows();
 
     //OCWindows * page_current;
     QWidget * page_current;

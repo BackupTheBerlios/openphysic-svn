@@ -19,11 +19,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #ifndef TEMPERATURE_H
 #define TEMPERATURE_H
-
+//
+#include <QObject>
 #include <QString>
+//
 
-class Temperature
+
+class Temperature //: public QObject
   {
+//Q_OBJECT
+
   public:
     Temperature( );
 

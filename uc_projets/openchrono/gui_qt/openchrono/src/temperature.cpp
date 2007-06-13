@@ -20,7 +20,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "temperature.h"
 //
 
-#include <QString>
 
 // °C ou F ou ...
 // par défaut les tempé sont stockées en Celsius

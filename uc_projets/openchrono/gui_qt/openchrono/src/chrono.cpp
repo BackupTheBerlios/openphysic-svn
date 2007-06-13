@@ -19,6 +19,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "chrono.h"
 
+
 #include <sys/time.h>
 #include <unistd.h>
 
@@ -167,14 +168,17 @@ struct timeval Chrono::get_best_lap_time(void)
 
 QString Chrono::getStrTimeMSsXxx(struct timeval tv)
 {
-  if ( tv.tv_sec < 10*60 ) {
-    QString strTime;
-    strTime = getStrTimeMmSsXxx(tv);
-    strTime.remove(0,1);
-    return strTime;
-  } else {
-    return QString("0:00.000");
-  }
+  if ( tv.tv_sec < 10*60 )
+    {
+      QString strTime;
+      strTime = getStrTimeMmSsXxx(tv);
+      strTime.remove(0,1);
+      return strTime;
+    }
+  else
+    {
+      return QString("0:00.000");
+    }
 }
 
 QString Chrono::getStrTimeMmSsXxx(struct timeval tv)

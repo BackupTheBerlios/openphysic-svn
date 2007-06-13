@@ -1,5 +1,7 @@
 # clean obj files
 make clean
+rm Makefile
+qmake openchrono.pro
 
 # remove temporary files~
 rm src/*~ *~

@@ -19,22 +19,27 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #ifndef DATA_H
 #define DATA_H
+
 //
 #include <QObject>
 //
+
 #include "chrono.h"
 #include "track.h"
 #include "position.h"
 #include "pilot.h"
 #include "vehicule.h"
 
+#include <iostream> // ForTest std::cout << "Test" << std::endl;
+
 class Data : public QObject
   {
-Q_OBJECT
+    Q_OBJECT
 
   public:
     Data();
-    virtual ~Data(){  };
+    virtual ~Data()
+    {  };
 
     Track track;
 

@@ -41,18 +41,21 @@ void Rpm::set(double const RPM)
     const double rpmOff = 50;
     const double rpmIdle = 150;
 
-    if ( RPM < rpmOff ) {
-      m_engine_state->switch_off();
-      //m_engine_state->set_idle();
-    }
-    else if ( RPM < rpmIdle )  {
-      m_engine_state->switch_on();
-      m_engine_state->set_idle();
-    }
-    else {
-      m_engine_state->switch_on();
-      m_engine_state->unset_idle();
-    }
+    if ( RPM < rpmOff )
+      {
+        m_engine_state->switch_off();
+        //m_engine_state->set_idle();
+      }
+    else if ( RPM < rpmIdle )
+      {
+        m_engine_state->switch_on();
+        m_engine_state->set_to_idle();
+      }
+    else
+      {
+        m_engine_state->switch_on();
+        m_engine_state->unset_idle();
+      }
 
   }
 
