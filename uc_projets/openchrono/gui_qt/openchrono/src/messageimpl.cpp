@@ -17,43 +17,14 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-#include "aboutimpl.h"
+#include "messageimpl.h"
 //
 
-/*
- *  Constructs a about box which is a child of 'parent', with the 
- *  name 'name' and widget flags set to 'f' 
- */
-AboutImpl::AboutImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QWidget(parent, f)
+MessageImpl::MessageImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QWidget(parent, f)
 {
   setupUi(this);
   m_Data = data;
-
-  QString str = QString("<h1>OpenChrono</h1><h2>a chronometer for go-karts and others mechanical sports</h2><h3>Copyright (C) 2007 S. Celles</h3><h4>under GNU General Public License</h4>");
   
-  label->setText(str);
-
-  connect(quit, SIGNAL(clicked()), this, SLOT(goodBye()));
-  
-  setGeometry(50,320,320,240);
-}
-
-/*
- *  Destroys the object and frees any allocated resources
- */
-AboutImpl::~AboutImpl()
-{
-  // no need to delete child widgets, Qt does it all for us
-}
-
-
-/*
- *  A simple slot... not very interesting.
- */
-void AboutImpl::goodBye()
-{
-  close();
+  setGeometry(400,300,320,240);
 }
 //
-
-

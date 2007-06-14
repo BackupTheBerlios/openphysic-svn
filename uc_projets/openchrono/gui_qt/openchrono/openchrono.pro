@@ -12,11 +12,13 @@ UI_DIR +=   build
 FORMS +=   ui/dialog.ui \
   ui/about.ui \
   ui/mainwin.ui \
-  ui/testwin.ui
+  ui/testwin.ui \
+  ui/message.ui
 HEADERS +=   src/dialogimpl.h \
   src/mainwinimpl.h \
   src/aboutimpl.h \
   src/testwinimpl.h \
+  src/messageimpl.h \
   src/ocwindows.h \
   src/data.h \
   src/rpm.h \
@@ -33,6 +35,7 @@ SOURCES +=   src/dialogimpl.cpp \
   src/mainwinimpl.cpp \
   src/aboutimpl.cpp \
   src/testwinimpl.cpp \
+  src/messageimpl.cpp \
   src/ocwindows.cpp \
   src/data.cpp \
   src/rpm.cpp \

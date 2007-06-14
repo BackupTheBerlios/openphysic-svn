@@ -6,7 +6,7 @@
     <x>0</x>
     <y>0</y>
     <width>320</width>
-    <height>244</height>
+    <height>240</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -24,8 +24,17 @@
      <property name="text" >
       <string>OpenChrono</string>
      </property>
+     <property name="textFormat" >
+      <enum>Qt::AutoText</enum>
+     </property>
+     <property name="scaledContents" >
+      <bool>false</bool>
+     </property>
      <property name="alignment" >
       <set>Qt::AlignCenter</set>
+     </property>
+     <property name="wordWrap" >
+      <bool>true</bool>
      </property>
     </widget>
    </item>
@@ -33,6 +42,12 @@
     <widget class="QPushButton" name="quit" >
      <property name="text" >
       <string>Quit</string>
+     </property>
+     <property name="autoDefault" >
+      <bool>true</bool>
+     </property>
+     <property name="default" >
+      <bool>true</bool>
      </property>
     </widget>
    </item>

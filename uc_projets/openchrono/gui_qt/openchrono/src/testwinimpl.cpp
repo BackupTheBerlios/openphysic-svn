@@ -31,7 +31,7 @@ TestWinImpl::TestWinImpl( QWidget * parent, Qt::WFlags f, Data * data, MainWinIm
   m_Data = data;
   m_win = win;
 
-  setGeometry(400,200,600,300);
+  setGeometry(400,50,580,240);
 
   // connect signals and slots
   //connect(slider, SIGNAL(valueChanged(int)),

@@ -90,6 +90,8 @@ int main(int argc, char ** argv)
   // fenetre de test
   winTest.show();
 
+  winAbout.show();
+
 
   app.connect( &app, SIGNAL( lastWindowClosed() ), &app, SLOT( quit() ) );
 
