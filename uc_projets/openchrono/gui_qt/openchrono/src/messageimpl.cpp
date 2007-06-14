@@ -27,7 +27,12 @@ MessageImpl::MessageImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QWidge
   
   setGeometry(400,320,320,240);
   
-  setMessage("Press <b>Ok</b> to <i>enter</i> here.<br>Press <b>Cancel</b> to <i>quit</i>.");
+  QString str = QString("Press <b>Ok</b> to <i>enter</i> here.");
+  str += ( QString("<br/>") + QString("Press <b>Cancel</b> to <i>quit</i>.") );
+  str += ( QString("<br/>") + QString("Press <b>Right</b> to go to <i>next page</i>.") );
+  str += ( QString("<br/>") + QString("Press <b>Left</b> to go to <i>previous page</i>.") );
+  
+  setMessage(str);
 }
 
 void MessageImpl::setTitle(QString str)

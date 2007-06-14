@@ -87,3 +87,12 @@ Vert  :   0 255   0
 Jaune : 255 255   0
 Rouge : 255   0   0
 */
+
+/* Keyboard
+Ok     : Enter  : y
+Cancel : Escape : n
+Up     : Up     : 
+Down   : Down   :
+Left   : Left   :
+Right  : Right  :
+*/
