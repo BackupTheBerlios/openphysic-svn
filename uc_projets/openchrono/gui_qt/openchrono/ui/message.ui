@@ -56,7 +56,7 @@
       </property>
       <property name="font" >
        <font>
-        <pointsize>23</pointsize>
+        <pointsize>24</pointsize>
        </font>
       </property>
       <property name="text" >
@@ -95,6 +95,11 @@
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
+      </property>
+      <property name="font" >
+       <font>
+        <pointsize>12</pointsize>
+       </font>
       </property>
       <property name="text" >
        <string>Here is the message that you should see. This could be a very long text so wordWrap is set to true.</string>

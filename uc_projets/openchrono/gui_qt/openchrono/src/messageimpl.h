@@ -24,6 +24,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 #include "data.h"
 
+#include <QString>
+
 class MessageImpl : public QWidget, public Ui::frmMessage
   {
     Q_OBJECT
@@ -31,7 +33,9 @@ class MessageImpl : public QWidget, public Ui::frmMessage
   public:
     MessageImpl( QWidget * parent = 0, Qt::WFlags f = 0, Data * data = 0 );
 
-  private slots:
+  public slots:
+	void setTitle(QString str);
+	void setMessage(QString str);
 
   private:
     Data * m_Data;

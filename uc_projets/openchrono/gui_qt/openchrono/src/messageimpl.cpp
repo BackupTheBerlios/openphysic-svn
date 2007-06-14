@@ -25,6 +25,20 @@ MessageImpl::MessageImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QWidge
   setupUi(this);
   m_Data = data;
   
-  setGeometry(400,300,320,240);
+  setGeometry(400,320,320,240);
+  
+  setMessage("Press <b>Ok</b> to <i>enter</i> here.<br>Press <b>Cancel</b> to <i>quit</i>.");
 }
+
+void MessageImpl::setTitle(QString str)
+{
+  lblTitle->setText(str);
+  this->setWindowTitle(str);
+}
+
+void MessageImpl::setMessage(QString str)
+{
+  lblMessage->setText(str);
+}
+
 //
