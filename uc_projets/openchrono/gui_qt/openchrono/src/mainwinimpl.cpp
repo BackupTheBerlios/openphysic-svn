@@ -21,6 +21,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 
 #include <iostream>
+#include <cmath>
 
 //
 #include <QTimer>
@@ -70,17 +71,19 @@ void MainWinImpl::TestWin(void)
 
 void MainWinImpl::showRPM(void)
 {
-  double rpm = m_Data->vehicule.engine.rpm.value();
+  double rpm = m_Data->vehicule.engine.rpm.value();  
   double rpmMax = m_Data->vehicule.engine.rpm.max();
+  int value;
 
   if ( rpm <= rpmMax )
     {
-      GraphicRPM->setValue((int) rpm);
+      value = (int) (round(rpm/10)*10);
     }
   else
     {
-      GraphicRPM->setValue((int) rpmMax);
+      value = (int) rpmMax;
     }
+  GraphicRPM->setValue(value);
 }
 
 void MainWinImpl::showT1(void)

@@ -90,7 +90,7 @@
          <widget class="QLabel" name="lbl2LastTime" >
           <property name="font" >
            <font>
-            <pointsize>7</pointsize>
+            <pointsize>9</pointsize>
            </font>
           </property>
           <property name="text" >
@@ -112,7 +112,7 @@
          <widget class="QLabel" name="lbl2CurrTime" >
           <property name="font" >
            <font>
-            <pointsize>7</pointsize>
+            <pointsize>9</pointsize>
            </font>
           </property>
           <property name="text" >
@@ -124,7 +124,7 @@
          <widget class="QLabel" name="lblCurrLapTime" >
           <property name="font" >
            <font>
-            <pointsize>12</pointsize>
+            <pointsize>14</pointsize>
             <weight>75</weight>
             <bold>true</bold>
            </font>
@@ -141,7 +141,7 @@
          <widget class="QLabel" name="lbl2BestTime" >
           <property name="font" >
            <font>
-            <pointsize>7</pointsize>
+            <pointsize>9</pointsize>
            </font>
           </property>
           <property name="text" >
@@ -171,7 +171,7 @@
            <widget class="QLabel" name="lbl2Lap" >
             <property name="font" >
              <font>
-              <pointsize>7</pointsize>
+              <pointsize>9</pointsize>
              </font>
             </property>
             <property name="text" >
@@ -204,7 +204,7 @@
              <widget class="QLabel" name="lbl2Etap" >
               <property name="font" >
                <font>
-                <pointsize>7</pointsize>
+                <pointsize>9</pointsize>
                </font>
               </property>
               <property name="text" >
@@ -246,7 +246,7 @@
             </property>
             <property name="font" >
              <font>
-              <pointsize>7</pointsize>
+              <pointsize>9</pointsize>
              </font>
             </property>
             <property name="text" >
@@ -293,7 +293,7 @@
             </property>
             <property name="font" >
              <font>
-              <pointsize>7</pointsize>
+              <pointsize>9</pointsize>
              </font>
             </property>
             <property name="text" >
