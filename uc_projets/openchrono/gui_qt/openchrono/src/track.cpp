@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 Track::Track(  )
 {
   setName("MyTrack");
-  setLaps(10);
+  setLaps(5);
   setEtaps(2);
 }
 

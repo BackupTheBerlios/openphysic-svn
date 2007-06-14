@@ -111,7 +111,14 @@ void MainWinImpl::showBestLapTime(void)
 void MainWinImpl::showLap(void)
 {
   QString strLap;
-  strLap.sprintf("%d / %d",m_Data->position.lap(),m_Data->track.laps());
+  if ( m_Data->track.laps() > 1 ) 
+    {
+      strLap.sprintf("%d / %d", m_Data->position.lap(), m_Data->track.laps());
+    }
+  else
+  	{
+  	  strLap.sprintf("%d", m_Data->position.lap());
+  	}
   lblLap->setText(strLap);
 }
 
