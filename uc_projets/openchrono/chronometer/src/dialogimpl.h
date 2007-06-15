@@ -31,7 +31,3 @@ class DialogImpl : public QDialog, public Ui::Dialog
 
 };
 #endif
-
-
-
-

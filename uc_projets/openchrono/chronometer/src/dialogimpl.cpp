@@ -19,7 +19,14 @@ DialogImpl::DialogImpl( QWidget * parent, Qt::WFlags f) : QDialog(parent, f)
   QTimer * timer = new QTimer(this);
   connect( timer, SIGNAL(timeout()), this, SLOT(on_show()) );
   timer->start(25);
-	
+
+  //delete layout();
+  //this->setLayout(vboxLayout);
+  //setLayout(vboxLayout); //layoutWidget);
+  //setLayout(hboxLayout1);
+  //QVBoxLayout * mainLayout = new QVBoxLayout(this);
+  //mainLayout->addLayout(vboxLayout);
+  //setLayout(mainLayout);
 }
 //
 

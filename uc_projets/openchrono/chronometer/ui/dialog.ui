@@ -12,111 +12,137 @@
   <property name="windowTitle" >
    <string>Dialog</string>
   </property>
-  <widget class="QWidget" name="layoutWidget" >
+  <widget class="QWidget" name="" >
    <property name="geometry" >
     <rect>
-     <x>20</x>
-     <y>250</y>
-     <width>351</width>
-     <height>33</height>
+     <x>0</x>
+     <y>0</y>
+     <width>271</width>
+     <height>211</height>
     </rect>
    </property>
-   <layout class="QHBoxLayout" >
-    <property name="margin" >
-     <number>0</number>
-    </property>
-    <property name="spacing" >
-     <number>6</number>
-    </property>
+   <layout class="QVBoxLayout" >
     <item>
-     <spacer>
-      <property name="orientation" >
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" >
-       <size>
-        <width>131</width>
-        <height>31</height>
-       </size>
-      </property>
-     </spacer>
+     <layout class="QHBoxLayout" >
+      <item>
+       <layout class="QVBoxLayout" >
+        <item>
+         <widget class="QLabel" name="lblTime" >
+          <property name="sizePolicy" >
+           <sizepolicy vsizetype="Minimum" hsizetype="Preferred" >
+            <horstretch>0</horstretch>
+            <verstretch>1</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="font" >
+           <font>
+            <pointsize>15</pointsize>
+           </font>
+          </property>
+          <property name="text" >
+           <string>TextLabel</string>
+          </property>
+          <property name="alignment" >
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="lblMsg" >
+          <property name="sizePolicy" >
+           <sizepolicy vsizetype="Minimum" hsizetype="Preferred" >
+            <horstretch>0</horstretch>
+            <verstretch>1</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="font" >
+           <font>
+            <pointsize>15</pointsize>
+           </font>
+          </property>
+          <property name="text" >
+           <string>TextLabel</string>
+          </property>
+          <property name="alignment" >
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <spacer>
+        <property name="orientation" >
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType" >
+         <enum>QSizePolicy::Maximum</enum>
+        </property>
+        <property name="sizeHint" >
+         <size>
+          <width>10</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" >
+        <item>
+         <widget class="QPushButton" name="butStartStop" >
+          <property name="sizePolicy" >
+           <sizepolicy vsizetype="Fixed" hsizetype="Maximum" >
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text" >
+           <string>Start / stop</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="butClear" >
+          <property name="sizePolicy" >
+           <sizepolicy vsizetype="Maximum" hsizetype="Preferred" >
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text" >
+           <string>Clear</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
     </item>
     <item>
-     <widget class="QPushButton" name="cancelButton" >
-      <property name="text" >
-       <string>Quit</string>
-      </property>
-     </widget>
+     <layout class="QHBoxLayout" >
+      <item>
+       <spacer>
+        <property name="orientation" >
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" >
+         <size>
+          <width>131</width>
+          <height>31</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="cancelButton" >
+        <property name="text" >
+         <string>Quit</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </item>
    </layout>
-  </widget>
-  <widget class="QPushButton" name="butStartStop" >
-   <property name="geometry" >
-    <rect>
-     <x>280</x>
-     <y>50</y>
-     <width>83</width>
-     <height>27</height>
-    </rect>
-   </property>
-   <property name="text" >
-    <string>Start / stop</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="butClear" >
-   <property name="geometry" >
-    <rect>
-     <x>280</x>
-     <y>100</y>
-     <width>83</width>
-     <height>27</height>
-    </rect>
-   </property>
-   <property name="text" >
-    <string>Clear</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblTime" >
-   <property name="geometry" >
-    <rect>
-     <x>50</x>
-     <y>50</y>
-     <width>211</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font" >
-    <font>
-     <pointsize>15</pointsize>
-    </font>
-   </property>
-   <property name="text" >
-    <string>TextLabel</string>
-   </property>
-   <property name="alignment" >
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblMsg" >
-   <property name="geometry" >
-    <rect>
-     <x>50</x>
-     <y>90</y>
-     <width>211</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font" >
-    <font>
-     <pointsize>15</pointsize>
-    </font>
-   </property>
-   <property name="text" >
-    <string>TextLabel</string>
-   </property>
-   <property name="alignment" >
-    <set>Qt::AlignCenter</set>
-   </property>
   </widget>
  </widget>
  <resources/>
