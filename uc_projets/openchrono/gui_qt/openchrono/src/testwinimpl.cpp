@@ -82,10 +82,18 @@ void TestWinImpl::test(void)
 
 
 /*
-Color RGB
+Color RGB pour RPM
 Vert  :   0 255   0 
 Jaune : 255 255   0
 Rouge : 255   0   0
+
+QColorMap ?
+QLinearGradient rect_gradient(0, 0, 0, height());
+rect_gradient.setColorAt(0, Qt::red);
+rect_gradient.setColorAt(.7, Qt::yellow);
+rect_gradient.setColorAt(1, Qt::green);
+
+
 */
 
 /* Keyboard

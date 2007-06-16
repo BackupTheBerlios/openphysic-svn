@@ -84,6 +84,20 @@ void MainWinImpl::showRPM(void)
       value = (int) rpmMax;
     }
   GraphicRPM->setValue(value);
+
+  /* couleur */
+  //QColormap ? QLineargradient ?
+  //GraphicRPM->
+  //QPalette palette;
+  //QPalette::ColorRole colorrole = QPalette::Window;
+  //QGradient gradient;
+  //gradient.setColorAt(0, Qt::green);
+  //gradient.setColorAt(.5, Qt::yellow);
+  //gradient.setColorAt(1, Qt::red);
+  //QColor color = Qt::red;
+  //palette.setColor(QPalette::Window, color);
+  //this->setPalette ( palette );
+
 }
 
 void MainWinImpl::showT1(void)
