@@ -17,14 +17,14 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-#include "ocwindows.h"
+#include "ocdocument.h"
 
-OCDocument::OCWindows(void)
+OCDocument::OCDocument(void)
 {
   // contruct
 }
 
-OCDocument::~OCWindows(void)
+OCDocument::~OCDocument(void)
 {
   // destruct
 }

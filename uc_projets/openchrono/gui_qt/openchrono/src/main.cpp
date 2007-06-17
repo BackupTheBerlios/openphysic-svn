@@ -38,7 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 #include "data.h"
 //
-#include "ocwindows.h" // ocview ocdocument
+#include "ocdocument.h" // ocview ocdocument (ex ocwindows)
 
 int main(int argc, char ** argv)
 {
@@ -51,7 +51,7 @@ int main(int argc, char ** argv)
   //myCurrentData.start();
 
   //OCWindows * win;
-  OCWindows win;
+  OCDocument win;
 
   DialogImpl winDialog(0, 0, &myCurrentData);
   AboutImpl winAbout(0, 0, &myCurrentData);
