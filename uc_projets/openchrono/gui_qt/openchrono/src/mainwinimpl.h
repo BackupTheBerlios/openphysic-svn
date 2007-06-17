@@ -38,6 +38,7 @@ class MainWinImpl : public QWidget, public Ui::MainWin, public OCDocument
   private slots:
     void UpdateData();
 
+
     void on_ok(void);
     void on_cancel(void);
     void on_up(void);

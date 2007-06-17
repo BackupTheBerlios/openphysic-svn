@@ -49,6 +49,14 @@ class OCDocument //: public QObject
     virtual void navigate_on_left(void);
     virtual void navigate_on_right(void);
 */
+
+    void on_ok(void);
+    void on_cancel(void);
+    void on_up(void);
+    void on_down(void);
+    void on_left(void);
+    void on_right(void);
+
   };
 
 #endif

@@ -17,40 +17,17 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-#include "ocdocument.h"
+#ifndef OCVIEW_H
+#define OCVIEW_H
+//
 
-OCDocument::OCDocument(void)
-{
-  // contruct
-}
+class OCView
+  {
+  public:
+    OCView();
+    virtual ~OCView();
 
-OCDocument::~OCDocument(void)
-{
-  // destruct
-}
+  private:
 
-/*
-void OCDocument::navigate_on_ok(void)
-{
-  //ptr_current_page = &page_engine_menu;
-  //ptr_page_goto = ptr_current_page->page_child_first;
-}
-
-void OCDocument::navigate_on_cancel(void)
-{
-  //ptr_page_goto = ptr_current_page->page_parent;
-}
-
-void OCDocument::navigate_on_left(void)
-{
-  //ptr_page_goto = ptr_current_page->page_brother_previous;
-}
-
-void OCDocument::navigate_on_right(void)
-{
-  //ptr_page_goto = ptr_current_page->page_brother_next;
-}
-*/
-
-
-
+  };
+#endif

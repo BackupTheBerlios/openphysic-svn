@@ -17,6 +17,7 @@ HEADERS += src/aboutimpl.h \
            src/mainwinimpl.h \
            src/messageimpl.h \
            src/ocdocument.h \
+           src/ocview.h \
            src/pilot.h \
            src/position.h \
            src/questionsimpl.h \
@@ -36,6 +37,7 @@ SOURCES += src/aboutimpl.cpp \
            src/mainwinimpl.cpp \
            src/messageimpl.cpp \
            src/ocdocument.cpp \
+           src/ocview.cpp \
            src/pilot.cpp \
            src/position.cpp \
            src/questionsimpl.cpp \
