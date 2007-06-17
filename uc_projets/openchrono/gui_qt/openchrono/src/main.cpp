@@ -34,6 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "aboutimpl.h"
 #include "testwinimpl.h"
 #include "messageimpl.h"
+#include "questionsimpl.h"
 //
 #include "data.h"
 //
@@ -57,6 +58,7 @@ int main(int argc, char ** argv)
   MainWinImpl winMain(0, 0, &myCurrentData);
   TestWinImpl winTest(0, 0, &myCurrentData, &winMain);
   MessageImpl winMessage(0, 0, &myCurrentData);
+  //QuestionsImpl winQuestion(0, 0, &myCurrentData); // SIGBUS !!!
 
 
   // connection bouton StartStop page de test
@@ -100,6 +102,9 @@ int main(int argc, char ** argv)
   winMessage.setTitle("Message window");
   //winMessage.setMessage("Here is a description of the message");
   winMessage.show();
+  
+  
+  //winQuestion.show();
 
 
   app.connect( &app, SIGNAL( lastWindowClosed() ), &app, SLOT( quit() ) );

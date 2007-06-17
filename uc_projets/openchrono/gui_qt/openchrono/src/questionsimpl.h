@@ -17,43 +17,29 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-#ifndef ENGINE_STATE_H
-#define ENGINE_STATE_H
-
+#ifndef QUESTIONSIMPL_H
+#define QUESTIONSIMPL_H
 //
-#include <QObject>
+#include "ui_questions.h"
 //
+#include "data.h"
 
-#include <iostream>
+#include <QString>
 
-class Engine_State : public QObject
+class QuestionsImpl : public QWidget, public Ui::frmQuestions
   {
     Q_OBJECT
 
   public:
-    Engine_State( );
-
-    bool on(void);
-    bool off(void);
-    bool idle(void);
-
-    void switch_on(void);
-    void switch_off(void);
-    void set_to_idle(void);
-    void unset_idle(void);
-
-    void show(void);
-
-
-  signals:
-    void switched_on(void);
-    void switched_off(void);
-    void was_set_to_idle(void);
-    void was_unset_to_idle(void);
+    QuestionsImpl( QWidget * parent = 0, Qt::WFlags f = 0, Data * data = 0 );
+		
+/*
+  public slots:
+	void setTitle(QString str);
+	void setMessage(QString str);
+*/
 
   private:
-    bool m_on; //= false;
-    bool m_idle; // = true;
+    Data * m_Data;
   };
-
 #endif

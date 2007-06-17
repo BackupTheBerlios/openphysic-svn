@@ -28,7 +28,7 @@ Engine_State::Engine_State(  )
 
 void Engine_State::switch_on(void)
 {
-  if (m_on == false) {
+  if ( !m_on ) { //(m_on == false) {
     m_on = true;
     emit switched_on();
   }
@@ -36,7 +36,7 @@ void Engine_State::switch_on(void)
 
 void Engine_State::switch_off(void)
 {
-  if ( m_on == true ) {
+  if ( m_on ) { //( m_on == true ) {
     set_to_idle();
     m_on = false;
     emit switched_off();
@@ -45,7 +45,7 @@ void Engine_State::switch_off(void)
 
 void Engine_State::set_to_idle(void)
 {
-  if ( m_idle == false ) {
+  if ( !m_idle ) { //( m_idle == false ) {
     m_idle = true;
     emit was_set_to_idle();
   }
@@ -53,7 +53,7 @@ void Engine_State::set_to_idle(void)
 
 void Engine_State::unset_idle(void)
 {
-  if ( m_idle == true ) {
+  if ( m_idle ) { //( m_idle == true ) {
     m_idle = false;
     emit was_unset_to_idle();
   }

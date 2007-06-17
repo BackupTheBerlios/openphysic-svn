@@ -17,43 +17,32 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-#ifndef ENGINE_STATE_H
-#define ENGINE_STATE_H
-
-//
-#include <QObject>
+#include "questionsimpl.h"
 //
 
-#include <iostream>
+QuestionsImpl::QuestionsImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QWidget(parent, f)
+{
+  setupUi(this);
+  m_Data = data;
+  
+  setGeometry(720,320,320,240);
+  
+  QString str = QString("Choose an answer.");
+  
+  //setMessage(str);
+}
 
-class Engine_State : public QObject
-  {
-    Q_OBJECT
+/*
+void MessageImpl::setTitle(QString str)
+{
+  lblTitle->setText(str);
+  this->setWindowTitle(str);
+}
 
-  public:
-    Engine_State( );
+void MessageImpl::setMessage(QString str)
+{
+  lblMessage->setText(str);
+}
+*/
 
-    bool on(void);
-    bool off(void);
-    bool idle(void);
-
-    void switch_on(void);
-    void switch_off(void);
-    void set_to_idle(void);
-    void unset_idle(void);
-
-    void show(void);
-
-
-  signals:
-    void switched_on(void);
-    void switched_off(void);
-    void was_set_to_idle(void);
-    void was_unset_to_idle(void);
-
-  private:
-    bool m_on; //= false;
-    bool m_idle; // = true;
-  };
-
-#endif
+//

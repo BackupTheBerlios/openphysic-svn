@@ -19,12 +19,13 @@ HEADERS += src/aboutimpl.h \
            src/ocwindows.h \
            src/pilot.h \
            src/position.h \
+           src/questionsimpl.h \
            src/rpm.h \
            src/temperature.h \
            src/testwinimpl.h \
            src/track.h \
            src/vehicule.h
-FORMS += ui/about.ui ui/dialog.ui ui/mainwin.ui ui/message.ui ui/testwin.ui
+FORMS += ui/about.ui ui/dialog.ui ui/mainwin.ui ui/message.ui ui/questions.ui ui/testwin.ui
 SOURCES += src/aboutimpl.cpp \
            src/chrono.cpp \
            src/data.cpp \
@@ -37,6 +38,7 @@ SOURCES += src/aboutimpl.cpp \
            src/ocwindows.cpp \
            src/pilot.cpp \
            src/position.cpp \
+           src/questionsimpl.cpp \
            src/rpm.cpp \
            src/temperature.cpp \
            src/testwinimpl.cpp \
