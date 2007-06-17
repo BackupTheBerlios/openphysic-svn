@@ -18,12 +18,24 @@
      <x>0</x>
      <y>0</y>
      <width>321</width>
-     <height>141</height>
+     <height>163</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" >
+    <property name="margin" >
+     <number>0</number>
+    </property>
+    <property name="spacing" >
+     <number>6</number>
+    </property>
     <item>
      <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>0</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
       <item row="1" column="0" >
        <widget class="QProgressBar" name="GraphicRPM" >
         <property name="font" >
@@ -68,11 +80,11 @@
       </item>
       <item row="2" column="0" >
        <layout class="QGridLayout" >
-        <property name="horizontalSpacing" >
+        <property name="margin" >
          <number>0</number>
         </property>
-        <property name="verticalSpacing" >
-         <number>0</number>
+        <property name="spacing" >
+         <number>6</number>
         </property>
         <item row="2" column="0" >
          <widget class="QLabel" name="lbl2LastTime" >
@@ -149,6 +161,12 @@
         </item>
         <item row="2" column="1" >
          <layout class="QHBoxLayout" >
+          <property name="margin" >
+           <number>0</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
           <item>
            <widget class="QLabel" name="lbl2Lap" >
             <property name="font" >
@@ -176,6 +194,12 @@
           </item>
           <item>
            <layout class="QHBoxLayout" >
+            <property name="margin" >
+             <number>0</number>
+            </property>
+            <property name="spacing" >
+             <number>6</number>
+            </property>
             <item>
              <widget class="QLabel" name="lbl2Etap" >
               <property name="font" >
@@ -204,10 +228,18 @@
         </item>
         <item row="3" column="1" >
          <layout class="QHBoxLayout" >
+          <property name="margin" >
+           <number>0</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
           <item>
            <widget class="QLabel" name="lbl2Tmp1" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Preferred" hsizetype="Minimum" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -228,7 +260,9 @@
           <item>
            <widget class="QLabel" name="lblTemp1" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Preferred" hsizetype="Fixed" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>1</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -250,7 +284,9 @@
           <item>
            <widget class="QLabel" name="lbl2Temp2" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Preferred" hsizetype="Minimum" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -271,7 +307,9 @@
           <item>
            <widget class="QLabel" name="lblTemp2" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Preferred" hsizetype="Fixed" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>

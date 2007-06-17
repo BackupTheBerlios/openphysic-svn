@@ -13,17 +13,11 @@
    <string>About</string>
   </property>
   <layout class="QVBoxLayout" >
-   <property name="leftMargin" >
-    <number>11</number>
+   <property name="margin" >
+    <number>9</number>
    </property>
-   <property name="topMargin" >
-    <number>11</number>
-   </property>
-   <property name="rightMargin" >
-    <number>11</number>
-   </property>
-   <property name="bottomMargin" >
-    <number>11</number>
+   <property name="spacing" >
+    <number>6</number>
    </property>
    <item>
     <widget class="QLabel" name="label" >
