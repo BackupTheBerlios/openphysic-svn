@@ -17,20 +17,20 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-#ifndef OCWINDOWS_H
-#define OCWINDOWS_H
+#ifndef OCDOCUMENT_H
+#define OCDOCUMENT_H
 //
 #include <QApplication>
 //
 //#include <QObject>
 
-class OCWindows //: public QObject
+class OCDocument //: public QObject
   {
     //    Q_OBJECT
 
   public:
-    OCWindows();
-    virtual ~OCWindows();
+    OCDocument();
+    virtual ~OCDocument();
 
     //QString ocname;
 
@@ -38,10 +38,10 @@ class OCWindows //: public QObject
     QWidget * page_current;
 
   protected:
-    OCWindows * page_parent;
-    OCWindows * page_brother_next;
-    OCWindows * page_brother_previous;
-    OCWindows * page_child_first;
+    OCDocument * page_parent;
+    OCDocument * page_brother_next;
+    OCDocument * page_brother_previous;
+    OCDocument * page_child_first;
 
 /*
     virtual void navigate_on_ok(void);
