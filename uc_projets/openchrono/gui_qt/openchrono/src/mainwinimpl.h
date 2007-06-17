@@ -26,6 +26,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "data.h"
 #include "ocwindows.h"
 
+#include <QKeyEvent>
+
 class MainWinImpl : public QWidget, public Ui::MainWin, public OCWindows
   {
     Q_OBJECT
@@ -55,6 +57,8 @@ class MainWinImpl : public QWidget, public Ui::MainWin, public OCWindows
     void showBestLapTime(void);
     void showLap(void);
     void showEtap(void);
+
+    void keyPressEvent(QKeyEvent *event);
 
   };
 #endif

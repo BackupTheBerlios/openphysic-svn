@@ -25,7 +25,7 @@ QuestionsImpl::QuestionsImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QW
   setupUi(this);
   m_Data = data;
   
-  setGeometry(720,320,320,240);
+  setGeometry(750,320,320,240);
   
   QString str = QString("Choose an answer.");
   

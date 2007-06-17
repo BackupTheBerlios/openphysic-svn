@@ -58,7 +58,7 @@ int main(int argc, char ** argv)
   MainWinImpl winMain(0, 0, &myCurrentData);
   TestWinImpl winTest(0, 0, &myCurrentData, &winMain);
   MessageImpl winMessage(0, 0, &myCurrentData);
-  //QuestionsImpl winQuestion(0, 0, &myCurrentData); // SIGBUS !!!
+  QuestionsImpl winQuestion(0, 0, &myCurrentData);
 
 
   // connection bouton StartStop page de test
@@ -69,13 +69,13 @@ int main(int argc, char ** argv)
 
   // Init pages relations
   //  -> parent init
-  (&winMain)->page_parent = &winMain; // page time
+  //(&winMain)->page_parent = &winMain; // page time
   //  -> first child init
-  (&winMain)->page_child_first = NULL; // ToDo
+  //(&winMain)->page_child_first = NULL; // ToDo
   //  -> next brother init
-  (&winMain)->page_brother_next = NULL; // ToDo
+  //(&winMain)->page_brother_next = NULL; // ToDo
   //  -> previous brother init
-  (&winMain)->page_brother_previous = NULL; // ToDo
+  //(&winMain)->page_brother_previous = NULL; // ToDo
 
 
   //winAbout.show();
@@ -104,7 +104,7 @@ int main(int argc, char ** argv)
   winMessage.show();
   
   
-  //winQuestion.show();
+  winQuestion.show();
 
 
   app.connect( &app, SIGNAL( lastWindowClosed() ), &app, SLOT( quit() ) );

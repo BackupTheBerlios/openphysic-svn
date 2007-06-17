@@ -29,6 +29,7 @@ OCWindows::~OCWindows(void)
   // destruct
 }
 
+/*
 void OCWindows::navigate_on_ok(void)
 {
   //ptr_current_page = &page_engine_menu;
@@ -49,3 +50,5 @@ void OCWindows::navigate_on_right(void)
 {
   //ptr_page_goto = ptr_current_page->page_brother_next;
 }
+*/
+

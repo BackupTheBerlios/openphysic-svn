@@ -97,10 +97,10 @@ rect_gradient.setColorAt(1, Qt::green);
 */
 
 /* Keyboard
-Ok     : Enter  : y
-Cancel : Escape : n
-Up     : Up     : 
-Down   : Down   :
-Left   : Left   :
-Right  : Right  :
+Ok     : Enter  : R
+Cancel : Escape : T
+Up     : Up     : U
+Down   : Down   : N
+Left   : Left   : H
+Right  : Right  : J
 */

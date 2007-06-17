@@ -32,19 +32,23 @@ class OCWindows //: public QObject
     OCWindows();
     virtual ~OCWindows();
 
+    //QString ocname;
+
     //OCWindows * page_current;
     QWidget * page_current;
 
-    //char* ocname;
+  protected:
     OCWindows * page_parent;
     OCWindows * page_brother_next;
     OCWindows * page_brother_previous;
     OCWindows * page_child_first;
 
-    void navigate_on_ok(void);
-    void navigate_on_cancel(void);
-    void navigate_on_left(void);
-    void navigate_on_right(void);
+/*
+    virtual void navigate_on_ok(void);
+    virtual void navigate_on_cancel(void);
+    virtual void navigate_on_left(void);
+    virtual void navigate_on_right(void);
+*/
   };
 
 #endif
