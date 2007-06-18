@@ -56,6 +56,8 @@ class OCDocument //: public QObject
     void activate_brother_previous(void);
     void activate_child_first(void);
 
+    void activate(void);
+
 /*
     virtual void navigate_on_ok(void);
     virtual void navigate_on_cancel(void);
