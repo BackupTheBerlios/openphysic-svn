@@ -10,6 +10,7 @@ INCLUDEPATH += . src build
 # Input
 HEADERS += src/aboutimpl.h \
            src/chrono.h \
+           src/color.h \
            src/data.h \
            src/dialogimpl.h \
            src/engine.h \
