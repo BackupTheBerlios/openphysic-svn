@@ -56,6 +56,14 @@ void OCDocument::set_child_first(OCDocument * ocdoc)
   page_child_first = ocdoc;
 }
 
+
+
+void OCDocument::KeyEvent(QChar keyname)
+{
+
+}
+
+
 /*
 void OCDocument::navigate_on_ok(void)
 {
