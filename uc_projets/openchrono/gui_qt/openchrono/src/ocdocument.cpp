@@ -22,11 +22,38 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 OCDocument::OCDocument(void)
 {
   // contruct
+  page_parent = NULL;
+  page_brother_next = NULL;
+  page_brother_previous = NULL;
+  page_child_first = NULL;
 }
 
 OCDocument::~OCDocument(void)
 {
   // destruct
+}
+
+
+void OCDocument::set_parent(OCDocument * ocdoc)
+{
+  page_parent = ocdoc;
+}
+
+void OCDocument::set_brother_next(OCDocument * ocdoc)
+{
+  page_brother_next = ocdoc;
+
+}
+
+void OCDocument::set_brother_previous(OCDocument * ocdoc)
+{
+  page_brother_previous = ocdoc;
+
+}
+
+void OCDocument::set_child_first(OCDocument * ocdoc)
+{
+  page_child_first = ocdoc;
 }
 
 /*

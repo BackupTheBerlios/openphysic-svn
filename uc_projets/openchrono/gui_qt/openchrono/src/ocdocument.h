@@ -37,6 +37,12 @@ class OCDocument //: public QObject
     //OCWindows * page_current;
     QWidget * page_current;
 
+    void set_parent(OCDocument * ocdoc);
+    void set_brother_next(OCDocument * ocdoc);
+    void set_brother_previous(OCDocument * ocdoc);
+    void set_child_first(OCDocument * ocdoc);
+
+
   protected:
     OCDocument * page_parent;
     OCDocument * page_brother_next;
