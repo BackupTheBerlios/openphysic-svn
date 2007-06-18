@@ -20,7 +20,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef KEYBOARD_H
 #define KEYBOARD_H
 
-//#include <Q>
+#include <Qt>
 
 #define B_OK Qt::Key_R
 #define B_CANCEL Qt::Key_T
