@@ -59,6 +59,30 @@ void OCDocument::set_child_first(OCDocument * ocdoc)
 
 
 
+
+void OCDocument::activate_parent(void)
+{
+  
+}
+
+void OCDocument::activate_brother_next(void)
+{
+  
+}
+
+void OCDocument::activate_brother_previous(void)
+{
+  
+}
+
+void OCDocument::activate_child_first(void)
+{
+  
+}
+
+
+
+
 void OCDocument::KeyEvent(QChar keyname)
 {
 
