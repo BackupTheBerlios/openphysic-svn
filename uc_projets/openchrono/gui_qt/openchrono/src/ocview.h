@@ -21,7 +21,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define OCVIEW_H
 //
 
-class OCView
+#include <QWidget>
+
+class OCView : public QWidget
   {
   public:
     OCView();
