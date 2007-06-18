@@ -15,6 +15,7 @@ HEADERS += src/aboutimpl.h \
            src/dialogimpl.h \
            src/engine.h \
            src/engine_state.h \
+           src/keyboard.h \
            src/mainwinimpl.h \
            src/messageimpl.h \
            src/ocdocument.h \

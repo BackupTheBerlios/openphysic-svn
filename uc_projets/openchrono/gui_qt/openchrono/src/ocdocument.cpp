@@ -19,9 +19,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "ocdocument.h"
 
+#include "keyboard.h"
+
 OCDocument::OCDocument(void)
 {
-  // contruct
   page_parent = NULL;
   page_brother_next = NULL;
   page_brother_previous = NULL;
