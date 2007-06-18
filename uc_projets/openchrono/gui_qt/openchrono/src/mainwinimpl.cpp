@@ -23,6 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <iostream>
 #include <cmath>
 
+#include "keyboard.h"
+
 //
 #include <QTimer>
 //
@@ -191,22 +193,22 @@ void MainWinImpl::on_right(void)
 void MainWinImpl::keyPressEvent(QKeyEvent *event)
 {
   switch ( event->key() ) {
-  case Qt::Key_R: // Ok
+  case B_OK: // Ok
     on_ok();
     break;
-  case Qt::Key_T: // Cancel
+  case B_CANCEL: // Cancel
     on_cancel();
     break;
-  case Qt::Key_U:
+  case B_UP:
     on_up();
     break;
-  case Qt::Key_N:
+  case B_DOWN:
     on_down();
     break;
-  case Qt::Key_H:
+  case B_LEFT:
     on_left();
     break;
-  case Qt::Key_J:
+  case B_RIGHT:
     on_right();
     break;
   default:
