@@ -82,7 +82,7 @@ void OCDocument::activate_child_first(void)
 
 void OCDocument::activate(void)
 {
-  
+  //page_current->show();
 }
 
 
