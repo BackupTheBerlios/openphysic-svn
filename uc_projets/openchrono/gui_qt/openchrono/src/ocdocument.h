@@ -42,7 +42,7 @@ class OCDocument //: public QObject
     void set_brother_previous(OCDocument * ocdoc);
     void set_child_first(OCDocument * ocdoc);
 
-    virtual void KeyEvent(QChar keyname);
+    virtual void KeyEvent(int keyname); //(QChar keyname);
 
 
   protected:

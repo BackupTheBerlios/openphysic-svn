@@ -190,8 +190,9 @@ void MainWinImpl::on_right(void)
   std::cout << "right" << std::endl;
 }
 
-void MainWinImpl::keyPressEvent(QKeyEvent *event)
+void MainWinImpl::keyPressEvent(QKeyEvent * /* event */)
 {
+/*
   switch ( event->key() ) {
   case B_OK: // Ok
     on_ok();
@@ -214,6 +215,7 @@ void MainWinImpl::keyPressEvent(QKeyEvent *event)
   default:
     break; // n'importe quelle autre touche
   }
+*/
 }
 
 

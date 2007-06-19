@@ -62,22 +62,22 @@ void OCDocument::set_child_first(OCDocument * ocdoc)
 
 void OCDocument::activate_parent(void)
 {
-  
+  page_parent->activate();
 }
 
 void OCDocument::activate_brother_next(void)
 {
-  
+  page_brother_next->activate();
 }
 
 void OCDocument::activate_brother_previous(void)
 {
-  
+  page_brother_previous->activate();
 }
 
 void OCDocument::activate_child_first(void)
 {
-  
+  page_child_first->activate();
 }
 
 void OCDocument::activate(void)
@@ -87,9 +87,31 @@ void OCDocument::activate(void)
 
 
 
-void OCDocument::KeyEvent(QChar keyname)
+void OCDocument::KeyEvent(int keyname) //(QChar keyname)
 {
-
+  switch ( keyname ) {
+  case B_OK: // Ok
+    activate_child_first();
+    break;
+  case B_CANCEL: // Cancel
+    activate_parent();
+    break;
+  case B_UP:
+    //
+    break;
+  case B_DOWN:
+    //
+    break;
+  case B_LEFT:
+    activate_brother_previous();
+    break;
+  case B_RIGHT:
+    activate_brother_next();
+    break;
+  default:
+    //
+    break; // n'importe quelle autre touche
+  }
 }
 
 
