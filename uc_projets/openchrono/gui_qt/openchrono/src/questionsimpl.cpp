@@ -27,22 +27,36 @@ QuestionsImpl::QuestionsImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QW
   
   setGeometry(750,320,320,240);
   
-  QString str = QString("Choose an answer.");
-  
-  //setMessage(str);
+  //setTitle("Question");
+  //setQuestion("Do you understand the question ?");
+  //setAnswers
+  //QStringList strLstAnswers;
+  //strLstAnswers << "Yes" << "No"; 
+  //setAnswers(strLstAnswers);
 }
 
-/*
-void MessageImpl::setTitle(QString str)
+void QuestionsImpl::setTitle(QString str)
 {
   lblTitle->setText(str);
-  this->setWindowTitle(str);
+  setWindowTitle(str);
 }
 
-void MessageImpl::setMessage(QString str)
+void QuestionsImpl::setQuestion(QString str)
 {
-  lblMessage->setText(str);
+  lblQuestion->setText(str);
 }
-*/
+
+void QuestionsImpl::setAnswers(QStringList strLstAnswers)
+{
+  cboAnswers->addItems(strLstAnswers);
+}
+
+void QuestionsImpl::setAnswersYesNo(void)
+{
+  QStringList strLstAnswers;
+  strLstAnswers << "Yes" << "No"; 
+  setAnswers(strLstAnswers);
+}
 
 //
+

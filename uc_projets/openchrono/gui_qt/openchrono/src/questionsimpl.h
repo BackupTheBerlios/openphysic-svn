@@ -33,11 +33,11 @@ class QuestionsImpl : public QWidget, public Ui::frmQuestions
   public:
     QuestionsImpl( QWidget * parent = 0, Qt::WFlags f = 0, Data * data = 0 );
 		
-/*
   public slots:
 	void setTitle(QString str);
-	void setMessage(QString str);
-*/
+	void setQuestion(QString str);
+        void setAnswers(QStringList strLstAnswers);
+        void setAnswersYesNo();
 
   private:
     Data * m_Data;
