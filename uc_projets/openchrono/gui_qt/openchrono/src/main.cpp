@@ -66,10 +66,13 @@ int main(int argc, char ** argv)
   QuestionsImpl winResetTime(0, 0, &myCurrentData);
   MessageImpl winEngineMenu(0, 0, &myCurrentData);
     QuestionsImpl winEngineSelect(0, 0, &myCurrentData);
-    QuestionsImpl winEngineStroke(0, 0, &myCurrentData);
+    QuestionsImpl winEngineStrokes(0, 0, &myCurrentData);
     QuestionsImpl winEngineResetTime(0, 0, &myCurrentData);
 
   MessageImpl winTrackMenu(0, 0, &myCurrentData);
+    QuestionsImpl winTrackEtap(0, 0, &myCurrentData);
+    QuestionsImpl winTrackLap(0, 0, &myCurrentData);
+
   MessageImpl winRecallMenu(0, 0, &myCurrentData);
 
 
@@ -130,6 +133,19 @@ int main(int argc, char ** argv)
   winResetTime.cboAnswers->setCurrentIndex(1);
   winResetTime.show();
 
+  winEngineSelect.setTitle("Engine select");
+  winEngineSelect.setQuestion("Select your engine");
+  QStringList strLstEngineNumber;
+  strLstEngineNumber << "1" << "2" << "3" << "4" << "5" << "6" << "7" << "8" << "9"; 
+  winEngineSelect.setAnswers(strLstEngineNumber);
+  winEngineSelect.show();
+
+  winEngineStrokes.setTitle("Engine stroke");
+  winEngineStrokes.setQuestion("How many strokes ?");
+  QStringList strLstEngineStrokes;
+  strLstEngineStrokes << "2" << "4"; 
+  winEngineStrokes.setAnswers(strLstEngineStrokes);
+  winEngineStrokes.show();
 
   winEngineMenu.setTitle("Engine menu");
   winEngineMenu.show();
