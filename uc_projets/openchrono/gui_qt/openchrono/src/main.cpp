@@ -54,7 +54,7 @@ int main(int argc, char ** argv)
   Data myCurrentData;
 
 
-  OCDocument_mainwin win;
+  OCDocument_MainWin win;
 
 
   // connection bouton StartStop page de test
