@@ -24,6 +24,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 //#include <QObject>
 
+#include "ocview.h"
+
 class OCDocument //: public QObject
   {
     //    Q_OBJECT
@@ -34,8 +36,9 @@ class OCDocument //: public QObject
 
     //QString ocname;
 
+    void set_view(OCView * ocview);
     //OCWindows * page_current;
-    QWidget * page_current;
+    QWidget * page_current; // ToFiX
 
     void set_parent(OCDocument * ocdoc);
     void set_brother_next(OCDocument * ocdoc);
@@ -43,6 +46,8 @@ class OCDocument //: public QObject
     void set_child_first(OCDocument * ocdoc);
 
     virtual void KeyEvent(int keyname); //(QChar keyname);
+
+    void activate(void); /* protected */
 
 
   protected:
@@ -56,7 +61,6 @@ class OCDocument //: public QObject
     void activate_brother_previous(void);
     void activate_child_first(void);
 
-    void activate(void);
 
 /*
     virtual void navigate_on_ok(void);
@@ -71,6 +75,9 @@ class OCDocument //: public QObject
     void on_down(void);
     void on_left(void);
     void on_right(void);
+
+  private:
+    OCView * view;
 
   };
 

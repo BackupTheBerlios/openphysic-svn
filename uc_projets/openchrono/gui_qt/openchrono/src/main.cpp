@@ -98,15 +98,11 @@ int main(int argc, char ** argv)
 
 
   (&win)->page_current = &winMain;
-  //(&win)->page_current = &winAbout;
-  //(&win)->page_current = &winDialog;
-
-  //(&win)->page_current = &winMain;
-
-  //winMain.show();
-  //win->show();
-
   ((&win)->page_current)->show();
+
+
+  //win.set_view(&winMain); // ToDo
+  //win.activate(); // ToDo
 
 
   // fenetre de test
@@ -149,6 +145,9 @@ int main(int argc, char ** argv)
 
   winEngineMenu.setTitle("Engine menu");
   winEngineMenu.show();
+
+
+  /* OCDocument */
 
 
 

@@ -34,6 +34,11 @@ OCDocument::~OCDocument(void)
   // destruct
 }
 
+void OCDocument::set_view(OCView * ocview)
+{
+  view = ocview;
+}
+
 
 void OCDocument::set_parent(OCDocument * ocdoc)
 {
@@ -82,7 +87,7 @@ void OCDocument::activate_child_first(void)
 
 void OCDocument::activate(void)
 {
-  //page_current->show();
+  view->show();
 }
 
 

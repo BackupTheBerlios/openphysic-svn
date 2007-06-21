@@ -23,8 +23,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "ui_dialog.h"
 //
 #include "data.h"
+#include "ocview.h"
 
-class DialogImpl : public QDialog, public Ui::Dialog
+
+class DialogImpl : public QDialog, public Ui::Dialog, public OCView
   {
     Q_OBJECT
 

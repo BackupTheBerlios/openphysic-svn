@@ -24,11 +24,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 
 #include "data.h"
-#include "ocdocument.h"
+#include "ocview.h"
 
 #include <QKeyEvent>
 
-class MainWinImpl : public QWidget, public Ui::MainWin, public OCDocument
+class MainWinImpl : public QWidget, public Ui::MainWin //, virtual public OCView
   {
     Q_OBJECT
   public:
