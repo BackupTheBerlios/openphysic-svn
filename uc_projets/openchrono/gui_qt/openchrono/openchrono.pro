@@ -17,6 +17,7 @@ HEADERS += src/chrono.h \
            src/mainwinimpl.h \
            src/ocdocument.h \
            src/ocdocument_mainwin.h \
+           src/ocdocument_engine.h \
            src/ocview.h \
            src/ocview_mainwin.h \
            src/pilot.h \
@@ -34,6 +35,7 @@ SOURCES += src/chrono.cpp \
            src/mainwinimpl.cpp \
            src/ocdocument.cpp \
            src/ocdocument_mainwin.cpp \
+           src/ocdocument_engine.cpp \
            src/ocview.cpp \
            src/ocview_mainwin.cpp \
            src/pilot.cpp \

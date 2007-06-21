@@ -42,17 +42,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "ocview.h"
 
 #include "ocdocument_mainwin.h"
-//#include "ocview_mainwin.h"
+//#include "ocdocument_engine.h"
 
 
 int main(int argc, char ** argv)
 {
   QApplication app( argc, argv );
   
-  QApplication::setStyle(new QPlastiqueStyle); // QWindowsXPStyle, QMacStyle, QPlastiqueStyle, QCDEStyle, and QMotifStyle.
+  QApplication::setStyle(new QPlastiqueStyle);
 
   Data myCurrentData;
-
 
   OCDocument_MainWin win;
 
