@@ -22,7 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 OCView_MainWin::OCView_MainWin(OCDocument * ocdoc):OCView(ocdoc)
 {
-  setTitle("MainWin");
+  setWindowTitle("MainWin");
 }
 
 OCView_MainWin::~OCView_MainWin(){};
