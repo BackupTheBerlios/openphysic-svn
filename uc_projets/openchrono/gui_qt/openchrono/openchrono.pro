@@ -43,6 +43,7 @@ SOURCES += src/aboutimpl.cpp \
            src/ocdocument.cpp \
            src/ocdocument_mainwin.cpp \
            src/ocview.cpp \
+           src/ocview_mainwin.cpp \
            src/pilot.cpp \
            src/position.cpp \
            src/questionsimpl.cpp \

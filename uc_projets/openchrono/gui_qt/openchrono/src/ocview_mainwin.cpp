@@ -17,22 +17,9 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-#ifndef OCVIEW_MAINWIN_H
-#define OCVIEW_MAINWIN_H
-//
-#include "ocview.h"
+#include "ocview_mainwin.h"
+#include "ocdocument.h"
 
-class OCDocument;
+OCView_MainWin::OCView_MainWin(OCDocument * ocdoc):OCView(ocdoc){};
+OCView_MainWin::~OCViewMainWin(){};
 
-class OCView_MainWin : public OCView
-  {
-  public:
-    OCView_MainWin(){};
-    OCView_MainWin(OCDocument * ocdoc){};
-
-    virtual ~OCViewMainWin();
-
-  private:
-
-  };
-#endif
