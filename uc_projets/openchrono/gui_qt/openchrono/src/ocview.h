@@ -21,15 +21,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define OCVIEW_H
 //
 
-#include <QWidget>
+#include <QDialog>
 
-class OCView : public QWidget
+
+class OCDocument;
+
+class OCView : public QDialog
   {
   public:
     OCView();
+    OCView(OCDocument * ocdoc);
     virtual ~OCView();
 
-  private:
+  protected:
+    OCDocument * document;
 
   };
 #endif

@@ -26,6 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "ocview.h"
 
+
 class OCDocument //: public QObject
   {
     //    Q_OBJECT
@@ -76,7 +77,7 @@ class OCDocument //: public QObject
     void on_left(void);
     void on_right(void);
 
-  private:
+  protected:
     OCView * view;
 
   };

@@ -26,8 +26,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 class OCView_MainWin : public OCView
   {
   public:
-    OCView_MainWin();
-    OCView_MainWin(OCDocument * ocdoc);
+    OCView_MainWin(){};
+    OCView_MainWin(OCDocument * ocdoc){};
 
     virtual ~OCViewMainWin();
 

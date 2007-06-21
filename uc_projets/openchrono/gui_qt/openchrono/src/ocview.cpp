@@ -24,6 +24,11 @@ OCView::OCView(void)
   // contruct
 }
 
+OCView::OCView(OCDocument * ocdoc)
+{
+  // contruct
+}
+
 OCView::~OCView(void)
 {
   // destruct
