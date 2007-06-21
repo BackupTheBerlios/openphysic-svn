@@ -17,8 +17,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-#ifndef OCVIEWMAINWIN_H
-#define OCVIEWMAINWIN_H
+#ifndef OCVIEW_MAINWIN_H
+#define OCVIEW_MAINWIN_H
 //
 #include "ocview.h"
 #include "ocdocument.h"
