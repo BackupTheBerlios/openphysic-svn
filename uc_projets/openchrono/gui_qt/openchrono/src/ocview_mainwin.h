@@ -27,8 +27,8 @@ class OCDocument;
 class OCView_MainWin : public OCView
   {
   public:
-    OCView_MainWin(){};
-    OCView_MainWin(OCDocument * ocdoc){};
+    OCView_MainWin();
+    OCView_MainWin(OCDocument * ocdoc);
 
     virtual ~OCViewMainWin();
 
