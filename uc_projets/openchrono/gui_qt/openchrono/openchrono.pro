@@ -19,7 +19,9 @@ HEADERS += src/aboutimpl.h \
            src/mainwinimpl.h \
            src/messageimpl.h \
            src/ocdocument.h \
+           src/ocdocument_mainwin.h \
            src/ocview.h \
+           src/ocview_mainwin.h \
            src/pilot.h \
            src/position.h \
            src/questionsimpl.h \
