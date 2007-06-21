@@ -18,15 +18,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 #include "ocview.h"
+#include "ocdocument.h
 
 OCView::OCView(void)
 {
   // contruct
+  document = NULL;
 }
 
 OCView::OCView(OCDocument * ocdoc)
 {
   // contruct
+  document = ocdoc;
 }
 
 OCView::~OCView(void)
