@@ -24,7 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 #include "data.h"
 
-class AboutImpl : public QWidget, public Ui::About
+class AboutImpl : public QDialog, public Ui::About
   {
     Q_OBJECT
 

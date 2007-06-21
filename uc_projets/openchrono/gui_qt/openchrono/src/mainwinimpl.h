@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <QKeyEvent>
 
-class MainWinImpl : public QWidget, public Ui::MainWin //, virtual public OCView
+class MainWinImpl : public QDialog, public Ui::MainWin //, virtual public OCView
   {
     Q_OBJECT
   public:

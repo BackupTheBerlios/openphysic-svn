@@ -20,7 +20,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "questionsimpl.h"
 //
 
-QuestionsImpl::QuestionsImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QWidget(parent, f)
+QuestionsImpl::QuestionsImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QDialog(parent, f)
 {
   setupUi(this);
   m_Data = data;

@@ -1,6 +1,6 @@
 <ui version="4.0" >
  <class>frmQuestions</class>
- <widget class="QWidget" name="frmQuestions" >
+ <widget class="QDialog" name="frmQuestions" >
   <property name="geometry" >
    <rect>
     <x>0</x>

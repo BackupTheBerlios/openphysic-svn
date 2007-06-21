@@ -24,7 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  *  Constructs a about box which is a child of 'parent', with the 
  *  name 'name' and widget flags set to 'f' 
  */
-AboutImpl::AboutImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QWidget(parent, f)
+AboutImpl::AboutImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QDialog(parent, f)
 {
   setupUi(this);
   m_Data = data;

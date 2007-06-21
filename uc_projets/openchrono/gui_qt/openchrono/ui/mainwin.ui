@@ -1,6 +1,6 @@
 <ui version="4.0" >
  <class>MainWin</class>
- <widget class="QWidget" name="MainWin" >
+ <widget class="QDialog" name="MainWin" >
   <property name="geometry" >
    <rect>
     <x>0</x>
