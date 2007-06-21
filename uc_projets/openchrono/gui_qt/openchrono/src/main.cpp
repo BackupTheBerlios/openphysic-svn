@@ -27,14 +27,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //#include <qtopiaapplication> // QTopia
 
 // Test GUI
-#include "dialogimpl.h"
+//#include "dialogimpl.h"
 
 // GUI
-#include "mainwinimpl.h"
+//#include "mainwinimpl.h"
 //#include "aboutimpl.h"
-#include "testwinimpl.h"
-#include "messageimpl.h"
-#include "questionsimpl.h"
+//#include "testwinimpl.h"
+//#include "messageimpl.h"
+//#include "questionsimpl.h"
 //
 #include "data.h"
 //
