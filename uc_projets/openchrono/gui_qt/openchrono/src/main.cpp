@@ -39,6 +39,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "data.h"
 //
 #include "ocdocument.h" // ocview ocdocument (ex ocwindows)
+#include "ocview.h"
+
+#include "ocdocument_mainwin.h"
+#include "ocview_mainwin.h"
 
 int main(int argc, char ** argv)
 {
