@@ -30,7 +30,7 @@ class OCView_MainWin : public OCView
     OCView_MainWin();
     OCView_MainWin(OCDocument * ocdoc);
 
-    virtual ~OCViewMainWin();
+    virtual ~OCView_MainWin();
 
   private:
 
