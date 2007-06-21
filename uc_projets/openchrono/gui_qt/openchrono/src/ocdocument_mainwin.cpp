@@ -17,19 +17,12 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-#ifndef OCDOCUMENT_MAINWIN_H
-#define OCDOCUMENT_MAINWIN_H
+#include "ocdocument_mainwin.cpp"
 
-#include "ocdocument.h"
+#include "ocview_mainwin.h"
 
+OCDocument_MainWin::OCDocument_MainWin()
+{
+  set_view(new OCView_MainWin(this));
+}
 
-class OCDocument_MainWin : public OCDocument
-  {
-  public:
-    OCDocument_MainWin();
-    virtual ~OCDocument_MainWin();
-
-  private:
-
-  };
-#endif

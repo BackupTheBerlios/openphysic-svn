@@ -41,6 +41,7 @@ SOURCES += src/aboutimpl.cpp \
            src/mainwinimpl.cpp \
            src/messageimpl.cpp \
            src/ocdocument.cpp \
+           src/ocdocument_mainwin.cpp \
            src/ocview.cpp \
            src/pilot.cpp \
            src/position.cpp \
