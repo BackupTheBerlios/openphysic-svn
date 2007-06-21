@@ -21,11 +21,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define OCVIEWMAINWIN_H
 //
 #include "ocview.h"
+#include "ocdocument.h"
 
 class OCView_MainWin : public OCView
   {
   public:
     OCView_MainWin();
+    OCView_MainWin(OCDocument * ocdoc);
+
     virtual ~OCViewMainWin();
 
   private:
