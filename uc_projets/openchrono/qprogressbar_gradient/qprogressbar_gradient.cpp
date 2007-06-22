@@ -23,3 +23,10 @@ QProgressBar_Gradient::QProgressBar_Gradient()
 {
   
 }
+
+/*
+QProgressBar_Gradient::QProgressBar_Gradient(QGradient * gradient)
+{
+  m_gradient = gradient;
+}
+*/
