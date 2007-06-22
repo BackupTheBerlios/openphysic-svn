@@ -24,14 +24,14 @@ QuestionsImpl::QuestionsImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QD
 {
   setupUi(this);
   m_Data = data;
-  
+
   setGeometry(750,320,320,240);
-  
+
   //setTitle("Question");
   //setQuestion("Do you understand the question ?");
   //setAnswers
   //QStringList strLstAnswers;
-  //strLstAnswers << "Yes" << "No"; 
+  //strLstAnswers << "Yes" << "No";
   //setAnswers(strLstAnswers);
 }
 
@@ -54,7 +54,7 @@ void QuestionsImpl::setAnswers(QStringList strLstAnswers)
 void QuestionsImpl::setAnswersYesNo(void)
 {
   QStringList strLstAnswers;
-  strLstAnswers << "Yes" << "No"; 
+  strLstAnswers << "Yes" << "No";
   setAnswers(strLstAnswers);
 }
 

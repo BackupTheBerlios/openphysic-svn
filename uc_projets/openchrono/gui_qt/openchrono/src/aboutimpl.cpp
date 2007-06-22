@@ -30,11 +30,11 @@ AboutImpl::AboutImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QDialog(pa
   m_Data = data;
 
   QString str = QString("<h1>OpenChrono</h1><h2>a chronometer for go-karts and others mechanical sports</h2><h3>Copyright (C) 2007 S. Celles</h3><h4>under GNU General Public License</h4>");
-  
+
   label->setText(str);
 
   connect(quit, SIGNAL(clicked()), this, SLOT(goodBye()));
-  
+
   setGeometry(50,320,320,240);
 }
 

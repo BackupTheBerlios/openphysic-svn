@@ -28,6 +28,5 @@ OCDocument_MainWin::OCDocument_MainWin()
 
 OCDocument_MainWin::~OCDocument_MainWin()
 {
-
 }
 

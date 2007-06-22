@@ -94,29 +94,30 @@ void OCDocument::activate(void)
 
 void OCDocument::KeyEvent(int keyname) //(QChar keyname)
 {
-  switch ( keyname ) {
-  case B_OK: // Ok
-    activate_child_first();
-    break;
-  case B_CANCEL: // Cancel
-    activate_parent();
-    break;
-  case B_UP:
-    //
-    break;
-  case B_DOWN:
-    //
-    break;
-  case B_LEFT:
-    activate_brother_previous();
-    break;
-  case B_RIGHT:
-    activate_brother_next();
-    break;
-  default:
-    //
-    break; // n'importe quelle autre touche
-  }
+  switch ( keyname )
+    {
+    case B_OK: // Ok
+      activate_child_first();
+      break;
+    case B_CANCEL: // Cancel
+      activate_parent();
+      break;
+    case B_UP:
+      //
+      break;
+    case B_DOWN:
+      //
+      break;
+    case B_LEFT:
+      activate_brother_previous();
+      break;
+    case B_RIGHT:
+      activate_brother_next();
+      break;
+    default:
+      //
+      break; // n'importe quelle autre touche
+    }
 }
 
 
@@ -126,17 +127,17 @@ void OCDocument::navigate_on_ok(void)
   //ptr_current_page = &page_engine_menu;
   //ptr_page_goto = ptr_current_page->page_child_first;
 }
-
+ 
 void OCDocument::navigate_on_cancel(void)
 {
   //ptr_page_goto = ptr_current_page->page_parent;
 }
-
+ 
 void OCDocument::navigate_on_left(void)
 {
   //ptr_page_goto = ptr_current_page->page_brother_previous;
 }
-
+ 
 void OCDocument::navigate_on_right(void)
 {
   //ptr_page_goto = ptr_current_page->page_brother_next;

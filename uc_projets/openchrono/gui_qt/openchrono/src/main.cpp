@@ -48,7 +48,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 int main(int argc, char ** argv)
 {
   QApplication app( argc, argv );
-  
+
   QApplication::setStyle(new QPlastiqueStyle);
 
   Data myCurrentData;

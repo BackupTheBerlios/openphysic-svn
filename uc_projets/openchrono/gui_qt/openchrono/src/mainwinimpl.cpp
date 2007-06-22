@@ -73,7 +73,7 @@ void MainWinImpl::TestWin(void)
 
 void MainWinImpl::showRPM(void)
 {
-  double rpm = m_Data->vehicule.engine.rpm.value();  
+  double rpm = m_Data->vehicule.engine.rpm.value();
   double rpmMax = m_Data->vehicule.engine.rpm.max();
   int value;
 
@@ -130,14 +130,14 @@ void MainWinImpl::showBestLapTime(void)
 void MainWinImpl::showLap(void)
 {
   QString strLap;
-  if ( m_Data->track.laps() > 1 ) 
+  if ( m_Data->track.laps() > 1 )
     {
       strLap.sprintf("%d / %d", m_Data->position.lap(), m_Data->track.laps());
     }
   else
-  	{
-  	  strLap.sprintf("%d", m_Data->position.lap());
-  	}
+    {
+      strLap.sprintf("%d", m_Data->position.lap());
+    }
   lblLap->setText(strLap);
 }
 
@@ -192,30 +192,30 @@ void MainWinImpl::on_right(void)
 
 void MainWinImpl::keyPressEvent(QKeyEvent * /* event */)
 {
-/*
-  switch ( event->key() ) {
-  case B_OK: // Ok
-    on_ok();
-    break;
-  case B_CANCEL: // Cancel
-    on_cancel();
-    break;
-  case B_UP:
-    on_up();
-    break;
-  case B_DOWN:
-    on_down();
-    break;
-  case B_LEFT:
-    on_left();
-    break;
-  case B_RIGHT:
-    on_right();
-    break;
-  default:
-    break; // n'importe quelle autre touche
-  }
-*/
+  /*
+    switch ( event->key() ) {
+    case B_OK: // Ok
+      on_ok();
+      break;
+    case B_CANCEL: // Cancel
+      on_cancel();
+      break;
+    case B_UP:
+      on_up();
+      break;
+    case B_DOWN:
+      on_down();
+      break;
+    case B_LEFT:
+      on_left();
+      break;
+    case B_RIGHT:
+      on_right();
+      break;
+    default:
+      break; // n'importe quelle autre touche
+    }
+  */
 }
 
 

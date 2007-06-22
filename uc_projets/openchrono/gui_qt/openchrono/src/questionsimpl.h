@@ -32,12 +32,12 @@ class QuestionsImpl : public QDialog, public Ui::frmQuestions
 
   public:
     QuestionsImpl( QWidget * parent = 0, Qt::WFlags f = 0, Data * data = 0 );
-		
+
   public slots:
-	void setTitle(QString str);
-	void setQuestion(QString str);
-        void setAnswers(QStringList strLstAnswers);
-        void setAnswersYesNo();
+    void setTitle(QString str);
+    void setQuestion(QString str);
+    void setAnswers(QStringList strLstAnswers);
+    void setAnswersYesNo();
 
   private:
     Data * m_Data;

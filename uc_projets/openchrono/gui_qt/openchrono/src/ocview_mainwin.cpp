@@ -25,5 +25,6 @@ OCView_MainWin::OCView_MainWin(OCDocument * ocdoc):OCView(ocdoc)
   setWindowTitle("MainWin");
 }
 
-OCView_MainWin::~OCView_MainWin(){};
+OCView_MainWin::~OCView_MainWin()
+{};
 

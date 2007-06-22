@@ -34,8 +34,8 @@ class MessageImpl : public QDialog, public Ui::frmMessage
     MessageImpl( QWidget * parent = 0, Qt::WFlags f = 0, Data * data = 0 );
 
   public slots:
-	void setTitle(QString str);
-	void setMessage(QString str);
+    void setTitle(QString str);
+    void setMessage(QString str);
 
   private:
     Data * m_Data;

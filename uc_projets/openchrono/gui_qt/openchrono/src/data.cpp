@@ -23,23 +23,23 @@
 
 Data::Data(  )
 {
-  
+
   connect(this, SIGNAL( starting_first_lap() ),
-	  this, SLOT( on_starting_first_lap() ) );
+          this, SLOT( on_starting_first_lap() ) );
 
   connect(this, SIGNAL( is_new_etap() ),
-	  this, SLOT( on_new_etap() ) );
+          this, SLOT( on_new_etap() ) );
 
   connect(this, SIGNAL( is_new_lap() ),
-	  this, SLOT( on_new_lap() ) );
-  
+          this, SLOT( on_new_lap() ) );
+
   connect(this, SIGNAL( is_last_lap() ),
-	  this, SLOT( on_last_lap() ) );
-  
+          this, SLOT( on_last_lap() ) );
+
   connect(this, SIGNAL( race_is_over() ),
-	  this, SLOT( on_race_over() ) );
-  
-  
+          this, SLOT( on_race_over() ) );
+
+
 }
 
 void Data::start(void)
@@ -49,21 +49,22 @@ void Data::start(void)
       position.clearEtap();
 
       if ( position.lap() == 0 )
-	{
-	  emit starting_first_lap();
-	}
+        {
+          emit starting_first_lap();
+        }
 
       if ( position.lap() == track.laps()-1 ) // debut du dernier tour de course
-	{
-	  emit is_last_lap();
-	}
+        {
+          emit is_last_lap();
+        }
 
       if ( position.lap() == track.laps() ) // fin du dernier tour de course
         {
           position.clearLap();
-	  if ( track.laps() > 1 ) {
-	  emit race_is_over();
-	    }
+          if ( track.laps() > 1 )
+            {
+              emit race_is_over();
+            }
         }
 
       position.newLap();
@@ -101,7 +102,7 @@ void Data::on_new_lap(void)
   chrono.update_last_and_best_lap_time();
 
   chrono.start();
-  chrono.clear(); 
+  chrono.clear();
 }
 
 void Data::on_last_lap(void)

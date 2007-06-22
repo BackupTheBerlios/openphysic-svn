@@ -63,12 +63,12 @@ class OCDocument //: public QObject
     void activate_child_first(void);
 
 
-/*
-    virtual void navigate_on_ok(void);
-    virtual void navigate_on_cancel(void);
-    virtual void navigate_on_left(void);
-    virtual void navigate_on_right(void);
-*/
+    /*
+        virtual void navigate_on_ok(void);
+        virtual void navigate_on_cancel(void);
+        virtual void navigate_on_left(void);
+        virtual void navigate_on_right(void);
+    */
 
     void on_ok(void);
     void on_cancel(void);
