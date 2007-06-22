@@ -32,6 +32,7 @@ public:
 
   void set_gradient(QGradient * gradient);
 
+
 protected:
   QGradient * m_gradient;
 

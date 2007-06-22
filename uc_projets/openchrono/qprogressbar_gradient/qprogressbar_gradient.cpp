@@ -19,6 +19,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "qprogressbar_gradient.h"
 
+
 QProgressBar_Gradient::QProgressBar_Gradient() 
 {
   
@@ -33,4 +34,5 @@ void QProgressBar_Gradient::set_gradient(QGradient * gradient)
 {
   m_gradient = gradient;
 }
+
 
