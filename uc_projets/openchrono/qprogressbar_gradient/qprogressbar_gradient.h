@@ -28,11 +28,14 @@ class QProgressBar_Gradient : public QProgressBar
 {
 public:
   QProgressBar_Gradient();
-  //QProgressBar_Gradient(QGradient * gradient);
+  QProgressBar_Gradient(QGradient * gradient);
+
+  void set_gradient(QGradient * gradient);
 
 protected:
-  QGradient m_gradient;
+  QGradient * m_gradient;
 
 };
 
 #endif
+

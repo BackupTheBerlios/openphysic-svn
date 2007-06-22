@@ -20,7 +20,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <QApplication>
 #include <QPlastiqueStyle>
 
-//#include <QGradient>
+#include <QGradient>
 //#include <QPalette>
 
 
@@ -31,11 +31,17 @@ int main(int argc, char ** argv)
   QApplication app( argc, argv );
   QApplication::setStyle(new QPlastiqueStyle);
 
-  QProgressBar_Gradient bar;
+  QGradient gradient;
+  gradient.setColorAt(0, Qt::green);
+  gradient.setColorAt(0.8, Qt::yellow);
+  gradient.setColorAt(1, Qt::red);
+
+  QProgressBar_Gradient bar(&gradient);
   bar.setGeometry(0,0,500,20);
 
   //bar.setValue(0);
-  bar.setValue(50);
+  //bar.setValue(50);
+  bar.setValue(80);
   //bar.setValue(100);
 
   bar.show();
@@ -44,3 +50,4 @@ int main(int argc, char ** argv)
 
   return app.exec();
 }
+
