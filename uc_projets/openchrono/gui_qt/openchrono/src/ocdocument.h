@@ -45,10 +45,12 @@ class OCDocument //: public QObject
     void set_brother_next(OCDocument * ocdoc);
     void set_brother_previous(OCDocument * ocdoc);
     void set_child_first(OCDocument * ocdoc);
+    void set_no_child(void);
 
     virtual void KeyEvent(int keyname); //(QChar keyname);
 
     void activate(void); /* protected */
+    void desactivate(void);
 
 
   protected:

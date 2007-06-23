@@ -53,7 +53,7 @@ int main(int argc, char ** argv)
 
   Data myCurrentData;
 
-  OCDocument_MainWin win;
+  OCDocument_MainWin winMain;
   OCDocument_Engine winEngine;
 
 
@@ -62,10 +62,18 @@ int main(int argc, char ** argv)
   //                    &myCurrentData                , SLOT( start() )                       );
 
 
+  winMain.set_parent(&winMain);
+  winMain.set_brother_next(&winEngine);
+  winMain.set_brother_previous(&winEngine);
+  winMain.set_no_child(); // set_child_first(&winMain);
+
+  winEngine.set_parent(&winMain);
+  winEngine.set_brother_next(&winMain);
+  winEngine.set_brother_previous(&winMain);
+  winEngine.set_no_child();
 
 
-  win.activate(); // ToDo
-  //winEngine.activate();
+  winMain.activate();
 
 
   // fenetre de test

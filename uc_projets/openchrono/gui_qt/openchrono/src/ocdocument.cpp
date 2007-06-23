@@ -64,26 +64,34 @@ void OCDocument::set_child_first(OCDocument * ocdoc)
   page_child_first = ocdoc;
 }
 
+void OCDocument::set_no_child(void)
+{
+  page_child_first = this;
+}
 
 
 
 void OCDocument::activate_parent(void)
 {
+  this->desactivate();
   page_parent->activate();
 }
 
 void OCDocument::activate_brother_next(void)
 {
+  this->desactivate();
   page_brother_next->activate();
 }
 
 void OCDocument::activate_brother_previous(void)
 {
+  this->desactivate();
   page_brother_previous->activate();
 }
 
 void OCDocument::activate_child_first(void)
 {
+  this->desactivate();
   page_child_first->activate();
 }
 
@@ -92,6 +100,10 @@ void OCDocument::activate(void)
   view->show();
 }
 
+void OCDocument::desactivate(void)
+{
+  view->hide();
+}
 
 
 void OCDocument::KeyEvent(int keyname) //(QChar keyname)
