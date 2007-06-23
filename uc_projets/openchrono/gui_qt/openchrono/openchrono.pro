@@ -20,6 +20,7 @@ HEADERS += src/chrono.h \
            src/ocdocument_engine.h \
            src/ocview.h \
            src/ocview_mainwin.h \
+           src/ocview_engine.h \
            src/pilot.h \
            src/position.h \
            src/rpm.h \
@@ -38,6 +39,7 @@ SOURCES += src/chrono.cpp \
            src/ocdocument_engine.cpp \
            src/ocview.cpp \
            src/ocview_mainwin.cpp \
+           src/ocview_engine.cpp \
            src/pilot.cpp \
            src/position.cpp \
            src/rpm.cpp \
