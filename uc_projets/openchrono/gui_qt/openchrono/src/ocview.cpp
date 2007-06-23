@@ -37,3 +37,10 @@ OCView::~OCView(void)
   // destruct
 }
 
+
+void OCView::keyPressEvent(QKeyEvent * event)
+{
+  document->KeyEvent(event->key());
+}
+
+

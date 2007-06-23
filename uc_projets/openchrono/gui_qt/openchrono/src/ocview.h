@@ -22,7 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 
 #include <QDialog>
-
+#include <QKeyEvent>
 
 class OCDocument;
 
@@ -35,6 +35,8 @@ class OCView : public QDialog
 
   protected:
     OCDocument * document;
+
+    void keyPressEvent(QKeyEvent *event);
 
   };
 #endif
