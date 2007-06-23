@@ -20,11 +20,148 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "ocview_mainwin.h"
 #include "ocdocument.h"
 
+#include <iostream>
+#include <cmath>
+
+#include "keyboard.h"
+
+//
+#include <QTimer>
+
 OCView_MainWin::OCView_MainWin(OCDocument * ocdoc):OCView(ocdoc)
 {
   setWindowTitle("MainWin");
+
+  //setupUi(this); //ui.setupUi(this);
+
+  //setGeometry(50,50,320,240);
+
+  //test();
+
+  //UpdateData();
+
+  // update RPM
+  //GraphicRPM->setMaximum((int) document->data.vehicule.engine.rpm.max());
+  //GraphicRPM->setMinimum((int) document->data.vehicule.engine.rpm.min());
+
+  //delete layout();
+  //setLayout(vboxLayout);
+
+  //QTimer * timer = new QTimer(this); // TOFIX !!!
+  //connect( timer, SIGNAL(timeout()), this, SLOT(UpdateData()) ); // TOFIX
+  //timer->start(25); //
 }
 
 OCView_MainWin::~OCView_MainWin()
-{};
+{
+
+}
+
+/*
+void OCView_MainWin::test(void)
+{
+  lblMessage->setText("XXXXXXXXXXXXXXXXXX");
+
+  GraphicRPM->setValue(16000);
+
+  lblCurrLapTime->setText("XX:XX:XXX");
+  lblBestLapTime->setText("XX:XX:XXX");
+  lblLastLapTime->setText("XX:XX:XXX");
+
+  lblLap->setText("XXX");
+  lblEtap->setText("XX / XX");
+
+  lblTemp1->setText("XXXXX");
+  lblTemp2->setText("XXXXX");
+}
+
+void OCView_MainWin::showRPM(void)
+{
+  double rpm = document->data.vehicule.engine.rpm.value();
+  double rpmMax = document->data.vehicule.engine.rpm.max();
+  int value;
+
+  if ( rpm <= rpmMax )
+    {
+      value = (int) (round(rpm/10)*10);
+    }
+  else
+    {
+      value = (int) rpmMax;
+    }
+  GraphicRPM->setValue(value);
+
+  // couleur
+  //QColormap ? QLineargradient ?
+  //GraphicRPM->
+  //QPalette palette;
+  //QPalette::ColorRole colorrole = QPalette::Window;
+  //QGradient gradient;
+  //gradient.setColorAt(0, Qt::green);
+  //gradient.setColorAt(.5, Qt::yellow);
+  //gradient.setColorAt(1, Qt::red);
+  //QColor color = Qt::red;
+  //palette.setColor(QPalette::Window, color);
+  //this->setPalette ( palette );
+
+}
+
+void OCView_MainWin::showT1(void)
+{
+  lblTemp1->setText(document->data.vehicule.engine.temperature_1.getStr());
+}
+
+void OCView_MainWin::showT2(void)
+{
+  lblTemp2->setText(document->data.vehicule.engine.temperature_2.getStr());
+}
+
+void OCView_MainWin::showCurrentLapTime(void)
+{
+  lblCurrLapTime->setText(document->data.chrono.getStrCurrentLapTime());
+}
+
+void OCView_MainWin::showLastLapTime(void)
+{
+  lblLastLapTime->setText(document->data.chrono.getStrLastLapTime());
+}
+
+void OCView_MainWin::showBestLapTime(void)
+{
+  lblBestLapTime->setText(document->data.chrono.getStrBestLapTime());
+}
+
+void OCView_MainWin::showLap(void)
+{
+  QString strLap;
+  if ( document->data.track.laps() > 1 )
+    {
+      strLap.sprintf("%d / %d", document->data.position.lap(), document->data.track.laps());
+    }
+  else
+    {
+      strLap.sprintf("%d", document->data.position.lap());
+    }
+  lblLap->setText(strLap);
+}
+
+void OCView_MainWin::showEtap(void)
+{
+  QString strEtap;
+  strEtap.sprintf("%d / %d",document->data.position.etap(),document->data.track.etaps());
+  lblEtap->setText(strEtap);
+}
+
+void OCView_MainWin::UpdateData(void)
+{
+  showRPM();
+  showT1();
+  showT2();
+  showCurrentLapTime();
+  showLastLapTime();
+  showBestLapTime();
+  showLap();
+  showEtap();
+}
+*/
 

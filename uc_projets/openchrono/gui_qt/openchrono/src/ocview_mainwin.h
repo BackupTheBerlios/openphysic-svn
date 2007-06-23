@@ -22,17 +22,42 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 #include "ocview.h"
 
+#include "ui_mainwin.h"
+//
+#include "data.h"
+#include <QKeyEvent>
+
 class OCDocument;
 
-class OCView_MainWin : public OCView
+class OCView_MainWin : public OCView //, public Ui::MainWin
   {
+//Q_OBJECT
+
   public:
     OCView_MainWin();
     OCView_MainWin(OCDocument * ocdoc);
 
     virtual ~OCView_MainWin();
 
+/*
+    void test(void);
+
+
+  private slots:
+    void UpdateData();
+
   private:
+    void showRPM(void);
+    void showT1(void);
+    void showT2(void);
+    void showCurrentLapTime(void);
+    void showLastLapTime(void);
+    void showBestLapTime(void);
+    void showLap(void);
+    void showEtap(void);
+*/
 
   };
 #endif
+
+

@@ -28,24 +28,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <QKeyEvent>
 
-class MainWinImpl : public QDialog, public Ui::MainWin //, virtual public OCView
+class MainWinImpl : public QDialog, public Ui::MainWin
   {
     Q_OBJECT
   public:
     MainWinImpl( QWidget * parent = 0, Qt::WFlags f = 0, Data * myData = 0 );
-    void TestWin(void);
+    void test(void);
 
   private slots:
     void UpdateData();
-
-
-    void on_ok(void);
-    void on_cancel(void);
-    void on_up(void);
-    void on_down(void);
-    void on_left(void);
-    void on_right(void);
-
 
   private:
     Data * m_Data;
@@ -58,8 +49,6 @@ class MainWinImpl : public QDialog, public Ui::MainWin //, virtual public OCView
     void showBestLapTime(void);
     void showLap(void);
     void showEtap(void);
-
-    void keyPressEvent(QKeyEvent *event);
 
   };
 #endif

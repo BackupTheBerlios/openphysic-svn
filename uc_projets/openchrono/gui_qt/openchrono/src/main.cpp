@@ -51,7 +51,7 @@ int main(int argc, char ** argv)
 
   QApplication::setStyle(new QPlastiqueStyle);
 
-  Data myCurrentData;
+  //Data myCurrentData;
 
   OCDocument_MainWin winMain;
   OCDocument_Engine winEngine;

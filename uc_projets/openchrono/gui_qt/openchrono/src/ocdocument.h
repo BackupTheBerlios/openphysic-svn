@@ -21,25 +21,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define OCDOCUMENT_H
 //
 #include <QApplication>
-//
-//#include <QObject>
 
 #include "ocview.h"
+#include "data.h"
 
-
-class OCDocument //: public QObject
+class OCDocument
   {
-    //    Q_OBJECT
-
   public:
     OCDocument();
     virtual ~OCDocument();
-
-    //QString ocname;
-
-    void set_view(OCView * ocview);
-    //OCWindows * page_current;
-    //QWidget * page_current; // ToFiX
 
     void set_parent(OCDocument * ocdoc);
     void set_brother_next(OCDocument * ocdoc);
@@ -49,11 +39,15 @@ class OCDocument //: public QObject
 
     virtual void KeyEvent(int keyname); //(QChar keyname);
 
-    void activate(void); /* protected */
-    void desactivate(void);
+    void activate(void);
+
+
+    //Data * data; // static ?
 
 
   protected:
+    void desactivate(void);
+
     OCDocument * page_parent;
     OCDocument * page_brother_next;
     OCDocument * page_brother_previous;
@@ -64,23 +58,12 @@ class OCDocument //: public QObject
     void activate_brother_previous(void);
     void activate_child_first(void);
 
-
-    /*
-        virtual void navigate_on_ok(void);
-        virtual void navigate_on_cancel(void);
-        virtual void navigate_on_left(void);
-        virtual void navigate_on_right(void);
-    */
-
-    void on_ok(void);
-    void on_cancel(void);
-    void on_up(void);
-    void on_down(void);
-    void on_left(void);
-    void on_right(void);
-
-  protected:
     OCView * view;
+
+    void set_view(OCView * ocview);
+
+
+  private:
 
   };
 

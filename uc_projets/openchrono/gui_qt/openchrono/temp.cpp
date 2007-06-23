@@ -60,4 +60,34 @@
   winEngineMenu.show();
 */
 
+void MainWinImpl::on_ok(void)
+{
+  std::cout << "ok" << std::endl;
+}
+
+void MainWinImpl::on_cancel(void)
+{
+  std::cout << "cancel" << std::endl;
+}
+
+void MainWinImpl::on_up(void)
+{
+  std::cout << "up" << std::endl;
+}
+
+void MainWinImpl::on_down(void)
+{
+  std::cout << "down" << std::endl;
+}
+
+void MainWinImpl::on_left(void)
+{
+  std::cout << "left" << std::endl;
+}
+
+void MainWinImpl::on_right(void)
+{
+  std::cout << "right" << std::endl;
+}
+
 

@@ -54,7 +54,7 @@ MainWinImpl::MainWinImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QDialo
 }
 //
 
-void MainWinImpl::TestWin(void)
+void MainWinImpl::test(void)
 {
   lblMessage->setText("XXXXXXXXXXXXXXXXXX");
 
@@ -158,64 +158,6 @@ void MainWinImpl::UpdateData(void)
   showBestLapTime();
   showLap();
   showEtap();
-}
-
-void MainWinImpl::on_ok(void)
-{
-  std::cout << "ok" << std::endl;
-}
-
-void MainWinImpl::on_cancel(void)
-{
-  std::cout << "cancel" << std::endl;
-}
-
-void MainWinImpl::on_up(void)
-{
-  std::cout << "up" << std::endl;
-}
-
-void MainWinImpl::on_down(void)
-{
-  std::cout << "down" << std::endl;
-}
-
-void MainWinImpl::on_left(void)
-{
-  std::cout << "left" << std::endl;
-}
-
-void MainWinImpl::on_right(void)
-{
-  std::cout << "right" << std::endl;
-}
-
-void MainWinImpl::keyPressEvent(QKeyEvent * /* event */)
-{
-  /*
-    switch ( event->key() ) {
-    case B_OK: // Ok
-      on_ok();
-      break;
-    case B_CANCEL: // Cancel
-      on_cancel();
-      break;
-    case B_UP:
-      on_up();
-      break;
-    case B_DOWN:
-      on_down();
-      break;
-    case B_LEFT:
-      on_left();
-      break;
-    case B_RIGHT:
-      on_right();
-      break;
-    default:
-      break; // n'importe quelle autre touche
-    }
-  */
 }
 
 
