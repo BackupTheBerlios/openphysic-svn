@@ -39,7 +39,7 @@ class OCDocument //: public QObject
 
     void set_view(OCView * ocview);
     //OCWindows * page_current;
-    QWidget * page_current; // ToFiX
+    //QWidget * page_current; // ToFiX
 
     void set_parent(OCDocument * ocdoc);
     void set_brother_next(OCDocument * ocdoc);

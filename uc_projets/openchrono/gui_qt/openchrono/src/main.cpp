@@ -42,7 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "ocview.h"
 
 #include "ocdocument_mainwin.h"
-//#include "ocdocument_engine.h"
+#include "ocdocument_engine.h"
 
 
 int main(int argc, char ** argv)
@@ -54,6 +54,7 @@ int main(int argc, char ** argv)
   Data myCurrentData;
 
   OCDocument_MainWin win;
+  OCDocument_Engine winEngine;
 
 
   // connection bouton StartStop page de test
@@ -64,6 +65,7 @@ int main(int argc, char ** argv)
 
 
   win.activate(); // ToDo
+  //winEngine.activate();
 
 
   // fenetre de test

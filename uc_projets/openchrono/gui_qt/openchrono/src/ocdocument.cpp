@@ -21,6 +21,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "keyboard.h"
 
+#include <iostream>
+
 OCDocument::OCDocument(void)
 {
   page_parent = NULL;
@@ -97,21 +99,27 @@ void OCDocument::KeyEvent(int keyname) //(QChar keyname)
   switch ( keyname )
     {
     case B_OK: // Ok
+      std::cout << "OK" << std::endl;
       activate_child_first();
       break;
     case B_CANCEL: // Cancel
+      std::cout << "CANCEL" << std::endl;
       activate_parent();
       break;
     case B_UP:
+      std::cout << "UP" << std::endl;
       //
       break;
     case B_DOWN:
+      std::cout << "DOWN" << std::endl;
       //
       break;
     case B_LEFT:
+      std::cout << "LEFT" << std::endl;
       activate_brother_previous();
       break;
     case B_RIGHT:
+      std::cout << "RIGHT" << std::endl;
       activate_brother_next();
       break;
     default:
