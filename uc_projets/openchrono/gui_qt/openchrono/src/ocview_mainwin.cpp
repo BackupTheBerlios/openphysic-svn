@@ -24,7 +24,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <cmath>
 
 #include "keyboard.h"
-#include "screen.h"
 
 //
 #include <QTimer>
@@ -33,17 +32,16 @@ OCView_MainWin::OCView_MainWin(OCDocument * ocdoc):OCView(ocdoc)
 {
   setWindowTitle("MainWin");
 
-  setupUi(this); //ui.setupUi(this);
+  setupUi(this);
 
-  //setGeometry(WIN_POS_X,WIN_POS_Y,WIN_WIDTH,WIN_HEIGHT);
 
   //test();
 
   //UpdateData();
 
   // update RPM
-  //GraphicRPM->setMaximum((int) document->data.vehicule.engine.rpm.max());
-  //GraphicRPM->setMinimum((int) document->data.vehicule.engine.rpm.min());
+  //GraphicRPM->setMaximum((int) document->m_data->vehicule.engine.rpm.max());
+  //GraphicRPM->setMinimum((int) document->m_data->vehicule.engine.rpm.min());
 
   //delete layout();
   //setLayout(vboxLayout);
@@ -78,8 +76,8 @@ void OCView_MainWin::test(void)
 
 void OCView_MainWin::showRPM(void)
 {
-  double rpm = document->data.vehicule.engine.rpm.value();
-  double rpmMax = document->data.vehicule.engine.rpm.max();
+  double rpm = document->m_data->vehicule.engine.rpm.value();
+  double rpmMax = document->m_data->vehicule.engine.rpm.max();
   int value;
 
   if ( rpm <= rpmMax )
@@ -109,39 +107,39 @@ void OCView_MainWin::showRPM(void)
 
 void OCView_MainWin::showT1(void)
 {
-  lblTemp1->setText(document->data.vehicule.engine.temperature_1.getStr());
+  lblTemp1->setText(document->m_data->vehicule.engine.temperature_1.getStr());
 }
 
 void OCView_MainWin::showT2(void)
 {
-  lblTemp2->setText(document->data.vehicule.engine.temperature_2.getStr());
+  lblTemp2->setText(document->m_data->vehicule.engine.temperature_2.getStr());
 }
 
 void OCView_MainWin::showCurrentLapTime(void)
 {
-  lblCurrLapTime->setText(document->data.chrono.getStrCurrentLapTime());
+  lblCurrLapTime->setText(document->m_data->chrono.getStrCurrentLapTime());
 }
 
 void OCView_MainWin::showLastLapTime(void)
 {
-  lblLastLapTime->setText(document->data.chrono.getStrLastLapTime());
+  lblLastLapTime->setText(document->m_data->chrono.getStrLastLapTime());
 }
 
 void OCView_MainWin::showBestLapTime(void)
 {
-  lblBestLapTime->setText(document->data.chrono.getStrBestLapTime());
+  lblBestLapTime->setText(document->m_data->chrono.getStrBestLapTime());
 }
 
 void OCView_MainWin::showLap(void)
 {
   QString strLap;
-  if ( document->data.track.laps() > 1 )
+  if ( document->m_data->track.laps() > 1 )
     {
-      strLap.sprintf("%d / %d", document->data.position.lap(), document->data.track.laps());
+      strLap.sprintf("%d / %d", document->m_data->position.lap(), document->m_data->track.laps());
     }
   else
     {
-      strLap.sprintf("%d", document->data.position.lap());
+      strLap.sprintf("%d", document->m_data->position.lap());
     }
   lblLap->setText(strLap);
 }
@@ -149,7 +147,7 @@ void OCView_MainWin::showLap(void)
 void OCView_MainWin::showEtap(void)
 {
   QString strEtap;
-  strEtap.sprintf("%d / %d",document->data.position.etap(),document->data.track.etaps());
+  strEtap.sprintf("%d / %d",document->m_data->position.etap(),document->m_data->track.etaps());
   lblEtap->setText(strEtap);
 }
 
