@@ -54,12 +54,12 @@ int main(int argc, char ** argv)
   Data myCurrentData;
 
 
-  OCDocument_MainWin winMain;
-  OCDocument_Engine winEngine;
+  OCDocument_MainWin winMain; //(&myCurrentData);
+  OCDocument_Engine winEngine; //(&myCurrentData);
 
 
-  winMain.set_data(&myCurrentData);
-  winEngine.set_data(&myCurrentData);
+  //winMain.set_data(&myCurrentData);
+  //winEngine.set_data(&myCurrentData);
 
 
   // connection bouton StartStop page de test

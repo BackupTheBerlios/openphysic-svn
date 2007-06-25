@@ -27,6 +27,11 @@ OCDocument_MainWin::OCDocument_MainWin()
   set_view(new OCView_MainWin(this));
 }
 
+OCDocument_MainWin::OCDocument_MainWin(Data * data)
+{
+  m_data = data;
+}
+
 OCDocument_MainWin::~OCDocument_MainWin()
 {
 }

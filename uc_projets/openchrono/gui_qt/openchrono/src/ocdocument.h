@@ -29,8 +29,9 @@ class OCDocument
   {
   public:
     OCDocument();
+    OCDocument(Data * data);
 
-    void set_data(Data * data);
+    //void set_data(Data * data);
 
     virtual ~OCDocument();
 

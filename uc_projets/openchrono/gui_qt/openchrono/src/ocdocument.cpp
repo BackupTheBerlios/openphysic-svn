@@ -22,9 +22,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <iostream>
 
-OCDocument::OCDocument(void)
+OCDocument::OCDocument()
 {
-  //std::cout << "OCDocument contructor" << std::endl;
+  std::cout << "OCDocument contructor" << std::endl;
 
   page_parent = NULL;
   page_brother_next = NULL;
@@ -34,10 +34,18 @@ OCDocument::OCDocument(void)
   m_data = NULL;
 }
 
+OCDocument::OCDocument(Data * data)
+{
+  std::cout << "OCDocument contructor with data" << std::endl;
+  m_data = data;
+}
+
+/*
 void OCDocument::set_data(Data * data)
 {
   m_data = data;
 }
+*/
 
 OCDocument::~OCDocument(void)
 {

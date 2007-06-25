@@ -35,7 +35,7 @@ OCView_MainWin::OCView_MainWin(OCDocument * ocdoc):OCView(ocdoc)
   setupUi(this);
 
 
-  //test();
+  test();
 
   //UpdateData();
 
@@ -56,7 +56,7 @@ OCView_MainWin::~OCView_MainWin()
 
 }
 
-/*
+
 void OCView_MainWin::test(void)
 {
   lblMessage->setText("XXXXXXXXXXXXXXXXXX");
@@ -74,6 +74,7 @@ void OCView_MainWin::test(void)
   lblTemp2->setText("XXXXX");
 }
 
+/*
 void OCView_MainWin::showRPM(void)
 {
   double rpm = document->m_data->vehicule.engine.rpm.value();

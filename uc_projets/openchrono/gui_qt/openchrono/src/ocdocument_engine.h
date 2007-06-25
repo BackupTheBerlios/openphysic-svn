@@ -27,6 +27,7 @@ class OCDocument_Engine : public OCDocument
   {
   public:
     OCDocument_Engine();
+    //OCDocument_Engine(Data * data);
 
     virtual ~OCDocument_Engine();
 
