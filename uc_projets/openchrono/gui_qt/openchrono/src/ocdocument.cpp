@@ -18,17 +18,25 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 #include "ocdocument.h"
-
-#include "keyboard.h"
+#include "screen.h"
 
 #include <iostream>
 
 OCDocument::OCDocument(void)
 {
+  //std::cout << "OCDocument contructor" << std::endl;
+
   page_parent = NULL;
   page_brother_next = NULL;
   page_brother_previous = NULL;
   page_child_first = NULL;
+
+  m_data = NULL;
+}
+
+void OCDocument::set_data(Data * data)
+{
+  m_data = data;
 }
 
 OCDocument::~OCDocument(void)
@@ -39,6 +47,7 @@ OCDocument::~OCDocument(void)
 void OCDocument::set_view(OCView * ocview)
 {
   view = ocview;
+  view->setGeometry(WIN_POS_X,WIN_POS_Y,WIN_WIDTH,WIN_HEIGHT);
 }
 
 
@@ -107,6 +116,7 @@ void OCDocument::activate_child_first(void)
 
 void OCDocument::activate(void)
 {
+  //view->setGeometry(WIN_POS_X,WIN_POS_Y,WIN_WIDTH,WIN_HEIGHT);
   view->show();
 }
 
@@ -116,39 +126,6 @@ void OCDocument::desactivate(void)
 }
 
 
-void OCDocument::KeyEvent(int keyname) //(QChar keyname)
-{
-  switch ( keyname )
-    {
-    case B_OK: // Ok
-      std::cout << "OK" << std::endl;
-      activate_child_first();
-      break;
-    case B_CANCEL: // Cancel
-      std::cout << "CANCEL" << std::endl;
-      activate_parent();
-      break;
-    case B_UP:
-      std::cout << "UP" << std::endl;
-      //
-      break;
-    case B_DOWN:
-      std::cout << "DOWN" << std::endl;
-      //
-      break;
-    case B_LEFT:
-      std::cout << "LEFT" << std::endl;
-      activate_brother_previous();
-      break;
-    case B_RIGHT:
-      std::cout << "RIGHT" << std::endl;
-      activate_brother_next();
-      break;
-    default:
-      //
-      break; // n'importe quelle autre touche
-    }
-}
 
 
 /*

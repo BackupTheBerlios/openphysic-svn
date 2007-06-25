@@ -20,6 +20,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "ocdocument_engine.h"
 
 #include "ocview_engine.h"
+#include "data.h"
 
 OCDocument_Engine::OCDocument_Engine()
 {

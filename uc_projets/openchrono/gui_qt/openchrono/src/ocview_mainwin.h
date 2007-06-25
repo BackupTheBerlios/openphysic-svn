@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 class OCDocument;
 
-class OCView_MainWin : public OCView //, public Ui::MainWin
+class OCView_MainWin : public OCView, public Ui::MainWin
   {
 //Q_OBJECT
 
@@ -39,7 +39,6 @@ class OCView_MainWin : public OCView //, public Ui::MainWin
 
     virtual ~OCView_MainWin();
 
-/*
     void test(void);
 
 
@@ -55,7 +54,7 @@ class OCView_MainWin : public OCView //, public Ui::MainWin
     void showBestLapTime(void);
     void showLap(void);
     void showEtap(void);
-*/
+
 
   };
 #endif

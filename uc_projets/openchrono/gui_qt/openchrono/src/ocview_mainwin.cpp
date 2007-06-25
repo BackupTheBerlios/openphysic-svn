@@ -24,6 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <cmath>
 
 #include "keyboard.h"
+#include "screen.h"
 
 //
 #include <QTimer>
@@ -32,9 +33,9 @@ OCView_MainWin::OCView_MainWin(OCDocument * ocdoc):OCView(ocdoc)
 {
   setWindowTitle("MainWin");
 
-  //setupUi(this); //ui.setupUi(this);
+  setupUi(this); //ui.setupUi(this);
 
-  //setGeometry(50,50,320,240);
+  //setGeometry(WIN_POS_X,WIN_POS_Y,WIN_WIDTH,WIN_HEIGHT);
 
   //test();
 

@@ -29,6 +29,9 @@ class OCDocument
   {
   public:
     OCDocument();
+
+    void set_data(Data * data);
+
     virtual ~OCDocument();
 
     void set_parent(OCDocument * ocdoc);
@@ -37,12 +40,15 @@ class OCDocument
     void set_child_first(OCDocument * ocdoc);
     void set_no_child(void);
 
-    virtual void KeyEvent(int keyname); //(QChar keyname);
-
     void activate(void);
 
+    void activate_parent(void);
+    void activate_brother_next(void);
+    void activate_brother_previous(void);
+    void activate_child_first(void);
 
-    //Data * data; // static ?
+
+    Data * m_data; // static ?
 
 
   protected:
@@ -52,11 +58,6 @@ class OCDocument
     OCDocument * page_brother_next;
     OCDocument * page_brother_previous;
     OCDocument * page_child_first;
-
-    void activate_parent(void);
-    void activate_brother_next(void);
-    void activate_brother_previous(void);
-    void activate_child_first(void);
 
     OCView * view;
 

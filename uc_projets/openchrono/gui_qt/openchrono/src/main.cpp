@@ -51,10 +51,15 @@ int main(int argc, char ** argv)
 
   QApplication::setStyle(new QPlastiqueStyle);
 
-  //Data myCurrentData;
+  Data myCurrentData;
+
 
   OCDocument_MainWin winMain;
   OCDocument_Engine winEngine;
+
+
+  winMain.set_data(&myCurrentData);
+  winEngine.set_data(&myCurrentData);
 
 
   // connection bouton StartStop page de test

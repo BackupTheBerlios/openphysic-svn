@@ -17,20 +17,12 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-#ifndef OCDOCUMENT_ENGINE_H
-#define OCDOCUMENT_ENGINE_H
+#ifndef SCREEN_H
+#define SCREEN_H
 
-#include "ocdocument.h"
+#define WIN_POS_X 0
+#define WIN_POS_Y 0
+#define WIN_WIDTH 320
+#define WIN_HEIGHT 240
 
-
-class OCDocument_Engine : public OCDocument
-  {
-  public:
-    OCDocument_Engine();
-
-    virtual ~OCDocument_Engine();
-
-  private:
-
-  };
 #endif

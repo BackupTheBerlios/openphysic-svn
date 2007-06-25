@@ -27,6 +27,7 @@ class OCDocument_MainWin : public OCDocument
   {
   public:
     OCDocument_MainWin();
+
     virtual ~OCDocument_MainWin();
 
   private:

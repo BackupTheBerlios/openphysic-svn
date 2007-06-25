@@ -20,6 +20,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "ocview.h"
 #include "ocdocument.h"
 
+#include "keyboard.h"
+#include "screen.h"
+
+
 OCView::OCView(void)
 {
   // contruct
@@ -40,7 +44,36 @@ OCView::~OCView(void)
 
 void OCView::keyPressEvent(QKeyEvent * event)
 {
-  document->KeyEvent(event->key());
+  switch ( event->key() )
+    {
+    case B_OK: // Ok
+      std::cout << "OK" << std::endl;
+      document->activate_child_first();
+      break;
+    case B_CANCEL: // Cancel
+      std::cout << "CANCEL" << std::endl;
+      document->activate_parent();
+      break;
+    case B_UP:
+      std::cout << "UP" << std::endl;
+      //
+      break;
+    case B_DOWN:
+      std::cout << "DOWN" << std::endl;
+      //
+      break;
+    case B_LEFT:
+      std::cout << "LEFT" << std::endl;
+      document->activate_brother_previous();
+      break;
+    case B_RIGHT:
+      std::cout << "RIGHT" << std::endl;
+      document->activate_brother_next();
+      break;
+    default:
+      //
+      break; // n'importe quelle autre touche
+    }
 }
 
 
