@@ -20,12 +20,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "messageimpl.h"
 //
 
-MessageImpl::MessageImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QDialog(parent, f)
+MessageImpl::MessageImpl( QWidget * parent, Qt::WFlags f ) : QDialog(parent, f)// , Data * data ) : QDialog(parent, f)
 {
   setupUi(this);
-  m_Data = data;
+  //m_Data = data;
 
-  setGeometry(400,320,320,240);
+  //setGeometry(400,320,320,240);
 
   QString str = QString("Press <b>Ok</b> to <i>enter</i> here.");
   str += ( QString("<br/>") + QString("Press <b>Cancel</b> to <i>quit</i>.") );

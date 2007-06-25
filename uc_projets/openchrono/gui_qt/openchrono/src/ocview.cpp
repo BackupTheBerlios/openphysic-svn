@@ -21,6 +21,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "ocdocument.h"
 
 #include "keyboard.h"
+#include "screen.h"
 
 
 OCView::OCView(void)
@@ -40,6 +41,11 @@ OCView::~OCView(void)
   // destruct
 }
 
+
+void OCView::init(void)
+{
+  setGeometry(WIN_POS_X,WIN_POS_Y,WIN_WIDTH,WIN_HEIGHT);
+}
 
 void OCView::keyPressEvent(QKeyEvent * event)
 {

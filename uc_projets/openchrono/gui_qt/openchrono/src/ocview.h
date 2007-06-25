@@ -33,6 +33,8 @@ class OCView : public QDialog
     OCView(OCDocument * ocdoc);
     virtual ~OCView();
 
+    void init(void);
+
   protected:
     OCDocument * document;
 

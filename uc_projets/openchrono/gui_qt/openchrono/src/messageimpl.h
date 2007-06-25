@@ -31,13 +31,13 @@ class MessageImpl : public QDialog, public Ui::frmMessage
     Q_OBJECT
 
   public:
-    MessageImpl( QWidget * parent = 0, Qt::WFlags f = 0, Data * data = 0 );
+    MessageImpl( QWidget * parent = 0, Qt::WFlags f = 0); //, Data * data = 0 );
 
   public slots:
     void setTitle(QString str);
     void setMessage(QString str);
 
-  private:
-    Data * m_Data;
+  //private:
+    //Data * m_Data;
   };
 #endif

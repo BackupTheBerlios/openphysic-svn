@@ -18,7 +18,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 #include "ocdocument.h"
-#include "screen.h"
 
 #include <iostream>
 
@@ -55,7 +54,7 @@ OCDocument::~OCDocument(void)
 void OCDocument::set_view(OCView * ocview)
 {
   view = ocview;
-  view->setGeometry(WIN_POS_X,WIN_POS_Y,WIN_WIDTH,WIN_HEIGHT);
+  //view->init();
 }
 
 
@@ -124,7 +123,7 @@ void OCDocument::activate_child_first(void)
 
 void OCDocument::activate(void)
 {
-  //view->setGeometry(WIN_POS_X,WIN_POS_Y,WIN_WIDTH,WIN_HEIGHT);
+  view->init();
   view->show();
 }
 

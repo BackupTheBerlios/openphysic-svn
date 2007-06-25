@@ -20,8 +20,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef SCREEN_H
 #define SCREEN_H
 
-#define WIN_POS_X 0
-#define WIN_POS_Y 0
+#define WIN_POS_X 100 //0
+#define WIN_POS_Y 100 //0
 #define WIN_WIDTH 320
 #define WIN_HEIGHT 240
 

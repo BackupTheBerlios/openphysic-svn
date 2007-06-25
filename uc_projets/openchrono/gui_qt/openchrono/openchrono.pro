@@ -26,7 +26,8 @@ HEADERS += src/chrono.h \
            src/rpm.h \
            src/temperature.h \
            src/track.h \
-           src/vehicule.h
+           src/vehicule.h \
+           src/messageimpl.h 
 FORMS += ui/about.ui ui/dialog.ui ui/mainwin.ui ui/message.ui ui/questions.ui ui/testwin.ui
 SOURCES += src/chrono.cpp \
            src/data.cpp \
@@ -45,4 +46,5 @@ SOURCES += src/chrono.cpp \
            src/rpm.cpp \
            src/temperature.cpp \
            src/track.cpp \
-           src/vehicule.cpp
+           src/vehicule.cpp \
+           src/messageimpl.cpp 
