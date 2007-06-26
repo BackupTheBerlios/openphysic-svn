@@ -64,21 +64,42 @@ void Track::setEtaps(const int etaps)
     }
 }
 
-QDomElement Track::to_node( QDomDocument &dom_doc )// , const Track &t )
+QDomNode Track::to_node( QDomDocument &dom_doc )// , const Track &t )
 {
-   QDomElement dom_elt = dom_doc.createElement( "track" );
+
+  QDomElement dom_elt = dom_doc.createElement( "track" );
+
+  QString strBuf;
+
+  dom_elt.setAttribute( "etaps", strBuf.setNum( etaps() ) );
+  dom_elt.setAttribute( "laps", strBuf.setNum( laps() ) );
+  dom_elt.setAttribute( "name", name() );
+
+  return dom_elt;
+
 
 /*
-   QDomElement cn = d.createElement( "contact" );
+  QDomDocument dom_elt;
 
-   cn.setAttribute( "name", c.name );
-   cn.setAttribute( "phone", c.phone );
-   cn.setAttribute( "email", c.eMail );
+  QDomElement name = dom_elt.createElement("name");
+  //  QDomText _name = dom_elt.createTextNode( name() );
+  //QDomElement etaps = dom_elt.createElement("etaps");
+  //  QDomText _etaps = dom_elt.createTextNode( strBuf.setNum( etaps() ) );
+  //QDomElement laps = dom_elt.createElement("laps");
+  //  QDomText _laps = dom_elt.createTextNode( strBuf.setNum( laps() ) );
 
-   return tn;
+  track.appendChild(name);
+    name.appendChild(_name);
+  track.appendChild(laps);
+    laps.appendChild(_laps);
+  track.appendChild(etaps);
+    etaps.appendChild(_etaps);
+
+  return dom_elt;
 */
 
-   return dom_elt;
+
+
 }
 
 

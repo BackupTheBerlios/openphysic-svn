@@ -157,34 +157,13 @@ void Data::save(void)
 
   QDomElement root = doc.createElement("ocdata"); // racine
 
-    QString strBuf;
-
-    QDomElement track = doc.createElement("track");
-/*
-      QDomElement name = doc.createElement("name");
-        QDomText _name = doc.createTextNode(this->track.name());
-      QDomElement etaps = doc.createElement("etaps");
-        QDomText _etaps = doc.createTextNode( strBuf.setNum(this->track.etaps()) );
-      QDomElement laps = doc.createElement("laps");
-        QDomText _laps = doc.createTextNode( strBuf.setNum(this->track.laps()) );
-*/
-
     QDomElement position = doc.createElement("position");
     QDomElement vehicule = doc.createElement("vehicule");
     QDomElement chrono = doc.createElement("chrono");
 
 
   doc.appendChild(root);
-    root.appendChild(track);
-/*
-      track.appendChild(name);
-        name.appendChild(_name);
-      track.appendChild(laps);
-        laps.appendChild(_laps);
-      track.appendChild(etaps);
-        etaps.appendChild(_etaps);
-*/
-
+    root.appendChild(this->track.to_node(doc));
     root.appendChild(position);
     root.appendChild(vehicule);
     root.appendChild(chrono);
