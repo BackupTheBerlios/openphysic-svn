@@ -143,17 +143,31 @@ void Data::save(void)
     std::cerr << " Error : Can't save !" << std::endl;
   }
 
-  QDomDocument doc("OpenChronoML"); // DTD
+  QDomImplementation impl = QDomDocument().implementation();
+
+  QString name_ml = "OpenChronoML";
+  QString publicId = "-//CELLES//DTD OpenChrono 0.1 //EN";
+  QString systemId = "http://www.celles.net/dtd/openchrono.dtd";
+  QDomDocument doc(impl.createDocumentType(name_ml,publicId,systemId));
+  // add some XML comment at the beginning
+  doc.appendChild(doc.createComment("This file describe data for OpenChrono a chronometer for mechanical sports"));
+  doc.appendChild(doc.createTextNode("\n")); // for nicer output
+  doc.appendChild(doc.createComment("http://www.celles.net/wikini/wakka.php?wiki=OpenChrono"));
+  doc.appendChild(doc.createTextNode("\n")); // for nicer output
 
   QDomElement root = doc.createElement("ocdata"); // racine
 
+    QString strBuf;
+
     QDomElement track = doc.createElement("track");
+/*
       QDomElement name = doc.createElement("name");
         QDomText _name = doc.createTextNode(this->track.name());
       QDomElement etaps = doc.createElement("etaps");
-        //QDomText _etaps = doc.createTextNode(this->track.etaps());
+        QDomText _etaps = doc.createTextNode( strBuf.setNum(this->track.etaps()) );
       QDomElement laps = doc.createElement("laps");
-        //QDomText _laps = doc.createTextNode(this->track.laps());
+        QDomText _laps = doc.createTextNode( strBuf.setNum(this->track.laps()) );
+*/
 
     QDomElement position = doc.createElement("position");
     QDomElement vehicule = doc.createElement("vehicule");
@@ -162,10 +176,14 @@ void Data::save(void)
 
   doc.appendChild(root);
     root.appendChild(track);
+/*
       track.appendChild(name);
         name.appendChild(_name);
       track.appendChild(laps);
+        laps.appendChild(_laps);
       track.appendChild(etaps);
+        etaps.appendChild(_etaps);
+*/
 
     root.appendChild(position);
     root.appendChild(vehicule);

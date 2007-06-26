@@ -64,3 +64,22 @@ void Track::setEtaps(const int etaps)
     }
 }
 
+QDomElement Track::to_node( QDomDocument &dom_doc )// , const Track &t )
+{
+   QDomElement dom_elt = dom_doc.createElement( "track" );
+
+/*
+   QDomElement cn = d.createElement( "contact" );
+
+   cn.setAttribute( "name", c.name );
+   cn.setAttribute( "phone", c.phone );
+   cn.setAttribute( "email", c.eMail );
+
+   return tn;
+*/
+
+   return dom_elt;
+}
+
+
+

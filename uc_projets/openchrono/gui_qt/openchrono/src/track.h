@@ -23,6 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 #include <QObject>
 #include <QString>
+#include <QDomDocument>
 //
 
 class Track : public QObject
@@ -40,6 +41,9 @@ class Track : public QObject
 
     int etaps(void) const;
     void setEtaps(const int etaps);
+
+    //QDomElement TrackToNode( QDomDocument &d, const Track &t );
+    QDomElement to_node( QDomDocument &d );
 
   private:
     QString m_name;
