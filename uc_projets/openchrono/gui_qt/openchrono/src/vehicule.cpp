@@ -35,3 +35,19 @@ void Vehicule::setName(const QString name)
   m_name = name;
 }
 
+QDomElement Vehicule::to_node( QDomDocument &dom_doc )
+{
+  // Using attributes
+
+  QDomElement dom_elt = dom_doc.createElement( "vehicule" );
+
+  //QString strBuf;
+
+  dom_elt.setAttribute( "name", name() );
+
+  dom_elt.appendChild( engine.to_node(dom_doc) );
+
+
+  return dom_elt;
+}
+

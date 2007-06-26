@@ -64,8 +64,11 @@ void Track::setEtaps(const int etaps)
     }
 }
 
-QDomNode Track::to_node( QDomDocument &dom_doc )// , const Track &t )
+QDomElement Track::to_node( QDomDocument &dom_doc )// , const Track &t )
 {
+
+
+  // Using attributes
 
   QDomElement dom_elt = dom_doc.createElement( "track" );
 
@@ -78,22 +81,30 @@ QDomNode Track::to_node( QDomDocument &dom_doc )// , const Track &t )
   return dom_elt;
 
 
+
 /*
-  QDomDocument dom_elt;
+  // Using QDomElement and QDomText
+ 
+  QDomElement dom_elt = dom_doc.createElement( "track" );
+  QString strBuf;
+  strBuf = "test";
 
-  QDomElement name = dom_elt.createElement("name");
-  //  QDomText _name = dom_elt.createTextNode( name() );
-  //QDomElement etaps = dom_elt.createElement("etaps");
-  //  QDomText _etaps = dom_elt.createTextNode( strBuf.setNum( etaps() ) );
-  //QDomElement laps = dom_elt.createElement("laps");
-  //  QDomText _laps = dom_elt.createTextNode( strBuf.setNum( laps() ) );
+  QDomElement name = dom_doc.createElement("name");
+    //QDomText _name = dom_doc.createTextNode( "A track" );
+    //QDomText _name = dom_doc.createTextNode( name() );
+    //strBuf = name();
+    QDomText _name = dom_doc.createTextNode( strBuf );
+  QDomElement etaps = dom_doc.createElement("etaps");
+  //  QDomText _etaps = dom_doc.createTextNode( strBuf.setNum( etaps() ) );
+  QDomElement laps = dom_doc.createElement("laps");
+  //  QDomText _laps = dom_doc.createTextNode( strBuf.setNum( laps() ) );
 
-  track.appendChild(name);
+  dom_elt.appendChild(name);
     name.appendChild(_name);
-  track.appendChild(laps);
-    laps.appendChild(_laps);
-  track.appendChild(etaps);
-    etaps.appendChild(_etaps);
+  dom_elt.appendChild(laps);
+  //  laps.appendChild(_laps);
+  dom_elt.appendChild(etaps);
+  //  etaps.appendChild(_etaps);
 
   return dom_elt;
 */

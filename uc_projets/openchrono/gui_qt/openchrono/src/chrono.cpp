@@ -245,4 +245,18 @@ void Chrono::update_last_and_best_lap_time(void)
 http://www.haypocalc.com/wiki/Temps
 */
 
+QDomElement Chrono::to_node( QDomDocument &dom_doc )
+{
+  QDomElement dom_elt = dom_doc.createElement( "chrono" );
+
+/*
+  QString strBuf;
+  dom_elt.setAttribute( "valueDegreeC", strBuf.setNum( m_T ) );
+*/
+
+  return dom_elt;
+}
+
+
+
 

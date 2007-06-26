@@ -23,6 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 #include <QString>
 #include <QObject>
+#include <QtXml>
 //
 
 #include <sys/time.h>
@@ -63,6 +64,8 @@ class Chrono : public QObject
     QString getStrCurrentLapTime(void);
     QString getStrLastLapTime(void);
     QString getStrBestLapTime(void);
+
+    QDomElement to_node( QDomDocument &dom_doc );
 
 
 

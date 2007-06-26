@@ -23,6 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 #include <QString>
 #include <QObject>
+#include <QtXml>
 //
 
 #include "engine.h"
@@ -38,6 +39,8 @@ class Vehicule : public QObject
     void setName(const QString name);
 
     Engine engine;
+
+    QDomElement to_node( QDomDocument &dom_doc );
 
   private:
     QString m_name;

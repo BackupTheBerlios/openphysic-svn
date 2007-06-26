@@ -89,5 +89,16 @@ QString Temperature::getStrFahrenheit(void) const
 }
 */
 
+QDomElement Temperature::to_node( QDomDocument &dom_doc )
+{
+  QDomElement dom_elt = dom_doc.createElement( "temperature" );
+
+  QString strBuf;
+
+  dom_elt.setAttribute( "valueDegreeC", strBuf.setNum( m_T ) );
+
+  return dom_elt;
+}
+
 
 

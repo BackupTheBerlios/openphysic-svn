@@ -22,6 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 #include <QObject>
 #include <QString>
+#include <QtXml>
 //
 
 
@@ -51,6 +52,8 @@ class Temperature : public QObject
     QString getStr(void) const;
     QString getStrCelsius(void) const;
 //    QString getStrFahrenheit(void) const;
+
+    QDomElement to_node( QDomDocument &dom_doc );
 
   private:
     double m_T;

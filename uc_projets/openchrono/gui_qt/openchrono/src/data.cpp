@@ -157,16 +157,11 @@ void Data::save(void)
 
   QDomElement root = doc.createElement("ocdata"); // racine
 
-    QDomElement position = doc.createElement("position");
-    QDomElement vehicule = doc.createElement("vehicule");
-    QDomElement chrono = doc.createElement("chrono");
-
-
   doc.appendChild(root);
-    root.appendChild(this->track.to_node(doc));
-    root.appendChild(position);
-    root.appendChild(vehicule);
-    root.appendChild(chrono);
+    root.appendChild( track.to_node(doc) );
+    root.appendChild( position.to_node(doc) );
+    root.appendChild( vehicule.to_node(doc) );
+    root.appendChild( chrono.to_node(doc) );
 
 
   QTextStream ts( &file );

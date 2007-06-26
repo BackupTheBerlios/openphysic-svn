@@ -22,6 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 //
 #include <QObject>
+#include <QtXml>
 //
 
 class Position : public QObject
@@ -40,6 +41,8 @@ class Position : public QObject
     void setEtap(const int etap);
     void clearEtap(void);
     void newEtap(void);
+
+    QDomElement to_node( QDomDocument &dom_doc );
 
   private:
     int m_etap;

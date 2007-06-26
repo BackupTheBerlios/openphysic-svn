@@ -23,6 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 #include <QObject>
 #include <QString>
+#include <QtXml>
 //
 #include "rpm.h"
 #include "temperature.h"
@@ -52,6 +53,7 @@ class Engine : public QObject
     Temperature temperature_1;
     Temperature temperature_2;
 
+    QDomElement to_node( QDomDocument &dom_doc );
 
 
   private:

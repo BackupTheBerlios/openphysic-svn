@@ -82,3 +82,22 @@ int Engine::rpm_factor(void)
     }
 }
 
+QDomElement Engine::to_node( QDomDocument &dom_doc )
+{
+  QDomElement dom_elt = dom_doc.createElement( "engine" );
+
+  QString strBuf;
+
+  dom_elt.setAttribute( "name", name() );
+  dom_elt.setAttribute( "strokes", strBuf.setNum( strokes() ) );
+
+  dom_elt.appendChild( rpm.to_node(dom_doc) );
+
+  QDomElement dom_temperatures = dom_doc.createElement( "temperatures" );
+  dom_temperatures.appendChild( temperature_1.to_node(dom_doc) );
+  dom_temperatures.appendChild( temperature_2.to_node(dom_doc) );
+  dom_elt.appendChild(dom_temperatures);
+
+  return dom_elt;
+}
+

@@ -43,7 +43,7 @@ class Track : public QObject
     void setEtaps(const int etaps);
 
     //QDomElement TrackToNode( QDomDocument &d, const Track &t );
-    QDomNode to_node( QDomDocument &d );
+    QDomElement to_node( QDomDocument &d );
 
   private:
     QString m_name;
