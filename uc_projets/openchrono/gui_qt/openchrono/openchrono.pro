@@ -3,6 +3,7 @@
 ######################################################################
 
 TEMPLATE = app
+QT += xml
 TARGET = 
 DEPENDPATH += . build src ui
 INCLUDEPATH += . src build

@@ -19,6 +19,10 @@
 
 #include "data.h"
 //
+#include <QFile>
+#include <QDir>
+#include <QTextStream>
+#include <QDomDocument>
 
 
 Data::Data(  )
@@ -39,8 +43,15 @@ Data::Data(  )
   connect(this, SIGNAL( race_is_over() ),
           this, SLOT( on_race_over() ) );
 
-
+  load();
 }
+
+/*
+Data::~Data(  )
+{
+  save();
+}
+*/
 
 void Data::start(void)
 {
@@ -113,6 +124,61 @@ void Data::on_last_lap(void)
 void Data::on_race_over(void)
 {
   std::cout << "Race over" << std::endl;
+}
+
+void Data::load(void)
+{
+  std::cout << "Loading data" << std::endl;
+  std::cout << " ToDo" << std::endl;
+}
+
+void Data::save(void)
+{
+  std::cout << "Saving data" << std::endl;
+
+  QFile file( OC_CFG_FILE );
+  QDir::setCurrent( OC_CFG_DIR );
+  
+  if( !file.open( QIODevice::WriteOnly ) ) {
+    std::cerr << " Error : Can't save !" << std::endl;
+  }
+
+  QDomDocument doc("OpenChronoML"); // DTD
+
+  QDomElement root = doc.createElement("ocdata"); // racine
+
+    QDomElement track = doc.createElement("track");
+      QDomElement name = doc.createElement("name");
+        QDomText _name = doc.createTextNode(this->track.name());
+      QDomElement etaps = doc.createElement("etaps");
+        //QDomText _etaps = doc.createTextNode(this->track.etaps());
+      QDomElement laps = doc.createElement("laps");
+        //QDomText _laps = doc.createTextNode(this->track.laps());
+
+    QDomElement position = doc.createElement("position");
+    QDomElement vehicule = doc.createElement("vehicule");
+    QDomElement chrono = doc.createElement("chrono");
+
+
+  doc.appendChild(root);
+    root.appendChild(track);
+      track.appendChild(name);
+        name.appendChild(_name);
+      track.appendChild(laps);
+      track.appendChild(etaps);
+
+    root.appendChild(position);
+    root.appendChild(vehicule);
+    root.appendChild(chrono);
+
+
+  QTextStream ts( &file );
+  ts << doc.toString();
+  //std::cout << doc.toString();
+
+  file.close();
+
+  std::cout << " Data saved" << std::endl;
 }
 
 //

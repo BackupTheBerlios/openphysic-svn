@@ -69,6 +69,10 @@ class Data : public QObject
     void on_last_lap(void);
     void on_race_over(void);
 
+    void save(void);
+    void load(void);
+
+
   signals:
     void starting_first_lap(void);
     void is_new_etap(void);
@@ -79,4 +83,9 @@ class Data : public QObject
   private:
 
   };
+
+#define OC_CFG_FILE "openchrono.xml"
+#define OC_CFG_DIR QDir::homePath()
+
+
 #endif

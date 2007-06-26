@@ -52,6 +52,7 @@ int main(int argc, char ** argv)
   QApplication::setStyle(new QPlastiqueStyle);
 
   Data myCurrentData;
+  //myCurrentData.load();
 
 
   OCDocument_MainWin winMain; //(&myCurrentData);
@@ -87,5 +88,10 @@ int main(int argc, char ** argv)
 
   app.connect( &app, SIGNAL( lastWindowClosed() ), &app, SLOT( quit() ) );
 
-  return app.exec();
+  int exit;
+  exit = app.exec();
+
+  myCurrentData.save();
+
+  return exit;
 }
