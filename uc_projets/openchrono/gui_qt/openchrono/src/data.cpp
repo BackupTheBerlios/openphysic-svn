@@ -213,9 +213,11 @@ void Data::load(void)
       }
       else if (element.tagName() == "vehicule") {
         std::cout << "  " << "Parsing " << qPrintable(element.tagName()) << std::endl;
+        // ToDo
       }
       else if (element.tagName() == "chrono") {
         std::cout << "  " << "Parsing " << qPrintable(element.tagName()) << std::endl;
+        // ToDo
       }
       else {
         QString strErr = QObject::tr("Error: Undefined element tagName");
