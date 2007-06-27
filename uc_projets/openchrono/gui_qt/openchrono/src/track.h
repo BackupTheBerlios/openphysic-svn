@@ -44,6 +44,7 @@ class Track : public QObject
 
     //QDomElement TrackToNode( QDomDocument &d, const Track &t );
     QDomElement to_node( QDomDocument &d );
+    //void parse(const QDomElement &element, Track &track);
 
   private:
     QString m_name;

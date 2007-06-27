@@ -136,12 +136,17 @@ void Data::load(void)
 
   if( !file.open( QIODevice::ReadOnly ) )
     {
-      std::cerr << " Error : Can't open !" << std::endl;
+      QString strErr = QObject::tr("Error: Can't open config file !");
+      std::cerr << " " << qPrintable(strErr) << std::endl;
+      QMessageBox::warning(0,
+                           QObject::tr("Loading config file"),
+                           strErr
+                          );
       file.close();
       return;
     }
 
-  std::cout << " Loading..." << std::endl;
+  std::cout << " " << "Loading..." << std::endl;
   //std::cout << " ToDo" << std::endl;
 
   /* validating document using dtd : not possible easily using Qt4 */
@@ -155,13 +160,15 @@ void Data::load(void)
   /* looking for malformed xml file */
   if( !doc.setContent( &file, true, &errorStr, &errorLine, &errorColumn ) )
     {
-      QMessageBox::warning(0,
-                           QObject::tr("DOM Parser"),
-                           QObject::tr("Parse error at line %1, "
+      QString strErr = QObject::tr("Parse error at line %1, "
                                        "column %2:\n%3")
                            .arg(errorLine)
                            .arg(errorColumn)
-                           .arg(errorStr)
+                           .arg(errorStr);
+      std::cerr << " " << qPrintable(strErr) << std::endl;
+      QMessageBox::warning(0,
+                           QObject::tr("DOM Parser"),
+                           strErr
                           );
       file.close();
       return;
@@ -173,9 +180,11 @@ void Data::load(void)
   //std::cout << "root = " << qPrintable(root.tagName()) << std::endl;
   if (root.tagName() != "ocdata")
     {
+      QString strErr = QObject::tr("Document should begin with <ocdata> and stop with </ocdata>");
+      std::cerr << " " << qPrintable(strErr) << std::endl;
       QMessageBox::warning(0,
                            QObject::tr("DOM Parser"),
-                           QObject::tr("Document should begin with <ocdata> and stop with </ocdata>")
+                           strErr
                           );
 
       file.close();
@@ -183,16 +192,43 @@ void Data::load(void)
     }
 
   /* parsing file */
-  /*
+ 
     QDomNode node = root.firstChild();
     while ( !node.isNull() ) {
-      if (node.toElement().tagname() = "entry") {
-        parseEntry(node.toElement(), 0);
+      QDomElement element = node.toElement();
+
+      if (element.tagName() == "track") {
+        //Track::parse(node.toElement(), this->track);
+        std::cout << "  " << "Parsing " << qPrintable(element.tagName()) << std::endl;
+        
+        //std::cout << "laps=" << qPrintable(element.attribute("laps")) << std::endl;
+        this->track.setLaps(element.attribute("laps").toInt());
+        this->track.setEtaps(element.attribute("etaps").toInt());
+        this->track.setName(element.attribute("etaps"));
       }
+      else if (element.tagName() == "position") {
+        std::cout << "  " << "Parsing " << qPrintable(element.tagName()) << std::endl;
+        this->position.setLap(element.attribute("lap").toInt());
+        this->position.setEtap(element.attribute("etap").toInt());
+      }
+      else if (element.tagName() == "vehicule") {
+        std::cout << "  " << "Parsing " << qPrintable(element.tagName()) << std::endl;
+      }
+      else if (element.tagName() == "chrono") {
+        std::cout << "  " << "Parsing " << qPrintable(element.tagName()) << std::endl;
+      }
+      else {
+        QString strErr = QObject::tr("Error: Undefined element tagName");
+        std::cerr << " " << qPrintable(strErr) << std::endl;
+        QMessageBox::warning(0,
+                             QObject::tr("DOM Parser"),
+                             strErr
+                            );
+      }
+
       node = node.nextSibling(); 
     }
-  */
-
+ 
   file.close();
 
   std::cout << " Data loaded" << std::endl;
@@ -207,18 +243,23 @@ void Data::save(void)
 
   if( !file.open( QIODevice::WriteOnly ) )
     {
-      std::cerr << " Error : Can't save !" << std::endl;
+      QString strErr = QObject::tr("Error: Can't save config file !");
+      std::cerr << " " << qPrintable(strErr) << std::endl;
+      QMessageBox::warning(0,
+                           QObject::tr("Saving config file"),
+                           strErr
+                          );
       file.close();
       return;
     }
 
-  std::cout << " Saving..." << std::endl;
+  std::cout << " " << "Saving..." << std::endl;
 
   QDomImplementation impl = QDomDocument().implementation();
 
   QString name_ml = "OpenChronoML";
   QString publicId = "-//CELLES//DTD OpenChrono 0.1 //EN";
-  QString systemId = "http://www.celles.net/dtd/openchrono.dtd";
+  QString systemId = "http://www.celles.net/dtd/openchrono/openchrono_data-0_1.dtd";
   QDomDocument doc(impl.createDocumentType(name_ml,publicId,systemId));
   // add some XML comment at the beginning
   doc.appendChild(doc.createComment("This file describe data for OpenChrono a chronometer for mechanical sports"));
@@ -240,7 +281,7 @@ void Data::save(void)
 
   file.close();
 
-  std::cout << " Data saved" << std::endl;
+  std::cout << " " << "Data saved" << std::endl;
 }
 
 //

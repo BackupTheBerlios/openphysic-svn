@@ -64,10 +64,8 @@ void Track::setEtaps(const int etaps)
     }
 }
 
-QDomElement Track::to_node( QDomDocument &dom_doc )// , const Track &t )
+QDomElement Track::to_node( QDomDocument &dom_doc )
 {
-
-
   // Using attributes
 
   QDomElement dom_elt = dom_doc.createElement( "track" );
@@ -79,7 +77,6 @@ QDomElement Track::to_node( QDomDocument &dom_doc )// , const Track &t )
   dom_elt.setAttribute( "name", name() );
 
   return dom_elt;
-
 
 
   /*
@@ -108,10 +105,13 @@ QDomElement Track::to_node( QDomDocument &dom_doc )// , const Track &t )
    
     return dom_elt;
   */
-
-
-
 }
 
 
+/*
+void Track::parse(const QDomElement &element, Track &track)
+{
+
+}
+*/
 
