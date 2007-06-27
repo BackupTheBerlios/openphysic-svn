@@ -89,34 +89,38 @@ void OCDocument::set_no_child(void)
 
 void OCDocument::activate_parent(void)
 {
-  if (page_parent != this) {
-    page_parent->activate();
-    this->desactivate();
-  }
+  if (page_parent != this)
+    {
+      page_parent->activate();
+      this->desactivate();
+    }
 }
 
 void OCDocument::activate_brother_next(void)
 {
-  if (page_brother_next != this) {
-    page_brother_next->activate();
-    this->desactivate();
-  }
+  if (page_brother_next != this)
+    {
+      page_brother_next->activate();
+      this->desactivate();
+    }
 }
 
 void OCDocument::activate_brother_previous(void)
 {
-  if (page_brother_previous != this) {
-    page_brother_previous->activate();
-    this->desactivate();
-  }
+  if (page_brother_previous != this)
+    {
+      page_brother_previous->activate();
+      this->desactivate();
+    }
 }
 
 void OCDocument::activate_child_first(void)
 {
-  if (page_child_first != this) {
-    page_child_first->activate();
-    this->desactivate();
-  }
+  if (page_child_first != this)
+    {
+      page_child_first->activate();
+      this->desactivate();
+    }
 }
 
 

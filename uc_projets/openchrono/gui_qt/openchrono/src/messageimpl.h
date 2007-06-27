@@ -37,7 +37,7 @@ class MessageImpl : public QDialog, public Ui::frmMessage
     void setTitle(QString str);
     void setMessage(QString str);
 
-  //private:
+    //private:
     //Data * m_Data;
   };
 #endif

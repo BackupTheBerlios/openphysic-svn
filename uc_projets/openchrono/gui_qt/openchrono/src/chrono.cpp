@@ -249,10 +249,10 @@ QDomElement Chrono::to_node( QDomDocument &dom_doc )
 {
   QDomElement dom_elt = dom_doc.createElement( "chrono" );
 
-/*
-  QString strBuf;
-  dom_elt.setAttribute( "valueDegreeC", strBuf.setNum( m_T ) );
-*/
+  /*
+    QString strBuf;
+    dom_elt.setAttribute( "valueDegreeC", strBuf.setNum( m_T ) );
+  */
 
   return dom_elt;
 }

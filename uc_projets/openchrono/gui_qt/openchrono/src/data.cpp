@@ -22,8 +22,9 @@
 #include <QFile>
 #include <QDir>
 #include <QTextStream>
-#include <QDomDocument>
-
+//#include <QDomDocument>
+#include <QtXml>
+#include <QMessageBox>
 
 Data::Data(  )
 {
@@ -129,7 +130,72 @@ void Data::on_race_over(void)
 void Data::load(void)
 {
   std::cout << "Loading data" << std::endl;
-  std::cout << " ToDo" << std::endl;
+
+  QFile file( OC_CFG_FILE );
+  QDir::setCurrent( OC_CFG_DIR );
+
+  if( !file.open( QIODevice::ReadOnly ) )
+    {
+      std::cerr << " Error : Can't open !" << std::endl;
+      file.close();
+      return;
+    }
+
+  std::cout << " Loading..." << std::endl;
+  //std::cout << " ToDo" << std::endl;
+
+  /* validating document using dtd : not possible easily using Qt4 */
+
+  /* En test */
+  QDomDocument doc;
+  QString errorStr;
+  int errorLine;
+  int errorColumn;
+
+  /* looking for malformed xml file */
+  if( !doc.setContent( &file, true, &errorStr, &errorLine, &errorColumn ) )
+    {
+      QMessageBox::warning(0,
+                           QObject::tr("DOM Parser"),
+                           QObject::tr("Parse error at line %1, "
+                                       "column %2:\n%3")
+                           .arg(errorLine)
+                           .arg(errorColumn)
+                           .arg(errorStr)
+                          );
+      file.close();
+      return;
+    }
+
+  QDomElement root = doc.documentElement();
+
+  /* looking for the root name 'ocdata' */
+  //std::cout << "root = " << qPrintable(root.tagName()) << std::endl;
+  if (root.tagName() != "ocdata")
+    {
+      QMessageBox::warning(0,
+                           QObject::tr("DOM Parser"),
+                           QObject::tr("Document should begin with <ocdata> and stop with </ocdata>")
+                          );
+
+      file.close();
+      return;
+    }
+
+  /* parsing file */
+  /*
+    QDomNode node = root.firstChild();
+    while ( !node.isNull() ) {
+      if (node.toElement().tagname() = "entry") {
+        parseEntry(node.toElement(), 0);
+      }
+      node = node.nextSibling(); 
+    }
+  */
+
+  file.close();
+
+  std::cout << " Data loaded" << std::endl;
 }
 
 void Data::save(void)
@@ -138,10 +204,15 @@ void Data::save(void)
 
   QFile file( OC_CFG_FILE );
   QDir::setCurrent( OC_CFG_DIR );
-  
-  if( !file.open( QIODevice::WriteOnly ) ) {
-    std::cerr << " Error : Can't save !" << std::endl;
-  }
+
+  if( !file.open( QIODevice::WriteOnly ) )
+    {
+      std::cerr << " Error : Can't save !" << std::endl;
+      file.close();
+      return;
+    }
+
+  std::cout << " Saving..." << std::endl;
 
   QDomImplementation impl = QDomDocument().implementation();
 
@@ -158,11 +229,10 @@ void Data::save(void)
   QDomElement root = doc.createElement("ocdata"); // racine
 
   doc.appendChild(root);
-    root.appendChild( track.to_node(doc) );
-    root.appendChild( position.to_node(doc) );
-    root.appendChild( vehicule.to_node(doc) );
-    root.appendChild( chrono.to_node(doc) );
-
+  root.appendChild( track.to_node(doc) );
+  root.appendChild( position.to_node(doc) );
+  root.appendChild( vehicule.to_node(doc) );
+  root.appendChild( chrono.to_node(doc) );
 
   QTextStream ts( &file );
   ts << doc.toString();

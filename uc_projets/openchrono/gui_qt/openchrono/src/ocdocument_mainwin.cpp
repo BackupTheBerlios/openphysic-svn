@@ -33,6 +33,5 @@ OCDocument_MainWin::OCDocument_MainWin(Data * data)
 }
 
 OCDocument_MainWin::~OCDocument_MainWin()
-{
-}
+{}
 
