@@ -136,7 +136,12 @@ void Data::load(void)
 
   if( !file.open( QIODevice::ReadOnly ) )
     {
-      QString strErr = QObject::tr("Error: Can't open config file !");
+      QString strErr = QObject::tr("Error: Can't open config file !\n"
+        "This is probably the first time\n"
+        "you run this application.\n"
+        "So just click ok.\n"
+        "Next time, this message shouldn't appear.\n"
+      );
       std::cerr << " " << qPrintable(strErr) << std::endl;
       QMessageBox::warning(0,
                            QObject::tr("Loading config file"),
