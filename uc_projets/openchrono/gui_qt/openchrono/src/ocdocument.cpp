@@ -138,7 +138,9 @@ void OCDocument::activate(void)
 
 void OCDocument::desactivate(void)
 {
-  view->hide();
+  if (NULL != view) {
+    view->hide();
+  }
 }
 
 

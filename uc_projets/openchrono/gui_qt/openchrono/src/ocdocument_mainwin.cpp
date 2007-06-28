@@ -22,19 +22,24 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "ocview_mainwin.h"
 #include "data.h"
 
+/*
 OCDocument_MainWin::OCDocument_MainWin()
 {
   set_view(new OCView_MainWin(this));
 }
+*/
 
 OCDocument_MainWin::OCDocument_MainWin(Data * data)
 {
 //  m_data = data;
-  OCDocument_MainWin();
+  //OCDocument_MainWin();
+  set_view(new OCView_MainWin(this));
 }
 
 OCDocument_MainWin::OCDocument_MainWin(int x)
 {
+  //OCDocument_MainWin();
+  set_view(new OCView_MainWin(this));
 }
 
 OCDocument_MainWin::~OCDocument_MainWin()
