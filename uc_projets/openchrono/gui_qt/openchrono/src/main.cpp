@@ -65,6 +65,7 @@ int main(int argc, char ** argv)
   OCDocument_Engine winEngine; //(&myCurrentData);
 
 
+
   //winMain.set_data(&myCurrentData);
   //winEngine.set_data(&myCurrentData);
 
@@ -84,10 +85,12 @@ int main(int argc, char ** argv)
   winEngine.set_brother_previous(&winMain);
   winEngine.set_no_child();
 
+  std::cout << "test2" << std::endl;
 
 
   winMain.activate();
 
+  std::cout << "test3" << std::endl;
 
   // fenetre de test
   //winTest.show();

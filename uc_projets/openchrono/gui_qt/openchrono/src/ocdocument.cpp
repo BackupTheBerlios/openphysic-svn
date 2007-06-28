@@ -25,18 +25,21 @@ OCDocument::OCDocument()
 {
   std::cout << "OCDocument contructor" << std::endl;
 
+  set_view(NULL);
+
   page_parent = NULL;
   page_brother_next = NULL;
   page_brother_previous = NULL;
   page_child_first = NULL;
 
-  m_data = NULL;
+  //m_data = NULL;
 }
 
 OCDocument::OCDocument(Data * data)
 {
-//  std::cout << "OCDocument contructor with data" << std::endl;
-  m_data = data;
+  std::cout << "OCDocument contructor with data" << std::endl;
+  //m_data = data;
+  //OCDocument();
 }
 
 /*
@@ -127,8 +130,10 @@ void OCDocument::activate_child_first(void)
 
 void OCDocument::activate(void)
 {
-  view->init();
-  view->show();
+  if (NULL != view) {
+    view->init();
+    view->show();
+  }
 }
 
 void OCDocument::desactivate(void)
