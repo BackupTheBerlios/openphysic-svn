@@ -42,3 +42,4 @@ class TestWinImpl : public QDialog, public Ui::TestWin
 
   };
 #endif
+

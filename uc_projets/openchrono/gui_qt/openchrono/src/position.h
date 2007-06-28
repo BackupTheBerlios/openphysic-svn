@@ -51,3 +51,4 @@ class Position : public QObject
   };
 
 #endif
+

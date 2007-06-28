@@ -34,7 +34,7 @@ OCView_MainWin::OCView_MainWin(OCDocument * ocdoc):OCView(ocdoc)
 
   setWindowTitle("MainWin");
 
-  test();
+  //test();
 
   //UpdateData();
 

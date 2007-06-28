@@ -47,3 +47,4 @@ void MessageImpl::setMessage(QString str)
 }
 
 //
+

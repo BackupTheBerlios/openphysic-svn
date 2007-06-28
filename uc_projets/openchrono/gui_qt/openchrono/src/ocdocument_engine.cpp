@@ -28,5 +28,6 @@ OCDocument_Engine::OCDocument_Engine()
 }
 
 OCDocument_Engine::~OCDocument_Engine()
-{}
+{
+}
 

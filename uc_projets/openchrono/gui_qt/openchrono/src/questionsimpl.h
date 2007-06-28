@@ -43,3 +43,4 @@ class QuestionsImpl : public QDialog, public Ui::frmQuestions
     Data * m_Data;
   };
 #endif
+

@@ -29,9 +29,10 @@ OCDocument_MainWin::OCDocument_MainWin()
 
 OCDocument_MainWin::OCDocument_MainWin(Data * data)
 {
-  m_data = data;
+//  m_data = data;
 }
 
 OCDocument_MainWin::~OCDocument_MainWin()
-{}
+{
+}
 

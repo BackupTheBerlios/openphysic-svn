@@ -35,7 +35,7 @@ OCDocument::OCDocument()
 
 OCDocument::OCDocument(Data * data)
 {
-  std::cout << "OCDocument contructor with data" << std::endl;
+//  std::cout << "OCDocument contructor with data" << std::endl;
   m_data = data;
 }
 
