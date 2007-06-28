@@ -49,7 +49,7 @@ class OCDocument
     void activate_child_first(void);
 
 
-    //Data * m_data; // static ?
+    Data * m_data; // static ?
 
 
   protected:

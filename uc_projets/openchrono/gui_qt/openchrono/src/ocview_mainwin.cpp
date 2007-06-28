@@ -34,20 +34,20 @@ OCView_MainWin::OCView_MainWin(OCDocument * ocdoc):OCView(ocdoc)
 
   setWindowTitle("MainWin");
 
-  test();
+  //test();
 
   //UpdateData();
 
   // update RPM
-  //GraphicRPM->setMaximum((int) document->m_data->vehicule.engine.rpm.max());
-  //GraphicRPM->setMinimum((int) document->m_data->vehicule.engine.rpm.min());
+  GraphicRPM->setMaximum((int) document->m_data->vehicule.engine.rpm.max());
+  GraphicRPM->setMinimum((int) document->m_data->vehicule.engine.rpm.min());
 
   //delete layout();
   //setLayout(vboxLayout);
 
-  //QTimer * timer = new QTimer(this); // TOFIX !!!
-  //connect( timer, SIGNAL(timeout()), this, SLOT(UpdateData()) ); // TOFIX
-  //timer->start(25); //
+  QTimer * timer = new QTimer(this); // TOFIX !!!
+  connect( timer, SIGNAL(timeout()), this, SLOT(UpdateData()) ); // TOFIX
+  timer->start(25); //
 }
 
 OCView_MainWin::~OCView_MainWin()
@@ -72,7 +72,7 @@ void OCView_MainWin::test(void)
   lblTemp2->setText("XXXXX");
 }
 
-/*
+
 void OCView_MainWin::showRPM(void)
 {
   double rpm = document->m_data->vehicule.engine.rpm.value();
@@ -161,5 +161,5 @@ void OCView_MainWin::UpdateData(void)
   showLap();
   showEtap();
 }
-*/
+
 
