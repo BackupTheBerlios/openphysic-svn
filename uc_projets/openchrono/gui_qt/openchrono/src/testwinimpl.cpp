@@ -33,6 +33,11 @@ TestWinImpl::TestWinImpl( QWidget * parent, Qt::WFlags f, Data * data, MainWinIm
 
   setGeometry(400,50,580,240);
 
+  // connection bouton StartStop page de test
+  //app.connect(        (&winTest)->StartStop	, SIGNAL( clicked() ),
+  //                    &myCurrentData                , SLOT( start() )                       );
+
+
   // connect signals and slots
   //connect(slider, SIGNAL(valueChanged(int)),
   //         lcd, SLOT(display(int)));
