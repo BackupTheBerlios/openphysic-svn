@@ -36,17 +36,20 @@ OCView_MainWin::OCView_MainWin(OCDocument * ocdoc):OCView(ocdoc)
 
   //test();
 
-  //UpdateData();
+  UpdateData();
 
   // update RPM
+  std::cout << "RPMmin:" <<  document->m_data->vehicule.engine.rpm.max() << std::endl;
+  std::cout << "RPMmax:" <<  document->m_data->vehicule.engine.rpm.min() << std::endl;
+
   GraphicRPM->setMaximum((int) document->m_data->vehicule.engine.rpm.max());
   GraphicRPM->setMinimum((int) document->m_data->vehicule.engine.rpm.min());
 
   //delete layout();
   //setLayout(vboxLayout);
 
-  QTimer * timer = new QTimer(this); // TOFIX !!!
-  connect( timer, SIGNAL(timeout()), this, SLOT(UpdateData()) ); // TOFIX
+  QTimer * timer = new QTimer(this);
+  connect( timer, SIGNAL(timeout()), this, SLOT(UpdateData()) );
   timer->start(25); //
 }
 
@@ -87,6 +90,9 @@ void OCView_MainWin::showRPM(void)
     {
       value = (int) rpmMax;
     }
+
+  std::cout << "value:" << value << std::endl;
+
   GraphicRPM->setValue(value);
  
   // couleur
