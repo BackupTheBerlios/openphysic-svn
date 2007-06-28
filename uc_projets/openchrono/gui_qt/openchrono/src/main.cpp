@@ -55,8 +55,9 @@ int main(int argc, char ** argv)
   //myCurrentData.load();
 
 
-  OCDocument_MainWin winMain(&myCurrentData);
-  //OCDocument_MainWin winMain;
+  //OCDocument_MainWin winMain(&myCurrentData);
+  OCDocument_MainWin winMain(2);
+  OCDocument_MainWin winMain;
   OCDocument_Engine winEngine; //(&myCurrentData);
 
 

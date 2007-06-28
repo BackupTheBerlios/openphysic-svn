@@ -28,6 +28,8 @@ class OCDocument_MainWin : public OCDocument
   public:
     OCDocument_MainWin();
     OCDocument_MainWin(Data * data);
+    OCDocument_MainWin(int x);
+
 
     virtual ~OCDocument_MainWin();
 

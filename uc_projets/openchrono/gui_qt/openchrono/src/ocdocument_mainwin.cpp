@@ -32,6 +32,10 @@ OCDocument_MainWin::OCDocument_MainWin(Data * data)
 //  m_data = data;
 }
 
+OCDocument_MainWin::OCDocument_MainWin(int x)
+{
+}
+
 OCDocument_MainWin::~OCDocument_MainWin()
 {
 }
