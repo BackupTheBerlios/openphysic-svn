@@ -7,6 +7,10 @@ QT += xml
 TARGET = 
 DEPENDPATH += . build src ui
 INCLUDEPATH += . src build
+CONFIG +=   qt \
+  debug \
+  warn_on \
+  console
 
 # Input
 HEADERS += src/chrono.h \

@@ -51,13 +51,17 @@ int main(int argc, char ** argv)
 
   QApplication::setStyle(new QPlastiqueStyle);
 
-  Data myCurrentData;
+  //Data myCurrentData;
   //myCurrentData.load();
 
 
   //OCDocument_MainWin winMain(&myCurrentData);
   OCDocument_MainWin winMain(2);
-  OCDocument_MainWin winMain;
+  //OCDocument_MainWin winMain;
+
+
+  std::cout << "test" << std::endl;
+
   OCDocument_Engine winEngine; //(&myCurrentData);
 
 
@@ -81,6 +85,7 @@ int main(int argc, char ** argv)
   winEngine.set_no_child();
 
 
+
   winMain.activate();
 
 
@@ -93,7 +98,7 @@ int main(int argc, char ** argv)
   int exit;
   exit = app.exec();
 
-  myCurrentData.save();
+  //myCurrentData.save();
 
   return exit;
 }
