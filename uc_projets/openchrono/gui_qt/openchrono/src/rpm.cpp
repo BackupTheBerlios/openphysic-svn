@@ -24,8 +24,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 Rpm::Rpm(  )
 {
-  set(0.0);
-//  set(100.0);
+//  set(0.0);
+  set(100.0);
   setMax(16000.0);
   setMin(0.0);
 }
