@@ -38,11 +38,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 #include "data.h"
 //
-#include "ocdocument.h" // ocview ocdocument (ex ocwindows)
-#include "ocview.h"
+//#include "ocdocument.h" // ocview ocdocument (ex ocwindows)
+//#include "ocview.h"
 
 #include "ocdocument_mainwin.h"
 #include "ocdocument_engine.h"
+
+#include "testwinimpl.h"
 
 
 int main(int argc, char ** argv)
@@ -59,9 +61,7 @@ int main(int argc, char ** argv)
   OCDocument_Engine winEngine; //(&myCurrentData);
 
 
-
-  //winMain.set_data(&myCurrentData);
-  //winEngine.set_data(&myCurrentData);
+  //TestWinImpl winTest(0, 0, &myCurrentData, &winMain);
 
 
   // connection bouton StartStop page de test
@@ -92,7 +92,7 @@ int main(int argc, char ** argv)
   int exit;
   exit = app.exec();
 
-  //myCurrentData.save();
+  myCurrentData.save();
 
   return exit;
 }
