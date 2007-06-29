@@ -160,7 +160,7 @@ printf("\n");
 // OM_ini = [0 0 0];
 // V0 = 10
 // %alfa = 5
-// v_ini = [V0*sin(%alfa*2*%pi/360) 0 V0*cos(%alfa*2*%pi/360)];
+// v_ini = [V0*cos(%alfa*2*%pi/360) 0 V0*sin(%alfa*2*%pi/360)];
 // B=[0 0 1];
 
 
