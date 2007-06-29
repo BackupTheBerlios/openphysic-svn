@@ -188,8 +188,8 @@ OM_t0 = [0 0 0];    // Position initiale (MODIFIABLE)
 
 
 V0 = 10;    // m/s
-%alfa = 45; // degré 
-v_t0 = [V0*sin(%alfa*2*%pi/360) 0 V0*cos(%alfa*2*%pi/360)]; 
+%alfa = 30; // degré 
+v_t0 = [V0*cos(%alfa*2*%pi/360) 0 V0*sin(%alfa*2*%pi/360)]; 
 F_t0=calcul_force([0 0 0]);
 a_t0 = F_t0/m;
 
