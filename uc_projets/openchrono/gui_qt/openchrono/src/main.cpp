@@ -53,6 +53,14 @@ int main(int argc, char ** argv)
 
   QApplication::setStyle(new QPlastiqueStyle);
 
+  /*
+  voir openchrono.qrc translations/openchrono_fr.qm
+  QTranslator appTranslator;
+  appTranslator.load(QLatin1String("openchrono_")+QLocale::system().name(),
+                     qApp->applicationDirPath());
+  app.installTranslator(&appTranslator);
+  */
+
   Data myCurrentData;
   myCurrentData.load();
 

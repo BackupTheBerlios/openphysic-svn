@@ -13,6 +13,7 @@ CONFIG +=   qt \
   console
 DEFINES += QT_NO_CAST_FROM_ASCII
 TRANSLATIONS = translations/openchrono_fr.ts
+RESOURCES = openchrono.qrc
 
 # Input
 HEADERS += src/chrono.h \
