@@ -12,7 +12,7 @@ CONFIG +=   qt \
   warn_on \
   console
 DEFINES += QT_NO_CAST_FROM_ASCII
-TRANSLATIONS = translations/openchrono_fr.ts
+TRANSLATIONS = translations/openchrono_fr_FR.ts
 RESOURCES = openchrono.qrc
 
 # Input

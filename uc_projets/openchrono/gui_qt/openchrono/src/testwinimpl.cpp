@@ -34,10 +34,8 @@ TestWinImpl::TestWinImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QDialo
   setGeometry(450,100,580,240);
 
   // connection bouton StartStop page de test
-/*
   connect(        StartStop	, SIGNAL( clicked() ),
-                      &m_data                , SLOT( start() )                       );
-*/
+                      m_data                , SLOT( start() )                       );
 
   // connect signals and slots
   //connect(slider, SIGNAL(valueChanged(int)),

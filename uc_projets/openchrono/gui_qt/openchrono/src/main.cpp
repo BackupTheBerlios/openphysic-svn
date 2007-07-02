@@ -22,6 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //using namespace std;
 
 // Application (QT / QTopia ...)
+#include <Qt>
 #include <QApplication> // QT
 #include <QPlastiqueStyle> // style
 #include <QTranslator> // i18n
@@ -50,31 +51,26 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 int main(int argc, char ** argv)
 {
+  /* Application */
   QApplication app( argc, argv );
 
+  /* Style */
   QApplication::setStyle(new QPlastiqueStyle);
 
-  /* voir openchrono.qrc translations/openchrono_fr.qm */
-  //QTranslator appTranslator;
-/*
-  appTranslator.load(QLatin1String("openchrono_")+QLocale::system().name(),
-                     qApp->applicationDirPath());
+  /* Traduction openchrono.qrc translations/openchrono_fr_FR.qm */
+  QTranslator appTranslator;
+  QString strTrans = QLatin1String("openchrono_")+QLocale::system().name();
+  std::cout << ("Translation : ") << qPrintable(strTrans) << std::endl;
+  //appTranslator.load(strTrans, qApp->applicationDirPath()+QLatin1String("/translations")); // sans ressource
+  appTranslator.load(QLatin1String(":translations/")+strTrans); // avec ressource openchrono.qrc
   app.installTranslator(&appTranslator);
-  */
 
+  /* Données */
   Data myCurrentData;
 
+  /* Fenêtres de l'application */
   OCDocument_MainWin winMain(&myCurrentData);
   OCDocument_Engine winEngine; //(&myCurrentData);
-
-
-  TestWinImpl winTest(0, 0, &myCurrentData);
-
-
-  // connection bouton StartStop page de test
-  //app.connect(        (&winTest)->StartStop	, SIGNAL( clicked() ),
-  //                    &myCurrentData                , SLOT( start() )                       );
-
 
   winMain.set_parent(&winMain);
   winMain.set_brother_next(&winEngine);
@@ -89,8 +85,8 @@ int main(int argc, char ** argv)
 
   winMain.activate();
 
-
-  // fenetre de test
+  /* Fenêtre de test */
+  TestWinImpl winTest(0, 0, &myCurrentData);
   winTest.show();
 
 
