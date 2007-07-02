@@ -28,16 +28,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 TestWinImpl::TestWinImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QDialog(parent, f)
 {
   setupUi(this);
-  m_Data = data;
+  m_data = data;
   //m_win = win;
 
-  setGeometry(400,50,580,240);
+  setGeometry(450,100,580,240);
 
   // connection bouton StartStop page de test
-  /*
-  app.connect(        StartStop	, SIGNAL( clicked() ),
-                      &myCurrentData                , SLOT( start() )                       );
-  */
+/*
+  connect(        StartStop	, SIGNAL( clicked() ),
+                      &m_data                , SLOT( start() )                       );
+*/
 
   // connect signals and slots
   //connect(slider, SIGNAL(valueChanged(int)),
@@ -66,6 +66,10 @@ TestWinImpl::TestWinImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QDialo
 }
 //
 
+TestWinImpl::~TestWinImpl()
+{
+}
+
 void TestWinImpl::init(void)
 {
   SliderRPM->setValue(2000);
@@ -75,16 +79,16 @@ void TestWinImpl::init(void)
 
 void TestWinImpl::update(void)
 {
-  m_Data->vehicule.engine.rpm.set(SliderRPM->value());
-  m_Data->vehicule.engine.temperature_1.set(SliderTemp1->value());
-  m_Data->vehicule.engine.temperature_2.set(SliderTemp2->value());
+  m_data->vehicule.engine.rpm.set(SliderRPM->value());
+  m_data->vehicule.engine.temperature_1.set(SliderTemp1->value());
+  m_data->vehicule.engine.temperature_2.set(SliderTemp2->value());
 }
 
 void TestWinImpl::test(void)
 {
   std::cout << "Test Win" << std::endl;
-  m_Data->test();
-  m_Data->vehicule.engine.engine_state.show();
+  m_data->test();
+  m_data->vehicule.engine.engine_state.show();
 }
 
 

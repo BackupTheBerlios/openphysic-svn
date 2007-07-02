@@ -68,7 +68,7 @@ int main(int argc, char ** argv)
   OCDocument_Engine winEngine; //(&myCurrentData);
 
 
-  //TestWinImpl winTest(0, 0, &myCurrentData);
+  TestWinImpl winTest(0, 0, &myCurrentData);
 
 
   // connection bouton StartStop page de test
@@ -91,7 +91,7 @@ int main(int argc, char ** argv)
 
 
   // fenetre de test
-  //winTest.show();
+  winTest.show();
 
 
   app.connect( &app, SIGNAL( lastWindowClosed() ), &app, SLOT( quit() ) );

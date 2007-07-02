@@ -33,6 +33,7 @@ HEADERS += src/chrono.h \
            src/position.h \
            src/rpm.h \
            src/temperature.h \
+           src/testwinimpl.h \
            src/track.h \
            src/vehicule.h \
            src/messageimpl.h 
@@ -53,6 +54,7 @@ SOURCES += src/chrono.cpp \
            src/position.cpp \
            src/rpm.cpp \
            src/temperature.cpp \
+           src/testwinimpl.cpp \
            src/track.cpp \
            src/vehicule.cpp \
            src/messageimpl.cpp 
