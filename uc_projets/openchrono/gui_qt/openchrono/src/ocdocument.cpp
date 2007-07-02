@@ -35,12 +35,14 @@ OCDocument::OCDocument()
   //m_data = NULL;
 }
 
+/*
 OCDocument::OCDocument(Data * data)
 {
   std::cout << "OCDocument contructor with data" << std::endl;
   //m_data = data;
   //OCDocument();
 }
+*/
 
 /*
 void OCDocument::set_data(Data * data)

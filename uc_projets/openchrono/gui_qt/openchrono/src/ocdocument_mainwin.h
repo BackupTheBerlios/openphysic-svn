@@ -26,12 +26,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 class OCDocument_MainWin : public OCDocument
   {
   public:
-    OCDocument_MainWin();
+    //OCDocument_MainWin();
     OCDocument_MainWin(Data * data);
-    OCDocument_MainWin(int x);
+    //OCDocument_MainWin(int x);
 
 
     virtual ~OCDocument_MainWin();
+
+  protected:
+    Data * m_data;
 
   private:
 

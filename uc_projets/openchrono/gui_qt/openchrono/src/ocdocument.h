@@ -29,7 +29,7 @@ class OCDocument
   {
   public:
     OCDocument();
-    OCDocument(Data * data);
+    //OCDocument(Data * data);
 
     //void set_data(Data * data);
 
@@ -49,7 +49,7 @@ class OCDocument
     void activate_child_first(void);
 
 
-    Data * m_data; // static ?
+    //Data * m_data;
 
 
   protected:

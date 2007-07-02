@@ -22,21 +22,29 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "ocview_mainwin.h"
 #include "data.h"
 
+/*
 OCDocument_MainWin::OCDocument_MainWin()
 {
+  std::cout << "OCDocument_MainWin contructor" << std::endl;
   set_view(new OCView_MainWin(this));
+  m_data = NULL;
 }
+*/
 
 OCDocument_MainWin::OCDocument_MainWin(Data * data)
 {
-  set_view(new OCView_MainWin(this));
-  m_data = data;
+  std::cout << "OCDocument_MainWin contructor with data" << std::endl;
+  set_view(new OCView_MainWin(this, data));
+  //m_data = data;
 }
 
+/*
 OCDocument_MainWin::OCDocument_MainWin(int x)
 {
   set_view(new OCView_MainWin(this));
+  m_data = NULL;
 }
+*/
 
 OCDocument_MainWin::~OCDocument_MainWin()
 {

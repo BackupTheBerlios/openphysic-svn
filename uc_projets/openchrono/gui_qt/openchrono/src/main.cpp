@@ -23,7 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 // Application (QT / QTopia ...)
 #include <QApplication> // QT
-#include <QPlastiqueStyle>
+#include <QPlastiqueStyle> // style
+#include <QTranslator> // i18n
 //#include <qtopiaapplication> // QTopia
 
 // Test GUI
@@ -53,16 +54,16 @@ int main(int argc, char ** argv)
 
   QApplication::setStyle(new QPlastiqueStyle);
 
-  /*
-  voir openchrono.qrc translations/openchrono_fr.qm
-  QTranslator appTranslator;
+  /* voir openchrono.qrc translations/openchrono_fr.qm */
+  //QTranslator appTranslator;
+/*
   appTranslator.load(QLatin1String("openchrono_")+QLocale::system().name(),
                      qApp->applicationDirPath());
   app.installTranslator(&appTranslator);
   */
 
   Data myCurrentData;
-  myCurrentData.load();
+  //myCurrentData.load();
 
 
   OCDocument_MainWin winMain(&myCurrentData);
@@ -100,7 +101,7 @@ int main(int argc, char ** argv)
   int exit;
   exit = app.exec();
 
-  myCurrentData.save();
+  //myCurrentData.save(); // save data
 
   return exit;
 }

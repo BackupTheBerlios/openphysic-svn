@@ -35,7 +35,7 @@ class OCView_MainWin : public OCView, public Ui::MainWin
 
   public:
     OCView_MainWin();
-    OCView_MainWin(OCDocument * ocdoc);
+    OCView_MainWin(OCDocument * ocdoc, Data * data);
 
     virtual ~OCView_MainWin();
 
@@ -54,6 +54,8 @@ class OCView_MainWin : public OCView, public Ui::MainWin
     void showBestLapTime(void);
     void showLap(void);
     void showEtap(void);
+
+    Data * m_data;
 
 
   };
