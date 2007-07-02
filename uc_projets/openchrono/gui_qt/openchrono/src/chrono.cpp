@@ -177,7 +177,7 @@ QString Chrono::getStrTimeMSsXxx(struct timeval tv)
     }
   else
     {
-      return QString("0:00.000");
+      return QLatin1String("0:00.000"); //return QString("0:00.000");
     }
 }
 
@@ -218,22 +218,22 @@ void Chrono::update_last_and_best_lap_time(void)
 
       if ( timeval_subtract(&diff_best, &current, &best_lap_time) ) // meilleur temps au tour (calcul ecart)
         {
-          std::cout << "record du tour battu" << std::endl;
+          std::cout << qPrintable(tr("record du tour battu")) << std::endl;
           memcpy(&best_lap_time, &current, sizeof(struct timeval));
         } else
         {
-          std::cout << "toujours le même record du tour" << std::endl;
+          std::cout << qPrintable(tr("toujours le même record du tour")) << std::endl;
           memcpy(&best_lap_time, &best, sizeof(struct timeval));
         }
 
 
       if ( timeval_subtract(&diff_last, &current, &last_lap_time) ) // calcul ecart par rapport au dernier tour
         {
-          std::cout << "dernier temps au tour battu" << std::endl;
+          std::cout << qPrintable(tr("dernier temps au tour battu")) << std::endl;
 
         } else
         {
-          std::cout << "dernier temps au tour non battu" << std::endl;
+          std::cout << qPrintable(tr("dernier temps au tour non battu")) << std::endl;
         }
       memcpy(&last_lap_time, &current, sizeof(struct timeval)); // temps du dernier tour
 
@@ -247,7 +247,7 @@ http://www.haypocalc.com/wiki/Temps
 
 QDomElement Chrono::to_node( QDomDocument &dom_doc )
 {
-  QDomElement dom_elt = dom_doc.createElement( "chrono" );
+  QDomElement dom_elt = dom_doc.createElement( QLatin1String("chrono") );
 
   /*
     QString strBuf;

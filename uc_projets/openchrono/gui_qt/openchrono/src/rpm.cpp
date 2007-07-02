@@ -84,12 +84,12 @@ void Rpm::setMin(double const RPM)
 
 QDomElement Rpm::to_node( QDomDocument &dom_doc )
 {
-  QDomElement dom_elt = dom_doc.createElement( "rpm" );
+  QDomElement dom_elt = dom_doc.createElement( QLatin1String("rpm") );
 
   QString strBuf;
-  dom_elt.setAttribute( "value", strBuf.setNum( m_RPM ) );
-  dom_elt.setAttribute( "min", strBuf.setNum( m_RPMmin ) );
-  dom_elt.setAttribute( "max", strBuf.setNum( m_RPMmax ) );
+  dom_elt.setAttribute( QLatin1String("value"), strBuf.setNum( m_RPM ) );
+  dom_elt.setAttribute( QLatin1String("min"), strBuf.setNum( m_RPMmin ) );
+  dom_elt.setAttribute( QLatin1String("max"), strBuf.setNum( m_RPMmax ) );
 
   return dom_elt;
 }

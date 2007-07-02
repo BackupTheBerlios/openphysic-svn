@@ -11,6 +11,7 @@ CONFIG +=   qt \
   debug \
   warn_on \
   console
+DEFINES += QT_NO_CAST_FROM_ASCII
 
 # Input
 HEADERS += src/chrono.h \

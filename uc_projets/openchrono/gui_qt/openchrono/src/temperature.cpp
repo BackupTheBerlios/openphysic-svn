@@ -74,7 +74,7 @@ QString Temperature::getStrCelsius(void) const
     QString str;
     //str.setNum(valueCelsius());
     str.sprintf("%g ",valueCelsius());
-    str = (str+QChar(0xB0))+QChar('C'); // °C (2 caractère)
+    str = (str+QChar(0xB0))+QChar(QLatin1Char('C')); // °C (2 caractère)
     //str += QChar(0x2103); // °C (1 caractère unicode)
     return str;
   }
@@ -91,11 +91,11 @@ QString Temperature::getStrFahrenheit(void) const
 
 QDomElement Temperature::to_node( QDomDocument &dom_doc )
 {
-  QDomElement dom_elt = dom_doc.createElement( "temperature" );
+  QDomElement dom_elt = dom_doc.createElement( QLatin1String("temperature") );
 
   QString strBuf;
 
-  dom_elt.setAttribute( "valueDegreeC", strBuf.setNum( m_T ) );
+  dom_elt.setAttribute( QLatin1String("valueDegreeC"), strBuf.setNum( m_T ) );
 
   return dom_elt;
 }

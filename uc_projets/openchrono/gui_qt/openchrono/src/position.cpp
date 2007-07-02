@@ -73,12 +73,12 @@ QDomElement Position::to_node( QDomDocument &dom_doc )
 {
   // Using attributes
 
-  QDomElement dom_elt = dom_doc.createElement( "position" );
+  QDomElement dom_elt = dom_doc.createElement( QLatin1String("position") );
 
   QString strBuf;
 
-  dom_elt.setAttribute( "lap", strBuf.setNum( lap() ) );
-  dom_elt.setAttribute( "etap", strBuf.setNum( etap() ) );
+  dom_elt.setAttribute( QLatin1String("lap"), strBuf.setNum( lap() ) );
+  dom_elt.setAttribute( QLatin1String("etap"), strBuf.setNum( etap() ) );
 
   return dom_elt;
 }

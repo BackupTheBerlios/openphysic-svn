@@ -24,7 +24,7 @@ OCView_Engine::OCView_Engine(OCDocument * ocdoc):OCView(ocdoc)
 {
   //setupUi(this);
 
-  setWindowTitle("Engine");
+  setWindowTitle(tr("Engine"));
 
 
 }

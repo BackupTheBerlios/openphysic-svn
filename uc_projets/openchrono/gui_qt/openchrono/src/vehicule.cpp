@@ -22,7 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 Vehicule::Vehicule(  )
 {
-  setName("Go-kart");
+  setName(tr("My go-kart"));
 }
 
 QString Vehicule::name(void) const
@@ -39,11 +39,11 @@ QDomElement Vehicule::to_node( QDomDocument &dom_doc )
 {
   // Using attributes
 
-  QDomElement dom_elt = dom_doc.createElement( "vehicule" );
+  QDomElement dom_elt = dom_doc.createElement( QLatin1String("vehicule") );
 
   //QString strBuf;
 
-  dom_elt.setAttribute( "name", name() );
+  dom_elt.setAttribute( QLatin1String("name"), name() );
 
   dom_elt.appendChild( engine.to_node(dom_doc) );
 

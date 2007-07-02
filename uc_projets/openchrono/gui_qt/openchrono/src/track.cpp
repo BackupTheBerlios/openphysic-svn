@@ -22,7 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 Track::Track(  )
 {
-  setName("MyTrack");
+  setName(tr("MyTrack"));
   setLaps(5);
   setEtaps(2);
 }
@@ -68,13 +68,13 @@ QDomElement Track::to_node( QDomDocument &dom_doc )
 {
   // Using attributes
 
-  QDomElement dom_elt = dom_doc.createElement( "track" );
+  QDomElement dom_elt = dom_doc.createElement( QLatin1String("track") );
 
   QString strBuf;
 
-  dom_elt.setAttribute( "etaps", strBuf.setNum( etaps() ) );
-  dom_elt.setAttribute( "laps", strBuf.setNum( laps() ) );
-  dom_elt.setAttribute( "name", name() );
+  dom_elt.setAttribute( QLatin1String("etaps"), strBuf.setNum( etaps() ) );
+  dom_elt.setAttribute( QLatin1String("laps"), strBuf.setNum( laps() ) );
+  dom_elt.setAttribute( QLatin1String("name"), name() );
 
   return dom_elt;
 

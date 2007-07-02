@@ -94,22 +94,22 @@ void Data::start(void)
 
 void Data::test(void)
 {
-  std::cout << "Test Data" << std::endl;
+  std::cout << qPrintable(tr("Test Data")) << std::endl;
 }
 
 void Data::on_starting_first_lap(void)
 {
-  std::cout << "Starting first lap" << std::endl;
+  std::cout << qPrintable(tr("Starting first lap")) << std::endl;
 }
 
 void Data::on_new_etap(void)
 {
-  std::cout << " New etap" << std::endl;
+  std::cout << " " << qPrintable(tr("New etap")) << std::endl;
 }
 
 void Data::on_new_lap(void)
 {
-  std::cout << "New lap" << std::endl;
+  std::cout << qPrintable(tr("New lap")) << std::endl;
 
   chrono.update_last_and_best_lap_time();
 
@@ -119,17 +119,17 @@ void Data::on_new_lap(void)
 
 void Data::on_last_lap(void)
 {
-  std::cout << "Last lap" << std::endl;
+  std::cout << qPrintable(tr("Last lap")) << std::endl;
 }
 
 void Data::on_race_over(void)
 {
-  std::cout << "Race over" << std::endl;
+  std::cout << qPrintable(tr("Race over")) << std::endl;
 }
 
 void Data::load(void)
 {
-  std::cout << "Loading data" << std::endl;
+  std::cout << qPrintable(tr("Loading data")) << std::endl;
 
   QFile file( OC_CFG_FILE );
   QDir::setCurrent( OC_CFG_DIR );
@@ -151,7 +151,7 @@ void Data::load(void)
       return;
     }
 
-  std::cout << " " << "Loading..." << std::endl;
+  std::cout << " " << qPrintable(tr("Loading...")) << std::endl;
   //std::cout << " ToDo" << std::endl;
 
   /* validating document using dtd : not possible easily using Qt4 */
@@ -183,7 +183,7 @@ void Data::load(void)
 
   /* looking for the root name 'ocdata' */
   //std::cout << "root = " << qPrintable(root.tagName()) << std::endl;
-  if (root.tagName() != "ocdata")
+  if (root.tagName() != QLatin1String("ocdata"))
     {
       QString strErr = QObject::tr("Document should begin with <ocdata> and stop with </ocdata>");
       std::cerr << " " << qPrintable(strErr) << std::endl;
@@ -202,31 +202,31 @@ void Data::load(void)
     while ( !node.isNull() ) {
       QDomElement element = node.toElement();
 
-      if (element.tagName() == "track") {
+      if (element.tagName() == QLatin1String("track")) {
         //Track::parse(node.toElement(), this->track);
-        std::cout << "  " << "Parsing " << qPrintable(element.tagName()) << std::endl;
+        std::cout  << qPrintable(tr(" ")) << qPrintable(tr("Parsing"))  << qPrintable(tr(" ")) << qPrintable(element.tagName()) << std::endl;
         
         //std::cout << "laps=" << qPrintable(element.attribute("laps")) << std::endl;
-        this->track.setLaps(element.attribute("laps").toInt());
-        this->track.setEtaps(element.attribute("etaps").toInt());
-        this->track.setName(element.attribute("etaps"));
+        this->track.setLaps(element.attribute(QLatin1String("laps")).toInt());
+        this->track.setEtaps(element.attribute(QLatin1String("etaps")).toInt());
+        this->track.setName(element.attribute(QLatin1String("etaps")));
       }
-      else if (element.tagName() == "position") {
-        std::cout << "  " << "Parsing " << qPrintable(element.tagName()) << std::endl;
-        this->position.setLap(element.attribute("lap").toInt());
-        this->position.setEtap(element.attribute("etap").toInt());
+      else if (element.tagName() == QLatin1String("position")) {
+        std::cout << qPrintable(tr(" ")) << qPrintable(tr("Parsing")) << qPrintable(tr(" ")) << qPrintable(element.tagName()) << std::endl;
+        this->position.setLap(element.attribute(QLatin1String("lap")).toInt());
+        this->position.setEtap(element.attribute(QLatin1String("etap")).toInt());
       }
-      else if (element.tagName() == "vehicule") {
-        std::cout << "  " << "Parsing " << qPrintable(element.tagName()) << std::endl;
+      else if (element.tagName() == QLatin1String("vehicule")) {
+        std::cout << qPrintable(tr(" ")) << qPrintable(tr("Parsing")) << qPrintable(tr(" ")) << qPrintable(element.tagName()) << std::endl;
         // ToDo
       }
-      else if (element.tagName() == "chrono") {
-        std::cout << "  " << "Parsing " << qPrintable(element.tagName()) << std::endl;
+      else if (element.tagName() == QLatin1String("chrono")) {
+        std::cout << qPrintable(tr(" ")) << qPrintable(tr("Parsing")) << qPrintable(tr(" ")) << qPrintable(element.tagName()) << std::endl;
         // ToDo
       }
       else {
         QString strErr = QObject::tr("Error: Undefined element tagName");
-        std::cerr << " " << qPrintable(strErr) << std::endl;
+        std::cerr << qPrintable(tr(" ")) << qPrintable(strErr) << std::endl;
         QMessageBox::warning(0,
                              QObject::tr("DOM Parser"),
                              strErr
@@ -238,12 +238,12 @@ void Data::load(void)
  
   file.close();
 
-  std::cout << " Data loaded" << std::endl;
+  std::cout << qPrintable(tr(" ")) << qPrintable(tr("Data loaded")) << std::endl;
 }
 
 void Data::save(void)
 {
-  std::cout << "Saving data" << std::endl;
+  std::cout << qPrintable(tr("Saving data")) << std::endl;
 
   QFile file( OC_CFG_FILE );
   QDir::setCurrent( OC_CFG_DIR );
@@ -260,21 +260,21 @@ void Data::save(void)
       return;
     }
 
-  std::cout << " " << "Saving..." << std::endl;
+  std::cout << qPrintable(tr(" ")) << qPrintable(tr("Saving...")) << std::endl;
 
   QDomImplementation impl = QDomDocument().implementation();
 
-  QString name_ml = "OpenChronoML";
-  QString publicId = "-//CELLES//DTD OpenChrono 0.1 //EN";
-  QString systemId = "http://www.celles.net/dtd/openchrono/openchrono_data-0_1.dtd";
+  QString name_ml = QLatin1String("OpenChronoML");
+  QString publicId = QLatin1String("-//CELLES//DTD OpenChrono 0.1 //EN");
+  QString systemId = QLatin1String("http://www.celles.net/dtd/openchrono/openchrono_data-0_1.dtd");
   QDomDocument doc(impl.createDocumentType(name_ml,publicId,systemId));
   // add some XML comment at the beginning
-  doc.appendChild(doc.createComment("This file describe data for OpenChrono a chronometer for mechanical sports"));
-  doc.appendChild(doc.createTextNode("\n")); // for nicer output
-  doc.appendChild(doc.createComment("http://www.celles.net/wikini/wakka.php?wiki=OpenChrono"));
-  doc.appendChild(doc.createTextNode("\n")); // for nicer output
+  doc.appendChild(doc.createComment(QLatin1String("This file describe data for OpenChrono a chronometer for mechanical sports")));
+  doc.appendChild(doc.createTextNode(QLatin1String("\n"))); // for nicer output
+  doc.appendChild(doc.createComment(QLatin1String("http://www.celles.net/wikini/wakka.php?wiki=OpenChrono")));
+  doc.appendChild(doc.createTextNode(QLatin1String("\n"))); // for nicer output
 
-  QDomElement root = doc.createElement("ocdata"); // racine
+  QDomElement root = doc.createElement(QLatin1String("ocdata")); // racine
 
   doc.appendChild(root);
   root.appendChild( track.to_node(doc) );
@@ -288,7 +288,7 @@ void Data::save(void)
 
   file.close();
 
-  std::cout << " " << "Data saved" << std::endl;
+  std::cout << qPrintable(tr(" ")) << qPrintable(tr("Data saved")) << std::endl;
 }
 
 //

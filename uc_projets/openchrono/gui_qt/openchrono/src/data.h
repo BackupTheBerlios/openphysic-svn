@@ -84,7 +84,7 @@ class Data : public QObject
 
   };
 
-#define OC_CFG_FILE "openchrono.xml"
+#define OC_CFG_FILE QLatin1String("openchrono.xml")
 #define OC_CFG_DIR QDir::homePath()
 
 

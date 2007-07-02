@@ -32,15 +32,15 @@ OCView_MainWin::OCView_MainWin(OCDocument * ocdoc):OCView(ocdoc)
 {
   setupUi(this);
 
-  setWindowTitle("MainWin");
+  setWindowTitle(QLatin1String("MainWin"));
 
   //test();
 
   UpdateData();
 
   // update RPM
-  std::cout << "RPMmin:" <<  document->m_data->vehicule.engine.rpm.max() << std::endl;
-  std::cout << "RPMmax:" <<  document->m_data->vehicule.engine.rpm.min() << std::endl;
+  std::cout << qPrintable(tr("RPMmin:")) <<  document->m_data->vehicule.engine.rpm.max() << std::endl;
+  std::cout << qPrintable(tr("RPMmax:")) <<  document->m_data->vehicule.engine.rpm.min() << std::endl;
 
   GraphicRPM->setMaximum((int) document->m_data->vehicule.engine.rpm.max());
   GraphicRPM->setMinimum((int) document->m_data->vehicule.engine.rpm.min());
@@ -60,19 +60,19 @@ OCView_MainWin::~OCView_MainWin()
 
 void OCView_MainWin::test(void)
 {
-  lblMessage->setText("XXXXXXXXXXXXXXXXXX");
+  lblMessage->setText(QLatin1String("XXXXXXXXXXXXXXXXXX"));
 
   GraphicRPM->setValue(16000);
 
-  lblCurrLapTime->setText("XX:XX:XXX");
-  lblBestLapTime->setText("XX:XX:XXX");
-  lblLastLapTime->setText("XX:XX:XXX");
+  lblCurrLapTime->setText(QLatin1String("XX:XX:XXX"));
+  lblBestLapTime->setText(QLatin1String("XX:XX:XXX"));
+  lblLastLapTime->setText(QLatin1String("XX:XX:XXX"));
 
-  lblLap->setText("XXX");
-  lblEtap->setText("XX / XX");
+  lblLap->setText(QLatin1String("XXX"));
+  lblEtap->setText(QLatin1String("XX / XX"));
 
-  lblTemp1->setText("XXXXX");
-  lblTemp2->setText("XXXXX");
+  lblTemp1->setText(QLatin1String("XXXXX"));
+  lblTemp2->setText(QLatin1String("XXXXX"));
 }
 
 

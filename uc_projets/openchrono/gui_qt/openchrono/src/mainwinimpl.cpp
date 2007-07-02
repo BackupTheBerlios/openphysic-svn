@@ -56,19 +56,19 @@ MainWinImpl::MainWinImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QDialo
 
 void MainWinImpl::test(void)
 {
-  lblMessage->setText("XXXXXXXXXXXXXXXXXX");
+  lblMessage->setText(QLatin1String("XXXXXXXXXXXXXXXXXX"));
 
   GraphicRPM->setValue(16000);
 
-  lblCurrLapTime->setText("XX:XX:XXX");
-  lblBestLapTime->setText("XX:XX:XXX");
-  lblLastLapTime->setText("XX:XX:XXX");
+  lblCurrLapTime->setText(QLatin1String("XX:XX:XXX"));
+  lblBestLapTime->setText(QLatin1String("XX:XX:XXX"));
+  lblLastLapTime->setText(QLatin1String("XX:XX:XXX"));
 
-  lblLap->setText("XXX");
-  lblEtap->setText("XX / XX");
+  lblLap->setText(QLatin1String("XXX"));
+  lblEtap->setText(QLatin1String("XX / XX"));
 
-  lblTemp1->setText("XXXXX");
-  lblTemp2->setText("XXXXX");
+  lblTemp1->setText(QLatin1String("XXXXX"));
+  lblTemp2->setText(QLatin1String("XXXXX"));
 }
 
 void MainWinImpl::showRPM(void)

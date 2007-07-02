@@ -24,7 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 Engine::Engine(  )
 {
-  setName("Engine1");
+  setName(QLatin1String("Engine1")); // tr(?)
   set_two_strokes();
 
   rpm.m_engine_state = &engine_state;
@@ -84,16 +84,16 @@ int Engine::rpm_factor(void)
 
 QDomElement Engine::to_node( QDomDocument &dom_doc )
 {
-  QDomElement dom_elt = dom_doc.createElement( "engine" );
+  QDomElement dom_elt = dom_doc.createElement( QLatin1String("engine") );
 
   QString strBuf;
 
-  dom_elt.setAttribute( "name", name() );
-  dom_elt.setAttribute( "strokes", strBuf.setNum( strokes() ) );
+  dom_elt.setAttribute( QLatin1String("name"), name() );
+  dom_elt.setAttribute( QLatin1String("strokes"), strBuf.setNum( strokes() ) );
 
   dom_elt.appendChild( rpm.to_node(dom_doc) );
 
-  QDomElement dom_temperatures = dom_doc.createElement( "temperatures" );
+  QDomElement dom_temperatures = dom_doc.createElement( QLatin1String("temperatures") );
   dom_temperatures.appendChild( temperature_1.to_node(dom_doc) );
   dom_temperatures.appendChild( temperature_2.to_node(dom_doc) );
   dom_elt.appendChild(dom_temperatures);
