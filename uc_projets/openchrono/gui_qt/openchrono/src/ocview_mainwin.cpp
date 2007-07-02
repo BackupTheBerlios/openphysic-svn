@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 #include <QTimer>
 
-OCView_MainWin::OCView_MainWin(OCDocument * ocdoc, Data * data):OCView(ocdoc)
+OCView_MainWin::OCView_MainWin(OCDocument * ocdoc, Data * data) : OCView(ocdoc)
 {
   m_data = data;
 
@@ -38,11 +38,11 @@ OCView_MainWin::OCView_MainWin(OCDocument * ocdoc, Data * data):OCView(ocdoc)
 
   //test();
 
-  UpdateData();
+  //UpdateData();
 
   // update RPM
-  std::cout << qPrintable(tr("RPMmin:")) <<  m_data->vehicule.engine.rpm.max() << std::endl;
-  std::cout << qPrintable(tr("RPMmax:")) <<  m_data->vehicule.engine.rpm.min() << std::endl;
+  //std::cout << qPrintable(tr("RPMmin:")) <<  m_data->vehicule.engine.rpm.max() << std::endl;
+  //std::cout << qPrintable(tr("RPMmax:")) <<  m_data->vehicule.engine.rpm.min() << std::endl;
 
   GraphicRPM->setMaximum((int) m_data->vehicule.engine.rpm.max());
   GraphicRPM->setMinimum((int) m_data->vehicule.engine.rpm.min());
@@ -93,7 +93,7 @@ void OCView_MainWin::showRPM(void)
       value = (int) rpmMax;
     }
 
-  std::cout << "value:" << value << std::endl;
+  //std::cout << "value:" << value << std::endl;
 
   GraphicRPM->setValue(value);
  

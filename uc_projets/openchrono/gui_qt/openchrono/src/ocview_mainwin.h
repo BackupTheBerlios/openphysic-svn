@@ -31,7 +31,7 @@ class OCDocument;
 
 class OCView_MainWin : public OCView, public Ui::MainWin
   {
-//Q_OBJECT
+Q_OBJECT
 
   public:
     OCView_MainWin();
