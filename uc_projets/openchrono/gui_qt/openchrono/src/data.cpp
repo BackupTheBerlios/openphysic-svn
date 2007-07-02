@@ -44,15 +44,13 @@ Data::Data(  )
   connect(this, SIGNAL( race_is_over() ),
           this, SLOT( on_race_over() ) );
 
-  load();
+  load(); // load data
 }
 
-/*
 Data::~Data(  )
 {
-  save();
+  save(); // save data
 }
-*/
 
 void Data::start(void)
 {

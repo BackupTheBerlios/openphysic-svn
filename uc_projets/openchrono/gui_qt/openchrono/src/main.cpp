@@ -63,14 +63,12 @@ int main(int argc, char ** argv)
   */
 
   Data myCurrentData;
-  //myCurrentData.load();
-
 
   OCDocument_MainWin winMain(&myCurrentData);
   OCDocument_Engine winEngine; //(&myCurrentData);
 
 
-  //TestWinImpl winTest(0, 0, &myCurrentData, &winMain);
+  //TestWinImpl winTest(0, 0, &myCurrentData);
 
 
   // connection bouton StartStop page de test
@@ -100,8 +98,6 @@ int main(int argc, char ** argv)
 
   int exit;
   exit = app.exec();
-
-  //myCurrentData.save(); // save data
 
   return exit;
 }

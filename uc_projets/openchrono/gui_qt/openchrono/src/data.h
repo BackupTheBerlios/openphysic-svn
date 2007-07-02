@@ -38,8 +38,7 @@ class Data : public QObject
 
   public:
     Data();
-    virtual ~Data()
-    {  };
+    virtual ~Data();
 
     Track track;
 

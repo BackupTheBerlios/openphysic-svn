@@ -25,18 +25,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "mainwinimpl.h"
 
-TestWinImpl::TestWinImpl( QWidget * parent, Qt::WFlags f, Data * data, MainWinImpl * win ) : QDialog(parent, f)
+TestWinImpl::TestWinImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QDialog(parent, f)
 {
   setupUi(this);
   m_Data = data;
-  m_win = win;
+  //m_win = win;
 
   setGeometry(400,50,580,240);
 
   // connection bouton StartStop page de test
-  //app.connect(        (&winTest)->StartStop	, SIGNAL( clicked() ),
-  //                    &myCurrentData                , SLOT( start() )                       );
-
+  /*
+  app.connect(        StartStop	, SIGNAL( clicked() ),
+                      &myCurrentData                , SLOT( start() )                       );
+  */
 
   // connect signals and slots
   //connect(slider, SIGNAL(valueChanged(int)),
@@ -47,13 +48,14 @@ TestWinImpl::TestWinImpl( QWidget * parent, Qt::WFlags f, Data * data, MainWinIm
   connect(butTest, SIGNAL( clicked() ), this, SLOT( test() ) ); // test button
 
   // connect keyboard (on the test window to the app)
+/*
   connect(butOk, SIGNAL( clicked() ), m_win, SLOT( on_ok() ) );
   connect(butCancel, SIGNAL( clicked() ), m_win, SLOT( on_cancel() ) );
   connect(butUp, SIGNAL( clicked() ), m_win, SLOT( on_up() ) );
   connect(butDown, SIGNAL( clicked() ), m_win, SLOT( on_down() ) );
   connect(butLeft, SIGNAL( clicked() ), m_win, SLOT( on_left() ) );
   connect(butRight, SIGNAL( clicked() ), m_win, SLOT( on_right() ) );
-
+*/
 
   init(); // initial values of the test window
 
