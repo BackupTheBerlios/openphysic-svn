@@ -47,6 +47,5 @@ OCDocument_MainWin::OCDocument_MainWin(int x)
 */
 
 OCDocument_MainWin::~OCDocument_MainWin()
-{
-}
+{}
 

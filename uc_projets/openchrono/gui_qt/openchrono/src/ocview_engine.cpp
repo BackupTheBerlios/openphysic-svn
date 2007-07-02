@@ -30,6 +30,5 @@ OCView_Engine::OCView_Engine(OCDocument * ocdoc):OCView(ocdoc)
 }
 
 OCView_Engine::~OCView_Engine()
-{
-}
+{}
 

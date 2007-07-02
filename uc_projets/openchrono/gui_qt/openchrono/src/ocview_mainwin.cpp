@@ -56,8 +56,7 @@ OCView_MainWin::OCView_MainWin(OCDocument * ocdoc, Data * data) : OCView(ocdoc)
 }
 
 OCView_MainWin::~OCView_MainWin()
-{
-}
+{}
 
 
 void OCView_MainWin::test(void)
@@ -83,7 +82,7 @@ void OCView_MainWin::showRPM(void)
   double rpm = m_data->vehicule.engine.rpm.value();
   double rpmMax = m_data->vehicule.engine.rpm.max();
   int value;
- 
+
   if ( rpm <= rpmMax )
     {
       value = (int) (round(rpm/10)*10);
@@ -96,7 +95,7 @@ void OCView_MainWin::showRPM(void)
   //std::cout << "value:" << value << std::endl;
 
   GraphicRPM->setValue(value);
- 
+
   // couleur
   //QColormap ? QLineargradient ?
   //GraphicRPM->
@@ -109,34 +108,34 @@ void OCView_MainWin::showRPM(void)
   //QColor color = Qt::red;
   //palette.setColor(QPalette::Window, color);
   //this->setPalette ( palette );
- 
+
 }
- 
+
 void OCView_MainWin::showT1(void)
 {
   lblTemp1->setText(m_data->vehicule.engine.temperature_1.getStr());
 }
- 
+
 void OCView_MainWin::showT2(void)
 {
   lblTemp2->setText(m_data->vehicule.engine.temperature_2.getStr());
 }
- 
+
 void OCView_MainWin::showCurrentLapTime(void)
 {
   lblCurrLapTime->setText(m_data->chrono.getStrCurrentLapTime());
 }
- 
+
 void OCView_MainWin::showLastLapTime(void)
 {
   lblLastLapTime->setText(m_data->chrono.getStrLastLapTime());
 }
- 
+
 void OCView_MainWin::showBestLapTime(void)
 {
   lblBestLapTime->setText(m_data->chrono.getStrBestLapTime());
 }
- 
+
 void OCView_MainWin::showLap(void)
 {
   QString strLap;
@@ -150,14 +149,14 @@ void OCView_MainWin::showLap(void)
     }
   lblLap->setText(strLap);
 }
- 
+
 void OCView_MainWin::showEtap(void)
 {
   QString strEtap;
   strEtap.sprintf("%d / %d", m_data->position.etap(), m_data->track.etaps());
   lblEtap->setText(strEtap);
 }
- 
+
 void OCView_MainWin::UpdateData(void)
 {
   showRPM();

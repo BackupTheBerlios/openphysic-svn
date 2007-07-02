@@ -132,17 +132,19 @@ void OCDocument::activate_child_first(void)
 
 void OCDocument::activate(void)
 {
-  if (NULL != view) {
-    view->init();
-    view->show();
-  }
+  if (NULL != view)
+    {
+      view->init();
+      view->show();
+    }
 }
 
 void OCDocument::desactivate(void)
 {
-  if (NULL != view) {
-    view->hide();
-  }
+  if (NULL != view)
+    {
+      view->hide();
+    }
 }
 
 

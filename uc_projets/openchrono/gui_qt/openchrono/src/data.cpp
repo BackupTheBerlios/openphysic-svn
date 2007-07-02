@@ -135,11 +135,11 @@ void Data::load(void)
   if( !file.open( QIODevice::ReadOnly ) )
     {
       QString strErr = QObject::tr("Error: Can't open config file !\n"
-        "This is probably the first time\n"
-        "you run this application.\n"
-        "So just click ok.\n"
-        "Next time, this message shouldn't appear.\n"
-      );
+                                   "This is probably the first time\n"
+                                   "you run this application.\n"
+                                   "So just click ok.\n"
+                                   "Next time, this message shouldn't appear.\n"
+                                  );
       std::cerr << " " << qPrintable(strErr) << std::endl;
       QMessageBox::warning(0,
                            QObject::tr("Loading config file"),
@@ -164,10 +164,10 @@ void Data::load(void)
   if( !doc.setContent( &file, true, &errorStr, &errorLine, &errorColumn ) )
     {
       QString strErr = QObject::tr("Parse error at line %1, "
-                                       "column %2:\n%3")
-                           .arg(errorLine)
-                           .arg(errorColumn)
-                           .arg(errorStr);
+                                   "column %2:\n%3")
+                       .arg(errorLine)
+                       .arg(errorColumn)
+                       .arg(errorStr);
       std::cerr << " " << qPrintable(strErr) << std::endl;
       QMessageBox::warning(0,
                            QObject::tr("DOM Parser"),
@@ -195,45 +195,51 @@ void Data::load(void)
     }
 
   /* parsing file */
- 
-    QDomNode node = root.firstChild();
-    while ( !node.isNull() ) {
+
+  QDomNode node = root.firstChild();
+  while ( !node.isNull() )
+    {
       QDomElement element = node.toElement();
 
-      if (element.tagName() == QLatin1String("track")) {
-        //Track::parse(node.toElement(), this->track);
-        std::cout  << qPrintable(tr(" ")) << qPrintable(tr("Parsing"))  << qPrintable(tr(" ")) << qPrintable(element.tagName()) << std::endl;
-        
-        //std::cout << "laps=" << qPrintable(element.attribute("laps")) << std::endl;
-        this->track.setLaps(element.attribute(QLatin1String("laps")).toInt());
-        this->track.setEtaps(element.attribute(QLatin1String("etaps")).toInt());
-        this->track.setName(element.attribute(QLatin1String("etaps")));
-      }
-      else if (element.tagName() == QLatin1String("position")) {
-        std::cout << qPrintable(tr(" ")) << qPrintable(tr("Parsing")) << qPrintable(tr(" ")) << qPrintable(element.tagName()) << std::endl;
-        this->position.setLap(element.attribute(QLatin1String("lap")).toInt());
-        this->position.setEtap(element.attribute(QLatin1String("etap")).toInt());
-      }
-      else if (element.tagName() == QLatin1String("vehicule")) {
-        std::cout << qPrintable(tr(" ")) << qPrintable(tr("Parsing")) << qPrintable(tr(" ")) << qPrintable(element.tagName()) << std::endl;
-        // ToDo
-      }
-      else if (element.tagName() == QLatin1String("chrono")) {
-        std::cout << qPrintable(tr(" ")) << qPrintable(tr("Parsing")) << qPrintable(tr(" ")) << qPrintable(element.tagName()) << std::endl;
-        // ToDo
-      }
-      else {
-        QString strErr = QObject::tr("Error: Undefined element tagName");
-        std::cerr << qPrintable(tr(" ")) << qPrintable(strErr) << std::endl;
-        QMessageBox::warning(0,
-                             QObject::tr("DOM Parser"),
-                             strErr
-                            );
-      }
+      if (element.tagName() == QLatin1String("track"))
+        {
+          //Track::parse(node.toElement(), this->track);
+          std::cout  << qPrintable(tr(" ")) << qPrintable(tr("Parsing"))  << qPrintable(tr(" ")) << qPrintable(element.tagName()) << std::endl;
 
-      node = node.nextSibling(); 
+          //std::cout << "laps=" << qPrintable(element.attribute("laps")) << std::endl;
+          this->track.setLaps(element.attribute(QLatin1String("laps")).toInt());
+          this->track.setEtaps(element.attribute(QLatin1String("etaps")).toInt());
+          this->track.setName(element.attribute(QLatin1String("etaps")));
+        }
+      else if (element.tagName() == QLatin1String("position"))
+        {
+          std::cout << qPrintable(tr(" ")) << qPrintable(tr("Parsing")) << qPrintable(tr(" ")) << qPrintable(element.tagName()) << std::endl;
+          this->position.setLap(element.attribute(QLatin1String("lap")).toInt());
+          this->position.setEtap(element.attribute(QLatin1String("etap")).toInt());
+        }
+      else if (element.tagName() == QLatin1String("vehicule"))
+        {
+          std::cout << qPrintable(tr(" ")) << qPrintable(tr("Parsing")) << qPrintable(tr(" ")) << qPrintable(element.tagName()) << std::endl;
+          // ToDo
+        }
+      else if (element.tagName() == QLatin1String("chrono"))
+        {
+          std::cout << qPrintable(tr(" ")) << qPrintable(tr("Parsing")) << qPrintable(tr(" ")) << qPrintable(element.tagName()) << std::endl;
+          // ToDo
+        }
+      else
+        {
+          QString strErr = QObject::tr("Error: Undefined element tagName");
+          std::cerr << qPrintable(tr(" ")) << qPrintable(strErr) << std::endl;
+          QMessageBox::warning(0,
+                               QObject::tr("DOM Parser"),
+                               strErr
+                              );
+        }
+
+      node = node.nextSibling();
     }
- 
+
   file.close();
 
   std::cout << qPrintable(tr(" ")) << qPrintable(tr("Data loaded")) << std::endl;
