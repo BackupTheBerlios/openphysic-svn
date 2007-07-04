@@ -25,10 +25,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "mainwinimpl.h"
 
-TestWinImpl::TestWinImpl( QWidget * parent, Qt::WFlags f, Data * data ) : QDialog(parent, f)
+TestWinImpl::TestWinImpl( QWidget * parent, Qt::WFlags f, Data * data, LogData * logdata ) : QDialog(parent, f)
 {
   setupUi(this);
+
   m_data = data;
+  m_logdata = logdata;
+ 
   //m_win = win;
 
   setGeometry(450,100,580,240);
@@ -83,9 +86,12 @@ void TestWinImpl::update(void)
 
 void TestWinImpl::test(void)
 {
+/*
   std::cout << "Test Win" << std::endl;
   m_data->test();
   m_data->vehicule.engine.engine_state.show();
+*/
+  m_logdata->show();
 }
 
 

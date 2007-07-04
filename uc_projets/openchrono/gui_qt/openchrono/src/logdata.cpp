@@ -26,22 +26,29 @@ LogData::LogData( Data * data )
 {
   m_data = data;
 
-  setDelay(500);
-
-  N = 4096;
-
-  start = 0;
-  stop = start;
+  init();
 
   setRecordMode(record_wrap);
 
   connect( &timer, SIGNAL( timeout() ), this, SLOT( update() ) );
+
+  connect( this, SIGNAL( memory_full() ), this, SLOT( on_memory_full() ) );
 
 }
 
 LogData::~LogData(  )
 {
 
+}
+
+void LogData::init(void)
+{
+  overload = false;
+
+  setDelay(100);
+
+  start = 0;
+  stop = start;
 }
 
 void LogData::setDelay(int delay)
@@ -94,27 +101,68 @@ int LogData::RecordMode(void)
 
 void LogData::update(  )
 {
-  std::cout << qPrintable(tr("Log data (update)")) << std::endl;
+  //std::cout << qPrintable(tr("Log data (update)")) << std::endl;
 
-  stop = stop++;
 
 /*
   if (stop == N) {
-    if (m_mode == record_wrap) {
-      
-    }
+    if (m_mode == record_wrap)stop%Ndatarecord
     if (m_mode == record_fill) {
       
     }
   }
  */
 
+  int i = stop;//%Ndatarecord;
+  if ( overload ) {
+    start = (stop+1)%Ndatarecord;
+  }
+
+  rpmVct[i] = m_data->vehicule.engine.rpm.value();
+  t1Vct[i] = m_data->vehicule.engine.temperature_1.value();
+  t2Vct[i] = m_data->vehicule.engine.temperature_2.value();
+
+  //std::cout << i << CSV_SEP << "time" << CSV_SEP << rpmVct[i] << CSV_SEP << t1Vct[i] << CSV_SEP << t2Vct[i] << CSV_SEP << start << CSV_SEP << stop << std::endl;
+
+  stop++;
+  if ( stop == Ndatarecord ) {
+    overload = true;
+    if ( m_mode == record_fill ) {
+      emit memory_full();
+      return;
+    }
+  }
+
+  stop = stop%Ndatarecord;
+
+
 }
 
 void LogData::show()
 {
-  std::cout << "time" << CSV_SEP << "rpm" << CSV_SEP << "t1" << CSV_SEP << "t2" << std::endl;
-// for
+  std::cout << qPrintable(tr("Log data (show)")) << std::endl;
+  std::cout << "start = " << start << std::endl;
+  std::cout << "stop = " << stop << std::endl;
+
+  std::cout << "index" << CSV_SEP << "time" << CSV_SEP << "rpm" << CSV_SEP << "t1" << CSV_SEP << "t2" << std::endl;
+  int i = 0;
+  int end = 0;
+  if (overload) {
+    end = Ndatarecord;
+  } else {
+    end = stop;
+  }
+  for (int j = 0 ; j < end ; j++ ) {
+    i = j%Ndatarecord;
+    std::cout << i << CSV_SEP << "time" << CSV_SEP << rpmVct[i] << CSV_SEP << t1Vct[i] << CSV_SEP << t2Vct[i] << std::endl;
+  }
+
+}
+
+void LogData::on_memory_full()
+{
+  setRecordMode(record_off);
+  std::cerr << "Error: Can't save more data (RPM, temp...). Memory full" << std::endl;
 }
 
 

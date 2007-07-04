@@ -26,6 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <QVector>
 //
 #define CSV_SEP ";"
+#define Ndatarecord 32 //4096=2^12
 
 #include <iostream> // ForTest std::cout << "Test" << std::endl;
 
@@ -41,6 +42,7 @@ class LogData : public QObject
 
   private slots:
     void update(void);
+    void on_memory_full(void);
 
   private:
     Data * m_data;
@@ -49,15 +51,22 @@ class LogData : public QObject
     int delay(void);
     int m_msec; // log delay = typically 500ms
 
-    int N; // size of vector
+    //int N; // size of vector
     int start; // 0
     int stop; // N (current)
 
+    void init(void);
+
     /* data to record */
     // time
+/*
     QVector <double> rpmVct;
     QVector <double> t1Vct;
     QVector <double> t2Vct;
+*/
+    double rpmVct[Ndatarecord];
+    double t1Vct[Ndatarecord];
+    double t2Vct[Ndatarecord];
 
     /*
     Record mode : OFF, FILL or WRAP.
@@ -73,6 +82,11 @@ class LogData : public QObject
     int RecordMode(void);
 
     QTimer timer;
+
+    bool overload; // for wrap mode
+
+  signals:
+    void memory_full(void); // only emit when fill mode is activated
 
   };
 

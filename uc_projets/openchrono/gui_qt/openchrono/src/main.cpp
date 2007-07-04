@@ -93,13 +93,12 @@ int main(int argc, char ** argv)
   winMain.activate();
 
   /* Fenêtre de test */
-  TestWinImpl winTest(0, 0, &myCurrentData);
+  TestWinImpl winTest(0, 0, &myCurrentData, &logdata);
   winTest.show();
 
 
   app.connect( &app, SIGNAL( lastWindowClosed() ), &app, SLOT( quit() ) );
 
-  logdata.show();
 
   int exit;
   exit = app.exec();
