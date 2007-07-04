@@ -23,7 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "data.h"
 //
 #include <QObject>
-#include <QVector>
+//#include <QVector>
+#include <QtXml>
 //
 #define CSV_SEP ";"
 #define Ndatarecord 32 //4096=2^12
@@ -39,6 +40,8 @@ class LogData : public QObject
     ~LogData();
 
     void show(void);
+
+    QDomElement to_node( QDomDocument &dom_doc );
 
   private slots:
     void update(void);

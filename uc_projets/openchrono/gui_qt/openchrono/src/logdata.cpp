@@ -170,4 +170,15 @@ void LogData::on_memory_full()
   std::cerr << "Error: Can't save more data (RPM, temp...). Memory full" << std::endl;
 }
 
+QDomElement LogData::to_node( QDomDocument &dom_doc )
+{
+  QDomElement dom_elt = dom_doc.createElement( QLatin1String("logdata") );
 
+  QString strBuf;
+/*
+  dom_elt.setAttribute( QLatin1String("rpm"), strBuf.setNum( m_RPM ) );
+  dom_elt.setAttribute( QLatin1String("temperature1"), strBuf.setNum( m_RPMmin ) );
+  dom_elt.setAttribute( QLatin1String("temperature2"), strBuf.setNum( m_RPMmax ) );
+*/
+  return dom_elt;
+}
