@@ -118,11 +118,16 @@ void LogData::update(  )
     start = (stop+1)%Ndatarecord;
   }
 
+/*
+if ( i== 0 )
+  std::cout << "i=0" << std::endl; 
+*/
+
   rpmVct[i] = m_data->vehicule.engine.rpm.value();
   t1Vct[i] = m_data->vehicule.engine.temperature_1.value();
   t2Vct[i] = m_data->vehicule.engine.temperature_2.value();
 
-  //std::cout << i << CSV_SEP << "time" << CSV_SEP << rpmVct[i] << CSV_SEP << t1Vct[i] << CSV_SEP << t2Vct[i] << CSV_SEP << start << CSV_SEP << stop << std::endl;
+  std::cout << i << CSV_SEP << "time" << CSV_SEP << rpmVct[i] << CSV_SEP << t1Vct[i] << CSV_SEP << t2Vct[i] << CSV_SEP << start << CSV_SEP << stop << std::endl;
 
   stop++;
   if ( stop == Ndatarecord ) {

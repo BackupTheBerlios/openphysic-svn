@@ -54,6 +54,7 @@ class LogData : public QObject
     //int N; // size of vector
     int start; // 0
     int stop; // N (current)
+    //int Nused;
 
     void init(void);
 
