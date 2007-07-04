@@ -54,10 +54,10 @@ class LogData : public QObject
     int delay(void);
     int m_msec; // log delay = typically 500ms
 
-    //int N; // size of vector
-    int start; // 0
-    int stop; // N (current)
-    //int Nused;
+    int start;
+    //int stop;
+    int i;
+    int Nused;
 
     void init(void);
 
@@ -87,7 +87,7 @@ class LogData : public QObject
 
     QTimer timer;
 
-    bool overload; // for wrap mode
+    //bool overload; // for wrap mode
 
   signals:
     void memory_full(void); // only emit when fill mode is activated
