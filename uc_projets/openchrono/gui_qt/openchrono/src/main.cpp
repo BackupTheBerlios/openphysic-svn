@@ -39,6 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //#include "questionsimpl.h"
 //
 #include "data.h"
+#include "logdata.h"
 //
 //#include "ocdocument.h" // ocview ocdocument (ex ocwindows)
 //#include "ocview.h"
@@ -68,6 +69,12 @@ int main(int argc, char ** argv)
   /* Données */
   Data myCurrentData;
 
+  /* Log Data */
+  LogData logdata(&myCurrentData);
+
+  /* Log Time */
+  //LogTime logtime(&myCurrentData);
+
   /* Fenêtres de l'application */
   OCDocument_MainWin winMain(&myCurrentData);
   OCDocument_Engine winEngine; //(&myCurrentData);
@@ -91,6 +98,8 @@ int main(int argc, char ** argv)
 
 
   app.connect( &app, SIGNAL( lastWindowClosed() ), &app, SLOT( quit() ) );
+
+  logdata.show();
 
   int exit;
   exit = app.exec();

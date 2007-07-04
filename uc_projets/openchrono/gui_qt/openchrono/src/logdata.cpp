@@ -21,15 +21,22 @@
 //
 #include <QTimer>
 
-LogData::LogData(  )
-{
-  m_msec = 500;
 
-/*
-  QTimer * timer = new QTimer(this);
-  connect( timer, SIGNAL( timeout() ), this, SLOT( update() ) );
-  timer->start(m_msec);
-*/
+LogData::LogData( Data * data )
+{
+  m_data = data;
+
+  setDelay(500);
+
+  N = 4096;
+
+  start = 0;
+  stop = start;
+
+  setRecordMode(record_wrap);
+
+  connect( &timer, SIGNAL( timeout() ), this, SLOT( update() ) );
+
 }
 
 LogData::~LogData(  )
@@ -37,8 +44,77 @@ LogData::~LogData(  )
 
 }
 
+void LogData::setDelay(int delay)
+{
+  m_msec = delay;
+}
+
+int LogData::delay(void)
+{
+  return m_msec;
+}
+
+
+
+void LogData::setRecordMode(Record_mode mode)
+{
+  if (mode == record_off) {
+    setOff();
+  }
+  else if (mode == record_wrap) {
+    setWrap();
+  }
+  else if (mode == record_fill) {
+    setFill();
+  }
+}
+
+void LogData::setOff(void)
+{
+  m_mode = record_off;
+  timer.stop();
+}
+
+void LogData::setWrap(void)
+{
+  m_mode = record_wrap;
+  timer.start(m_msec);
+}
+
+void LogData::setFill(void)
+{
+  m_mode = record_fill;
+  timer.start(m_msec);
+}
+
+int LogData::RecordMode(void)
+{
+  return m_mode;
+}
+
 void LogData::update(  )
 {
-//  std::cout << qPrintable(tr("Log data")) << std::endl;
+  std::cout << qPrintable(tr("Log data (update)")) << std::endl;
+
+  stop = stop++;
+
+/*
+  if (stop == N) {
+    if (m_mode == record_wrap) {
+      
+    }
+    if (m_mode == record_fill) {
+      
+    }
+  }
+ */
+
 }
+
+void LogData::show()
+{
+  std::cout << "time" << CSV_SEP << "rpm" << CSV_SEP << "t1" << CSV_SEP << "t2" << std::endl;
+// for
+}
+
 
