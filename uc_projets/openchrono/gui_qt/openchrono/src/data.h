@@ -30,6 +30,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "pilot.h"
 #include "vehicule.h"
 
+#include "logdata.h"
+
 #include <iostream> // ForTest std::cout << "Test" << std::endl;
 
 class Data : public QObject
@@ -48,6 +50,9 @@ class Data : public QObject
     Vehicule vehicule;
 
     Chrono chrono;
+
+    //LogData logdata;
+
 
     void test(void);
 
