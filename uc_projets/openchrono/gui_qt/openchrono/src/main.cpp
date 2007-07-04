@@ -40,6 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 #include "data.h"
 #include "logdata.h"
+#include "logtime.h"
 //
 //#include "ocdocument.h" // ocview ocdocument (ex ocwindows)
 //#include "ocview.h"
@@ -73,7 +74,7 @@ int main(int argc, char ** argv)
   LogData logdata(&myCurrentData);
 
   /* Log Time */
-  //LogTime logtime(&myCurrentData);
+  LogTime logtime(&myCurrentData);
 
   /* Fenêtres de l'application */
   OCDocument_MainWin winMain(&myCurrentData);

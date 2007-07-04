@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "data.h"
 //
 #include <QObject>
-//#include <QVector>
+#include <QVector>
 #include <QtXml>
 //
 #define CSV_SEP ";"
@@ -63,15 +63,15 @@ class LogData : public QObject
 
     /* data to record */
     // time
-/*
     QVector <double> rpmVct;
     QVector <double> t1Vct;
     QVector <double> t2Vct;
-*/
+
+/*
     double rpmVct[Ndatarecord];
     double t1Vct[Ndatarecord];
     double t2Vct[Ndatarecord];
-
+*/
     /*
     Record mode : OFF, FILL or WRAP.
     The FILL option will record data until the maximum memory of N points is reached, then stop and provide a "LogData memory full" message.

@@ -147,6 +147,9 @@ struct timeval Chrono::get_current_lap_time(void)
 
 struct timeval Chrono::get_current_etap_time(void)
   {
+/* temps intermédiaire ; temps de passage ; temps partiel */
+/* split time ; etap time ; partial time */
+/* http://www.lexique-jo.org/liste4.cfm?rubrique=CYCL */
     if (running)
       {
         gettimeofday(&tv_current, NULL);

@@ -25,6 +25,7 @@ HEADERS += src/chrono.h \
            src/engine_state.h \
            src/keyboard.h \
            src/logdata.h \
+           src/logtime.h \
            src/mainwinimpl.h \
            src/ocdocument.h \
            src/ocdocument_mainwin.h \
@@ -46,6 +47,7 @@ SOURCES += src/chrono.cpp \
            src/engine.cpp \
            src/engine_state.cpp \
            src/logdata.cpp \
+           src/logtime.cpp \
            src/main.cpp \
            src/mainwinimpl.cpp \
            src/ocdocument.cpp \

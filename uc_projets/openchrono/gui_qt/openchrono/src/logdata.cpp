@@ -28,6 +28,12 @@ LogData::LogData( Data * data )
 
   init();
 
+  /* resize vector */
+  rpmVct.resize(Ndatarecord);
+  t1Vct.resize(Ndatarecord);
+  t2Vct.resize(Ndatarecord);
+
+
   setRecordMode(record_wrap);
 
   connect( &timer, SIGNAL( timeout() ), this, SLOT( update() ) );
