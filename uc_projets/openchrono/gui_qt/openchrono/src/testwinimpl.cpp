@@ -17,13 +17,12 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-#include "testwinimpl.h"
 //
 #include <QTimer>
 
 #include <iostream> //for test
 
-#include "mainwinimpl.h"
+#include "testwinimpl.h"
 
 TestWinImpl::TestWinImpl( QWidget * parent, Qt::WFlags f, Data * data, LogData * logdata ) : QDialog(parent, f)
 {

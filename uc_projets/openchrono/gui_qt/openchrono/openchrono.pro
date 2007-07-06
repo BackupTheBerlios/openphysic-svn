@@ -26,13 +26,13 @@ HEADERS += src/chrono.h \
            src/keyboard.h \
            src/logdata.h \
            src/logtime.h \
-           src/mainwinimpl.h \
            src/ocdocument.h \
            src/ocdocument_mainwin.h \
            src/ocdocument_engine.h \
            src/ocview.h \
            src/ocview_mainwin.h \
            src/ocview_engine.h \
+           src/ocview_plot.h \
            src/pilot.h \
            src/position.h \
            src/rpm.h \
@@ -49,13 +49,13 @@ SOURCES += src/chrono.cpp \
            src/logdata.cpp \
            src/logtime.cpp \
            src/main.cpp \
-           src/mainwinimpl.cpp \
            src/ocdocument.cpp \
            src/ocdocument_mainwin.cpp \
            src/ocdocument_engine.cpp \
            src/ocview.cpp \
            src/ocview_mainwin.cpp \
            src/ocview_engine.cpp \
+           src/ocview_plot.cpp \
            src/pilot.cpp \
            src/position.cpp \
            src/rpm.cpp \

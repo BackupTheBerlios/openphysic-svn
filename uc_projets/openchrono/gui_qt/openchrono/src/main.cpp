@@ -47,6 +47,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "ocdocument_mainwin.h"
 #include "ocdocument_engine.h"
+#include "ocdocument_plot.h"
 
 #include "testwinimpl.h"
 
@@ -79,6 +80,8 @@ int main(int argc, char ** argv)
   /* Fenêtres de l'application */
   OCDocument_MainWin winMain(&myCurrentData);
   OCDocument_Engine winEngine; //(&myCurrentData);
+  //OCDocument_Plot winPlot(&LogData);
+
 
   winMain.set_parent(&winMain);
   winMain.set_brother_next(&winEngine);
@@ -92,6 +95,9 @@ int main(int argc, char ** argv)
 
 
   winMain.activate();
+
+
+  //winPlot.activate();
 
   /* Fenêtre de test */
   TestWinImpl winTest(0, 0, &myCurrentData, &logdata);

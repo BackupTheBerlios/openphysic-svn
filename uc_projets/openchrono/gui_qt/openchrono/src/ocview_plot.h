@@ -17,38 +17,34 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-#ifndef MAINWINIMPL_H
-#define MAINWINIMPL_H
+#ifndef OCVIEW_PLOT_H
+#define OCVIEW_PLOT_H
 //
-#include "ui_mainwin.h"
-//
-
-#include "data.h"
 #include "ocview.h"
+#include "ocdocument.h"
 
-#include <QKeyEvent>
+#include <QTimer>
+//#include "ui_plot.h"
+//
+//#include "data.h"
+#include "logdata.h"
 
-class MainWinImpl : public QDialog, public Ui::MainWin
+class OCDocument;
+
+class OCView_Plot : public OCView //, public Ui::MainWin
   {
     Q_OBJECT
+
   public:
-    MainWinImpl( QWidget * parent = 0, Qt::WFlags f = 0, Data * myData = 0 );
-    void test(void);
+    OCView_Plot(OCDocument * ocdoc, LogData * logdata);
+    virtual ~OCView_Plot();
 
   private slots:
-    void UpdateData();
+    void update(void);
 
   private:
-    Data * m_Data;
-
-    void showRPM(void);
-    void showT1(void);
-    void showT2(void);
-    void showCurrentLapTime(void);
-    void showLastLapTime(void);
-    void showBestLapTime(void);
-    void showLap(void);
-    void showEtap(void);
-
+    QTimer timer;
+    LogData * m_logdata;
   };
 #endif
+
