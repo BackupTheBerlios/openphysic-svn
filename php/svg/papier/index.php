@@ -2,20 +2,29 @@
 
 $unit="mm";
 
-$paper_width = 210;
-$paper_height = 297;
+$paper_width = 210; // mm
+$paper_height = 297; // mm
 
-$xoffset = 5;
-$yoffset = 5;
+$xoffset = 5; // mm
+$yoffset = 5; // mm
 
-$line_width = 200;
-$line_height = 290;
+$line_width = 200; // mm
+$line_height = 290; // mm
+$xbigspace = 10; // mm
+$ybigspace = 10; // mm
+$xlittlespace = 1; // mm
+$ylittlespace = 1; // mm
 
 $color1 = "black";
 $color2 = "red";
 
-$width1= 2;
-$width2= 1;
+$width1= 2; // pt
+$width2= 1; // pt
+
+
+$nb_lines_x = $line_width/$xbigspace; // 20
+$nb_lines_y = $line_height/$ybigspace; // 29
+
 
 header("Content-type: image/svg+xml");
 
@@ -48,7 +57,7 @@ $y1 = 0+$yoffset;
 $x2 = $line_width+$xoffset;
 $y2 = $y1; // idem
 
-for ($i = 0 ; $i<29 ; $i++) {
+for ($i = 0 ; $i<$nb_lines_y ; $i++) {
 echo <<<MIDDLE_HZ
     <line
        x1="$x1$unit" y1="$y1$unit"
@@ -57,7 +66,7 @@ echo <<<MIDDLE_HZ
        stroke-width="$width1" />
 
 MIDDLE_HZ;
-$y1 = $y1 + 10;
+$y1 = $y1 + $ybigspace;
 $y2 = $y1;
 }
 
@@ -72,7 +81,7 @@ $y1 = 0+$yoffset;
 $x2 = $x1; // idem
 $y2 = $line_height+$yoffset;
 
-for ($i = 0 ; $i<20 ; $i++) {
+for ($j = 0 ; $j<$nb_lines_x ; $j++) {
 echo <<<MIDDLE_VT
     <line
        x1="$x1$unit" y1="$y1$unit"
@@ -81,7 +90,7 @@ echo <<<MIDDLE_VT
        stroke-width="$width1" />
 
 MIDDLE_VT;
-$x1 = $x1 + 10;
+$x1 = $x1 + $xbigspace;
 $x2 = $x1;
 }
 
