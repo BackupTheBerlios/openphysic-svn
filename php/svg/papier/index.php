@@ -16,14 +16,16 @@ $xlittlespace = 1; // mm
 $ylittlespace = 1; // mm
 
 $color1 = "black";
-$color2 = "red";
+$color2 = "gray";
 
 $width1= 2; // pt
 $width2= 1; // pt
 
-
 $nb_lines_x = $line_width/$xbigspace; // 20
 $nb_lines_y = $line_height/$ybigspace; // 29
+
+$nb_lines2_x = $xbigspace/$xlittlespace; // 10
+$nb_lines2_y = $ybigspace/$ylittlespace; // 10
 
 
 header("Content-type: image/svg+xml");
@@ -48,15 +50,52 @@ echo <<<HEAD
 HEAD;
 ?>
 
-<!-- Lignes horizontales -->
-
+<!-- Lignes horizontales (minor) -->
 <?php
-// Lignes horizontales (major)
 $x1 = 0+$xoffset;
 $y1 = 0+$yoffset;
 $x2 = $line_width+$xoffset;
 $y2 = $y1; // idem
 
+for ($i = 0 ; $i<$nb_lines_y ; $i++) {
+   for ($j = 1 ; $j<$nb_lines2_y ; $j++) {
+      $x1m = $x1;
+      $y1m = $y1 + $j*$ylittlespace;
+      $x2m = $x2;
+      $y2m = $y1m; // idem
+      echo '       <line x1="'.$x1m.$unit.'" y1="'.$y1m.$unit.'" x2="'.$x2m.$unit.'" y2="'.$y2m.$unit.'" stroke="'.$color2.'" stroke-width="'.$width2.'" />'."\n";
+   }
+$y1 = $y1 + $ybigspace;
+$y2 = $y1;
+}
+?>
+
+<!-- Lignes verticales (minor) -->
+<?php
+$x1 = 0+$xoffset;
+$y1 = 0+$yoffset;
+$x2 = $x1; // idem
+$y2 = $line_height+$yoffset;
+for ($i = 0 ; $i<$nb_lines_x ; $i++) {
+   for ($j = 1 ; $j<$nb_lines2_x ; $j++) {
+      $x1m = $x1 + $j*$xlittlespace;
+      $y1m = $y1;
+      $x2m = $x1m; // idem
+      $y2m = $y2;
+      echo '       <line x1="'.$x1m.$unit.'" y1="'.$y1m.$unit.'" x2="'.$x2m.$unit.'" y2="'.$y2m.$unit.'" stroke="'.$color2.'" stroke-width="'.$width2.'" />'."\n";
+   }
+
+$x1 = $x1 + $xbigspace;
+$x2 = $x1;
+}
+?>
+
+<!-- Lignes horizontales (major) -->
+<?php
+$x1 = 0+$xoffset;
+$y1 = 0+$yoffset;
+$x2 = $line_width+$xoffset;
+$y2 = $y1; // idem
 for ($i = 0 ; $i<$nb_lines_y ; $i++) {
 echo <<<MIDDLE_HZ
     <line
@@ -69,19 +108,15 @@ MIDDLE_HZ;
 $y1 = $y1 + $ybigspace;
 $y2 = $y1;
 }
-
 ?>
 
-<!-- Lignes verticales -->
-
+<!-- Lignes verticales (major) -->
 <?php
-// Lignes verticales (major)
 $x1 = 0+$xoffset;
 $y1 = 0+$yoffset;
 $x2 = $x1; // idem
 $y2 = $line_height+$yoffset;
-
-for ($j = 0 ; $j<$nb_lines_x ; $j++) {
+for ($i = 0 ; $i<$nb_lines_x ; $i++) {
 echo <<<MIDDLE_VT
     <line
        x1="$x1$unit" y1="$y1$unit"
@@ -93,13 +128,9 @@ MIDDLE_VT;
 $x1 = $x1 + $xbigspace;
 $x2 = $x1;
 }
+?>
 
-// Lignes horizontales (minor)
-// ToDo
-
-// Lignes verticales (minor)
-// ToDo
-
+<?php
 // Dernire ligne horizontale (major)
 $x1 = 0+$xoffset;
 $y1 = $line_height+$yoffset;
@@ -113,7 +144,9 @@ echo <<<LAST_HZ
        stroke-width="$width1" />
 
 LAST_HZ;
+?>
 
+<?php
 // Dernire ligne verticale (major)
 $x1 = $line_width+$xoffset;
 $y1 = 0+$yoffset;
@@ -127,8 +160,9 @@ echo <<<LAST_VT
        stroke-width="$width1" />
 
 LAST_VT;
+?>
 
-
+<?php
 echo <<<END
   </g>
 </svg>
