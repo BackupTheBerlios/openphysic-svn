@@ -14,3 +14,7 @@ int fact(int n) {
 int my_mod(int n, int m) {
   return(n % m);
 }
+
+/* init Python module */
+//void initlibexample(void) {
+//}
