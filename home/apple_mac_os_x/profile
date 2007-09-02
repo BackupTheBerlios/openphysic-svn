@@ -69,3 +69,7 @@ alias run='./a.out'
 alias rmtmp='rm *~ *.o a.out'
 
 export LD_LIBRARY_PATH=/usr/local/include/wx-2.8/
+
+export SCI=/Applications/Scilab-4.1.app/Contents/Resources/scilab-4.1
+
+export TMPDIR=/tmp
