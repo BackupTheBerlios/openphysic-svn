@@ -4,25 +4,36 @@ REM 12/12/2007
 
 Const dirOrigine = "\\Andromede\Comptes\GTE\dut"
 Const dirDestination =  "C:\Documents and Settings\scelles\Mes documents\copie"
-Const liste = "C:\Documents and Settings\scelles\Mes documents\liste.txt"
-Const listeErr = "C:\Documents and Settings\scelles\Mes documents\listeErr.txt"
+Const liste = "C:\Documents and Settings\scelles\Mes documents\liste.csv"
+Const listeErr = "C:\Documents and Settings\scelles\Mes documents\listeErr.csv"
 Const matiere = "autocad"
 Const extension = "*.dw?" 
 
 
 Const FOR_READING = 1
 Const blnUNICODE = FALSE
-
 Const OverWriteFiles = TRUE 
+Const SEP = ","
 
 Dim objFSO, objTS, strContents
+Dim objTSerr
+
+
 
 Set objFSO = CreateObject("Scripting.FileSystemObject") 
+
+
+Sub main()
+
+if ( objFSO.FolderExists(dirDestination)=false ) then
+  objFSO.CreateFolder(dirDestination)
+end if
 
 msgbox("Copie en cours")
 
 REM Lecture du fichier liste des eleves -> classe (type Array)
 REM classe = Array("pamyot","qantoine")
+
 If objFSO.FileExists(liste) Then
   Set objTS = objFSO.OpenTextFile(liste, FOR_READING, False, blnUNICODE)
 end if
@@ -30,6 +41,9 @@ strContents = objTS.ReadAll
 objTS.Close
 classe=Split(strContents, vbCrLf)
 
+REM Création du fichier d'erreurs
+Set objTSerr = objFSO.CreateTextFile(listeErr, OverWriteFiles, blnUNICODE)
+objTSerr.Write("login" & SEP & "err.number" & SEP & "err.description" & vbCrLf)
 
 For Each eleve In classe
   REM msgbox("Copie des fichiers de "+eleve)
@@ -52,16 +66,29 @@ For Each eleve In classe
   
 REM if objFSO.FileExists(fromFile)=true then
 	On Error Resume Next
+	REM On Error Goto ErreurCopie
 	objFSO.CopyFile fromFile, toFile, OverWriteFiles
-REM else
-REM	msgbox("Erreur de copie pour "+eleve)
-REM end if
-
+	if err.number <> 0 and eleve <> "" then
+		REM MsgBox "Erreur pour "& eleve & " : " & err.number & " " & err.description
+		objTSerr.Write(eleve & SEP & err.number & SEP & err.description & vbCrLf)
+	end if
 Next
 
 
 
 msgbox("Fin de la copie de tous les fichiers")
 
-REM ErreurCopie:
-REM	msgbox("Erreur de copie)
+
+REM Fermeture du fichier d'erreurs
+objTSerr.close
+
+
+Exit Sub
+
+ErreurCopie:
+	msgbox("Erreur de copie")
+
+End Sub
+
+
+main
