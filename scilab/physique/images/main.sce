@@ -2,7 +2,9 @@
 // Scilab + toolbox SIVP
 // http://sivp.sourceforge.net/doc.php
 
-clear
+clear // effacement de toutes les variables
+
+stacksize(1E7) // augmentation de la taille de la pile
 
 // Chargement de la toolboxe SIVP
 
@@ -12,15 +14,21 @@ a=imread("lena.png");
 
 // Taille de l'image
 si=size(a);
+b = hypermat(si);
 
 // Recuperation des canaux RGB
 R=a(:,:,1);
 G=a(:,:,2);
 B=a(:,:,3);
 
+Z=zeros(si(1),si(2));
+O=ones(si(1),si(2));
 
+b(:,:,1)=R;
+b(:,:,2)=G;
+b(:,:,3)=255*O;
 
-Y = 0,299*R + 0,587*G + 0,114*B
+Y = 0,299*R + 0,587*G + 0,114*B; // Luminance
 
 
 //for i=2:(si(1)-1)
