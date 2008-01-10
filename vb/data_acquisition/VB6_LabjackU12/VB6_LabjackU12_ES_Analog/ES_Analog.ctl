@@ -349,19 +349,33 @@ Attribute VB_Exposed = False
 ' IUT de Poiters
 ' Département Génie Thermique et Energie
 
+' Propriétés
+'  Entrée(i) (Lecture) val = entrée(i)
+'  Sortie(i) (Ecriture) sortie(i) = val
+'  Nb_entrées_analogiques_max
+'  Nb_sorties_analogiques_max
+'  Nb_entrées_analogiques_utilisées
+'  Nb_sorties_analogiques_utilisées
+
 Option Explicit
 
 Dim i As Integer
 
-Dim nb_es_max As Byte
+' Nb d'entrées/sorties max supportées par cet objet
+'nb_es_max = Max(nb_entrées_analogiques_max, nb_sorties_analogiques_max)
+Const nb_es_max = 8
 
 ' nb d'entrées/sorties analogiques maximum
 Dim m_nb_entrées_analogiques_max As Byte
+Const m_def_nb_entrées_analogiques_max = 8 ' nb d'entrées analogiques max par défaut
 Dim m_nb_sorties_analogiques_max As Byte
+Const m_def_nb_sorties_analogiques_max = 2 ' nb de sorties analogiques max par défaut
 
 ' nb d'entrées/sorties analogiques utilisées
 Dim m_nb_entrées_analogiques_utilisées As Byte
+Const m_def_nb_entrées_analogiques_utilisées = 1 ' 8 ou 1
 Dim m_nb_sorties_analogiques_utilisées As Byte
+Const m_def_nb_sorties_analogiques_utilisées = 1 ' 2 ou 1
 
 Const Tension_Entrée_Analogique_Max = -20
 Const Tension_Entrée_Analogique_Min = 20
@@ -371,6 +385,8 @@ Const Tension_Sortie_Analogique_Min = 0
 
 Const Voie0 = 0 ' 0 ou 1 : indice de départ des entrées/sorties
 
+
+' Stockage des données
 Dim entrees_tensions_analogiques(8) As Single
 Dim sorties_tensions_analogiques(8) As Single
 
@@ -407,88 +423,113 @@ End Sub
 
 
 Private Sub UserControl_Initialize()
-' Déf nb entrées / sorties analogiques max (spécifique à la carte)
-nb_entrées_analogiques_max = 8 ' appel du modificateur (Property Let) de nb d'entrées analogiques
-nb_sorties_analogiques_max = 2
+    Debug.Print "Initialize"
 
-' Nb d'entrées sortie max supportées par cet objet
-'nb_es_max = Max(nb_entrées_analogiques_max, nb_sorties_analogiques_max)
-nb_es_max = 8
+    'cboEntreesAnalogiques_Click
+    'cboSortiesAnalogiques_Click
 
-' Numerotation des voies (début à 0)
-For i = Voie0 To CByte(nb_entrées_analogiques_max) - 1 + Voie0
-    lblNum(i - Voie0).Caption = CStr(i)
-Next i
-
-' Remplissage combobox entrées analogiques
-For i = 1 To CByte(nb_entrées_analogiques_max)
-    cboEntreesAnalogiques.AddItem CStr(i) & " entrée(s)"
-Next i
-cboEntreesAnalogiques.ListIndex = 0
-
-' Remplissage combobox sorties analogiques
-For i = 1 To CByte(nb_sorties_analogiques_max)
-    cboSortiesAnalogiques.AddItem CStr(i) & " sortie(s)"
-Next i
-cboSortiesAnalogiques.ListIndex = 0
-
-
-cboEntreesAnalogiques_Click
-cboSortiesAnalogiques_Click
-
-
-' Déf nb entrées / sorties analogiques utilisées par défaut
-nb_entrées_analogiques_utilisées = 8 '1 '8
-nb_sorties_analogiques_utilisées = 2 '1 '2
-
-
-Timer1.Enabled = True
-Timer1.Interval = 1
+    Timer1.Enabled = True
+    Timer1.Interval = 10
 
 End Sub
+
+Private Sub maj_combo()
+    Debug.Print " maj_combo" + " ; " + Nb_entrées_analogiques_utilisées + " ; " + Nb_sorties_analogiques_utilisées
+
+    ' Numerotation des voies (début à 0)
+    For i = Voie0 To CByte(Nb_entrées_analogiques_max) - 1 + Voie0
+        lblNum(i - Voie0).Caption = CStr(i)
+    Next i
+
+    ' Remplissage combobox entrées analogiques
+    For i = 1 To CByte(Nb_entrées_analogiques_max)
+        cboEntreesAnalogiques.AddItem CStr(i) & " entrée(s)"
+    Next i
+    cboEntreesAnalogiques.ListIndex = 0
+
+    ' Remplissage combobox sorties analogiques
+    For i = 1 To CByte(Nb_sorties_analogiques_max)
+        cboSortiesAnalogiques.AddItem CStr(i) & " sortie(s)"
+    Next i
+    cboSortiesAnalogiques.ListIndex = 0
+End Sub
+
+' Initialise les propriétés
+'(lorsqu'on place un contrôle utilisateur sur une feuille)
+Private Sub UserControl_InitProperties()
+    Debug.Print "InitProperties"
+    Nb_entrées_analogiques_max = m_def_nb_entrées_analogiques_max
+    m_nb_sorties_analogiques_max = m_def_nb_sorties_analogiques_max
+    m_nb_entrées_analogiques_utilisées = m_def_nb_entrées_analogiques_utilisées
+    m_nb_sorties_analogiques_utilisées = m_def_nb_sorties_analogiques_utilisées
+End Sub
+
+' Chargement des propriétés par défault
+Private Sub UserControl_ReadProperties(PropBag As PropertyBag)
+    Debug.Print "ReadProperties"
+    m_nb_entrées_analogiques_max = PropBag.ReadProperty("Nb_entrées_analogiques_max", m_def_nb_entrées_analogiques_max)
+    m_nb_sorties_analogiques_max = PropBag.ReadProperty("Nb_sorties_analogiques_max", m_def_nb_sorties_analogiques_max)
+    m_nb_entrées_analogiques_utilisées = PropBag.ReadProperty("Nb_entrées_analogiques_utilisées", m_def_nb_entrées_analogiques_utilisées)
+    m_nb_sorties_analogiques_utilisées = PropBag.ReadProperty("Nb_sorties_analogiques_utilisées", m_def_nb_sorties_analogiques_utilisées)
+
+    maj_combo
+End Sub
+
+' Sauvegarde des propriétés
+Private Sub UserControl_WriteProperties(PropBag As PropertyBag)
+    Debug.Print "WriteProperties"
+    Call PropBag.WriteProperty("Nb_entrées_analogiques_max", m_nb_entrées_analogiques_max, m_def_nb_entrées_analogiques_max)
+    Call PropBag.WriteProperty("Nb_sorties_analogiques_max", m_nb_sorties_analogiques_max, m_def_nb_sorties_analogiques_max)
+    Call PropBag.WriteProperty("Nb_entrées_analogiques_utilisées", m_nb_entrées_analogiques_utilisées, m_def_nb_entrées_analogiques_utilisées)
+    Call PropBag.WriteProperty("Nb_sorties_analogiques_utilisées", m_nb_sorties_analogiques_utilisées, m_def_nb_sorties_analogiques_utilisées)
+End Sub
+
 Private Sub cboEntreesAnalogiques_Click()
-m_nb_entrées_analogiques_utilisées = cboEntreesAnalogiques.ListIndex + 1
+    Debug.Print "cboEntreesAnalogiques_Click"
+    m_nb_entrées_analogiques_utilisées = cboEntreesAnalogiques.ListIndex + 1
 
-For i = 1 To nb_es_max
-    ' Initialisation des labels entrées
-    canal_entrée(i - 1).Text = ""
+    For i = 1 To nb_es_max
+        ' Initialisation des labels entrées
+        canal_entrée(i - 1).Text = ""
 
-    ' Rendre invisible les labels entrées inutiles
-    If i <= m_nb_entrées_analogiques_utilisées Then
-        canal_entrée(i - 1).Visible = True
-    Else
-        canal_entrée(i - 1).Visible = False
-    End If
-Next i
-
+        ' Rendre invisible les labels entrées inutiles
+        If i <= m_nb_entrées_analogiques_utilisées Then
+            canal_entrée(i - 1).Visible = True
+            lblNum(i - 1).Visible = True
+        Else
+            canal_entrée(i - 1).Visible = False
+            lblNum(i - 1).Visible = False
+        End If
+    Next i
 
 End Sub
 
 Private Sub cboSortiesAnalogiques_Click()
-m_nb_sorties_analogiques_utilisées = cboSortiesAnalogiques.ListIndex + 1
+    Debug.Print "cboSortiesAnalogiques_Click"
+    m_nb_sorties_analogiques_utilisées = cboSortiesAnalogiques.ListIndex + 1
 
-For i = 1 To nb_es_max
-    canal_sortie(i - 1).Text = "0"
+    For i = 1 To nb_es_max
+        canal_sortie(i - 1).Text = "0"
 
-    ' Rendre invisible les labels sorties inutiles
-    If i <= m_nb_sorties_analogiques_utilisées Then
-        canal_sortie(i - 1).Visible = True
-    Else
-        canal_sortie(i - 1).Visible = False
-    End If
-Next i
+        ' Rendre invisible les labels sorties inutiles
+        If i <= m_nb_sorties_analogiques_utilisées Then
+            canal_sortie(i - 1).Visible = True
+        Else
+            canal_sortie(i - 1).Visible = False
+        End If
+    Next i
 
 End Sub
 
 Private Sub Timer1_Timer()
 
-acquérir_tensions_analogiques
-' affichage tensions analogiques
-For i = 0 To nb_entrées_analogiques_max - 1
-    canal_entrée(i) = Format(entrees_tensions_analogiques(i), "###0.00")
-Next i
+    acquérir_tensions_analogiques
+    ' affichage tensions analogiques
+    For i = 0 To Nb_entrées_analogiques_max - 1
+        canal_entrée(i) = Format(entrees_tensions_analogiques(i), "###0.00")
+    Next i
 
-sortir_tensions_analogiques
+    sortir_tensions_analogiques
 
 End Sub
 
@@ -509,56 +550,59 @@ End Property
 ' Modificateurs (Let) pour les sorties
 ' ====================================
 ' voie allant de 0 à 7
-Public Property Let sortie(ByVal voie As Byte, ByVal tension As Single)
+Public Property Let Sortie(ByVal voie As Byte, ByVal tension As Single)
     canal_sortie(voie).Text = CStr(tension)
-    'PropertyChanged "Text"
+    PropertyChanged "sortie"
+    PropertyChanged "sortie" + CStr(voie)
 End Property
 
 
 ' Accesseur/modificateur nb_entrées_analogiques_max
 ' =================================================
-Public Property Let nb_entrées_analogiques_max(ByVal New_entrée As Byte)
+Public Property Let Nb_entrées_analogiques_max(ByVal New_entrée As Byte)
     m_nb_entrées_analogiques_max = CByte(New_entrée)
-    'PropertyChanged "listindex"
+    PropertyChanged "Nb_entrées_analogiques_max"
 End Property
 
-Public Property Get nb_entrées_analogiques_max() As Byte
-    nb_entrées_analogiques_max = m_nb_entrées_analogiques_max
+Public Property Get Nb_entrées_analogiques_max() As Byte
+    Nb_entrées_analogiques_max = m_nb_entrées_analogiques_max
 End Property
 
 ' Accesseur/modificateur nb_sorties_analogiques_max
 ' =================================================
-Public Property Let nb_sorties_analogiques_max(ByVal New_sortie As Byte)
+Public Property Let Nb_sorties_analogiques_max(ByVal New_sortie As Byte)
     m_nb_sorties_analogiques_max = New_sortie
-    'PropertyChanged "listindex"
+    PropertyChanged "Nb_sorties_analogiques_max"
 End Property
 
-Public Property Get nb_sorties_analogiques_max() As Byte
-    nb_sorties_analogiques_max = m_nb_sorties_analogiques_max
+Public Property Get Nb_sorties_analogiques_max() As Byte
+    Nb_sorties_analogiques_max = m_nb_sorties_analogiques_max
 End Property
 
 
 
 ' Accesseur/modificateur nb_entrées_analogiques_utilisées
 ' =======================================================
-Public Property Let nb_entrées_analogiques_utilisées(ByVal New_entrée As Byte)
+Public Property Let Nb_entrées_analogiques_utilisées(ByVal New_entrée As Byte)
     m_nb_entrées_analogiques_utilisées = New_entrée
     cboEntreesAnalogiques.ListIndex = New_entrée - 1
+    PropertyChanged "Nb_entrées_analogiques_utilisées"
 End Property
 
-Public Property Get nb_entrées_analogiques_utilisées() As Byte
-    nb_entrées_analogiques_utilisées = m_nb_entrées_analogiques_utilisées
+Public Property Get Nb_entrées_analogiques_utilisées() As Byte
+    Nb_entrées_analogiques_utilisées = m_nb_entrées_analogiques_utilisées
 End Property
 
 ' Accesseur/modificateur nb_sorties_analogiques_utilisées
 ' =======================================================
-Public Property Let nb_sorties_analogiques_utilisées(ByVal New_sortie As Byte)
+Public Property Let Nb_sorties_analogiques_utilisées(ByVal New_sortie As Byte)
     m_nb_sorties_analogiques_utilisées = New_sortie
     cboSortiesAnalogiques.ListIndex = New_sortie - 1
+    PropertyChanged "Nb_sorties_analogiques_utilisées"
 End Property
 
-Public Property Get nb_sorties_analogiques_utilisées() As Byte
-    nb_sorties_analogiques_utilisées = m_nb_sorties_analogiques_utilisées
+Public Property Get Nb_sorties_analogiques_utilisées() As Byte
+    Nb_sorties_analogiques_utilisées = m_nb_sorties_analogiques_utilisées
 End Property
 
 
@@ -638,3 +682,4 @@ End Sub
 Private Sub Erreur(msg As String)
     Debug.Print msg
 End Sub
+
