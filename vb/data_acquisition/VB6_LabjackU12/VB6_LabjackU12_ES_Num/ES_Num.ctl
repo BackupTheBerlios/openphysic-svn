@@ -53,7 +53,9 @@ Begin VB.UserControl ES_Num
             BackColor       =   &H00FFFFFF&
             Height          =   315
             Index           =   0
+            ItemData        =   "ES_Num.ctx":0000
             Left            =   120
+            List            =   "ES_Num.ctx":0002
             TabIndex        =   0
             Text            =   "Ecriture Port A"
             Top             =   240
@@ -66,10 +68,10 @@ Begin VB.UserControl ES_Num
             TabIndex        =   2
             Top             =   240
             Width           =   2775
-            _ExtentX        =   4895
-            _ExtentY        =   661
-            ColorON         =   255
-            ColorOFF        =   16512
+            _extentx        =   4895
+            _extenty        =   661
+            coloron         =   255
+            coloroff        =   16512
          End
       End
       Begin VB.Frame fraPortC 
@@ -109,8 +111,8 @@ Begin VB.UserControl ES_Num
             TabIndex        =   8
             Top             =   240
             Width           =   2775
-            _ExtentX        =   4895
-            _ExtentY        =   450
+            _extentx        =   4895
+            _extenty        =   450
          End
       End
    End
@@ -122,111 +124,90 @@ Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
 ' ToDo
 
+' Objet VB6 permettant le contrôle d'une carte
+' entrée/sortie numériques (8 bits * 2 ports)
+' LabjackU12
+
+' Sébastien CELLES
+' IUT de Poitiers
+' Génie Thermique et Energie
+
+' Propriétés
+'  Mode(i) : Ecriture (0) ou Lecture (1)
+'  Port(i) : valeur à sur le port (en décimal)
+
 Option Explicit
 
 Dim i As Integer
 
-Const nb_ports = 2 ' nb de ports
+Const nb_ports = 2 ' nb de ports (de 0 à nb_ports-1)
 
 Dim m_port(nb_ports) As Byte ' 8 bits (contenu de chaque port)
-Dim m_mode(2) As Boolean ' mode de chaque port (False=écriture ; True=Lecture)
 
-Private Sub initialise_port(port As Byte)
+Enum EMode
+    Lecture
+    Ecriture
+End Enum
+Dim m_mode(2) As EMode ' mode de chaque port (False=écriture ; True=Lecture)
+
+Private Sub initialise_ports()
+    initialise_port (0)
+    initialise_port (1)
+End Sub
+
+Private Sub initialise_port(voie As Byte)
 
 End Sub
 
-
-
-Public Property Let port(voie As Byte, ByVal val As Byte)
+Public Property Let Port(voie As Byte, ByVal val As Byte)
     m_port(voie) = val
     txtPort(voie).Text = m_port(voie)
-    'PropertyChanged "Text"
+    PropertyChanged "Port"
 End Property
 
-Public Property Get porta() As Byte
-
-    'porta = txtPortA.Text
+Public Property Get Port(voie As Byte) As Byte
+    Port = m_port(voie)
 End Property
 
+Public Property Let Mode(voie As Byte, ByVal new_mode As EMode)
+    m_mode(voie) = new_mode
+    cboPort_ES(voie).ListIndex = new_mode
+    If m_mode(voie) = EMode.Ecriture Then
+        txtPort(voie).Locked = False
+    Else ' Lecture
+        txtPort(voie).Locked = True
+    End If
+    PropertyChanged "Mode"
+End Property
 
-'Private Sub cboPort_ES_Change(voie As Byte)
+Public Property Get Mode(voie As Byte) As EMode
+    Mode = m_mode(voie)
+End Property
 
-'If cboPort_ES(voie).Index = 0 Then
-'    cboPort_ES(voie).Text = "Entrée"
-'End If
-
-'If cboPort_ES(voie).Index = 1 Then
-'    cboPort_ES(voie).Text = "Sortie"
-'End If
-
-'initialise_port (voie)
-'End Sub
-
-
-
-Private Sub Timer1_Timer()
-'If IsNumeric(txtPortA.Text) Then
-'    If cboPortA_ES.ListIndex = 1 And CInt(txtPortA.Text) < 256 Then
-'        '''DlPortWritePortUchar prta, CByte(Text1.Text)
-'        affiche_led_rouge (CByte(txtPortA.Text))
-'    Else
-'        txtPortA.Text = "0"
-'    End If
-'Else
-'    txtPortA.Text = "0"
-'End If
-'''If Porta_es.ListIndex = 0 Then
-'''    Text1.Text = DlPortReadPortUchar(prta)
-'''End If
-
-'If cboPortC_ES.ListIndex = 1 And CInt(txtPortC.Text) < 256 Then
-'''DlPortWritePortUchar prtc, CByte(Text2.Text)
-'Else
-'    txtPortC.Text = 0
-'    Erreur ("Erreur")
-'End If
-
-'If cboPortC_ES.ListIndex = 0 Then
-    '''Text2.Text = DlPortReadPortUchar(prtc)
-'affiche_led_verte (CByte(txtPortC.Text))
-'End If
-
-
-
+Private Sub txtPort_Change(Index As Integer)
+    Dim N As Byte
+    If IsNumeric(txtPort(Index).Text) Then
+        N = txtPort(Index).Text
+    Else
+        N = 0
+        txtPort(Index).Text = CStr(N)
+    End If
+    
+    AfficheurOctet1(Index).N = N
 End Sub
-'Private Sub affiche_led_rouge(ByVal nombre)
-'For i = 0 To 7
-'    If nombre And 2 ^ i Then
-'        Shape1(7 - i).BackColor = &HFF& ' rouge clair
-'    Else
-'        Shape1(7 - i).BackColor = &H4080& ' rouge foncé
-'    End If
-'Next i
-'End Sub
-'Private Sub affiche_led_verte(ByVal nombre)
-'For i = 0 To 7
-'    If nombre And 2 ^ i Then
-'        Shape1(15 - i).BackColor = &HFF00& ' vert clair
-'    Else
-'        Shape1(15 - i).BackColor = &H8000&  'vert foncé
-'    End If
-'Next i
-'End Sub
-
 
 Private Sub UserControl_Initialize()
     '  Initialise la liste
     cboPort_ES(0).AddItem "Lecture Port A"
     cboPort_ES(0).AddItem "Ecriture Port A"
-    cboPort_ES(0).ListIndex = 1
-    cboPort_ES(0).AddItem "Lecture Port C"
-    cboPort_ES(0).AddItem "Ecriture Port C"
-    cboPort_ES(0).ListIndex = 0
-        
-'    initialise_ports
-'    initialise_port (0)
-'    initialise_port (1)
-'    initialise_port_c
+    
+    cboPort_ES(1).AddItem "Lecture Port C"
+    cboPort_ES(1).AddItem "Ecriture Port C"
+    
+    Mode(0) = EMode.Ecriture
+    Mode(1) = EMode.Lecture
+
+    initialise_ports
     
     Timer1.Interval = 10
     Timer1.Enabled = True
@@ -234,7 +215,12 @@ Private Sub UserControl_Initialize()
 End Sub
 
 
+
+' Traitement des erreurs
 Private Sub Erreur(msg As String)
     Debug.Print msg
 End Sub
 
+
+
+' Partie spécifique à la carte

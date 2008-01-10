@@ -120,11 +120,8 @@ Const m_def_ColorOFF = &H8000& ' vert foncé
 Const m_def_ColorON = &HFF00& ' vert clair
 
 Private Sub UserControl_Initialize()
-    For i = 0 To Nbits - 1
-        Led1(i).ColorOFF = m_def_ColorOFF
-        Led1(i).ColorON = m_def_ColorON
-    Next i
-    afficher
+
+    'afficher
 End Sub
 
 Private Sub éteindre_toutes()
@@ -152,6 +149,7 @@ Public Property Get N() As Byte
 End Property
 
 Private Sub afficher()
+    Debug.Print "afficher"
     Dim N As Byte
     N = m_N ' copie afin de ne pas modifier la valeur de m_N
     For i = Nbits - 1 To 0 Step -1
@@ -185,22 +183,52 @@ Public Property Get ColorOFF() As OLE_COLOR
     ColorOFF = m_ColorOFF
 End Property
 
+' Permet de savoir si un bit est activé ou pas
+' (mis en Private au lieu de Public)
+' Cette propriété est volontairement désactivée
+' afin ne pas faciliter la vie aux élèves
+Public Property Get Bit(thisbit As Byte) As Boolean
+    Bit = Led1(thisbit).Etat
+End Property
+
+Public Property Let Bit(thisbit As Byte, new_val As Boolean)
+    If (Led1(thisbit).Etat = True And new_val = False) Then
+        m_N = m_N - 2 ^ thisbit
+    End If
+    
+    If (Led1(thisbit).Etat = False And new_val = True) Then
+        m_N = m_N + 2 ^ thisbit
+    End If
+    
+    PropertyChanged Bit(thisbit)
+
+    afficher
+End Property
+
 
 ' Initialise les propriétés
 '(lorsqu'on place un contrôle utilisateur sur une feuille)
 Private Sub UserControl_InitProperties()
+    Debug.Print "InitProperties"
     m_ColorON = m_def_ColorON
     m_ColorOFF = m_def_ColorOFF
 End Sub
 
 ' Chargement des propriétés par défault
 Private Sub UserControl_ReadProperties(PropBag As PropertyBag)
+    Debug.Print "ReadProperties"
     m_ColorON = PropBag.ReadProperty("ColorON", m_def_ColorON)
     m_ColorOFF = PropBag.ReadProperty("ColorOFF", m_def_ColorOFF)
+    
+    For i = 0 To Nbits - 1
+        Led1(i).ColorOFF = m_ColorOFF
+        Led1(i).ColorON = m_ColorON
+    Next i
 End Sub
 
 ' Sauvegarde des propriétés
 Private Sub UserControl_WriteProperties(PropBag As PropertyBag)
+    Debug.Print "WriteProperties"
     Call PropBag.WriteProperty("ColorON", m_ColorON, m_def_ColorON)
     Call PropBag.WriteProperty("ColorOFF", m_ColorOFF, m_def_ColorOFF)
 End Sub

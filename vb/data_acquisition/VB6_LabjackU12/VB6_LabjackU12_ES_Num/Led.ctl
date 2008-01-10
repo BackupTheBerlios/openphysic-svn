@@ -10,11 +10,11 @@ Begin VB.UserControl Led
    Begin VB.Shape shaLed 
       BackColor       =   &H00004080&
       BackStyle       =   1  'Opaque
-      Height          =   255
+      Height          =   3615
       Left            =   0
       Shape           =   3  'Circle
       Top             =   0
-      Width           =   255
+      Width           =   4815
    End
 End
 Attribute VB_Name = "Led"

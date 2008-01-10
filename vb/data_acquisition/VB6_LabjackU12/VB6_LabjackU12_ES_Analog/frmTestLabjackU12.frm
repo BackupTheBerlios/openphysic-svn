@@ -10,13 +10,15 @@ Begin VB.Form frmTestLabjackU12
    ScaleWidth      =   7845
    StartUpPosition =   3  'Windows Default
    Begin TestLabjackU12.ES_Analog ES_Analog1 
-      Height          =   2055
-      Left            =   120
+      Height          =   2295
+      Left            =   240
       TabIndex        =   1
       Top             =   240
-      Width           =   6855
-      _ExtentX        =   12091
-      _ExtentY        =   3625
+      Width           =   6975
+      _ExtentX        =   12303
+      _ExtentY        =   4048
+      Nb_entrées_analogiques_utilisées=   8
+      Nb_sorties_analogiques_utilisées=   2
    End
    Begin VB.Timer Timer1 
       Interval        =   10

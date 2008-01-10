@@ -44,7 +44,7 @@ Begin VB.UserControl ES_Analog
          TabIndex        =   5
          Top             =   960
          Width           =   6255
-         Begin VB.ComboBox cboEntreesAnalogiques 
+         Begin VB.ComboBox cboEntréesAnalogiques 
             BackColor       =   &H00FFFFFF&
             Height          =   315
             Left            =   120
@@ -422,8 +422,10 @@ End Sub
 
 
 
+
+
 Private Sub UserControl_Initialize()
-    Debug.Print "Initialize"
+    'Debug.Print "Initialize"
 
     'cboEntreesAnalogiques_Click
     'cboSortiesAnalogiques_Click
@@ -434,7 +436,7 @@ Private Sub UserControl_Initialize()
 End Sub
 
 Private Sub maj_combo()
-    Debug.Print " maj_combo" + " ; " + Nb_entrées_analogiques_utilisées + " ; " + Nb_sorties_analogiques_utilisées
+    'Debug.Print " maj_combo" + " ; " + CStr(Nb_entrées_analogiques_utilisées) + " ; " + CStr(Nb_sorties_analogiques_utilisées)
 
     ' Numerotation des voies (début à 0)
     For i = Voie0 To CByte(Nb_entrées_analogiques_max) - 1 + Voie0
@@ -443,50 +445,24 @@ Private Sub maj_combo()
 
     ' Remplissage combobox entrées analogiques
     For i = 1 To CByte(Nb_entrées_analogiques_max)
-        cboEntreesAnalogiques.AddItem CStr(i) & " entrée(s)"
+        cboEntréesAnalogiques.AddItem CStr(i) & " entrée(s)"
     Next i
-    cboEntreesAnalogiques.ListIndex = 0
+    'cboEntréesAnalogiques.ListIndex = 0
 
     ' Remplissage combobox sorties analogiques
     For i = 1 To CByte(Nb_sorties_analogiques_max)
         cboSortiesAnalogiques.AddItem CStr(i) & " sortie(s)"
     Next i
-    cboSortiesAnalogiques.ListIndex = 0
+    'cboSortiesAnalogiques.ListIndex = 0
+
+
+    cboEntréesAnalogiques.ListIndex = m_nb_entrées_analogiques_utilisées - 1
+    cboSortiesAnalogiques.ListIndex = m_nb_sorties_analogiques_utilisées - 1
 End Sub
 
-' Initialise les propriétés
-'(lorsqu'on place un contrôle utilisateur sur une feuille)
-Private Sub UserControl_InitProperties()
-    Debug.Print "InitProperties"
-    Nb_entrées_analogiques_max = m_def_nb_entrées_analogiques_max
-    m_nb_sorties_analogiques_max = m_def_nb_sorties_analogiques_max
-    m_nb_entrées_analogiques_utilisées = m_def_nb_entrées_analogiques_utilisées
-    m_nb_sorties_analogiques_utilisées = m_def_nb_sorties_analogiques_utilisées
-End Sub
-
-' Chargement des propriétés par défault
-Private Sub UserControl_ReadProperties(PropBag As PropertyBag)
-    Debug.Print "ReadProperties"
-    m_nb_entrées_analogiques_max = PropBag.ReadProperty("Nb_entrées_analogiques_max", m_def_nb_entrées_analogiques_max)
-    m_nb_sorties_analogiques_max = PropBag.ReadProperty("Nb_sorties_analogiques_max", m_def_nb_sorties_analogiques_max)
-    m_nb_entrées_analogiques_utilisées = PropBag.ReadProperty("Nb_entrées_analogiques_utilisées", m_def_nb_entrées_analogiques_utilisées)
-    m_nb_sorties_analogiques_utilisées = PropBag.ReadProperty("Nb_sorties_analogiques_utilisées", m_def_nb_sorties_analogiques_utilisées)
-
-    maj_combo
-End Sub
-
-' Sauvegarde des propriétés
-Private Sub UserControl_WriteProperties(PropBag As PropertyBag)
-    Debug.Print "WriteProperties"
-    Call PropBag.WriteProperty("Nb_entrées_analogiques_max", m_nb_entrées_analogiques_max, m_def_nb_entrées_analogiques_max)
-    Call PropBag.WriteProperty("Nb_sorties_analogiques_max", m_nb_sorties_analogiques_max, m_def_nb_sorties_analogiques_max)
-    Call PropBag.WriteProperty("Nb_entrées_analogiques_utilisées", m_nb_entrées_analogiques_utilisées, m_def_nb_entrées_analogiques_utilisées)
-    Call PropBag.WriteProperty("Nb_sorties_analogiques_utilisées", m_nb_sorties_analogiques_utilisées, m_def_nb_sorties_analogiques_utilisées)
-End Sub
-
-Private Sub cboEntreesAnalogiques_Click()
-    Debug.Print "cboEntreesAnalogiques_Click"
-    m_nb_entrées_analogiques_utilisées = cboEntreesAnalogiques.ListIndex + 1
+Private Sub cboEntréesAnalogiques_Click()
+    'Debug.Print "cboEntreesAnalogiques_Click"
+    m_nb_entrées_analogiques_utilisées = cboEntréesAnalogiques.ListIndex + 1
 
     For i = 1 To nb_es_max
         ' Initialisation des labels entrées
@@ -501,11 +477,10 @@ Private Sub cboEntreesAnalogiques_Click()
             lblNum(i - 1).Visible = False
         End If
     Next i
-
 End Sub
 
 Private Sub cboSortiesAnalogiques_Click()
-    Debug.Print "cboSortiesAnalogiques_Click"
+    'Debug.Print "cboSortiesAnalogiques_Click"
     m_nb_sorties_analogiques_utilisées = cboSortiesAnalogiques.ListIndex + 1
 
     For i = 1 To nb_es_max
@@ -520,6 +495,48 @@ Private Sub cboSortiesAnalogiques_Click()
     Next i
 
 End Sub
+
+Private Sub cboEntreesAnalogiques_Change()
+    'Debug.Print "cboEntréesAnalogiques_Change"
+    m_nb_entrées_analogiques_utilisées = cboEntréesAnalogiques.ListIndex + 1
+End Sub
+
+Private Sub cboSortiesAnalogiques_Change()
+    'Debug.Print "cboSortiesAnalogiques_Change"
+    m_nb_sorties_analogiques_utilisées = cboSortiesAnalogiques.ListIndex + 1
+End Sub
+
+' Initialise les propriétés
+'(lorsqu'on place un contrôle utilisateur sur une feuille)
+Private Sub UserControl_InitProperties()
+    'Debug.Print "InitProperties"
+    Nb_entrées_analogiques_max = m_def_nb_entrées_analogiques_max
+    m_nb_sorties_analogiques_max = m_def_nb_sorties_analogiques_max
+    m_nb_entrées_analogiques_utilisées = m_def_nb_entrées_analogiques_utilisées
+    m_nb_sorties_analogiques_utilisées = m_def_nb_sorties_analogiques_utilisées
+End Sub
+
+' Chargement des propriétés par défault
+Private Sub UserControl_ReadProperties(PropBag As PropertyBag)
+    'Debug.Print "ReadProperties"
+    m_nb_entrées_analogiques_max = PropBag.ReadProperty("Nb_entrées_analogiques_max", m_def_nb_entrées_analogiques_max)
+    m_nb_sorties_analogiques_max = PropBag.ReadProperty("Nb_sorties_analogiques_max", m_def_nb_sorties_analogiques_max)
+    m_nb_entrées_analogiques_utilisées = PropBag.ReadProperty("Nb_entrées_analogiques_utilisées", m_def_nb_entrées_analogiques_utilisées)
+    m_nb_sorties_analogiques_utilisées = PropBag.ReadProperty("Nb_sorties_analogiques_utilisées", m_def_nb_sorties_analogiques_utilisées)
+
+    maj_combo
+End Sub
+
+' Sauvegarde des propriétés
+Private Sub UserControl_WriteProperties(PropBag As PropertyBag)
+    'Debug.Print "WriteProperties"
+    Call PropBag.WriteProperty("Nb_entrées_analogiques_max", m_nb_entrées_analogiques_max, m_def_nb_entrées_analogiques_max)
+    Call PropBag.WriteProperty("Nb_sorties_analogiques_max", m_nb_sorties_analogiques_max, m_def_nb_sorties_analogiques_max)
+    Call PropBag.WriteProperty("Nb_entrées_analogiques_utilisées", m_nb_entrées_analogiques_utilisées, m_def_nb_entrées_analogiques_utilisées)
+    Call PropBag.WriteProperty("Nb_sorties_analogiques_utilisées", m_nb_sorties_analogiques_utilisées, m_def_nb_sorties_analogiques_utilisées)
+End Sub
+
+
 
 Private Sub Timer1_Timer()
 
@@ -584,8 +601,13 @@ End Property
 ' Accesseur/modificateur nb_entrées_analogiques_utilisées
 ' =======================================================
 Public Property Let Nb_entrées_analogiques_utilisées(ByVal New_entrée As Byte)
-    m_nb_entrées_analogiques_utilisées = New_entrée
-    cboEntreesAnalogiques.ListIndex = New_entrée - 1
+    If New_entrée <= Nb_entrées_analogiques_max Then
+        m_nb_entrées_analogiques_utilisées = New_entrée
+    Else
+        m_nb_entrées_analogiques_utilisées = m_nb_entrées_analogiques_max
+        Erreur ("Dépassement de Nb_entrées_analogiques_utilisées")
+    End If
+    cboEntréesAnalogiques.ListIndex = m_nb_entrées_analogiques_utilisées - 1
     PropertyChanged "Nb_entrées_analogiques_utilisées"
 End Property
 
@@ -596,8 +618,13 @@ End Property
 ' Accesseur/modificateur nb_sorties_analogiques_utilisées
 ' =======================================================
 Public Property Let Nb_sorties_analogiques_utilisées(ByVal New_sortie As Byte)
-    m_nb_sorties_analogiques_utilisées = New_sortie
-    cboSortiesAnalogiques.ListIndex = New_sortie - 1
+    If New_sortie <= m_nb_sorties_analogiques_max Then
+        m_nb_sorties_analogiques_utilisées = New_sortie
+    Else
+        m_nb_sorties_analogiques_utilisées = m_nb_sorties_analogiques_max
+        Erreur ("Dépassement de Nb_sorties_analogiques_utilisées")
+    End If
+    cboSortiesAnalogiques.ListIndex = m_nb_sorties_analogiques_utilisées - 1
     PropertyChanged "Nb_sorties_analogiques_utilisées"
 End Property
 
@@ -637,12 +664,15 @@ Private Sub acquérir_tensions_analogiques()
         chkLED, lngNumChannels, lngCP, lngGP, lngDisableCal, lngOV, _
         entrees_tensions_analogiques(0), entrees_tensions_analogiques(1), entrees_tensions_analogiques(2), entrees_tensions_analogiques(3))
 
+    ' ToDo : traitement d'erreurs
+
     lngCP = Ljackuwx1.FourPack(4, 5, 6, 7) ' voies
     lngGP = Ljackuwx1.FourPack(0, 0, 0, 0) ' gains
     lngErrorcode = Ljackuwx1.AISampleX(lngIDNum, lngDemo, lngStateIO, lngUpdateIO, _
         chkLED, lngNumChannels, lngCP, lngGP, lngDisableCal, lngOV, _
         entrees_tensions_analogiques(4), entrees_tensions_analogiques(5), entrees_tensions_analogiques(6), entrees_tensions_analogiques(7))
 
+    ' ToDo : traitement d'erreurs
 End Sub
 
 
@@ -673,6 +703,8 @@ Private Sub sortir_tensions_analogiques()
     lngErrorcode = Ljackuwx1.AOUpdateX(lngIDNum, lngDemo, lngTrisD, lngTrisIO, _
         lngStateD, lngStateIO, lngUpdateDigital, 0, dblCount, _
         sorties_tensions_analogiques(0), sorties_tensions_analogiques(1))
+
+    ' ToDo : traitement d'erreurs
  
 End Sub
 
