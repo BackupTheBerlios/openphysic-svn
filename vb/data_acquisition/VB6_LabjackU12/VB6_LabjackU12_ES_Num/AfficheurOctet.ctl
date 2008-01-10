@@ -149,7 +149,7 @@ Public Property Get N() As Byte
 End Property
 
 Private Sub afficher()
-    Debug.Print "afficher"
+    'Debug.Print "afficher"
     Dim N As Byte
     N = m_N ' copie afin de ne pas modifier la valeur de m_N
     For i = Nbits - 1 To 0 Step -1
@@ -209,14 +209,14 @@ End Property
 ' Initialise les propriétés
 '(lorsqu'on place un contrôle utilisateur sur une feuille)
 Private Sub UserControl_InitProperties()
-    Debug.Print "InitProperties"
+    'Debug.Print "InitProperties"
     m_ColorON = m_def_ColorON
     m_ColorOFF = m_def_ColorOFF
 End Sub
 
 ' Chargement des propriétés par défault
 Private Sub UserControl_ReadProperties(PropBag As PropertyBag)
-    Debug.Print "ReadProperties"
+    'Debug.Print "ReadProperties"
     m_ColorON = PropBag.ReadProperty("ColorON", m_def_ColorON)
     m_ColorOFF = PropBag.ReadProperty("ColorOFF", m_def_ColorOFF)
     
@@ -228,7 +228,7 @@ End Sub
 
 ' Sauvegarde des propriétés
 Private Sub UserControl_WriteProperties(PropBag As PropertyBag)
-    Debug.Print "WriteProperties"
+    'Debug.Print "WriteProperties"
     Call PropBag.WriteProperty("ColorON", m_ColorON, m_def_ColorON)
     Call PropBag.WriteProperty("ColorOFF", m_ColorOFF, m_def_ColorOFF)
 End Sub
