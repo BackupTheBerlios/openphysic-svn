@@ -15,15 +15,6 @@ Begin VB.Form frmMain
       Left            =   3960
       Top             =   3120
    End
-   Begin Test_ES_Num_LabjackU12.Led Led1 
-      Height          =   615
-      Left            =   480
-      TabIndex        =   1
-      Top             =   3120
-      Width           =   615
-      _ExtentX        =   1085
-      _ExtentY        =   1085
-   End
    Begin Test_ES_Num_LabjackU12.ES_Num ES_Num1 
       Height          =   2535
       Left            =   240
@@ -45,5 +36,5 @@ Private Sub Form_Load()
 End Sub
 
 Private Sub Timer1_Timer()
-    Led1.inverser
+    'Led1.inverser
 End Sub

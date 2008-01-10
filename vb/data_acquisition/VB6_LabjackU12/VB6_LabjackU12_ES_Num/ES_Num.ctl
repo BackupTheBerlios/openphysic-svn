@@ -1,24 +1,15 @@
 VERSION 5.00
 Begin VB.UserControl ES_Num 
-   ClientHeight    =   5745
+   BackStyle       =   0  'Transparent
+   ClientHeight    =   2730
    ClientLeft      =   0
    ClientTop       =   0
-   ClientWidth     =   6735
-   ScaleHeight     =   5745
-   ScaleWidth      =   6735
-   Begin Test_ES_Num_LabjackU12.AfficheurOctet AfficheurOctet1 
-      Height          =   615
-      Index           =   0
-      Left            =   1080
-      TabIndex        =   7
-      Top             =   1800
-      Width           =   4215
-      _ExtentX        =   6800
-      _ExtentY        =   873
-   End
+   ClientWidth     =   5880
+   ScaleHeight     =   2730
+   ScaleWidth      =   5880
    Begin VB.Timer Timer1 
-      Left            =   3840
-      Top             =   2280
+      Left            =   1920
+      Top             =   1920
    End
    Begin VB.Frame fraEntréesSortiesNumériques 
       BackColor       =   &H00C0FFFF&
@@ -32,9 +23,9 @@ Begin VB.UserControl ES_Num
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   1695
+      Height          =   1815
       Left            =   0
-      TabIndex        =   0
+      TabIndex        =   5
       Top             =   0
       Width           =   5175
       Begin VB.Frame fraPortA 
@@ -44,7 +35,7 @@ Begin VB.UserControl ES_Num
          ForeColor       =   &H80000008&
          Height          =   615
          Left            =   120
-         TabIndex        =   4
+         TabIndex        =   7
          Top             =   240
          Width           =   4935
          Begin VB.TextBox txtPort 
@@ -53,7 +44,7 @@ Begin VB.UserControl ES_Num
             Height          =   285
             Index           =   0
             Left            =   1560
-            TabIndex        =   6
+            TabIndex        =   1
             Text            =   "0"
             Top             =   240
             Width           =   375
@@ -63,90 +54,22 @@ Begin VB.UserControl ES_Num
             Height          =   315
             Index           =   0
             Left            =   120
-            TabIndex        =   5
+            TabIndex        =   0
             Text            =   "Ecriture Port A"
             Top             =   240
             Width           =   1455
          End
-         Begin VB.Shape Shape1 
-            BackColor       =   &H00004080&
-            BackStyle       =   1  'Opaque
-            Height          =   255
+         Begin Test_ES_Num_LabjackU12.AfficheurOctet AfficheurOctet1 
+            Height          =   375
             Index           =   0
             Left            =   2040
-            Shape           =   3  'Circle
+            TabIndex        =   2
             Top             =   240
-            Width           =   255
-         End
-         Begin VB.Shape Shape1 
-            BackColor       =   &H00004080&
-            BackStyle       =   1  'Opaque
-            Height          =   255
-            Index           =   1
-            Left            =   2400
-            Shape           =   3  'Circle
-            Top             =   240
-            Width           =   255
-         End
-         Begin VB.Shape Shape1 
-            BackColor       =   &H00004080&
-            BackStyle       =   1  'Opaque
-            Height          =   255
-            Index           =   2
-            Left            =   2760
-            Shape           =   3  'Circle
-            Top             =   240
-            Width           =   255
-         End
-         Begin VB.Shape Shape1 
-            BackColor       =   &H00004080&
-            BackStyle       =   1  'Opaque
-            Height          =   255
-            Index           =   3
-            Left            =   3120
-            Shape           =   3  'Circle
-            Top             =   240
-            Width           =   255
-         End
-         Begin VB.Shape Shape1 
-            BackColor       =   &H00004080&
-            BackStyle       =   1  'Opaque
-            Height          =   255
-            Index           =   4
-            Left            =   3480
-            Shape           =   3  'Circle
-            Top             =   240
-            Width           =   255
-         End
-         Begin VB.Shape Shape1 
-            BackColor       =   &H00004080&
-            BackStyle       =   1  'Opaque
-            Height          =   255
-            Index           =   5
-            Left            =   3840
-            Shape           =   3  'Circle
-            Top             =   240
-            Width           =   255
-         End
-         Begin VB.Shape Shape1 
-            BackColor       =   &H00004080&
-            BackStyle       =   1  'Opaque
-            Height          =   255
-            Index           =   6
-            Left            =   4200
-            Shape           =   3  'Circle
-            Top             =   240
-            Width           =   255
-         End
-         Begin VB.Shape Shape1 
-            BackColor       =   &H00004080&
-            BackStyle       =   1  'Opaque
-            Height          =   255
-            Index           =   7
-            Left            =   4560
-            Shape           =   3  'Circle
-            Top             =   240
-            Width           =   255
+            Width           =   2775
+            _ExtentX        =   4895
+            _ExtentY        =   661
+            ColorON         =   255
+            ColorOFF        =   16512
          End
       End
       Begin VB.Frame fraPortC 
@@ -156,7 +79,7 @@ Begin VB.UserControl ES_Num
          ForeColor       =   &H80000008&
          Height          =   615
          Left            =   120
-         TabIndex        =   1
+         TabIndex        =   6
          Top             =   960
          Width           =   4935
          Begin VB.TextBox txtPort 
@@ -165,7 +88,7 @@ Begin VB.UserControl ES_Num
             Height          =   285
             Index           =   1
             Left            =   1560
-            TabIndex        =   3
+            TabIndex        =   4
             Text            =   "0"
             Top             =   240
             Width           =   375
@@ -174,102 +97,22 @@ Begin VB.UserControl ES_Num
             Height          =   315
             Index           =   1
             Left            =   120
-            TabIndex        =   2
+            TabIndex        =   3
             Text            =   "Lecture Port C"
             Top             =   240
             Width           =   1455
          End
-         Begin VB.Shape Shape1 
-            BackColor       =   &H00008000&
-            BackStyle       =   1  'Opaque
+         Begin Test_ES_Num_LabjackU12.AfficheurOctet AfficheurOctet1 
             Height          =   255
-            Index           =   8
+            Index           =   1
             Left            =   2040
-            Shape           =   3  'Circle
+            TabIndex        =   8
             Top             =   240
-            Width           =   255
-         End
-         Begin VB.Shape Shape1 
-            BackColor       =   &H00008000&
-            BackStyle       =   1  'Opaque
-            Height          =   255
-            Index           =   9
-            Left            =   2400
-            Shape           =   3  'Circle
-            Top             =   240
-            Width           =   255
-         End
-         Begin VB.Shape Shape1 
-            BackColor       =   &H00008000&
-            BackStyle       =   1  'Opaque
-            Height          =   255
-            Index           =   10
-            Left            =   2760
-            Shape           =   3  'Circle
-            Top             =   240
-            Width           =   255
-         End
-         Begin VB.Shape Shape1 
-            BackColor       =   &H00008000&
-            BackStyle       =   1  'Opaque
-            Height          =   255
-            Index           =   11
-            Left            =   3120
-            Shape           =   3  'Circle
-            Top             =   240
-            Width           =   255
-         End
-         Begin VB.Shape Shape1 
-            BackColor       =   &H00008000&
-            BackStyle       =   1  'Opaque
-            Height          =   255
-            Index           =   12
-            Left            =   3480
-            Shape           =   3  'Circle
-            Top             =   240
-            Width           =   255
-         End
-         Begin VB.Shape Shape1 
-            BackColor       =   &H00008000&
-            BackStyle       =   1  'Opaque
-            Height          =   255
-            Index           =   13
-            Left            =   3840
-            Shape           =   3  'Circle
-            Top             =   240
-            Width           =   255
-         End
-         Begin VB.Shape Shape1 
-            BackColor       =   &H00008000&
-            BackStyle       =   1  'Opaque
-            Height          =   255
-            Index           =   14
-            Left            =   4200
-            Shape           =   3  'Circle
-            Top             =   240
-            Width           =   255
-         End
-         Begin VB.Shape Shape1 
-            BackColor       =   &H00008000&
-            BackStyle       =   1  'Opaque
-            Height          =   255
-            Index           =   15
-            Left            =   4560
-            Shape           =   3  'Circle
-            Top             =   240
-            Width           =   255
+            Width           =   2775
+            _ExtentX        =   4895
+            _ExtentY        =   450
          End
       End
-   End
-   Begin Test_ES_Num_LabjackU12.AfficheurOctet AfficheurOctet1 
-      Height          =   255
-      Index           =   1
-      Left            =   1200
-      TabIndex        =   8
-      Top             =   2640
-      Width           =   2775
-      _ExtentX        =   4895
-      _ExtentY        =   450
    End
 End
 Attribute VB_Name = "ES_Num"

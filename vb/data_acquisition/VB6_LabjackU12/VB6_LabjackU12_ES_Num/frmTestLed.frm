@@ -10,13 +10,18 @@ Begin VB.Form frmTestLed
    ScaleWidth      =   4560
    StartUpPosition =   3  'Windows Default
    Begin TestLed.Led Led1 
-      Height          =   615
-      Left            =   480
+      Height          =   855
+      Left            =   600
       TabIndex        =   0
-      Top             =   360
-      Width           =   495
-      _ExtentX        =   873
-      _ExtentY        =   1085
+      Top             =   600
+      Width           =   1215
+      _ExtentX        =   2143
+      _ExtentY        =   1508
+   End
+   Begin VB.Timer Timer1 
+      Interval        =   400
+      Left            =   2760
+      Top             =   1080
    End
 End
 Attribute VB_Name = "frmTestLed"
@@ -24,3 +29,6 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+Private Sub Timer1_Timer()
+Led1.inverser
+End Sub
