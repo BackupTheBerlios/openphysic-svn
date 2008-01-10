@@ -68,10 +68,10 @@ Begin VB.UserControl ES_Num
             TabIndex        =   2
             Top             =   240
             Width           =   2775
-            _extentx        =   4895
-            _extenty        =   661
-            coloron         =   255
-            coloroff        =   16512
+            _ExtentX        =   4895
+            _ExtentY        =   661
+            ColorON         =   255
+            ColorOFF        =   16512
          End
       End
       Begin VB.Frame fraPortC 
@@ -111,8 +111,8 @@ Begin VB.UserControl ES_Num
             TabIndex        =   8
             Top             =   240
             Width           =   2775
-            _extentx        =   4895
-            _extenty        =   450
+            _ExtentX        =   4895
+            _ExtentY        =   450
          End
       End
    End
@@ -142,13 +142,13 @@ Dim i As Integer
 
 Const nb_ports = 2 ' nb de ports (de 0 à nb_ports-1)
 
-Dim m_port(nb_ports) As Byte ' 8 bits (contenu de chaque port)
+Dim m_port(nb_ports - 1) As Byte ' 8 bits (contenu de chaque port)
 
 Enum EMode
     Lecture
     Ecriture
 End Enum
-Dim m_mode(2) As EMode ' mode de chaque port (False=écriture ; True=Lecture)
+Dim m_mode(nb_ports - 1) As EMode ' mode de chaque port (False=écriture ; True=Lecture)
 
 Private Sub initialise_ports()
     initialise_port (0)
@@ -183,6 +183,12 @@ End Property
 Public Property Get Mode(voie As Byte) As EMode
     Mode = m_mode(voie)
 End Property
+
+Private Sub cboPort_ES_Click(Index As Integer)
+    Dim voie As Byte
+    voie = Index
+    Mode(voie) = cboPort_ES(Index).ListIndex
+End Sub
 
 Private Sub txtPort_Change(Index As Integer)
     Dim N As Byte
