@@ -56,8 +56,8 @@ Begin VB.UserControl ES_Num
             ItemData        =   "ES_Num.ctx":0000
             Left            =   120
             List            =   "ES_Num.ctx":0002
+            Style           =   2  'Dropdown List
             TabIndex        =   0
-            Text            =   "Ecriture Port A"
             Top             =   240
             Width           =   1455
          End
@@ -99,8 +99,8 @@ Begin VB.UserControl ES_Num
             Height          =   315
             Index           =   1
             Left            =   120
+            Style           =   2  'Dropdown List
             TabIndex        =   3
-            Text            =   "Lecture Port C"
             Top             =   240
             Width           =   1455
          End
@@ -134,11 +134,9 @@ Attribute VB_Exposed = False
 
 ' Propriétés
 '  Mode(i) : Ecriture (0) ou Lecture (1)
-'  Port(i) : valeur à sur le port (en décimal)
+'  Port(i) : valeur présente sur le port (en décimal)
 
 Option Explicit
-
-Dim i As Integer
 
 Const nb_ports = 2 ' nb de ports (de 0 à nb_ports-1)
 
@@ -150,14 +148,7 @@ Enum EMode
 End Enum
 Dim m_mode(nb_ports - 1) As EMode ' mode de chaque port (False=écriture ; True=Lecture)
 
-Private Sub initialise_ports()
-    initialise_port (0)
-    initialise_port (1)
-End Sub
 
-Private Sub initialise_port(voie As Byte)
-
-End Sub
 
 Public Property Let Port(voie As Byte, ByVal val As Byte)
     m_port(voie) = val
@@ -173,9 +164,11 @@ Public Property Let Mode(voie As Byte, ByVal new_mode As EMode)
     m_mode(voie) = new_mode
     cboPort_ES(voie).ListIndex = new_mode
     If m_mode(voie) = EMode.Ecriture Then
-        txtPort(voie).Locked = False
+        'txtPort(voie).Locked = True
+        txtPort(voie).Enabled = True
     Else ' Lecture
-        txtPort(voie).Locked = True
+        'txtPort(voie).Locked = False
+        txtPort(voie).Enabled = False
     End If
     PropertyChanged "Mode"
 End Property
@@ -190,16 +183,63 @@ Private Sub cboPort_ES_Click(Index As Integer)
     Mode(voie) = cboPort_ES(Index).ListIndex
 End Sub
 
+Private Sub Timer1_Timer()
+    Dim i As Integer
+    For i = 0 To nb_ports - 1
+        If m_mode(i) = EMode.Lecture Then
+            lire_données (i)
+            txtPort(i).Text = m_port(i)
+        Else ' Ecriture
+            ' ?????????????????
+            ' TO FIX
+            'écrire_données(i,m_port(i))
+        End If
+        AfficheurOctet1(i).N = m_port(i)
+    Next i
+End Sub
+
 Private Sub txtPort_Change(Index As Integer)
     Dim N As Byte
     If IsNumeric(txtPort(Index).Text) Then
-        N = txtPort(Index).Text
-    Else
+        If txtPort(Index).Text > 255 Then
+            N = 255
+            txtPort(Index).Text = CStr(N)
+        ElseIf txtPort(Index).Text < 0 Then
+            N = 0
+            txtPort(Index).Text = CStr(N)
+        Else
+            N = CByte(txtPort(Index).Text)
+        End If
+    Else ' non numerique
         N = 0
         txtPort(Index).Text = CStr(N)
     End If
     
-    AfficheurOctet1(Index).N = N
+    txtPort(Index).SelStart = Len(txtPort(Index).Text)
+    If N = 0 Or Len(txtPort(Index).Text) = 3 Then
+        txtPort_GotFocus (Index)
+    End If
+    
+    m_port(Index) = N
+End Sub
+
+Private Sub txtPort_Click(Index As Integer)
+    txtPort_GotFocus (Index)
+End Sub
+
+Private Sub txtPort_GotFocus(Index As Integer)
+    'Debug.Print "GotFocus"
+    With txtPort(Index)
+        .SelStart = 0
+        .SelLength = Len(.Text)
+    End With
+End Sub
+
+Private Sub txtPort_KeyPress(Index As Integer, KeyAscii As Integer)
+    'Debug.Print KeyAscii
+    If (KeyAscii < 48 Or KeyAscii > 57) And KeyAscii <> 8 Then
+        KeyAscii = 0
+    End If
 End Sub
 
 Private Sub UserControl_Initialize()
@@ -210,8 +250,8 @@ Private Sub UserControl_Initialize()
     cboPort_ES(1).AddItem "Lecture Port C"
     cboPort_ES(1).AddItem "Ecriture Port C"
     
-    Mode(0) = EMode.Ecriture
-    Mode(1) = EMode.Lecture
+    'Mode(0) = EMode.Ecriture
+    'Mode(1) = EMode.Lecture
 
     initialise_ports
     
@@ -219,6 +259,31 @@ Private Sub UserControl_Initialize()
     Timer1.Enabled = True
 
 End Sub
+
+
+' Initialise les propriétés
+'(lorsqu'on place un contrôle utilisateur sur une feuille)
+Private Sub UserControl_InitProperties()
+    'Debug.Print "InitProperties"
+    Mode(0) = EMode.Ecriture
+    Mode(1) = EMode.Lecture
+End Sub
+
+' Chargement des propriétés par défault
+Private Sub UserControl_ReadProperties(PropBag As PropertyBag)
+    'Debug.Print "ReadProperties"
+    Mode(0) = PropBag.ReadProperty("Mode", EMode.Ecriture)
+    Mode(1) = PropBag.ReadProperty("Mode", EMode.Lecture)
+    'maj_combo
+End Sub
+
+' Sauvegarde des propriétés
+Private Sub UserControl_WriteProperties(PropBag As PropertyBag)
+    'Debug.Print "WriteProperties"
+    Call PropBag.WriteProperty("Mode", m_mode(0), EMode.Ecriture)
+    Call PropBag.WriteProperty("Mode", m_mode(1), EMode.Lecture)
+End Sub
+
 
 
 
@@ -230,3 +295,21 @@ End Sub
 
 
 ' Partie spécifique à la carte
+Private Sub initialise_ports()
+    Dim i As Integer
+    For i = 0 To nb_ports - 1
+        initialise_port (i)
+    Next i
+End Sub
+
+Private Sub initialise_port(voie As Byte)
+
+End Sub
+
+Private Sub lire_données(voie As Byte)
+    m_port(voie) = 20 + voie
+End Sub
+
+Private Sub écrire_données(voie As Byte, data As Byte)
+
+End Sub

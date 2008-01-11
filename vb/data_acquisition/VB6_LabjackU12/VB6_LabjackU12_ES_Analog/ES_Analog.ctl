@@ -387,8 +387,8 @@ Const Voie0 = 0 ' 0 ou 1 : indice de départ des entrées/sorties
 
 
 ' Stockage des données
-Dim entrees_tensions_analogiques(8) As Single
-Dim sorties_tensions_analogiques(8) As Single
+Dim entrees_tensions_analogiques(nb_es_max - 1) As Single
+Dim sorties_tensions_analogiques(nb_es_max - 1) As Single
 
 
 
