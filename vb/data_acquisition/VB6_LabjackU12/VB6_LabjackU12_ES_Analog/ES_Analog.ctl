@@ -673,6 +673,7 @@ Private Sub acquérir_tensions_analogiques()
         entrees_tensions_analogiques(4), entrees_tensions_analogiques(5), entrees_tensions_analogiques(6), entrees_tensions_analogiques(7))
 
     ' ToDo : traitement d'erreurs
+    'Erreur (Ljackuwx1.GetErrorStringX(lngErrorcode))
 End Sub
 
 
@@ -705,7 +706,7 @@ Private Sub sortir_tensions_analogiques()
         sorties_tensions_analogiques(0), sorties_tensions_analogiques(1))
 
     ' ToDo : traitement d'erreurs
- 
+    'Erreur (Ljackuwx1.GetErrorStringX(lngErrorcode))
 End Sub
 
 

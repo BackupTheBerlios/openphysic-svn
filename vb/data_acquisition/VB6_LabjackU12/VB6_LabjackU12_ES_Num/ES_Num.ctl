@@ -1,4 +1,5 @@
 VERSION 5.00
+Object = "{E46BCC02-8469-11D5-B00B-00008654A834}#1.0#0"; "ljackuwx.ocx"
 Begin VB.UserControl ES_Num 
    BackStyle       =   0  'Transparent
    ClientHeight    =   2730
@@ -7,6 +8,18 @@ Begin VB.UserControl ES_Num
    ClientWidth     =   5880
    ScaleHeight     =   2730
    ScaleWidth      =   5880
+   Begin LJACKUWXLib.Ljackuwx Ljackuwx1 
+      Height          =   375
+      Left            =   3240
+      TabIndex        =   9
+      Top             =   2040
+      Visible         =   0   'False
+      Width           =   1095
+      _Version        =   65536
+      _ExtentX        =   1931
+      _ExtentY        =   661
+      _StockProps     =   0
+   End
    Begin VB.Timer Timer1 
       Left            =   1920
       Top             =   1920
@@ -306,9 +319,64 @@ Private Sub initialise_port(voie As Byte)
 End Sub
 
 Private Sub lire_données(voie As Byte)
-    m_port(voie) = 20 + voie
+    'm_port(voie) = 20 + voie
+    
+    'Ljackuwx1
+    Dim lngErrorcode As Long
+    Dim lngIDNum As Long
+    Dim lngDemo As Long
+    Dim lngUpdateDigital As Long
+    Dim lngTrisD As Long
+    Dim lngTrisIO As Long
+    Dim lngStateD As Long
+    Dim lngStateIO As Long
+    Dim dblCount As Double
+    Dim sngAnalogOut0 As Single
+    Dim sngAnalogOut1 As Single
+    
+    lngIDNum = -1
+    lngDemo = 0
+    lngUpdateDigital = 1
+    lngTrisD = 0
+    lngStateD = 0
+    lngTrisIO = 0 'chkTris0 + (chkTris1 * (2 ^ 1)) + (chkTris2 * (2 ^ 2)) + (chkTris3 * (2 ^ 3))
+    lngStateIO = 0 'chkSet0 + (chkSet1 * (2 ^ 1)) + (chkSet2 * (2 ^ 2)) + (chkSet3 * (2 ^ 3))
+    sngAnalogOut0 = 0
+    sngAnalogOut1 = 0
+    lngErrorcode = Ljackuwx1.AOUpdateX(lngIDNum, lngDemo, lngTrisD, lngTrisIO, lngStateD, lngStateIO, lngUpdateDigital, 0, dblCount, sngAnalogOut0, sngAnalogOut1)
+        
+    'm_port(voie) =
+        
+    'Erreur (Ljackuwx1.GetErrorStringX(lngErrorcode))
 End Sub
 
 Private Sub écrire_données(voie As Byte, data As Byte)
     'Debug.Print "Sortie de " + CStr(data) + " sur " + CStr(voie)
+    
+    'Ljackuwx1
+    'Dim lngErrorcode As Long
+    'Dim lngIDNum As Long
+    'Dim lngDemo As Long
+    'Dim lngUpdateDigital As Long
+    'Dim lngTrisD As Long
+    'Dim lngTrisIO As Long
+    'Dim lngStateD As Long
+    'Dim lngStateIO As Long
+    'Dim dblCount As Double
+    'Dim sngAnalogOut0 As Single
+    'Dim sngAnalogOut1 As Single
+    
+    'lngIDNum = -1
+    'lngDemo = 0
+    'lngUpdateDigital = 1
+    'lngTrisD = 0
+    'lngStateD = 0
+    'lngTrisIO = 0 'chkTris0 + (chkTris1 * (2 ^ 1)) + (chkTris2 * (2 ^ 2)) + (chkTris3 * (2 ^ 3))
+    'lngStateIO = 0 'chkSet0 + (chkSet1 * (2 ^ 1)) + (chkSet2 * (2 ^ 2)) + (chkSet3 * (2 ^ 3))
+    'sngAnalogOut0 = 0
+    'sngAnalogOut1 = 0
+    'lngErrorcode = Ljackuwx1.AOUpdateX(lngIDNum, lngDemo, lngTrisD, lngTrisIO, lngStateD, lngStateIO, lngUpdateDigital, 0, dblCount, sngAnalogOut0, sngAnalogOut1)
+    
+    
+    'Erreur (Ljackuwx1.GetErrorStringX(lngErrorcode))
 End Sub
