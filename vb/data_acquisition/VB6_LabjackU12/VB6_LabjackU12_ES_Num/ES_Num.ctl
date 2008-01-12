@@ -184,15 +184,14 @@ Private Sub cboPort_ES_Click(Index As Integer)
 End Sub
 
 Private Sub Timer1_Timer()
-    Dim i As Integer
+    Dim i As Byte
     For i = 0 To nb_ports - 1
         If m_mode(i) = EMode.Lecture Then
             lire_données (i)
             txtPort(i).Text = m_port(i)
+            ' lance l'évenement change
         Else ' Ecriture
-            ' ?????????????????
-            ' TO FIX
-            'écrire_données(i,m_port(i))
+            écrire_données i, m_port(i)
         End If
         AfficheurOctet1(i).N = m_port(i)
     Next i
@@ -296,7 +295,7 @@ End Sub
 
 ' Partie spécifique à la carte
 Private Sub initialise_ports()
-    Dim i As Integer
+    Dim i As Byte
     For i = 0 To nb_ports - 1
         initialise_port (i)
     Next i
@@ -311,5 +310,5 @@ Private Sub lire_données(voie As Byte)
 End Sub
 
 Private Sub écrire_données(voie As Byte, data As Byte)
-
+    'Debug.Print "Sortie de " + CStr(data) + " sur " + CStr(voie)
 End Sub
