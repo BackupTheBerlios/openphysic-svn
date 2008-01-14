@@ -16,8 +16,8 @@ Begin VB.Form frmMain
       TabIndex        =   0
       Top             =   480
       Width           =   5895
-      _ExtentX        =   10398
-      _ExtentY        =   3413
+      _extentx        =   10398
+      _extenty        =   3413
    End
    Begin VB.Timer Timer1 
       Interval        =   500
@@ -41,6 +41,11 @@ Attribute VB_Exposed = False
 Private Sub Form_Load()
     'Led1.allumer
     'Led1.éteindre
+
+    'ES_Num1.Port(0) = 0
+    ES_Num1.Port(0) = 15
+    'ES_Num1.Port(0) = 255
+
 End Sub
 
 Private Sub Timer1_Timer()

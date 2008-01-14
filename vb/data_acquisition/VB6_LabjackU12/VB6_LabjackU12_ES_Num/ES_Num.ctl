@@ -66,9 +66,7 @@ Begin VB.UserControl ES_Num
             BackColor       =   &H00FFFFFF&
             Height          =   315
             Index           =   0
-            ItemData        =   "ES_Num.ctx":0000
             Left            =   120
-            List            =   "ES_Num.ctx":0002
             Style           =   2  'Dropdown List
             TabIndex        =   0
             Top             =   240
@@ -200,7 +198,7 @@ Private Sub Timer1_Timer()
     Dim i As Byte
     For i = 0 To nb_ports - 1
         If m_mode(i) = EMode.Lecture Then
-            lire_données (i)
+            'lire_données (i)
             txtPort(i).Text = m_port(i)
             ' lance l'évenement change
         Else ' Ecriture
@@ -287,6 +285,10 @@ Private Sub UserControl_ReadProperties(PropBag As PropertyBag)
     Mode(0) = PropBag.ReadProperty("Mode", EMode.Ecriture)
     Mode(1) = PropBag.ReadProperty("Mode", EMode.Lecture)
     'maj_combo
+
+    'Timer1.Interval = 10
+    'Timer1.Enabled = True
+
 End Sub
 
 ' Sauvegarde des propriétés
@@ -341,19 +343,21 @@ Private Sub lire_données(voie As Byte)
     lngStateD = 0
     'lngTrisIO = 0 'chkTris0 + (chkTris1 * (2 ^ 1)) + (chkTris2 * (2 ^ 2)) + (chkTris3 * (2 ^ 3))
     'lngStateIO = 0 'chkSet0 + (chkSet1 * (2 ^ 1)) + (chkSet2 * (2 ^ 2)) + (chkSet3 * (2 ^ 3))
-    lngTrisIO = &HFF ' 8 bits à 1
-    lngStateIO = 0 'chkSet0 + (chkSet1 * (2 ^ 1)) + (chkSet2 * (2 ^ 2)) + (chkSet3 * (2 ^ 3))
+    'lngTrisIO = 0
+    'lngStateIO = 0 'chkSet0 + (chkSet1 * (2 ^ 1)) + (chkSet2 * (2 ^ 2)) + (chkSet3 * (2 ^ 3))
     sngAnalogOut0 = 0
     sngAnalogOut1 = 0
-    lngErrorcode = Ljackuwx1.AOUpdateX(lngIDNum, lngDemo, lngTrisD, lngTrisIO, lngStateD, lngStateIO, lngUpdateDigital, 0, dblCount, sngAnalogOut0, sngAnalogOut1)
+    'lngErrorcode = Ljackuwx1.AOUpdateX(lngIDNum, lngDemo, lngTrisD, _
+    '    lngTrisIO, lngStateD, lngStateIO, lngUpdateDigital, _
+    '    0, dblCount, sngAnalogOut0, sngAnalogOut1)
         
-    m_port(voie) = lngStateIO ' ???????????
+    'm_port(voie) = lngStateIO ' ???????????
         
     'Erreur (Ljackuwx1.GetErrorStringX(lngErrorcode))
 End Sub
 
 Private Sub écrire_données(voie As Byte, data As Byte)
-    'Debug.Print "Sortie de " + CStr(data) + " sur " + CStr(voie)
+    Debug.Print "Sortie de " + CStr(data) + " sur " + CStr(voie)
     
     'Ljackuwx1
     Dim lngErrorcode As Long
@@ -373,11 +377,26 @@ Private Sub écrire_données(voie As Byte, data As Byte)
     lngUpdateDigital = 1
     lngTrisD = 0
     lngStateD = 0
-    lngTrisIO = 0 ' ?
-    lngStateIO = data ' ?
+    lngTrisIO = &HF0F  '15  '15 '255 '15 '&HFF ' 8 bits à 1 '0 ' ?
+    lngStateIO = CLng(data) ' ?
     sngAnalogOut0 = 0
     sngAnalogOut1 = 0
-    lngErrorcode = Ljackuwx1.AOUpdateX(lngIDNum, lngDemo, lngTrisD, lngTrisIO, lngStateD, lngStateIO, lngUpdateDigital, 0, dblCount, sngAnalogOut0, sngAnalogOut1)
+    
+    
+
+    'lngErrorcode = Ljackuwx1.AOUpdateX(lngIDNum, lngDemo, lngTrisD, _
+    '    lngTrisIO, lngStateD, lngStateIO, lngUpdateDigital, _
+    '    0, dblCount, sngAnalogOut0, sngAnalogOut1)
+        
+    lngErrorcode = Ljackuwx1.AOUpdateX(lngIDNum, lngDemo, lngTrisD, _
+        lngTrisIO, lngStateD, lngStateIO, lngUpdateDigital, _
+        0, dblCount, sngAnalogOut0, sngAnalogOut1)
+    
+    'Debug.Print "Sortie de " + CStr(data) + " sur " + CStr(voie)
+        
+    'lngErrorcode = Ljackuwx1.AOUpdateX(CLng(-1), CLng(0), CLng(0), _
+    '    CLng(15), CLng(0), CLng(15), CLng(1), _
+    '    CLng(0), CDbl(0), CSng(0), CSng(0))
     
     'Erreur (Ljackuwx1.GetErrorStringX(lngErrorcode))
 End Sub
