@@ -370,29 +370,37 @@ Private Sub écrire_données(voie As Byte, data As Byte)
     Dim lngTrisIO As Long
     Dim lngStateD As Long
     Dim lngStateIO As Long
-    Dim dblCount As Double
-    Dim sngAnalogOut0 As Single
-    Dim sngAnalogOut1 As Single
+    'Dim dblCount As Double
+    'Dim sngAnalogOut0 As Single
+    'Dim sngAnalogOut1 As Single
+    Dim lngOutputD As Long
     
     lngIDNum = -1
     lngDemo = 0
     lngUpdateDigital = 1
-    lngTrisD = 0
-    lngStateD = 0
-    lngTrisIO = &HF  '15  '15 '255 '15 '&HFF ' 8 bits à 1 '0 ' ?
-    lngStateIO = CLng(data) ' ?
-    sngAnalogOut0 = 0
-    sngAnalogOut1 = 0
+    lngTrisD = &HFF
+    lngStateD = &HFF '0
+    lngTrisIO = 0 '&HFF  '15  '15 '255 '15 '&HFF ' 8 bits à 1 '0 ' ?
+    lngStateIO = 0 'CLng(data) ' ?
+    'sngAnalogOut0 = 0
+    'sngAnalogOut1 = 0
+    lngOutputD = 0 'data
     
     
 
     'lngErrorcode = Ljackuwx1.AOUpdateX(lngIDNum, lngDemo, lngTrisD, _
     '    lngTrisIO, lngStateD, lngStateIO, lngUpdateDigital, _
     '    0, dblCount, sngAnalogOut0, sngAnalogOut1)
-        
-    lngErrorcode = Ljackuwx1.AOUpdateX(lngIDNum, lngDemo, lngTrisD, _
-        lngTrisIO, lngStateD, lngStateIO, lngUpdateDigital, _
-        0, dblCount, sngAnalogOut0, sngAnalogOut1)
+    ' Ljackuwx1.DigitalIOX
+    lngErrorcode = Ljackuwx1.DigitalIOX(lngIDNum, lngDemo, lngTrisD, _
+        lngTrisIO, lngStateD, lngStateIO, _
+        lngUpdateDigital, lngOutputD)
+    
+    'data
+    
+    'lngErrorcode = Ljackuwx1.AOUpdateX(lngIDNum, lngDemo, lngTrisD, _
+    '    lngTrisIO, lngStateD, lngStateIO, lngUpdateDigital, _
+    '    0, dblCount, sngAnalogOut0, sngAnalogOut1)
     
     'Debug.Print "Sortie de " + CStr(data) + " sur " + CStr(voie)
         
