@@ -353,7 +353,9 @@ Private Sub lire_données(voie As Byte)
         
     'm_port(voie) = lngStateIO ' ???????????
         
-    'Erreur (Ljackuwx1.GetErrorStringX(lngErrorcode))
+    If lngErrorcode <> 0 Then
+        Erreur (Ljackuwx1.GetErrorStringX(lngErrorcode))
+    End If
 End Sub
 
 Private Sub écrire_données(voie As Byte, data As Byte)
@@ -377,7 +379,7 @@ Private Sub écrire_données(voie As Byte, data As Byte)
     lngUpdateDigital = 1
     lngTrisD = 0
     lngStateD = 0
-    lngTrisIO = &HF0F  '15  '15 '255 '15 '&HFF ' 8 bits à 1 '0 ' ?
+    lngTrisIO = &HF  '15  '15 '255 '15 '&HFF ' 8 bits à 1 '0 ' ?
     lngStateIO = CLng(data) ' ?
     sngAnalogOut0 = 0
     sngAnalogOut1 = 0
@@ -398,5 +400,7 @@ Private Sub écrire_données(voie As Byte, data As Byte)
     '    CLng(15), CLng(0), CLng(15), CLng(1), _
     '    CLng(0), CDbl(0), CSng(0), CSng(0))
     
-    'Erreur (Ljackuwx1.GetErrorStringX(lngErrorcode))
+    If lngErrorcode <> 0 Then
+        Erreur (Ljackuwx1.GetErrorStringX(lngErrorcode))
+    End If
 End Sub
