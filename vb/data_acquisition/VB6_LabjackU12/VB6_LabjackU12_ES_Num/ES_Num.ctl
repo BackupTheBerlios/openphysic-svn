@@ -198,7 +198,7 @@ Private Sub Timer1_Timer()
     Dim i As Byte
     For i = 0 To nb_ports - 1
         If m_mode(i) = EMode.Lecture Then
-            'lire_données (i)
+            lire_données (i)
             txtPort(i).Text = m_port(i)
             ' lance l'évenement change
         Else ' Ecriture
@@ -335,10 +335,11 @@ Private Sub lire_données(voie As Byte)
     Dim dblCount As Double
     Dim sngAnalogOut0 As Single
     Dim sngAnalogOut1 As Single
+    Dim lngOutputD As Long
     
     lngIDNum = -1
     lngDemo = 0
-    lngUpdateDigital = 1
+    lngUpdateDigital = -1 ' read
     lngTrisD = 0
     lngStateD = 0
     'lngTrisIO = 0 'chkTris0 + (chkTris1 * (2 ^ 1)) + (chkTris2 * (2 ^ 2)) + (chkTris3 * (2 ^ 3))
@@ -351,7 +352,12 @@ Private Sub lire_données(voie As Byte)
     '    lngTrisIO, lngStateD, lngStateIO, lngUpdateDigital, _
     '    0, dblCount, sngAnalogOut0, sngAnalogOut1)
         
+    lngErrorcode = Ljackuwx1.DigitalIOX(lngIDNum, lngDemo, lngTrisD, _
+        lngTrisIO, lngStateD, lngStateIO, _
+        lngUpdateDigital, lngOutputD)
+        
     'm_port(voie) = lngStateIO ' ???????????
+    m_port(voie) = lngOutputD * 2 ^ (-8 * voie)
         
     If lngErrorcode <> 0 Then
         Erreur (Ljackuwx1.GetErrorStringX(lngErrorcode))
@@ -377,9 +383,9 @@ Private Sub écrire_données(voie As Byte, data As Byte)
     
     lngIDNum = -1
     lngDemo = 0
-    lngUpdateDigital = 1
-    lngTrisD = &HFF
-    lngStateD = &HFF '0
+    lngUpdateDigital = 1 ' write
+    lngTrisD = &HFF * 2 ^ (8 * voie)
+    lngStateD = data * 2 ^ (8 * voie) '&HFF '0
     lngTrisIO = 0 '&HFF  '15  '15 '255 '15 '&HFF ' 8 bits à 1 '0 ' ?
     lngStateIO = 0 'CLng(data) ' ?
     'sngAnalogOut0 = 0
