@@ -19,6 +19,11 @@ S. CELLES</Property>
       <Item Name="test_sim_turbo.vi" Type="VI" URL="test_sim_turbo.vi"/>
       <Item Name="fixed_string.vi" Type="VI" URL="fixed_string.vi"/>
       <Item Name="test_turbo_serial.vi" Type="VI" URL="test_turbo_serial.vi"/>
+      <Item Name="button_press.vi" Type="VI" URL="button_press.vi"/>
+      <Item Name="data_down.vi" Type="VI" URL="data_down.vi"/>
+      <Item Name="data_up.vi" Type="VI" URL="data_up.vi"/>
+      <Item Name="menu_down.vi" Type="VI" URL="menu_down.vi"/>
+      <Item Name="menu_up.vi" Type="VI" URL="menu_up.vi"/>
       <Item Name="Dépendances" Type="Dependencies">
          <Item Name="vi.lib" Type="Folder">
             <Item Name="VISA Configure Serial Port" Type="Document" URL="/&lt;vilib&gt;/Instr/_visa.llb/VISA Configure Serial Port"/>
