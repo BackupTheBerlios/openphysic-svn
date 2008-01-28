@@ -1,4 +1,5 @@
 VERSION 5.00
+Object = "{AAF8CCB7-4AD9-4715-AA80-F6826150D73B}#4.0#0"; "Led.ocx"
 Begin VB.UserControl AfficheurOctet 
    BackStyle       =   0  'Transparent
    ClientHeight    =   1830
@@ -7,7 +8,7 @@ Begin VB.UserControl AfficheurOctet
    ClientWidth     =   4695
    ScaleHeight     =   1830
    ScaleWidth      =   4695
-   Begin Test_ES_Num_LabjackU12.Led Led1 
+   Begin LightEmittingDiode.Led Led1 
       Height          =   255
       Index           =   0
       Left            =   2520
@@ -17,7 +18,7 @@ Begin VB.UserControl AfficheurOctet
       _ExtentX        =   450
       _ExtentY        =   450
    End
-   Begin Test_ES_Num_LabjackU12.Led Led1 
+   Begin LightEmittingDiode.Led Led1 
       Height          =   255
       Index           =   1
       Left            =   2160
@@ -27,7 +28,7 @@ Begin VB.UserControl AfficheurOctet
       _ExtentX        =   450
       _ExtentY        =   450
    End
-   Begin Test_ES_Num_LabjackU12.Led Led1 
+   Begin LightEmittingDiode.Led Led1 
       Height          =   255
       Index           =   2
       Left            =   1800
@@ -37,7 +38,7 @@ Begin VB.UserControl AfficheurOctet
       _ExtentX        =   450
       _ExtentY        =   450
    End
-   Begin Test_ES_Num_LabjackU12.Led Led1 
+   Begin LightEmittingDiode.Led Led1 
       Height          =   255
       Index           =   3
       Left            =   1440
@@ -47,7 +48,7 @@ Begin VB.UserControl AfficheurOctet
       _ExtentX        =   450
       _ExtentY        =   450
    End
-   Begin Test_ES_Num_LabjackU12.Led Led1 
+   Begin LightEmittingDiode.Led Led1 
       Height          =   255
       Index           =   4
       Left            =   1080
@@ -57,7 +58,7 @@ Begin VB.UserControl AfficheurOctet
       _ExtentX        =   450
       _ExtentY        =   450
    End
-   Begin Test_ES_Num_LabjackU12.Led Led1 
+   Begin LightEmittingDiode.Led Led1 
       Height          =   255
       Index           =   5
       Left            =   720
@@ -67,7 +68,7 @@ Begin VB.UserControl AfficheurOctet
       _ExtentX        =   450
       _ExtentY        =   450
    End
-   Begin Test_ES_Num_LabjackU12.Led Led1 
+   Begin LightEmittingDiode.Led Led1 
       Height          =   255
       Index           =   6
       Left            =   360
@@ -77,7 +78,7 @@ Begin VB.UserControl AfficheurOctet
       _ExtentX        =   450
       _ExtentY        =   450
    End
-   Begin Test_ES_Num_LabjackU12.Led Led1 
+   Begin LightEmittingDiode.Led Led1 
       Height          =   255
       Index           =   7
       Left            =   0
@@ -93,6 +94,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
+
 ' Afficheur 8 bits
 ' ================
 

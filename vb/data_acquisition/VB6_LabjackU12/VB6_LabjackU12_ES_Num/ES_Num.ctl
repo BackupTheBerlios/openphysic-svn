@@ -1,5 +1,6 @@
 VERSION 5.00
 Object = "{E46BCC02-8469-11D5-B00B-00008654A834}#1.0#0"; "ljackuwx.ocx"
+Object = "{6DEC2B45-9410-42EB-BCAD-13CD4AFFCD1F}#1.0#0"; "ByteDisplay.ocx"
 Begin VB.UserControl ES_Num 
    BackStyle       =   0  'Transparent
    ClientHeight    =   2730
@@ -11,7 +12,7 @@ Begin VB.UserControl ES_Num
    Begin LJACKUWXLib.Ljackuwx Ljackuwx1 
       Height          =   375
       Left            =   3240
-      TabIndex        =   9
+      TabIndex        =   7
       Top             =   2040
       Visible         =   0   'False
       Width           =   1095
@@ -38,7 +39,7 @@ Begin VB.UserControl ES_Num
       EndProperty
       Height          =   1815
       Left            =   0
-      TabIndex        =   5
+      TabIndex        =   4
       Top             =   0
       Width           =   5175
       Begin VB.Frame fraPortA 
@@ -48,9 +49,18 @@ Begin VB.UserControl ES_Num
          ForeColor       =   &H80000008&
          Height          =   615
          Left            =   120
-         TabIndex        =   7
+         TabIndex        =   6
          Top             =   240
          Width           =   4935
+         Begin ByteDisplay.AfficheurOctet AfficheurOctet1 
+            Height          =   255
+            Left            =   2040
+            TabIndex        =   8
+            Top             =   240
+            Width           =   2775
+            _ExtentX        =   4895
+            _ExtentY        =   450
+         End
          Begin VB.TextBox txtPort 
             Alignment       =   1  'Right Justify
             BackColor       =   &H00C0C0FF&
@@ -72,18 +82,6 @@ Begin VB.UserControl ES_Num
             Top             =   240
             Width           =   1455
          End
-         Begin Test_ES_Num_LabjackU12.AfficheurOctet AfficheurOctet1 
-            Height          =   375
-            Index           =   0
-            Left            =   2040
-            TabIndex        =   2
-            Top             =   240
-            Width           =   2775
-            _ExtentX        =   4895
-            _ExtentY        =   661
-            ColorON         =   255
-            ColorOFF        =   16512
-         End
       End
       Begin VB.Frame fraPortC 
          Appearance      =   0  'Flat
@@ -92,16 +90,25 @@ Begin VB.UserControl ES_Num
          ForeColor       =   &H80000008&
          Height          =   615
          Left            =   120
-         TabIndex        =   6
+         TabIndex        =   5
          Top             =   960
          Width           =   4935
+         Begin ByteDisplay.AfficheurOctet AfficheurOctet2 
+            Height          =   375
+            Left            =   2040
+            TabIndex        =   9
+            Top             =   240
+            Width           =   2775
+            _ExtentX        =   4895
+            _ExtentY        =   661
+         End
          Begin VB.TextBox txtPort 
             Alignment       =   1  'Right Justify
             BackColor       =   &H00C0FFC0&
             Height          =   285
             Index           =   1
             Left            =   1560
-            TabIndex        =   4
+            TabIndex        =   3
             Text            =   "0"
             Top             =   240
             Width           =   375
@@ -111,19 +118,9 @@ Begin VB.UserControl ES_Num
             Index           =   1
             Left            =   120
             Style           =   2  'Dropdown List
-            TabIndex        =   3
+            TabIndex        =   2
             Top             =   240
             Width           =   1455
-         End
-         Begin Test_ES_Num_LabjackU12.AfficheurOctet AfficheurOctet1 
-            Height          =   255
-            Index           =   1
-            Left            =   2040
-            TabIndex        =   8
-            Top             =   240
-            Width           =   2775
-            _ExtentX        =   4895
-            _ExtentY        =   450
          End
       End
    End
@@ -132,7 +129,8 @@ Attribute VB_Name = "ES_Num"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
-Attribute VB_Exposed = False
+Attribute VB_Exposed = True
+
 ' Objet VB6 permettant le contrôle d'une carte
 ' entrée/sortie numériques (8 bits * 2 ports)
 ' LabjackU12
