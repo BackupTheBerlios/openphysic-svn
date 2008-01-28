@@ -1,6 +1,6 @@
 VERSION 5.00
 Object = "{E46BCC02-8469-11D5-B00B-00008654A834}#1.0#0"; "ljackuwx.ocx"
-Object = "{6DEC2B45-9410-42EB-BCAD-13CD4AFFCD1F}#2.0#0"; "ByteDisplay.ocx"
+Object = "{6DEC2B45-9410-42EB-BCAD-13CD4AFFCD1F}#3.0#0"; "ByteDisplay.ocx"
 Begin VB.UserControl ES_Num 
    BackStyle       =   0  'Transparent
    ClientHeight    =   2730
@@ -133,7 +133,7 @@ Attribute VB_Name = "ES_Num"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
-Attribute VB_Exposed = True
+Attribute VB_Exposed = False
 
 ' Objet VB6 permettant le contrôle d'une carte
 ' entrée/sortie numériques (8 bits * 2 ports)

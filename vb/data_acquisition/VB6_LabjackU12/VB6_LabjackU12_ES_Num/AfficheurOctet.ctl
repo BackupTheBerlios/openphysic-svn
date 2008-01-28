@@ -122,7 +122,7 @@ Const m_def_ColorOFF = &H8000& ' vert foncé
 Const m_def_ColorON = &HFF00& ' vert clair
 
 Private Sub UserControl_Initialize()
-    Debug.Print "Initialize"
+    'Debug.Print "Initialize"
     afficher
 End Sub
 
@@ -141,7 +141,7 @@ Private Sub allumer_toutes()
 End Sub
 
 Public Property Let N(num As Byte)
-    Debug.Print "Let N"
+    'Debug.Print "Let N"
 
     m_N = num
     PropertyChanged N
@@ -153,7 +153,7 @@ Public Property Get N() As Byte
 End Property
 
 Private Sub afficher()
-    Debug.Print "afficher"
+    'Debug.Print "afficher"
     
     Dim N As Byte
     N = m_N ' copie afin de ne pas modifier la valeur de m_N
@@ -176,7 +176,7 @@ End Sub
 
 
 Public Property Let ColorON(new_color As OLE_COLOR)
-    Debug.Print "Let ColorON"
+    'Debug.Print "Let ColorON"
 
     m_ColorON = new_color
     PropertyChanged ColorON
@@ -189,7 +189,7 @@ Public Property Get ColorON() As OLE_COLOR
 End Property
 
 Public Property Let ColorOFF(new_color As OLE_COLOR)
-    Debug.Print "Let ColorOFF"
+    'Debug.Print "Let ColorOFF"
 
     m_ColorOFF = new_color
     PropertyChanged ColorOFF
@@ -227,7 +227,7 @@ End Property
 ' Initialise les propriétés
 '(lorsqu'on place un contrôle utilisateur sur une feuille)
 Private Sub UserControl_InitProperties()
-    Debug.Print "InitProperties"
+    'Debug.Print "InitProperties"
     
     m_ColorON = m_def_ColorON
     m_ColorOFF = m_def_ColorOFF
@@ -237,7 +237,7 @@ End Sub
 
 ' Chargement des propriétés par défault
 Private Sub UserControl_ReadProperties(PropBag As PropertyBag)
-    Debug.Print "ReadProperties"
+    'Debug.Print "ReadProperties"
     
     m_ColorON = PropBag.ReadProperty("ColorON", m_def_ColorON)
     m_ColorOFF = PropBag.ReadProperty("ColorOFF", m_def_ColorOFF)
