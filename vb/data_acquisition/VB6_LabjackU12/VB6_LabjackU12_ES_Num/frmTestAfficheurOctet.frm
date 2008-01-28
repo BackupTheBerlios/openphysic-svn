@@ -17,7 +17,7 @@ Begin VB.Form frmTestAfficheurOctet
       Width           =   3735
       _ExtentX        =   6588
       _ExtentY        =   1508
-      ColorOFF        =   192
+      ColorOFF        =   49152
    End
 End
 Attribute VB_Name = "frmTestAfficheurOctet"

@@ -1,11 +1,9 @@
 Type=Exe
-Form=frmTestLed.frm
+Form=frmTestOCX_ES_Num_LabjackU12.frm
 Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#..\..\..\..\WINNT\system32\STDOLE2.TLB#OLE Automation
-UserControl=Led.ctl
-IconForm="frmTestLed"
-Startup="frmTestLed"
+Startup="frmTestOCX_ES_Num_LabjackU12"
 Command32=""
-Name="TestLed"
+Name="TestOCX_ES_Num_LabjackU12"
 HelpContextID="0"
 CompatibleMode="0"
 MajorVer=1

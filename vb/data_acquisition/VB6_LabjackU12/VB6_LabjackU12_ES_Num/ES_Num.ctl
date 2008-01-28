@@ -1,6 +1,6 @@
 VERSION 5.00
 Object = "{E46BCC02-8469-11D5-B00B-00008654A834}#1.0#0"; "ljackuwx.ocx"
-Object = "{6DEC2B45-9410-42EB-BCAD-13CD4AFFCD1F}#1.0#0"; "ByteDisplay.ocx"
+Object = "{6DEC2B45-9410-42EB-BCAD-13CD4AFFCD1F}#2.0#0"; "ByteDisplay.ocx"
 Begin VB.UserControl ES_Num 
    BackStyle       =   0  'Transparent
    ClientHeight    =   2730
@@ -60,6 +60,8 @@ Begin VB.UserControl ES_Num
             Width           =   2775
             _ExtentX        =   4895
             _ExtentY        =   450
+            ColorON         =   255
+            ColorOFF        =   16512
          End
          Begin VB.TextBox txtPort 
             Alignment       =   1  'Right Justify
