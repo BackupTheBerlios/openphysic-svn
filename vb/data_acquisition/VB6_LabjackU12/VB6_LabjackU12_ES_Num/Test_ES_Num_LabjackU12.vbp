@@ -1,11 +1,13 @@
 Type=Exe
 Form=frmMain.frm
-Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#C:\WINNT\system32\STDOLE2.TLB#OLE Automation
-UserControl=ES_Num.ctl
-UserControl=AfficheurOctet.ctl
-UserControl=Led.ctl
+Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#..\..\..\..\WINNT\system32\STDOLE2.TLB#OLE Automation
 Object={E46BCC02-8469-11D5-B00B-00008654A834}#1.0#0; ljackuwx.ocx
 Module=modBitManipulation; modBitManipulation.bas
+UserControl=Led.ctl
+Object={AAF8CCB7-4AD9-4715-AA80-F6826150D73B}#4.0#0; Led.ocx
+UserControl=AfficheurOctet.ctl
+Object={6DEC2B45-9410-42EB-BCAD-13CD4AFFCD1F}#2.0#0; ByteDisplay.ocx
+UserControl=ES_Num.ctl
 IconForm="frmMain"
 Startup="frmMain"
 Command32=""

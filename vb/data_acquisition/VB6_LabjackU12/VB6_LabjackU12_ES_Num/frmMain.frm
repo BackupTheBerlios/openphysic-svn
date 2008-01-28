@@ -11,13 +11,13 @@ Begin VB.Form frmMain
    ScaleWidth      =   7755
    StartUpPosition =   3  'Windows Default
    Begin Test_ES_Num_LabjackU12.ES_Num ES_Num1 
-      Height          =   1935
-      Left            =   720
-      TabIndex        =   0
-      Top             =   480
-      Width           =   5895
-      _ExtentX        =   10398
-      _ExtentY        =   3413
+      Height          =   2295
+      Left            =   360
+      TabIndex        =   1
+      Top             =   240
+      Width           =   5295
+      _ExtentX        =   9340
+      _ExtentY        =   4048
    End
    Begin VB.Timer Timer1 
       Interval        =   500
@@ -28,7 +28,7 @@ Begin VB.Form frmMain
       Caption         =   "Label1"
       Height          =   735
       Left            =   960
-      TabIndex        =   1
+      TabIndex        =   0
       Top             =   2640
       Width           =   1215
    End
@@ -38,10 +38,6 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-Private Sub ES_Num1_GotFocus()
-
-End Sub
-
 Private Sub Form_Load()
     'Led1.allumer
     'Led1.éteindre

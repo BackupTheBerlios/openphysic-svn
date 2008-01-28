@@ -54,6 +54,7 @@ Begin VB.UserControl ES_Num
          Width           =   4935
          Begin ByteDisplay.AfficheurOctet AfficheurOctet1 
             Height          =   255
+            Index           =   0
             Left            =   2040
             TabIndex        =   8
             Top             =   240
@@ -95,8 +96,9 @@ Begin VB.UserControl ES_Num
          TabIndex        =   5
          Top             =   960
          Width           =   4935
-         Begin ByteDisplay.AfficheurOctet AfficheurOctet2 
+         Begin ByteDisplay.AfficheurOctet AfficheurOctet1 
             Height          =   375
+            Index           =   1
             Left            =   2040
             TabIndex        =   9
             Top             =   240
@@ -208,6 +210,7 @@ Private Sub Timer1_Timer()
         Else ' Ecriture
             écrire_données i, m_port(i)
         End If
+        'AfficheurOctet1(i).N = 255
         AfficheurOctet1(i).N = m_port(i)
     Next i
 End Sub

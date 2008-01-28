@@ -1,6 +1,8 @@
 Type=Exe
 Form=frmTestOCX_ES_Num_LabjackU12.frm
 Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#..\..\..\..\WINNT\system32\STDOLE2.TLB#OLE Automation
+Object={81D38C50-6DA4-4274-A5AC-D0A4A5519AC6}#3.0#0; ES_Num_LabjackU12.ocx
+IconForm="frmTestOCX_ES_Num_LabjackU12"
 Startup="frmTestOCX_ES_Num_LabjackU12"
 Command32=""
 Name="TestOCX_ES_Num_LabjackU12"
