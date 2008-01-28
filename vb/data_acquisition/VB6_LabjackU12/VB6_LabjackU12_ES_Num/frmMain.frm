@@ -16,8 +16,8 @@ Begin VB.Form frmMain
       TabIndex        =   0
       Top             =   480
       Width           =   5895
-      _extentx        =   10398
-      _extenty        =   3413
+      _ExtentX        =   10398
+      _ExtentY        =   3413
    End
    Begin VB.Timer Timer1 
       Interval        =   500
@@ -38,6 +38,10 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+Private Sub ES_Num1_GotFocus()
+
+End Sub
+
 Private Sub Form_Load()
     'Led1.allumer
     'Led1.éteindre

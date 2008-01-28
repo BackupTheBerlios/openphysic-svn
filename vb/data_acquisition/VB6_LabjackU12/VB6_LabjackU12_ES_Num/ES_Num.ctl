@@ -133,8 +133,6 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
-' ToDo
-
 ' Objet VB6 permettant le contrôle d'une carte
 ' entrée/sortie numériques (8 bits * 2 ports)
 ' LabjackU12
@@ -160,6 +158,11 @@ End Enum
 Dim m_mode(nb_ports - 1) As EMode ' mode de chaque port (False=écriture ; True=Lecture)
 
 
+' variables spécifiques à la carte
+Dim lngTrisD As Long ' Direction E/S numériques
+Dim lngStateD As Long ' Etat 0 ou 1 sur la ligne D
+
+
 
 Public Property Let Port(voie As Byte, ByVal val As Byte)
     m_port(voie) = val
@@ -182,6 +185,7 @@ Public Property Let Mode(voie As Byte, ByVal new_mode As EMode)
         txtPort(voie).Enabled = False
     End If
     PropertyChanged "Mode"
+    initialise_ports
 End Property
 
 Public Property Get Mode(voie As Byte) As EMode
@@ -247,7 +251,7 @@ End Sub
 
 Private Sub txtPort_KeyPress(Index As Integer, KeyAscii As Integer)
     'Debug.Print KeyAscii
-    If (KeyAscii < 48 Or KeyAscii > 57) And KeyAscii <> 8 Then
+    If (KeyAscii < 48 Or KeyAscii > 57) And KeyAscii <> 8 Then ' nombres uniquement
         KeyAscii = 0
     End If
 End Sub
@@ -310,54 +314,52 @@ End Sub
 
 ' Partie spécifique à la carte
 Private Sub initialise_ports()
+    ' met à jour la direction des ports d'entrées/sorties numériques
+    lngTrisD = 0 '&HFF
+
     Dim i As Byte
     For i = 0 To nb_ports - 1
-        initialise_port (i)
+        'initialise_port (i)
+        
+        If m_mode(i) = EMode.Ecriture Then
+            lngTrisD = lngTrisD + &HFF * 2 ^ (8 * i)
+        Else ' Lecture
+            ' ne rien faire (car 0=lecture)
+        End If
+    
     Next i
 End Sub
 
-Private Sub initialise_port(voie As Byte)
+'Private Sub initialise_port(voie As Byte)
 
-End Sub
+'End Sub
+
 
 Private Sub lire_données(voie As Byte)
-    'm_port(voie) = 20 + voie
+    Dim mask As Long
+    mask = &HFF * 2 ^ (8 * voie)
     
     'Ljackuwx1
     Dim lngErrorcode As Long
     Dim lngIDNum As Long
     Dim lngDemo As Long
     Dim lngUpdateDigital As Long
-    Dim lngTrisD As Long
+    'Dim lngTrisD As Long ' public
     Dim lngTrisIO As Long
-    Dim lngStateD As Long
+    'Dim lngStateD As Long ' public
     Dim lngStateIO As Long
     Dim dblCount As Double
-    Dim sngAnalogOut0 As Single
-    Dim sngAnalogOut1 As Single
     Dim lngOutputD As Long
     
     lngIDNum = -1
     lngDemo = 0
     lngUpdateDigital = -1 ' read
-    lngTrisD = 0
-    lngStateD = 0
-    'lngTrisIO = 0 'chkTris0 + (chkTris1 * (2 ^ 1)) + (chkTris2 * (2 ^ 2)) + (chkTris3 * (2 ^ 3))
-    'lngStateIO = 0 'chkSet0 + (chkSet1 * (2 ^ 1)) + (chkSet2 * (2 ^ 2)) + (chkSet3 * (2 ^ 3))
-    'lngTrisIO = 0
-    'lngStateIO = 0 'chkSet0 + (chkSet1 * (2 ^ 1)) + (chkSet2 * (2 ^ 2)) + (chkSet3 * (2 ^ 3))
-    sngAnalogOut0 = 0
-    sngAnalogOut1 = 0
-    'lngErrorcode = Ljackuwx1.AOUpdateX(lngIDNum, lngDemo, lngTrisD, _
-    '    lngTrisIO, lngStateD, lngStateIO, lngUpdateDigital, _
-    '    0, dblCount, sngAnalogOut0, sngAnalogOut1)
         
     lngErrorcode = Ljackuwx1.DigitalIOX(lngIDNum, lngDemo, lngTrisD, _
         lngTrisIO, lngStateD, lngStateIO, _
         lngUpdateDigital, lngOutputD)
         
-    'm_port(voie) = lngStateIO ' ???????????
-    m_port(voie) = lngOutputD * 2 ^ (-8 * voie)
+    m_port(voie) = (lngOutputD And mask) * 2 ^ (-8 * voie)
         
     If lngErrorcode <> 0 Then
         Erreur (Ljackuwx1.GetErrorStringX(lngErrorcode))
@@ -365,56 +367,40 @@ Private Sub lire_données(voie As Byte)
 End Sub
 
 Private Sub écrire_données(voie As Byte, data As Byte)
-    Debug.Print "Sortie de " + CStr(data) + " sur " + CStr(voie)
+    'Debug.Print "Sortie de " + CStr(data) + " sur " + CStr(voie)
+    
+    Dim mask As Long
+    mask = &HFF * 2 ^ (8 * voie)
     
     'Ljackuwx1
     Dim lngErrorcode As Long
     Dim lngIDNum As Long
     Dim lngDemo As Long
     Dim lngUpdateDigital As Long
-    Dim lngTrisD As Long
+    'Dim lngTrisD As Long ' public
     Dim lngTrisIO As Long
-    Dim lngStateD As Long
+    'Dim lngStateD As Long ' public
     Dim lngStateIO As Long
-    'Dim dblCount As Double
-    'Dim sngAnalogOut0 As Single
-    'Dim sngAnalogOut1 As Single
     Dim lngOutputD As Long
     
     lngIDNum = -1
-    lngDemo = 0
+    lngDemo = 0 '0
     lngUpdateDigital = 1 ' write
-    lngTrisD = &HFF * 2 ^ (8 * voie)
-    lngStateD = data * 2 ^ (8 * voie) '&HFF '0
-    lngTrisIO = 0 '&HFF  '15  '15 '255 '15 '&HFF ' 8 bits à 1 '0 ' ?
-    lngStateIO = 0 'CLng(data) ' ?
-    'sngAnalogOut0 = 0
-    'sngAnalogOut1 = 0
-    lngOutputD = 0 'data
     
+    'lngTrisD
+    lngStateD = (lngStateD And (Not mask)) Or (data * 2 ^ (8 * voie))
+     
+    lngTrisIO = 0
+    lngStateIO = 0
+    lngOutputD = 0
     
-
-    'lngErrorcode = Ljackuwx1.AOUpdateX(lngIDNum, lngDemo, lngTrisD, _
-    '    lngTrisIO, lngStateD, lngStateIO, lngUpdateDigital, _
-    '    0, dblCount, sngAnalogOut0, sngAnalogOut1)
-    ' Ljackuwx1.DigitalIOX
     lngErrorcode = Ljackuwx1.DigitalIOX(lngIDNum, lngDemo, lngTrisD, _
         lngTrisIO, lngStateD, lngStateIO, _
         lngUpdateDigital, lngOutputD)
-    
-    'data
-    
-    'lngErrorcode = Ljackuwx1.AOUpdateX(lngIDNum, lngDemo, lngTrisD, _
-    '    lngTrisIO, lngStateD, lngStateIO, lngUpdateDigital, _
-    '    0, dblCount, sngAnalogOut0, sngAnalogOut1)
-    
-    'Debug.Print "Sortie de " + CStr(data) + " sur " + CStr(voie)
         
-    'lngErrorcode = Ljackuwx1.AOUpdateX(CLng(-1), CLng(0), CLng(0), _
-    '    CLng(15), CLng(0), CLng(15), CLng(1), _
-    '    CLng(0), CDbl(0), CSng(0), CSng(0))
-    
     If lngErrorcode <> 0 Then
         Erreur (Ljackuwx1.GetErrorStringX(lngErrorcode))
     End If
 End Sub
+
+
