@@ -133,7 +133,7 @@ Attribute VB_Name = "ES_Num"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
-Attribute VB_Exposed = False
+Attribute VB_Exposed = True
 
 ' Objet VB6 permettant le contrôle d'une carte
 ' entrée/sortie numériques (8 bits * 2 ports)
