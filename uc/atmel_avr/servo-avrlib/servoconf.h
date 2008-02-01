@@ -57,11 +57,11 @@
 //		SERVO_DEFAULT_PORT.  You can change this default port/pin
 //		assignment for a given channel to any port/pin you like.
 //		See the "servoSetChannelIO" function.
-#define SERVO_NUM_CHANNELS		1
+#define SERVO_NUM_CHANNELS		4
 // set default SERVO output port
 //		This is the AVR port which you have connected to your servos 
 //		See top of file for how servo "channels" map to port pins
-#define SERVO_DEFAULT_PORT		PORTB //
+#define SERVO_DEFAULT_PORT		PORTC //
 // set servo characteristics (min and max raw position)
 //		You must find these by testing using your brand/type of servos.
 //		The min/max settings will change proportional to F_CPU, the CPU
