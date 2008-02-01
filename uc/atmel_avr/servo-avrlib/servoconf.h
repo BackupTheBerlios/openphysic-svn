@@ -57,21 +57,21 @@
 //		SERVO_DEFAULT_PORT.  You can change this default port/pin
 //		assignment for a given channel to any port/pin you like.
 //		See the "servoSetChannelIO" function.
-#define SERVO_NUM_CHANNELS		4
+#define SERVO_NUM_CHANNELS		1
 // set default SERVO output port
 //		This is the AVR port which you have connected to your servos 
 //		See top of file for how servo "channels" map to port pins
-#define SERVO_DEFAULT_PORT		PORTB
+#define SERVO_DEFAULT_PORT		PORTB //
 // set servo characteristics (min and max raw position)
 //		You must find these by testing using your brand/type of servos.
 //		The min/max settings will change proportional to F_CPU, the CPU
 //		clock frequency.
 // The numbers below good for parallax servos at an F_CPU of ~8MHz.
-//#define SERVO_MAX				71
-//#define SERVO_MIN				17
+#define SERVO_MAX				71
+#define SERVO_MIN				17
 // The numbers below good for parallax servos at an F_CPU of ~14.745MHz.
-#define SERVO_MAX				138
-#define SERVO_MIN				34
+//#define SERVO_MAX				138
+//#define SERVO_MIN				34
 
 // set servo scaled range
 //		This sets the scaled position range of the servo.  Allowed scaled

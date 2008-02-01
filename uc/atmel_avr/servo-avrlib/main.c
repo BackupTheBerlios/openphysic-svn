@@ -1,12 +1,12 @@
 //*****************************************************************************
 // File Name	: servotest.c
-// 
+//
 // Title		: example usage of RC servo library functions
 // Revision		: 1.0
 // Notes		:	
 // Target MCU	: Atmel AVR series
 // Editor Tabs	: 4
-// 
+//
 // Revision History:
 // When			Who			Description of change
 // -----------	-----------	-----------------------
@@ -62,13 +62,13 @@ void servoTest(void)
 	servoInit();
 	// setup servo output channel-to-I/Opin mapping
 	// format is servoSetChannelIO( CHANNEL#, PORT, PIN );
-	servoSetChannelIO(0, _SFR_IO_ADDR(PORTC), PC0);
-	servoSetChannelIO(1, _SFR_IO_ADDR(PORTC), PC1);
-	servoSetChannelIO(2, _SFR_IO_ADDR(PORTC), PC2);
-	servoSetChannelIO(3, _SFR_IO_ADDR(PORTC), PC3);
+	servoSetChannelIO(0, _SFR_IO_ADDR(PORTC), PB0);
+	servoSetChannelIO(1, _SFR_IO_ADDR(PORTC), PB1);
+	servoSetChannelIO(2, _SFR_IO_ADDR(PORTC), PB2);
+	servoSetChannelIO(3, _SFR_IO_ADDR(PORTC), PB3);
 
 	// set port pins to output
-	outb(DDRC, 0x0F);
+	outb(DDRB, 0x0F);
 
 	pos = 0;
 
@@ -77,6 +77,12 @@ void servoTest(void)
 	// spin servos sequentially back and forth between their limits
 	while(1)
 	{
+		rprintf("\r\nRunning !\r\n");
+	
+				servoSetPosition(0,SERVO_POSITION_MAX);
+				timerPause(SPEED_SERVO);
+
+	/*
 		for(channel=0; channel<SERVO_NUM_CHANNELS; channel++)
 		{
 			for(pos=0; pos<SERVO_POSITION_MAX; pos++)
@@ -94,5 +100,8 @@ void servoTest(void)
 				timerPause(SPEED_SERVO);
 			}
 		}
+	*/
+	
 	}
 }
+
