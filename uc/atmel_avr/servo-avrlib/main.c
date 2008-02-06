@@ -28,7 +28,9 @@
 
 void servoTest(void);
 
-//unsigned char input;
+unsigned char input; //u08
+//unsigned short input; //u10
+
 u08 pos;
 u08 channel;
 
@@ -82,12 +84,14 @@ void servoTest(void)
 	// spin servos sequentially back and forth between their limits
 	while(1)
 	{
-		pos=a2dConvert8bit(0);
-
+		//input=a2dConvert10bit(0);
+      //pos=(u08) (input>>2);
+      input=a2dConvert8bit(0);
+		pos=input;
 
 		rprintf("\r\nRunning with %d!\r\n",pos);
 	
-	   servoSetPosition(0,SERVO_POSITION_MAX);
+	   servoSetPosition(0,pos);
 		timerPause(SPEED_SERVO);
 				
 				//PORTB=0x0F;
@@ -116,6 +120,9 @@ void servoTest(void)
 	
 	}
 }
+
+
+
 
 
 
