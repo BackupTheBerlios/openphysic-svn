@@ -36,3 +36,6 @@
 
 ;X[inst_name]  TTY(baud_rate [n_bits] [parity] [odd_parity] [n_stop_bits] [rx_display_as]) node_tx node_rx
 X1  TTY(9600) PD0 PD1
+
+
+V1  PA0 VSS SLIDER_1(0 5) ; slider tension

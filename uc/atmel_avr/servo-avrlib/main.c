@@ -22,15 +22,22 @@
 #include "uart.h"		// include uart function library
 #include "rprintf.h"	// include printf function library
 #include "a2d.h"		// include A/D converter function library
-#include "timer.h"		// include timer function library (timing, PWM, etc)
+//#include "timer.h"		// include timer function library (timing, PWM, etc)
 #include "servo.h"		// include RC servo driver library
 #include "vt100.h"		// include VT100 terminal library
 
 void servoTest(void);
 
+//unsigned char input;
+u08 pos;
+u08 channel;
+
 //----- Begin Code ------------------------------------------------------------
 int main(void)
 {
+
+	a2dInit();
+
 	// initialize our libraries
 	// initialize the UART (serial port)
 	uartInit();
@@ -54,8 +61,6 @@ int main(void)
 
 void servoTest(void)
 {
-	u08 pos;
-	u08 channel;
 
 	// do some examples
 	// initialize RC servo system
@@ -77,18 +82,22 @@ void servoTest(void)
 	// spin servos sequentially back and forth between their limits
 	while(1)
 	{
-		rprintf("\r\nRunning !\r\n");
+		pos=a2dConvert8bit(0);
+
+
+		rprintf("\r\nRunning with %d!\r\n",pos);
 	
-				//servoSetPosition(0,SERVO_POSITION_MAX);
-				//timerPause(SPEED_SERVO);
+	   servoSetPosition(0,SERVO_POSITION_MAX);
+		timerPause(SPEED_SERVO);
 				
 				//PORTB=0x0F;
 
-	
+/*	
 		for(channel=0; channel<SERVO_NUM_CHANNELS; channel++)
 		{
 			for(pos=0; pos<SERVO_POSITION_MAX; pos++)
 			{
+				//rprintf("\r\nChannel=%d Position=%d\r\n",channel,pos);
 				servoSetPosition(channel,pos);
 				timerPause(SPEED_SERVO);
 			}
@@ -98,12 +107,15 @@ void servoTest(void)
 		{
 			for(pos=SERVO_POSITION_MAX; pos>=1; pos--)
 			{
+				//rprintf("\r\nChannel=%d Position=%d\r\n",channel,pos);
 				servoSetPosition(channel,pos);
 				timerPause(SPEED_SERVO);
 			}
 		}
-	
+*/	
 	
 	}
 }
+
+
 
