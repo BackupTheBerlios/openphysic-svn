@@ -31,7 +31,7 @@ int main(void)
 // Func7=In Func6=In Func5=Out Func4=In Func3=In Func2=In Func1=In Func0=In
 // State7=T State6=T State5=0 State4=T State3=T State2=T State1=T State0=T
 //PORTD=0x00;
-DDRD=1<<PD5; //0x20;
+DDRD=1<<PD5; // | 1<<PD4 | 1<<PD6 | 1<<PD7; //0x20;
 
 // Timer/Counter 0 initialization
 // Clock source: System Clock
@@ -93,8 +93,8 @@ SFIOR=0x00;
 
 while (1)
       {
-      asm("nop");          // Inline assembly example
-      asm("nop");          // Inline assembly example
+      //asm("nop");          // Inline assembly example
+      //asm("nop");          // Inline assembly example
       };
 
 return 0;

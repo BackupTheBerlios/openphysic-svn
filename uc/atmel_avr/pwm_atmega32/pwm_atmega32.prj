@@ -27,7 +27,8 @@
 
 
 
-.PLOT V(PD5) V(PD6)
+.PLOT V(PD4) V(PD5) V(PD6) V(PD7)
 
 ;V[inst_name]  node VSS PULSE(v_initial v_final t_delay t_rise t_fall t_width t_period)
+
 
