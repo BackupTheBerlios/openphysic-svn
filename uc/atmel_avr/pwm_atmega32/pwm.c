@@ -31,7 +31,8 @@ int main(void)
 // Func7=In Func6=In Func5=Out Func4=In Func3=In Func2=In Func1=In Func0=In
 // State7=T State6=T State5=0 State4=T State3=T State2=T State1=T State0=T
 //PORTD=0x00;
-DDRD=1<<PD5; // | 1<<PD4 | 1<<PD6 | 1<<PD7; //0x20;
+DDRD=1<<PD5; // | 1<<PD4 | 1<<PD6 | 1<<PD7; //0x20; //ATmega16 or 32
+DDRB=1<<PB1;
 
 // Timer/Counter 0 initialization
 // Clock source: System Clock
@@ -40,7 +41,8 @@ DDRD=1<<PD5; // | 1<<PD4 | 1<<PD6 | 1<<PD7; //0x20;
 // OC0 output: Disconnected
 TCCR0=0x00;
 TCNT0=0x00;
-OCR0=0x00;
+//OCR0=0x00; // ATmega16 32
+OCR1A=0x00; // ATmega8
 
 // Timer/Counter 1 initialization
 // Clock source: System Clock

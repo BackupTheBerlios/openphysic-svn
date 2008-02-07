@@ -5,11 +5,11 @@
 
 ; Micro + software running
 ; ------------------------------------------------------------
-.MICRO "ATmega32"
+.MICRO "ATmega16" ; "ATmega8" or "ATmega16" or "ATmega32"
 .TOOLCHAIN "GCC"
 .GCCPATH   "C:\WinAVR"
 .GCCMAKE   AUTO
-.TARGET    "pwm_atmega32.hex"
+.TARGET    "pwm_atmega.hex"
 .SOURCE    "pwm.c"
 
 .TRACE              ; Activate micro trace
@@ -27,7 +27,8 @@
 
 
 
-.PLOT V(PD4) V(PD5) V(PD6) V(PD7)
+.PLOT V(PD5) ; ATmega16 or 32
+.PLOT V(PB1) ; ATmega8
 
 ;V[inst_name]  node VSS PULSE(v_initial v_final t_delay t_rise t_fall t_width t_period)
 
