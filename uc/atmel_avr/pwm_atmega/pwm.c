@@ -72,26 +72,26 @@ OCR1BL=0x00;
 // Clock value: Timer 2 Stopped
 // Mode: Normal top=FFh
 // OC2 output: Disconnected
-ASSR=0x00;
-TCCR2=0x00;
-TCNT2=0x00;
-OCR2=0x00;
+//ASSR=0x00;
+//TCCR2=0x00;
+//TCNT2=0x00;
+//OCR2=0x00;
 
 // External Interrupt(s) initialization
 // INT0: Off
 // INT1: Off
 // INT2: Off
-MCUCR=0x00;
-MCUCSR=0x00;
+//MCUCR=0x00;
+//MCUCSR=0x00;
 
 // Timer(s)/Counter(s) Interrupt(s) initialization
-TIMSK=0x00;
+//TIMSK=0x00;
 
 // Analog Comparator initialization
 // Analog Comparator: Off
 // Analog Comparator Input Capture by Timer/Counter 1: Off
-ACSR=0x80;
-SFIOR=0x00;
+//ACSR=0x80;
+//SFIOR=0x00;
 
 while (1)
       {
@@ -101,6 +101,7 @@ while (1)
 
 return 0;
 }
+
 
 
 
