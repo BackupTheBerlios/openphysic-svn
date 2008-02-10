@@ -5,7 +5,7 @@
 
 ; Micro + software running
 ; ------------------------------------------------------------
-.MICRO "ATmega16" ; "ATmega8" or "ATmega16" or "ATmega32"
+.MICRO "ATmega8" ; "ATmega8" or "ATmega16" or "ATmega32"
 .TOOLCHAIN "GCC"
 .GCCPATH   "C:\WinAVR"
 .GCCMAKE   AUTO
@@ -31,5 +31,6 @@
 .PLOT V(PB1) ; ATmega8
 
 ;V[inst_name]  node VSS PULSE(v_initial v_final t_delay t_rise t_fall t_width t_period)
+
 
 

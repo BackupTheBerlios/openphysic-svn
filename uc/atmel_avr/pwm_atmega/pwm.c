@@ -39,10 +39,10 @@ DDRB=1<<PB1;
 // Clock value: Timer 0 Stopped
 // Mode: Normal top=FFh
 // OC0 output: Disconnected
-TCCR0=0x00;
-TCNT0=0x00;
+//TCCR0=0x00;
+//TCNT0=0x00;
 //OCR0=0x00; // ATmega16 32
-OCR1A=0x00; // ATmega8
+//OCR1A=0x00; // ATmega8
 
 // Timer/Counter 1 initialization
 // Clock source: System Clock
@@ -56,6 +56,7 @@ OCR1A=0x00; // ATmega8
 // Input Capture Interrupt: Off
 // Compare A Match Interrupt: Off
 // Compare B Match Interrupt: Off
+/*
 TCCR1A=0x82;
 TCCR1B=0x1B;
 TCNT1H=0x00;
@@ -66,6 +67,19 @@ OCR1AH=0x00;//0x02;//0x00;
 OCR1AL=0x1F;//0x71;//0x1F;
 OCR1BH=0x00;
 OCR1BL=0x00;
+*/
+
+/* clk=4Mhz */
+TCCR1A=(1<<COM1A1) | (0<<COM1A0) | (1<<WGM11) | (1<<WGM10); //0x82;
+TCCR1B=(1<<WGM13) | (1<<WGM12) | (1<<CS11) | (1<<CS10); //0x1B; // frq=clk/64
+/* T=20ms f=50Hz */
+//ICR1H=0x04;
+//ICR1L=0xE2;
+ICR1=0x04E2;
+/* alpha=0.5 */
+//OCR1AH=0x02;
+//OCR1AL=0x71;
+OCR1A=0x0271;
 
 // Timer/Counter 2 initialization
 // Clock source: System Clock
@@ -101,6 +115,7 @@ while (1)
 
 return 0;
 }
+
 
 
 
