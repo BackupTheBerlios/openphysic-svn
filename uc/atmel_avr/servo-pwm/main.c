@@ -24,7 +24,8 @@ void init_output(void) {
    TCCR1B = (1<<WGM13)|(1<<WGM12)|(1<<CS10); // clk=1Mhz - no prescaler
 }
 
-unsigned char pos;
+//unsigned char pos; // 8 bits
+unsigned short pos; // 16 bits
 
 int main(void)
 {
@@ -38,13 +39,17 @@ int main(void)
 	
 	while (1)
       {
-			pos=a2dConvert8bit(0);
+			//pos=a2dConvert8bit(0);
+			//pos=a2dConvert8bit(0);
+			pos=a2dConvert10bit(0);
 			//OCR1A=(pos<<2) + MIN_WIDTH; // 1000 approx 1024
-			OCR1A=((((double) pos)*1000.0)/255.0) + MIN_WIDTH;
+			//OCR1A=((((double) pos)*1000.0)/255.0) + MIN_WIDTH;
+			OCR1A=((((double) pos)*1000.0)/1023.0) + MIN_WIDTH;
       };
 
 	return 0;
 }
+
 
 
 
