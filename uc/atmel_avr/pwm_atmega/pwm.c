@@ -31,8 +31,9 @@ int main(void)
 // Func7=In Func6=In Func5=Out Func4=In Func3=In Func2=In Func1=In Func0=In
 // State7=T State6=T State5=0 State4=T State3=T State2=T State1=T State0=T
 //PORTD=0x00;
-DDRD=1<<PD5; // | 1<<PD4 | 1<<PD6 | 1<<PD7; //0x20; //ATmega16 or 32
-DDRB=1<<PB1;
+//DDRD|=(1<<PD5); // | 1<<PD4 | 1<<PD6 | 1<<PD7; //0x20; //ATmega16 or 32
+//DDRB|=(1<<PB1);
+//DDRB|=(1<<PB2);
 
 // Timer/Counter 0 initialization
 // Clock source: System Clock
@@ -70,16 +71,39 @@ OCR1BL=0x00;
 */
 
 /* clk=4Mhz */
-TCCR1A=(1<<COM1A1) | (0<<COM1A0) | (1<<WGM11) | (1<<WGM10); //0x82;
-TCCR1B=(1<<WGM13) | (1<<WGM12) | (1<<CS11) | (1<<CS10); //0x1B; // frq=clk/64
+//DDRB=1<<PB1;
+//TCCR1A=(1<<COM1A1) | (0<<COM1A0) | (0<<COM1B1) | (0<<COM1B0) | (0<<FOC1A) | (0<<FOC1B) | (1<<WGM11) | (1<<WGM10); //0x82;
+//TCCR1B=(0<<ICNC1) | (0<<ICES1) | (1<<WGM13) | (1<<WGM12) | (0<<CS12) | (1<<CS11) | (1<<CS10); //0x1B; // frq=clk/64
+
+//TCCR1A = (1<<COM1A1) | (0<<COM1A0) | (1<<WGM11);
+//TCCR1B = (1<<WGM13) | (1<<WGM12) | (1<<CS11) | (1<<CS10);
+
 /* T=20ms f=50Hz */
-//ICR1H=0x04;
-//ICR1L=0xE2;
-ICR1=0x04E2;
+//ICR1=0x04E1;//0x04E2; //ICR1H=0x04; //ICR1L=0xE2;
 /* alpha=0.5 */
-//OCR1AH=0x02;
-//OCR1AL=0x71;
-OCR1A=0x0271;
+//OCR1A=0x0270;//0x0271; //OCR1AH=0x02; //OCR1AL=0x71;
+
+
+// OC1A, OC1B outputs
+   DDRB |= (1<<PB1)|(1<<PB2);
+   // TOP, set for 50Hz (20ms)
+   ICR1 = 20000;
+   // Center outputs (1.5ms)
+   OCR1A = 1500;
+//   OCR1B = 1500;
+   // Timer 1 fast PWM mode 14
+   // Clear on compare, set at TOP
+   // /8 prescaler
+   TCCR1A = (1<<COM1A1)|(1<<COM1B1)|(1<<WGM11);
+   //TCCR1B = (1<<WGM13)|(1<<WGM12)|(1<<CS11); //clk=8Mhz - prescaler=8
+   TCCR1B = (1<<WGM13)|(1<<WGM12)|(1<<CS10); // 1Mhz - no prescaling
+
+// 50 Hz alpha=0.5
+// TO FIX
+//TCCR1A=(0<<COM1A1) | (1<<COM1A0) | (0<<WGM11) | (0<<WGM10); // inv pin on compare match , mode CTC
+//TCCR1B=(0<<WGM13) | (1<<WGM12) | (1<<CS12) | (1<<CS11) | (1<<CS10); // mode CTC et prescaler a 1024
+//OCR1A=0x0026;  // reg 16b directement accessible sans utiliser les registres hauts et bas
+// frequence d'inversion de la pin : 4000000/(1024(1+0x26)
 
 // Timer/Counter 2 initialization
 // Clock source: System Clock
@@ -115,6 +139,8 @@ while (1)
 
 return 0;
 }
+
+
 
 
 

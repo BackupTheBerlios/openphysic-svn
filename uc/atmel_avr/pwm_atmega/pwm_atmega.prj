@@ -18,7 +18,9 @@
 ; exactly these values are taken by default
 ; ------------------------------------------------------------
 .POWER VDD=5 VSS=0  ; Power nodes
-.CLOCK 4meg         ; Micro clock
+.CLOCK 1meg
+;.CLOCK 4meg         ; Micro clock
+;.CLOCK 8meg
 .STORE 250m         ; Trace (micro+signals) storage time
 
 ; Micro nodes: RESET, AREF, PA0-PA7, PB0-PB7, PC0-PC7, PD0-PD7, ACO, TIM1OVF
@@ -29,8 +31,12 @@
 
 .PLOT V(PD5) ; ATmega16 or 32
 .PLOT V(PB1) ; ATmega8
+.PLOT V(PB2)
+.PLOT V(PB3) V(PB4)
 
 ;V[inst_name]  node VSS PULSE(v_initial v_final t_delay t_rise t_fall t_width t_period)
+
+
 
 
 
