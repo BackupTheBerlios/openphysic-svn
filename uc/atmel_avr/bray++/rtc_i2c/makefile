@@ -1,6 +1,7 @@
 # AVRGCC Test by Bray++
 
-include $(AVR)/include/make1
+#include $(AVR)/include/make1
+include $(AVRLIB)/make/avrproj_make
 
 ########### change this lines according to your project ##################
 
@@ -32,7 +33,7 @@ include $(AVR)/include/make1
         LDFLAGS = -v -l$(TRG).lnk
 
 ########### you should not need to change the following line #############
-include $(AVR)/include/make2
+#include $(AVR)/include/make2
 
 ###### dependecies, add any dependencies you need here ###################
 $(TRG).o : $(TRG).c i2c.h lcd.h

@@ -733,3 +733,4 @@ void lcd_EcrisTexteLong(const char *s, char x, char y, char xfinal, unsigned int
 				}
 	}
 
+
