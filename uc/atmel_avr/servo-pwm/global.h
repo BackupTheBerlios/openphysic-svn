@@ -2,7 +2,7 @@
 //*****************************************************************************
 //
 // File Name	: 'global.h'
-// Title		: AVR project global include 
+// Title		: AVR project global include
 // Author		: Pascal Stang
 // Created		: 7/12/2001
 // Revised		: 9/30/2002
@@ -39,3 +39,4 @@
 #define CYCLES_PER_US ((F_CPU+500000)/1000000) 	// cpu cycles per microsecond
 
 #endif
+

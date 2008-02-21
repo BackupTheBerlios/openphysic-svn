@@ -34,6 +34,8 @@
 
 V1  PC0 VSS SLIDER_1(0 5) ; slider tension
 
+X1  TTY(9600) PD0 PD1
+
 
 
 
