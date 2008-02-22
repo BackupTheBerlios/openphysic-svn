@@ -39,8 +39,8 @@ int main(void)
    while (1) {
       /* led on, pin=0 */
       PORTC &= ~(1<<PC5);
-      //rprintf("ON\r\n");
-      uartSendByte(PORTC);
+      rprintf("ON\r\n");
+      //uartSendByte(PORTC);
       _delay_ms(100);
 
       /* set output to 5V, LED off */
@@ -51,6 +51,7 @@ int main(void)
       }
    return(0);
 }
+
 
 
 
