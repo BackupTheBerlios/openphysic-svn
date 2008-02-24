@@ -41,8 +41,8 @@ void init_output(void) {
    // Timer 1 fast PWM mode 14
    // Clear on compare, set at TOP
    TCCR1A = (1<<COM1A1)|(1<<WGM11);
-   TCCR1B = (1<<WGM13)|(1<<WGM12)|(0<<CS12)|(0<<CS11)|(1<<CS10); // clk=1Mhz - no prescaler
-   //TCCR1B = (1<<WGM13)|(1<<WGM12)|(0<<CS12)|(1<<CS11)|(0<<CS10); // clk=8Mhz - prescaler=8
+   //TCCR1B = (1<<WGM13)|(1<<WGM12)|(0<<CS12)|(0<<CS11)|(1<<CS10); // clk=1Mhz - no prescaler
+   TCCR1B = (1<<WGM13)|(1<<WGM12)|(0<<CS12)|(1<<CS11)|(0<<CS10); // clk=8Mhz - prescaler=8
 
 }
 
@@ -80,11 +80,12 @@ int main(void)
 			//OCR1A=((((double) pos)*1000.0)/255.0) + MIN_WIDTH;
 			OCR1A=((((double) pos)*1000.0)/1023.0) + MIN_WIDTH;
 			OCR2=pos>>2; /* voyant POWER */
-			rprintf("\r\nEn cours...\r\n");
+			rprintf("\r\nTesteur de servo en cours...Sebastien CELLES\r\n");
       };
 
 	return 0;
 }
+
 
 
 
