@@ -27,6 +27,9 @@ void init_uart(void) {
 	vt100ClearScreen();
 	// print a little intro message so we know things are working
 	rprintf("\r\nServo tester\r\n");
+	rprintf("Sebastien CELLES\r\n");
+	rprintf("IUT de Poitiers\r\n");
+	rprintf("Genie Thermique et Energie\r\n");
 }
 
 void init_output(void) {
@@ -80,11 +83,12 @@ int main(void)
 			//OCR1A=((((double) pos)*1000.0)/255.0) + MIN_WIDTH;
 			OCR1A=((((double) pos)*1000.0)/1023.0) + MIN_WIDTH;
 			OCR2=pos>>2; /* voyant POWER */
-			rprintf("\r\nTesteur de servo en cours...Sebastien CELLES\r\n");
+			rprintf("Testeur de servo en cours...Sebastien CELLES... %d\r\n",OCR2);
       };
 
 	return 0;
 }
+
 
 
 
