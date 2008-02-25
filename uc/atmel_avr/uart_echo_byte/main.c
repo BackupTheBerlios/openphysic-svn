@@ -10,6 +10,13 @@
 #include "timer.h"		// include timer function library (timing, PWM, etc)
 #include "vt100.h"		// include VT100 terminal library
 
+/*
+Envoyer sur la liaison série des caractères
+En réception on retrouve ces caractères
+Remarque : pour les caractères ASCII codés sur 8 bits
+il faut penser à modifier le terminal "Data bits=8"
+ */
+
 int uart_init(void)
 {
 	// initialize our libraries
@@ -30,30 +37,60 @@ int uart_init(void)
 
 volatile int c;
 
-inline void echo7(void) {
-	// caractères sur 7 bits uniquement !
-	c=-1;
-	while(c==-1) {
-		c=uartGetByte();
+inline void echo(void) {
+   while (1) {
+		//rprintf("Running\r\n");
+
+		c=-1;
+		while(c==-1) {
+			c=uartGetByte();
+		}
+		uartSendByte(c);
 	}
-	uartSendByte(c);
 }
 
-//inline void echo8(void) {
+inline void echoV2(void) {
+   while (1) {
+		char myReceivedByte;
+		u08 res;
+		res=FALSE;
+		while(!res) {
+ 			res=uartReceiveByte( &myReceivedByte );
+	 	}
+ 		uartSendByte(myReceivedByte);
+ 	}
+}
 
-//}
+/*
+inline void echo_buff(void) {
+   while (1) {
+		uartFlushReceiveBuffer();
+		cBuffer* buff;
+		u08 res;
+		res=TRUE;
+		while(res) {
+			buff=uartGetTxBuffer();
+			res=uartReceiveBufferIsEmpty();
+		}
+		uartAddToTxBuffer(u08 data);
+		uartSendTxBuffer();
+	}
+}
+*/
 
 int main(void)
 {
 	uart_init();
 
-   while (1) {
-	   //rprintf("Running\r\n");
-	
-      echo7();
-   }
+	echo();
+	//echoV2();
+	//echo_buff();
+
    return(0);
 }
+
+
+
 
 
 
