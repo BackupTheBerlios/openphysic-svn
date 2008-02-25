@@ -34,6 +34,7 @@
 .PLOT V(PD0) V(PD1)
 
 ;X[inst_name]  TTY(baud_rate [n_bits] [parity] [odd_parity] [n_stop_bits] [rx_display_as]) node_tx node_rx
-X1  TTY(9600) PD0 PD1
+X1  TTY(9600 8) PD0 PD1  ; 8 bits
+
 
 
