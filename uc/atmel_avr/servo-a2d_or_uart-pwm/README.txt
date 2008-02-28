@@ -17,6 +17,9 @@ ToDo:
  Changer de uC car le code dépasse 8ko !
  Changer le port sur lequel est relié le cavalier mode (à cause de l'ISP)
 
+Rem:
+ On peut attaquer l'UART du uC à l'aide d'un MAX232, d'un FTDI ou d'un CP2103
+
 
 Compiler le programme
 $ cd repertoire_projet

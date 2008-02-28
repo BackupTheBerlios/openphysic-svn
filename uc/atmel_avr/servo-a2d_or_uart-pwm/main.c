@@ -9,8 +9,8 @@
 #include "a2d.h"		// include A/D converter function library
 #include "uart.h"		// include uart function library
 #include "rprintf.h"	// include printf function library
-//#include "timer.h"		// include timer function library (timing, PWM, etc)
-//#include "vt100.h"		// include VT100 terminal library
+#include "timer.h"		// include timer function library (timing, PWM, etc)
+#include "vt100.h"		// include VT100 terminal library
 
 
 enum mode { A2D_MODE = 0, UART_MODE};
