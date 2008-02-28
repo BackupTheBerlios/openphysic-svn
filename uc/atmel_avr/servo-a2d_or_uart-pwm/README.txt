@@ -1,6 +1,17 @@
-Testeur de servo
-- entrée tension analogique entre 0 et 5V sur ADC0 (PC0 - pin 23)
-- sortie signal de période 20ms et de durée variable entre 1ms et 2ms sur OC1A (PB1 - pin 15)
+Ce projet décrit le fonctionnement d'un testeur de servo de modélisme.
+Il permet de commander un servomoteur à l'aide d'une tension continue (A2D_MODE) ou à l'aide d'une liaison série (UART_MODE) et génère un signal compatible avec les servomoteurs utilisés en modélisme c'est à dire un signal périodique de 20 ms et de largeur d'impulsion variable entre 1 et 2 ms.
+Nécessite :
+- WinAVR-gcc
+- AVRLib
+
+Rôles des différents cavaliers (JUMPER)
+JP2_MODE 0=A2D_MODE 1=UART_MODE
+JP2_INPUT
+ Entrée analogique sur borne Vin_ext (utilisation d'un générateur continu ajustable externe entre 0 et 5V) 
+ Potentiomètre
+JP VCC / JP MID / JP GND
+ Cavaliers permettant d'activer une résistance de pull-up afin que la borne ADC0 ne soit pas "en l'air" si le fil ammenant la tension Vin_ext est déconnecté.
+
 
 
 Compiler le programme
