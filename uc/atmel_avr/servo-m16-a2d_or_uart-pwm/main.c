@@ -12,10 +12,7 @@
 #include "timer.h"		// include timer function library (timing, PWM, etc)
 #include "vt100.h"		// include VT100 terminal library
 
-
 enum mode { A2D_MODE = 0, UART_MODE};
-//#define A2D_MODE 0
-//#define UART_MODE 1
 
 volatile uint8_t mode;
 
@@ -33,10 +30,10 @@ void init_uart(void) {
 	vt100Init();
 	vt100ClearScreen();
 	// print a little intro message so we know things are working
-	//rprintf("Servo tester-S.CELLES\r\n");
-	//rprintf("Sebastien CELLES\r\n");
-	//rprintf("IUT de Poitiers\r\n");
-	//rprintf("Genie Thermique et Energie\r\n");
+	rprintf("Servo tester-S.CELLES\r\n");
+	rprintf("Sebastien CELLES\r\n");
+	rprintf("IUT de Poitiers\r\n");
+	rprintf("Genie Thermique et Energie\r\n");
 }
 
 void init_output(void) {
@@ -53,10 +50,8 @@ void init_output(void) {
    TCCR1A = (1<<COM1A1)|(1<<WGM11);
    //TCCR1B = (1<<WGM13)|(1<<WGM12)|(0<<CS12)|(0<<CS11)|(1<<CS10); // clk=1Mhz - no prescaler
    TCCR1B = (1<<WGM13)|(1<<WGM12)|(0<<CS12)|(1<<CS11)|(0<<CS10); // clk=8Mhz - prescaler=8
-
 }
 
-//unsigned char pos; // 8 bits
 volatile int pos8; // 8 bits
 volatile unsigned short pos; // 16 bits
 
@@ -71,7 +66,6 @@ int main(void)
 	PORTD |= (1<<PD7);
 	TCCR2 = (0<<FOC2)|(1<<WGM20)|(1<<COM21)|(0<<COM20)|(1<<WGM21)|(0<<CS22)|(0<<CS21)|(1<<CS20);
     OCR2=0;
-
 
 	init_uart();
 	init_output();
@@ -107,33 +101,8 @@ int main(void)
 				OCR2=pos>>2; /* voyant POWER */
 			}
 
-			//rprintf("Testeur de servo en cours - Sebastien CELLES - Mode=%d - Throttle=%d\r\n",mode, OCR2);
-			rprintf("Mode=%d-Throttle=%d\r\n",mode, OCR2);
-
+			rprintf("Testeur de servo en cours - Sebastien CELLES - Mode=%d - Throttle=%d\r\n",mode, OCR2);
       };
 
 	return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
