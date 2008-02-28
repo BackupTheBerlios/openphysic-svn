@@ -83,23 +83,14 @@ int main(void)
 	a2dInit(); // init analog to digital converter
 	
 //	pos=0x00; // MIN
-	pos=0x7F; // MED
+//	pos=0x7F; // MED
 //	pos=0xFF; // MAX
 	
 	while (1)
       {
 	  		mode=PINB & (1<<PB0); /* get mode A2D=0 or UART=1*/
 
-			if (mode == A2D_MODE) {
-				//pos=a2dConvert8bit(0);
-				//pos=a2dConvert8bit(0);
-				pos=a2dConvert10bit(0);
-				//OCR1A=(pos<<2) + MIN_WIDTH; // 1000 approx 1024
-				//OCR1A=((((double) pos)*1000.0)/255.0) + MIN_WIDTH;
-				OCR1A=((((double) pos)*1000.0)/1023.0) + MIN_WIDTH; /* */
-				OCR2=pos>>2; /* voyant POWER */
-			}
-			else if (mode == UART_MODE) {
+			if (mode == UART_MODE) {
 				// 8bits
 				pos8=-1;
 				while(pos8==-1 && mode==UART_MODE) {
@@ -109,13 +100,15 @@ int main(void)
 				OCR1A=((((double) pos8)*1000.0)/255.0) + MIN_WIDTH;
 				OCR2=pos8; /* voyant POWER */
 			}
-			/*
-			else
-			{
-				rprintf("Undef mode");
-				pos=0;
+			else { //if (mode == A2D_MODE) {
+				//pos=a2dConvert8bit(0);
+				//pos=a2dConvert8bit(0);
+				pos=a2dConvert10bit(0);
+				//OCR1A=(pos<<2) + MIN_WIDTH; // 1000 approx 1024
+				//OCR1A=((((double) pos)*1000.0)/255.0) + MIN_WIDTH;
+				OCR1A=((((double) pos)*1000.0)/1023.0) + MIN_WIDTH; /* */
+				OCR2=pos>>2; /* voyant POWER */
 			}
-			*/
 
 			//rprintf("Testeur de servo en cours - Sebastien CELLES - Mode=%d - Throttle=%d\r\n",mode, OCR2);
 			rprintf("Mode=%d-Throttle=%d\r\n",mode, OCR2);
