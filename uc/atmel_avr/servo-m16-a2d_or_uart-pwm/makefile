@@ -15,8 +15,8 @@
 
 ########### change this lines according to your project ##################
 #put the name of the target mcu here (at90s8515, at90s8535, attiny22, atmega603 etc.)
-	MCU = atmega8
-#	MCU = atmega16
+#	MCU = atmega8
+	MCU = atmega16
 #	MCU = atmega163
 #	MCU = atmega161
 #	MCU = atmega128

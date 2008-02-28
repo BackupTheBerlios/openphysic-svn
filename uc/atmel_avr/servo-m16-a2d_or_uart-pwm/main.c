@@ -41,7 +41,7 @@ void init_uart(void) {
 
 void init_output(void) {
    // OC1A as output
-   DDRB |= (1<<PB1);
+   DDRD |= (1<<PD5);
    // TOP, set for 50Hz (20ms)
    ICR1 = PERIOD;
    // Center outputs (1.5ms)
@@ -63,12 +63,12 @@ volatile unsigned short pos; // 16 bits
 int main(void)
 {
 	/* Voyant ON */
+	DDRD |= (1<<DDD6);
+	PORTD |= (1<<PD6);
+
+	/* Voyant POWER sur OC2 */
 	DDRD |= (1<<DDD7);
 	PORTD |= (1<<PD7);
-
-	/* Voyant POWER */
-	DDRB |= (1<<DDB3);
-	PORTB |= (1<<PB3);
 	TCCR2 = (0<<FOC2)|(1<<WGM20)|(1<<COM21)|(0<<COM20)|(1<<WGM21)|(0<<CS22)|(0<<CS21)|(1<<CS20);
     OCR2=0;
 
