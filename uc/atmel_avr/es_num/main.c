@@ -18,7 +18,7 @@ uint8_t data[BYTES];
 
 /*
    0|    1|   2|   3|    4|   5
-DDRA|PORTA|PINA|DDRC|PORTC|PINC
+DDRB|PORTB|PINB|DDRC|PORTC|PINC
 */
 
 /*
@@ -59,8 +59,8 @@ void init_uart(void) {
 }
 
 void init_ports(void) {
-	DDRA=0x00; // port A as input
-	PORTA=0xFF;
+	DDRB=0x00; // port A as input
+	PORTB=0xFF;
 
 	DDRC=0x00; // port C as input
 	
@@ -72,10 +72,10 @@ void init_ports(void) {
 
 void to_data(void) {
 	// avant l'envoi de la trame vers le PC
-	data[0]=DDRA;
+	data[0]=DDRB;
 	//if (DDRA==0x00) { // entree
-		data[1]=PORTA;
-		data[2]=PINA;
+		data[1]=PORTB;
+		data[2]=PINB;
 	//}
 
 	data[3]=DDRC;
@@ -88,10 +88,10 @@ void to_data(void) {
 void from_data(void) {
 	// apres reception de la trame par la carte
 
-	DDRA=data[0];
+	DDRB=data[0];
 	//if (DDRA==0xFF) { // sortie
-		PORTA=data[1];
-		PINA=data[2];
+		PORTB=data[1];
+		PINB=data[2];
 	//}
 
 	DDRC=data[3];
