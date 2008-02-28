@@ -33,7 +33,7 @@ void init_uart(void) {
 	vt100Init();
 	vt100ClearScreen();
 	// print a little intro message so we know things are working
-	//rprintf("\r\nServo tester\r\n");
+	rprintf("Servo tester-S.CELLES\r\n");
 	//rprintf("Sebastien CELLES\r\n");
 	//rprintf("IUT de Poitiers\r\n");
 	//rprintf("Genie Thermique et Energie\r\n");
@@ -118,7 +118,7 @@ int main(void)
 			*/
 
 			//rprintf("Testeur de servo en cours - Sebastien CELLES - Mode=%d - Throttle=%d\r\n",mode, OCR2);
-			rprintf("S.CELLES-Mode=%d-Throttle=%d\r\n",mode, OCR2);
+			rprintf("Mode=%d-Throttle=%d\r\n",mode, OCR2);
 
       };
 
