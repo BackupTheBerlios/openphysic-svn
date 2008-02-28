@@ -14,10 +14,10 @@
 
 
 enum mode { A2D_MODE = 0, UART_MODE};
+//#define A2D_MODE 0
+//#define UART_MODE 1
 
 volatile uint8_t mode;
-
-
 
 void init_uart(void) {
 	// initialize our libraries
@@ -33,7 +33,7 @@ void init_uart(void) {
 	vt100Init();
 	vt100ClearScreen();
 	// print a little intro message so we know things are working
-	rprintf("Servo tester-S.CELLES\r\n");
+	//rprintf("Servo tester-S.CELLES\r\n");
 	//rprintf("Sebastien CELLES\r\n");
 	//rprintf("IUT de Poitiers\r\n");
 	//rprintf("Genie Thermique et Energie\r\n");
@@ -82,9 +82,6 @@ int main(void)
 
 	a2dInit(); // init analog to digital converter
 	
-//	pos=0x00; // MIN
-//	pos=0x7F; // MED
-//	pos=0xFF; // MAX
 	
 	while (1)
       {

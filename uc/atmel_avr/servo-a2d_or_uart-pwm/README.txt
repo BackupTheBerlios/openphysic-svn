@@ -13,6 +13,10 @@ JP VCC / JP MID / JP GND
  Cavaliers permettant d'activer une résistance de pull-up afin que la borne ADC0 ne soit pas "en l'air" si le fil ammenant la tension Vin_ext est déconnecté.
 
 
+ToDo:
+ Changer de uC car le code dépasse 8ko !
+ Changer le port sur lequel est relié le cavalier mode (à cause de l'ISP)
+
 
 Compiler le programme
 $ cd repertoire_projet

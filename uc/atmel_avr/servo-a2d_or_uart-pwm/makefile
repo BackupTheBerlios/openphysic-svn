@@ -55,7 +55,9 @@
 	ASFLAGS = -Wa, -gstabs
 
 #compiler flags
+	#CPFLAGS	= -g -Os -Wall -Wstrict-prototypes -I$(AVRLIB) -Wa,-ahlms=$(<:.c=.lst)
 	CPFLAGS	= -g -Os -Wall -Wstrict-prototypes -I$(AVRLIB) -Wa,-ahlms=$(<:.c=.lst)
+	#	-frtl-abstract-sequences -fno-ident #?? scls
 
 #linker flags
 	LDFLAGS = -Wl,-Map=$(TRG).map,--cref
