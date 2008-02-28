@@ -14,8 +14,7 @@ JP VCC / JP MID / JP GND
 
 
 ToDo:
- Changer de uC car le code dépasse 8ko !
- Changer le port sur lequel est relié le cavalier mode (à cause de l'ISP)
+
 
 Rem:
  On peut attaquer l'UART du uC à l'aide d'un MAX232, d'un FTDI ou d'un CP2103
