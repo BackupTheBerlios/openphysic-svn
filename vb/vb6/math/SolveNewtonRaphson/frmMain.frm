@@ -58,6 +58,24 @@ Begin VB.Form frmMain
       Top             =   240
       Width           =   2175
    End
+   Begin VB.Label lblFct 
+      Alignment       =   2  'Center
+      Caption         =   "f(x) = x^2 -2*x -3"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   13.5
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   375
+      Left            =   240
+      TabIndex        =   8
+      Top             =   2040
+      Width           =   2535
+   End
    Begin VB.Label lblPas 
       Height          =   495
       Left            =   4200
@@ -84,11 +102,13 @@ Dim x, y As Double
 Dim xnm1, ynm1 As Double
 Dim pas As Integer
 
+Dim xmin, xmax, ymin, ymax, xstep As Double
+
 Const epsY = 1E-20 ' précision en y
 Const DeltaX = 0.0001 ' pour calcul de la dérivée
 
 Private Static Function f(ByVal x As Double) As Double
-    f = x ^ 2 - 1
+    f = x ^ 2 - 2 * x - 3
 End Function
 
 Private Sub cmdCalculer_Click()
@@ -98,19 +118,28 @@ Private Sub cmdCalculer_Click()
 End Sub
 
 
+Private Sub cmdDessiner_Click()
+dessiner
+End Sub
+
 Private Sub cmdQuitter_Click()
     End
 End Sub
 
 Private Sub cmdResoudre_Click()
+dessiner
+
 x = CDbl(txtX.Text)
+
+Dim deriv As Double
 
 Do
     xnm1 = x
     ynm1 = y
     y = f(x)
-    If f(x + DeltaX) <> y Then
-        x = x - f(x) * (DeltaX) / (f(x + DeltaX) - y)
+    deriv = (f(x + DeltaX) - y) / DeltaX
+    If Abs(deriv) > 0.1 Then
+        x = x - f(x) / deriv
     Else
         lblY.Caption = "Dérivée nulle changez de point" ' en cas de dérivée nulle
         Exit Do
@@ -119,12 +148,24 @@ Do
     txtX.Text = CStr(x)
     lblY.Caption = CStr(y)
     pas = pas + 1
+    
     AfficherPas
+    
+    'dessiner_tangente x, f(x), deriv
+    ' dessin trait verticaux
+    Picture1.ForeColor = vbGreen
+    Picture1.Line (x, 0)-(x, f(x))
 Loop While Abs(y) > epsY
 
 End Sub
 
 Private Sub Form_Load()
+    xmin = -5
+    xmax = 5
+    xstep = 0.01
+    ymin = -5
+    ymax = 5
+    
     txtX.Text = CStr(0)
     cmdCalculer_Click
     AfficherPas
@@ -133,13 +174,12 @@ Private Sub Form_Load()
         .Cls
         '.DrawWidth = 1
         .ScaleMode = 0
-        .ScaleHeight = -10
-        .ScaleWidth = 10
-        .ScaleTop = 10
-        .ScaleLeft = 5
+        .ScaleHeight = -(ymax - ymin) ' -10
+        .ScaleWidth = xmax - xmin ' 10
+        .ScaleTop = (ymax - ymin) / 2 ' 5
+        .ScaleLeft = -(xmax - xmin) / 2 ' -5
     End With
     
-    cmdDessiner_Click
 End Sub
 
 Private Sub lblPas_Click()
@@ -154,18 +194,42 @@ End Sub
 
 Private Sub Picture1_Click()
     Picture1.Cls
+    dessiner_axes
 End Sub
 
-Private Sub cmdDessiner_Click()
-    Picture1.Line (-5, 0)-(5, 0) ' axe x
-    Picture1.Line (0, -5)-(0, 5) ' axe y
+
+Private Sub dessiner_axes()
+    'Beep
+    Picture1.ForeColor = vbBlack
+    Picture1.Line (xmin, 0)-(xmax, 0) ' axe x
+    Picture1.Line (0, ymin)-(0, ymax) ' axe y
+End Sub
+
+Private Sub dessiner_tangente(ByVal xA As Double, ByVal yA As Double, ByVal deriv As Double)
+    On Error GoTo TraitementErreur ' en cas de dépassement
+    Picture1.ForeColor = vbBlue
+    For x = xmin To xmax Step xstep
+        Picture1.PSet (x, deriv * (x - xA) + yA)
+    Next x
     
-    Picture1.Line (-5, -5)-(5, 5) ' /
-    Picture1.Line (5, -5)-(-5, 5) ' \
+TraitementErreur:
+    Exit Sub
+End Sub
+
+Private Sub dessiner()
+    Picture1.Cls
+
+    dessiner_axes
     
-    For x = -5 To 5 Step 0.1
+    ' dessiner courbe
+    Picture1.ForeColor = vbRed
+    For x = xmin To xmax Step xstep
         y = f(x)
         Picture1.PSet (x, y)
     Next x
+End Sub
+
+Private Sub Picture1_Paint()
+    dessiner
 End Sub
 
