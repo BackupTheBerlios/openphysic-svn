@@ -67,8 +67,9 @@ Const rayon_jeton = 0.4
 Dim aJeu(1 To nb_colonnes, 1 To nb_lignes) As Integer ' matrice du jeu
 Dim aNbPions(1 To nb_colonnes) As Integer ' nb de pions dans une colonne donnée
 Dim nb_coups_joues ' nb de coups joues
+Const alignes = 4 ' nb de pions à aligner pour gagner
 
-Dim i, j As Integer
+'Dim i, j, i2 As Integer
 
 Dim joueur As Integer
 
@@ -100,6 +101,8 @@ initialiser_jeu
 End Sub
 
 Private Sub afficher_grille()
+Dim i, j As Integer
+
 ' Tracé de la grille
 Picture1.ForeColor = vbBlack ' couleur de tracé
 'Picture1.FillColor = vbBlack ' couleur de remplissage
@@ -175,6 +178,7 @@ Else
 End If
 
 afficher_jeu
+afficher_message
 
 End Sub
 
@@ -192,6 +196,8 @@ afficher_jeu
 End Sub
 
 Private Sub afficher_jeu()
+Dim i, j As Integer
+
 Picture1.Cls ' effacement
 
 ' test diagonale
@@ -211,6 +217,8 @@ Next j
 End Sub
 
 Private Sub initialiser_jeu()
+Dim i, j As Integer
+
 ' Effacement de la matrice de jeu
 For j = 1 To nb_lignes
     For i = 1 To nb_colonnes
@@ -224,6 +232,8 @@ For i = 1 To nb_colonnes
 Next i
 
 joueur = 1
+
+afficher_message
 End Sub
 
 Private Function nb_coups_restants() As Integer
@@ -234,7 +244,50 @@ Private Function partie_est_gagne_par() As Integer
 ' 0 : personne
 ' 1 : joueur 1
 ' 2 : joueur 2
+Dim k As Integer
+Dim i, i2 As Integer
+Dim j, j2 As Integer
+Dim temp As Integer ' variable pour vérification du nombre de pions alignés
 partie_est_gagne_par = 0
+
+For k = 1 To 2 ' joueur
+    ' ligne horizontale
+    For j = 1 To nb_lignes
+        temp = 0
+        For i = 1 To nb_colonnes - alignes + 1
+            temp = 0
+            For i2 = i To i + alignes - 1
+                If aJeu(i2, j) = k Then
+                    temp = temp + 1
+                End If
+            Next i2
+            If temp = alignes Then
+                partie_est_gagne_par = k
+            End If
+        Next i
+    Next j
+
+    ' ligne verticale
+    For i = 1 To nb_colonnes
+        temp = 0
+        For j = 1 To nb_lignes - alignes + 1
+            temp = 0
+            For j2 = j To j + alignes - 1
+                If aJeu(i, j2) = k Then
+                    temp = temp + 1
+                End If
+            Next j2
+            If temp = alignes Then
+                partie_est_gagne_par = k
+            End If
+        Next j
+    Next i
+    
+    ' /
+    
+    ' \
+Next k
+
 End Function
 
 Private Function etat_partie() As Integer
@@ -256,3 +309,23 @@ Else
     etat_partie = 0
 End If
 End Function
+
+Private Sub afficher_message()
+Dim gagnant As Integer
+gagnant = etat_partie
+If gagnant = 0 Then ' partie en cours
+    If joueur = 1 Then
+        lblMessage.Caption = "Joueur 1 c'est à vous de jouer !" _
+            + vbCrLf + "Il reste " + CStr(nb_coups_restants) + " coup(s)"
+    Else
+        lblMessage.Caption = "Joueur 2 c'est à vous de jouer !" _
+            + vbCrLf + "Il reste " + CStr(nb_coups_restants) + " coup(s)"
+    End If
+ElseIf gagnant = 1 Then
+    lblMessage.Caption = "Le joueur 1 a gagné !"
+ElseIf gagnant = 2 Then
+    lblMessage.Caption = "Le joueur 2 a gagné !"
+ElseIf gagnant = 3 Then
+    lblMessage.Caption = "Match nul"
+End If
+End Sub
