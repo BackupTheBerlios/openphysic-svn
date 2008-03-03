@@ -270,7 +270,9 @@ For k = 1 To 2 ' joueur
     ' ligne verticale
     For i = 1 To nb_colonnes
         temp = 0
-        For j = 1 To nb_lignes - alignes + 1
+        For j = 1 To aNbPions(i) - alignes + 1
+            'au lieu de nb_lignes - alignes + 1 (pas la peine de tester verticalement là
+            'où il n'y a pas de pions)
             temp = 0
             For j2 = j To j + alignes - 1
                 If aJeu(i, j2) = k Then
@@ -283,9 +285,24 @@ For k = 1 To 2 ' joueur
         Next j
     Next i
     
-    ' /
+    ' / (6)
+    'For i = 1 To nb_lignes ' Indice de la diagonale (ToFix)
+    '    temp = 0
+    '    For j = 1 To longueur_diag_BGHD(i) - alignes + 1
+    '        temp = 0
+    '        For j2 = j To j + alignes - 1
+    '            If aJeu(i, j2) = k Then
+    '                temp = temp + 1
+    '            End If
+    '        Next j2
+    '        If temp = alignes Then
+    '            partie_est_gagne_par = k
+    '        End If
+    '    Next j
+    'Next i
     
     ' \
+    
 Next k
 
 End Function
