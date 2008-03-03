@@ -52,7 +52,8 @@ Option Explicit
 
 Dim i, j As Integer
 
-Dim aJeu(3, 3) As Integer ' tableau décrivant les pions joués
+Const dimension = 3
+Dim aJeu(dimension, dimension) As Integer ' tableau décrivant les pions joués
 ' 0 pas de coup sur cette case
 ' 1 un pion du joueur 1
 ' 2 un pion du joueur 2
@@ -60,12 +61,12 @@ Dim aJeu(3, 3) As Integer ' tableau décrivant les pions joués
 Dim joueur As Integer
 
 Private Sub afficher_grille()
-For i = 1 To 2
-    Picture1.Line (i, 0)-(i, 3)
+For i = 1 To dimension - 1
+    Picture1.Line (i, 0)-(i, dimension)
 Next i
 
-For j = 1 To 2
-    Picture1.Line (0, j)-(3, j)
+For j = 1 To dimension - 1
+    Picture1.Line (0, j)-(dimension, j)
 Next j
 End Sub
 
@@ -83,8 +84,8 @@ End Sub
 Private Sub lancer_partie()
 ' initialiser le tableau de jeu
 ' c'est nécessaire en cas de redémarrage d'une partie
-For i = 1 To 3
-    For j = 1 To 3
+For i = 1 To dimension
+    For j = 1 To dimension
         aJeu(i, j) = 0
     Next j
 Next i
@@ -105,9 +106,9 @@ End Sub
 
 Private Sub Form_Load()
 Picture1.ScaleMode = 0
-Picture1.ScaleWidth = 3
-Picture1.ScaleHeight = -3
-Picture1.ScaleTop = 3
+Picture1.ScaleWidth = dimension
+Picture1.ScaleHeight = -dimension
+Picture1.ScaleTop = dimension
 
 lancer_partie
 
@@ -132,13 +133,13 @@ If Button = 1 And partie = 0 Then
     Yentier = Int(Y) + 1
     
     ' En cas de clic sur la limite haute du PictureBox
-    If Yentier = 4 Then
-        Yentier = 3
+    If Yentier = dimension + 4 Then
+        Yentier = dimension
     End If
     
     ' En cas de clic sur la limite droite du PictureBox
-    If Xentier = 4 Then
-        Xentier = 3
+    If Xentier = dimension + 1 Then
+        Xentier = dimension
     End If
     
     'Debug.Print "(X,Y)=(" + CStr(X) + ";" + CStr(Y) + ")"
@@ -189,8 +190,8 @@ Private Sub afficher_jeu()
     'afficher_cercle 1, 2
     
     ' afficher les pions
-    For i = 1 To 3
-        For j = 1 To 3
+    For i = 1 To dimension
+        For j = 1 To dimension
             If aJeu(i, j) = 1 Then
                 afficher_croix i, j
             End If
@@ -204,8 +205,8 @@ Private Sub afficher_jeu()
 End Sub
 
 Private Function nb_coups_restants() As Integer
-For i = 1 To 3
-    For j = 1 To 3
+For i = 1 To dimension
+    For j = 1 To dimension
         If aJeu(i, j) = 0 Then
             nb_coups_restants = nb_coups_restants + 1
         End If
@@ -218,9 +219,17 @@ Private Function partie_est_gagne_par() As Integer
 ' 1 : joueur 1
 ' 2 : joueur 2
 Dim k As Integer
+' ToFix
+'Dim temp As Integer ' variable pour vérification du nombre de pions aligné
+' on fait le produit
+' ex avec joueur 1 sur jeu de dimension 3 : 1*1*1
+' ex avec joueur 2 sur jeu de dimension 3 : 2*2*2=8=2^dimension
+
+' ToFix : gérer le cas de jeu de dimension<>3
+
 partie_est_gagne_par = 0
 For k = 1 To 2 ' joueur
-    For i = 1 To 3
+    For i = 1 To dimension
         ' ligne horizontale
         If aJeu(i, 1) = k And aJeu(i, 2) = k And aJeu(i, 3) = k Then
             partie_est_gagne_par = k
