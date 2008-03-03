@@ -219,35 +219,51 @@ Private Function partie_est_gagne_par() As Integer
 ' 1 : joueur 1
 ' 2 : joueur 2
 Dim k As Integer
-' ToFix
-'Dim temp As Integer ' variable pour vérification du nombre de pions aligné
-' on fait le produit
-' ex avec joueur 1 sur jeu de dimension 3 : 1*1*1
-' ex avec joueur 2 sur jeu de dimension 3 : 2*2*2=8=2^dimension
-
-' ToFix : gérer le cas de jeu de dimension<>3
-
+Dim temp As Integer ' variable pour vérification du nombre de pions aligné
 partie_est_gagne_par = 0
 For k = 1 To 2 ' joueur
+
+    temp = 0
     For i = 1 To dimension
         ' ligne horizontale
-        If aJeu(i, 1) = k And aJeu(i, 2) = k And aJeu(i, 3) = k Then
-            partie_est_gagne_par = k
+        If aJeu(i, 1) = k Then
+            temp = temp + 1
         End If
-        
-        'ligne verticale
-        If aJeu(1, i) = k And aJeu(2, i) = k And aJeu(3, i) = k Then
-            partie_est_gagne_par = k
-        End If
-                
     Next i
+    If temp = dimension Then
+        partie_est_gagne_par = k
+    End If
+
+    temp = 0
+    For i = 1 To dimension
+        'ligne verticale
+        If aJeu(1, i) = k Then
+            temp = temp + 1
+        End If
+    Next i
+    If temp = dimension Then
+        partie_est_gagne_par = k
+    End If
+    
     ' diag /
-    If aJeu(1, 1) = k And aJeu(2, 2) = k And aJeu(3, 3) = k Then
+    temp = 0
+    For i = 1 To dimension
+        If aJeu(i, i) = k Then
+            temp = temp + 1
+        End If
+    Next i
+    If temp = dimension Then
         partie_est_gagne_par = k
     End If
     
     ' diag \
-    If aJeu(3, 1) = k And aJeu(2, 2) = k And aJeu(1, 3) = k Then
+    temp = 0
+    For i = 1 To dimension
+        If aJeu(dimension - i + 1, i) = k Then
+            temp = temp + 1
+        End If
+    Next i
+    If temp = dimension Then
         partie_est_gagne_par = k
     End If
 
