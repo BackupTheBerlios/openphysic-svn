@@ -1,45 +1,52 @@
 VERSION 5.00
 Begin VB.Form frmMain 
    Caption         =   "Morpion"
-   ClientHeight    =   3060
+   ClientHeight    =   3495
    ClientLeft      =   120
    ClientTop       =   420
-   ClientWidth     =   4560
+   ClientWidth     =   5880
    LinkTopic       =   "Form1"
-   ScaleHeight     =   3060
-   ScaleWidth      =   4560
+   ScaleHeight     =   3495
+   ScaleWidth      =   5880
    StartUpPosition =   3  'Windows Default
+   Begin VB.TextBox txtDimension 
+      Height          =   495
+      Left            =   3840
+      TabIndex        =   4
+      Top             =   360
+      Width           =   1215
+   End
    Begin VB.CommandButton cmdQuitter 
       Caption         =   "&Quitter"
       Height          =   495
-      Left            =   2760
+      Left            =   3840
       TabIndex        =   3
-      Top             =   2040
+      Top             =   2640
       Width           =   1215
    End
    Begin VB.CommandButton cmdRecommencer 
       Caption         =   "&Recommencer"
       Height          =   495
-      Left            =   2760
+      Left            =   3840
       TabIndex        =   2
-      Top             =   1320
+      Top             =   1920
       Width           =   1215
    End
    Begin VB.PictureBox Picture1 
       BackColor       =   &H00FFFFFF&
-      Height          =   2175
+      Height          =   2775
       Left            =   360
-      ScaleHeight     =   2115
-      ScaleWidth      =   2115
+      ScaleHeight     =   2715
+      ScaleWidth      =   2715
       TabIndex        =   0
       Top             =   360
-      Width           =   2175
+      Width           =   2775
    End
    Begin VB.Label lblMessage 
       Height          =   735
-      Left            =   2760
+      Left            =   3840
       TabIndex        =   1
-      Top             =   360
+      Top             =   960
       Width           =   1335
    End
 End
@@ -52,8 +59,11 @@ Option Explicit
 
 Dim i, j As Integer
 
-Const dimension = 3
-Dim aJeu(dimension, dimension) As Integer ' tableau décrivant les pions joués
+Const dimension_default = 3
+Dim dimension As Integer
+
+'Dim aJeu(dimension_default, dimension_default) As Integer ' tableau décrivant les pions joués
+Dim aJeu() As Integer ' tableau décrivant les pions joués
 ' 0 pas de coup sur cette case
 ' 1 un pion du joueur 1
 ' 2 un pion du joueur 2
@@ -105,15 +115,18 @@ afficher_jeu
 End Sub
 
 Private Sub Form_Load()
-Picture1.ScaleMode = 0
-Picture1.ScaleWidth = dimension
-Picture1.ScaleHeight = -dimension
-Picture1.ScaleTop = dimension
+txtDimension.Text = dimension_default
 
 lancer_partie
 
 End Sub
 
+Private Sub initialiser_affichage()
+Picture1.ScaleMode = 0
+Picture1.ScaleWidth = dimension
+Picture1.ScaleHeight = -dimension
+Picture1.ScaleTop = dimension
+End Sub
 
 Private Sub changer_joueur()
     If joueur = 1 Then
@@ -296,3 +309,16 @@ End If
 
 End Function
 
+Private Sub txtDimension_Change()
+If IsNumeric(txtDimension.Text) Then
+    dimension = CInt(txtDimension.Text)
+Else
+    dimension = dimension_default
+End If
+    
+ReDim aJeu(1 To dimension, 1 To dimension) ' Preserve
+lancer_partie
+initialiser_affichage
+afficher_jeu
+
+End Sub
