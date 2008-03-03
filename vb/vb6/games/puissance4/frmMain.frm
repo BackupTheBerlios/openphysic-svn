@@ -77,6 +77,7 @@ afficher_jeu
 End Sub
 
 Private Sub cmdTest_Click()
+    Debug.Print "Debug"
     Debug.Print joueur
 End Sub
 
