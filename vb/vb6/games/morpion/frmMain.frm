@@ -223,27 +223,31 @@ Dim temp As Integer ' variable pour vérification du nombre de pions aligné
 partie_est_gagne_par = 0
 For k = 1 To 2 ' joueur
 
-    temp = 0
-    For i = 1 To dimension
-        ' ligne horizontale
-        If aJeu(i, 1) = k Then
-            temp = temp + 1
+    For j = 1 To dimension
+        temp = 0
+        For i = 1 To dimension
+            ' ligne horizontale
+            If aJeu(i, j) = k Then
+                temp = temp + 1
+            End If
+        Next i
+        If temp = dimension Then
+            partie_est_gagne_par = k
         End If
-    Next i
-    If temp = dimension Then
-        partie_est_gagne_par = k
-    End If
+    Next j
 
-    temp = 0
-    For i = 1 To dimension
-        'ligne verticale
-        If aJeu(1, i) = k Then
-            temp = temp + 1
+    For j = 1 To dimension
+        temp = 0
+        For i = 1 To dimension
+            'ligne verticale
+            If aJeu(j, i) = k Then
+                temp = temp + 1
+            End If
+        Next i
+        If temp = dimension Then
+            partie_est_gagne_par = k
         End If
-    Next i
-    If temp = dimension Then
-        partie_est_gagne_par = k
-    End If
+    Next j
     
     ' diag /
     temp = 0
