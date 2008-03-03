@@ -66,6 +66,7 @@ Const rayon_jeton = 0.4
 
 Dim aJeu(1 To nb_colonnes, 1 To nb_lignes) As Integer ' matrice du jeu
 Dim aNbPions(1 To nb_colonnes) As Integer ' nb de pions dans une colonne donnée
+Dim nb_coups_joues ' nb de coups joues
 
 Dim i, j As Integer
 
@@ -78,7 +79,7 @@ End Sub
 
 Private Sub cmdTest_Click()
     Debug.Print "Debug"
-    Debug.Print joueur
+    Debug.Print joueur, nb_coups_restants
 End Sub
 
 Private Sub Command2_Click()
@@ -117,6 +118,7 @@ If joueur = 1 Then
 ElseIf joueur = 2 Then
     afficher_jeton2 X, Y
 Else
+    ' la case est vide !
 End If
 End Sub
 
@@ -140,7 +142,7 @@ End Sub
 Private Sub Picture1_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
 Dim Xentier, Yentier As Integer
 Dim partie As Integer
-partie = 0 'etat_partie
+partie = etat_partie
 
 If Button = 1 And partie = 0 Then
     Xentier = Int(X) + 1
@@ -162,11 +164,14 @@ If Button = 1 And partie = 0 Then
     If aNbPions(Xentier) < nb_lignes Then ' il reste de la place pour poser le pion
         aJeu(Xentier, aNbPions(Xentier) + 1) = joueur ' placement du pion
         aNbPions(Xentier) = aNbPions(Xentier) + 1 ' incrémentation du nb de pion sur la colonne
+        nb_coups_joues = nb_coups_joues + 1 ' incrémentation du nb de coups joués
         changer_joueur
     Else ' la case n'est pas vide
         Beep
-        Debug.Print "La case n'est pas vide"
+        Debug.Print "La colonne est pleine"
     End If
+Else
+    Debug.Print "Fin de la partie"
 End If
 
 afficher_jeu
@@ -220,3 +225,34 @@ Next i
 
 joueur = 1
 End Sub
+
+Private Function nb_coups_restants() As Integer
+    nb_coups_restants = nb_lignes * nb_colonnes - nb_coups_joues
+End Function
+
+Private Function partie_est_gagne_par() As Integer
+' 0 : personne
+' 1 : joueur 1
+' 2 : joueur 2
+partie_est_gagne_par = 0
+End Function
+
+Private Function etat_partie() As Integer
+' 0 : partie en cours (il reste des coups à faire)
+' 1 : partie gagnée par le joueur 1
+' 2 : partie gagnée par le joueur 2
+' 3 : partie nulle (plus de coup à jouer)
+
+Dim gagnant As Integer
+gagnant = partie_est_gagne_par
+
+If gagnant = 1 Then
+    etat_partie = 1
+ElseIf gagnant = 2 Then
+    etat_partie = 2
+ElseIf nb_coups_restants = 0 And gagnant = 0 Then
+    etat_partie = 3
+Else
+    etat_partie = 0
+End If
+End Function
