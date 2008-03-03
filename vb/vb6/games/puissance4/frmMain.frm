@@ -1,23 +1,55 @@
 VERSION 5.00
 Begin VB.Form frmMain 
    Caption         =   "Puissance 4"
-   ClientHeight    =   5160
+   ClientHeight    =   3960
    ClientLeft      =   60
    ClientTop       =   450
    ClientWidth     =   8235
    LinkTopic       =   "Form1"
-   ScaleHeight     =   5160
+   ScaleHeight     =   3960
    ScaleWidth      =   8235
    StartUpPosition =   3  'Windows Default
+   Begin VB.CommandButton Command2 
+      Caption         =   "&Quitter"
+      Height          =   495
+      Left            =   5640
+      TabIndex        =   4
+      Top             =   3240
+      Width           =   1215
+   End
+   Begin VB.CommandButton cmdRecommencer 
+      Caption         =   "&Recommencer"
+      Height          =   495
+      Left            =   5640
+      TabIndex        =   3
+      Top             =   1800
+      Width           =   1215
+   End
+   Begin VB.CommandButton cmdTest 
+      Caption         =   "&Tester"
+      Height          =   495
+      Left            =   5640
+      TabIndex        =   1
+      Top             =   2520
+      Width           =   1215
+   End
    Begin VB.PictureBox Picture1 
       BackColor       =   &H00FFFFFF&
       Height          =   3495
-      Left            =   360
+      Left            =   240
       ScaleHeight     =   3435
       ScaleWidth      =   4275
       TabIndex        =   0
-      Top             =   480
+      Top             =   240
       Width           =   4335
+   End
+   Begin VB.Label lblMessage 
+      Alignment       =   2  'Center
+      Height          =   1215
+      Left            =   4920
+      TabIndex        =   2
+      Top             =   360
+      Width           =   3135
    End
 End
 Attribute VB_Name = "frmMain"
@@ -32,13 +64,28 @@ Const nb_colonnes = 7
 
 Const rayon_jeton = 0.4
 
-Dim aJeu(nb_colonnes, nb_lignes) As Integer
-Dim aNbPions(nb_colonnes) As Integer
+Dim aJeu(1 To nb_colonnes, 1 To nb_lignes) As Integer ' matrice du jeu
+Dim aNbPions(1 To nb_colonnes) As Integer ' nb de pions dans une colonne donnée
 
 Dim i, j As Integer
 
+Dim joueur As Integer
+
+Private Sub cmdRecommencer_Click()
+initialiser_jeu
+afficher_jeu
+End Sub
+
+Private Sub cmdTest_Click()
+    Debug.Print joueur
+End Sub
+
+Private Sub Command2_Click()
+End
+End Sub
 
 Private Sub Form_Load()
+' initialisation afficheur (PictureBox)
 With Picture1
     .ScaleMode = 0
     .ScaleHeight = -nb_lignes
@@ -47,7 +94,7 @@ With Picture1
     .ScaleLeft = 0
 End With
 
-
+initialiser_jeu
 End Sub
 
 Private Sub afficher_grille()
@@ -62,6 +109,16 @@ For j = 1 To nb_colonnes - 1
     Picture1.Line (j, 0)-(j, nb_lignes) ' ligne verticale
 Next j
 End Sub
+
+Private Sub afficher_jeton(ByVal X As Integer, ByVal Y As Integer, ByVal joueur As Integer)
+If joueur = 1 Then
+    afficher_jeton1 X, Y
+ElseIf joueur = 2 Then
+    afficher_jeton2 X, Y
+Else
+End If
+End Sub
+
 
 Private Sub afficher_jeton1(ByVal X As Integer, ByVal Y As Integer)
 Picture1.ForeColor = vbRed
@@ -101,16 +158,27 @@ If Button = 1 And partie = 0 Then
     Debug.Print "(X,Y)=(" + CStr(X) + ";" + CStr(Y) + ")"
     Debug.Print "(X,Y)=(" + CStr(Xentier) + ";" + CStr(Yentier) + ")"
     
-    'If aJeu(Xentier, Yentier) = 0 Then ' la case est bien vide
-    '    aJeu(Xentier, Yentier) = joueur
-    '    changer_joueur
-    'Else ' la case n'est pas vide
-    '    Beep
-    'End If
+    If aNbPions(Xentier) < nb_lignes Then ' il reste de la place pour poser le pion
+        aJeu(Xentier, aNbPions(Xentier) + 1) = joueur ' placement du pion
+        aNbPions(Xentier) = aNbPions(Xentier) + 1 ' incrémentation du nb de pion sur la colonne
+        changer_joueur
+    Else ' la case n'est pas vide
+        Beep
+        Debug.Print "La case n'est pas vide"
+    End If
 End If
 
 afficher_jeu
 
+End Sub
+
+
+Private Sub changer_joueur()
+    If joueur = 1 Then
+        joueur = 2
+    Else
+        joueur = 1
+    End If
 End Sub
 
 Private Sub Picture1_Paint()
@@ -125,6 +193,29 @@ Picture1.Cls ' effacement
 
 afficher_grille
 
+' Afficher les jetons
 'afficher_jeton1 1, 1
 'afficher_jeton2 2, 1
+For j = 1 To nb_lignes
+    For i = 1 To nb_colonnes
+        afficher_jeton i, j, aJeu(i, j)
+    Next i
+Next j
+
+End Sub
+
+Private Sub initialiser_jeu()
+' Effacement de la matrice de jeu
+For j = 1 To nb_lignes
+    For i = 1 To nb_colonnes
+        aJeu(i, j) = 0
+    Next i
+Next j
+
+' Effacement de la liste de pions par colonnes
+For i = 1 To nb_colonnes
+    aNbPions(i) = 0
+Next i
+
+joueur = 1
 End Sub
