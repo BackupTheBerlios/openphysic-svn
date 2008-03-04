@@ -131,7 +131,7 @@ End Sub
 Private Sub changer_joueur()
     If joueur = 1 Then
         joueur = 2
-    Else
+    ElseIf joueur = 2 Then
         joueur = 1
     End If
 End Sub
@@ -141,7 +141,7 @@ Dim Xentier, Yentier As Integer
 Dim partie As Integer
 partie = etat_partie
 
-If Button = 1 And partie = 0 Then
+If Button = 1 And joueur <> 0 Then
     Xentier = Int(X) + 1
     Yentier = Int(Y) + 1
     
@@ -185,12 +185,15 @@ If gagnant = 0 Then ' partie en cours
         lblMessage.Caption = "Joueur 2 c'est à vous de jouer !" _
             + vbCrLf + "Il reste " + CStr(nb_coups_restants) + " coup(s)"
     End If
-ElseIf gagnant = 1 Then
-    lblMessage.Caption = "Le joueur 1 a gagné !"
-ElseIf gagnant = 2 Then
-    lblMessage.Caption = "Le joueur 2 a gagné !"
-ElseIf gagnant = 3 Then
-    lblMessage.Caption = "Match nul"
+Else
+    joueur = 0
+    If gagnant = 1 Then
+        lblMessage.Caption = "Le joueur 1 a gagné !"
+    ElseIf gagnant = 2 Then
+        lblMessage.Caption = "Le joueur 2 a gagné !"
+    ElseIf gagnant = 3 Then
+        lblMessage.Caption = "Match nul"
+    End If
 End If
 End Sub
 
