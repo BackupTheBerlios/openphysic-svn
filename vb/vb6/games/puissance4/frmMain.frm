@@ -66,7 +66,7 @@ Const rayon_jeton = 0.4
 
 Dim aJeu(1 To nb_colonnes, 1 To nb_lignes) As Integer ' matrice du jeu
 Dim aNbPions(1 To nb_colonnes) As Integer ' nb de pions dans une colonne donnée
-Dim nb_coups_joues ' nb de coups joues
+Dim nb_coups_joues As Integer ' nb de coups joues
 Const alignes = 4 ' nb de pions à aligner pour gagner
 
 'Dim i, j, i2 As Integer
