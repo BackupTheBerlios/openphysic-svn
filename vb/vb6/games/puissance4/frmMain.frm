@@ -72,6 +72,13 @@ Const alignes = 4 ' nb de pions à aligner pour gagner
 'Dim i, j, i2 As Integer
 
 Dim joueur As Integer
+' joueur = 1 ou 2
+
+Dim etat_de_la_partie As Integer
+' 0 en cours
+' 1 partie gagnée par joueur 1
+' 2 partie gagnée par joueur 2
+' 3 partie nulle
 
 Private Sub cmdRecommencer_Click()
 initialiser_jeu
@@ -81,6 +88,7 @@ End Sub
 Private Sub cmdTest_Click()
     Debug.Print "Debug"
     Debug.Print joueur, nb_coups_restants
+    afficher_jeu
 End Sub
 
 Private Sub Command2_Click()
@@ -144,10 +152,10 @@ End Sub
 
 Private Sub Picture1_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
 Dim Xentier, Yentier As Integer
-Dim partie As Integer
-partie = etat_partie
+'Dim partie As Integer
+'partie = etat_partie
 
-If Button = 1 And partie = 0 Then
+If Button = 1 And etat_de_la_partie = 0 Then
     Xentier = Int(X) + 1
     Yentier = Int(Y) + 1
     
@@ -161,13 +169,15 @@ If Button = 1 And partie = 0 Then
         Xentier = nb_colonnes
     End If
     
-    Debug.Print "(X,Y)=(" + CStr(X) + ";" + CStr(Y) + ")"
-    Debug.Print "(X,Y)=(" + CStr(Xentier) + ";" + CStr(Yentier) + ")"
+    Debug.Print "Clic sur (X,Y)=(" + CStr(X) + ";" + CStr(Y) + ")"
+    Debug.Print "Clic sur (X,Y)=(" + CStr(Xentier) + ";" + CStr(Yentier) + ")"
     
     If aNbPions(Xentier) < nb_lignes Then ' il reste de la place pour poser le pion
         aJeu(Xentier, aNbPions(Xentier) + 1) = joueur ' placement du pion
         aNbPions(Xentier) = aNbPions(Xentier) + 1 ' incrémentation du nb de pion sur la colonne
         nb_coups_joues = nb_coups_joues + 1 ' incrémentation du nb de coups joués
+        Debug.Print "Placement sur (X,Y)=(" + CStr(Xentier) + ";" + CStr(aNbPions(Xentier)) + ")"
+        tester_victoire Xentier, aNbPions(Xentier)
         changer_joueur
     Else ' la case n'est pas vide
         Beep
@@ -232,6 +242,7 @@ For i = 1 To nb_colonnes
 Next i
 
 joueur = 1
+etat_de_la_partie = 0
 
 afficher_message
 End Sub
@@ -240,109 +251,140 @@ Private Function nb_coups_restants() As Integer
     nb_coups_restants = nb_lignes * nb_colonnes - nb_coups_joues
 End Function
 
-Private Function partie_est_gagne_par() As Integer
-' 0 : personne
-' 1 : joueur 1
-' 2 : joueur 2
-Dim k As Integer
-Dim i, i2 As Integer
-Dim j, j2 As Integer
-Dim temp As Integer ' variable pour vérification du nombre de pions alignés
-partie_est_gagne_par = 0
-
-For k = 1 To 2 ' joueur
-    ' ligne horizontale
-    For j = 1 To nb_lignes
-        temp = 0
-        For i = 1 To nb_colonnes - alignes + 1
-            temp = 0
-            For i2 = i To i + alignes - 1
-                If aJeu(i2, j) = k Then
-                    temp = temp + 1
-                End If
-            Next i2
-            If temp = alignes Then
-                partie_est_gagne_par = k
-            End If
-        Next i
-    Next j
-
-    ' ligne verticale
-    For i = 1 To nb_colonnes
-        temp = 0
-        For j = 1 To aNbPions(i) - alignes + 1
-            'au lieu de nb_lignes - alignes + 1 (pas la peine de tester verticalement là
-            'où il n'y a pas de pions)
-            temp = 0
-            For j2 = j To j + alignes - 1
-                If aJeu(i, j2) = k Then
-                    temp = temp + 1
-                End If
-            Next j2
-            If temp = alignes Then
-                partie_est_gagne_par = k
-            End If
-        Next j
-    Next i
-    
-    ' / (6)
-    'For i = 1 To nb_lignes ' Indice de la diagonale (ToFix)
-    '    temp = 0
-    '    For j = 1 To longueur_diag_BGHD(i) - alignes + 1
-    '        temp = 0
-    '        For j2 = j To j + alignes - 1
-    '            If aJeu(i, j2) = k Then
-    '                temp = temp + 1
-    '            End If
-    '        Next j2
-    '        If temp = alignes Then
-    '            partie_est_gagne_par = k
-    '        End If
-    '    Next j
-    'Next i
-    
-    ' \
-    
-Next k
-
-End Function
-
-Private Function etat_partie() As Integer
-' 0 : partie en cours (il reste des coups à faire)
-' 1 : partie gagnée par le joueur 1
-' 2 : partie gagnée par le joueur 2
-' 3 : partie nulle (plus de coup à jouer)
-
-Dim gagnant As Integer
-gagnant = partie_est_gagne_par
-
-If gagnant = 1 Then
-    etat_partie = 1
-ElseIf gagnant = 2 Then
-    etat_partie = 2
-ElseIf nb_coups_restants = 0 And gagnant = 0 Then
-    etat_partie = 3
-Else
-    etat_partie = 0
-End If
-End Function
 
 Private Sub afficher_message()
-Dim gagnant As Integer
-gagnant = etat_partie
-If gagnant = 0 Then ' partie en cours
+
+If etat_de_la_partie = 0 Then ' partie en cours
     If joueur = 1 Then
-        lblMessage.Caption = "Joueur 1 c'est à vous de jouer !" _
+        lblMessage.Caption = "Joueur 1 (rouge) c'est à vous de jouer !" _
             + vbCrLf + "Il reste " + CStr(nb_coups_restants) + " coup(s)"
     Else
-        lblMessage.Caption = "Joueur 2 c'est à vous de jouer !" _
+        lblMessage.Caption = "Joueur 2 (jaune) c'est à vous de jouer !" _
             + vbCrLf + "Il reste " + CStr(nb_coups_restants) + " coup(s)"
     End If
-ElseIf gagnant = 1 Then
-    lblMessage.Caption = "Le joueur 1 a gagné !"
-ElseIf gagnant = 2 Then
-    lblMessage.Caption = "Le joueur 2 a gagné !"
-ElseIf gagnant = 3 Then
+ElseIf etat_de_la_partie = 1 Then
+    lblMessage.Caption = "Le joueur 1 (rouge) a gagné !"
+ElseIf etat_de_la_partie = 2 Then
+    lblMessage.Caption = "Le joueur 2 (jaune) a gagné !"
+ElseIf etat_de_la_partie = 3 Then
     lblMessage.Caption = "Match nul"
 End If
+End Sub
+
+Private Sub tester_victoire(ByVal X As Integer, Y As Integer)
+etat_de_la_partie = 0
+
+' on teste en se déplaçant vers la gauche et la droite pour compter les pions
+' voisins du même joueur
+' on procède de même vers le bas (mais pas vers le haut !)
+' on compte aussi les voisins en diagonale
+
+Dim i, j As Integer
+Dim voisins As Integer
+
+' comptage du nb de voisins vers le bas
+voisins = 0
+If aNbPions(X) >= alignes Then ' uniquement si la colonne comporte assez de pions
+    For i = 1 To alignes - 1
+        If aJeu(X, Y - i) = joueur Then
+            voisins = voisins + 1
+        Else
+            ' ça n'est pas un pion du joueur en cours
+            Exit For
+        End If
+    Next i
+End If
+If voisins = alignes - 1 Then ' 4 alignés = 3 voisins
+    etat_de_la_partie = joueur
+End If
+
+' comptage du nb de voisins à gauche et à droite
+voisins = 0
+    ' voisins de gauche
+For j = 1 To alignes - 1
+    If X + j <= nb_colonnes Then
+        If aJeu(X + j, Y) = joueur Then
+            voisins = voisins + 1
+        Else
+            ' ça n'est pas un pion du joueur en cours
+            Exit For
+        End If
+    End If
+Next j
+
+    ' voisins de droite
+For j = 1 To alignes - 1
+    If X - j >= 1 Then
+        If aJeu(X - j, Y) = joueur Then
+            voisins = voisins + 1
+        Else
+            ' ça n'est pas un pion du joueur en cours
+            Exit For
+        End If
+    End If
+Next j
+    ' test du nb de voisins
+If voisins = alignes - 1 Then ' 4 alignés = 3 voisins
+    etat_de_la_partie = joueur
+End If
+
+
+' comptage du nb de voisins en diagonale /
+voisins = 0
+    ' voisins de haut-droite
+For j = 1 To alignes - 1
+    If X + j <= nb_colonnes And Y + j <= nb_lignes Then
+        If aJeu(X + j, Y + j) = joueur Then
+            voisins = voisins + 1
+        Else
+            ' ça n'est pas un pion du joueur en cours
+            Exit For
+        End If
+    End If
+Next j
+    ' voisins de bas-gauche
+For j = 1 To alignes - 1
+    If X - j >= 1 And Y - j >= 1 Then
+        If aJeu(X - j, Y - j) = joueur Then
+            voisins = voisins + 1
+        Else
+            ' ça n'est pas un pion du joueur en cours
+            Exit For
+        End If
+    End If
+Next j
+    ' test du nb de voisins
+If voisins = alignes - 1 Then ' 4 alignés = 3 voisins
+    etat_de_la_partie = joueur
+End If
+
+' comptage du nb de voisins en diagonale \
+voisins = 0
+    ' voisins de haut-gauche
+For j = 1 To alignes - 1
+    If X - j >= 1 And Y + j <= nb_lignes Then
+        If aJeu(X - j, Y + j) = joueur Then
+            voisins = voisins + 1
+        Else
+            ' ça n'est pas un pion du joueur en cours
+            Exit For
+        End If
+    End If
+Next j
+    ' voisins de bas-droite
+For j = 1 To alignes - 1
+    If X + j <= nb_colonnes And Y - j >= 1 Then
+        If aJeu(X + j, Y - j) = joueur Then
+            voisins = voisins + 1
+        Else
+            ' ça n'est pas un pion du joueur en cours
+            Exit For
+        End If
+    End If
+Next j
+    ' test du nb de voisins
+If voisins = alignes - 1 Then ' 4 alignés = 3 voisins
+    etat_de_la_partie = joueur
+End If
+
 End Sub
