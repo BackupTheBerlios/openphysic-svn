@@ -26,6 +26,7 @@ Begin VB.Form frmMain
       Width           =   1215
    End
    Begin VB.CommandButton cmdQuitter 
+      Cancel          =   -1  'True
       Caption         =   "&Quitter"
       Height          =   495
       Left            =   8280
@@ -35,6 +36,7 @@ Begin VB.Form frmMain
    End
    Begin VB.CommandButton cmdSuivant 
       Caption         =   "&Suivant"
+      Default         =   -1  'True
       Height          =   495
       Left            =   240
       TabIndex        =   1
@@ -44,12 +46,12 @@ Begin VB.Form frmMain
    Begin VB.PictureBox Picture1 
       BackColor       =   &H00FFFFFF&
       Height          =   4695
-      Left            =   1560
+      Left            =   1680
       ScaleHeight     =   4635
-      ScaleWidth      =   6555
+      ScaleWidth      =   5835
       TabIndex        =   0
       Top             =   240
-      Width           =   6615
+      Width           =   5895
    End
    Begin VB.Label lblMessages 
       Alignment       =   2  'Center
@@ -67,8 +69,8 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
 
-Const nb_lignes = 20
-Const nb_colonnes = 30
+Const nb_lignes = 30
+Const nb_colonnes = 50
 
 Enum Cellule
     Morte 'PasDeCellule
@@ -77,7 +79,7 @@ Enum Cellule
     Mourante
 '    UneSeuleGeneration
 End Enum
-Dim aGrille(0 To nb_colonnes - 1, 0 To nb_lignes - 1) As Integer ' matrice du jeu
+Dim aGrille(1 To nb_colonnes, 1 To nb_lignes) As Integer   ' matrice du jeu
 
 Dim nb_coups_joues As Integer ' nb de coups joues
 
@@ -114,13 +116,17 @@ Private Sub initialiser_jeu()
 Dim i, j As Integer
 
 ' Effacement de la matrice de jeu
-For j = 0 To nb_lignes - 1
-    For i = 0 To nb_colonnes - 1
-        aGrille(i, j) = Cellule.Morte  ' .Naissante
+For j = 1 To nb_lignes
+    For i = 1 To nb_colonnes
+        aGrille(i, j) = Cellule.Morte
     Next i
 Next j
 
-tester_toutes_configurations nb_colonnes, nb_lignes, aGrille
+'tester_toutes_configurations nb_colonnes, nb_lignes, aGrille
+tester_blinker1 nb_colonnes, nb_lignes, aGrille
+'tester_naissance nb_colonnes, nb_lignes, aGrille
+'tester_nb_voisins nb_colonnes, nb_lignes, aGrille
+'tester_limites nb_colonnes, nb_lignes, aGrille
 
 nb_coups_joues = 0
 End Sub
@@ -131,8 +137,8 @@ With Picture1
     .ScaleMode = 0
     .ScaleHeight = nb_lignes  '>0 vers le bas
     .ScaleWidth = nb_colonnes
-    .ScaleTop = -1 '0 'nb_lignes
-    .ScaleLeft = -1 '0
+    .ScaleTop = 0 '0 'nb_lignes
+    .ScaleLeft = 0 '0
 End With
 End Sub
 
@@ -153,8 +159,8 @@ End Sub
 
 Private Sub afficher_cellules()
 Dim X, Y As Integer
-For X = 0 To nb_colonnes - 1
-    For Y = 0 To nb_lignes - 1
+For X = 1 To nb_colonnes
+    For Y = 1 To nb_lignes
         afficher_cellule X, Y, aGrille(X, Y)
     Next Y
 Next X
@@ -212,7 +218,13 @@ End Sub
 
 Private Sub Picture1_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
 If Button = 1 Then
-    Debug.Print "Clic sur case", Int(X), Int(Y)
+    Dim Xentier As Integer
+    Dim Yentier As Integer
+    
+    Xentier = Int(X) + 1
+    Yentier = Int(Y) + 1
+    
+    Debug.Print "Clic sur case", Xentier, Yentier, aGrille(Xentier, Yentier), nb_voisins(Xentier, Yentier, Cellule.EnCoursDeVie)
 End If
 End Sub
 
@@ -244,10 +256,10 @@ nb_voisins = 0
 
 Dim Xg, Xd As Integer ' Gauche/Droite
 Dim Yh, Yb As Integer ' Haut/Bas
-Xg = bordure(X - 1, 0, nb_colonnes - 1)
-Xd = bordure(X + 1, 0, nb_colonnes - 1)
-Yh = bordure(Y - 1, 0, nb_lignes - 1)
-Yb = bordure(Y + 1, 0, nb_lignes - 1)
+Xg = bordure(X - 1, 1, nb_colonnes)
+Xd = bordure(X + 1, 1, nb_colonnes)
+Yh = bordure(Y - 1, 1, nb_lignes)
+Yb = bordure(Y + 1, 1, nb_lignes)
 
 If aGrille(Xg, Yh) = etat Then '1
     nb_voisins = nb_voisins + 1
@@ -291,39 +303,39 @@ Dim X, Y As Integer
 Dim v As Integer ' nb de voisins
 Dim etat As Cellule ' etat
 
-For X = 0 To nb_colonnes - 1
-    For Y = 0 To nb_lignes - 1
-        v = nb_voisins(X, Y, Cellule.EnCoursDeVie) + nb_voisins(X, Y, Cellule.Mourante) + nb_voisins(X, Y, Cellule.Naissante)
+For X = 1 To nb_colonnes
+    For Y = 1 To nb_lignes
+
+
+        v = nb_voisins(X, Y, Cellule.EnCoursDeVie) '+ nb_voisins(X, Y, Cellule.Mourante) + nb_voisins(X, Y, Cellule.Naissante)
         etat = aGrille(X, Y)
-        If etat = Cellule.Mourante Then
+        
+        'If X = 4 And Y = 3 Then
+        '    Debug.Print "ok", etat, v, nb_voisins(X, Y, Cellule.EnCoursDeVie)
+        'End If
+        
+        If etat = Morte Then
             If v = 3 Then
-                aGrille(X, Y) = Cellule.Naissante
-            Else
+                aGrille(X, Y) = Cellule.EnCoursDeVie
+            End If
+        ElseIf etat = EnCoursDeVie Then
+            If v = 2 Or v = 3 Then
+                'aGrille(X, Y) = Cellule.EnCoursDeVie
+            Else ' surpopulation ou isolement
                 aGrille(X, Y) = Cellule.Morte
             End If
-        ElseIf etat = Cellule.EnCoursDeVie Then
-            If v = 2 Or v = 3 Then
-                ' reste vivante
-            ElseIf v < 2 Then ' mois de 2 voisins => mort d'isolement !
-                aGrille(X, Y) = Cellule.Mourante
-            ElseIf v > 3 Then
-                aGrille(X, Y) = Cellule.Mourante
-            End If
-        ElseIf etat = Naissante Then
-            aGrille(X, Y) = Cellule.EnCoursDeVie
-        
-        ElseIf etat = Morte Then
-            If v = 3 Then
-                aGrille(X, Y) = Cellule.Naissante
-            End If
         End If
+
     Next Y
 Next X
+End Sub
+
+Private Sub evolution2()
 
 End Sub
 
 Private Sub cmdTester_Click()
-    Debug.Print nb_voisins(9, 16, Cellule.EnCoursDeVie)
+    Debug.Print nb_voisins(4, 3, Cellule.EnCoursDeVie)
 End Sub
 
 
