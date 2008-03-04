@@ -69,6 +69,13 @@ Dim aJeu() As Integer ' tableau décrivant les pions joués
 ' 2 un pion du joueur 2
 
 Dim joueur As Integer
+' joueur=1 ou 2
+
+Dim etat_de_la_partie As Integer
+' 0 en cours
+' 1 partie gagnée par joueur 1
+' 2 partie gagnée par joueur 2
+' 3 partie nulle
 
 Private Sub afficher_grille()
 For i = 1 To dimension - 1
@@ -101,6 +108,7 @@ For i = 1 To dimension
 Next i
 
 joueur = 1
+etat_de_la_partie = 0
 
 afficher_message
 End Sub
@@ -131,17 +139,16 @@ End Sub
 Private Sub changer_joueur()
     If joueur = 1 Then
         joueur = 2
-    ElseIf joueur = 2 Then
+'    ElseIf joueur = 2 Then
+    Else
         joueur = 1
     End If
 End Sub
 
 Private Sub Picture1_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
 Dim Xentier, Yentier As Integer
-Dim partie As Integer
-partie = etat_partie
 
-If Button = 1 And joueur <> 0 Then
+If Button = 1 And etat_de_la_partie = 0 Then
     Xentier = Int(X) + 1
     Yentier = Int(Y) + 1
     
@@ -160,6 +167,7 @@ If Button = 1 And joueur <> 0 Then
     
     If aJeu(Xentier, Yentier) = 0 Then ' la case est bien vide
         aJeu(Xentier, Yentier) = joueur
+        tester_victoire Xentier, Yentier
         changer_joueur
     Else ' la case n'est pas vide
         Beep
@@ -175,9 +183,7 @@ afficher_jeu
 End Sub
 
 Private Sub afficher_message()
-Dim gagnant As Integer
-gagnant = etat_partie
-If gagnant = 0 Then ' partie en cours
+If etat_de_la_partie = 0 Then ' partie en cours
     If joueur = 1 Then
         lblMessage.Caption = "Joueur 1 c'est à vous de jouer !" _
             + vbCrLf + "Il reste " + CStr(nb_coups_restants) + " coup(s)"
@@ -187,11 +193,11 @@ If gagnant = 0 Then ' partie en cours
     End If
 Else
     joueur = 0
-    If gagnant = 1 Then
+    If etat_de_la_partie = 1 Then
         lblMessage.Caption = "Le joueur 1 a gagné !"
-    ElseIf gagnant = 2 Then
+    ElseIf etat_de_la_partie = 2 Then
         lblMessage.Caption = "Le joueur 2 a gagné !"
-    ElseIf gagnant = 3 Then
+    ElseIf etat_de_la_partie = 3 Then
         lblMessage.Caption = "Match nul"
     End If
 End If
@@ -230,87 +236,44 @@ For i = 1 To dimension
 Next i
 End Function
 
-Private Function partie_est_gagne_par() As Integer
-' 0 : personne
-' 1 : joueur 1
-' 2 : joueur 2
-Dim k As Integer
-Dim temp As Integer ' variable pour vérification du nombre de pions aligné
-partie_est_gagne_par = 0
-For k = 1 To 2 ' joueur
+Private Sub tester_victoire(ByVal X As Integer, ByVal Y As Integer)
+etat_de_la_partie = 0
 
-    For j = 1 To dimension
-        temp = 0
-        For i = 1 To dimension
-            ' ligne horizontale
-            If aJeu(i, j) = k Then
-                temp = temp + 1
-            End If
-        Next i
-        If temp = dimension Then
-            partie_est_gagne_par = k
-        End If
-    Next j
+' on teste la victoire en faisant le produit sur une ligne, une colonne
+' ou sur les 2 deux diagonales
+' ex joueur 1 dimension 3 : 1*1*1=1^3
+' ex joueur 2 dimension 3 : 2*2*2=2^3
+' joueur^dimension
 
-    For j = 1 To dimension
-        temp = 0
-        For i = 1 To dimension
-            'ligne verticale
-            If aJeu(j, i) = k Then
-                temp = temp + 1
-            End If
-        Next i
-        If temp = dimension Then
-            partie_est_gagne_par = k
-        End If
-    Next j
-    
-    ' diag /
-    temp = 0
-    For i = 1 To dimension
-        If aJeu(i, i) = k Then
-            temp = temp + 1
-        End If
-    Next i
-    If temp = dimension Then
-        partie_est_gagne_par = k
-    End If
-    
-    ' diag \
-    temp = 0
-    For i = 1 To dimension
-        If aJeu(dimension - i + 1, i) = k Then
-            temp = temp + 1
-        End If
-    Next i
-    If temp = dimension Then
-        partie_est_gagne_par = k
-    End If
+Dim res_V As Integer
+Dim res_H As Integer
+Dim res_D1 As Integer
+Dim res_D2 As Integer
 
-Next k
+res_V = 1 ' verticale
+res_H = 1 ' horizontale
+res_D1 = 1 ' diagonale /
+res_D2 = 1 ' diagonale \
 
-End Function
+' calcul des produits sur
+' lignes verticales et horizontales
+' lignes diagonale D1 et D2
+For i = 1 To dimension
+    res_V = aJeu(i, Y) * res_V
+    res_H = aJeu(X, i) * res_H
+    res_D1 = aJeu(i, i) * res_D1
+    res_D2 = aJeu(dimension + 1 - i, i) * res_D2
+Next i
 
-Private Function etat_partie() As Integer
-' 0 : partie en cours (il reste des coups à faire)
-' 1 : partie gagnée par le joueur 1
-' 2 : partie gagnée par le joueur 2
-' 3 : partie nulle (plus de coup à jouer)
-
-Dim gagnant As Integer
-gagnant = partie_est_gagne_par
-
-If gagnant = 1 Then
-    etat_partie = 1
-ElseIf gagnant = 2 Then
-    etat_partie = 2
-ElseIf nb_coups_restants = 0 And gagnant = 0 Then
-    etat_partie = 3
-Else
-    etat_partie = 0
+' le joueur gagne s'il a fait une ligne verticale, une horizontale
+' ou une (des deux) diagonale
+If res_V = joueur ^ dimension Or res_H = joueur ^ dimension _
+    Or res_D1 = joueur ^ dimension Or res_D2 = joueur ^ dimension Then
+    etat_de_la_partie = joueur
 End If
 
-End Function
+End Sub
+
 
 Private Sub txtDimension_Change()
 If IsNumeric(txtDimension.Text) Then
@@ -319,7 +282,9 @@ Else
     dimension = dimension_default
 End If
     
-ReDim aJeu(1 To dimension, 1 To dimension) ' Preserve
+ReDim aJeu(1 To dimension, 1 To dimension)
+' pas besoin de Redim Preserve car on relance le jeu
+' quand on modifie la dimension
 lancer_partie
 initialiser_affichage
 afficher_jeu
