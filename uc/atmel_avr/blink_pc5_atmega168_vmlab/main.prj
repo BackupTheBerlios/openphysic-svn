@@ -5,7 +5,7 @@
 
 ; Micro + software running
 ; ------------------------------------------------------------
-.MICRO "ATmega8"
+.MICRO "ATmega168"
 .TOOLCHAIN "GCC"
 .GCCPATH   "C:\WinAVR"
 .GCCMAKE   AUTO
@@ -28,3 +28,4 @@ D1 VDD D1_NODE
 R1 D1_NODE PC5 0.62K
 
 .PLOT V(PC5)
+
