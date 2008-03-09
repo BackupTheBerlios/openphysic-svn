@@ -35,8 +35,8 @@ Partial Class frmMain
         'TableLayoutPanel2
         '
         Me.TableLayoutPanel2.ColumnCount = 2
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.29712!))
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.70288!))
+        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 69.29134!))
+        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.70866!))
         Me.TableLayoutPanel2.Controls.Add(Me.TableLayoutPanel1, 0, 0)
         Me.TableLayoutPanel2.Controls.Add(Me.PictureBox1, 0, 0)
         Me.TableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill
@@ -44,7 +44,7 @@ Partial Class frmMain
         Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
         Me.TableLayoutPanel2.RowCount = 1
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(451, 264)
+        Me.TableLayoutPanel2.Size = New System.Drawing.Size(314, 241)
         Me.TableLayoutPanel2.TabIndex = 7
         '
         'TableLayoutPanel1
@@ -58,7 +58,7 @@ Partial Class frmMain
         Me.TableLayoutPanel1.Controls.Add(Me.lblMessage, 0, 2)
         Me.TableLayoutPanel1.Controls.Add(Me.txtDimension, 0, 1)
         Me.TableLayoutPanel1.Controls.Add(Me.Label1, 0, 0)
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(302, 3)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(220, 3)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 5
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 59.57447!))
@@ -66,7 +66,7 @@ Partial Class frmMain
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 149.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(146, 258)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(91, 235)
         Me.TableLayoutPanel1.TabIndex = 7
         '
         'cmdQuitter
@@ -74,9 +74,9 @@ Partial Class frmMain
         Me.cmdQuitter.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdQuitter.Location = New System.Drawing.Point(3, 230)
+        Me.cmdQuitter.Location = New System.Drawing.Point(3, 207)
         Me.cmdQuitter.Name = "cmdQuitter"
-        Me.cmdQuitter.Size = New System.Drawing.Size(140, 25)
+        Me.cmdQuitter.Size = New System.Drawing.Size(85, 25)
         Me.cmdQuitter.TabIndex = 4
         Me.cmdQuitter.Text = "&Quitter"
         Me.cmdQuitter.UseVisualStyleBackColor = True
@@ -86,9 +86,9 @@ Partial Class frmMain
         Me.cmdRecommencer.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdRecommencer.Location = New System.Drawing.Point(3, 199)
+        Me.cmdRecommencer.Location = New System.Drawing.Point(3, 176)
         Me.cmdRecommencer.Name = "cmdRecommencer"
-        Me.cmdRecommencer.Size = New System.Drawing.Size(140, 25)
+        Me.cmdRecommencer.Size = New System.Drawing.Size(85, 25)
         Me.cmdRecommencer.TabIndex = 3
         Me.cmdRecommencer.Text = "&Recommencer"
         Me.cmdRecommencer.UseVisualStyleBackColor = True
@@ -97,9 +97,9 @@ Partial Class frmMain
         '
         Me.lblMessage.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblMessage.AutoSize = True
-        Me.lblMessage.Location = New System.Drawing.Point(3, 115)
+        Me.lblMessage.Location = New System.Drawing.Point(3, 92)
         Me.lblMessage.Name = "lblMessage"
-        Me.lblMessage.Size = New System.Drawing.Size(140, 13)
+        Me.lblMessage.Size = New System.Drawing.Size(85, 13)
         Me.lblMessage.TabIndex = 2
         Me.lblMessage.Text = "lblMessage"
         Me.lblMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -108,9 +108,9 @@ Partial Class frmMain
         '
         Me.txtDimension.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtDimension.Location = New System.Drawing.Point(3, 31)
+        Me.txtDimension.Location = New System.Drawing.Point(3, 17)
         Me.txtDimension.Name = "txtDimension"
-        Me.txtDimension.Size = New System.Drawing.Size(140, 20)
+        Me.txtDimension.Size = New System.Drawing.Size(85, 20)
         Me.txtDimension.TabIndex = 1
         Me.txtDimension.Text = "txtDimension"
         Me.txtDimension.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -119,9 +119,9 @@ Partial Class frmMain
         '
         Me.Label1.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(3, 7)
+        Me.Label1.Location = New System.Drawing.Point(3, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(140, 13)
+        Me.Label1.Size = New System.Drawing.Size(85, 13)
         Me.Label1.TabIndex = 5
         Me.Label1.Text = "Dimension"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -134,7 +134,7 @@ Partial Class frmMain
         Me.PictureBox1.BackColor = System.Drawing.Color.White
         Me.PictureBox1.Location = New System.Drawing.Point(3, 3)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(293, 258)
+        Me.PictureBox1.Size = New System.Drawing.Size(211, 235)
         Me.PictureBox1.TabIndex = 1
         Me.PictureBox1.TabStop = False
         '
@@ -142,7 +142,7 @@ Partial Class frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(451, 264)
+        Me.ClientSize = New System.Drawing.Size(314, 241)
         Me.Controls.Add(Me.TableLayoutPanel2)
         Me.Name = "frmMain"
         Me.Text = "Morpion"

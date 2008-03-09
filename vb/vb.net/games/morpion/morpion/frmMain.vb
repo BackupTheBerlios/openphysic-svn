@@ -17,7 +17,12 @@ Public Class frmMain
     ' 2 partie gagnée par joueur 2
     ' 3 partie nulle
 
+    Dim nb_coups_restants As Integer = 0
+
     Dim g As Graphics
+
+    Dim DrawingMatrix As Drawing2D.Matrix
+    Dim InvDrawingMatrix As Drawing2D.Matrix
 
     Private Sub frmMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Debug.Print("frmMain_Load")
@@ -25,20 +30,74 @@ Public Class frmMain
 
         txtDimension.Text = dimension_default.ToString
 
-        lancer_partie()
+        initialiser_partie()
     End Sub
 
     Private Sub cmdQuitter_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdQuitter.Click
+        Debug.Print("cmdQuitter_Click")
         End
     End Sub
 
-    Private Sub PictureBox1_MouseUp(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs)
+    Private Sub PictureBox1_MouseUp(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles PictureBox1.MouseUp
         Debug.Print("Bouton:{0} X:{1} Y:{2}", e.Button.ToString, e.X, e.Y)
 
+        Dim Xentier, Yentier As Integer
 
+        If e.Button = Windows.Forms.MouseButtons.Left And etat_de_la_partie = 0 Then
+            ' To FiX
+            'g.ScaleTransform(
+            'g.TransformPoints()
+
+            Dim tabPoint(0) As PointF
+            tabPoint(0) = e.Location
+            'tabPoint(0).X = e.X
+            'tabPoint(0).Y = e.Y
+            Debug.Print("X:{0} Y:{1}", tabPoint(0).X, tabPoint(0).Y)
+
+            'Dim depuis, vers As System.Drawing.Drawing2D.CoordinateSpace
+            'depuis = Drawing2D.CoordinateSpace.World
+            'depuis = DrawingMatrix
+            'vers = Drawing2D.CoordinateSpace.Device
+            'g.Transform
+            'g.TransformPoints(depuis, vers, tabPoint)
+            InvDrawingMatrix.TransformPoints(tabPoint)
+
+            'Xentier = CInt(CSng(e.X) / CSng(PictureBox1.Width))
+            'Yentier = CInt(Int(CSng(e.Y) / CSng(PictureBox1.Height)))
+            Xentier = Int((tabPoint(0).X + 100) / 100 - 1)
+            Yentier = Int((tabPoint(0).Y + 100) / 100 - 1)
+
+            'Debug.Print("Xentier:{0} Yentier:{1}", tabPoint(0).X, tabPoint(0).Y)
+            Debug.Print("Xentier:{0} Yentier:{1}", Xentier, Yentier)
+
+            ' En cas de clic sur la limite haute du PictureBox
+            If Yentier = dimension Then
+                Yentier = dimension - 1
+            End If
+
+            ' En cas de clic sur la limite droite du PictureBox
+            If Xentier = dimension Then
+                Xentier = dimension - 1
+            End If
+
+            'Debug.Print "(X,Y)=(" + CStr(X) + ";" + CStr(Y) + ")"
+            'Debug.Print "(X,Y)=(" + CStr(Xentier) + ";" + CStr(Yentier) + ")"
+
+            If aJeu(Xentier, Yentier) = 0 Then ' la case est bien vide
+                aJeu(Xentier, Yentier) = joueur
+                tester_victoire(Xentier, Yentier)
+                changer_joueur()
+                nb_coups_restants = nb_coups_restants - 1
+                nb_coups_restants -= 1
+            Else ' la case n'est pas vide
+                Beep()
+            End If
+        End If
+
+        PictureBox1.Refresh()
     End Sub
 
-    Private Sub PictureBox1_Paint(ByVal sender As Object, ByVal e As System.Windows.Forms.PaintEventArgs)
+    Private Sub PictureBox1_Paint(ByVal sender As Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles PictureBox1.Paint
         Debug.Print("PictureBox1_Paint")
         'Dim g As Graphics = e.Graphics
         g = e.Graphics
@@ -49,11 +108,13 @@ Public Class frmMain
         'g.DrawLine(Pens.Black, 0, 0, 300, 300)
     End Sub
 
-    Private Sub txtDimension_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Private Sub txtDimension_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtDimension.TextChanged
+        Debug.Print("txtDimension_TextChanged")
         If IsNumeric(txtDimension.Text) Then
             dimension = CInt(txtDimension.Text)
         Else
             dimension = dimension_default
+            txtDimension.Text = dimension.ToString
         End If
 
         ReDim aJeu(dimension - 1, dimension - 1)
@@ -61,19 +122,29 @@ Public Class frmMain
         ' -> 0 To dimension - 1
         ' pas besoin de Redim Preserve car on relance le jeu
         ' quand on modifie la dimension
-        lancer_partie()
+        initialiser_partie()
         'initialiser_affichage()
         'afficher_jeu(g)
+        PictureBox1.Refresh()
     End Sub
 
     Private Sub initialiser_affichage(ByRef g As Graphics)
         g.TranslateTransform(0, PictureBox1.Height)
         g.ScaleTransform(CSng(PictureBox1.Width) / CSng(300), -CSng(PictureBox1.Height) / CSng(300))
+
+        DrawingMatrix = g.Transform
+        'DrawingMatrix = New Drawing2D.Matrix()
+        'DrawingMatrix.tra()
+
+        InvDrawingMatrix = DrawingMatrix.Clone
+        InvDrawingMatrix.Invert()
     End Sub
 
 
-    Private Sub lancer_partie()
+    Private Sub initialiser_partie()
         Dim i, j As Integer
+
+        nb_coups_restants = dimension * dimension
 
         ' initialiser le tableau de jeu
         ' c'est nécessaire en cas de redémarrage d'une partie
@@ -93,10 +164,10 @@ Public Class frmMain
         If etat_de_la_partie = 0 Then ' partie en cours
             If joueur = 1 Then
                 lblMessage.Text = "Joueur 1 c'est à vous de jouer !" _
-                    + vbCrLf + "Il reste " + CStr(nb_coups_restants()) + " coup(s)"
+                    + vbCrLf + "Il reste " + CStr(nb_coups_restants) + " coup(s)"
             Else
                 lblMessage.Text = "Joueur 2 c'est à vous de jouer !" _
-                    + vbCrLf + "Il reste " + CStr(nb_coups_restants()) + " coup(s)"
+                    + vbCrLf + "Il reste " + CStr(nb_coups_restants) + " coup(s)"
             End If
         Else
             joueur = 0
@@ -117,8 +188,8 @@ Public Class frmMain
 
         afficher_grille(g)
 
-        'afficher_croix 1, 1
-        'afficher_cercle 1, 2
+        'afficher_croix(g, 1, 1)
+        'afficher_cercle(g, 2, 3)
 
         ' afficher les pions
         For i = 0 To dimension - 1
@@ -137,44 +208,53 @@ Public Class frmMain
 
     Private Sub afficher_grille(ByRef g As Graphics)
         Dim i, j As Integer
-
+        Dim stylo As Pen = Pens.Black
+        'Dim stylo As Pen
+        'stylo = Pens.Black
+        'stylo.Width = 2
         ' lignes verticales
         For i = 1 To dimension - 1
-            g.DrawLine(Pens.Black, i * 100, 0, i * 100, dimension * 100)
+            g.DrawLine(stylo, i * 100, 0, i * 100, dimension * 100)
         Next i
 
         ' lignes horizontales
         For j = 1 To dimension - 1
-            g.DrawLine(Pens.Black, 0, j * 100, dimension * 100, j * 100)
+            g.DrawLine(stylo, 0, j * 100, dimension * 100, j * 100)
         Next j
     End Sub
 
     Private Sub afficher_croix(ByRef g As Graphics, ByVal i As Integer, ByVal j As Integer)
-        'Picture1.Line (i - 1, j - 1)-(i, j)
-        'Picture1.Line (i - 1, j)-(i, j - 1)
+        Dim stylo As Pen = Pens.Red
+        g.DrawLine(stylo, (i - 1) * 100, (j - 1) * 100, i * 100, j * 100)
+        g.DrawLine(stylo, (i - 1) * 100, j * 100, i * 100, (j - 1) * 100)
     End Sub
 
     Private Sub afficher_cercle(ByRef g As Graphics, ByVal i As Integer, ByVal j As Integer)
-        'g.DrawEllipse(Pens.Black, i - 0.5, j - 0.5, 0.5, 0.5)
-        'Picture1.Circle (i - 0.5, j - 0.5), 0.5, vbRed
+        Dim stylo As Pen = Pens.Blue
+        g.DrawEllipse(stylo, (i - 1) * 100, (j - 1) * 100, 100, 100)
     End Sub
 
     Private Sub changer_joueur()
-
+        If joueur = 1 Then
+            joueur = 2
+            '    ElseIf joueur = 2 Then
+        Else
+            joueur = 1
+        End If
     End Sub
 
-    Private Function nb_coups_restants() As Integer
-        Dim i, j As Integer
+    'Private Function nb_coups_restants() As Integer
+    'Dim i, j As Integer
 
-        'nb_coups_restants = 0
-        For i = 0 To dimension - 1
-            For j = 0 To dimension - 1
-                If aJeu(i, j) = 0 Then
-                    nb_coups_restants = nb_coups_restants + 1
-                End If
-            Next j
-        Next i
-    End Function
+    'nb_coups_restants = 0
+    '    For i = 0 To dimension - 1
+    '        For j = 0 To dimension - 1
+    '            If aJeu(i, j) = 0 Then
+    '                nb_coups_restants = nb_coups_restants + 1
+    '            End If
+    '        Next j
+    '    Next i
+    'End Function
 
     Private Sub tester_victoire(ByVal X As Integer, ByVal Y As Integer)
         etat_de_la_partie = 0
@@ -203,7 +283,7 @@ Public Class frmMain
             res_V = aJeu(i, Y) * res_V
             res_H = aJeu(X, i) * res_H
             res_D1 = aJeu(i, i) * res_D1
-            res_D2 = aJeu(dimension + 1 - i, i) * res_D2
+            res_D2 = aJeu(dimension - 1 - i, i) * res_D2
         Next i
 
         ' le joueur gagne s'il a fait une ligne verticale, une horizontale
@@ -216,9 +296,14 @@ Public Class frmMain
     End Sub
 
 
-    Private Sub cmdRecommencer_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        lancer_partie()
+    Private Sub cmdRecommencer_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdRecommencer.Click
+        Debug.Print("cmdRecommencer_Click")
+        initialiser_partie()
         'afficher_jeu(g)
+        PictureBox1.Refresh()
     End Sub
 
+    Private Sub frmMain_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Resize
+        PictureBox1.Refresh()
+    End Sub
 End Class
