@@ -1,5 +1,5 @@
 Public Class frmMain
-    Const dimension_default As Integer = 5
+    Const dimension_default As Integer = 3
     Dim dimension As Integer = dimension_default
 
     'Dim aJeu(dimension_default, dimension_default) As Integer ' tableau décrivant les pions joués
@@ -25,10 +25,13 @@ Public Class frmMain
     'Dim InvDrawingMatrix As Drawing2D.Matrix
 
     Private Sub frmMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        demander_taille()
+
         'Debug.Print("frmMain_Load")
         'g = picturebox1.
 
         'txtDimension.Text = dimension_default.ToString
+        lblDebug.Text = ""
 
         initialiser_partie()
     End Sub
@@ -41,6 +44,8 @@ Public Class frmMain
 
     Private Sub PictureBox1_MouseUp(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles PictureBox1.MouseUp
         'Debug.Print("Bouton:{0} X:{1} Y:{2}", e.Button.ToString, e.X, e.Y)
+
+        'lblDebug.Text = lblDebug.Text = "X:" + e.X.ToString + " Yentier:" + e.X.ToString
 
         Dim Xentier, Yentier As Integer
 
@@ -56,8 +61,8 @@ Public Class frmMain
             'Xentier = Int((tabPoint(0).X + 100) / 100 - 1)
             'Yentier = Int((tabPoint(0).Y + 100) / 100 - 1)
 
-            Xentier = e.X
-            Yentier = e.Y
+            Xentier = Int((3.0 * e.X) / PictureBox1.Width)
+            Yentier = Int((3.0 * e.Y) / PictureBox1.Height)
 
             'Debug.Print("Xentier:{0} Yentier:{1}", Xentier, Yentier)
 
@@ -70,6 +75,8 @@ Public Class frmMain
             If Xentier > dimension - 1 Then
                 Xentier = dimension - 1
             End If
+
+            'lblDebug.Text = "Xentier:" & Xentier.ToString & " Yentier:" & Yentier.ToString
 
             If aJeu(Xentier, Yentier) = 0 Then ' la case est bien vide
                 aJeu(Xentier, Yentier) = joueur
@@ -150,9 +157,9 @@ Public Class frmMain
 
         afficher_grille(g)
 
-        afficher_croix(g, 0, 0)
-        afficher_croix(g, 2, 1)
-        afficher_cercle(g, 2, 2)
+        'afficher_croix(g, 0, 0)
+        'afficher_croix(g, 2, 1)
+        'afficher_cercle(g, 2, 2)
 
         ' afficher les pions
         For i = 0 To dimension - 1
@@ -271,7 +278,26 @@ Public Class frmMain
         PictureBox1.Refresh()
     End Sub
 
-    Private Sub PictureBox1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox1.Click
 
+    Private Sub MenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenuItem1.Click
+        MsgBox("Morpion" & Chr(13) & "par S. CELLES")
+    End Sub
+
+    Private Sub MenuItem3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenuItem3.Click
+        demander_taille()
+        initialiser_partie()
+        PictureBox1.Refresh()
+    End Sub
+
+    Private Sub demander_taille()
+        Dim d As Integer
+        Dim str As String
+        str = InputBox("Dimension de la grille", "Morpion", CStr(dimension_default))
+        If IsNumeric(d) Then
+            d = CInt(str)
+        Else
+            d = dimension_default
+        End If
+        dimension = d
     End Sub
 End Class

@@ -21,10 +21,26 @@ Partial Public Class frmMain
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.mainMenu1 = New System.Windows.Forms.MainMenu
+        Me.MenuItem3 = New System.Windows.Forms.MenuItem
+        Me.MenuItem1 = New System.Windows.Forms.MenuItem
         Me.PictureBox1 = New System.Windows.Forms.PictureBox
         Me.lblMessage = New System.Windows.Forms.Label
         Me.txtDimension = New System.Windows.Forms.TextBox
+        Me.lblDebug = New System.Windows.Forms.Label
         Me.SuspendLayout()
+        '
+        'mainMenu1
+        '
+        Me.mainMenu1.MenuItems.Add(Me.MenuItem3)
+        Me.mainMenu1.MenuItems.Add(Me.MenuItem1)
+        '
+        'MenuItem3
+        '
+        Me.MenuItem3.Text = "Nouveau"
+        '
+        'MenuItem1
+        '
+        Me.MenuItem1.Text = "?"
         '
         'PictureBox1
         '
@@ -39,6 +55,7 @@ Partial Public Class frmMain
         Me.lblMessage.Name = "lblMessage"
         Me.lblMessage.Size = New System.Drawing.Size(200, 52)
         Me.lblMessage.Text = "lblMessage"
+        Me.lblMessage.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
         'txtDimension
         '
@@ -50,12 +67,21 @@ Partial Public Class frmMain
         Me.txtDimension.TabIndex = 6
         Me.txtDimension.Text = "txtDimension"
         '
+        'lblDebug
+        '
+        Me.lblDebug.Location = New System.Drawing.Point(0, 196)
+        Me.lblDebug.Name = "lblDebug"
+        Me.lblDebug.Size = New System.Drawing.Size(240, 20)
+        Me.lblDebug.Text = "lblDebug"
+        Me.lblDebug.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.AutoScroll = True
         Me.ClientSize = New System.Drawing.Size(240, 268)
+        Me.Controls.Add(Me.lblDebug)
         Me.Controls.Add(Me.lblMessage)
         Me.Controls.Add(Me.txtDimension)
         Me.Controls.Add(Me.PictureBox1)
@@ -68,4 +94,7 @@ Partial Public Class frmMain
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents lblMessage As System.Windows.Forms.Label
     Friend WithEvents txtDimension As System.Windows.Forms.TextBox
+    Friend WithEvents lblDebug As System.Windows.Forms.Label
+    Friend WithEvents MenuItem3 As System.Windows.Forms.MenuItem
+    Friend WithEvents MenuItem1 As System.Windows.Forms.MenuItem
 End Class
