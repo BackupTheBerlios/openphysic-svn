@@ -57,4 +57,5 @@ Public Class frmMain
             lblMessage.Text = "Gagné après " + CStr(i) + " tentatives"
         End If
     End Sub
+
 End Class
