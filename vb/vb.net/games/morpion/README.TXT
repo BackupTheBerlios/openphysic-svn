@@ -1,1 +1,2 @@
-ToDo : à finir
+ToDo
+ problème lors du changement de dimension

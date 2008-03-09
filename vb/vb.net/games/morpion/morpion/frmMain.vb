@@ -50,33 +50,23 @@ Public Class frmMain
 
             Dim tabPoint(0) As PointF
             tabPoint(0) = e.Location
-            'tabPoint(0).X = e.X
-            'tabPoint(0).Y = e.Y
             Debug.Print("X:{0} Y:{1}", tabPoint(0).X, tabPoint(0).Y)
 
-            'Dim depuis, vers As System.Drawing.Drawing2D.CoordinateSpace
-            'depuis = Drawing2D.CoordinateSpace.World
-            'depuis = DrawingMatrix
-            'vers = Drawing2D.CoordinateSpace.Device
-            'g.Transform
-            'g.TransformPoints(depuis, vers, tabPoint)
+
             InvDrawingMatrix.TransformPoints(tabPoint)
 
-            'Xentier = CInt(CSng(e.X) / CSng(PictureBox1.Width))
-            'Yentier = CInt(Int(CSng(e.Y) / CSng(PictureBox1.Height)))
             Xentier = Int((tabPoint(0).X + 100) / 100 - 1)
             Yentier = Int((tabPoint(0).Y + 100) / 100 - 1)
 
-            'Debug.Print("Xentier:{0} Yentier:{1}", tabPoint(0).X, tabPoint(0).Y)
             Debug.Print("Xentier:{0} Yentier:{1}", Xentier, Yentier)
 
             ' En cas de clic sur la limite haute du PictureBox
-            If Yentier = dimension Then
+            If Yentier > dimension - 1 Then
                 Yentier = dimension - 1
             End If
 
             ' En cas de clic sur la limite droite du PictureBox
-            If Xentier = dimension Then
+            If Xentier > dimension - 1 Then
                 Xentier = dimension - 1
             End If
 
@@ -99,13 +89,9 @@ Public Class frmMain
 
     Private Sub PictureBox1_Paint(ByVal sender As Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles PictureBox1.Paint
         Debug.Print("PictureBox1_Paint")
-        'Dim g As Graphics = e.Graphics
         g = e.Graphics
-        'Beep()
         initialiser_affichage(g)
         afficher_jeu(g)
-        'g.DrawLine(Pens.Black, 0, 0, PictureBox1.Width, PictureBox1.Height)
-        'g.DrawLine(Pens.Black, 0, 0, 300, 300)
     End Sub
 
     Private Sub txtDimension_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtDimension.TextChanged
@@ -246,18 +232,6 @@ Public Class frmMain
         End If
     End Sub
 
-    'Private Function nb_coups_restants() As Integer
-    'Dim i, j As Integer
-
-    'nb_coups_restants = 0
-    '    For i = 0 To dimension - 1
-    '        For j = 0 To dimension - 1
-    '            If aJeu(i, j) = 0 Then
-    '                nb_coups_restants = nb_coups_restants + 1
-    '            End If
-    '        Next j
-    '    Next i
-    'End Function
 
     Private Sub tester_victoire(ByVal X As Integer, ByVal Y As Integer)
         etat_de_la_partie = 0
