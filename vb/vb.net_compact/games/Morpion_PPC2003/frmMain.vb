@@ -25,12 +25,13 @@ Public Class frmMain
     'Dim InvDrawingMatrix As Drawing2D.Matrix
 
     Private Sub frmMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        demander_taille()
+        'demander_taille()
 
         'Debug.Print("frmMain_Load")
         'g = picturebox1.
 
         'txtDimension.Text = dimension_default.ToString
+        lblDebug.Visible = False
         lblDebug.Text = ""
 
         initialiser_partie()
@@ -45,7 +46,7 @@ Public Class frmMain
     Private Sub PictureBox1_MouseUp(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles PictureBox1.MouseUp
         'Debug.Print("Bouton:{0} X:{1} Y:{2}", e.Button.ToString, e.X, e.Y)
 
-        'lblDebug.Text = lblDebug.Text = "X:" + e.X.ToString + " Yentier:" + e.X.ToString
+        'lblDebug.Text = "X:" + e.X.ToString + " Y:" + e.X.ToString
 
         Dim Xentier, Yentier As Integer
 
@@ -284,20 +285,27 @@ Public Class frmMain
     End Sub
 
     Private Sub MenuItem3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenuItem3.Click
-        demander_taille()
+        'demander_taille()
         initialiser_partie()
         PictureBox1.Refresh()
     End Sub
 
     Private Sub demander_taille()
-        Dim d As Integer
+        Dim d As Integer = dimension_default
         Dim str As String
         str = InputBox("Dimension de la grille", "Morpion", CStr(dimension_default))
-        If IsNumeric(d) Then
-            d = CInt(str)
-        Else
-            d = dimension_default
-        End If
+        Try
+            If IsNumeric(d) Then
+                d = CInt(str)
+            End If
+        Catch
+        End Try
         dimension = d
+    End Sub
+
+    Private Sub MenuItem2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenuItem2.Click
+        demander_taille()
+        initialiser_partie()
+        PictureBox1.Refresh()
     End Sub
 End Class

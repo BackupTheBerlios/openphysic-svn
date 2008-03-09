@@ -27,20 +27,22 @@ Partial Public Class frmMain
         Me.lblMessage = New System.Windows.Forms.Label
         Me.txtDimension = New System.Windows.Forms.TextBox
         Me.lblDebug = New System.Windows.Forms.Label
+        Me.MenuItem2 = New System.Windows.Forms.MenuItem
         Me.SuspendLayout()
         '
         'mainMenu1
         '
         Me.mainMenu1.MenuItems.Add(Me.MenuItem3)
+        Me.mainMenu1.MenuItems.Add(Me.MenuItem2)
         Me.mainMenu1.MenuItems.Add(Me.MenuItem1)
         '
         'MenuItem3
         '
-        Me.MenuItem3.Text = "Nouveau"
+        Me.MenuItem3.Text = "&Nouveau"
         '
         'MenuItem1
         '
-        Me.MenuItem1.Text = "?"
+        Me.MenuItem1.Text = "&?"
         '
         'PictureBox1
         '
@@ -75,6 +77,10 @@ Partial Public Class frmMain
         Me.lblDebug.Text = "lblDebug"
         Me.lblDebug.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
+        'MenuItem2
+        '
+        Me.MenuItem2.Text = "&Dimension"
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -97,4 +103,5 @@ Partial Public Class frmMain
     Friend WithEvents lblDebug As System.Windows.Forms.Label
     Friend WithEvents MenuItem3 As System.Windows.Forms.MenuItem
     Friend WithEvents MenuItem1 As System.Windows.Forms.MenuItem
+    Friend WithEvents MenuItem2 As System.Windows.Forms.MenuItem
 End Class
