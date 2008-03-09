@@ -87,7 +87,7 @@ Public Class frmMain
                 aJeu(Xentier, Yentier) = joueur
                 tester_victoire(Xentier, Yentier)
                 changer_joueur()
-                nb_coups_restants = nb_coups_restants - 1
+                'nb_coups_restants = nb_coups_restants - 1
                 nb_coups_restants -= 1
             Else ' la case n'est pas vide
                 Beep()
@@ -132,8 +132,8 @@ Public Class frmMain
         g.TranslateTransform(0, PictureBox1.Height)
         g.ScaleTransform(CSng(PictureBox1.Width) / CSng(300), -CSng(PictureBox1.Height) / CSng(300))
 
-        DrawingMatrix = g.Transform
-        'DrawingMatrix = New Drawing2D.Matrix()
+        DrawingMatrix = g.Transform ' as Drawing2D.Matrix
+        'DrawingMatrix = New 
         'DrawingMatrix.tra()
 
         InvDrawingMatrix = DrawingMatrix.Clone
@@ -188,8 +188,9 @@ Public Class frmMain
 
         afficher_grille(g)
 
-        'afficher_croix(g, 1, 1)
-        'afficher_cercle(g, 2, 3)
+        'afficher_croix(g, 0, 0)
+        'afficher_croix(g, 2, 1)
+        'afficher_cercle(g, 2, 2)
 
         ' afficher les pions
         For i = 0 To dimension - 1
@@ -209,6 +210,8 @@ Public Class frmMain
     Private Sub afficher_grille(ByRef g As Graphics)
         Dim i, j As Integer
         Dim stylo As Pen = Pens.Black
+
+        Debug.Print("afficher_grille")
         'Dim stylo As Pen
         'stylo = Pens.Black
         'stylo.Width = 2
@@ -225,13 +228,13 @@ Public Class frmMain
 
     Private Sub afficher_croix(ByRef g As Graphics, ByVal i As Integer, ByVal j As Integer)
         Dim stylo As Pen = Pens.Red
-        g.DrawLine(stylo, (i - 1) * 100, (j - 1) * 100, i * 100, j * 100)
-        g.DrawLine(stylo, (i - 1) * 100, j * 100, i * 100, (j - 1) * 100)
+        g.DrawLine(stylo, i * 100, j * 100, (i + 1) * 100, (j + 1) * 100)
+        g.DrawLine(stylo, i * 100, (j + 1) * 100, (i + 1) * 100, j * 100)
     End Sub
 
     Private Sub afficher_cercle(ByRef g As Graphics, ByVal i As Integer, ByVal j As Integer)
         Dim stylo As Pen = Pens.Blue
-        g.DrawEllipse(stylo, (i - 1) * 100, (j - 1) * 100, 100, 100)
+        g.DrawEllipse(stylo, i * 100, j * 100, 100, 100)
     End Sub
 
     Private Sub changer_joueur()
