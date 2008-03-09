@@ -67,9 +67,9 @@ Public Class frmMain
 
             If aJeu(Xentier, Yentier) = 0 Then ' la case est bien vide
                 aJeu(Xentier, Yentier) = joueur
+                nb_coups_restants -= 1 'nb_coups_restants = nb_coups_restants - 1
                 tester_victoire(Xentier, Yentier)
                 changer_joueur()
-                nb_coups_restants -= 1 'nb_coups_restants = nb_coups_restants - 1
             Else ' la case n'est pas vide
                 Beep()
             End If
@@ -257,6 +257,10 @@ Public Class frmMain
         If res_V = joueur ^ dimension Or res_H = joueur ^ dimension _
             Or res_D1 = joueur ^ dimension Or res_D2 = joueur ^ dimension Then
             etat_de_la_partie = joueur
+        End If
+
+        If etat_de_la_partie = 0 And nb_coups_restants = 0 Then
+            etat_de_la_partie = 3
         End If
 
     End Sub
