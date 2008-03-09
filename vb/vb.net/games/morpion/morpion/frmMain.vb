@@ -44,14 +44,9 @@ Public Class frmMain
         Dim Xentier, Yentier As Integer
 
         If e.Button = Windows.Forms.MouseButtons.Left And etat_de_la_partie = 0 Then
-            ' To FiX
-            'g.ScaleTransform(
-            'g.TransformPoints()
-
             Dim tabPoint(0) As PointF
             tabPoint(0) = e.Location
             Debug.Print("X:{0} Y:{1}", tabPoint(0).X, tabPoint(0).Y)
-
 
             InvDrawingMatrix.TransformPoints(tabPoint)
 
@@ -70,15 +65,11 @@ Public Class frmMain
                 Xentier = dimension - 1
             End If
 
-            'Debug.Print "(X,Y)=(" + CStr(X) + ";" + CStr(Y) + ")"
-            'Debug.Print "(X,Y)=(" + CStr(Xentier) + ";" + CStr(Yentier) + ")"
-
             If aJeu(Xentier, Yentier) = 0 Then ' la case est bien vide
                 aJeu(Xentier, Yentier) = joueur
                 tester_victoire(Xentier, Yentier)
                 changer_joueur()
-                'nb_coups_restants = nb_coups_restants - 1
-                nb_coups_restants -= 1
+                nb_coups_restants -= 1 'nb_coups_restants = nb_coups_restants - 1
             Else ' la case n'est pas vide
                 Beep()
             End If
@@ -119,8 +110,6 @@ Public Class frmMain
         g.ScaleTransform(CSng(PictureBox1.Width) / CSng(dimension * 100), -CSng(PictureBox1.Height) / CSng(dimension * 100))
 
         DrawingMatrix = g.Transform ' as Drawing2D.Matrix
-        'DrawingMatrix = New 
-        'DrawingMatrix.tra()
 
         InvDrawingMatrix = DrawingMatrix.Clone
         InvDrawingMatrix.Invert()
