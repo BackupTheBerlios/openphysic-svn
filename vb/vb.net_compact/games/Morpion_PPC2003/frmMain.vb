@@ -62,8 +62,8 @@ Public Class frmMain
             'Xentier = Int((tabPoint(0).X + 100) / 100 - 1)
             'Yentier = Int((tabPoint(0).Y + 100) / 100 - 1)
 
-            Xentier = Int((3.0 * e.X) / PictureBox1.Width)
-            Yentier = Int((3.0 * e.Y) / PictureBox1.Height)
+            Xentier = Int((CSng(dimension) * CSng(e.X)) / CSng(PictureBox1.Width))
+            Yentier = Int((CSng(dimension) * CSng(e.Y)) / CSng(PictureBox1.Height))
 
             'Debug.Print("Xentier:{0} Yentier:{1}", Xentier, Yentier)
 
@@ -81,9 +81,9 @@ Public Class frmMain
 
             If aJeu(Xentier, Yentier) = 0 Then ' la case est bien vide
                 aJeu(Xentier, Yentier) = joueur
+                nb_coups_restants -= 1 'nb_coups_restants = nb_coups_restants - 1
                 tester_victoire(Xentier, Yentier)
                 changer_joueur()
-                nb_coups_restants -= 1 'nb_coups_restants = nb_coups_restants - 1
             Else ' la case n'est pas vide
                 Beep()
             End If
@@ -265,6 +265,9 @@ Public Class frmMain
             etat_de_la_partie = joueur
         End If
 
+        If etat_de_la_partie = 0 And nb_coups_restants = 0 Then
+            etat_de_la_partie = 3
+        End If
     End Sub
 
 
