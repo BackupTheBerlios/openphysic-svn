@@ -116,7 +116,7 @@ Public Class frmMain
 
     Private Sub initialiser_affichage(ByRef g As Graphics)
         g.TranslateTransform(0, PictureBox1.Height)
-        g.ScaleTransform(CSng(PictureBox1.Width) / CSng(300), -CSng(PictureBox1.Height) / CSng(300))
+        g.ScaleTransform(CSng(PictureBox1.Width) / CSng(dimension * 100), -CSng(PictureBox1.Height) / CSng(dimension * 100))
 
         DrawingMatrix = g.Transform ' as Drawing2D.Matrix
         'DrawingMatrix = New 
