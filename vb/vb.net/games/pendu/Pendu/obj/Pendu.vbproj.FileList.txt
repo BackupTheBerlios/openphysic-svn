@@ -1,0 +1,10 @@
+bin\Debug\Pendu.exe
+bin\Debug\Pendu.pdb
+bin\Debug\Pendu.xml
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\Pendu.frmMain.resources
+obj\Debug\Pendu.Resources.resources
+obj\Debug\Pendu.vbproj.GenerateResource.Cache
+obj\Debug\Pendu.exe
+obj\Debug\Pendu.xml
+obj\Debug\Pendu.pdb
