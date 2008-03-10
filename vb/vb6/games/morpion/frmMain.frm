@@ -62,6 +62,8 @@ Dim i, j As Integer
 Const dimension_default = 3
 Dim dimension As Integer
 
+Dim nb_coups_restants As Integer
+
 'Dim aJeu(dimension_default, dimension_default) As Integer ' tableau décrivant les pions joués
 Dim aJeu() As Integer ' tableau décrivant les pions joués
 ' 0 pas de coup sur cette case
@@ -99,6 +101,8 @@ End Sub
 
 
 Private Sub lancer_partie()
+nb_coups_restants = dimension * dimension
+
 ' initialiser le tableau de jeu
 ' c'est nécessaire en cas de redémarrage d'une partie
 For i = 1 To dimension
@@ -167,6 +171,7 @@ If Button = 1 And etat_de_la_partie = 0 Then
     
     If aJeu(Xentier, Yentier) = 0 Then ' la case est bien vide
         aJeu(Xentier, Yentier) = joueur
+        nb_coups_restants = nb_coups_restants - 1
         tester_victoire Xentier, Yentier
         changer_joueur
     Else ' la case n'est pas vide
@@ -226,15 +231,15 @@ Private Sub afficher_jeu()
     afficher_message
 End Sub
 
-Private Function nb_coups_restants() As Integer
-For i = 1 To dimension
-    For j = 1 To dimension
-        If aJeu(i, j) = 0 Then
-            nb_coups_restants = nb_coups_restants + 1
-        End If
-    Next j
-Next i
-End Function
+'Private Function nb_coups_restants() As Integer
+'For i = 1 To dimension
+'    For j = 1 To dimension
+'        If aJeu(i, j) = 0 Then
+'            nb_coups_restants = nb_coups_restants + 1
+'        End If
+'    Next j
+'Next i
+'End Function
 
 Private Sub tester_victoire(ByVal X As Integer, ByVal Y As Integer)
 etat_de_la_partie = 0
@@ -270,6 +275,10 @@ Next i
 If res_V = joueur ^ dimension Or res_H = joueur ^ dimension _
     Or res_D1 = joueur ^ dimension Or res_D2 = joueur ^ dimension Then
     etat_de_la_partie = joueur
+End If
+
+If etat_de_la_partie = 0 And nb_coups_restants = 0 Then
+    etat_de_la_partie = 3
 End If
 
 End Sub
