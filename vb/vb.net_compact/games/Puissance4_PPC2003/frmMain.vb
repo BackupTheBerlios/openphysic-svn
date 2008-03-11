@@ -261,7 +261,8 @@ Public Class frmMain
     End Sub
 
 
-    ' Mise à l'échelle seule
+    ' Mise à l'échelle seule (pas de rotation)
+    ' ----------------------------------------
     ' Il faut installer JSLandscape ou autre driver (pour avoir le mode paysage
     Private Sub jeu_vers_pic0(ByRef x As Double, ByRef y As Double)
         'x = PictureBox1.Width - (x / nb_colonnes) * PictureBox1.Width
@@ -271,7 +272,7 @@ Public Class frmMain
 
 
     ' changement de coordonnées picturebox->jeu
-    ' remise à l'échelle + rotation -90°
+    ' remise à l'échelle sans rotation
     Private Sub pic0_vers_jeu(ByRef x As Double, ByRef y As Double)
         x = x / PictureBox1.Width * nb_colonnes
         y = ((PictureBox1.Height - y) / PictureBox1.Height) * nb_lignes
