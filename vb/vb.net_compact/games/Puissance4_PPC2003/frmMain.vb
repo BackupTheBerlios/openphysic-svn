@@ -34,9 +34,43 @@ Public Class frmMain
     Private Sub PictureBox1_Paint(ByVal sender As Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles PictureBox1.Paint
         g = e.Graphics
 
+        Dim i, j As Integer
+
+        g.Clear(Color.White)
+
         afficher_grille(g)
 
+        For j = 0 To nb_lignes - 1
+            For i = 0 To nb_colonnes - 1
+                afficher_jeton(g, i, j, aJeu(i, j))
+            Next i
+        Next j
+
     End Sub
+
+    Private Sub afficher_jeton(ByRef g As Graphics, ByVal X As Integer, ByVal Y As Integer, ByVal joueur As Integer)
+        If joueur = 1 Then
+            afficher_disque(g, X, Y, Color.Red)
+        ElseIf joueur = 2 Then
+            afficher_disque(g, X, Y, Color.Yellow)
+        Else
+            ' la case est vide !
+        End If
+    End Sub
+
+
+    Private Sub afficher_disque(ByRef g As Graphics, ByVal X As Integer, ByVal Y As Integer, ByVal couleur As Color)
+        Dim x1, y1 As Double
+        Dim w1, h1 As Double
+        x1 = X - 0.5 : y1 = Y - 0.5 : jeu_vers_pic(x1, y1)
+        w1 = rayon_jeton : h1 = rayon_jeton : jeu_vers_pic(w1, h1)
+
+        Dim stylo As Pen
+        stylo = New Pen(couleur)
+
+        g.DrawEllipse(stylo, x1, y1, w1, h1)
+    End Sub
+
 
     Private Sub PictureBox1_MouseUp(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles PictureBox1.MouseUp
         'MsgBox(String.Format("Debug: Button={0} Xpic={1} Ypic={2}", e.Button, e.X, e.Y)) ' coordonnée picturebox
