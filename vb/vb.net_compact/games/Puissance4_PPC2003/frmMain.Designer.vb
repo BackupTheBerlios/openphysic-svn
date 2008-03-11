@@ -24,12 +24,13 @@ Partial Public Class frmMain
         Me.mnuNouveau = New System.Windows.Forms.MenuItem
         Me.mnuApropos = New System.Windows.Forms.MenuItem
         Me.PictureBox1 = New System.Windows.Forms.PictureBox
-        Me.lblMessage = New System.Windows.Forms.Label
+        Me.mnuMessage = New System.Windows.Forms.MenuItem
         Me.SuspendLayout()
         '
         'mainMenu1
         '
         Me.mainMenu1.MenuItems.Add(Me.mnuNouveau)
+        Me.mainMenu1.MenuItems.Add(Me.mnuMessage)
         Me.mainMenu1.MenuItems.Add(Me.mnuApropos)
         '
         'mnuNouveau
@@ -42,19 +43,14 @@ Partial Public Class frmMain
         '
         'PictureBox1
         '
-        Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(240, 245)
+        Me.PictureBox1.Size = New System.Drawing.Size(240, 268)
         '
-        'lblMessage
+        'mnuMessage
         '
-        Me.lblMessage.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.lblMessage.Location = New System.Drawing.Point(0, 248)
-        Me.lblMessage.Name = "lblMessage"
-        Me.lblMessage.Size = New System.Drawing.Size(240, 20)
-        Me.lblMessage.Text = "Puissance 4"
-        Me.lblMessage.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.mnuMessage.Text = "&Message"
         '
         'frmMain
         '
@@ -62,7 +58,6 @@ Partial Public Class frmMain
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.AutoScroll = True
         Me.ClientSize = New System.Drawing.Size(240, 268)
-        Me.Controls.Add(Me.lblMessage)
         Me.Controls.Add(Me.PictureBox1)
         Me.Menu = Me.mainMenu1
         Me.Name = "frmMain"
@@ -73,6 +68,6 @@ Partial Public Class frmMain
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents mnuNouveau As System.Windows.Forms.MenuItem
     Friend WithEvents mnuApropos As System.Windows.Forms.MenuItem
-    Friend WithEvents lblMessage As System.Windows.Forms.Label
+    Friend WithEvents mnuMessage As System.Windows.Forms.MenuItem
 
 End Class

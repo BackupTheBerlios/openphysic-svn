@@ -1,6 +1,8 @@
 Option Explicit On
 
 Public Class frmMain
+    Const strTitre As String = "Puissance 4"
+
     Const nb_lignes As Integer = 6
     Const nb_colonnes As Integer = 7
 
@@ -22,6 +24,8 @@ Public Class frmMain
 
     Dim g As Graphics
 
+    Dim msg As String = strTitre
+
     Private Sub mnuApropos_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuApropos.Click
         MsgBox("Puissance 4" & Chr(13) & "par S. CELLES")
     End Sub
@@ -40,6 +44,9 @@ Public Class frmMain
 
         afficher_grille(g)
 
+        'afficher_disque(g, 2, 3, Color.Purple) ' Pour tester
+
+        ' afficher les jetons sur la grille
         For j = 0 To nb_lignes - 1
             For i = 0 To nb_colonnes - 1
                 afficher_jeton(g, i, j, aJeu(i, j))
@@ -60,48 +67,54 @@ Public Class frmMain
 
 
     Private Sub afficher_disque(ByRef g As Graphics, ByVal X As Integer, ByVal Y As Integer, ByVal couleur As Color)
+        Dim xc, yc As Double
         Dim x1, y1 As Double
-        Dim w1, h1 As Double
-        x1 = X - 0.5 : y1 = Y - 0.5 : jeu_vers_pic(x1, y1)
-        w1 = rayon_jeton : h1 = rayon_jeton : jeu_vers_pic(w1, h1)
+        Dim x2, y2 As Double
+        xc = X + 0.5 ' abscisse centre
+        yc = Y + 0.5 ' ordonnée centre
+        x1 = xc - rayon_jeton : y1 = yc + rayon_jeton : jeu_vers_pic(x1, y1)
+        x2 = xc + rayon_jeton : y2 = yc - rayon_jeton : jeu_vers_pic(x2, y2)
 
-        Dim stylo As Pen
-        stylo = New Pen(couleur)
+        ' Ellipse vide
+        'Dim stylo As Pen
+        'stylo = New Pen(couleur)
+        'g.DrawEllipse(stylo, Int(x1), Int(y1), x2 - x1, y2 - y1)
 
-        g.DrawEllipse(stylo, x1, y1, w1, h1)
+        ' Ellipse remplie
+        Dim brosse As Brush
+        brosse = New SolidBrush(couleur)
+        g.FillEllipse(brosse, Int(x1), Int(y1), x2 - x1, y2 - y1)
     End Sub
 
 
     Private Sub PictureBox1_MouseUp(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles PictureBox1.MouseUp
-        'MsgBox(String.Format("Debug: Button={0} Xpic={1} Ypic={2}", e.Button, e.X, e.Y)) ' coordonnée picturebox
+        'MsgBox(String.Format("Debug: Button={0}" & vbCrLf & "Xpic={1} Ypic={2}", e.Button, e.X, e.Y)) ' coordonnée picturebox
         Dim X, Y As Double
         X = e.X : Y = e.Y : pic_vers_jeu(X, Y) ' changement de coordonnées PicureBox vers Jeu
-        'MsgBox(String.Format("Debug: Button={0} Xjeu={1} Yjeu={2}", e.Button, X, Y)) ' coordonnée jeu (double)
+        'MsgBox(String.Format("Debug: Button={0}" & vbCrLf & "Xjeu={1} Yjeu={2}", e.Button, X, Y)) ' coordonnée jeu (double)
 
         Dim Xentier, Yentier As Integer
         Xentier = Int(X)
         Yentier = Int(Y)
-        'MsgBox(String.Format("Debug: Button={0} Xjeu={1} Yjeu={2}", e.Button, Int(X), Int(Y))) ' coordonnée jeu (integer)
+        'MsgBox(String.Format("Debug: Button={0}" & vbCrLf & "Xjeu={1} Yjeu={2}", e.Button, Xentier, Yentier)) ' coordonnée jeu (integer)
 
         If e.Button = Windows.Forms.MouseButtons.Left And etat_de_la_partie = 0 Then
-            Xentier = Int(X) + 1
-            Yentier = Int(Y) + 1
 
             ' En cas de clic sur la limite haute du PictureBox
-            If Yentier >= nb_lignes + 1 Then
-                Yentier = nb_lignes
-            End If
+            'If Yentier > nb_lignes - 1 Then
+            'Yentier = nb_lignes - 1
+            'End If
 
             ' En cas de clic sur la limite droite du PictureBox
-            If Xentier >= nb_colonnes + 1 Then
-                Xentier = nb_colonnes
-            End If
+            'If Xentier > nb_colonnes - 1 Then
+            'Xentier = nb_colonnes - 1
+            'End If
 
             If aNbPions(Xentier) < nb_lignes Then ' il reste de la place pour poser le pion
-                aJeu(Xentier, aNbPions(Xentier) + 1) = joueur ' placement du pion
+                aJeu(Xentier, aNbPions(Xentier)) = joueur ' placement du pion
                 aNbPions(Xentier) = aNbPions(Xentier) + 1 ' incrémentation du nb de pion sur la colonne
                 nb_coups_joues = nb_coups_joues + 1 ' incrémentation du nb de coups joués
-                tester_victoire(Xentier, aNbPions(Xentier))
+                tester_victoire(Xentier, aNbPions(Xentier) - 1)
                 changer_joueur()
             Else ' la case n'est pas vide
                 Beep()
@@ -110,7 +123,7 @@ Public Class frmMain
         End If
 
         afficher_jeu()
-        afficher_message()
+        gerer_message()
 
     End Sub
 
@@ -121,22 +134,38 @@ Public Class frmMain
         PictureBox1.Refresh()
     End Sub
 
+    Private Sub montrer_messages()
+        MsgBox(msg)
+    End Sub
 
-    Private Sub afficher_message()
+    Enum Message
+        Jeu
+        Important
+    End Enum
+
+    Private Sub ajouter_message(ByVal str As String, ByVal niveau As Message)
+        msg = str
+        If niveau = Message.Important Then
+            montrer_messages()
+            'MsgBox(msg)
+        End If
+    End Sub
+
+    Private Sub gerer_message()
         If etat_de_la_partie = 0 Then ' partie en cours
             If joueur = 1 Then
-                lblMessage.Text = "Joueur 1 (rouge) c'est à vous de jouer !" _
-                    + vbCrLf + "Il reste " + CStr(nb_coups_restants()) + " coup(s)"
+                ajouter_message("Joueur 1 (rouge) c'est à vous de jouer !" _
+                    + vbCrLf + "Il reste " + CStr(nb_coups_restants()) + " coup(s)", Message.Jeu)
             Else
-                lblMessage.Text = "Joueur 2 (jaune) c'est à vous de jouer !" _
-                    + vbCrLf + "Il reste " + CStr(nb_coups_restants()) + " coup(s)"
+                ajouter_message("Joueur 2 (jaune) c'est à vous de jouer !" _
+                    + vbCrLf + "Il reste " + CStr(nb_coups_restants()) + " coup(s)", Message.Jeu)
             End If
         ElseIf etat_de_la_partie = 1 Then
-            lblMessage.Text = "Le joueur 1 (rouge) a gagné !"
+            ajouter_message("Le joueur 1 (rouge) a gagné !", Message.Important)
         ElseIf etat_de_la_partie = 2 Then
-            lblMessage.Text = "Le joueur 2 (jaune) a gagné !"
+            ajouter_message("Le joueur 2 (jaune) a gagné !", Message.Important)
         ElseIf etat_de_la_partie = 3 Then
-            lblMessage.Text = "Match nul"
+            ajouter_message("Match nul", Message.Important)
         End If
     End Sub
 
@@ -158,7 +187,7 @@ Public Class frmMain
         joueur = 1
         etat_de_la_partie = 0
 
-        afficher_message()
+        gerer_message()
     End Sub
 
     Private Sub changer_joueur()
@@ -260,7 +289,7 @@ Public Class frmMain
 
         ' comptage du nb de voisins vers le bas
         voisins = 0
-        If aNbPions(X) >= alignes Then ' uniquement si la colonne comporte assez de pions
+        If aNbPions(X) >= alignes Then ' uniquement si la colonne comporte assez de pions (au moins autant que de pions à aligner)
             For i = 1 To alignes - 1
                 If aJeu(X, Y - i) = joueur Then
                     voisins = voisins + 1
@@ -278,7 +307,7 @@ Public Class frmMain
         voisins = 0
         ' voisins de gauche
         For j = 1 To alignes - 1
-            If X + j <= nb_colonnes Then
+            If X + j <= nb_colonnes - 1 Then
                 If aJeu(X + j, Y) = joueur Then
                     voisins = voisins + 1
                 Else
@@ -290,7 +319,7 @@ Public Class frmMain
 
         ' voisins de droite
         For j = 1 To alignes - 1
-            If X - j >= 1 Then
+            If X - j >= 0 Then
                 If aJeu(X - j, Y) = joueur Then
                     voisins = voisins + 1
                 Else
@@ -309,7 +338,7 @@ Public Class frmMain
         voisins = 0
         ' voisins de haut-droite
         For j = 1 To alignes - 1
-            If X + j <= nb_colonnes And Y + j <= nb_lignes Then
+            If X + j <= nb_colonnes - 1 And Y + j <= nb_lignes - 1 Then
                 If aJeu(X + j, Y + j) = joueur Then
                     voisins = voisins + 1
                 Else
@@ -320,7 +349,7 @@ Public Class frmMain
         Next j
         ' voisins de bas-gauche
         For j = 1 To alignes - 1
-            If X - j >= 1 And Y - j >= 1 Then
+            If X - j >= 0 And Y - j >= 0 Then
                 If aJeu(X - j, Y - j) = joueur Then
                     voisins = voisins + 1
                 Else
@@ -338,7 +367,7 @@ Public Class frmMain
         voisins = 0
         ' voisins de haut-gauche
         For j = 1 To alignes - 1
-            If X - j >= 1 And Y + j <= nb_lignes Then
+            If X - j >= 0 And Y + j <= nb_lignes - 1 Then
                 If aJeu(X - j, Y + j) = joueur Then
                     voisins = voisins + 1
                 Else
@@ -349,7 +378,7 @@ Public Class frmMain
         Next j
         ' voisins de bas-droite
         For j = 1 To alignes - 1
-            If X + j <= nb_colonnes And Y - j >= 1 Then
+            If X + j <= nb_colonnes - 1 And Y - j >= 0 Then
                 If aJeu(X + j, Y - j) = joueur Then
                     voisins = voisins + 1
                 Else
@@ -364,4 +393,7 @@ Public Class frmMain
         End If
     End Sub
 
+    Private Sub mnuMessage_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuMessage.Click
+        montrer_messages()
+    End Sub
 End Class
