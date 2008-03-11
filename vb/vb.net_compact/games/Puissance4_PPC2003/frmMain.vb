@@ -16,18 +16,30 @@ Public Class frmMain
     Dim joueur As Integer
     ' joueur = 1 ou 2
 
-    Dim etat_de_la_partie As Integer
+    Enum Partie
+        EnCours ' 0
+        GagneeParJoueur1 ' 1
+        GagneeParJoueur2 ' 2
+        Nulle ' 3
+    End Enum
+    Dim etat_de_la_partie As Partie
     ' 0 en cours
     ' 1 partie gagnée par joueur 1
     ' 2 partie gagnée par joueur 2
     ' 3 partie nulle
+
+    'Enum Affichage
+    '    Mode0
+    '    Mode90
+    'End Enum
+    'Dim mode_affichage As Affichage
 
     Dim g As Graphics
 
     Dim msg As String = strTitre
 
     Private Sub mnuApropos_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuApropos.Click
-        MsgBox("Puissance 4" & Chr(13) & "par S. CELLES")
+        MsgBox(strTitre & Chr(13) & "par S. CELLES")
     End Sub
 
     Private Sub mnuNouveau_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuNouveau.Click
@@ -199,6 +211,26 @@ Public Class frmMain
     End Sub
 
 
+    Private Sub jeu_vers_pic(ByRef x As Double, ByRef y As Double)
+        If mnuAffichage0.Checked Then
+            jeu_vers_pic0(x, y)
+        Else
+            jeu_vers_pic90(x, y)
+        End If
+    End Sub
+
+    Private Sub pic_vers_jeu(ByRef x As Double, ByRef y As Double)
+        If mnuAffichage0.Checked Then
+            pic0_vers_jeu(x, y)
+        Else
+            pic90_vers_jeu(x, y)
+        End If
+    End Sub
+
+
+    ' Pseudo mode paysage jeu_vers_pic90 et pic90_vers_jeu
+    ' -------------------
+
     ' changement de coordonnées jeu->picturebox
     '       xjeu
     '       /\
@@ -211,7 +243,7 @@ Public Class frmMain
     ' \ /
     '  ypic
     ' mise à l'échelle + rotation 90°
-    Private Sub jeu_vers_pic(ByRef x As Double, ByRef y As Double)
+    Private Sub jeu_vers_pic90(ByRef x As Double, ByRef y As Double)
         Dim xtemp As Double = x
         Dim ytemp As Double = y
         x = PictureBox1.Width - (ytemp / nb_lignes) * PictureBox1.Width
@@ -221,11 +253,28 @@ Public Class frmMain
 
     ' changement de coordonnées picturebox->jeu
     ' remise à l'échelle + rotation -90°
-    Private Sub pic_vers_jeu(ByRef x As Double, ByRef y As Double)
+    Private Sub pic90_vers_jeu(ByRef x As Double, ByRef y As Double)
         Dim xtemp As Double = x
         Dim ytemp As Double = y
         y = ((PictureBox1.Width - xtemp) / PictureBox1.Width) * nb_lignes
         x = ((PictureBox1.Height - ytemp) / PictureBox1.Height) * nb_colonnes
+    End Sub
+
+
+    ' Mise à l'échelle seule
+    ' Il faut installer JSLandscape ou autre driver (pour avoir le mode paysage
+    Private Sub jeu_vers_pic0(ByRef x As Double, ByRef y As Double)
+        'x = PictureBox1.Width - (x / nb_colonnes) * PictureBox1.Width
+        x = (x / nb_colonnes) * PictureBox1.Width
+        y = PictureBox1.Height - (y / nb_lignes) * PictureBox1.Height
+    End Sub
+
+
+    ' changement de coordonnées picturebox->jeu
+    ' remise à l'échelle + rotation -90°
+    Private Sub pic0_vers_jeu(ByRef x As Double, ByRef y As Double)
+        x = x / PictureBox1.Width * nb_colonnes
+        y = ((PictureBox1.Height - y) / PictureBox1.Height) * nb_lignes
     End Sub
 
     Private Sub tester_changement_jeu_vers_pic(ByRef g As Graphics)
@@ -271,6 +320,8 @@ Public Class frmMain
     End Function
 
     Private Sub frmMain_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        mnuAffichage0.Checked = True
+
         initialiser_jeu()
         afficher_jeu()
     End Sub
@@ -395,5 +446,17 @@ Public Class frmMain
 
     Private Sub mnuMessage_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuMessage.Click
         montrer_messages()
+    End Sub
+
+    Private Sub mnuAffichage0_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuAffichage0.Click
+        mnuAffichage0.Checked = True
+        mnuAffichage90.Checked = False
+        PictureBox1.Refresh()
+    End Sub
+
+    Private Sub mnuAffichage90_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuAffichage90.Click
+        mnuAffichage90.Checked = True
+        mnuAffichage0.Checked = False
+        PictureBox1.Refresh()
     End Sub
 End Class

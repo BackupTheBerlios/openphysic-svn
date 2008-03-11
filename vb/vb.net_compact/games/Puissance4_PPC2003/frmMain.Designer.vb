@@ -22,14 +22,18 @@ Partial Public Class frmMain
     Private Sub InitializeComponent()
         Me.mainMenu1 = New System.Windows.Forms.MainMenu
         Me.mnuNouveau = New System.Windows.Forms.MenuItem
-        Me.mnuApropos = New System.Windows.Forms.MenuItem
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox
         Me.mnuMessage = New System.Windows.Forms.MenuItem
+        Me.mnuApropos = New System.Windows.Forms.MenuItem
+        Me.mnuAffichage = New System.Windows.Forms.MenuItem
+        Me.mnuAffichage0 = New System.Windows.Forms.MenuItem
+        Me.mnuAffichage90 = New System.Windows.Forms.MenuItem
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox
         Me.SuspendLayout()
         '
         'mainMenu1
         '
         Me.mainMenu1.MenuItems.Add(Me.mnuNouveau)
+        Me.mainMenu1.MenuItems.Add(Me.mnuAffichage)
         Me.mainMenu1.MenuItems.Add(Me.mnuMessage)
         Me.mainMenu1.MenuItems.Add(Me.mnuApropos)
         '
@@ -37,9 +41,27 @@ Partial Public Class frmMain
         '
         Me.mnuNouveau.Text = "&Nouveau"
         '
+        'mnuMessage
+        '
+        Me.mnuMessage.Text = "&Message"
+        '
         'mnuApropos
         '
         Me.mnuApropos.Text = "&?"
+        '
+        'mnuAffichage
+        '
+        Me.mnuAffichage.MenuItems.Add(Me.mnuAffichage0)
+        Me.mnuAffichage.MenuItems.Add(Me.mnuAffichage90)
+        Me.mnuAffichage.Text = "&Affichage"
+        '
+        'mnuAffichage0
+        '
+        Me.mnuAffichage0.Text = "&0°"
+        '
+        'mnuAffichage90
+        '
+        Me.mnuAffichage90.Text = "&90°"
         '
         'PictureBox1
         '
@@ -47,10 +69,6 @@ Partial Public Class frmMain
         Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(240, 268)
-        '
-        'mnuMessage
-        '
-        Me.mnuMessage.Text = "&Message"
         '
         'frmMain
         '
@@ -69,5 +87,8 @@ Partial Public Class frmMain
     Friend WithEvents mnuNouveau As System.Windows.Forms.MenuItem
     Friend WithEvents mnuApropos As System.Windows.Forms.MenuItem
     Friend WithEvents mnuMessage As System.Windows.Forms.MenuItem
+    Friend WithEvents mnuAffichage As System.Windows.Forms.MenuItem
+    Friend WithEvents mnuAffichage0 As System.Windows.Forms.MenuItem
+    Friend WithEvents mnuAffichage90 As System.Windows.Forms.MenuItem
 
 End Class
