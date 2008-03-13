@@ -20,7 +20,7 @@ Partial Class AfficheurOctet
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Button1 = New System.Windows.Forms.Button
-        Me.Led1 = New Led.Led
+        Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel
         Me.SuspendLayout()
         '
         'Button1
@@ -32,20 +32,20 @@ Partial Class AfficheurOctet
         Me.Button1.Text = "Button1"
         Me.Button1.UseVisualStyleBackColor = True
         '
-        'Led1
+        'FlowLayoutPanel1
         '
-        Me.Led1.Couleur = System.Drawing.Color.Red
-        Me.Led1.Etat = Led.Led.LED.Eteinte
-        Me.Led1.Location = New System.Drawing.Point(59, 70)
-        Me.Led1.Name = "Led1"
-        Me.Led1.Size = New System.Drawing.Size(15, 15)
-        Me.Led1.TabIndex = 1
+        Me.FlowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.FlowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft
+        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(0, 0)
+        Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(370, 150)
+        Me.FlowLayoutPanel1.TabIndex = 2
         '
         'AfficheurOctet
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.Controls.Add(Me.Led1)
+        Me.Controls.Add(Me.FlowLayoutPanel1)
         Me.Controls.Add(Me.Button1)
         Me.Name = "AfficheurOctet"
         Me.Size = New System.Drawing.Size(370, 150)
@@ -53,6 +53,6 @@ Partial Class AfficheurOctet
 
     End Sub
     Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents Led1 As Led.Led
+    Friend WithEvents FlowLayoutPanel1 As System.Windows.Forms.FlowLayoutPanel
 
 End Class
