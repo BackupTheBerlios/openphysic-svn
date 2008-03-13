@@ -46,10 +46,10 @@ Public Class Led
 
     Dim g As Graphics
 
-
     Public Event EtatChanged()
     Public Event CouleurChanged()
-    'Public Shadows Event Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Public Shadows Event Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Public Shadows Event MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
     Public Sub New()
 
@@ -58,10 +58,9 @@ Public Class Led
 
         ' Ajoutez une initialisation quelconque après l'appel InitializeComponent().
         Debug.Print("Led")
-        Me.Couleur = Color.Red
+        Me.Couleur = Color.Red ' Color.FromArgb(255, 0, 0) ' rouge vif
         'Me.Couleur = Color.FromArgb(0, 255, 0) ' vert vif
     End Sub
-
 
 
     Private Sub PictureBox1_Paint(ByVal sender As Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles PictureBox1.Paint
@@ -96,6 +95,9 @@ Public Class Led
         End If
     End Sub
 
+    Private Sub PictureBox1_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles PictureBox1.Click
+
+    End Sub
 
     Public Property Etat() As LED
         Get
@@ -133,7 +135,7 @@ Public Class Led
 
     Public Sub Allumer()
         If m_Etat = LED.Eteinte Then ' LED éteinte
-            'RaiseEvent Change()
+            RaiseEvent EtatChanged()
         End If
 
         m_Etat = LED.Allumee
@@ -143,7 +145,7 @@ Public Class Led
 
     Public Sub Eteindre()
         If m_Etat = LED.Allumee Then ' LED Allumée
-            'RaiseEvent Change()
+            RaiseEvent EtatChanged()
         End If
 
         m_Etat = LED.Eteinte
@@ -152,7 +154,7 @@ Public Class Led
     End Sub
 
     Public Sub Inverser()
-        'RaiseEvent Change()
+        RaiseEvent EtatChanged()
 
         If m_Etat = LED.Allumee Then
             m_Etat = LED.Eteinte
@@ -171,7 +173,7 @@ Public Class Led
         Debug.Print("Resize UserControl")
         Dim d As Integer ' dimension (largeur ou hauteur car carré !!)
         Debug.Print("Resize")
-        d = Min(PictureBox1.Width, PictureBox1.Height)
+        d = Max(PictureBox1.Width, PictureBox1.Height)
         Me.Width = d
         Me.Height = d
     End Sub

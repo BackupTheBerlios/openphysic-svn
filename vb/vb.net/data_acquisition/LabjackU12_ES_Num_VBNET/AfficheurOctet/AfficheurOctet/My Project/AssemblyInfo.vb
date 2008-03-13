@@ -8,17 +8,17 @@ Imports System.Runtime.InteropServices
 
 ' Vérifiez les valeurs des attributs de l'assembly
 
-<Assembly: AssemblyTitle("Led")> 
+<Assembly: AssemblyTitle("AfficheurOctet")> 
 <Assembly: AssemblyDescription("")> 
 <Assembly: AssemblyCompany("")> 
-<Assembly: AssemblyProduct("Led")> 
-<Assembly: AssemblyCopyright("GNU General Public License")> 
+<Assembly: AssemblyProduct("AfficheurOctet")> 
+<Assembly: AssemblyCopyright("Copyright ©  2008")> 
 <Assembly: AssemblyTrademark("")> 
 
 <Assembly: ComVisible(False)>
 
 'Le GUID suivant est pour l'ID de la typelib si ce projet est exposé à COM
-<Assembly: Guid("92a97cd7-ab48-49e2-8ca2-814dff8938fb")> 
+<Assembly: Guid("a13613d7-4d52-4a7d-9068-08b15b79837c")> 
 
 ' Les informations de version pour un assembly se composent des quatre valeurs suivantes :
 '
