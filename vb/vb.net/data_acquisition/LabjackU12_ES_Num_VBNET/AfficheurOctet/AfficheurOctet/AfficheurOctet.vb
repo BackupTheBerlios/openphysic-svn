@@ -1,11 +1,19 @@
 ' Afficheur 8 bits
 ' ================
 
-' propriétés
+' Sébastien CELLES
+' IUT de Poitiers
+' Département Génie Thermique et Energie
+' s.celles at gmail.com
+
+
+' Propriétés (en lecture/écriture)
 '  Couleur : couleur de toutes les LED (allumées)
 '  N : nombre à afficher / nombre affiché
 
-' Rem : se passer des groupes de contrôles
+
+' Informations utiles
+' Se passer des groupes de contrôles (migration VB6->VB.Net)
 '  http://plasserre.developpez.com/v3-9.htm
 
 Option Explicit On
@@ -19,9 +27,7 @@ Public Class AfficheurOctet
     Dim m_N As Byte ' nb à afficher (sur 8 bits)
     Dim i As Integer
     ' couleur de toutes les leds (lorsqu'elles sont allumées)
-    Dim m_Couleur As Color = Color.FromArgb(0, 255, 0)
-
-    Private Led2 As Led.Led
+    Dim m_Couleur As Color
 
     Private Sub AfficheurOctet_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         FlowLayoutPanel1.FlowDirection = FlowDirection.RightToLeft
@@ -30,6 +36,9 @@ Public Class AfficheurOctet
             Leds(i) = New Led.Led
             Me.FlowLayoutPanel1.Controls.Add(Leds(i))
         Next i
+
+        Me.Couleur = Color.FromArgb(0, 255, 0)
+        Me.N = 0
     End Sub
 
 
@@ -64,15 +73,15 @@ Public Class AfficheurOctet
         'Debug.Print "afficher"
         Dim N As Byte
         N = m_N ' copie afin de ne pas modifier la valeur de m_N
-        Dim i As Integer = 0
-        For Each ctl As Led.Led In FlowLayoutPanel1.Controls
+        Dim i As Integer
+        For i = Nbits - 1 To 0 Step -1
             If N >= 2 ^ i Then ' bit à 1
-                ctl.Allumer()
+                Leds(i).Allumer()
+                N = N - CByte(2 ^ i)
             Else ' bit à 0
-                ctl.Eteindre()
+                Leds(i).Eteindre()
             End If
-            i = i + 1
-        Next
+        Next i
     End Sub
 
     Public Property Couleur() As Color
@@ -82,8 +91,12 @@ Public Class AfficheurOctet
         Set(ByVal value As Color)
             If value <> m_Couleur Then
                 m_Couleur = value
+                Dim i As Integer
+                For i = 0 To Nbits - 1
+                    Leds(i).Couleur = m_Couleur
+                Next i
                 ' PropertyChanged
-
+                afficher()
             End If
         End Set
     End Property
@@ -92,19 +105,31 @@ Public Class AfficheurOctet
     ' Cette propriété peut-être volontairement désactivée
     ' afin ne pas faciliter la vie aux élèves
     ' en mettant Private au lieu de Public
-    'Public Property Bit(ByVal thisbit As Byte) As Boolean
-    '    Get
-    '        Bit = Led1(thisbit).Etat
-    '    End Get
-    '    Set(ByVal new_val As Boolean)
-    '        If (Led1(thisbit).Etat = True And new_val = False) Then
-    '            m_N = m_N - CByte(2 ^ thisbit)
-    '        End If
-    '        If (Led1(thisbit).Etat = False And new_val = True) Then
-    '            m_N = m_N + CByte(2 ^ thisbit)
-    '        End If
-    ''PropertyChanged(Bit(thisbit))
-    '        afficher()
-    '    End Set
-    'End Property
+    Public Property Bit(ByVal thisbit As Byte) As Boolean
+        Get
+            Bit = CBool(Leds(thisbit).Etat)
+        End Get
+                Set(ByVal new_val As Boolean)
+            If (Leds(thisbit).Etat = Led.Led.LED.Allumee And new_val = False) Then
+                m_N = m_N - CByte(2 ^ thisbit)
+            End If
+            If (Leds(thisbit).Etat = Led.Led.LED.Eteinte And new_val = True) Then
+                m_N = m_N + CByte(2 ^ thisbit)
+            End If
+            'PropertyChanged(Bit(thisbit))
+            afficher()
+        End Set
+    End Property
+
+    '    Private Sub FlowLayoutPanel1_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles FlowLayoutPanel1.Click
+    'Debug.Print("Click on the layout")
+    'Debug.Print(N.ToString)
+    'Debug.Print(Bit(2).ToString)
+    'Bit(7) = True
+    'Bit(1) = False
+    'afficher()
+    'Debug.Print(N.ToString)
+    'End Sub
+
+
 End Class
