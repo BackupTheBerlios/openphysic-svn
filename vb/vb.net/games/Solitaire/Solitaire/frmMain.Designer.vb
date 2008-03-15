@@ -23,6 +23,7 @@ Partial Class frmMain
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip
         Me.mnuNouveau = New System.Windows.Forms.ToolStripMenuItem
         Me.mnuAideApropos = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuTest = New System.Windows.Forms.ToolStripMenuItem
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -38,7 +39,7 @@ Partial Class frmMain
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuNouveau, Me.mnuAideApropos})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuNouveau, Me.mnuAideApropos, Me.mnuTest})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(284, 24)
@@ -56,6 +57,12 @@ Partial Class frmMain
         Me.mnuAideApropos.Name = "mnuAideApropos"
         Me.mnuAideApropos.Size = New System.Drawing.Size(24, 20)
         Me.mnuAideApropos.Text = "&?"
+        '
+        'mnuTest
+        '
+        Me.mnuTest.Name = "mnuTest"
+        Me.mnuTest.Size = New System.Drawing.Size(41, 20)
+        Me.mnuTest.Text = "Test"
         '
         'frmMain
         '
@@ -78,5 +85,6 @@ Partial Class frmMain
     Friend WithEvents MenuStrip1 As System.Windows.Forms.MenuStrip
     Friend WithEvents mnuNouveau As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents mnuAideApropos As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuTest As System.Windows.Forms.ToolStripMenuItem
 
 End Class

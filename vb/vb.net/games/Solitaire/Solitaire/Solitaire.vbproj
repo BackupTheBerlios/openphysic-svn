@@ -6,11 +6,11 @@
     <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{2996C215-28A6-440A-85BC-3FB9AEC63DA3}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
-    <StartupObject>Solitaire.My.MyApplication</StartupObject>
+    <OutputType>Exe</OutputType>
+    <StartupObject>Solitaire.frmMain</StartupObject>
     <RootNamespace>Solitaire</RootNamespace>
     <AssemblyName>Solitaire</AssemblyName>
-    <MyType>WindowsForms</MyType>
+    <MyType>Console</MyType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
