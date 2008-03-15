@@ -19,17 +19,64 @@ Partial Class frmMain
     'Ne la modifiez pas à l'aide de l'éditeur de code.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox
+        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip
+        Me.mnuNouveau = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuAideApropos = New System.Windows.Forms.ToolStripMenuItem
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PictureBox1.Location = New System.Drawing.Point(0, 24)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(284, 240)
+        Me.PictureBox1.TabIndex = 0
+        Me.PictureBox1.TabStop = False
+        '
+        'MenuStrip1
+        '
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuNouveau, Me.mnuAideApropos})
+        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.MenuStrip1.Name = "MenuStrip1"
+        Me.MenuStrip1.Size = New System.Drawing.Size(284, 24)
+        Me.MenuStrip1.TabIndex = 1
+        Me.MenuStrip1.Text = "MenuStrip1"
+        '
+        'mnuNouveau
+        '
+        Me.mnuNouveau.Name = "mnuNouveau"
+        Me.mnuNouveau.Size = New System.Drawing.Size(67, 20)
+        Me.mnuNouveau.Text = "&Nouveau"
+        '
+        'mnuAideApropos
+        '
+        Me.mnuAideApropos.Name = "mnuAideApropos"
+        Me.mnuAideApropos.Size = New System.Drawing.Size(24, 20)
+        Me.mnuAideApropos.Text = "&?"
         '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(284, 264)
+        Me.Controls.Add(Me.PictureBox1)
+        Me.Controls.Add(Me.MenuStrip1)
+        Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "frmMain"
-        Me.Text = "Form1"
+        Me.Text = "Solitaire"
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.MenuStrip1.ResumeLayout(False)
+        Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
+    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
+    Friend WithEvents MenuStrip1 As System.Windows.Forms.MenuStrip
+    Friend WithEvents mnuNouveau As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuAideApropos As System.Windows.Forms.ToolStripMenuItem
 
 End Class
