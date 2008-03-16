@@ -1,5 +1,5 @@
 Option Explicit On
-Option Strict On
+'Option Strict On
 
 Imports System.Math
 
@@ -61,8 +61,9 @@ Public Class frmMain
         Dim g As Graphics
         g = e.Graphics
         g.Clear(Color.White)
-        Dim stylo As Pen
-        stylo = New Pen(Color.Black) 'Pens.Black
+        'Dim stylo As Pen
+        'stylo = Pens.Black
+        'stylo = New Pen(Color.Black) 'Pens.Black
         'g.DrawLine(stylo, 0, 0, PictureBox1.Width, PictureBox1.Height)
         afficher_tablier(g)
         'afficher_pions(g)
@@ -136,8 +137,9 @@ Public Class frmMain
         Dim x1, y1, x2, y2, xc, yc As Double
         Dim j1, i1, j2, i2 As Integer
         Dim stylo As Pen ' = Pens.Black
+        'stylo = Pens.Black
         stylo = New Pen(Color.Black)
-        stylo.Width = 1
+        'stylo.Width = 1
 
         Dim brosse As SolidBrush
         brosse = New SolidBrush(Color.Yellow)
@@ -165,8 +167,8 @@ Public Class frmMain
             For j = 0 To nb_colonnes - 1
                 pion = aJeu(i, j)
                 If pion <> Trou.Impossible Then
-                    j1 = j : i1 = i : jeu_vers_pic(CDbl(j1), CDbl(i1))
-                    j2 = j + 1 : i2 = i + 1 : jeu_vers_pic(CDbl(j2), CDbl(i2))
+                    j1 = j : i1 = i : jeu_vers_pic(j1, i1)
+                    j2 = j + 1 : i2 = i + 1 : jeu_vers_pic(j2, i2)
                     g.DrawRectangle(stylo, j1, i1, j2 - j1, i2 - i1) ' dessine juste la case !
 
                     If pion = Trou.Occupe Or aJeu(i, j) = Trou.PretADeplacer Then
