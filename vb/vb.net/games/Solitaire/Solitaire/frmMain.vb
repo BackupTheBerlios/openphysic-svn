@@ -1,10 +1,12 @@
 Option Explicit On
-Option Strict On
+'Option Strict On
 
 Imports System.Math
 
 Public Class frmMain
-    Dim dimension As Integer
+    'Dim dimension As Integer
+    Dim nb_colonnes As Integer = 7
+    Dim nb_lignes As Integer = 7
 
     Dim aJeu(,) As Trou
 
@@ -29,6 +31,7 @@ Public Class frmMain
         Impossible
         Vide
         Occupe
+        PretADeplacer
     End Enum
 
     Private Sub frmMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -53,7 +56,8 @@ Public Class frmMain
         stylo = Pens.Black
         'g.DrawLine(stylo, 0, 0, PictureBox1.Width, PictureBox1.Height)
         afficher_tablier(g)
-        afficher_tablier_console()
+        'afficher_pions(g)
+        'afficher_tablier_console()
     End Sub
 
     Private Sub afficher()
@@ -62,15 +66,16 @@ Public Class frmMain
 
     Private Sub initialiser_jeu()
         nb_coups_joues = 0
-        tab = Tablier.Anglais
+        tab = Tablier.Europeen
         mode = Situation.Arret
 
-        dimension = 7
-        ReDim aJeu(dimension - 1, dimension - 1)
+        'nb_colonnes = 8
+        'nb_lignes = 7
+        ReDim aJeu(nb_lignes - 1, nb_colonnes - 1)
 
         Dim i, j As Integer
-        For i = 0 To dimension - 1
-            For j = 0 To dimension - 1
+        For i = 0 To nb_lignes - 1
+            For j = 0 To nb_colonnes - 1
                 aJeu(i, j) = Trou.Occupe
             Next
         Next
@@ -79,9 +84,9 @@ Public Class frmMain
             For i = 0 To 1
                 For j = 0 To 1
                     aJeu(i, j) = Trou.Impossible
-                    aJeu(dimension - 1 - i, dimension - 1 - j) = Trou.Impossible
-                    aJeu(i, dimension - 1 - j) = Trou.Impossible
-                    aJeu(dimension - 1 - i, j) = Trou.Impossible
+                    aJeu(nb_lignes - 1 - i, nb_colonnes - 1 - j) = Trou.Impossible
+                    aJeu(i, nb_colonnes - 1 - j) = Trou.Impossible
+                    aJeu(nb_colonnes - 1 - i, j) = Trou.Impossible
                 Next
             Next
 
@@ -91,9 +96,9 @@ Public Class frmMain
                     If i = 1 And j = 1 Then
                     Else
                         aJeu(i, j) = Trou.Impossible
-                        aJeu(dimension - 1 - i, dimension - 1 - j) = Trou.Impossible
-                        aJeu(i, dimension - 1 - j) = Trou.Impossible
-                        aJeu(dimension - 1 - i, j) = Trou.Impossible
+                        aJeu(nb_lignes - 1 - i, nb_colonnes - 1 - j) = Trou.Impossible
+                        aJeu(i, nb_colonnes - 1 - j) = Trou.Impossible
+                        aJeu(nb_lignes - 1 - i, j) = Trou.Impossible
                     End If
                 Next
             Next
@@ -101,13 +106,73 @@ Public Class frmMain
 
         ' Enlever un pion
         ' Enlever le pion central
-        aJeu(CInt((dimension - 1) / 2), CInt((dimension - 1) / 2)) = Trou.Vide
+        aJeu(CInt((nb_lignes - 1) / 2), CInt((nb_colonnes - 1) / 2)) = Trou.Vide
 
 
     End Sub
 
     Private Sub afficher_tablier(ByVal g As Graphics)
-        Debug.Print("Graphics")
+        'Debug.Print("Graphics")
+        Dim i, j As Integer
+        Dim x1, y1, x2, y2 As Integer
+        Dim stylo As Pen ' = Pens.Black
+        Dim brosse As SolidBrush ' = Pens.Black
+
+        ' Tracé de la grille
+        '  lignes horizontales (sur jeu)
+        'For i = 1 To nb_lignes - 1
+        '' changement de coordonnées jeu->picturebox
+        'x1 = 0 : y1 = i : jeu_vers_pic(x1, y1)
+        'x2 = nb_colonnes : y2 = i : jeu_vers_pic(x2, y2)
+        'g.DrawLine(stylo, CInt(x1), CInt(y1), CInt(x2), CInt(y2)) ' ligne horizontale (sur jeu)
+        'Next i
+
+        '  lignes verticales (sur jeu)
+        'For j = 1 To nb_colonnes - 1
+        '' changement de coordonnées jeu->picturebox
+        'x1 = j : y1 = 0 : jeu_vers_pic(x1, y1)
+        'x2 = j : y2 = nb_lignes : jeu_vers_pic(x2, y2)
+        'g.DrawLine(stylo, CInt(x1), CInt(y1), CInt(x2), CInt(y2)) ' ligne verticale (sur jeu)
+        'Next j
+
+        For i = 0 To nb_lignes - 1
+            For j = 0 To nb_colonnes - 1
+                If aJeu(i, j) <> Trou.Impossible Then
+                    x1 = j : y1 = i : jeu_vers_pic(x1, y1)
+                    x2 = j + 1 : y2 = i + 1 : jeu_vers_pic(x2, y2)
+                    stylo = New Pen(Color.Black)
+                    stylo.Width = 1
+                    g.DrawRectangle(stylo, x1, y1, x2 - x1, y2 - y1)
+                    If aJeu(i, j) = Trou.Occupe Then
+                        'g.f()
+                    ElseIf aJeu(i, j) = Trou.PretADeplacer Then
+
+                    Else 'If aJeu(i, j) = Trou.Vide Then
+
+                    End If
+                End If
+            Next
+        Next
+    End Sub
+
+
+    ' Mise à l'échelle seule (pas de rotation)
+    ' ----------------------------------------
+    'Private Sub jeu_vers_pic(ByRef x As Double, ByRef y As Double)
+    '    x = (x / nb_colonnes) * PictureBox1.Width
+    '    y = (y / nb_lignes) * PictureBox1.Height
+    'End Sub
+    Private Sub jeu_vers_pic(ByRef x As Integer, ByRef y As Integer)
+        x = (x * PictureBox1.Width) / nb_colonnes
+        y = (y * PictureBox1.Height / nb_lignes)
+    End Sub
+
+
+    ' changement de coordonnées picturebox->jeu
+    ' remise à l'échelle sans rotation
+    Private Sub pic_vers_jeu(ByRef x As Double, ByRef y As Double)
+        x = (x * nb_colonnes) / PictureBox1.Width
+        y = (y * nb_lignes) / PictureBox1.Height
     End Sub
 
 
@@ -115,9 +180,9 @@ Public Class frmMain
         'Console.WriteLine("Console")
         Dim i, j As Integer
         Dim pion As Trou
-        For i = 0 To dimension - 1
+        For i = 0 To nb_lignes - 1
             Console.Write(" ")
-            For j = 0 To dimension - 1
+            For j = 0 To nb_colonnes - 1
                 pion = aJeu(i, j)
                 If pion = Trou.Impossible Then
                     Console.Write("#")
@@ -145,6 +210,7 @@ Public Class frmMain
             End If
         Else
             distance = 0
+            Err.Raise(5, , "Diagonale interdite")
         End If
     End Function
 
@@ -182,5 +248,10 @@ Public Class frmMain
             MsgBox(exc.Message)
         End Try
         afficher()
+    End Sub
+
+
+    Private Sub PictureBox1_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles PictureBox1.Resize
+        Me.afficher()
     End Sub
 End Class
