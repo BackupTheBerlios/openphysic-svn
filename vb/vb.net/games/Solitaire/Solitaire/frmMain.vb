@@ -34,6 +34,9 @@ Public Class frmMain
         PretADeplacer
     End Enum
 
+    Const rayon_jeton As Double = 0.4
+
+
     Private Sub frmMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         initialiser_jeu()
     End Sub
@@ -114,9 +117,14 @@ Public Class frmMain
     Private Sub afficher_tablier(ByVal g As Graphics)
         'Debug.Print("Graphics")
         Dim i, j As Integer
-        Dim x1, y1, x2, y2 As Integer
+        Dim x1, y1, x2, y2, xc, yc As Double
+        Dim j1, i1, j2, i2 As Integer
         Dim stylo As Pen ' = Pens.Black
-        Dim brosse As SolidBrush ' = Pens.Black
+        stylo = New Pen(Color.Black)
+        stylo.Width = 1
+
+        Dim brosse As SolidBrush
+        brosse = New SolidBrush(Color.Yellow)
 
         ' Tracé de la grille
         '  lignes horizontales (sur jeu)
@@ -135,18 +143,33 @@ Public Class frmMain
         'g.DrawLine(stylo, CInt(x1), CInt(y1), CInt(x2), CInt(y2)) ' ligne verticale (sur jeu)
         'Next j
 
+        Dim pion As Trou
+
         For i = 0 To nb_lignes - 1
             For j = 0 To nb_colonnes - 1
-                If aJeu(i, j) <> Trou.Impossible Then
-                    x1 = j : y1 = i : jeu_vers_pic(x1, y1)
-                    x2 = j + 1 : y2 = i + 1 : jeu_vers_pic(x2, y2)
-                    stylo = New Pen(Color.Black)
-                    stylo.Width = 1
-                    g.DrawRectangle(stylo, x1, y1, x2 - x1, y2 - y1)
-                    If aJeu(i, j) = Trou.Occupe Then
-                        'g.f()
-                    ElseIf aJeu(i, j) = Trou.PretADeplacer Then
+                pion = aJeu(i, j)
+                If pion <> Trou.Impossible Then
+                    j1 = j : i1 = i : jeu_vers_pic(j1, i1)
+                    j2 = j + 1 : i2 = i + 1 : jeu_vers_pic(j2, i2)
+                    g.DrawRectangle(stylo, j1, i1, j2 - j1, i2 - i1) ' dessine juste la case !
 
+                    If pion = Trou.Occupe Or aJeu(i, j) = Trou.PretADeplacer Then
+                        'x1 = j : y1 = i : jeu_vers_pic(x1, y1)
+                        'x2 = j + 1 : y2 = i + 1 : jeu_vers_pic(x2, y2)
+
+                        'Dim x1, y1 As Double
+                        'Dim x2, y2 As Double
+                        xc = j + 0.5 ' abscisse centre
+                        yc = i + 0.5 ' ordonnée centre
+                        x1 = xc - rayon_jeton : y1 = yc + rayon_jeton : jeu_vers_pic(x1, y1)
+                        x2 = xc + rayon_jeton : y2 = yc - rayon_jeton : jeu_vers_pic(x2, y2)
+
+                        If pion = Trou.Occupe Then
+                            brosse.Color = Color.Orange
+                        Else ' pion = Trou.PretADeplacer
+                            brosse.Color = Color.Red
+                        End If
+                        g.FillEllipse(brosse, CInt(x1), CInt(y1), CInt(x2 - x1), CInt(y2 - y1))
                     Else 'If aJeu(i, j) = Trou.Vide Then
 
                     End If
@@ -162,7 +185,7 @@ Public Class frmMain
     '    x = (x / nb_colonnes) * PictureBox1.Width
     '    y = (y / nb_lignes) * PictureBox1.Height
     'End Sub
-    Private Sub jeu_vers_pic(ByRef x As Integer, ByRef y As Integer)
+    Private Sub jeu_vers_pic(ByRef x As Double, ByRef y As Double)
         x = (x * PictureBox1.Width) / nb_colonnes
         y = (y * PictureBox1.Height / nb_lignes)
     End Sub
