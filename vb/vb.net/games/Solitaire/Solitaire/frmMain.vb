@@ -1,5 +1,5 @@
 Option Explicit On
-'Option Strict On
+Option Strict On
 
 Imports System.Math
 
@@ -165,8 +165,8 @@ Public Class frmMain
             For j = 0 To nb_colonnes - 1
                 pion = aJeu(i, j)
                 If pion <> Trou.Impossible Then
-                    j1 = j : i1 = i : jeu_vers_pic(j1, i1)
-                    j2 = j + 1 : i2 = i + 1 : jeu_vers_pic(j2, i2)
+                    j1 = j : i1 = i : jeu_vers_pic(CDbl(j1), CDbl(i1))
+                    j2 = j + 1 : i2 = i + 1 : jeu_vers_pic(CDbl(j2), CDbl(i2))
                     g.DrawRectangle(stylo, j1, i1, j2 - j1, i2 - i1) ' dessine juste la case !
 
                     If pion = Trou.Occupe Or aJeu(i, j) = Trou.PretADeplacer Then
@@ -303,8 +303,8 @@ Public Class frmMain
             'MsgBox(String.Format("Debug: Button={0}" & vbCrLf & "Xjeu={1} Yjeu={2}", e.Button, X, Y)) ' coordonnée jeu (double)
 
             Dim Xentier, Yentier As Integer
-            Xentier = Int(X)
-            Yentier = Int(Y)
+            Xentier = CInt(Int(X))
+            Yentier = CInt(Int(Y))
             'MsgBox(String.Format("Debug: Button={0}" & vbCrLf & "Xjeu={1} Yjeu={2}", e.Button, Xentier, Yentier)) ' coordonnée jeu (integer)
 
             If mode = Situation.Enlevement Then
