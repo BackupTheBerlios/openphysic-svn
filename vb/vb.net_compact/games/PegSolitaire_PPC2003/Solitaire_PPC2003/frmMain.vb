@@ -10,7 +10,7 @@ Public Class frmMain
 
     Dim aJeu(,) As Trou
 
-    Const strTitre As String = "Solitaire"
+    Const strTitre As String = "Peg Solitaire"
     Dim nb_coups_joues As Integer ' nb de coups joues
     Dim nb_pions_restants As Integer
 
@@ -62,7 +62,8 @@ Public Class frmMain
         g = e.Graphics
         g.Clear(Color.White)
         'Dim stylo As Pen
-        'stylo = New Pen(Color.Black)
+        'stylo = Pens.Black
+        'stylo = New Pen(Color.Black) 'Pens.Black
         'g.DrawLine(stylo, 0, 0, PictureBox1.Width, PictureBox1.Height)
         afficher_tablier(g)
         'afficher_pions(g)
@@ -136,8 +137,9 @@ Public Class frmMain
         Dim x1, y1, x2, y2, xc, yc As Double
         Dim j1, i1, j2, i2 As Integer
         Dim stylo As Pen ' = Pens.Black
+        'stylo = Pens.Black
         stylo = New Pen(Color.Black)
-        stylo.Width = 1
+        'stylo.Width = 1
 
         Dim brosse As SolidBrush
         brosse = New SolidBrush(Color.Yellow)
@@ -167,8 +169,6 @@ Public Class frmMain
                 If pion <> Trou.Impossible Then
                     j1 = j : i1 = i : jeu_vers_pic(j1, i1)
                     j2 = j + 1 : i2 = i + 1 : jeu_vers_pic(j2, i2)
-                    'j1 = j : i1 = i : jeu_vers_pic(CDbl(j1), CDbl(i1))
-                    'j2 = j + 1 : i2 = i + 1 : jeu_vers_pic(CDbl(j2), CDbl(i2))
                     g.DrawRectangle(stylo, j1, i1, j2 - j1, i2 - i1) ' dessine juste la case !
 
                     If pion = Trou.Occupe Or aJeu(i, j) = Trou.PretADeplacer Then
@@ -205,7 +205,6 @@ Public Class frmMain
     'End Sub
     Private Sub jeu_vers_pic(ByRef x As Double, ByRef y As Double)
         x = (x * PictureBox1.Width) / nb_colonnes
-        'x = (x * (PictureBox1.Width - 1)) / nb_colonnes
         y = (y * PictureBox1.Height / nb_lignes)
     End Sub
 
@@ -243,6 +242,15 @@ Public Class frmMain
     '    Console.WriteLine("---------")
     'End Sub
 
+    Enum Erreur
+        PasDePionADeplacer = 1
+        CaseOccupee
+        Distance
+        SautImpossible
+        MemePion
+        Diagonale
+    End Enum
+
     Private Function distance(ByVal i1 As Integer, ByVal j1 As Integer, ByVal i2 As Integer, ByVal j2 As Integer) As Integer
         If i1 = i2 Or j1 = j2 Then ' horizontale ou verticale 
             If i1 = i2 Then
@@ -252,7 +260,7 @@ Public Class frmMain
             End If
         Else
             distance = 0
-            Err.Raise(6, , "Diagonale interdite")
+            Err.Raise(Erreur.Diagonale, , "Diagonale interdite")
         End If
     End Function
 
@@ -260,7 +268,7 @@ Public Class frmMain
         Dim iM, jM As Integer
         If aJeu(i1, j1) = Trou.Occupe Or aJeu(i1, j1) = Trou.PretADeplacer Then
             If i1 = i2 And j1 = j2 Then
-                Err.Raise(5, , "C'est le même pion")
+                Err.Raise(Erreur.MemePion, , "C'est le même pion")
             ElseIf aJeu(i2, j2) = Trou.Vide Then
                 If distance(i1, j1, i2, j2) = 2 Then
                     iM = CInt((i1 + i2) / 2) : jM = CInt((j1 + j2) / 2)
@@ -270,18 +278,30 @@ Public Class frmMain
                         aJeu(iM, jM) = Trou.Vide
                         nb_coups_joues = nb_coups_joues + 1
                     Else
-                        Err.Raise(4, , "Pas de pion à sauter")
+                        Err.Raise(Erreur.SautImpossible, , "Pas de pion à sauter")
                     End If
                 Else
-                    Err.Raise(3, , "Distance différente de 2")
+                    Err.Raise(Erreur.Distance, , "Distance différente de 2")
                 End If
             Else
-                Err.Raise(2, , "Pas de place pour poser le pion")
+                Err.Raise(Erreur.CaseOccupee, , "Pas de place pour poser le pion")
             End If
         Else
-            Err.Raise(1, , "Pas de pion à déplacer")
+            Err.Raise(Erreur.PasDePionADeplacer, , "Pas de pion à déplacer")
         End If
     End Sub
+
+    'Private Sub mnuTest_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuTest.Click
+    '    Try
+    '        deplacer(1, 3, 3, 3)
+    '    Catch exc As Exception
+    ''Debug.Print(exc.ToString)
+    ''Debug.Print(exc.Message)
+    '        ajouter_message(exc.Message, Message.ErreurImportante)
+    '    End Try
+    '    afficher()
+    'End Sub
+
 
     Private Sub PictureBox1_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles PictureBox1.Resize
         Me.afficher()
@@ -317,7 +337,7 @@ Public Class frmMain
                         deplacer(iFrom, jFrom, Yentier, Xentier)
                         pret_a_deplacer = False
                     Catch exc As Exception
-                        If Err.Number <> 5 Then
+                        If Err.Number <> Erreur.MemePion Then
                             ajouter_message(exc.Message, Message.ErreurImportante)
                         End If
                         annuler_deplacement()
@@ -339,6 +359,7 @@ Public Class frmMain
     Private Sub enlever_pion(ByVal i As Integer, ByVal j As Integer)
         If aJeu(i, j) = Trou.Occupe Then
             aJeu(i, j) = Trou.Vide
+            'iFrom = i : jFrom = j ' pour pouvoir annuler
         Else
             Err.Raise(7, , "Pas de pion à enlever")
         End If
