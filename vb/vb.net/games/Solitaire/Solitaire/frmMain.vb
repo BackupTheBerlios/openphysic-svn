@@ -12,6 +12,7 @@ Public Class frmMain
 
     Const strTitre As String = "Solitaire"
     Dim nb_coups_joues As Integer ' nb de coups joues
+    Dim nb_pions_restants As Integer
 
     Enum Tablier
         Europeen
@@ -36,8 +37,12 @@ Public Class frmMain
 
     Const rayon_jeton As Double = 0.4
 
+    Dim pret_a_deplacer As Boolean
+    Dim iFrom, jFrom As Integer ' pion à déplacer
+
 
     Private Sub frmMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        tab = Tablier.Europeen
         initialiser_jeu()
     End Sub
 
@@ -49,7 +54,6 @@ Public Class frmMain
     Private Sub mnuAideApropos_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuAideApropos.Click
         MsgBox(strTitre & Chr(13) & "par S. CELLES")
     End Sub
-
 
     Private Sub PictureBox1_Paint(ByVal sender As Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles PictureBox1.Paint
         Dim g As Graphics
@@ -69,8 +73,12 @@ Public Class frmMain
 
     Private Sub initialiser_jeu()
         nb_coups_joues = 0
-        tab = Tablier.Europeen
+        nb_pions_restants = 0
+
+        update_menu_variantes()
+
         mode = Situation.Arret
+        pret_a_deplacer = False
 
         'nb_colonnes = 8
         'nb_lignes = 7
@@ -80,6 +88,7 @@ Public Class frmMain
         For i = 0 To nb_lignes - 1
             For j = 0 To nb_colonnes - 1
                 aJeu(i, j) = Trou.Occupe
+                nb_pions_restants = nb_pions_restants + 1
             Next
         Next
 
@@ -90,6 +99,7 @@ Public Class frmMain
                     aJeu(nb_lignes - 1 - i, nb_colonnes - 1 - j) = Trou.Impossible
                     aJeu(i, nb_colonnes - 1 - j) = Trou.Impossible
                     aJeu(nb_colonnes - 1 - i, j) = Trou.Impossible
+                    nb_pions_restants = nb_pions_restants - 4
                 Next
             Next
 
@@ -102,6 +112,7 @@ Public Class frmMain
                         aJeu(nb_lignes - 1 - i, nb_colonnes - 1 - j) = Trou.Impossible
                         aJeu(i, nb_colonnes - 1 - j) = Trou.Impossible
                         aJeu(nb_lignes - 1 - i, j) = Trou.Impossible
+                        nb_pions_restants = nb_pions_restants - 4
                     End If
                 Next
             Next
@@ -239,7 +250,7 @@ Public Class frmMain
 
     Private Sub deplacer(ByVal i1 As Integer, ByVal j1 As Integer, ByVal i2 As Integer, ByVal j2 As Integer)
         Dim iM, jM As Integer
-        If aJeu(i1, j1) = Trou.Occupe Then
+        If aJeu(i1, j1) = Trou.Occupe Or aJeu(i1, j1) = Trou.PretADeplacer Then
             If aJeu(i2, j2) = Trou.Vide Then
                 If distance(i1, j1, i2, j2) = 2 Then
                     iM = CInt((i1 + i2) / 2) : jM = CInt((j1 + j2) / 2)
@@ -276,5 +287,66 @@ Public Class frmMain
 
     Private Sub PictureBox1_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles PictureBox1.Resize
         Me.afficher()
+    End Sub
+
+    Private Sub PictureBox1_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles PictureBox1.MouseDown
+        If e.Button = Windows.Forms.MouseButtons.Left Then
+            Dim X, Y As Double
+            X = e.X : Y = e.Y : pic_vers_jeu(X, Y) ' changement de coordonnées PicureBox vers Jeu
+            'MsgBox(String.Format("Debug: Button={0}" & vbCrLf & "Xjeu={1} Yjeu={2}", e.Button, X, Y)) ' coordonnée jeu (double)
+
+            Dim Xentier, Yentier As Integer
+            Xentier = Int(X)
+            Yentier = Int(Y)
+            'MsgBox(String.Format("Debug: Button={0}" & vbCrLf & "Xjeu={1} Yjeu={2}", e.Button, Xentier, Yentier)) ' coordonnée jeu (integer)
+            If aJeu(Yentier, Xentier) = Trou.Occupe And Not pret_a_deplacer Then
+                aJeu(Yentier, Xentier) = Trou.PretADeplacer
+                pret_a_deplacer = True
+                iFrom = Yentier : jFrom = Xentier
+            ElseIf pret_a_deplacer Then
+                Try
+                    deplacer(iFrom, jFrom, Yentier, Xentier)
+                    pret_a_deplacer = False
+
+                Catch exc As Exception
+                    MsgBox(exc.Message)
+                    annuler_deplacement()
+                End Try
+            Else
+                annuler_deplacement()
+            End If
+        End If
+
+        afficher()
+    End Sub
+
+    Private Sub annuler_deplacement()
+        pret_a_deplacer = False
+        aJeu(iFrom, jFrom) = Trou.Occupe
+    End Sub
+
+    Private Sub mnuTablierEuropeen_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuTablierEuropeen.Click
+        tab = Tablier.Europeen
+        update_menu_variantes()
+        initialiser_jeu()
+        afficher()
+    End Sub
+
+
+    Private Sub mnuTablierAnglais_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuTablierAnglais.Click
+        tab = Tablier.Anglais
+        update_menu_variantes()
+        initialiser_jeu()
+        afficher()
+    End Sub
+
+    Private Sub update_menu_variantes()
+        If tab = Tablier.Europeen Then
+            mnuTablierEuropeen.Checked = True
+            mnuTablierAnglais.Checked = False
+        Else ' anglais
+            mnuTablierEuropeen.Checked = False
+            mnuTablierAnglais.Checked = True
+        End If
     End Sub
 End Class

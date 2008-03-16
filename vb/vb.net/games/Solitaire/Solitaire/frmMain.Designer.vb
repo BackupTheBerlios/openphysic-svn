@@ -22,6 +22,9 @@ Partial Class frmMain
         Me.PictureBox1 = New System.Windows.Forms.PictureBox
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip
         Me.mnuNouveau = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuVariantes = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuTablierEuropeen = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuTablierAnglais = New System.Windows.Forms.ToolStripMenuItem
         Me.mnuAideApropos = New System.Windows.Forms.ToolStripMenuItem
         Me.mnuTest = New System.Windows.Forms.ToolStripMenuItem
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -33,13 +36,13 @@ Partial Class frmMain
         Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PictureBox1.Location = New System.Drawing.Point(0, 24)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(284, 240)
+        Me.PictureBox1.Size = New System.Drawing.Size(284, 264)
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuNouveau, Me.mnuAideApropos, Me.mnuTest})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuNouveau, Me.mnuVariantes, Me.mnuAideApropos, Me.mnuTest})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(284, 24)
@@ -52,6 +55,25 @@ Partial Class frmMain
         Me.mnuNouveau.Size = New System.Drawing.Size(67, 20)
         Me.mnuNouveau.Text = "&Nouveau"
         '
+        'mnuVariantes
+        '
+        Me.mnuVariantes.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuTablierEuropeen, Me.mnuTablierAnglais})
+        Me.mnuVariantes.Name = "mnuVariantes"
+        Me.mnuVariantes.Size = New System.Drawing.Size(67, 20)
+        Me.mnuVariantes.Text = "&Variantes"
+        '
+        'mnuTablierEuropeen
+        '
+        Me.mnuTablierEuropeen.Name = "mnuTablierEuropeen"
+        Me.mnuTablierEuropeen.Size = New System.Drawing.Size(163, 22)
+        Me.mnuTablierEuropeen.Text = "Tablier &européen"
+        '
+        'mnuTablierAnglais
+        '
+        Me.mnuTablierAnglais.Name = "mnuTablierAnglais"
+        Me.mnuTablierAnglais.Size = New System.Drawing.Size(163, 22)
+        Me.mnuTablierAnglais.Text = "Tablier &anglais"
+        '
         'mnuAideApropos
         '
         Me.mnuAideApropos.Name = "mnuAideApropos"
@@ -63,12 +85,13 @@ Partial Class frmMain
         Me.mnuTest.Name = "mnuTest"
         Me.mnuTest.Size = New System.Drawing.Size(41, 20)
         Me.mnuTest.Text = "Test"
+        Me.mnuTest.Visible = False
         '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(284, 264)
+        Me.ClientSize = New System.Drawing.Size(284, 288)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.MainMenuStrip = Me.MenuStrip1
@@ -86,5 +109,8 @@ Partial Class frmMain
     Friend WithEvents mnuNouveau As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents mnuAideApropos As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents mnuTest As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuVariantes As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuTablierEuropeen As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuTablierAnglais As System.Windows.Forms.ToolStripMenuItem
 
 End Class
