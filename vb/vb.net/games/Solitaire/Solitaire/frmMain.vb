@@ -10,7 +10,7 @@ Public Class frmMain
 
     Dim aJeu(,) As Trou
 
-    Const strTitre As String = "Solitaire"
+    Const strTitre As String = "Peg Solitaire"
     Dim nb_coups_joues As Integer ' nb de coups joues
     Dim nb_pions_restants As Integer
 
