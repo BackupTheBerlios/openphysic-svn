@@ -310,13 +310,16 @@ Public Class frmMain
                     aJeu(Yentier, Xentier) = Trou.PretADeplacer
                     pret_a_deplacer = True
                     iFrom = Yentier : jFrom = Xentier
+                ElseIf aJeu(Yentier, Xentier) = Trou.Vide And Not pret_a_deplacer Then
+                    ' pour éviter le cas d'un clic juste après avoir enlevé la première pièce
                 ElseIf pret_a_deplacer Then
                     Try
                         deplacer(iFrom, jFrom, Yentier, Xentier)
                         pret_a_deplacer = False
-
                     Catch exc As Exception
-                        ajouter_message(exc.Message, Message.ErreurImportante)
+                        If Err.Number <> 5 Then
+                            ajouter_message(exc.Message, Message.ErreurImportante)
+                        End If
                         annuler_deplacement()
                     End Try
                 Else
