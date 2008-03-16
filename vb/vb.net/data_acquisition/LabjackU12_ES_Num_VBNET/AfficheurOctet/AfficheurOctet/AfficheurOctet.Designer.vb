@@ -28,7 +28,7 @@ Partial Class AfficheurOctet
         Me.FlowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft
         Me.FlowLayoutPanel1.Location = New System.Drawing.Point(0, 0)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(370, 150)
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(428, 201)
         Me.FlowLayoutPanel1.TabIndex = 2
         '
         'AfficheurOctet
@@ -37,7 +37,7 @@ Partial Class AfficheurOctet
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.Controls.Add(Me.FlowLayoutPanel1)
         Me.Name = "AfficheurOctet"
-        Me.Size = New System.Drawing.Size(370, 150)
+        Me.Size = New System.Drawing.Size(428, 201)
         Me.ResumeLayout(False)
 
     End Sub

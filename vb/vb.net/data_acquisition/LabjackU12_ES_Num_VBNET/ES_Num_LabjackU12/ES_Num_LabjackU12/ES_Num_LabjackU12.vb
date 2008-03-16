@@ -24,6 +24,10 @@ Public Class ES_Num_LabjackU12
     End Enum
     Dim m_mode(nb_ports - 1) As EMode ' mode de chaque port (False=écriture ; True=Lecture)
 
+    Dim gbPort(nb_ports - 1) As GroupBox
+    Dim cboPort(nb_ports - 1) As ComboBox
+    Dim txtPort(nb_ports - 1) As ComboBox
+    Dim AfficheurOctets(nb_ports - 1) As AfficheurOctet.AfficheurOctet
 
     Public Sub New()
 

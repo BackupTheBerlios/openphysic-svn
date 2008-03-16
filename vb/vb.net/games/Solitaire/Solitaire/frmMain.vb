@@ -40,8 +40,10 @@ Public Class frmMain
     Dim pret_a_deplacer As Boolean
     Dim iFrom, jFrom As Integer ' pion à déplacer
 
+    Dim msg As String ' Message
 
     Private Sub frmMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Me.Text = strTitre
         tab = Tablier.Europeen
         initialiser_jeu()
     End Sub
@@ -60,7 +62,7 @@ Public Class frmMain
         g = e.Graphics
         g.Clear(Color.White)
         Dim stylo As Pen
-        stylo = Pens.Black
+        stylo = New Pen(Color.Black) 'Pens.Black
         'g.DrawLine(stylo, 0, 0, PictureBox1.Width, PictureBox1.Height)
         afficher_tablier(g)
         'afficher_pions(g)
@@ -69,6 +71,7 @@ Public Class frmMain
 
     Private Sub afficher()
         PictureBox1.Refresh()
+        'gerer_message()
     End Sub
 
     Private Sub initialiser_jeu()
@@ -119,8 +122,10 @@ Public Class frmMain
         End If
 
         ' Enlever un pion
+        mode = Situation.Enlevement
+
         ' Enlever le pion central
-        aJeu(CInt((nb_lignes - 1) / 2), CInt((nb_colonnes - 1) / 2)) = Trou.Vide
+        'aJeu(CInt((nb_lignes - 1) / 2), CInt((nb_colonnes - 1) / 2)) = Trou.Vide
 
 
     End Sub
@@ -210,30 +215,30 @@ Public Class frmMain
     End Sub
 
 
-    Private Sub afficher_tablier_console()
-        'Console.WriteLine("Console")
-        Dim i, j As Integer
-        Dim pion As Trou
-        For i = 0 To nb_lignes - 1
-            Console.Write(" ")
-            For j = 0 To nb_colonnes - 1
-                pion = aJeu(i, j)
-                If pion = Trou.Impossible Then
-                    Console.Write("#")
-                ElseIf pion = Trou.Vide Then
-                    Console.Write(" ")
-                ElseIf pion = Trou.Occupe Then
-                    Console.Write("*")
-                Else
-                    Console.Write("?")
-                End If
-            Next
-            Console.WriteLine("")
-        Next
-        Console.WriteLine("---------")
-        Console.WriteLine("Nb=" & nb_coups_joues)
-        Console.WriteLine("---------")
-    End Sub
+    'Private Sub afficher_tablier_console()
+    ''Console.WriteLine("Console")
+    'Dim i, j As Integer
+    'Dim pion As Trou
+    '    For i = 0 To nb_lignes - 1
+    '        Console.Write(" ")
+    '        For j = 0 To nb_colonnes - 1
+    '            pion = aJeu(i, j)
+    '            If pion = Trou.Impossible Then
+    '                Console.Write("#")
+    '            ElseIf pion = Trou.Vide Then
+    '                Console.Write(" ")
+    '            ElseIf pion = Trou.Occupe Then
+    '                Console.Write("*")
+    '            Else
+    '                Console.Write("?")
+    '            End If
+    '        Next
+    '        Console.WriteLine("")
+    '    Next
+    '    Console.WriteLine("---------")
+    '    Console.WriteLine("Nb=" & nb_coups_joues)
+    '    Console.WriteLine("---------")
+    'End Sub
 
     Private Function distance(ByVal i1 As Integer, ByVal j1 As Integer, ByVal i2 As Integer, ByVal j2 As Integer) As Integer
         If i1 = i2 Or j1 = j2 Then ' horizontale ou verticale 
@@ -244,14 +249,16 @@ Public Class frmMain
             End If
         Else
             distance = 0
-            Err.Raise(5, , "Diagonale interdite")
+            Err.Raise(6, , "Diagonale interdite")
         End If
     End Function
 
     Private Sub deplacer(ByVal i1 As Integer, ByVal j1 As Integer, ByVal i2 As Integer, ByVal j2 As Integer)
         Dim iM, jM As Integer
         If aJeu(i1, j1) = Trou.Occupe Or aJeu(i1, j1) = Trou.PretADeplacer Then
-            If aJeu(i2, j2) = Trou.Vide Then
+            If i1 = i2 And j1 = j2 Then
+                Err.Raise(5, , "C'est le même pion")
+            ElseIf aJeu(i2, j2) = Trou.Vide Then
                 If distance(i1, j1, i2, j2) = 2 Then
                     iM = CInt((i1 + i2) / 2) : jM = CInt((j1 + j2) / 2)
                     If aJeu(iM, jM) = Trou.Occupe Then
@@ -273,16 +280,16 @@ Public Class frmMain
         End If
     End Sub
 
-    Private Sub mnuTest_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuTest.Click
-        Try
-            deplacer(1, 3, 3, 3)
-        Catch exc As Exception
-            'Debug.Print(exc.ToString)
-            'Debug.Print(exc.Message)
-            MsgBox(exc.Message)
-        End Try
-        afficher()
-    End Sub
+    'Private Sub mnuTest_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuTest.Click
+    '    Try
+    '        deplacer(1, 3, 3, 3)
+    '    Catch exc As Exception
+    ''Debug.Print(exc.ToString)
+    ''Debug.Print(exc.Message)
+    '        ajouter_message(exc.Message, Message.ErreurImportante)
+    '    End Try
+    '    afficher()
+    'End Sub
 
 
     Private Sub PictureBox1_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles PictureBox1.Resize
@@ -299,21 +306,31 @@ Public Class frmMain
             Xentier = Int(X)
             Yentier = Int(Y)
             'MsgBox(String.Format("Debug: Button={0}" & vbCrLf & "Xjeu={1} Yjeu={2}", e.Button, Xentier, Yentier)) ' coordonnée jeu (integer)
-            If aJeu(Yentier, Xentier) = Trou.Occupe And Not pret_a_deplacer Then
-                aJeu(Yentier, Xentier) = Trou.PretADeplacer
-                pret_a_deplacer = True
-                iFrom = Yentier : jFrom = Xentier
-            ElseIf pret_a_deplacer Then
-                Try
-                    deplacer(iFrom, jFrom, Yentier, Xentier)
-                    pret_a_deplacer = False
 
+            If mode = Situation.Enlevement Then
+                Try
+                    enlever_pion(Yentier, Xentier)
+                    mode = Situation.Jeu
                 Catch exc As Exception
-                    MsgBox(exc.Message)
-                    annuler_deplacement()
+                    ajouter_message(exc.Message, Message.ErreurImportante)
                 End Try
-            Else
-                annuler_deplacement()
+            ElseIf mode = Situation.Jeu Then
+                If aJeu(Yentier, Xentier) = Trou.Occupe And Not pret_a_deplacer Then
+                    aJeu(Yentier, Xentier) = Trou.PretADeplacer
+                    pret_a_deplacer = True
+                    iFrom = Yentier : jFrom = Xentier
+                ElseIf pret_a_deplacer Then
+                    Try
+                        deplacer(iFrom, jFrom, Yentier, Xentier)
+                        pret_a_deplacer = False
+
+                    Catch exc As Exception
+                        ajouter_message(exc.Message, Message.ErreurImportante)
+                        annuler_deplacement()
+                    End Try
+                Else
+                    annuler_deplacement()
+                End If
             End If
         End If
 
@@ -323,6 +340,14 @@ Public Class frmMain
     Private Sub annuler_deplacement()
         pret_a_deplacer = False
         aJeu(iFrom, jFrom) = Trou.Occupe
+    End Sub
+
+    Private Sub enlever_pion(ByVal i As Integer, ByVal j As Integer)
+        If aJeu(i, j) = Trou.Occupe Then
+            aJeu(i, j) = Trou.Vide
+        Else
+            Err.Raise(7, , "Pas de pion à enlever")
+        End If
     End Sub
 
     Private Sub mnuTablierEuropeen_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuTablierEuropeen.Click
@@ -349,4 +374,25 @@ Public Class frmMain
             mnuTablierAnglais.Checked = True
         End If
     End Sub
+
+    Enum Message
+        Jeu
+        ErreurIgnoree
+        ErreurImportante
+    End Enum
+
+    Public Sub ajouter_message(ByVal str As String, ByVal niveau As Message)
+        msg = str
+        If niveau = Message.ErreurImportante Then
+            montrer_messages()
+        End If
+    End Sub
+
+    Public Sub montrer_messages()
+        MsgBox(msg)
+    End Sub
+
+    'Public Sub gerer_message()
+
+    'End Sub
 End Class
