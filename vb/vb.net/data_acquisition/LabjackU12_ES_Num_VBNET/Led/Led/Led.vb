@@ -173,7 +173,8 @@ Public Class Led
         Debug.Print("Resize UserControl")
         Dim d As Integer ' dimension (largeur ou hauteur car carré !!)
         Debug.Print("Resize")
-        d = Max(PictureBox1.Width, PictureBox1.Height)
+        'd = Max(PictureBox1.Width, PictureBox1.Height)
+        d = Min(PictureBox1.Width, PictureBox1.Height)
         Me.Width = d
         Me.Height = d
     End Sub

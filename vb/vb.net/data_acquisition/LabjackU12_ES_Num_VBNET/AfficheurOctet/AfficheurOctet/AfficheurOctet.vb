@@ -35,18 +35,23 @@ Public Class AfficheurOctet
         'FlowLayoutPanel1.FlowDirection = FlowDirection.RightToLeft
         'layout.
         lay = New TableLayoutPanel
-        lay.BackColor = Color.Red
+        'lay.BackColor = Color.Red
         lay.SuspendLayout()
 
         lay.Dock = DockStyle.Fill
         lay.ColumnCount = 8
-        lay.RowCount = 1
+        lay.RowCount = 2
 
+        lay.RowStyles.Add(New RowStyle(SizeType.Percent, 100.0!))
+        'lay.RowStyles.Add(New RowStyle(SizeType.Percent, 100.0!))
+        'lay.RowStyles.Add(New RowStyle(SizeType.Absolute, 200.0!))
 
         For i = 0 To Nbits - 1
-            lay.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
+            lay.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 12.5!))
             Leds(i) = New Led.Led
-            Leds(i).Dock = DockStyle.Top   'DockStyle.Fill
+            'Leds(i).Anchor = AnchorStyles.Right And AnchorStyles.Left
+            'Leds(i).Anchor = AnchorStyles.Top And AnchorStyles.Bottom And AnchorStyles.Right And AnchorStyles.Left
+            Leds(i).Dock = DockStyle.Fill    'DockStyle.Fill
             lay.Controls.Add(Leds(i), Nbits - 1 - i, 0)
         Next i
 
