@@ -29,28 +29,50 @@ Public Class AfficheurOctet
     ' couleur de toutes les leds (lorsqu'elles sont allumées)
     Dim m_Couleur As Color
 
+    Dim lay As TableLayoutPanel
+
     Private Sub AfficheurOctet_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        FlowLayoutPanel1.FlowDirection = FlowDirection.RightToLeft
+        'FlowLayoutPanel1.FlowDirection = FlowDirection.RightToLeft
+        'layout.
+        lay = New TableLayoutPanel
+        lay.BackColor = Color.Red
+        lay.SuspendLayout()
+
+        lay.Dock = DockStyle.Fill
+        lay.ColumnCount = 8
+        lay.RowCount = 1
+
 
         For i = 0 To Nbits - 1
+            lay.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
             Leds(i) = New Led.Led
-            Me.FlowLayoutPanel1.Controls.Add(Leds(i))
+            Leds(i).Dock = DockStyle.Top   'DockStyle.Fill
+            lay.Controls.Add(Leds(i), Nbits - 1 - i, 0)
         Next i
 
-        Me.Couleur = Color.FromArgb(0, 255, 0)
+        Me.Controls.Add(Me.lay)
+        lay.ResumeLayout()
+
+        Me.Couleur = Color.FromArgb(0, 255, 0) ' vert
+        'Me.Couleur = Color.FromArgb(255, 0, 0) ' rouge
+        'Me.Couleur = Color.FromArgb(0, 0, 255) ' bleu
         Me.N = 0
+
+        'Leds(0).Allumer()
+        'Leds(7).Eteindre()
+
     End Sub
 
 
     Private Sub Eteindre_toutes()
-        For Each ctl As Led.Led In FlowLayoutPanel1.Controls
+        For Each ctl As Led.Led In lay.Controls
             ctl.Eteindre()
         Next
         afficher()
     End Sub
 
     Private Sub Allumer_toutes()
-        For Each ctl As Led.Led In FlowLayoutPanel1.Controls
+        For Each ctl As Led.Led In lay.Controls
             ctl.Allumer()
         Next
         afficher()
