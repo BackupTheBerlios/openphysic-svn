@@ -54,7 +54,7 @@ Public Class frmMain
         afficher_jeu()
     End Sub
 
-    Private Sub PictureBox1_Paint(ByVal sender As Object, ByVal e As System.Windows.Forms.PaintEventArgs)
+    Private Sub PictureBox1_Paint(ByVal sender As Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles PictureBox1.Paint
         g = e.Graphics
 
         Dim i, j As Integer
@@ -106,7 +106,7 @@ Public Class frmMain
     End Sub
 
 
-    Private Sub PictureBox1_MouseUp(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs)
+    Private Sub PictureBox1_MouseUp(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles PictureBox1.MouseUp
         'MsgBox(String.Format("Debug: Button={0}" & vbCrLf & "Xpic={1} Ypic={2}", e.Button, e.X, e.Y)) ' coordonnée picturebox
         Dim X, Y As Double
         X = e.X : Y = e.Y : pic_vers_jeu(X, Y) ' changement de coordonnées PicureBox vers Jeu
@@ -475,4 +475,5 @@ Public Class frmMain
     Private Sub frmMain_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Resize
         PictureBox1.Refresh()
     End Sub
+
 End Class
