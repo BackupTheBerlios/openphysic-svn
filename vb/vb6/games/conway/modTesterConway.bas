@@ -3,10 +3,10 @@ Option Explicit
 
 Public Sub tester_limites(ByVal nb_colonnes As Integer, ByVal nb_lignes, ByRef aGrille() As Integer)
 ' Test des limites
-aGrille(1, 1) = Cellule.EnCoursDeVie ' haut gauche
-aGrille(nb_colonnes, nb_lignes) = Cellule.EnCoursDeVie   ' bas gauche
-aGrille(1, nb_lignes) = Cellule.EnCoursDeVie  ' Bas droite
-aGrille(nb_colonnes, 1) = Cellule.EnCoursDeVie  ' haut droit
+aGrille(0, 0) = Cellule.EnCoursDeVie ' haut gauche
+aGrille(nb_colonnes - 1, nb_lignes - 1) = Cellule.EnCoursDeVie ' bas gauche
+aGrille(0, nb_lignes - 1) = Cellule.EnCoursDeVie ' Bas droite
+aGrille(nb_colonnes - 1, 0) = Cellule.EnCoursDeVie ' haut droit
 End Sub
 
 Public Sub tester_nb_voisins(ByVal nb_colonnes As Integer, ByVal nb_lignes, ByRef aGrille() As Integer)

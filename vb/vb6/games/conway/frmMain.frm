@@ -69,8 +69,8 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
 
-Const nb_lignes = 30
-Const nb_colonnes = 50
+Const nb_lignes = 3
+Const nb_colonnes = 5
 
 Enum Cellule
     Morte 'PasDeCellule
@@ -79,7 +79,7 @@ Enum Cellule
     Mourante
 '    UneSeuleGeneration
 End Enum
-Dim aGrille(1 To nb_colonnes, 1 To nb_lignes) As Integer   ' matrice du jeu
+Dim aGrille(0 To nb_colonnes - 1, 0 To nb_lignes - 1) As Integer ' matrice du jeu
 
 Dim nb_coups_joues As Integer ' nb de coups joues
 
@@ -116,14 +116,14 @@ Private Sub initialiser_jeu()
 Dim i, j As Integer
 
 ' Effacement de la matrice de jeu
-For j = 1 To nb_lignes
-    For i = 1 To nb_colonnes
+For j = 0 To nb_lignes - 1
+    For i = 0 To nb_colonnes - 1
         aGrille(i, j) = Cellule.Morte
     Next i
 Next j
 
 'tester_toutes_configurations nb_colonnes, nb_lignes, aGrille
-tester_blinker1 nb_colonnes, nb_lignes, aGrille
+'tester_blinker1 nb_colonnes, nb_lignes, aGrille
 'tester_naissance nb_colonnes, nb_lignes, aGrille
 'tester_nb_voisins nb_colonnes, nb_lignes, aGrille
 'tester_limites nb_colonnes, nb_lignes, aGrille
@@ -148,19 +148,19 @@ Dim i, j As Integer
 ' Tracé de la grille
 Picture1.ForeColor = vbBlack ' couleur de tracé
 Picture1.FillColor = vbBlack ' couleur de remplissage
-For i = 1 To nb_lignes - 2
-    Picture1.Line (0, i)-(nb_colonnes - 1, i) ' ligne horizontale
+For i = 1 To nb_lignes - 1
+    Picture1.Line (0, i)-(nb_colonnes, i)  ' ligne horizontale
 Next i
 
-For j = 1 To nb_colonnes - 2
-    Picture1.Line (j, 0)-(j, nb_lignes - 1) ' ligne verticale
+For j = 1 To nb_colonnes - 1
+    Picture1.Line (j, 0)-(j, nb_lignes)  ' ligne verticale
 Next j
 End Sub
 
 Private Sub afficher_cellules()
 Dim X, Y As Integer
-For X = 1 To nb_colonnes
-    For Y = 1 To nb_lignes
+For X = 0 To nb_colonnes - 1
+    For Y = 0 To nb_lignes - 1
         afficher_cellule X, Y, aGrille(X, Y)
     Next Y
 Next X
@@ -195,7 +195,7 @@ Select Case etat
 End Select
 
 'Picture1.ForeColor = Picture1.FillColor ' contour
-Picture1.Line (X - 1, Y - 1)-(X, Y), , B
+Picture1.Line (X, Y)-(X + 1, Y + 1), , B
 
 End Sub
 
@@ -203,7 +203,7 @@ Private Sub afficher_jeu()
 afficher_grille
 
 afficher_cellules
-'afficher_cellule 2, 3, 1
+'afficher_cellule 2, 3, Cellule.EnCoursDeVie
 
 afficher_messages
 End Sub
@@ -256,10 +256,10 @@ nb_voisins = 0
 
 Dim Xg, Xd As Integer ' Gauche/Droite
 Dim Yh, Yb As Integer ' Haut/Bas
-Xg = bordure(X - 1, 1, nb_colonnes)
-Xd = bordure(X + 1, 1, nb_colonnes)
-Yh = bordure(Y - 1, 1, nb_lignes)
-Yb = bordure(Y + 1, 1, nb_lignes)
+Xg = bordure(X - 1, 0, nb_colonnes - 1)
+Xd = bordure(X + 1, 0, nb_colonnes - 1)
+Yh = bordure(Y - 1, 0, nb_lignes - 1)
+Yb = bordure(Y + 1, 1, nb_lignes - 1)
 
 If aGrille(Xg, Yh) = etat Then '1
     nb_voisins = nb_voisins + 1
