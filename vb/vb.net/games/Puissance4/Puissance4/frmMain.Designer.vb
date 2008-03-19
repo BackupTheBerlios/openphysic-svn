@@ -24,7 +24,10 @@ Partial Class frmMain
         Me.mnuApropos = New System.Windows.Forms.ToolStripMenuItem
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip
         Me.PictureBox1 = New System.Windows.Forms.PictureBox
+        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel
+        Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel
         Me.MenuStrip1.SuspendLayout()
+        Me.StatusStrip1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -40,7 +43,7 @@ Partial Class frmMain
         'mnuNouveau
         '
         Me.mnuNouveau.Name = "mnuNouveau"
-        Me.mnuNouveau.Size = New System.Drawing.Size(62, 20)
+        Me.mnuNouveau.Size = New System.Drawing.Size(67, 20)
         Me.mnuNouveau.Text = "&Nouveau"
         '
         'mnuApropos
@@ -51,11 +54,11 @@ Partial Class frmMain
         '
         'StatusStrip1
         '
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.ToolStripStatusLabel2})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 355)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.Size = New System.Drawing.Size(440, 22)
         Me.StatusStrip1.TabIndex = 2
-        Me.StatusStrip1.Text = "StatusStrip1"
         '
         'PictureBox1
         '
@@ -65,6 +68,20 @@ Partial Class frmMain
         Me.PictureBox1.Size = New System.Drawing.Size(440, 331)
         Me.PictureBox1.TabIndex = 3
         Me.PictureBox1.TabStop = False
+        '
+        'ToolStripStatusLabel1
+        '
+        Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(121, 17)
+        Me.ToolStripStatusLabel1.Text = "ToolStripStatusLabel1"
+        Me.ToolStripStatusLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'ToolStripStatusLabel2
+        '
+        Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
+        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(121, 17)
+        Me.ToolStripStatusLabel2.Text = "ToolStripStatusLabel2"
+        Me.ToolStripStatusLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'frmMain
         '
@@ -79,6 +96,8 @@ Partial Class frmMain
         Me.Text = "Puissance 4"
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
+        Me.StatusStrip1.ResumeLayout(False)
+        Me.StatusStrip1.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -89,5 +108,7 @@ Partial Class frmMain
     Friend WithEvents mnuApropos As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents StatusStrip1 As System.Windows.Forms.StatusStrip
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
+    Friend WithEvents ToolStripStatusLabel1 As System.Windows.Forms.ToolStripStatusLabel
+    Friend WithEvents ToolStripStatusLabel2 As System.Windows.Forms.ToolStripStatusLabel
 
 End Class

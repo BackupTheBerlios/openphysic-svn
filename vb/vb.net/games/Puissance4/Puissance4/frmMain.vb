@@ -167,7 +167,8 @@ Public Class frmMain
         If niveau = Message.Important Then
             montrer_messages()
         Else
-            StatusStrip1.Text = msg
+            ToolStripStatusLabel1.Text = str
+            ToolStripStatusLabel2.Text = "Il reste " & nb_coups_restants() & " coup(s)"
             'MsgBox(msg)
         End If
     End Sub
@@ -175,11 +176,9 @@ Public Class frmMain
     Private Sub gerer_message()
         If etat_de_la_partie = 0 Then ' partie en cours
             If joueur = 1 Then
-                ajouter_message("Joueur 1 (rouge) c'est à vous de jouer !" _
-                    + vbCrLf + "Il reste " + CStr(nb_coups_restants()) + " coup(s)", Message.Jeu)
+                ajouter_message("Joueur 1 (rouge) c'est à vous de jouer !", Message.Jeu)
             Else
-                ajouter_message("Joueur 2 (jaune) c'est à vous de jouer !" _
-                    + vbCrLf + "Il reste " + CStr(nb_coups_restants()) + " coup(s)", Message.Jeu)
+                ajouter_message("Joueur 2 (jaune) c'est à vous de jouer !", Message.Jeu)
             End If
         ElseIf etat_de_la_partie = 1 Then
             ajouter_message("Le joueur 1 (rouge) a gagné !", Message.Important)
@@ -331,6 +330,7 @@ Public Class frmMain
 
     Private Sub frmMain_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'mnuAffichage0.Checked = True
+        ToolStripStatusLabel1.Text = strTitre
 
         initialiser_jeu()
         afficher_jeu()
