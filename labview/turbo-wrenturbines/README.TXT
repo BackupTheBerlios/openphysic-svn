@@ -25,3 +25,7 @@ channel_2_pulsewidth.vi / channel_2_u8.vi / channel_2_u16.vi / channel_2_vdc.vi 
 
 calibration_stick_trim.vi : sous-vi étalonnage du stick/trim afin de régler la position pour l'arrêt, le ralenti et la pleine puissance
 
+
+ToDo
+Testeur de servo USB avec drivers FTDI D2XX
+voir ouverture et fermeture du handle du matériel
