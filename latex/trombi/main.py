@@ -40,29 +40,21 @@ FILE.write(r"""
 for NOM, PRENOM, NOMPRENOM, PHOTO in filecvs:
 	#eleve = row[0]
 	if PHOTO=='':
-		PHOTO="no_photo.jpg"
+		PHOTO="img/"+"nophoto.jpg"
 	else:
 		try:
 			value = int(PHOTO)
 		except ValueError:
 			value = None
 
-		if value is Not None:
-			PHOTO="%(#)06d" % {"#": value} + ".jpg"
-		else:
-			PHOTO="err.jpg"
-		#if value is not None:
-		#	#Mise en forme du numero de la photo
-		#	PHOTO="%(#)06d" % {"#": value} + ".jpg"
+		if value is not None:
+			PHOTO="img/"+"%(#)06d" % {"#": value} + ".jpg"
 		#else:
-		#	raise ValueError, "%s is not a number" % PHOTO
+		#	PHOTO="err.jpg"
 
-
-	PHOTO="img/"+PHOTO
-
-	params={ 'NOM': NOM, 'PRENOM':PRENOM, 'NOMPRENOM':NOMPRENOM, 'PHOTO':PHOTO } 
+	params={ 'NOM':NOM, 'PRENOM':PRENOM, 'NOMPRENOM':NOMPRENOM, 'PHOTO':PHOTO } 
 	FILE.write(r""" 
-%   %(NOM)s %(PRENOM)s %(NOMPRENOM)s %(PHOTO)s
+   %(NOM)s %(PRENOM)s %(NOMPRENOM)s %(PHOTO)s
 """%params)
 
 # Fin du fichier .tex
