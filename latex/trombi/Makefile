@@ -1,8 +1,8 @@
 all:
 	python main.py
-	pdflatex main.tex
+	#pdflatex main.tex
 
 .PHONY: clean
 
 clean:
-	$(RM) *.log
+	$(RM) *.log *~ *.pdf
