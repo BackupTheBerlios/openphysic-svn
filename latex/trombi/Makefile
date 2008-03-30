@@ -1,7 +1,8 @@
 all:
 	python main.py
-	cat main.tex
-	#pdflatex main.tex
+	#cat main.tex
+	pdflatex main.tex
+	xpdf main.pdf
 
 .PHONY: clean
 
