@@ -41,9 +41,10 @@ Trombinoscope
 
 # Partie centrale du fichier .tex
 #for row in filecvs:
+i=0
 for NOM, PRENOM, NOMPRENOM, PHOTO in filecvs:
 	#eleve = row[0]
-	if NOM<>"NOM":
+	if i<>0:
 		if PHOTO=='':
 			PHOTO="img/"+"nophoto.png"
 		else:
@@ -57,11 +58,12 @@ for NOM, PRENOM, NOMPRENOM, PHOTO in filecvs:
 			#else:
 			#	PHOTO="err.jpg"
 
-		params={ 'NOM':NOM, 'PRENOM':PRENOM, 'NOMPRENOM':NOMPRENOM, 'PHOTO':PHOTO } 
+		params={ 'NOM':NOM, 'PRENOM':PRENOM, 'NOMPRENOM':NOMPRENOM, 'PHOTO':PHOTO, "#":i} 
 		FILE.write(r""" 
 %   %(NOM)s %(PRENOM)s %(NOMPRENOM)s %(PHOTO)s
-   %(NOM)s %(PRENOM)s %(NOMPRENOM)s \includegraphics{%(PHOTO)s}
+   %(#)03d %(NOM)s %(PRENOM)s %(NOMPRENOM)s \includegraphics{%(PHOTO)s}
 """%params)
+	i=i+1
 
 # Fin du fichier .tex
 FILE.write(r""" 
