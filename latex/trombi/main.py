@@ -36,9 +36,18 @@ FILE.write(r"""
 """)
 
 # Partie centrale du fichier .tex
-FILE.write(r""" 
-   Paysage
-""")
+#for row in filecvs:
+for NOM, PRENOM, NOMPRENOM, PHOTO in filecvs:
+	#eleve = row[0]
+	if PHOTO=='':
+		PHOTO="no_photo.jpg"
+
+	PHOTO="img/"+PHOTO
+
+	params={ 'NOM': NOM, 'PRENOM':PRENOM, 'NOMPRENOM':NOMPRENOM, 'PHOTO':PHOTO } 
+	FILE.write(r""" 
+   %(NOM)s %(PRENOM)s %(NOMPRENOM)s %(PHOTO)s
+"""%params)
 
 # Fin du fichier .tex
 FILE.write(r""" 
