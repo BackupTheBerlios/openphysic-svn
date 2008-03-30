@@ -2,7 +2,7 @@ all:
 	python main.py
 	#cat main.tex
 	pdflatex main.tex
-	xpdf main.pdf
+	xpdf main.pdf -fullscreen
 
 .PHONY: clean
 
