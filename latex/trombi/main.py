@@ -25,36 +25,42 @@ FILE.write(r"""
 \usepackage[T1]{fontenc}        % sortie
 
 \usepackage{lscape}
-\title{Trombinoscope}
+%\title{Trombinoscope}
 \author{\null}
-\date{\today}
-%\date{\null}
+%\date{\today}
+\date{\null}
 \begin{document}
 \begin{landscape}
-\maketitle
-\section*{Introduction}
+%\maketitle
+%\pagestyle{empty}
+\begin{center}
+Trombinoscope
+\end{center}
+%\section*{Introduction}
 """)
 
 # Partie centrale du fichier .tex
 #for row in filecvs:
 for NOM, PRENOM, NOMPRENOM, PHOTO in filecvs:
 	#eleve = row[0]
-	if PHOTO=='':
-		PHOTO="img/"+"nophoto.jpg"
-	else:
-		try:
-			value = int(PHOTO)
-		except ValueError:
-			value = None
+	if NOM<>"NOM":
+		if PHOTO=='':
+			PHOTO="img/"+"nophoto.png"
+		else:
+			try:
+				value = int(PHOTO)
+			except ValueError:
+				value = None
 
-		if value is not None:
-			PHOTO="img/"+"%(#)06d" % {"#": value} + ".jpg"
-		#else:
-		#	PHOTO="err.jpg"
+			if value is not None:
+				PHOTO="img/"+"%(#)06d" % {"#": value} + ".jpg"
+			#else:
+			#	PHOTO="err.jpg"
 
-	params={ 'NOM':NOM, 'PRENOM':PRENOM, 'NOMPRENOM':NOMPRENOM, 'PHOTO':PHOTO } 
-	FILE.write(r""" 
-   %(NOM)s %(PRENOM)s %(NOMPRENOM)s %(PHOTO)s
+		params={ 'NOM':NOM, 'PRENOM':PRENOM, 'NOMPRENOM':NOMPRENOM, 'PHOTO':PHOTO } 
+		FILE.write(r""" 
+%   %(NOM)s %(PRENOM)s %(NOMPRENOM)s %(PHOTO)s
+   %(NOM)s %(PRENOM)s %(NOMPRENOM)s \includegraphics{%(PHOTO)s}
 """%params)
 
 # Fin du fichier .tex
