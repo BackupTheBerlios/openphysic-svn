@@ -307,6 +307,57 @@
             <Property Name="Source[1].type" Type="Str">VI</Property>
             <Property Name="SourceCount" Type="Int">2</Property>
          </Item>
+         <Item Name="setup_turbo" Type="Installer">
+            <Property Name="arpCompany" Type="Str">IUT Poitiers</Property>
+            <Property Name="arpURL" Type="Str">http://www.IUTPoitiers.com/</Property>
+            <Property Name="AutoIncrement" Type="Bool">true</Property>
+            <Property Name="BuildLabel" Type="Str">setup_turbo</Property>
+            <Property Name="BuildLocation" Type="Path">../../Builds/turbo/setup_turbo</Property>
+            <Property Name="DirInfo.Count" Type="Int">2</Property>
+            <Property Name="DirInfo.DefaultDir" Type="Str">{C97AB7C0-BD67-4258-9616-462379C85073}</Property>
+            <Property Name="DirInfo[0].DirName" Type="Str">turbo</Property>
+            <Property Name="DirInfo[0].DirTag" Type="Str">{C97AB7C0-BD67-4258-9616-462379C85073}</Property>
+            <Property Name="DirInfo[0].ParentTag" Type="Str">{3912416A-D2E5-411B-AFEE-B63654D690C0}</Property>
+            <Property Name="DirInfo[1].DirName" Type="Str">data</Property>
+            <Property Name="DirInfo[1].DirTag" Type="Str">{C9607A40-FE2B-4DB5-B943-E5493BB40D11}</Property>
+            <Property Name="DirInfo[1].ParentTag" Type="Str">{C97AB7C0-BD67-4258-9616-462379C85073}</Property>
+            <Property Name="DistID" Type="Str">{0554CA6A-3AB9-4AE0-8E6C-AD93A3CC78A5}</Property>
+            <Property Name="DistParts.Count" Type="Int">2</Property>
+            <Property Name="DistPartsInfo[0].FlavorID" Type="Str">DefaultFull</Property>
+            <Property Name="DistPartsInfo[0].ProductID" Type="Str">{47FFFF8E-A6E7-4C9A-AB7B-1BE0FE29A95A}</Property>
+            <Property Name="DistPartsInfo[0].ProductName" Type="Str">NI Moteur d'exécution de LabVIEW 8.5</Property>
+            <Property Name="DistPartsInfo[0].UpgradeCode" Type="Str">{99D796C3-2E53-4839-A25B-22C26B029103}</Property>
+            <Property Name="DistPartsInfo[1].FlavorID" Type="Str">_deployment_</Property>
+            <Property Name="DistPartsInfo[1].ProductID" Type="Str">{5DBDA3D6-7D16-419C-8434-219011CF652B}</Property>
+            <Property Name="DistPartsInfo[1].ProductName" Type="Str">Moteur d'exécution de NI-VISA 4.2</Property>
+            <Property Name="DistPartsInfo[1].UpgradeCode" Type="Str">{8627993A-3F66-483C-A562-0D3BA3F267B1}</Property>
+            <Property Name="FileInfo.Count" Type="Int">2</Property>
+            <Property Name="FileInfo[0].DirTag" Type="Str">{C97AB7C0-BD67-4258-9616-462379C85073}</Property>
+            <Property Name="FileInfo[0].FileName" Type="Str">Turbo.exe</Property>
+            <Property Name="FileInfo[0].FileTag" Type="Str">{DCAE8CE5-3D8C-4B98-BBEB-75D5943D122A}</Property>
+            <Property Name="FileInfo[0].Type" Type="Int">3</Property>
+            <Property Name="FileInfo[0].TypeID" Type="Ref">/Poste de travail/Spécifications de construction/Turbo</Property>
+            <Property Name="FileInfo[1].DirTag" Type="Str">{C97AB7C0-BD67-4258-9616-462379C85073}</Property>
+            <Property Name="FileInfo[1].FileName" Type="Str">Turbo.aliases</Property>
+            <Property Name="FileInfo[1].FileTag" Type="Str">{B50E7CA6-EAD0-4AFF-9173-A6A73DB1ED53}</Property>
+            <Property Name="FileInfo[1].Type" Type="Int">3</Property>
+            <Property Name="FileInfo[1].TypeID" Type="Ref">/Poste de travail/Spécifications de construction/Turbo</Property>
+            <Property Name="InstSpecVersion" Type="Str">8508002</Property>
+            <Property Name="Language" Type="Int">12</Property>
+            <Property Name="LicenseFile" Type="Ref"></Property>
+            <Property Name="OSCheck" Type="Int">0</Property>
+            <Property Name="OSCheck_Vista" Type="Bool">false</Property>
+            <Property Name="ProductName" Type="Str">turbo</Property>
+            <Property Name="ProductVersion" Type="Str">1.0.2</Property>
+            <Property Name="ReadmeFile" Type="Ref"></Property>
+            <Property Name="ShortcutInfo.Count" Type="Int">1</Property>
+            <Property Name="ShortcutInfo[0].DirTag" Type="Str">{B9E310F1-839C-48B7-8CAE-33000780C26E}</Property>
+            <Property Name="ShortcutInfo[0].FileTag" Type="Str">{DCAE8CE5-3D8C-4B98-BBEB-75D5943D122A}</Property>
+            <Property Name="ShortcutInfo[0].FileTagDir" Type="Str">{C97AB7C0-BD67-4258-9616-462379C85073}</Property>
+            <Property Name="ShortcutInfo[0].Name" Type="Str">Turbo</Property>
+            <Property Name="ShortcutInfo[0].SubDir" Type="Str">turbo</Property>
+            <Property Name="UpgradeCode" Type="Str">{C1AB0BA9-2B48-4E8A-8F48-92C0DCAB7391}</Property>
+         </Item>
       </Item>
    </Item>
 </Project>
