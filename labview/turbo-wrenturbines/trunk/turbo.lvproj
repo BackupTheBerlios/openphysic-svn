@@ -20,6 +20,7 @@
       <Item Name="read_buffer_turbo_rs232.vi" Type="VI" URL="read_buffer_turbo_rs232.vi"/>
       <Item Name="read_serial_turbo.vi" Type="VI" URL="read_serial_turbo.vi"/>
       <Item Name="string_2_lcd.vi" Type="VI" URL="string_2_lcd.vi"/>
+      <Item Name="ecu_keys.vi" Type="VI" URL="ecu_keys.vi"/>
       <Item Name="Dépendances" Type="Dependencies">
          <Item Name="vi.lib" Type="Folder">
             <Item Name="Simple Error Handler.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Simple Error Handler.vi"/>
@@ -272,8 +273,8 @@
             <Item Name="ex_SaveFileCheckNameTDMS.vi" Type="VI" URL="/&lt;vilib&gt;/express/express shared/ex_TDMS/ex_SaveFileCheckNameTDMS.vi"/>
             <Item Name="ex_BackUpExistFileTDMS.vi" Type="VI" URL="/&lt;vilib&gt;/express/express output/ExFileWriteBlock.llb/ex_BackUpExistFileTDMS.vi"/>
             <Item Name="ex_createNewChannelsTDMS.vi" Type="VI" URL="/&lt;vilib&gt;/express/express shared/ex_TDMS/ex_createNewChannelsTDMS.vi"/>
+            <Item Name="VISA Configure Serial Port" Type="VI" URL="/&lt;vilib&gt;/Instr/_visa.llb/VISA Configure Serial Port"/>
          </Item>
-         <Item Name="lvStorage.dll" Type="Document" URL="../../../../../../Program Files/National Instruments/LabVIEW 8.5/resource/objmgr/lvStorage.dll"/>
       </Item>
       <Item Name="Spécifications de construction" Type="Build">
          <Item Name="Turbo" Type="EXE">
