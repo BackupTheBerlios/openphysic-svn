@@ -27,7 +27,7 @@ Partial Class ES_Num_LabjackU12
         Me.gbEntréesSortiesNumériques.Dock = System.Windows.Forms.DockStyle.Fill
         Me.gbEntréesSortiesNumériques.Location = New System.Drawing.Point(0, 0)
         Me.gbEntréesSortiesNumériques.Name = "gbEntréesSortiesNumériques"
-        Me.gbEntréesSortiesNumériques.Size = New System.Drawing.Size(421, 150)
+        Me.gbEntréesSortiesNumériques.Size = New System.Drawing.Size(711, 358)
         Me.gbEntréesSortiesNumériques.TabIndex = 0
         Me.gbEntréesSortiesNumériques.TabStop = False
         Me.gbEntréesSortiesNumériques.Text = "Entrées/Sorties numériques"
@@ -38,7 +38,7 @@ Partial Class ES_Num_LabjackU12
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.Controls.Add(Me.gbEntréesSortiesNumériques)
         Me.Name = "ES_Num_LabjackU12"
-        Me.Size = New System.Drawing.Size(421, 150)
+        Me.Size = New System.Drawing.Size(711, 358)
         Me.ResumeLayout(False)
 
     End Sub

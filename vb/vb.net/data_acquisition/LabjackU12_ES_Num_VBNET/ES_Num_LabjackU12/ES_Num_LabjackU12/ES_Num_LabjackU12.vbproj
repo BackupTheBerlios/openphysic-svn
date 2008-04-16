@@ -32,6 +32,11 @@
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AfficheurOctet, Version=1.0.2998.17973, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\AfficheurOctet\AfficheurOctet\bin\Release\AfficheurOctet.dll</HintPath>
+    </Reference>
+    <Reference Include="Led, Version=1.0.2994.27720, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
