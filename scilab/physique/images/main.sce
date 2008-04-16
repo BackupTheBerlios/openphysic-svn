@@ -4,7 +4,7 @@
 
 clear // effacement de toutes les variables
 
-stacksize(1E7) // augmentation de la taille de la pile
+stacksize(1E7); // augmentation de la taille de la pile
 
 // Chargement de la toolboxe SIVP
 
