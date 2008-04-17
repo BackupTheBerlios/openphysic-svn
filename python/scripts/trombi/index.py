@@ -49,7 +49,7 @@ def main():
 	ligne=1
 	colonne=1
 
-	for NOM, PRENOM, NOMPRENOM, PHOTO, NOM_COURT, PRENOM_COURT in filecsv:
+	for NOM, PRENOM, PHOTO, NOM_COURT, PRENOM_COURT in filecsv:
 		if indice<>0:
 			if PHOTO=='':
 				PHOTO="img/"+"nophoto.png"
@@ -67,8 +67,13 @@ def main():
 			if colonne==1:
 				FILE.write("      <tr>"+"\r\n")
 
-			if NOMPRENOM=="":
-				NOMPRENOM=NOM + " " + PRENOM				
+			if NOM_COURT=="":
+				NOM_COURT=NOM
+			
+			if PRENOM_COURT=="":
+				PRENOM_COURT=PRENOM
+
+			NOMPRENOM=NOM_COURT + " " + PRENOM_COURT				
 
 			#if NOM_COURT=="":
                         #        LIGNE1=NOM
@@ -79,7 +84,7 @@ def main():
 			#PRENOM.encode('UTF-8','replace')
 			#PRENOM = unicode(PRENOM,'UTF-8') 
 
-			params={'NOM':NOM, 'PRENOM':PRENOM, 'NOMPRENOM':NOMPRENOM, 'PHOTO':PHOTO, 'indice':indice, 'colonne':colonne, 'ligne':ligne} 
+			params={'NOM':NOM_COURT, 'PRENOM':PRENOM_COURT, 'NOMPRENOM':NOMPRENOM, 'PHOTO':PHOTO, 'indice':indice, 'colonne':colonne, 'ligne':ligne} 
 			#FILE.write(r"""        <td>
 #          <img src="%(PHOTO)s" width="17" height="17" align="bottom" alt="%(NOMPRENOM)s">
 #        </td>
