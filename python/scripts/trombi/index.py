@@ -33,6 +33,7 @@ def main():
     <title>
       %(TITRE)s
     </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>  
   </head>
   <body>
     <center>
@@ -74,6 +75,9 @@ def main():
 
 			#if PRENOM_COURT=="":
                         #        LIGNE2=PRENOM
+
+			#PRENOM.encode('UTF-8','replace')
+			#PRENOM = unicode(PRENOM,'UTF-8') 
 
 			params={'NOM':NOM, 'PRENOM':PRENOM, 'NOMPRENOM':NOMPRENOM, 'PHOTO':PHOTO, 'indice':indice, 'colonne':colonne, 'ligne':ligne} 
 			#FILE.write(r"""        <td>
