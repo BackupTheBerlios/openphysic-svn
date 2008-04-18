@@ -1,4 +1,4 @@
-<?php // Const
+<?php
 
   /*****************************************************************
    * Script en PHP permettant de générer un trombinoscope          *
@@ -12,15 +12,20 @@
   /*****************************************************************
    * Prérequis :                                                   *
    *  Installation d'un serveur web Apache                         *
-   *  Installation du module Pear php-file pour la lecture de      *
-   *    fichiers CSV                                               *
-   *    http://pear.php.net/package/File                           *
    *  Copie du répertoire contenant script, images et fichier .csv *
    *    dans /var/www/trombi                                       *
    *  Lancement du navigateur à l'adresse                          *
    *    http://127.0.0.1/trombi/index.php                          *
    *****************************************************************/
 
+  /*****************************************************************
+   * ToDo :                                                        *
+   *  Utilisation du module Pear php-file pour la lecture de       *
+   *    fichiers CSV                                               *
+   *    http://pear.php.net/package/File                           *
+   *****************************************************************/
+
+  // Const
 $liste = "main.csv";
 $nb_colonnes = 8;
 $titre = "Trombinoscope";
@@ -50,17 +55,6 @@ $indice=0;
 $ligne=1;
 $colonne=1;
 
-/*
- $file_handle = fopen("main.csv", "r");
- while (!feof($file_handle) ) {
- $line_of_text = fgetcsv($file_handle, 1024);
- print $line_of_text[0] . " " . $line_of_text[1] . " " . $line_of_text[2] . "<BR>";
- }
- fclose($file_handle);
-*/
-
-//for ($indice=0 ; $indice<100 ; $indice++) { // ToDo lecture fichier CSV
-
 $indice=0;
 $file_handle = fopen("main.csv", "r");
 while (!feof($file_handle) ) {
@@ -81,7 +75,15 @@ while (!feof($file_handle) ) {
     $PHOTO='1';
     $NOM=$line_of_text[0];
     $PRENOM=$line_of_text[1];
-    $NOMPRENOM='NOMPRENOM';
+    $NOM_COURT=$line_of_text[3];
+    $PRENOM_COURT=$line_of_text[4];
+    if ($NOM_COURT=="") {
+      $NOM_COURT=$NOM;
+    }
+    if ($PRENOM_COURT=="") {
+      $PRENOM_COURT=$PRENOM;
+    }
+    $NOMPRENOM=$NOM_COURT." ".$PRENOM_COURT;
 
     if ($PHOTO=='') {
       $PHOTO="img/"."nophoto.png";
@@ -91,7 +93,7 @@ while (!feof($file_handle) ) {
       //}
       //catch {
       //$numphoto=null;
-      if (numphoto!=null) {
+      if ($numphoto!=null) {
         $PHOTO=sprintf("img/%06d.jpg",$PHOTO);
       }
     }
@@ -99,8 +101,8 @@ while (!feof($file_handle) ) {
     print "          <td>
             <table>
               <tr><td><img src=\"$PHOTO\" align='bottom' alt=\"$NOMPRENOM\"></td></tr>
-              <tr><td>$NOM</td></tr>
-              <tr><td>$PRENOM</td></tr>
+              <tr><td>$NOM_COURT</td></tr>
+              <tr><td>$PRENOM_COURT</td></tr>
            </table>
           </td>
 ";
