@@ -39,7 +39,18 @@ print "<html>
     <title>
       $titre
     </title>
-    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"/>  
+    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"/>
+    <style type=\"text/css\" media=\"print\">
+      .menu{
+        display:none;
+      }
+
+      .print{
+        display:none;
+      }
+
+      <!--@page{size:landscape}-->
+    </style>   
   </head>
   <body>
     <center>
