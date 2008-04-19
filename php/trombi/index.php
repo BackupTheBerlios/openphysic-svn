@@ -99,13 +99,14 @@ while (!feof($file_handle) ) {
     if ($PHOTO=='') {
       $PHOTO="img/"."nophoto.png";
     } else {
-      //try {
-      $numphoto=$PHOTO; //int($PHOTO); // ToDo voir conversion string vers integer
-      //}
-      //catch {
-      //$numphoto=null;
-      if ($numphoto!=null) {
-        $PHOTO=sprintf("img/%06d.jpg",$PHOTO);
+      try {
+        $numphoto=intval($PHOTO); // conversion string vers integer
+        if ($numphoto!=0) {
+          $PHOTO=sprintf("img/%06d.jpg",$PHOTO);
+        } // else {
+        //}
+      } catch (Exception $e) {
+        echo 'Exception reçue : ',  $e->getMessage(), "\n";
       }
     }
 
