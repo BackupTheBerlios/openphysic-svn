@@ -46,15 +46,17 @@ filenamenotes="notes.txt" # fichier envoyé à chaque élève (fichier temporair
 copie_intranet=True # copie des notes dans l'intranet (True ou False)
 envoi_mail=False # envoi des notes par mail
 
-logging.basicConfig()
+# Logging
 log = logging.getLogger("MyApp")
-log.setLevel(logging.DEBUG) #set verbosity to show all messages of severity >= DEBUG
-#log.format()
 hdlr = logging.FileHandler('log.csv')
-formatter = logging.Formatter('%(asctime)s\t%(levelname)s\t%(message)s')
+FORMAT='%(asctime)s\t%(levelname)s\t%(message)s'
+formatter = logging.Formatter(FORMAT)
+logging.basicConfig(format=FORMAT) # log sur console
 hdlr.setFormatter(formatter)
 log.addHandler(hdlr)
-log.setLevel(logging.INFO)
+log.setLevel(logging.DEBUG) #set verbosity to show all messages of severity >= DEBUG
+#hdlrConsole = logging.StreamHandler('/dev/stdout')
+#hdlrConsole.setFormatter(formatter)
 
 log.info("démarrage du script")
 
