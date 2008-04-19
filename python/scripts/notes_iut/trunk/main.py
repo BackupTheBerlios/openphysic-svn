@@ -30,8 +30,8 @@ import os
 import shutil
 import tkMessageBox
 
-from log import *
-#import logging # /usr/lib/python2.5/site-packages/bike/logging.py # ToDo
+#from log import *
+import logging # /usr/lib/python2.5/site-packages/bike/logging.py # ToDo
 #http://www.red-dove.com/python_logging.html
 
 import smtplib # ToDo
@@ -46,6 +46,14 @@ filenamenotes="notes.txt" # fichier envoyé à chaque élève (fichier temporair
 # Config
 copie_intranet=True # copie des notes dans l'intranet (True ou False)
 envoi_mail=False # envoi des notes par mail
+
+# logging
+logging.basicConfig()
+#logging ou logging instance de logging
+#logging = logging.getLogger("main")
+#logging.setLevel(logging.DEBUG)
+#logging = log(log.verbosity.max,"log.csv")
+
 
 #from enum import Enum
 #envoi=Enum('intranet', 'mail')
@@ -96,13 +104,9 @@ filecsvreader = csv.reader(filecsv)
 #NOM PRENOM LOGIN MAIL NOTE1 ... NOTEn
 nb_colonnes_hors_notes=4
 
-
 # Vérification de l'existance du répertoire (et création si nécessaire)
 if (not os.path.isdir(repertoire)):
 	os.mkdir(repertoire)
-
-myLog = log(log.verbosity.max,"log.csv")
-
 
 indice=0
 for row in filecsvreader:
@@ -151,32 +155,32 @@ Fin du fichier de note
 			# creation repertoire eleves
 			if (not os.path.isdir(REP)):
 				os.mkdir(REP)
-				myLog.write(log.level.message,'création du répertoire "%(REP)s"' % {"REP": REP})
+				logging.info('création du répertoire "%(REP)s"' % {"REP": REP})
 
 			# creation repertoire eleves/notes
 			REP = os.path.join(REP,repertoire_notes)
 			#print rep
 			if (not os.path.isdir(REP)):
 				os.mkdir(REP)
-				myLog.write(log.level.message,'création du répertoire "%(REP)s"' % {"REP": REP})
+				logging.info('création du répertoire "%(REP)s"' % {"REP": REP})
 
 			# copie du fichier de notes
 		        try:
 				#if (os.path.isdir(rep)): # ToDo : tester si risque d'écrasement du fichier
 				filenamenotesDest=os.path.join(REP, filenamenotes)
 				shutil.copy2(filenamenotes, filenamenotesDest)
-          			myLog.write(log.level.message,'copie du fichier de notes "%(FROM)s" de l\'élève "%(LOGIN)s" vers "%(DEST)s"' % {"LOGIN": LOGIN, "FROM": filenamenotes, "DEST": filenamenotesDest})
+          			logging.info('copie du fichier de notes "%(FROM)s" de l\'élève "%(LOGIN)s" vers "%(DEST)s"' % {"LOGIN": LOGIN, "FROM": filenamenotes, "DEST": filenamenotesDest})
 
 				#else:
 				#	print "Fichier existe déjà"
 		        except:
 				ToDo()
-				myLog.write(log.level.error,'impossible de copier le fichier de notes "%(FROM)s" de l\'élève "%(LOGIN)s" vers "%(DEST)s"' % {"LOGIN": LOGIN, "FROM": filenamenotes, "DEST": filenamenotesDest})
+				logging.error('impossible de copier le fichier de notes "%(FROM)s" de l\'élève "%(LOGIN)s" vers "%(DEST)s"' % {"LOGIN": LOGIN, "FROM": filenamenotes, "DEST": filenamenotesDest})
 
 		# Envoi par mail des notes
 		if envoi_mail and MAIL<>"":
 			ToDo()
-			myLog.write(log.level.message,'envoi du fichier de notes "%(FROM)s" de l\'élève "%(LOGIN)s" à "%(MAIL)s"' % {"LOGIN": LOGIN, "FROM": filenamenotes, "MAIL": MAIL})
+			logging.info('envoi du fichier de notes "%(FROM)s" de l\'élève "%(LOGIN)s" à "%(MAIL)s"' % {"LOGIN": LOGIN, "FROM": filenamenotes, "MAIL": MAIL})
 
 			mssg = open(filenamenotes, 'r').read()
 			
@@ -208,5 +212,5 @@ Server said: %s
 filecsv.close()
 
 # Visualisation des erreurs sur stdout et fermeture du fichier de log
-myLog.show()
-myLog.close()
+#logging.show()
+#logging.close()
