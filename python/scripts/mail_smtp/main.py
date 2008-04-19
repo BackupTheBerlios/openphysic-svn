@@ -13,3 +13,4 @@ smtp = smtplib.SMTP("smtp.univ-poitiers.fr:25")
 smtp.connect()
 smtp.sendmail(expediteur, [destinataire], mail.as_string())
 smtp.close()
+
