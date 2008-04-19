@@ -30,7 +30,6 @@ import os
 import shutil
 import tkMessageBox
 
-#from log import *
 import logging # /usr/lib/python2.5/site-packages/bike/logging.py # ToDo
 #http://www.red-dove.com/python_logging.html
 
@@ -47,16 +46,12 @@ filenamenotes="notes.txt" # fichier envoyé à chaque élève (fichier temporair
 copie_intranet=True # copie des notes dans l'intranet (True ou False)
 envoi_mail=False # envoi des notes par mail
 
-# logging
-#logging.basicConfig()
-#logging ou logging instance de logging
-#logging = logging.getLogger("main")
-#logging.setLevel(logging.DEBUG)
-#logging = log(log.verbosity.max,"log.csv")
+
 logging.basicConfig()
 log = logging.getLogger("MyApp")
 log.setLevel(logging.DEBUG) #set verbosity to show all messages of severity >= DEBUG
-log.info("Starting my app")
+#log.format()
+log.info("démarrage du script")
 
 
 #from enum import Enum
@@ -82,21 +77,9 @@ SENDER = 's.cls@laposte.net'
 
 # Fonctions utiles
 # ================
-#def message_info(msg):
-  #tkMessageBox.showinfo("Copie", msg)
-#  print msg
-
-#def message_erreur(msg):
-#  print msg
-
-#  fileErr.writerow([eleve, os.path.join(repertoire,eleve,repertoire_notes,fichier)])
-#  if (not error):
-#    eleveErr.writerow([eleve])
-#    message_erreur("Erreur inattendue pour "  + eleve)
-#    error = True  
-
 def ToDo():
-	print "ToDo"
+	#print "ToDo"
+	log.info("ToDo")
 
 # Programme principal
 # ===================
@@ -104,29 +87,36 @@ def ToDo():
 # Ouverture du fichier élèves
 filecsv=open(filenamecsv,"rb")
 filecsvreader = csv.reader(filecsv)
+log.info('ouverture de %(filenamecsv)s' % {"filenamecsv": filenamecsv})
 
 #NOM PRENOM LOGIN MAIL NOTE1 ... NOTEn
 nb_colonnes_hors_notes=4
 
 # Vérification de l'existance du répertoire (et création si nécessaire)
-if (not os.path.isdir(repertoire)):
-	os.mkdir(repertoire)
+REP=repertoire
+if (not os.path.isdir(REP)):
+	os.mkdir(REP)
+else:
+	log.info('le répertoire "%(REP)s" existe déjà' % {"REP": REP})
+
 
 indice=0
 for row in filecsvreader:
 	if indice==0:
+		log.info('lecture de l\'entête du fichier csv')
 		nbnotes=len(row)-nb_colonnes_hors_notes
 		print "Nb de notes = %(#)d" % {"#": nbnotes}
 		matieres=[]
 		for j in xrange(1,nbnotes+1):
 			matieres.append(row[j+nb_colonnes_hors_notes-1])
-		print matieres
+		log.info(matieres)
 
 	else:
 		NOM=row[0]
 		PRENOM=row[1]
 		LOGIN=row[2]
 		MAIL=row[3]
+		log.info('Traitement du fichier de notes de NOM=%(NOM)s PRENOM=%(PRENOM)s LOGIN=%(LOGIN)s MAIL=%(MAIL)s' % {"NOM":NOM, "PRENOM":PRENOM, "LOGIN":LOGIN, "MAIL":MAIL})
 
 		# Création du fichier de notes (pour un élève)
 		filenotes = open(filenamenotes, 'w')
@@ -150,6 +140,7 @@ Note %(#)d = %(MATIERE)s = %(NOTE)f""" % {"#": j, "NOTE":NOTE, "MATIERE":MATIERE
 Fin du fichier de note
 """)
 		filenotes.close()
+		log.info('fermeture du fichier de note')
 
 		# Copie du fichier des notes de l'élève dans l'intranet
 		if copie_intranet and LOGIN<>"":
@@ -160,6 +151,8 @@ Fin du fichier de note
 			if (not os.path.isdir(REP)):
 				os.mkdir(REP)
 				log.info('création du répertoire "%(REP)s"' % {"REP": REP})
+			else:
+				log.info('le répertoire "%(REP)s" existe déjà' % {"REP": REP})
 
 			# creation repertoire eleves/notes
 			REP = os.path.join(REP,repertoire_notes)
@@ -167,6 +160,8 @@ Fin du fichier de note
 			if (not os.path.isdir(REP)):
 				os.mkdir(REP)
 				log.info('création du répertoire "%(REP)s"' % {"REP": REP})
+			else:
+				log.info('le répertoire "%(REP)s" existe déjà' % {"REP": REP})
 
 			# copie du fichier de notes
 		        try:
@@ -205,8 +200,14 @@ Server said: %s
 %s""" % (recip, smtpresult[recip][0], smtpresult[recip][1], errstr)
     				raise smtplib.SMTPException, errstr
 
+			mssg.close() # ?
+
+		else:
+			log.info('pas d\'envoi du fichier de notes par mail')
+
 		# Suppression du fichier temporaire (fichier de note)
 		os.remove(filenamenotes)
+		log.info('suppression du fichier temporaire')
 		
 	
 	indice=indice+1
@@ -214,7 +215,9 @@ Server said: %s
 
 # Fermeture du fichier élèves
 filecsv.close()
+log.info('fermeture de %(filenamecsv)s' % {"filenamecsv": filenamecsv})
 
 # Visualisation des erreurs sur stdout et fermeture du fichier de log
 #logging.show()
 #logging.close()
+log.info("fin du script")
