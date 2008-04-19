@@ -45,7 +45,13 @@ filenamenotes="notes.txt" # fichier envoyé à chaque élève (fichier temporair
 
 # Config
 copie_intranet=True # copie des notes dans l'intranet (True ou False)
-envoi_mail=True # envoi des notes par mail
+envoi_mail=False # envoi des notes par mail
+
+#from enum import Enum
+#envoi=Enum('intranet', 'mail')
+#fichier=Enum('texte', 'pdf')
+# struct voir dict ou class
+
 
 # Répertoire destination des notes
 #repertoire="\\\\Andromede\Comptes\GTE\dut"
