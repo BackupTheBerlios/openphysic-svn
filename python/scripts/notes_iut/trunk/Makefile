@@ -5,4 +5,4 @@ all:
 .PHONY: clean
 
 clean:
-	$(RM) *.pyc *~
+	$(RM) *.pyc *~ *.log
