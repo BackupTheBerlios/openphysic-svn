@@ -48,11 +48,15 @@ copie_intranet=True # copie des notes dans l'intranet (True ou False)
 envoi_mail=False # envoi des notes par mail
 
 # logging
-logging.basicConfig()
+#logging.basicConfig()
 #logging ou logging instance de logging
 #logging = logging.getLogger("main")
 #logging.setLevel(logging.DEBUG)
 #logging = log(log.verbosity.max,"log.csv")
+logging.basicConfig()
+log = logging.getLogger("MyApp")
+log.setLevel(logging.DEBUG) #set verbosity to show all messages of severity >= DEBUG
+log.info("Starting my app")
 
 
 #from enum import Enum
@@ -155,32 +159,32 @@ Fin du fichier de note
 			# creation repertoire eleves
 			if (not os.path.isdir(REP)):
 				os.mkdir(REP)
-				logging.info('création du répertoire "%(REP)s"' % {"REP": REP})
+				log.info('création du répertoire "%(REP)s"' % {"REP": REP})
 
 			# creation repertoire eleves/notes
 			REP = os.path.join(REP,repertoire_notes)
 			#print rep
 			if (not os.path.isdir(REP)):
 				os.mkdir(REP)
-				logging.info('création du répertoire "%(REP)s"' % {"REP": REP})
+				log.info('création du répertoire "%(REP)s"' % {"REP": REP})
 
 			# copie du fichier de notes
 		        try:
 				#if (os.path.isdir(rep)): # ToDo : tester si risque d'écrasement du fichier
 				filenamenotesDest=os.path.join(REP, filenamenotes)
 				shutil.copy2(filenamenotes, filenamenotesDest)
-          			logging.info('copie du fichier de notes "%(FROM)s" de l\'élève "%(LOGIN)s" vers "%(DEST)s"' % {"LOGIN": LOGIN, "FROM": filenamenotes, "DEST": filenamenotesDest})
+          			log.info('copie du fichier de notes "%(FROM)s" de l\'élève "%(LOGIN)s" vers "%(DEST)s"' % {"LOGIN": LOGIN, "FROM": filenamenotes, "DEST": filenamenotesDest})
 
 				#else:
 				#	print "Fichier existe déjà"
 		        except:
 				ToDo()
-				logging.error('impossible de copier le fichier de notes "%(FROM)s" de l\'élève "%(LOGIN)s" vers "%(DEST)s"' % {"LOGIN": LOGIN, "FROM": filenamenotes, "DEST": filenamenotesDest})
+				log.error('impossible de copier le fichier de notes "%(FROM)s" de l\'élève "%(LOGIN)s" vers "%(DEST)s"' % {"LOGIN": LOGIN, "FROM": filenamenotes, "DEST": filenamenotesDest})
 
 		# Envoi par mail des notes
 		if envoi_mail and MAIL<>"":
 			ToDo()
-			logging.info('envoi du fichier de notes "%(FROM)s" de l\'élève "%(LOGIN)s" à "%(MAIL)s"' % {"LOGIN": LOGIN, "FROM": filenamenotes, "MAIL": MAIL})
+			log.info('envoi du fichier de notes "%(FROM)s" de l\'élève "%(LOGIN)s" à "%(MAIL)s"' % {"LOGIN": LOGIN, "FROM": filenamenotes, "MAIL": MAIL})
 
 			mssg = open(filenamenotes, 'r').read()
 			
