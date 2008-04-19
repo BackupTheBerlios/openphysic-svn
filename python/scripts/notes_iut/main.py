@@ -34,14 +34,14 @@ from log import *
 #import logging # /usr/lib/python2.5/site-packages/bike/logging.py # ToDo
 #http://www.red-dove.com/python_logging.html
 
-#import smtplib # ToDo
+import smtplib # ToDo
 
 # Paramètrage
 # ===========
 
 # Fichiers
 filenamecsv="main.csv" # fichier comportant les notes des élèves
-filenamenotes="notes.txt" # fichier envoyé à chaque élève
+filenamenotes="notes.txt" # fichier envoyé à chaque élève (fichier temporaire)
 
 # Config
 copie_intranet=True # copie des notes dans l'intranet (True ou False)
@@ -54,9 +54,12 @@ repertoire="/home/scls/notes_iut/essai/"
 repertoire_notes="notes"
 
 # Envoi des mails
-serveur_smtp="smtp.univ-poitiers.fr"
-nom_messagerie="GTE"
-from_messagerie="gte@univ-poitiers.fr"
+smtpserver = 'smtp.laposte.net'
+AUTHREQUIRED = 0 # if you need to use SMTP AUTH set to 1
+smtpuser = 's.cls'  # for SMTP AUTH, set SMTP username here
+smtppass = ''  # for SMTP AUTH, set SMTP password here
+#RECIPIENTS = ['s.cls@laposte.net']
+SENDER = 's.cls@laposte.net'
 
 
 # Fonctions utiles
@@ -168,6 +171,25 @@ Fin du fichier de note
 		if envoi_mail and MAIL<>"":
 			ToDo()
 			myLog.write(log.level.message,'envoi du fichier de notes "%(FROM)s" de l\'élève "%(LOGIN)s" à "%(MAIL)s"' % {"LOGIN": LOGIN, "FROM": filenamenotes, "MAIL": MAIL})
+
+			mssg = open(filenamenotes, 'r').read()
+			
+			RECIPIENTS = [MAIL] #RECIPIENTS = ['user@example.com']
+			session = smtplib.SMTP(smtpserver)
+			if AUTHREQUIRED:
+			    session.login(smtpuser, smtppass)
+			smtpresult = session.sendmail(SENDER, RECIPIENTS, mssg)
+
+			if smtpresult:
+				errstr = ""
+				for recip in smtpresult.keys():
+					errstr = """Could not delivery mail to: %s
+
+Server said: %s
+%s
+
+%s""" % (recip, smtpresult[recip][0], smtpresult[recip][1], errstr)
+    				raise smtplib.SMTPException, errstr
 
 		# Suppression du fichier temporaire (fichier de note)
 		os.remove(filenamenotes)
