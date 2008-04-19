@@ -50,7 +50,7 @@ logging.basicConfig()
 log = logging.getLogger("MyApp")
 log.setLevel(logging.DEBUG) #set verbosity to show all messages of severity >= DEBUG
 #log.format()
-hdlr = logging.FileHandler('notes.csv')
+hdlr = logging.FileHandler('log.csv')
 formatter = logging.Formatter('%(asctime)s\t%(levelname)s\t%(message)s')
 hdlr.setFormatter(formatter)
 log.addHandler(hdlr)
