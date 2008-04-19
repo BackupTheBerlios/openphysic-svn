@@ -68,9 +68,9 @@ $colonne=1;
 
 $indice=0;
 $file_handle = fopen("main.csv", "r");
+$line_of_text = fgetcsv($file_handle, 1024);
 while (!feof($file_handle) ) {
-  $line_of_text = fgetcsv($file_handle, 1024);
-
+  //$line_of_text = fgetcsv($file_handle, 1024);
   if ($indice!=0) {
     if ($colonne==1) {
       print "        <tr>"."\r\n";
@@ -83,7 +83,7 @@ while (!feof($file_handle) ) {
      ";
     */
 
-    $PHOTO='1';
+    $PHOTO=$line_of_text[2];
     $NOM=$line_of_text[0];
     $PRENOM=$line_of_text[1];
     $NOM_COURT=$line_of_text[3];
@@ -131,7 +131,7 @@ while (!feof($file_handle) ) {
     }
   }
 
-  $indice=$indice+1;
+  $line_of_text = fgetcsv($file_handle, 1024);  $indice=$indice+1;
  }
 
 
