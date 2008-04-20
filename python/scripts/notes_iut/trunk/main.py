@@ -139,7 +139,7 @@ for row in filecsvreader:
 			NOTE=float(row[j+nb_colonnes_hors_notes-1])
 			MATIERE=matieres[j-1]
 			filenotes.write(r"""
-Note %(#)d = %(MATIERE)s = %(NOTE)2f""" % {"#": j, "NOTE":NOTE, "MATIERE":MATIERE})
+Note %(#)d = %(MATIERE)s = %(NOTE)2.2f""" % {"#": j, "NOTE":NOTE, "MATIERE":MATIERE})
 
 
 		# Fin du fichier à envoyer
