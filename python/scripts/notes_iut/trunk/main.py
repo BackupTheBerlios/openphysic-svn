@@ -28,7 +28,7 @@
 import csv
 import os
 import shutil
-import tkMessageBox
+#import tkMessageBox
 
 import logging # /usr/lib/python2.5/site-packages/bike/logging.py # ToDo
 #http://www.red-dove.com/python_logging.html
@@ -48,7 +48,7 @@ envoi_mail=False # envoi des notes par mail
 
 # Logging
 log = logging.getLogger("MyApp")
-hdlr = logging.FileHandler('log.csv')
+hdlr = logging.FileHandler('log_envoi_notes.log')
 FORMAT='%(asctime)s\t%(levelname)s\t%(message)s'
 formatter = logging.Formatter(FORMAT)
 logging.basicConfig(format=FORMAT) # log sur console
@@ -68,18 +68,19 @@ log.info("démarrage du script")
 
 
 # Répertoire destination des notes
-#repertoire="\\\\Andromede\Comptes\GTE\dut"
+#repertoire="\\\\Andromede\\Comptes\\GTE\\dut"
 # /home/scls/notes_iut/essai/login/notes
-repertoire="/home/scls/notes_iut/essai/"
+#repertoire="/home/scls/notes_iut/essai/"
+repertoire='C:\\Users\\scls\\Documents\\python\\scripts\\notes_iut\\trunk\\essai'
 repertoire_notes="notes"
 
 # Envoi des mails
-smtpserver = 'smtp.laposte.net'
+smtpserver = 'smtp.orange.fr' #'smtp.laposte.net'
 AUTHREQUIRED = 0 # if you need to use SMTP AUTH set to 1
-smtpuser = 's.cls'  # for SMTP AUTH, set SMTP username here
+smtpuser = ''  # for SMTP AUTH, set SMTP username here
 smtppass = ''  # for SMTP AUTH, set SMTP password here
 #RECIPIENTS = ['s.cls@laposte.net']
-SENDER = 's.cls@laposte.net'
+SENDER = "Sebastien CELLES <sebastien.celles@univ-poitiers.fr>"
 
 
 # Fonctions utiles
@@ -94,7 +95,7 @@ def ToDo():
 # Ouverture du fichier élèves
 filecsv=open(filenamecsv,"rb")
 filecsvreader = csv.reader(filecsv)
-log.info('ouverture de %(filenamecsv)s' % {"filenamecsv": filenamecsv})
+log.info('Fichier %(filenamecsv)s ouvert' % {"filenamecsv": filenamecsv})
 
 #NOM PRENOM LOGIN MAIL NOTE1 ... NOTEn
 nb_colonnes_hors_notes=4
@@ -138,7 +139,7 @@ for row in filecsvreader:
 			NOTE=float(row[j+nb_colonnes_hors_notes-1])
 			MATIERE=matieres[j-1]
 			filenotes.write(r"""
-Note %(#)d = %(MATIERE)s = %(NOTE)f""" % {"#": j, "NOTE":NOTE, "MATIERE":MATIERE})
+Note %(#)d = %(MATIERE)s = %(NOTE)2f""" % {"#": j, "NOTE":NOTE, "MATIERE":MATIERE})
 
 
 		# Fin du fichier à envoyer
@@ -171,15 +172,15 @@ Fin du fichier de note
 				log.info('le répertoire "%(REP)s" existe déjà' % {"REP": REP})
 
 			# copie du fichier de notes
-		        try:
+			try:
 				#if (os.path.isdir(rep)): # ToDo : tester si risque d'écrasement du fichier
 				filenamenotesDest=os.path.join(REP, filenamenotes)
 				shutil.copy2(filenamenotes, filenamenotesDest)
-          			log.info('copie du fichier de notes "%(FROM)s" de l\'élève "%(LOGIN)s" vers "%(DEST)s"' % {"LOGIN": LOGIN, "FROM": filenamenotes, "DEST": filenamenotesDest})
+				log.info('copie du fichier de notes "%(FROM)s" de l\'élève "%(LOGIN)s" vers "%(DEST)s"' % {"LOGIN": LOGIN, "FROM": filenamenotes, "DEST": filenamenotesDest})
 
 				#else:
 				#	print "Fichier existe déjà"
-		        except:
+			except:
 				ToDo()
 				log.error('impossible de copier le fichier de notes "%(FROM)s" de l\'élève "%(LOGIN)s" vers "%(DEST)s"' % {"LOGIN": LOGIN, "FROM": filenamenotes, "DEST": filenamenotesDest})
 
@@ -188,7 +189,8 @@ Fin du fichier de note
 			ToDo()
 			log.info('envoi du fichier de notes "%(FROM)s" de l\'élève "%(LOGIN)s" à "%(MAIL)s"' % {"LOGIN": LOGIN, "FROM": filenamenotes, "MAIL": MAIL})
 
-			mssg = open(filenamenotes, 'r').read()
+			filenotes = open(filenamenotes, 'r')
+			mssg = filenotes.read()
 			
 			RECIPIENTS = [MAIL] #RECIPIENTS = ['user@example.com']
 			session = smtplib.SMTP(smtpserver)
@@ -205,9 +207,10 @@ Server said: %s
 %s
 
 %s""" % (recip, smtpresult[recip][0], smtpresult[recip][1], errstr)
-    				raise smtplib.SMTPException, errstr
+				log.error(strerr)
+				raise smtplib.SMTPException, errstr
 
-			mssg.close() # ?
+			filenotes.close() # fermeture du fichier de note (lecture pour envoi par mail
 
 		else:
 			log.info('pas d\'envoi du fichier de notes par mail')
@@ -225,6 +228,6 @@ filecsv.close()
 log.info('fermeture de %(filenamecsv)s' % {"filenamecsv": filenamecsv})
 
 # Visualisation des erreurs sur stdout et fermeture du fichier de log
-#logging.show()
+#logging.show() # se fait au fur et à mesure de l'apparition de messages de log
 #logging.close()
 log.info("fin du script")
