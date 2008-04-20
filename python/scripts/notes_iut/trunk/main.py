@@ -28,6 +28,7 @@
 import csv
 import os
 import shutil
+import sys
 #import tkMessageBox
 
 import logging # /usr/lib/python2.5/site-packages/bike/logging.py # ToDo
@@ -44,19 +45,20 @@ filenamenotes="notes.txt" # fichier envoyé à chaque élève (fichier temporair
 
 # Config
 copie_intranet=True # copie des notes dans l'intranet (True ou False)
-envoi_mail=True # envoi des notes par mail
+envoi_mail=False # envoi des notes par mail
 
 # Logging
 log = logging.getLogger("MyApp")
 hdlr = logging.FileHandler('log_envoi_notes.log')
 FORMAT='%(asctime)s\t%(levelname)s\t%(message)s'
 formatter = logging.Formatter(FORMAT)
-logging.basicConfig(format=FORMAT) # log sur console
+logging.basicConfig(format=FORMAT) # conf de base (log sur console)
 hdlr.setFormatter(formatter)
 log.addHandler(hdlr)
-log.setLevel(logging.DEBUG) #set verbosity to show all messages of severity >= DEBUG CRITICAL
-#hdlrConsole = logging.StreamHandler('/dev/stdout')
+#hdlrConsole = logging.StreamHandler(sys.stderr)
 #hdlrConsole.setFormatter(formatter)
+#log.addHandler(hdlrConsole)
+log.setLevel(logging.DEBUG) #set verbosity to show all messages of severity >= DEBUG CRITICAL
 
 log.info("démarrage du script")
 
