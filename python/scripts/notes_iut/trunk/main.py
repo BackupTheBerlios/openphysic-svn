@@ -44,7 +44,7 @@ filenamenotes="notes.txt" # fichier envoyé à chaque élève (fichier temporair
 
 # Config
 copie_intranet=True # copie des notes dans l'intranet (True ou False)
-envoi_mail=False # envoi des notes par mail
+envoi_mail=True # envoi des notes par mail
 
 # Logging
 log = logging.getLogger("MyApp")
@@ -54,7 +54,7 @@ formatter = logging.Formatter(FORMAT)
 logging.basicConfig(format=FORMAT) # log sur console
 hdlr.setFormatter(formatter)
 log.addHandler(hdlr)
-log.setLevel(logging.DEBUG) #set verbosity to show all messages of severity >= DEBUG
+log.setLevel(logging.DEBUG) #set verbosity to show all messages of severity >= DEBUG CRITICAL
 #hdlrConsole = logging.StreamHandler('/dev/stdout')
 #hdlrConsole.setFormatter(formatter)
 
@@ -63,7 +63,7 @@ log.info("démarrage du script")
 
 #from enum import Enum
 #envoi=Enum('intranet', 'mail')
-#fichier=Enum('texte', 'pdf')
+#fichier=Enum('txt', 'pdf')
 # struct voir dict ou class
 
 
@@ -71,7 +71,8 @@ log.info("démarrage du script")
 #repertoire="\\\\Andromede\\Comptes\\GTE\\dut"
 # /home/scls/notes_iut/essai/login/notes
 #repertoire="/home/scls/notes_iut/essai/"
-repertoire='C:\\Users\\scls\\Documents\\python\\scripts\\notes_iut\\trunk\\essai'
+#repertoire='C:\\Users\\scls\\Documents\\python\\scripts\\notes_iut\\trunk\\essai'
+repertoire='essai'
 repertoire_notes="notes"
 
 # Envoi des mails
@@ -186,13 +187,17 @@ Fin du fichier de note
 
 		# Envoi par mail des notes
 		if envoi_mail and MAIL<>"":
-			ToDo()
 			log.info('envoi du fichier de notes "%(FROM)s" de l\'élève "%(LOGIN)s" à "%(MAIL)s"' % {"LOGIN": LOGIN, "FROM": filenamenotes, "MAIL": MAIL})
-
 			filenotes = open(filenamenotes, 'r')
+			NOMPRENOM=NOM+" "+PRENOM
+			RECIPIENT="%s <%s>" % (NOMPRENOM, MAIL) # "User <user@example.com>"
 			mssg = filenotes.read()
-			
-			RECIPIENTS = [MAIL] #RECIPIENTS = ['user@example.com']
+
+			mssg = """From: %(SENDER)s
+To: %(RECIPIENT)s
+Subject: Relevé de notes
+""" % {"SENDER": SENDER, "RECIPIENT": RECIPIENT} + mssg
+			RECIPIENTS = [MAIL] #RECIPIENTS = ['user@example.com'] 
 			session = smtplib.SMTP(smtpserver)
 			if AUTHREQUIRED:
 			    session.login(smtpuser, smtppass)
@@ -211,6 +216,7 @@ Server said: %s
 				raise smtplib.SMTPException, errstr
 
 			filenotes.close() # fermeture du fichier de note (lecture pour envoi par mail
+			session.quit()
 
 		else:
 			log.info('pas d\'envoi du fichier de notes par mail')
