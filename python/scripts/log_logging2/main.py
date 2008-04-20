@@ -3,12 +3,6 @@
 
 import logging, mymodule
 
-logging.warn("Hello")
-logging.error("Still here...")
-logging.warn("Goodbye")
-
-import logging, mymodule
-
 logging.basicConfig()
 
 log = logging.getLogger("MyApp")
