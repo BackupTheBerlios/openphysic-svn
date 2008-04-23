@@ -30,6 +30,7 @@ Partial Class ES_Num_LabjackU12
         Me.TableLayoutPanel0 = New System.Windows.Forms.TableLayoutPanel
         Me.cboPort_ES_0 = New System.Windows.Forms.ComboBox
         Me.txtPort_0 = New System.Windows.Forms.TextBox
+        Me.AfficheurOctet1 = New AfficheurOctet.AfficheurOctet
         Me.gbEntréesSortiesNumériques.SuspendLayout()
         Me.TableLayoutPanelMain.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
@@ -94,7 +95,7 @@ Partial Class ES_Num_LabjackU12
         Me.TableLayoutPanel2.ColumnCount = 3
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.81615!))
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.18386!))
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 514.0!))
+        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 515.0!))
         Me.TableLayoutPanel2.Controls.Add(Me.cboPort_ES_1, 0, 0)
         Me.TableLayoutPanel2.Controls.Add(Me.txtPort_1, 1, 0)
         Me.TableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill
@@ -111,13 +112,13 @@ Partial Class ES_Num_LabjackU12
         Me.cboPort_ES_1.FormattingEnabled = True
         Me.cboPort_ES_1.Location = New System.Drawing.Point(3, 3)
         Me.cboPort_ES_1.Name = "cboPort_ES_1"
-        Me.cboPort_ES_1.Size = New System.Drawing.Size(109, 21)
+        Me.cboPort_ES_1.Size = New System.Drawing.Size(108, 21)
         Me.cboPort_ES_1.TabIndex = 0
         '
         'txtPort_1
         '
         Me.txtPort_1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.txtPort_1.Location = New System.Drawing.Point(118, 3)
+        Me.txtPort_1.Location = New System.Drawing.Point(117, 3)
         Me.txtPort_1.Name = "txtPort_1"
         Me.txtPort_1.Size = New System.Drawing.Size(51, 20)
         Me.txtPort_1.TabIndex = 1
@@ -138,9 +139,10 @@ Partial Class ES_Num_LabjackU12
         Me.TableLayoutPanel0.ColumnCount = 3
         Me.TableLayoutPanel0.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.81615!))
         Me.TableLayoutPanel0.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.18386!))
-        Me.TableLayoutPanel0.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 514.0!))
+        Me.TableLayoutPanel0.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 515.0!))
         Me.TableLayoutPanel0.Controls.Add(Me.cboPort_ES_0, 0, 0)
         Me.TableLayoutPanel0.Controls.Add(Me.txtPort_0, 1, 0)
+        Me.TableLayoutPanel0.Controls.Add(Me.AfficheurOctet1, 2, 0)
         Me.TableLayoutPanel0.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel0.Location = New System.Drawing.Point(3, 16)
         Me.TableLayoutPanel0.Name = "TableLayoutPanel0"
@@ -155,16 +157,25 @@ Partial Class ES_Num_LabjackU12
         Me.cboPort_ES_0.FormattingEnabled = True
         Me.cboPort_ES_0.Location = New System.Drawing.Point(3, 3)
         Me.cboPort_ES_0.Name = "cboPort_ES_0"
-        Me.cboPort_ES_0.Size = New System.Drawing.Size(113, 21)
+        Me.cboPort_ES_0.Size = New System.Drawing.Size(112, 21)
         Me.cboPort_ES_0.TabIndex = 0
         '
         'txtPort_0
         '
         Me.txtPort_0.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.txtPort_0.Location = New System.Drawing.Point(122, 3)
+        Me.txtPort_0.Location = New System.Drawing.Point(121, 3)
         Me.txtPort_0.Name = "txtPort_0"
         Me.txtPort_0.Size = New System.Drawing.Size(53, 20)
         Me.txtPort_0.TabIndex = 1
+        '
+        'AfficheurOctet1
+        '
+        Me.AfficheurOctet1.Couleur = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.AfficheurOctet1.Location = New System.Drawing.Point(180, 3)
+        Me.AfficheurOctet1.N = CType(0, Byte)
+        Me.AfficheurOctet1.Name = "AfficheurOctet1"
+        Me.AfficheurOctet1.Size = New System.Drawing.Size(160, 20)
+        Me.AfficheurOctet1.TabIndex = 2
         '
         'ES_Num_LabjackU12
         '
@@ -196,5 +207,6 @@ Partial Class ES_Num_LabjackU12
     Friend WithEvents TableLayoutPanel2 As System.Windows.Forms.TableLayoutPanel
     Friend WithEvents cboPort_ES_1 As System.Windows.Forms.ComboBox
     Friend WithEvents txtPort_1 As System.Windows.Forms.TextBox
+    Friend WithEvents AfficheurOctet1 As AfficheurOctet.AfficheurOctet
 
 End Class
