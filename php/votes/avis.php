@@ -22,7 +22,18 @@
   print '</form>'."\r\n";
   print '</center>'."\r\n";
 
+  $votes->voter(0);
+  //$votes->voter(1);
+  $votes->voter(2);
+  $votes->voter(3);
+  //$votes->voter(3);
+  //$votes->voter(3);
+  //$votes->voter(4);
+
+
   $votes->afficher_resultats();
+  //global $ser_votes;
+  //$ser_votes = serialize($votes); 
 
 ?>
 

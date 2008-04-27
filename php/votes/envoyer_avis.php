@@ -15,10 +15,13 @@
 
 <?php	
 
+require_once('vote.php');
 
 
-global $votes;
+//global $votes;
+//global $ser_votes;
 
+//$votes = unserialize($ser_votes); 
 
 
 if (!empty($_POST)) {
