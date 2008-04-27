@@ -12,25 +12,33 @@
 <h1>Votre avis a &eacute;t&eacute; envoy&eacute;</h1>
 
 <center>
+
 <?php	
 
 
-require_once('config.php');
+
+global $votes;
+
+
 
 if (!empty($_POST)) {
-  //echo '<p>Le bouton enfoncé est le bouton ';
-  for ($i=0 ; $i<sizeof($enumAvis) ; $i++) {
+  for ($i=0 ; $i<6 ; $i++) {
     if (isset($_POST['bouton'."$i"])) {
-        //echo "$i";
+        echo "Le bouton enfonc&eacute; est le bouton $i"."\r\n";
 	$avis = $i;
+	break;
     }
   }
-  //echo '</p>';
 }
 
-echo "Vous avez envoy&eacute; l'avis "."<strong>".$enumAvis[$avis]." (".$avis.")"."</strong>";
+echo "<br/>"."\r\n";
 
-//$resultats[$avis]++;
+echo "Vous avez envoy&eacute; l'avis "."<strong>".$votes[$avis]." (".$avis.")"."</strong>";
+
+//$votes->voter($avis);
+
+
+$votes->afficher_resultats();
 
 
 ?>

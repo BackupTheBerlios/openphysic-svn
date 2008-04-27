@@ -11,15 +11,18 @@
 <h1>Avis</h1>
 
 <?php
-   require('config.php');
+  require_once('config.php');
 
-   print '<center>'."\r\n";
-   print '<form method="post" action="envoyer_avis.php" name="avis">'."\r\n";
-   for ($i=0 ; $i<sizeof($enumAvis) ; $i++) {
-      print "<input type=\"submit\" name=\"bouton$i\" value=\"$enumAvis[$i]\" />"."&nbsp;"."\r\n";
-   }
-   print '</form>'."\r\n";
-   print '</center>'."\r\n";
+  print '<center>'."\r\n";
+  print '<form method="post" action="envoyer_avis.php" name="avis">'."\r\n";
+
+  for ($i=0 ; $i<$votes->nb_choix ; $i++) {
+    print "<input type=\"submit\" name=\"bouton$i\" value=\"".$votes->choix[$i]."\" />"."&nbsp;"."\r\n";
+  }
+  print '</form>'."\r\n";
+  print '</center>'."\r\n";
+
+  $votes->afficher_resultats();
 
 ?>
 
