@@ -9,6 +9,10 @@
 <h1>Avis</h1>
 </center>
 
+<?php
+   require('config.php');
+?>
+
 <center>
 <form method="post" action="envoyer_avis.php" name="avis">
    <input type="submit" name="avis4" value="Tr&egrave;s favorable">
