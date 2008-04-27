@@ -17,6 +17,15 @@
 <center>
 <?php
 require('config.php');
+global $resultats;
+
+  function nouveau_vote() {
+    global $resultats;
+    echo "Lancement d'un nouveau vote";
+    for ($i=0 ; $i<sizeof($enumAvis) ; $i++) {
+      $resultats[$i]="ttt";
+    }
+  }
 
 //date_default_timezone_set('UTC');
 //echo date('l jS \of F Y h:i:s A');
@@ -29,12 +38,28 @@ for ($i=0 ; $i<sizeof($enumAvis) ; $i++) {
 print '  </tr>'."\r\n";
 print '  <tr>'."\r\n";
 for ($i=0 ; $i<sizeof($enumAvis) ; $i++) {
-   print "    <td align=\"center\">$i</td>"."\r\n";
+   print "    <td align=\"center\">$resultats[$i]</td>"."\r\n";
 }
 print '  </tr>'."\r\n";
 print '</table>'."\r\n";
 
+
+if (!empty($_POST)) {
+  if (isset($_POST['nouveau'])) {
+    nouveau_vote();
+  }
+}
+
+
 ?>
+
+<br/>
+
+<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
+<input type="submit" name="nouveau" value="Nouveau vote" />
+</form> 
+
+
 </center>
 
 </body>

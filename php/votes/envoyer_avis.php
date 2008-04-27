@@ -30,6 +30,21 @@ if (!empty($_POST)) {
 
 echo "Vous avez envoy&eacute; l'avis "."<strong>".$enumAvis[$avis]." (".$avis.")"."</strong>";
 
+$resultats[$avis]++;
+
+print '<table border="1" align="center">'."\r\n";
+print '  <tr>'."\r\n";
+for ($i=0 ; $i<sizeof($enumAvis) ; $i++) {
+   print "    <th align=\"center\">$enumAvis[$i]</th>"."\r\n";
+}
+print '  </tr>'."\r\n";
+print '  <tr>'."\r\n";
+for ($i=0 ; $i<sizeof($enumAvis) ; $i++) {
+   print "    <td align=\"center\">$resultats[$i]</td>"."\r\n";
+}
+print '  </tr>'."\r\n";
+print '</table>'."\r\n";
+
 ?>
 
 
