@@ -10,17 +10,17 @@
 
 <?php
    require('config.php');
+
+   print '<center>'."\r\n";
+   print '<form method="post" action="envoyer_avis.php" name="avis">'."\r\n";
+   for ($i=0 ; $i<sizeof($enumAvis) ; $i++) {
+      print "<input type=\"submit\" name=\"bouton$i\" value=\"$enumAvis[$i]\" />"."&nbsp;"."\r\n";
+   }
+   print '</form>'."\r\n";
+   print '</center>'."\r\n";
+
 ?>
 
-<center>
-<form method="post" action="envoyer_avis.php" name="avis">
-   <input type="submit" name="avis4" value="Tr&egrave;s favorable">
-   <input type="submit" name="avis3" value="Favorable">
-   <input type="submit" name="avis2" value="Assez favorable">
-   <input type="submit" name="avis1" value="R&eacute;serv&eacute;">
-   <input type="submit" name="avis0" value="D&eacute;favorable">
-</form>
-</center>
    
 </body>
    

@@ -13,23 +13,39 @@
 <?php	
 
 require('config.php');
-						  // Récupération des variables
-$avis = $_REQUEST['avis'];
 
-//$d = $myEnum["blue"]; 
+
+if (!empty($_POST)) {
+    echo '<p>Le bouton enfoncé est le bouton ';
+    if (isset($_POST['bouton2'])) {
+        echo '2';
+    } elseif (isset($_POST['bouton3'])) {
+        echo '3';
+    } else {
+        // par défaut, c'est le bouton 1, même si on ne clique pas/
+        echo '1';
+    }
+    echo '</p>';
+    echo '<p>Le champ texte contient : ', $_POST['champ'], '</p>';
+}
+
+// Récupération des variables
+$avis = $_REQUEST['avis'];
 
 $avis=2;
 echo "Vous avez envoy&eacute; l'avis "."<strong>".$enumAvis[$avis]." (".$avis.")"."</strong>";
+
 ?>
+
+
 </center>
 
 <br/>
 
 <center>
-<form method="post" action="avis.php" name="avis">
-   <input type="submit" name="retour" value="Retour">
-</form>
+<input type="button" name="retour" value="Retour" onclick="self.location.href='avis.php'" onclick> 
 </center>
+
 
 </body>
 
