@@ -1,3 +1,5 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd"> 
 <html>
 
 <head>
@@ -16,23 +18,16 @@ require('config.php');
 
 
 if (!empty($_POST)) {
-    echo '<p>Le bouton enfoncé est le bouton ';
-    if (isset($_POST['bouton2'])) {
-        echo '2';
-    } elseif (isset($_POST['bouton3'])) {
-        echo '3';
-    } else {
-        // par défaut, c'est le bouton 1, même si on ne clique pas/
-        echo '1';
+  //echo '<p>Le bouton enfoncé est le bouton ';
+  for ($i=0 ; $i<sizeof($enumAvis) ; $i++) {
+    if (isset($_POST['bouton'."$i"])) {
+        //echo "$i";
+	$avis = $i;
     }
-    echo '</p>';
-    echo '<p>Le champ texte contient : ', $_POST['champ'], '</p>';
+  }
+  //echo '</p>';
 }
 
-// Récupération des variables
-$avis = $_REQUEST['avis'];
-
-$avis=2;
 echo "Vous avez envoy&eacute; l'avis "."<strong>".$enumAvis[$avis]." (".$avis.")"."</strong>";
 
 ?>
