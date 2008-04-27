@@ -79,7 +79,7 @@ class Vote {
     print "<br/>"."\r\n";
     print "<center>"."\r\n";
     $this->afficher_resultats_table();
-    print "<br/>"."\r\n";
+    print "<br/><br/>"."\r\n";
     $this->afficher_resultats_graph();
     print "</center>"."\r\n";
   }

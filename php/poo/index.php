@@ -1,6 +1,6 @@
 <?php
-  // http://www.journaldunet.com/developpeur/tutoriel/php/040902-php5-objet-1a.shtml
   // La POO en PHP5
+  // http://www.journaldunet.com/developpeur/tutoriel/php/040902-php5-objet-1a.shtml
 
 class Personne {
   public $nom;

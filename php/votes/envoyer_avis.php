@@ -15,8 +15,9 @@
 
 <?php	
 
-require_once('vote.php');
-
+//require_once('vote.php');
+//require('vote.php');
+include('vote.php');
 
 //global $votes;
 //global $ser_votes;
