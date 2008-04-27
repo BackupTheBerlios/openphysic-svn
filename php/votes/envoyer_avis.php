@@ -14,8 +14,8 @@
 <center>
 <?php	
 
-require('config.php');
 
+require_once('config.php');
 
 if (!empty($_POST)) {
   //echo '<p>Le bouton enfoncé est le bouton ';

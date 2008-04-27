@@ -1,20 +1,11 @@
 <?php
 
-require('config.php');
-
-// Avis possibles pour le vote
-$enumAvis = array('Abstention','D&eacute;favorable','R&eacute;serv&eacute;','Assez favorable','Favorable','Tr&egrave;s favorable'); 
+//require_once('config.php');
 
 /**
  * Définition de la classe Vote
  */
 class Vote {
-  // Déclare un contructeur public
-  public function __construct() {
-    nouveau();
-  }
-
-
   public function nouveau() {
     global $resultats;
     //echo "Lancement d'un nouveau vote";
@@ -38,6 +29,10 @@ class Vote {
     print '</table>'."\r\n";
   }
 
+  // Déclare un contructeur public
+  public function __construct() {
+    //nouveau();
+  }
 
 }
 

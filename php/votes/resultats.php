@@ -16,7 +16,10 @@
 
 <center>
 <?php
-require('config.php');
+require_once('config.php');
+
+$votes=new Vote();
+$votes.afficher_resultats();
 
 
 //date_default_timezone_set('UTC');
