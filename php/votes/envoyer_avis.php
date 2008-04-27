@@ -2,13 +2,12 @@
 
 <head>
 <title>Avis envoy&eacute;</title>
+<link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 
 <body>
 
-<center>
 <h1>Votre avis a &eacute;t&eacute; envoy&eacute;</h1>
-</center>
 
 <center>
 <?php	

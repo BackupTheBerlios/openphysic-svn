@@ -1,13 +1,12 @@
 <html>
 <head>
 <title>Avis</title>
+<link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 
 <body>
 
-<center>
 <h1>Avis</h1>
-</center>
 
 <?php
    require('config.php');
