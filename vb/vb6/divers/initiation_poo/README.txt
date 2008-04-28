@@ -1,5 +1,6 @@
 1 Création d'un LED avec un PictureBox
  2 boutons : Allumer / Eteindre
+ Petite taille ! 255x255
  
 2 Création d'un bouton inverser
  -> Nécessité de stocker l'état de la LED dans une donnée membre privée
@@ -16,6 +17,7 @@ La méthode dessiner
 
 Pb : lorsqu'on lance le prog la LED n'est pas dessinée... (alors qu'elle est initialement éteinte)
 Evènement Paint du PictureBox -> dessiner
+Picture1.Cls
 
 4 Création d'une propriété permettant d'accéder à l'état (lecture et écriture) de la LED
 Ecriture sur la propiété etat
@@ -26,7 +28,7 @@ Public Property Let Etat(new_etat As Boolean)
     dessiner
 End Property
 
-5 Création d'un évenement etat_changed et Lecture de la propriété etat
+5 Création d'un évenement ChangementEtat et Lecture de la propriété etat
 Public Property Get Etat() As Boolean
     Etat = m_Etat
 End Property
@@ -48,33 +50,53 @@ Else
 End If
 
 
+Resize !
+Private Sub UserControl_Resize()
+Picture1.Width = Me.Width
+Picture1.Height = Me.Height
+End Sub
+
+Propriétés width et height du PictureBox
+
+
 6 Diagramme UML de l'objet LED et déployment de l'objet
 
 Améliorations possibles :
 Ajouter les propriétés Couleur_ON et Couleur_OFF
 Faire en sorte que Couleur_OFF soit calculé à partir de Couleur_ON, rendre privé Couleur_ON Couleur_OFF et n'accéder qu'à la propriété Couleur
 
-6 Création d'un bouton poussoir basé sur la LED
+6 Création d'un bouton basé sur la LED
+ Bouton avec commutation à l'appui
+
 Notion d'héritage (Inheritance en anglais) n'existe pas en VB6 -> il faut recopier le code
 en VB.Net mot-clé "extends"
 
 
-Réaction à l'évènement Click sur PictureBox
+Réaction à l'évènement MouseDown sur PictureBox lorsque l'on appuie sur le bouton de gauche (Button=1)
 
-' Déclaration de l'évènement
-Event Click()
 
-' Transmission de l'évènement Click
-Private Sub shaLED_Click()
-    RaiseEvent Click
-End Sub
+7. Bouton avec commutation jusqu'au relâchement
+Réaction à l'évènement MouseDown et MouseUp sur PictureBox
+
 
 Améliorations possibles :
-Propriété mécaniques différentes pour le bouton avec MouseUp et MouseDown
+Propriétés mécaniques différentes pour le bouton avec MouseUp et MouseDown
+Ex Labview :
+ Commutation à l'appui (FAIT en 6)
+ Commutation au relâchement
+ Commutation jusqu'au relâchement
+ Armement à l'appui
+ Armement au relâchement
+ Armement jusqu'au relâchement 
 
 
-7. Afficheur d'octet
+8. Afficheur d'octet
 notion d'agrégation (aggregation) ou de composition (object composition)
+créer un nouveau projet dans lequel vous inclurez le dernier contrôle LED réalisé.
+Créeez un nouveau contrôle utilisateur appelé AfficheurOctet.
+Ce contrôle doit permettre d'afficher un nombre entier positif codé sur un octet (8 bits).
+On créera pour cet objet une propriété (en lecture et en écriture) permettant
+de stocker ce nombre dans l'afficheur d'octet et d'allumer les Leds nécessaires.
 
 
 autres notions objets non abordées :

@@ -1,22 +1,24 @@
 VERSION 5.00
-Begin VB.UserControl Bouton 
-   ClientHeight    =   1005
+Begin VB.UserControl LED 
+   BackColor       =   &H8000000B&
+   ClientHeight    =   1425
    ClientLeft      =   0
    ClientTop       =   0
-   ClientWidth     =   1005
-   ScaleHeight     =   1005
-   ScaleWidth      =   1005
+   ClientWidth     =   1950
+   ScaleHeight     =   1425
+   ScaleWidth      =   1950
    Begin VB.PictureBox Picture1 
+      BorderStyle     =   0  'None
       Height          =   1000
       Left            =   0
-      ScaleHeight     =   945
-      ScaleWidth      =   945
+      ScaleHeight     =   1005
+      ScaleWidth      =   1005
       TabIndex        =   0
       Top             =   0
       Width           =   1000
    End
 End
-Attribute VB_Name = "Bouton"
+Attribute VB_Name = "LED"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
@@ -26,16 +28,6 @@ Option Explicit
 Dim m_etat As Boolean
 
 Public Event ChangementEtat()
-
-Private Sub Picture1_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
-If Button = 1 Then
-inverser
-End If
-End Sub
-
-'Private Sub Picture1_Click()
-'inverser
-'End Sub
 
 Private Sub Picture1_Paint()
 dessiner
@@ -81,13 +73,15 @@ dessiner
 End Sub
 
 Private Sub dessiner()
+Picture1.Cls
+
 If m_etat Then
     ' Picture1.Width = Picture1.Height
     'Picture1.Line (0, 0)-(Picture1.Width, Picture1.Height)
     'Picture1.Circle (Xcentre, Ycentre), Rayon
     Picture1.FillColor = vbRed
     Picture1.ForeColor = Picture1.FillColor
-    Picture1.Circle (50, 50), 50
+    Picture1.Circle (50#, 50#), 50#
 Else
     ' A propos des couleurs dans VB6
     ' &HBBGGRR
@@ -97,7 +91,7 @@ Else
 
     Picture1.FillColor = &H90
     Picture1.ForeColor = Picture1.FillColor
-    Picture1.Circle (50, 50), 50
+    Picture1.Circle (50#, 50#), 50#
 End If
 End Sub
 
@@ -112,3 +106,13 @@ Public Property Get Etat() As Boolean
     Etat = m_etat
 End Property
 
+Private Sub UserControl_Resize()
+Debug.Print "resize"
+Picture1.Width = UserControl.Width
+Picture1.Height = UserControl.Height
+
+Picture1.ScaleHeight = 100#
+Picture1.ScaleWidth = 100#
+
+dessiner
+End Sub
