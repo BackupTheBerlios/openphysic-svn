@@ -98,7 +98,7 @@ dessiner
 End Sub
 
 Private Sub Form_Activate()
-dessiner
+'dessiner
 End Sub
 
 Private Sub Form_Load()
@@ -109,4 +109,8 @@ Picture1.ScaleWidth = 100
 
 Picture1.BorderStyle = 0 ' pas de bordure = None
 Picture1.FillStyle = 0 ' opaque
+End Sub
+
+Private Sub Picture1_Paint()
+dessiner
 End Sub
