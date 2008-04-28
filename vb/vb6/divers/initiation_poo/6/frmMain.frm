@@ -12,12 +12,12 @@ Begin VB.Form frmMain
    StartUpPosition =   3  'Windows Default
    Begin POO.Bouton Bouton1 
       Height          =   975
-      Left            =   720
+      Left            =   360
       TabIndex        =   1
-      Top             =   480
+      Top             =   120
       Width           =   975
-      _extentx        =   1720
-      _extenty        =   1720
+      _ExtentX        =   1720
+      _ExtentY        =   1720
    End
    Begin VB.CheckBox chkEtatBouton 
       Caption         =   "Etat du bouton"
@@ -37,13 +37,9 @@ Option Explicit
 
 Private Sub Bouton1_ChangementEtat()
 If Bouton1.Etat Then
-    chkEtatLed.Value = 1
+    chkEtatBouton.Value = 1
 Else
-    chkEtatLed.Value = 0
+    chkEtatBouton.Value = 0
 End If
-End Sub
-
-Private Sub Form_Load()
-
 End Sub
 
