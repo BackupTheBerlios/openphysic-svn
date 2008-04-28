@@ -19,7 +19,7 @@ Pb : lorsqu'on lance le prog la LED n'est pas dessinée... (alors qu'elle est ini
 Evènement Paint du PictureBox -> dessiner
 Picture1.Cls
 
-4 Création d'une propriété permettant d'accéder à l'état (lecture et écriture) de la LED
+4 Création d'une propriété permettant d'accéder à l'état (écriture) de la LED
 Ecriture sur la propiété etat
 Ajout d'un CheckBox (recupération de la propriété value du CheckBox lors de l'évènement Click)
 Ajout de Property Let
@@ -28,7 +28,7 @@ Public Property Let Etat(new_etat As Boolean)
     dessiner
 End Property
 
-5 Création d'un évenement ChangementEtat et Lecture de la propriété etat
+5 Création d'un évenement ChangementEtat et Lecture de la propriété Etat
 Public Property Get Etat() As Boolean
     Etat = m_Etat
 End Property
