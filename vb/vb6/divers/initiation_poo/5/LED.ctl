@@ -25,7 +25,11 @@ Option Explicit
 
 Dim m_etat As Boolean
 
-'Events etat_changed()
+Private Sub Picture1_Paint()
+dessiner
+End Sub
+
+'Public Event Etat_Changed()
 
 Private Sub UserControl_Initialize()
 m_etat = False ' LED initialement éteinte
@@ -92,5 +96,3 @@ End Property
 Public Property Get Etat() As Boolean
     Etat = m_etat
 End Property
-
-

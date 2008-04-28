@@ -84,3 +84,6 @@ Public Property Let Etat(new_etat As Boolean)
     dessiner
 End Property
 
+Private Sub Picture1_Paint()
+dessiner
+End Sub

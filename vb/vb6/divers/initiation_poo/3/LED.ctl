@@ -25,6 +25,7 @@ Option Explicit
 
 Dim m_etat As Boolean
 
+
 Private Sub UserControl_Initialize()
 m_etat = False ' LED initialement éteinte
 
@@ -78,3 +79,8 @@ Else
     Picture1.Circle (50, 50), 50
 End If
 End Sub
+
+Private Sub Picture1_Paint()
+dessiner
+End Sub
+

@@ -24,8 +24,8 @@ Begin VB.Form frmMain
       TabIndex        =   3
       Top             =   240
       Width           =   975
-      _ExtentX        =   1720
-      _ExtentY        =   1720
+      _extentx        =   1720
+      _extenty        =   1720
    End
    Begin VB.CommandButton cmdInverser 
       Caption         =   "&Inverser"
@@ -76,3 +76,5 @@ Private Sub cmdInverser_Click()
 LED1.inverser
 End Sub
 
+'Private Sub LED1_Etat_Changed()
+'End Sub

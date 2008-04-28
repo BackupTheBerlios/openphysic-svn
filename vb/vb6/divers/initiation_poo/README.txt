@@ -13,6 +13,9 @@ ainsi que les méthode s'appliquant à notre objet : allumer eteindre inverser
 Ces méthodes doivent être "public" afin de pouvoir être accessible depuis l'extérieur de l'objet
 La méthode dessiner
 
+Pb : lorsqu'on lance le prog la LED n'est pas dessinée... (alors qu'elle est initialement éteinte)
+Evènement Paint du PictureBox -> dessiner
+
 4 Création d'une propriété permettant d'accéder à l'état (lecture et écriture) de la LED
 Ecriture sur la propiété etat
 Ajout d'un CheckBox (recupération de la propriété value du CheckBox lors de l'évènement Click)
@@ -29,15 +32,21 @@ End Property
 
 PropertyChanged "Etat" dans Property Let Etat ainsi que dans toutes les méthodes qui changent l'état de la LED
 
-Event etat_changed()
+Déclaration de l'évènement
+Event Etat_Changed()
 
-6 Diagramme UML de l'objet LED
+RaiseEvent Etat_Changed
+
+6 Diagramme UML de l'objet LED et déployment de l'objet
 
 Améliorations possibles :
 Ajouter les propriétés Couleur_ON et Couleur_OFF
 Faire en sorte que Couleur_OFF soit calculé à partir de Couleur_ON, rendre privé Couleur_ON Couleur_OFF et n'accéder qu'à la propriété Couleur
 
 6 Création d'un bouton poussoir basé sur la LED
+' Déclaration de l'évènement
+Event Click()
+
 ' Transmission de l'évènement Click
 Private Sub shaLED_Click()
     RaiseEvent Click
