@@ -51,20 +51,20 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
 
-Dim etat As Boolean
+Dim m_etat As Boolean
 
 Private Sub cmdAllumer_Click()
-etat = True
+m_etat = True
 dessiner
 End Sub
 
 Private Sub cmdEteindre_Click()
-etat = False
+m_etat = False
 dessiner
 End Sub
 
 Private Sub dessiner()
-If etat Then
+If m_etat Then
     ' Picture1.Width = Picture1.Height
     'Picture1.Line (0, 0)-(Picture1.Width, Picture1.Height)
     'Picture1.Circle (Xcentre, Ycentre), Rayon
@@ -85,7 +85,7 @@ End If
 End Sub
 
 Private Sub cmdInverser_Click()
-etat = Not etat
+m_etat = Not m_etat
 
 ' ou
 'If etat Then
@@ -97,8 +97,12 @@ etat = Not etat
 dessiner
 End Sub
 
+Private Sub Form_Activate()
+dessiner
+End Sub
+
 Private Sub Form_Load()
-etat = False ' LED initialement éteinte
+m_etat = False ' LED initialement éteinte
 
 Picture1.ScaleHeight = 100
 Picture1.ScaleWidth = 100
