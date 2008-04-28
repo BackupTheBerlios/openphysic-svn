@@ -24,8 +24,8 @@ Begin VB.Form frmMain
       TabIndex        =   3
       Top             =   240
       Width           =   975
-      _extentx        =   1720
-      _extenty        =   1720
+      _ExtentX        =   1720
+      _ExtentY        =   1720
    End
    Begin VB.CommandButton cmdInverser 
       Caption         =   "&Inverser"
@@ -61,7 +61,7 @@ Option Explicit
 
 
 Private Sub chkEtatLed_Click()
-LED1.Etat = chkEtatLed.Value
+LED1.Etat = CBool(chkEtatLed.Value) ' 0 1 ou 2 -> conversion en boolean
 End Sub
 
 Private Sub cmdAllumer_Click()

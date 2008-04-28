@@ -84,7 +84,7 @@ Propriétés mécaniques différentes pour le bouton avec MouseUp et MouseDown
 Ex Labview :
  Commutation à l'appui (FAIT en 6)
  Commutation au relâchement
- Commutation jusqu'au relâchement
+ Commutation jusqu'au relâchement (FAIT en 7)
  Armement à l'appui
  Armement au relâchement
  Armement jusqu'au relâchement 
