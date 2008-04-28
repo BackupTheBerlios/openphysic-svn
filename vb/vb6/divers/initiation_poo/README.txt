@@ -8,6 +8,7 @@
   en fonction de l'état m_etat
  
 3 Encapsulation dans un contrôle utilisateur
+encapsulation = information hiding
 On encapsule l'état de la led (la donnée membre m_etat)
 ainsi que les méthode s'appliquant à notre objet : allumer eteindre inverser
 Ces méthodes doivent être "public" afin de pouvoir être accessible depuis l'extérieur de l'objet
@@ -30,12 +31,22 @@ Public Property Get Etat() As Boolean
     Etat = m_Etat
 End Property
 
-PropertyChanged "Etat" dans Property Let Etat ainsi que dans toutes les méthodes qui changent l'état de la LED
+PropertyChanged "Etat" dans Property Let Etat ainsi que dans toutes les méthodes qui changent l'état de la LED ???? nécessaire
+uniquement pour la fenêtre propriété !!!
 
 Déclaration de l'évènement
-Event Etat_Changed()
+Event ChangementEtat()
 
-RaiseEvent Etat_Changed
+Lancement de l'évènement
+RaiseEvent ChangementEtat
+
+Côté feuille principale traitement de l'évènement ChangementEtat
+If LED1.Etat Then
+    chkEtatLed.Value = 1
+Else
+    chkEtatLed.Value = 0
+End If
+
 
 6 Diagramme UML de l'objet LED et déployment de l'objet
 
@@ -44,6 +55,12 @@ Ajouter les propriétés Couleur_ON et Couleur_OFF
 Faire en sorte que Couleur_OFF soit calculé à partir de Couleur_ON, rendre privé Couleur_ON Couleur_OFF et n'accéder qu'à la propriété Couleur
 
 6 Création d'un bouton poussoir basé sur la LED
+Notion d'héritage (Inheritance en anglais) n'existe pas en VB6 -> il faut recopier le code
+en VB.Net mot-clé "extends"
+
+
+Réaction à l'évènement Click sur PictureBox
+
 ' Déclaration de l'évènement
 Event Click()
 
@@ -51,3 +68,14 @@ Event Click()
 Private Sub shaLED_Click()
     RaiseEvent Click
 End Sub
+
+Améliorations possibles :
+Propriété mécaniques différentes pour le bouton avec MouseUp et MouseDown
+
+
+7. Afficheur d'octet
+notion d'agrégation (aggregation) ou de composition (object composition)
+
+
+autres notions objets non abordées :
+polymorphisme, template de classe

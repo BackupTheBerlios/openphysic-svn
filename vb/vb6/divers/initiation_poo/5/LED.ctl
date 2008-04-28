@@ -25,11 +25,12 @@ Option Explicit
 
 Dim m_etat As Boolean
 
+Public Event ChangementEtat()
+
 Private Sub Picture1_Paint()
 dessiner
 End Sub
 
-'Public Event Etat_Changed()
 
 Private Sub UserControl_Initialize()
 m_etat = False ' LED initialement éteinte
@@ -44,18 +45,21 @@ End Sub
 Public Sub allumer()
 m_etat = True
 PropertyChanged "Etat"
+RaiseEvent ChangementEtat
 dessiner
 End Sub
 
 Public Sub eteindre()
 m_etat = False
 PropertyChanged "Etat"
+RaiseEvent ChangementEtat
 dessiner
 End Sub
 
 Public Sub inverser()
 m_etat = Not m_etat
 PropertyChanged "Etat"
+RaiseEvent ChangementEtat
 ' ou
 'If etat Then
 '    etat = False
@@ -90,6 +94,7 @@ End Sub
 Public Property Let Etat(new_etat As Boolean)
     m_etat = new_etat
     PropertyChanged "Etat"
+    RaiseEvent ChangementEtat
     dessiner
 End Property
 
