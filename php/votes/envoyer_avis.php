@@ -37,7 +37,9 @@ if (!empty($_POST)) {
 
 echo "<br/>"."\r\n";
 
-echo "Vous avez envoy&eacute; l'avis "."<strong>".$votes[$avis]." (".$avis.")"."</strong>";
+//$votes = new Vote();
+
+echo "Vous avez envoy&eacute; l'avis "."<strong>".htmlentities($votes->choix[$avis])." (".$avis.")"."</strong>";
 
 //$votes->voter($avis);
 

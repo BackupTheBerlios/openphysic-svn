@@ -18,18 +18,18 @@
   print '<form method="post" action="envoyer_avis.php" name="avis">'."\r\n";
 
   for ($i=0 ; $i<$votes->nb_choix ; $i++) {
-    print "<input type=\"submit\" name=\"bouton$i\" value=\"".$votes->choix[$i]."\" />"."&nbsp;"."\r\n";
+    print "<input type=\"submit\" name=\"bouton$i\" value=\"".htmlentities($votes->choix[$i])."\" />"."&nbsp;"."\r\n";
   }
   print '</form>'."\r\n";
   print '</center>'."\r\n";
 
   $votes->voter(0);
-  //$votes->voter(1);
+  $votes->voter(1);
   $votes->voter(2);
   $votes->voter(3);
-  //$votes->voter(3);
-  //$votes->voter(3);
-  //$votes->voter(4);
+  $votes->voter(3);  $votes->voter(3);  $votes->voter(3);  $votes->voter(3);
+  $votes->voter(3);
+  $votes->voter(4);
 
 
   $votes->afficher_resultats();

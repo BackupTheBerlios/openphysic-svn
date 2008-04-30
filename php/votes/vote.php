@@ -3,16 +3,17 @@
 //require_once('config.php');
 
 /**
- * DÃ©finition de la classe Vote
+ * Définition de la classe Vote
  */
 class Vote {
-  public $choix = array('Abstention','D&eacute;favorable','R&eacute;serv&eacute;','Assez favorable','Favorable','Tr&egrave;s favorable');
-  public $resultats; // liste comportant les rÃ©sultats d'un vote
+  //public $choix = array('Abstention','D&eacute;favorable','R&eacute;serv&eacute;','Assez favorable','Favorable','Tr&egrave;s favorable');
+  public $choix = array('Abstention','Défavorable','Réservé','Assez favorable','Favorable','Très favorable');
+  public $resultats; // liste comportant les résultats d'un vote
   public $nb_choix; // nb de choix ( = sizeof($choix) )
 
   private $nb_votes; // nb de votes (y compris les abstentions/nuls explicites)
   private $nb_votants; // nb de votants
-  // le nb d'absentions rÃ©el est le nb d'absentions explicites + nb_votants-nb_votes
+  // le nb d'absentions réel est le nb d'absentions explicites + nb_votants-nb_votes
 
   public function nouveau() {
     $this->nb_choix = sizeof($this->choix);
@@ -52,7 +53,7 @@ class Vote {
     print '<table border="1">'."\r\n";
     print '  <tr>'."\r\n";
     for ($i=0 ; $i<$this->nb_choix ; $i++) {
-       print "    <th align=\"center\">".$this->choix[$i]."</th>"."\r\n";
+       print "    <th align=\"center\">".htmlentities($this->choix[$i])."</th>"."\r\n";
     }
     print '  </tr>'."\r\n";
     print '  <tr>'."\r\n";
@@ -68,13 +69,16 @@ class Vote {
   }
 
   private function afficher_resultats_graph() {
-    print "graph";
+    //print "graph";
     /* Graphique avec GD2 */
-        $max = 0;
-        for ($i=0;$i<7;$i++){
+        $max = 1;
+        for ($i=0;$i<$this->nb_choix;$i++){
           if ($this->resultats[$i] > $max)$max=$this->resultats[$i];  // find the largest data
         }
-        $im = imagecreate(320,255); // width , height px
+	$width=640;
+	$height=255;
+	$margeX=10;
+        $im = imagecreate($width,$height); // width , height px
 
         $white = imagecolorallocate($im,255,255,255); // allocate some color from RGB components remeber Physics
         $black = imagecolorallocate($im,0,0,0);   //
@@ -86,24 +90,29 @@ class Vote {
         //imagerectangle($im, 1, 1, 319, 239, $black);
         //draw X, Y Co-Ordinate
         imageline($im, 10, 5, 10, 230, $blue );
-        imageline($im, 10, 230, 300, 230, $blue );
+        imageline($im, $margeX, 230, $width-$margeX, 230, $blue );
         //Print X, Y
-        imagestring($im,3,15,5,"RÃ©sultats",$black);
+        imagestring($im,3,15,5,"Résultats",$black);
 
         // what next draw the bars
-        $x = 15;    // bar x1 position
+        $x1 = $margeX;    // bar x1 position
         $y = 230;    // bar $y1 position
-        $x_width = 20;  // width of bars
+        $x_width = 100;  // width of bars
         $y_ht = 0; // height of bars, will be calculated later
         // get into some meat now, cheese for vegetarians;
-        for ($i=0;$i<7;$i++){
-          $y_ht = ($this->resultats[$i]/$max)* 100;    // no validation so check if $max = 0 later;
+	$x=$x1;
+	$xdiff = 0; // diff between two bars;
+        for ($i=0;$i<$this->nb_choix;$i++){
+          $y_ht = ($this->resultats[$i]/$max)* 200;    // no validation so check if $max = 0 later;
           imagerectangle($im,$x,$y,$x+$x_width,($y-$y_ht),$red);
           imagestring( $im,2,$x-1,$y+1,$this->choix[$i],$black);
-          imagestring( $im,2,$x-1,$y+10,$this->resultats[$i],$black);
-          $x += ($x_width+20);   // 20 is diff between two bars;
-         
+          imagestring( $im,2,$x-1+$x_width/2,$y+10,$this->resultats[$i],$black);
+          $x += ($x_width+$xdiff);   
         }
+	$moy = $this->moyenne();
+	//$moy=5;
+	$x=$moy*($x_width+$xdiff)+$x1+$x_width/2;
+	imageline($im, $x, 0, $x, $height, $black );
         imagejpeg( $im, "graph.jpeg", 90);
         imagedestroy($im);
         echo "<img src='graph.jpeg'><p></p>"; 
@@ -166,7 +175,7 @@ class Vote {
     print "</center>"."\r\n";
   }
 
-  // DÃ©clare un contructeur public
+  // Déclare un contructeur public
   public function __construct() {
     $this->nouveau();
   }
