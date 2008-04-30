@@ -68,11 +68,53 @@ class Vote {
   }
 
   private function afficher_resultats_graph() {
+    print "graph";
+
     /* Graphique avec JP-Graph */
     /* Requiert GD2 */
     /* JpGraph Error Your PHP installation does not seem to have the required GD 2.x library enabled. Please see the PHP documentation, "Image" section. Make sure that "php_gd2.dll" statement is uncomment in the [modules] section in the php.ini file. */
+    /* /etc/php5/apache2/php.ini */
 
-    print "graph";
+    /* Graphique avec PEAR Image_Graph */
+    require_once 'Image/Graph.php';
+
+    // create the graph
+    $Graph =& Image_Graph::factory('graph', array(400, 300)); 
+    // add a TrueType font
+    $Font =& $Graph->addNew('font', 'Verdana');
+    // set the font size to 11 pixels
+    $Font->setSize(8);
+
+    $Graph->setFont($Font);
+
+    $Graph->add(
+        Image_Graph::vertical(
+            Image_Graph::factory('title', array('Bar Chart Sample', 12)),        
+            Image_Graph::vertical(
+                $Plotarea = Image_Graph::factory('plotarea'),
+                $Legend = Image_Graph::factory('legend'),
+                90
+            ),
+            5
+        )
+    );   
+
+    $Legend->setPlotarea($Plotarea);        
+
+    // create the dataset
+    $Dataset =& Image_Graph::factory('random', array(10, 2, 15, false));
+    // create the 1st plot as smoothed area chart using the 1st dataset
+    $Plot =& $Plotarea->addNew('bar', array(&$Dataset));
+
+    // set a line color
+    $Plot->setLineColor('gray');
+
+    // set a standard fill style
+    $Plot->setFillColor('blue@0.2');
+
+    // output the Graph
+    $Graph->done(); 
+
   }
 
   public function afficher_resultats() {
