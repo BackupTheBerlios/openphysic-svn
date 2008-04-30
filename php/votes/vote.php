@@ -69,6 +69,44 @@ class Vote {
 
   private function afficher_resultats_graph() {
     print "graph";
+    /* Graphique avec GD2 */
+        $max = 0;
+        for ($i=0;$i<7;$i++){
+          if ($this->resultats[$i] > $max)$max=$this->resultats[$i];  // find the largest data
+        }
+        $im = imagecreate(320,255); // width , height px
+
+        $white = imagecolorallocate($im,255,255,255); // allocate some color from RGB components remeber Physics
+        $black = imagecolorallocate($im,0,0,0);   //
+        $red = imagecolorallocate($im,255,0,0);   //
+        $green = imagecolorallocate($im,0,255,0); //
+        $blue = imagecolorallocate($im,0,0,255);  //
+        //
+        // create background box
+        //imagerectangle($im, 1, 1, 319, 239, $black);
+        //draw X, Y Co-Ordinate
+        imageline($im, 10, 5, 10, 230, $blue );
+        imageline($im, 10, 230, 300, 230, $blue );
+        //Print X, Y
+        imagestring($im,3,15,5,"Résultats",$black);
+
+        // what next draw the bars
+        $x = 15;    // bar x1 position
+        $y = 230;    // bar $y1 position
+        $x_width = 20;  // width of bars
+        $y_ht = 0; // height of bars, will be calculated later
+        // get into some meat now, cheese for vegetarians;
+        for ($i=0;$i<7;$i++){
+          $y_ht = ($this->resultats[$i]/$max)* 100;    // no validation so check if $max = 0 later;
+          imagerectangle($im,$x,$y,$x+$x_width,($y-$y_ht),$red);
+          imagestring( $im,2,$x-1,$y+1,$this->choix[$i],$black);
+          imagestring( $im,2,$x-1,$y+10,$this->resultats[$i],$black);
+          $x += ($x_width+20);   // 20 is diff between two bars;
+         
+        }
+        imagejpeg( $im, "graph.jpeg", 90);
+        imagedestroy($im);
+        echo "<img src='graph.jpeg'><p></p>"; 
 
     /* Graphique avec JP-Graph */
     /* Requiert GD2 */
@@ -76,6 +114,7 @@ class Vote {
     /* /etc/php5/apache2/php.ini */
 
     /* Graphique avec PEAR Image_Graph */
+    /*
     require_once 'Image/Graph.php';
 
     // create the graph
@@ -102,9 +141,9 @@ class Vote {
     $Legend->setPlotarea($Plotarea);        
 
     // create the dataset
-    $Dataset =& Image_Graph::factory('random', array(10, 2, 15, false));
+    $this->resultatsset =& Image_Graph::factory('random', array(10, 2, 15, false));
     // create the 1st plot as smoothed area chart using the 1st dataset
-    $Plot =& $Plotarea->addNew('bar', array(&$Dataset));
+    $Plot =& $Plotarea->addNew('bar', array(&$this->resultatsset));
 
     // set a line color
     $Plot->setLineColor('gray');
@@ -114,6 +153,7 @@ class Vote {
 
     // output the Graph
     $Graph->done(); 
+    */
 
   }
 
