@@ -105,7 +105,7 @@ class Vote {
         for ($i=0;$i<$this->nb_choix;$i++){
           $y_ht = ($this->resultats[$i]/$max)* 200;    // no validation so check if $max = 0 later;
           imagerectangle($im,$x,$y,$x+$x_width,($y-$y_ht),$red);
-          imagestring( $im,2,$x-1,$y+1,$this->choix[$i],$black);
+          imagestring( $im,2,$x+5,$y+1,$this->choix[$i],$black);
           imagestring( $im,2,$x-1+$x_width/2,$y+10,$this->resultats[$i],$black);
           $x += ($x_width+$xdiff);   
         }
