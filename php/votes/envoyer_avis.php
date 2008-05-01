@@ -1,3 +1,4 @@
+<?php session_start(); ?> 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd"> 
 <html>
@@ -15,14 +16,19 @@
 
 <?php	
 
-//require_once('vote.php');
+require_once('vote.php');
 //require('vote.php');
-include('vote.php');
+//include('vote.php');
 
 //global $votes;
 //global $ser_votes;
 
-//$votes = unserialize($ser_votes); 
+if (isset($_SESSION['votes'])) {
+  //echo 'La variable "votes" existe et vaut: ' . $_SESSION['votes'];
+  $votes=unserialize($_SESSION['votes']);
+} else {
+  echo 'La variable de session "votes" n\'existe pas';
+}
 
 
 if (!empty($_POST)) {
@@ -41,11 +47,22 @@ echo "<br/>"."\r\n";
 
 echo "Vous avez envoy&eacute; l'avis "."<strong>".htmlentities($votes->choix[$avis])." (".$avis.")"."</strong>";
 
-//$votes->voter($avis);
+$votes->voter($avis);
+/*
+  $votes->voter(0);
+  $votes->voter(1);
+  $votes->voter(2);
+  $votes->voter(3);
+  $votes->voter(3);  $votes->voter(3);  $votes->voter(3);  $votes->voter(3);
+  $votes->voter(3);
+  $votes->voter(4);
+*/
 
+  //$votes->afficher_resultats();
+  //global $ser_votes;
+  //$ser_votes = serialize($votes); 
 
-$votes->afficher_resultats();
-
+  $_SESSION['votes'] = serialize($votes);
 
 ?>
 
