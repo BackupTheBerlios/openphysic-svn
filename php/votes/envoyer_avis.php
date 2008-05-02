@@ -50,7 +50,8 @@ echo "<br/>"."\r\n";
 
 //$votes = new Vote();
 
-echo "Vous avez envoy&eacute; l'avis "."<strong>".htmlentities($votes->choix[$avis])." (".$avis.")"."</strong>";
+$IP=$_SERVER['REMOTE_ADDR'];
+echo "Vous ($IP) avez envoy&eacute; l'avis "."<strong>".htmlentities($votes->choix[$avis])." (".$avis.")"."</strong>";
 
 $votes->voter($avis);
 /*
