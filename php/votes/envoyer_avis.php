@@ -1,4 +1,4 @@
-<?php session_start(); ?> 
+<?php //session_start(); ?> 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd"> 
 <html>
@@ -23,12 +23,17 @@ require_once('vote.php');
 //global $votes;
 //global $ser_votes;
 
+/*
 if (isset($_SESSION['votes'])) {
   //echo 'La variable "votes" existe et vaut: ' . $_SESSION['votes'];
   $votes=unserialize($_SESSION['votes']);
 } else {
   echo 'La variable de session "votes" n\'existe pas';
 }
+*/
+
+echo $GLOBALS['votes'];
+$votes = unserialize($GLOBALS['votes']);
 
 
 if (!empty($_POST)) {
@@ -62,7 +67,9 @@ $votes->voter($avis);
   //global $ser_votes;
   //$ser_votes = serialize($votes); 
 
-  $_SESSION['votes'] = serialize($votes);
+  //$_SESSION['votes'] = serialize($votes);
+  $GLOBALS['votes'] = serialize($votes);
+
 
 ?>
 

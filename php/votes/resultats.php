@@ -1,4 +1,4 @@
-<?php session_start(); ?> 
+<?php //session_start(); ?> 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd"> 
 <html>
@@ -36,7 +36,9 @@ if (!empty($_POST)) {
   if (isset($_POST['nouveau'])) {
     echo "nouveau vote";
     $votes->nouveau();
-    $_SESSION['votes'] = serialize($votes);
+    //$_SESSION['votes'] = serialize($votes);
+    $GLOBALS['votes'] = serialize($votes);
+
     //exit;
   }
   if (isset($_POST['reset'])) {

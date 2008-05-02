@@ -16,12 +16,18 @@ header('Content-type: text/html; charset=UTF-8'); ?>
   require_once('config.php');
   require_once('vote.php');
 
+/*
 if (isset($_SESSION['votes'])) {
   echo 'La variable "votes" existe et vaut: ' . $_SESSION['votes']; 
   $votes=unserialize($_SESSION['votes']);
 } else {
   echo 'La variable de session "votes" n\'existe pas';
 }
+*/
+
+  //echo $GLOBALS['votes'];
+  $votes = unserialize($GLOBALS['votes']);
+
 
   print '<center>'."\r\n";
   print '<form method="post" action="envoyer_avis.php" name="avis">'."\r\n";
