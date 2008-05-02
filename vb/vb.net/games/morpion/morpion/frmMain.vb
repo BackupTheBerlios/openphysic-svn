@@ -1,4 +1,4 @@
-Imports System.Drawing // pour Mono... pas nécessaire sous MS Visual Basic .Net
+//Imports System.Drawing // pour Mono... pas nécessaire sous MS Visual Basic .Net
 Public Class frmMain
     Const dimension_default As Integer = 3
     Dim dimension As Integer
