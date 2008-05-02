@@ -10,9 +10,11 @@
 <h1>Test</h1>
 
 <?php
-for($i=0; $i<5 ; $i++) {
-  echo $i;
-}
+  $GLOBALS['var']=123;
+//for($i=0; $i<5 ; $i++) {
+//  echo $i;
+//}
+echo $GLOBALS['var'];
 ?>
 
 </body>

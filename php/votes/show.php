@@ -1,5 +1,6 @@
 <?php
   // Tableaux superglobaux de PHP
+  echo $GLOBALS['var'];
   print '$GLOBALS[\'votes\']= '.$GLOBALS['votes']."\n<br/>\n";
 /*
   print '$GLOBALS= '.$GLOBALS."\n<br/>\n";

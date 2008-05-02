@@ -6,6 +6,8 @@
  * Définition de la classe Vote
  */
 class Vote {
+  //public $id;
+
   //public $choix = array('Abstention','D&eacute;favorable','R&eacute;serv&eacute;','Assez favorable','Favorable','Tr&egrave;s favorable');
   public $choix = array('Abstention','Défavorable','Réservé','Assez favorable','Favorable','Très favorable');
   public $resultats; // liste comportant les résultats d'un vote
