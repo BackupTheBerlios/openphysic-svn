@@ -48,3 +48,15 @@ Private tabSignal(0 To Ndefault) As Double
 ' buffer plein
 
 ' buffer circulaire ou pas
+
+' surcharge d'opérateurs
+' S1 + S2
+' S1 - S2
+' k*S1
+' S1/k
+' S1 + k
+' S1 - k
+' S1 * S2
+' deriv(S1)
+' intg(S1)
+
