@@ -6,4 +6,15 @@ require_once('vote.php');
 //$_SESSION['votes'] = serialize(new Vote());
 $GLOBALS['votes'] = serialize(new Vote());
 
+$params = array (
+  'dbtype'=>'mysql',       // type de base de donnée (mysql, posgresql, sqlite...) 
+  'dbadr'=>'localhost',    // adresse de la base de données
+  'dbuser'=>'scls',        // nom d'utilisateur de la base de données
+  'dbpwd'=>'0000',         // mot de passe de l'utilisateur de la base de données
+  'dbname'=>'Votes',       // nom de la base de données
+  'tableprefix'=>'Votes_', // prefixe des tables de la base de données
+  'hash'=>'md5',           // algo de hachage pour le mot de passe
+);
+
+//echo $params['dbadr'];
 ?>

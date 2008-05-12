@@ -5,6 +5,7 @@ class utilisateur {
   public $prenom;
   public $login;
   public $password;
+  public $is_admin = false;
 
   function __construct() {
     echo "construct";
