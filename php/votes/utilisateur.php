@@ -17,6 +17,19 @@ class utilisateur {
     $this->id=$id;
     $this->nom=$nom;
     $this->prenom=$prenom;
+    //$this->login=$login;
+    //$this->password=$password;
+    $this->is_admin=$is_admin;
+  }
+
+  function welcome() {
+    echo htmlentities("Bienvenue {$this->prenom} {$this->nom} ({$this->login})");
+    echo " - ";
+    if ($this->is_admin) {
+      echo "Vous etes administrateur";
+    } else {
+      echo "Vous &ecirc;tes simple votant";
+    }
   }
 }
 

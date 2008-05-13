@@ -35,6 +35,12 @@ if (isset($_SESSION['votes'])) {
 
 
   print '<center>'."\r\n";
+  print '<p>';
+  $user->welcome();
+  print '</p>'."\r\n";
+ 
+  echo '<br/>';
+
   print '<form method="post" action="envoyer_avis.php" name="avis">'."\r\n";
 
   for ($i=0 ; $i<$votes->nb_choix ; $i++) {

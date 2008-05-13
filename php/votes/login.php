@@ -56,10 +56,9 @@ $bon_password = $result['password'];
 if ($password_tape == $bon_password) // Si le mot de passe est valide
 {
   //echo "Bon password";
-  echo htmlentities("Bienvenue {$user->prenom} {$user->nom} ({$user->login})")." - ";
-  if ($result['is_admin']) {
-    echo "Vous etes administrateur";
+  //echo htmlentities("Bienvenue {$user->prenom} {$user->nom} ({$user->login})")." - ";
 
+  if ($result['is_admin']) {
     $query = "SELECT * FROM login";
     $query = mysql_query($query);
 
@@ -78,8 +77,6 @@ if ($password_tape == $bon_password) // Si le mot de passe est valide
 
 
   } else {
-    echo "Vous &ecirc;tes simple votant";
-
     require_once('avis.php');
     //echo "<center>
 //<input type=\"button\" name=\"voter\" value=\"Voter\" onclick=\"self.location.href='avis.php'\" onclick> 
