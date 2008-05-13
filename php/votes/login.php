@@ -3,29 +3,33 @@
 //session_start();// on démarre une session
 
 //connexion à la base de données
+require_once('config.php');
 require_once("connect.php");
+require_once("utilisateur.php");
+
+$user = new utilisateur();
 
 /* Utilisateur existant - mot de passe Ok */
-//$login='scelles';
-//$password='0000';
+$user->login='scelles';
+$user->password='0000';
 
 /* Utilisateur existant - mauvais mot de passe */
-//$login='scelles';
-//$password='err';
+//$user->login='scelles';
+//$user->password='err';
 
 /* Utilisateur inexistant dans la base */
-//$login='inconnu';
-//$password='inconnu';
+//$user->login='inconnu';
+//$user->password='inconnu';
 
 /* Utilisateur existant - mot de passe Ok */
-//$login='pnom';
-//$password='1234';
+//$user->login='pnom';
+//$user->password='1234';
 
 /* Administrateur - mot de passe Ok */
-$login='admin';
-$password='7777';
+//$user->login='admin';
+//$user->password='7777';
 
-$password_tape = hash($params['hash'],$password);
+$password_tape = hash($params['hash'],$user->password);
 
 // hash('md5','0000') = 4a7d1ed414474e4033ac29ccb8653d9b
 // hash('md5','1234') = 81dc9bdb52d04dc20036dbd8313ed055
@@ -34,7 +38,7 @@ $password_tape = hash($params['hash'],$password);
 //echo "password=$password";
 
 //lecture du mot de passe dans la base
-$query = "SELECT * FROM login WHERE login='$login'";
+$query = "SELECT * FROM login WHERE login='$user->login'";
 $query = mysql_query($query) or die(htmlentities('Requête échouée : ') . mysql_error());;
 //echo $query;
 
@@ -42,6 +46,7 @@ unset($result);
 $result = mysql_fetch_array($query);
 if (sizeof($result)>1) {
   extract($result);
+  
 } else {
 }
 $bon_password = $password; //$result['password'];
@@ -52,7 +57,7 @@ $bon_password = $password; //$result['password'];
 if ($password_tape == $bon_password) // Si le mot de passe est valide
 {
   //echo "Bon password";
-  echo htmlentities("Bienvenue $prenom $nom ($login)")." - ";
+  echo htmlentities("Bienvenue {$user->prenom} {$user->nom} ({$user->login})")." - ";
   if ($result['is_admin']) {
     echo "Vous etes administrateur";
 
@@ -74,7 +79,14 @@ if ($password_tape == $bon_password) // Si le mot de passe est valide
 
 
   } else {
-    echo "Vous êtes simple votant";
+    echo "Vous &ecirc;tes simple votant";
+
+    require_once('avis.php');
+    //echo "<center>
+//<input type=\"button\" name=\"voter\" value=\"Voter\" onclick=\"self.location.href='avis.php'\" onclick> 
+//</center>
+//";
+
   }
 } else {
   //echo "Mauvais mot de passe pour \"$login\" ou utilisateur inconnu";
@@ -87,6 +99,11 @@ if ($password_tape == $bon_password) // Si le mot de passe est valide
   }
 }
 
+echo "<center>
+<input type=\"button\" name=\"logout\" value=\"D&eacute;connexion\" onclick=\"self.location.href='logout.php'\" onclick> 
+</center>
+";
+//<input type=\"button\" name=\"retour\" value=\"Retour\" onclick=\"self.location.href='login.php'\" onclick> 
 
 // Printing results in HTML
 /*

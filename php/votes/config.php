@@ -1,10 +1,6 @@
 <?php
 
-require_once('vote.php');
-//global $votes;
-//$votes=new Vote();
-//$_SESSION['votes'] = serialize(new Vote());
-$GLOBALS['votes'] = serialize(new Vote());
+define("VOTES_VERSION", "0.0.1");
 
 $params = array (
   'dbtype'=>'mysql',       // type de base de donnée (mysql, posgresql, sqlite...) 
@@ -17,4 +13,11 @@ $params = array (
 );
 
 //echo $params['dbadr'];
+
+require_once('vote.php');
+//global $votes;
+//$votes=new Vote();
+//$_SESSION['votes'] = serialize(new Vote());
+$GLOBALS['votes'] = serialize(new Vote());
+
 ?>

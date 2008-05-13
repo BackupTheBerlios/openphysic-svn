@@ -1,5 +1,10 @@
 <?php //session_start();
-header('Content-type: text/html; charset=UTF-8'); ?> 
+//header('Content-type: text/html; charset=UTF-8');
+if (!defined('VOTES_VERSION'))
+{
+	die ("acc&egrave;s direct interdit");
+}
+?> 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd"> 
 <html>

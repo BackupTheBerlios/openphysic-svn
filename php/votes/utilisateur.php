@@ -8,7 +8,7 @@ class utilisateur {
   public $is_admin = false;
 
   function __construct() {
-    echo "construct";
+    //echo "construct";
   }
 }
 
