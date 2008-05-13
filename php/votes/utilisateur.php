@@ -10,6 +10,14 @@ class utilisateur {
   function __construct() {
     //echo "construct";
   }
+
+  function update_from_db($result) {
+    extract($result);
+    //echo $result;
+    $this->id=$id;
+    $this->nom=$nom;
+    $this->prenom=$prenom;
+  }
 }
 
 //$u1 = new utilisateur();

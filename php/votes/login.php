@@ -45,11 +45,10 @@ $query = mysql_query($query) or die(htmlentities('Requête échouée : ') . mysq
 unset($result);
 $result = mysql_fetch_array($query);
 if (sizeof($result)>1) {
-  extract($result);
-  
+  $user->update_from_db($result);
 } else {
 }
-$bon_password = $password; //$result['password'];
+$bon_password = $result['password'];
 
 //echo "bon_password=$bon_password";
 
