@@ -10,8 +10,8 @@ require_once("utilisateur.php");
 $user = new utilisateur();
 
 /* Utilisateur existant - mot de passe Ok */
-$user->login='scelles';
-$user->password='0000';
+//$user->login='scelles';
+//$user->password='0000';
 
 /* Utilisateur existant - mauvais mot de passe */
 //$user->login='scelles';
@@ -26,8 +26,8 @@ $user->password='0000';
 //$user->password='1234';
 
 /* Administrateur - mot de passe Ok */
-//$user->login='admin';
-//$user->password='7777';
+$user->login='admin';
+$user->password='7777';
 
 $password_tape = hash($params['hash'],$user->password);
 
@@ -59,23 +59,7 @@ if ($password_tape == $bon_password) // Si le mot de passe est valide
   //echo htmlentities("Bienvenue {$user->prenom} {$user->nom} ({$user->login})")." - ";
 
   if ($result['is_admin']) {
-    $query = "SELECT * FROM login";
-    $query = mysql_query($query);
-
-    echo "<br/>\n";
-
-    echo "<table>\n";
-
-    $i=0;
-    while ($line = mysql_fetch_array($query)) {
-      extract($line);
-      echo "<tr><td>$i</td><td>$login</td><td>$nom</td><td>$prenom</td></tr>\n";
-      $i++;
-    }
-
-    echo "</table>\n";
-
-
+    require_once('admin.php');
   } else {
     require_once('avis.php');
     //echo "<center>
