@@ -26,8 +26,8 @@ $user = new utilisateur();
 //$user->password='1234';
 
 /* Administrateur - mot de passe Ok */
-$user->login='admin';
-$user->password='7777';
+//$user->login='admin';
+//$user->password='7777';
 
 $password_tape = hash($params['hash'],$user->password);
 
@@ -38,10 +38,20 @@ $password_tape = hash($params['hash'],$user->password);
 //echo "password=$password";
 
 //lecture du mot de passe dans la base
-$query = "SELECT * FROM login WHERE login='$user->login'";
-$query = mysql_query($query) or die(htmlentities('Requête échouée : ') . mysql_error());;
+//$query = "SELECT * FROM login WHERE login='$user->login'";
+//$query = mysql_query($query) or die(htmlentities('Requête échouée : ') . mysql_error());;
 //echo $query;
+$results=$connexion->query("SELECT * FROM login WHERE login='$user->login'");
+$results->setFetchMode(PDO::FETCH_OBJ);
+//while( $ligne = $results->fetch() ) // on récupère la liste des membres
+//{
+        //echo "Utilisateur : $ligne->login $ligne->password <br />"; // on affiche les membres
+//}
+$ligne = $results->fetch();
+$results->closeCursor(); // on ferme le curseur des résultats
+$bon_password = $ligne->password;
 
+/*
 unset($result);
 $result = mysql_fetch_array($query);
 if (sizeof($result)>1) {
@@ -49,6 +59,7 @@ if (sizeof($result)>1) {
 } else {
 }
 $bon_password = $result['password'];
+*/
 
 //echo "bon_password=$bon_password";
 
@@ -58,7 +69,7 @@ if ($password_tape == $bon_password) // Si le mot de passe est valide
   //echo "Bon password";
   //echo htmlentities("Bienvenue {$user->prenom} {$user->nom} ({$user->login})")." - ";
 
-  if ($result['is_admin']) {
+  if ($ligne->is_admin) {
     require_once('admin.php');
   } else {
     require_once('avis.php');
@@ -69,13 +80,14 @@ if ($password_tape == $bon_password) // Si le mot de passe est valide
 
   }
 } else {
-  //echo "Mauvais mot de passe pour \"$login\" ou utilisateur inconnu";
+  //echo "Mauvais mot de passe pour \"$user->login\" ou utilisateur inconnu";
   
   // compter le nb d'utilisateurs (0 ou 1) ayant ce login
-  if (sizeof($result)>1) {
-    echo htmlentities("Mauvais mot de passe pour \"$login\"");
+  //if (sizeof($results)>1) {
+  if ($ligne!=null) {
+    echo htmlentities("Mauvais mot de passe pour \"$user->login\"");
   } else {
-    echo htmlentities("Utilisateur \"$login\" inconnu");
+    echo htmlentities("Utilisateur \"$user->login\" inconnu");
   }
 }
 
@@ -102,6 +114,8 @@ echo "</table>\n";
 //mysql_free_result($query); // $result
 
 // Closing connection
-mysql_close($db);
+//mysql_close($db);
+//$connexion->close();
+$connexion=null;
 
 ?>
