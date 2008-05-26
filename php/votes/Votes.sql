@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Serveur: localhost
--- Généré le : Lun 26 Mai 2008 à 17:07
+-- Généré le : Lun 26 Mai 2008 à 17:15
 -- Version du serveur: 5.0.51
 -- Version de PHP: 5.2.4-2ubuntu5.1
 
@@ -66,7 +66,9 @@ CREATE TABLE IF NOT EXISTS `votes` (
   `user_id` char(16) NOT NULL,
   `election_id` char(16) default '0',
   `vote` char(16) NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY  (`id`),
+  KEY `votes_user_id` (`user_id`),
+  KEY `votes_election_id` (`election_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
