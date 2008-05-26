@@ -8,9 +8,19 @@ require_once('config.php');
 // choix de la base (qui contient les différentes tables)
 //$result = mysql_select_db($params['dbname']) or die ('Impossible de sélectionner la base de données : ' . mysql_error());
 
+
+if ($params['dbtype']=='mysql') {
+	$SGDB='mysql:host=';
+//elseif () {
+//}
+} else {
+	throw new Exception ('Type de SGDB invalide');
+	die;
+}
+
 try
 {
-        $connexion = new PDO('mysql:host='.$params['dbadr'].';dbname='.$params['dbname'], $params['dbuser'], $params['dbpwd']);
+        $connexion = new PDO($SGDB.$params['dbadr'].';dbname='.$params['dbname'], $params['dbuser'], $params['dbpwd']);
 	//echo "Connection Ok";
 }
  

@@ -26,8 +26,8 @@ $user = new utilisateur();
 //$user->password='1234';
 
 /* Administrateur - mot de passe Ok */
-//$user->login='admin';
-//$user->password='7777';
+$user->login='admin';
+$user->password='7777';
 
 $password_tape = hash($params['hash'],$user->password);
 
