@@ -2,6 +2,10 @@
 
 define("IMPORT_EXPORT_VERSION", "0.0.1");
 
+// RegExp PHP POSIX egreg...
+// PCRE - Perl Compatible Regular Expressions (preg...)
+//import pcre; 
+
 include_once("connect.php");
 include_once("exception.php");
 
@@ -67,7 +71,9 @@ $txt_to=$txt_from;
 //$txt_to=ereg_replace("^=====","<h3>",$txt_to);
 //$txt_to=ereg_replace("=====$","</h3>",$txt_to);
 
-$txt_to=ereg_replace("^=====","<h3>",$txt_to); $txt_to=ereg_replace("=====","</h3>",$txt_to);
+//$txt_to=ereg_replace("^=====","<h3>",$txt_to); $txt_to=ereg_replace("=====","</h3>",$txt_to);
+$txt_to=ereg_replace("===== SharpDevelop =====","!!!!! A ?????",$txt_to);
+//preg_replace("===== SharpDevelop =====","!!!!! A ?????",$txt_to);
 
 /*
 echo "<h2>Orginal</h2>"."\n";
@@ -85,12 +91,21 @@ echo "</pre>"."\n";
 $str = <<<EOF
 <table border>
   <tr>
-    <td><pre>$txt_from</pre></td><td><pre>$txt_to</pre></td>
+    <td>
+      <pre>
+$txt_from
+      </pre>
+    </td>
+    <td>
+      <pre>
+$txt_to
+      </pre>
+    </td>
   </tr>
 </table>
 EOF;
 
-echo $str;
+echo $str."\n";
 
 echo "<h1>Fin du script</h1>"."\n";
 
