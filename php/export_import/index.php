@@ -82,14 +82,14 @@ xsxdb
 **bold**
 //italic//
 __underline__
+@@barr&eacute;@@
+##texte &agrave; espacement fixe##
+%%code%%
+%%(php) PHP code%%
+%%(delphi) code delphi ou pascal%%
 TGhgg
 EOF;
 
-/*
-//italique//
-@@barré@@
-##texte à espacement fixe##
-*/
 
 $txt_to=$txt_from;
 //$txt_to=ereg_replace("=====","!!!!!",$txt_to);
@@ -110,6 +110,16 @@ $trans->add('#{{redirect page="(.*)"}}#',"[[REDIRECT->$1]]"); // redirect
 $trans->add('#[*]{2}(.*)[*]{2}#','<b>$1</b>'); // bold
 $trans->add('#[/]{2}(.*)[/]{2}#','<i>$1</i>'); // italic
 $trans->add('#[_]{2}(.*)[_]{2}#','<u>$1</u>'); // underline
+$trans->add('#[@]{2}(.*)[@]{2}#','<span class="del">$1</span>'); // barré
+$trans->add('#[\#]{2}(.*)[\#]{2}#','<tt>$1</tt>'); // texte à espacement fixe
+$trans->add('#[\%]{2}\((.*)\)(.*)[\%]{2}#','<li>Code $1 : $2</li>'); // code dont le langage est connu
+$trans->add('#[\%]{2}(.*)[\%]{2}#','<li>$1</li>'); // code inconnu
+
+/*
+<li>%%code%%</li>
+<li>%%(php) PHP code%%</li>
+<li>%%(delphi) code delphi/pascal%%</li>
+*/
 
 //$trans->show();
 
