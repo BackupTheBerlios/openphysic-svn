@@ -61,20 +61,36 @@ $resultats->setFetchMode(PDO::FETCH_OBJ); // on dit qu'on veut que le résultat 
 $ligne = $resultats->fetch();
 $txt_from=$ligne->body;
 
-echo "<h2>Orginal</h2>"."\n";
-
-echo "<pre>"."\n";
-echo "$txt_from";
-echo "</pre>"."\n";
-
 $txt_to=$txt_from;
-ereg_replace("=====","!!!!!",$txt_to);
+//$txt_to=ereg_replace("=====","!!!!!",$txt_to);
+//$txt_to=ereg_replace("===== SharpDevelop =====","<h3>SharpDevelop</h3>",$txt_to);
+//$txt_to=ereg_replace("^=====","<h3>",$txt_to);
+//$txt_to=ereg_replace("=====$","</h3>",$txt_to);
+
+$txt_to=ereg_replace("^=====","<h3>",$txt_to); $txt_to=ereg_replace("=====","</h3>",$txt_to);
+
+/*
+echo "<h2>Orginal</h2>"."\n";
+echo "<pre>"."\n";
+echo "$txt_from"."\n";
+echo "</pre>"."\n";
 
 echo "<h2>Modif</h2>"."\n";
 echo "<pre>"."\n";
-echo "$txt_to";
+echo "$txt_to"."\n";
 echo "</pre>"."\n";
+*/
 
+// syntaxe chaine "heredoc"
+$str = <<<EOF
+<table border>
+  <tr>
+    <td><pre>$txt_from</pre></td><td><pre>$txt_to</pre></td>
+  </tr>
+</table>
+EOF;
+
+echo $str;
 
 echo "<h1>Fin du script</h1>"."\n";
 
