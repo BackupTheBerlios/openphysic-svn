@@ -8,6 +8,7 @@ define("IMPORT_EXPORT_VERSION", "0.0.1");
 
 include_once("connect.php");
 include_once("exception.php");
+include_once("translator.php");
 
 // Parameters
 $params_from = array (
@@ -65,6 +66,31 @@ $resultats->setFetchMode(PDO::FETCH_OBJ); // on dit qu'on veut que le résultat 
 $ligne = $resultats->fetch();
 $txt_from=$ligne->body;
 
+
+
+$txt_from = <<<EOF
+xsxdb
+=====T5=====
+===== T5=====
+=====T5 =====
+===== T5 =====
+=====  T5  =====
+==== T4 ====
+=== T3 ===
+== T2 ==
+{{redirect page="Toto"}}
+**bold**
+//italic//
+__underline__
+TGhgg
+EOF;
+
+/*
+//italique//
+@@barré@@
+##texte à espacement fixe##
+*/
+
 $txt_to=$txt_from;
 //$txt_to=ereg_replace("=====","!!!!!",$txt_to);
 //$txt_to=ereg_replace("===== SharpDevelop =====","<h3>SharpDevelop</h3>",$txt_to);
@@ -73,7 +99,22 @@ $txt_to=$txt_from;
 
 //$txt_to=ereg_replace("^=====","<h3>",$txt_to); $txt_to=ereg_replace("=====","</h3>",$txt_to);
 //$txt_to=ereg_replace("={5}(.*)={5}","<h3>$1</h3>",$txt_to);
-$txt_to=preg_replace('#={5}[ ]*(.*)[ ]*={5}#','<h3>$1</h3>',$txt_to);
+//$txt_to=preg_replace('#={5}[ ]*(.*)[ ]*={5}#','<h3>$1</h3>',$txt_to);
+
+$trans = new Translator();
+$trans->add('/={5}[ ]*(.*)[ ]*={5}/','<h1>$1</h1>'); // h1
+$trans->add('#={4}[ ]*(.*)[ ]*={4}#','<h2>$1</h2>'); // h2
+//$trans->add('#{{redirect page="(.*)"}}#',"[[REDIRECT->$1]]"); // redirect
+//$trans->add('#[*]{2}(.*)[*]{2}#','<b>$1</b>'); // bold
+//$trans->add('#[/]{2}(.*)[/]{2}#','<i>$1</i>'); // italic
+//$trans->add('#[_]{2}(.*)[_]{2}#','<u>$1</u>'); // underline
+
+//$trans->show();
+
+
+//$trans->add('#={3}[ ]*(.*)[ ]*={3}#','<h3>$1</h3>');
+//$trans->add('#={2}[ ]*(.*)[ ]*={2}#','<h4>$1</h4>');
+$txt_to=$trans->execute($txt_from);
 
 /*
 echo "<h2>Orginal</h2>"."\n";
@@ -89,8 +130,11 @@ echo "</pre>"."\n";
 
 // syntaxe chaine "heredoc"
 $str = <<<EOF
-<table border>
+<table border width="100%">
   <tr>
+    <th width="50%">From</th><th width="50%">To</th>
+  </tr>
+  <tr valign="top">
     <td>
       <pre>
 $txt_from
@@ -99,8 +143,8 @@ $txt_from
     <td>
       <pre>
 $txt_to
-      </pre>
     </td>
+      </pre>
   </tr>
 </table>
 EOF;
