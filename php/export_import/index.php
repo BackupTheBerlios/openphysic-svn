@@ -73,7 +73,7 @@ $txt_to=$txt_from;
 
 //$txt_to=ereg_replace("^=====","<h3>",$txt_to); $txt_to=ereg_replace("=====","</h3>",$txt_to);
 //$txt_to=ereg_replace("={5}(.*)={5}","<h3>$1</h3>",$txt_to);
-//$txt_to=preg_replace('#={5}[ ]*(.*)={5}#','<h3>$1</h3>',$txt_to);
+$txt_to=preg_replace('#={5}[ ]*(.*)[ ]*={5}#','<h3>$1</h3>',$txt_to);
 
 /*
 echo "<h2>Orginal</h2>"."\n";
