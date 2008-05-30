@@ -7,7 +7,7 @@
 //VRAI
 
 //$regex="#===== .* =====#"; // match avec 5 mais aussi 6 !
-$regex="#={5}[ ]*(.*)[ ]*={5}#"; // match avec 5 mais aussi 6 !
+$regex="#={5}[ ]*(.*)={5}#"; // match avec 5 mais aussi 6 !
 $replace="<h3>$1</h3>";
 //$str="===== A2c4 4 =====";
 // heredoc string
