@@ -104,10 +104,12 @@ $txt_to=$txt_from;
 $trans = new Translator();
 $trans->add('/={5}[ ]*(.*)[ ]*={5}/','<h1>$1</h1>'); // h1
 $trans->add('#={4}[ ]*(.*)[ ]*={4}#','<h2>$1</h2>'); // h2
-//$trans->add('#{{redirect page="(.*)"}}#',"[[REDIRECT->$1]]"); // redirect
-//$trans->add('#[*]{2}(.*)[*]{2}#','<b>$1</b>'); // bold
-//$trans->add('#[/]{2}(.*)[/]{2}#','<i>$1</i>'); // italic
-//$trans->add('#[_]{2}(.*)[_]{2}#','<u>$1</u>'); // underline
+$trans->add('#={3}[ ]*(.*)[ ]*={3}#','<h3>$1</h3>'); // h2
+$trans->add('#={2}[ ]*(.*)[ ]*={2}#','<h4>$1</h4>'); // h2
+$trans->add('#{{redirect page="(.*)"}}#',"[[REDIRECT->$1]]"); // redirect
+$trans->add('#[*]{2}(.*)[*]{2}#','<b>$1</b>'); // bold
+$trans->add('#[/]{2}(.*)[/]{2}#','<i>$1</i>'); // italic
+$trans->add('#[_]{2}(.*)[_]{2}#','<u>$1</u>'); // underline
 
 //$trans->show();
 

@@ -5,19 +5,21 @@
 class Translator {
   public $patterns;
   public $replacements;
-  public $i;
+  //public $i;
 
   function __construct() {
     $this->i = 0;
+    $this->patterns = array();
+    $this->replacements = array();
     //echo "construct";
   }
 
   function add($pattern, $replacement) {
-    $this->patterns[$i] = $pattern;
-    $this->replacements[$i] = $replacement;
-    $this->i = $this->i + 1;
+    $this->patterns[] = $pattern;
+    $this->replacements[] = $replacement;
+    //$this->i = $this->i + 1;
     //echo $this->patterns[i];
-    echo $this->i;
+    //echo $this->i;
   }
 
   function execute($string_from) {
