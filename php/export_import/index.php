@@ -70,6 +70,7 @@ $txt_from=$ligne->body;
 
 $txt_from = <<<EOF
 xsxdb
+====== T6 ======
 =====T5=====
 ===== T5=====
 =====T5 =====
@@ -87,6 +88,22 @@ __underline__
 %%code%%
 %%(php) PHP code%%
 %%(delphi) code delphi ou pascal%%
+[[LienInterne]]
+[[www.snakpak.info/unit/wiki.jpg logo de wikipedia]]
+[[LienInterne Lien interne]]
+[[http://www.site.fr Lien externe]]
+http://www.site.fr/test
+[[http://www.site.fr/test]]
+$\frac{1}{1+x}$
+$$\frac{1}{1+x}$$
+ indent1
+  indent2
+
+ - item1
+ - item2
+----
+
+noone@undef.fr
 TGhgg
 EOF;
 
@@ -101,11 +118,12 @@ $txt_to=$txt_from;
 //$txt_to=ereg_replace("={5}(.*)={5}","<h3>$1</h3>",$txt_to);
 //$txt_to=preg_replace('#={5}[ ]*(.*)[ ]*={5}#','<h3>$1</h3>',$txt_to);
 
-$trans = new Translator();
-$trans->add('/={5}[ ]*(.*)[ ]*={5}/','<h1>$1</h1>'); // h1
-$trans->add('#={4}[ ]*(.*)[ ]*={4}#','<h2>$1</h2>'); // h2
-$trans->add('#={3}[ ]*(.*)[ ]*={3}#','<h3>$1</h3>'); // h2
-$trans->add('#={2}[ ]*(.*)[ ]*={2}#','<h4>$1</h4>'); // h2
+$trans = new Translator(); // Wikini To HTML
+$trans->add('/={6}[ ]*(.*)[ ]*={6}/','<h1>$1</h1>'); // h1
+$trans->add('/={5}[ ]*(.*)[ ]*={5}/','<h2>$1</h2>'); // h2
+$trans->add('#={4}[ ]*(.*)[ ]*={4}#','<h3>$1</h3>'); // h3
+$trans->add('#={3}[ ]*(.*)[ ]*={3}#','<h4>$1</h4>'); // h4
+$trans->add('#={2}[ ]*(.*)[ ]*={2}#','<h5>$1</h5>'); // h5
 $trans->add('#{{redirect page="(.*)"}}#',"[[REDIRECT->$1]]"); // redirect
 $trans->add('#[*]{2}(.*)[*]{2}#','<b>$1</b>'); // bold
 $trans->add('#[/]{2}(.*)[/]{2}#','<i>$1</i>'); // italic
@@ -114,6 +132,15 @@ $trans->add('#[@]{2}(.*)[@]{2}#','<span class="del">$1</span>'); // barré
 $trans->add('#[\#]{2}(.*)[\#]{2}#','<tt>$1</tt>'); // texte à espacement fixe
 $trans->add('#[\%]{2}\((.*)\)(.*)[\%]{2}#','<li>Code $1 : $2</li>'); // code dont le langage est connu
 $trans->add('#[\%]{2}(.*)[\%]{2}#','<li>$1</li>'); // code inconnu
+// Lien interne non nommé
+// Image
+// Lien interne nommé
+// Lien externe nommé
+// Lien externe non-nommé
+// Lien externe non-nommé mais avec [[ ]]
+$trans->add('#[\$]{2}(.*)[\$]{2}#','<math style="displaystyle">$1</math>'); // Math (displaystyle)
+$trans->add('#[\$]{1}(.*)[\$]{1}#','<math>$1</math>'); // Math (inline)
+$trans->add('#(\w+)@([a-zA-Z_]+?)\.([a-zA-Z]{2,4})#','mail=$1@$2.$3'); // E-mail
 
 /*
 <li>%%code%%</li>

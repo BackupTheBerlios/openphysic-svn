@@ -29,11 +29,13 @@ class Translator {
     return preg_replace($this->patterns, $this->replacements, $string_from);
   }
 
+/*
   function show() {
     print_r($this->patterns);
     print_r($this->replacements);
     echo "i=$i";
   }
+*/
 
 }
 
