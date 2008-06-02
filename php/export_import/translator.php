@@ -1,6 +1,7 @@
 <?php
 
 // Wiki translator using PCRE
+// (also called Formatters)
 
 class Translator {
   public $patterns;
