@@ -8,7 +8,8 @@ define("IMPORT_EXPORT_VERSION", "0.0.1");
 
 include_once("connect.php");
 include_once("exception.php");
-include_once("translator.php");
+//include_once("translator.php");
+//include_once("wakka2html.php");
 
 // Parameters
 $params_from = array (
@@ -104,6 +105,14 @@ $$\frac{1}{1+x}$$
 ----
 
 noone@undef.fr
+
+http://www.site.net
+http://www.site.net/
+http://www.site.net/wiki
+http://www.site.net/wiki/
+http://www.site.net/wiki/PageWiki
+http://www.site.net/wiki/PageWiki/edit
+
 TGhgg
 EOF;
 
@@ -118,7 +127,10 @@ $txt_to=$txt_from;
 //$txt_to=ereg_replace("={5}(.*)={5}","<h3>$1</h3>",$txt_to);
 //$txt_to=preg_replace('#={5}[ ]*(.*)[ ]*={5}#','<h3>$1</h3>',$txt_to);
 
+/*
 $trans = new Translator(); // Wikini To HTML
+//$trans->add('#http://www.site.net/wiki[/]?\B#','http://www.site.net/wikini/wakka.php?wiki=PagePrincipale'); // URL Rewriting
+$trans->add('#http://www.site.net/wiki/(.+)#','http://www.site.net/wikini/wakka.php?wiki=$1'); // URL Rewriting
 $trans->add('/={6}[ ]*(.*)[ ]*={6}/','<h1>$1</h1>'); // h1
 $trans->add('/={5}[ ]*(.*)[ ]*={5}/','<h2>$1</h2>'); // h2
 $trans->add('#={4}[ ]*(.*)[ ]*={4}#','<h3>$1</h3>'); // h3
@@ -142,17 +154,8 @@ $trans->add('#[\$]{2}(.*)[\$]{2}#','<math style="displaystyle">$1</math>'); // M
 $trans->add('#[\$]{1}(.*)[\$]{1}#','<math>$1</math>'); // Math (inline)
 $trans->add('#(\w+)@([a-zA-Z_]+?)\.([a-zA-Z]{2,4})#','mail=$1@$2.$3'); // E-mail
 
-/*
-<li>%%code%%</li>
-<li>%%(php) PHP code%%</li>
-<li>%%(delphi) code delphi/pascal%%</li>
 */
 
-//$trans->show();
-
-
-//$trans->add('#={3}[ ]*(.*)[ ]*={3}#','<h3>$1</h3>');
-//$trans->add('#={2}[ ]*(.*)[ ]*={2}#','<h4>$1</h4>');
 $txt_to=$trans->execute($txt_from);
 
 /*
