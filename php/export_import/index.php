@@ -145,6 +145,8 @@ EOF;
 
 echo $str."\n";
 
+// ToDo <textarea>
+
 echo "<h1>Fin du script</h1>"."\n";
 
 
