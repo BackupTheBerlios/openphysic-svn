@@ -2,7 +2,7 @@
 
 include_once("translator.php");
 
-class wakka2html implements Translator {
+class wakka2html extends Translator {
 
   function __construct() {
     //$this->add('#http://www.site.net/wiki[/]?\B#','http://www.site.net/wikini/wakka.php?wiki=PagePrincipale'); // URL Rewriting
