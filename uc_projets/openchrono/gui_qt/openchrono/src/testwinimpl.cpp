@@ -23,13 +23,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <iostream> //for test
 
 #include "testwinimpl.h"
-
-TestWinImpl::TestWinImpl( QWidget * parent, Qt::WFlags f, Data * data, LogData * logdata ) : QDialog(parent, f)
+TestWinImpl::TestWinImpl( QWidget * parent, Qt::WFlags f, Data * data) : QDialog(parent, f)
 {
   setupUi(this);
 
   m_data = data;
-  m_logdata = logdata;
+  //m_logdata = logdata;
  
   //m_win = win;
 
@@ -64,6 +63,47 @@ TestWinImpl::TestWinImpl( QWidget * parent, Qt::WFlags f, Data * data, LogData *
   connect( timer, SIGNAL( timeout() ), this, SLOT( update() ) );
   timer->start(25);
 }
+
+/*
+TestWinImpl::TestWinImpl( QWidget * parent, Qt::WFlags f, Data * data, LogData * logdata ) : QDialog(parent, f)
+{
+  setupUi(this);
+
+  m_data = data;
+  m_logdata = logdata;
+ 
+  //m_win = win;
+
+  setGeometry(450,100,580,240);
+
+  // connection bouton StartStop page de test
+  connect(        StartStop	, SIGNAL( clicked() ),
+                  m_data                , SLOT( start() )                       );
+
+  // connect signals and slots
+  //connect(slider, SIGNAL(valueChanged(int)),
+  //         lcd, SLOT(display(int)));
+  //QObject::connect(SliderRPM, SIGNAL(valueChanged(int)), progressBar, SLOT(setValue(int)));
+  //QObject::connect(SliderRPM, SIGNAL(valueChanged(int)), lblRPM, SLOT(setNum(int)));
+
+  connect(butTest, SIGNAL( clicked() ), this, SLOT( test() ) ); // test button
+
+  // connect keyboard (on the test window to the app)
+   // connect(butOk, SIGNAL( clicked() ), m_win, SLOT( on_ok() ) );
+   // connect(butCancel, SIGNAL( clicked() ), m_win, SLOT( on_cancel() ) );
+   // connect(butUp, SIGNAL( clicked() ), m_win, SLOT( on_up() ) );
+   // connect(butDown, SIGNAL( clicked() ), m_win, SLOT( on_down() ) );
+   // connect(butLeft, SIGNAL( clicked() ), m_win, SLOT( on_left() ) );
+   // connect(butRight, SIGNAL( clicked() ), m_win, SLOT( on_right() ) );
+
+  init(); // initial values of the test window
+
+  // Timer to update data entered using the test window
+  QTimer * timer = new QTimer(this);
+  connect( timer, SIGNAL( timeout() ), this, SLOT( update() ) );
+  timer->start(25);
+}
+*/
 //
 
 TestWinImpl::~TestWinImpl()

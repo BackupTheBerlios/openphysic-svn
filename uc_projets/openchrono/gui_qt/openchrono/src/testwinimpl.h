@@ -31,7 +31,8 @@ class TestWinImpl : public QDialog, public Ui::TestWin
     Q_OBJECT
 
   public:
-    TestWinImpl( QWidget * parent = 0, Qt::WFlags f = 0, Data * data = 0, LogData * logdata = 0  );
+    //TestWinImpl( QWidget * parent = 0, Qt::WFlags f = 0, Data * data = 0, LogData * logdata = 0  );
+    TestWinImpl( QWidget * parent = 0, Qt::WFlags f = 0, Data * data = 0 );
     ~TestWinImpl();
 
   private slots:

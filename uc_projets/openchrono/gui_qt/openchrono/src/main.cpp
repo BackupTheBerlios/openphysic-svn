@@ -68,14 +68,19 @@ int main(int argc, char ** argv)
   appTranslator.load(QLatin1String(":translations/")+strTrans); // avec ressource openchrono.qrc
   app.installTranslator(&appTranslator);
 
+  std::cout << "OpenChrono1" << std::endl;
+
   /* Données */
   Data myCurrentData;
+  //myCurrentData = new Data();
 
   /* Log Data */
-  LogData logdata(&myCurrentData);
+  //LogData logdata(&myCurrentData);
 
   /* Log Time */
-  LogTime logtime(&myCurrentData);
+  //LogTime logtime(&myCurrentData);
+
+  std::cout << "OpenChrono2" << std::endl;
 
   /* Fenêtres de l'application */
   OCDocument_MainWin winMain(&myCurrentData);
@@ -100,7 +105,8 @@ int main(int argc, char ** argv)
   //winPlot.activate();
 
   /* Fenêtre de test */
-  TestWinImpl winTest(0, 0, &myCurrentData, &logdata);
+  //TestWinImpl winTest(0, 0, &myCurrentData, &logdata);
+  TestWinImpl winTest(0, 0, &myCurrentData);
   winTest.show();
 
 
