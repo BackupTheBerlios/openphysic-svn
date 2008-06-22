@@ -21,7 +21,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define OCVIEW_PLOT_H
 //
 #include "ocview.h"
-#include "ocdocument.h"
 
 #include <QTimer>
 //#include "ui_plot.h"
@@ -29,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //#include "data.h"
 #include "logdata.h"
 
-class OCDocument;
+//class OCDocument;
 
 class OCView_Plot : public OCView //, public Ui::MainWin
   {

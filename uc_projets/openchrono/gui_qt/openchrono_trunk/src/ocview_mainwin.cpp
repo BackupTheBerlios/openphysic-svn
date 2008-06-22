@@ -18,7 +18,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 #include "ocview_mainwin.h"
-#include "ocdocument.h"
+//#include "ocdocument.h"
 
 #include <iostream>
 #include <cmath>
@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 #include <QTimer>
 
-OCView_MainWin::OCView_MainWin(OCDocument * ocdoc, Data * data) : OCView(ocdoc)
+OCView_MainWin::OCView_MainWin(Data * data) : OCView
 {
   m_data = data;
 

@@ -18,7 +18,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 #include "ocview.h"
-#include "ocdocument.h"
+//#include "OCView.h"
 
 #include "keyboard.h"
 #include "screen.h"
@@ -27,14 +27,157 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 OCView::OCView(void)
 {
   // contruct
-  document = NULL;
+  page_parent = NULL;
+  page_brother_next = NULL;
+  page_brother_previous = NULL;
+  page_child_first = NULL;
+
+  //m_data = NULL;
 }
 
-OCView::OCView(OCDocument * ocdoc)
+/*
+OCView::OCView(Data * data)
 {
-  // contruct
-  document = ocdoc;
+  std::cout << "OCView contructor with data" << std::endl;
+  //m_data = data;
+  //OCView();
 }
+*/
+
+/*
+void OCView::set_data(Data * data)
+{
+  m_data = data;
+}
+*/
+
+
+/*
+void OCView::set_view(OCView * ocview)
+{
+  view = ocview;
+  //view->init();
+}
+*/
+
+
+void OCView::set_parent(OCView * ocdoc)
+{
+  page_parent = ocdoc;
+}
+
+void OCView::set_brother_next(OCView * ocdoc)
+{
+  page_brother_next = ocdoc;
+
+}
+
+void OCView::set_brother_previous(OCView * ocdoc)
+{
+  page_brother_previous = ocdoc;
+
+}
+
+void OCView::set_child_first(OCView * ocdoc)
+{
+  page_child_first = ocdoc;
+}
+
+void OCView::set_no_child(void)
+{
+  page_child_first = this;
+}
+
+
+
+void OCView::activate_parent(void)
+{
+  if (page_parent != this)
+    {
+      page_parent->activate();
+      this->desactivate();
+    }
+}
+
+void OCView::activate_brother_next(void)
+{
+  if (page_brother_next != this)
+    {
+      page_brother_next->activate();
+      this->desactivate();
+    }
+}
+
+void OCView::activate_brother_previous(void)
+{
+  if (page_brother_previous != this)
+    {
+      page_brother_previous->activate();
+      this->desactivate();
+    }
+}
+
+void OCView::activate_child_first(void)
+{
+  if (page_child_first != this)
+    {
+      page_child_first->activate();
+      this->desactivate();
+    }
+}
+
+
+
+void OCView::activate(void)
+{
+/*
+  if (NULL != view)
+    {
+      view->init();
+      view->show();
+    }
+*/
+  this->show();
+}
+
+void OCView::desactivate(void)
+{
+/*
+  if (NULL != view)
+    {
+      view->hide();
+    }
+*/
+  this->hide();
+
+}
+
+
+
+
+/*
+void OCView::navigate_on_ok(void)
+{
+  //ptr_current_page = &page_engine_menu;
+  //ptr_page_goto = ptr_current_page->page_child_first;
+}
+ 
+void OCView::navigate_on_cancel(void)
+{
+  //ptr_page_goto = ptr_current_page->page_parent;
+}
+ 
+void OCView::navigate_on_left(void)
+{
+  //ptr_page_goto = ptr_current_page->page_brother_previous;
+}
+ 
+void OCView::navigate_on_right(void)
+{
+  //ptr_page_goto = ptr_current_page->page_brother_next;
+}
+*/
+
 
 OCView::~OCView(void)
 {
@@ -54,28 +197,28 @@ void OCView::keyPressEvent(QKeyEvent * event)
   switch ( event->key() )
     {
     case B_OK: // Ok
-      std::cout << "OK" << std::endl;
-      document->activate_child_first();
+      //std::cout << "OK" << std::endl;
+      this->activate_child_first();
       break;
     case B_CANCEL: // Cancel
-      std::cout << "CANCEL" << std::endl;
-      document->activate_parent();
+      //std::cout << "CANCEL" << std::endl;
+      this->activate_parent();
       break;
     case B_UP:
-      std::cout << "UP" << std::endl;
+      //std::cout << "UP" << std::endl;
       //
       break;
     case B_DOWN:
-      std::cout << "DOWN" << std::endl;
+      //std::cout << "DOWN" << std::endl;
       //
       break;
     case B_LEFT:
-      std::cout << "LEFT" << std::endl;
-      document->activate_brother_previous();
+      //std::cout << "LEFT" << std::endl;
+      this->activate_brother_previous();
       break;
     case B_RIGHT:
-      std::cout << "RIGHT" << std::endl;
-      document->activate_brother_next();
+      //std::cout << "RIGHT" << std::endl;
+      this->activate_brother_next();
       break;
     default:
       //std::cout << "UNDEF KEY" << std::endl;

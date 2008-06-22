@@ -27,15 +27,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "data.h"
 #include <QKeyEvent>
 
-class OCDocument;
+//class OCDocument;
 
 class OCView_MainWin : public OCView, public Ui::MainWin
   {
     Q_OBJECT
 
   public:
-    OCView_MainWin();
-    OCView_MainWin(OCDocument * ocdoc, Data * data);
+    //OCView_MainWin();
+    OCView_MainWin(Data * data);
 
     virtual ~OCView_MainWin();
 

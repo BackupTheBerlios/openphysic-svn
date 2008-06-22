@@ -45,9 +45,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //#include "ocdocument.h" // ocview ocdocument (ex ocwindows)
 //#include "ocview.h"
 
-#include "ocdocument_mainwin.h"
-#include "ocdocument_engine.h"
-#include "ocdocument_plot.h"
+#include "ocview_mainwin.h"
+#include "ocview_engine.h"
+#include "ocview_plot.h"
 
 #include "testwinimpl.h"
 
@@ -91,21 +91,22 @@ int main(int argc, char ** argv)
   std::cout << "OpenChrono3" << std::endl;
 
   /* Fenêtres de l'application */
-  OCDocument_MainWin winMain(&myCurrentData);
-  OCDocument_Engine winEngine; //(&myCurrentData);
+  OCView_MainWin winMain(&myCurrentData);
+  //OCView_Engine winEngine; //(&myCurrentData);
   //OCDocument_Plot winPlot(&LogData);
 
 
   winMain.set_parent(&winMain);
-  winMain.set_brother_next(&winEngine);
-  winMain.set_brother_previous(&winEngine);
+  //winMain.set_brother_next(&winEngine);
+  //winMain.set_brother_previous(&winEngine);
   winMain.set_no_child(); // set_child_first(&winMain);
 
+/*
   winEngine.set_parent(&winMain);
   winEngine.set_brother_next(&winMain);
   winEngine.set_brother_previous(&winMain);
   winEngine.set_no_child();
-
+*/
 
   winMain.activate();
 

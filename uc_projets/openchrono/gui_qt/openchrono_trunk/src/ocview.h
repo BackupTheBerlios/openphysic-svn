@@ -24,21 +24,43 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <QDialog>
 #include <QKeyEvent>
 
-class OCDocument;
+//class OCDocument;
 
 class OCView : public QDialog
   {
   public:
     OCView();
-    OCView(OCDocument * ocdoc);
     virtual ~OCView();
 
     void init(void);
 
-  protected:
-    OCDocument * document;
-
     void keyPressEvent(QKeyEvent *event);
+
+    void set_parent(OCView * ocdoc);
+    void set_brother_next(OCView * ocdoc);
+    void set_brother_previous(OCView * ocdoc);
+    void set_child_first(OCView * ocdoc);
+    void set_no_child(void);
+
+    void activate(void);
+
+    void activate_parent(void);
+    void activate_brother_next(void);
+    void activate_brother_previous(void);
+    void activate_child_first(void);
+
+
+  protected:
+    //OCDocument * document;
+
+    //Data * m_data;
+
+    void desactivate(void);
+
+    OCView * page_parent;
+    OCView * page_brother_next;
+    OCView * page_brother_previous;
+    OCView * page_child_first;
 
   };
 #endif
