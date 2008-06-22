@@ -35,7 +35,7 @@ class OCView_Plot : public OCView //, public Ui::MainWin
     Q_OBJECT
 
   public:
-    OCView_Plot(OCDocument * ocdoc, LogData * logdata);
+    OCView_Plot(LogData * logdata);
     virtual ~OCView_Plot();
 
   private slots:

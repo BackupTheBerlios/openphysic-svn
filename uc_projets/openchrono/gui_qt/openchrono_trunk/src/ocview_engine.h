@@ -30,8 +30,8 @@ class OCDocument;
 class OCView_Engine : public OCView//, public MessageImpl //public Ui::frmMessage
   {
   public:
-    //OCView_Engine();
-    OCView_Engine(OCDocument * ocdoc);
+    OCView_Engine();
+    //OCView_Engine(OCDocument * ocdoc);
 
     virtual ~OCView_Engine();
 

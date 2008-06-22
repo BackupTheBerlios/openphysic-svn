@@ -29,7 +29,7 @@ class OCView_About : public OCView
     Q_OBJECT
 
   public:
-    OCView_About(OCDocument * ocdoc);
+    OCView_About();
     virtual ~OCView_About();
   };
 #endif

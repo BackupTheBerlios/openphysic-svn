@@ -19,7 +19,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "ocview_plot.h"
 
-OCView_Plot::OCView_Plot(LogData * logdata ) : OCView
+OCView_Plot::OCView_Plot(LogData * logdata)
 {
   m_logdata = logdata;
 

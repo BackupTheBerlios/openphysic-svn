@@ -18,14 +18,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 #include "ocview_about.h"
-#include "ocdocument.h"
 //
 
 /*
  *  Constructs a about box which is a child of 'parent', with the 
  *  name 'name' and widget flags set to 'f' 
  */
-OCView_About::OCView_About(OCDocument * ocdoc):OCView(ocdoc)
+OCView_About::OCView_About()
 {
 //  setupUi(this);
 /*

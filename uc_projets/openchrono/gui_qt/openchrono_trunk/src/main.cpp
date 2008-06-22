@@ -92,23 +92,23 @@ int main(int argc, char ** argv)
 
   /* Fenêtres de l'application */
   OCView_MainWin winMain(&myCurrentData);
-  //OCView_Engine winEngine; //(&myCurrentData);
-  //OCDocument_Plot winPlot(&LogData);
+  OCView_Engine winEngine; //(&myCurrentData);
+  //OCView_About winAbout;
+  //OCView_Plot winPlot(&LogData);
 
 
   winMain.set_parent(&winMain);
-  //winMain.set_brother_next(&winEngine);
-  //winMain.set_brother_previous(&winEngine);
+  winMain.set_brother_next(&winEngine);
+  winMain.set_brother_previous(&winEngine);
   winMain.set_no_child(); // set_child_first(&winMain);
 
-/*
+
   winEngine.set_parent(&winMain);
   winEngine.set_brother_next(&winMain);
   winEngine.set_brother_previous(&winMain);
   winEngine.set_no_child();
-*/
 
-  winMain.activate();
+
 
 
   //winPlot.activate();
@@ -118,6 +118,8 @@ int main(int argc, char ** argv)
   TestWinImpl winTest(0, 0, &myCurrentData);
   winTest.show();
 
+
+  winMain.activate();
 
   app.connect( &app, SIGNAL( lastWindowClosed() ), &app, SLOT( quit() ) );
 
