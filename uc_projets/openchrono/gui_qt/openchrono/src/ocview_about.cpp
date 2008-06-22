@@ -18,14 +18,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 #include "ocview_about.h"
+#include "ocdocument.h"
 //
 
 /*
  *  Constructs a about box which is a child of 'parent', with the 
  *  name 'name' and widget flags set to 'f' 
  */
-OCView_About::OCView_About( QWidget * parent, Qt::WFlags f, Data * data ) : QDialog(parent, f)
+OCView_About::OCView_About(OCDocument * ocdoc):OCView(ocdoc)
 {
+//  setupUi(this);
+/*
   setupUi(this);
   m_Data = data;
 
@@ -36,6 +39,7 @@ OCView_About::OCView_About( QWidget * parent, Qt::WFlags f, Data * data ) : QDia
   connect(quit, SIGNAL(clicked()), this, SLOT(goodBye()));
 
   setGeometry(50,320,320,240);
+*/
 }
 
 /*
@@ -50,10 +54,12 @@ OCView_About::~OCView_About()
 /*
  *  A simple slot... not very interesting.
  */
+/*
 void OCView_About::goodBye()
 {
   close();
 }
+*/
 //
 
 

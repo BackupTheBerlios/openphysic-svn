@@ -21,15 +21,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define OCVIEW_ABOUT_H
 //
 #include "ui_about.h"
+#include "ocview.h"
 //
-#include "data.h"
 
-class OCView_About : public QDialog, public Ui::About
+class OCView_About : public OCView
   {
     Q_OBJECT
 
   public:
-    OCView_About( QWidget * parent = 0, Qt::WFlags f = 0 );
+    OCView_About(OCDocument * ocdoc);
     virtual ~OCView_About();
   };
 #endif

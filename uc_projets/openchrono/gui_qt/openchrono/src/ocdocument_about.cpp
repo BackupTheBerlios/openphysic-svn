@@ -26,6 +26,6 @@ OCDocument_About::OCDocument_About()
   set_view(new OCView_About(this));
 }
 
-OCDocument_About::~OCDocument_MainWin()
+OCDocument_About::~OCDocument_About()
 {
 }
