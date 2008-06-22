@@ -20,7 +20,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "rpm.h"
 //
 
-#include "engine_state.h"
+//#include "engine_state.h"
 
 Rpm::Rpm(  )
 {
@@ -44,18 +44,18 @@ void Rpm::set(double const RPM)
 
     if ( RPM < rpmOff )
       {
-        m_engine_state->switch_off();
+        //m_engine_state->switch_off();
         //m_engine_state->set_idle();
       }
     else if ( RPM < rpmIdle )
       {
-        m_engine_state->switch_on();
-        m_engine_state->set_to_idle();
+        //m_engine_state->switch_on();
+        //m_engine_state->set_to_idle();
       }
     else
       {
-        m_engine_state->switch_on();
-        m_engine_state->unset_idle();
+        //m_engine_state->switch_on();
+        //m_engine_state->unset_idle();
       }
 
   }

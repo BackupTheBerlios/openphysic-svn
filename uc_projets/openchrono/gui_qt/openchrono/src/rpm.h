@@ -25,7 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <QtXml>
 //
 
-#include "engine_state.h"
+//#include "engine_state.h"
 
 class Rpm : public QObject
   {
@@ -41,7 +41,7 @@ class Rpm : public QObject
     double min(void) const;
     void setMin(double const RPM);
 
-    Engine_State * m_engine_state;
+    //Engine_State * m_engine_state;
 
     QDomElement to_node( QDomDocument &dom_doc );
 

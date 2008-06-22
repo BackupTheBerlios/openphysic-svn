@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 #include "rpm.h"
 #include "temperature.h"
-#include "engine_state.h"
+//#include "engine_state.h"
 
 class Engine : public QObject
   {
@@ -46,7 +46,7 @@ class Engine : public QObject
 
     int rpm_factor(void);
 
-    Engine_State engine_state;
+    //Engine_State engine_state;
 
     Rpm rpm;
 

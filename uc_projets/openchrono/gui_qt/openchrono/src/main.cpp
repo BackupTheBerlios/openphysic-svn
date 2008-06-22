@@ -52,6 +52,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "testwinimpl.h"
 
 
+#include "engine_state.h"
+
 int main(int argc, char ** argv)
 {
   /* Application */
@@ -70,6 +72,12 @@ int main(int argc, char ** argv)
 
   std::cout << "OpenChrono1" << std::endl;
 
+  Engine_State es;
+  es.show();
+
+  std::cout << "OpenChrono2" << std::endl;
+
+
   /* Données */
   Data myCurrentData;
   //myCurrentData = new Data();
@@ -80,7 +88,7 @@ int main(int argc, char ** argv)
   /* Log Time */
   //LogTime logtime(&myCurrentData);
 
-  std::cout << "OpenChrono2" << std::endl;
+  std::cout << "OpenChrono3" << std::endl;
 
   /* Fenêtres de l'application */
   OCDocument_MainWin winMain(&myCurrentData);

@@ -52,8 +52,8 @@ class Engine_State : public QObject
     void was_unset_to_idle(void);
 
   private:
-    bool m_on; //= false;
-    bool m_idle; // = true;
+    bool m_on;
+    bool m_idle;
   };
 
 #endif

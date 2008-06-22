@@ -20,14 +20,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "engine.h"
 //
 
-#include "engine_state.h"
+//#include "engine_state.h"
 
 Engine::Engine(  )
 {
   setName(QLatin1String("Engine1")); // tr(?)
   set_two_strokes();
 
-  rpm.m_engine_state = &engine_state;
+  //rpm.m_engine_state = &engine_state;
 }
 
 QString Engine::name(void) const
