@@ -39,6 +39,9 @@ void Rpm::set(double const RPM)
   {
     m_RPM=RPM;
 
+  }
+
+/*
     const double rpmOff = 50;
     const double rpmIdle = 150;
 
@@ -59,7 +62,7 @@ void Rpm::set(double const RPM)
       }
 
   }
-
+*/
 
 double Rpm::max(void) const
   {
@@ -81,6 +84,29 @@ void Rpm::setMin(double const RPM)
 {
   m_RPMmin=RPM;
 }
+
+/*
+double Rpm::Off(void) const
+  {
+    return m_RPMoff;
+  }
+
+void Rpm::setOff(double const RPM)
+{
+  m_RPMoff=RPM;
+}
+
+double Rpm::Idle(void) const
+  {
+    return m_RPMidle;
+  }
+
+void Rpm::setIdle(double const RPM)
+{
+  m_RPMidle=RPM;
+}
+*/
+
 
 QDomElement Rpm::to_node( QDomDocument &dom_doc )
 {
