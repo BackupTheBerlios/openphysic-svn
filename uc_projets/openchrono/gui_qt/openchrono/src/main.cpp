@@ -83,10 +83,10 @@ int main(int argc, char ** argv)
   //myCurrentData = new Data();
 
   /* Log Data */
-  //LogData logdata(&myCurrentData);
+  LogData logdata(&myCurrentData);
 
   /* Log Time */
-  //LogTime logtime(&myCurrentData);
+  LogTime logtime(&myCurrentData);
 
   std::cout << "OpenChrono3" << std::endl;
 

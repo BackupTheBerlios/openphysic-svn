@@ -133,5 +133,8 @@ void TestWinImpl::test(void)
   m_logdata->show();
 }
 
-
+void TestWinImpl::keyPressEvent(QKeyEvent * event)
+{
+  std::cout << "KeyPressed" << std::endl;
+}
 

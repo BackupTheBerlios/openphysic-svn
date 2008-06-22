@@ -22,11 +22,22 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <Qt>
 
+/* http://doc.trolltech.com/4.4/qt.html#Key-enum */
+
+/*
 #define B_OK Qt::Key_R
 #define B_CANCEL Qt::Key_T
 #define B_LEFT Qt::Key_H
 #define B_RIGHT Qt::Key_J
 #define B_UP Qt::Key_U
 #define B_DOWN Qt::Key_N
+*/
+
+#define B_OK Qt::Key_Return
+#define B_CANCEL Qt::Key_Escape
+#define B_LEFT Qt::Key_Left
+#define B_RIGHT Qt::Key_Right
+#define B_UP Qt::Key_Up
+#define B_DOWN Qt::Key_Down
 
 #endif

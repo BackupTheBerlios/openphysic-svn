@@ -49,6 +49,8 @@ void OCView::init(void)
 
 void OCView::keyPressEvent(QKeyEvent * event)
 {
+  //std::cout << "KeyPressed OCView " << event->key() << std::endl;
+
   switch ( event->key() )
     {
     case B_OK: // Ok
@@ -76,6 +78,7 @@ void OCView::keyPressEvent(QKeyEvent * event)
       document->activate_brother_next();
       break;
     default:
+      //std::cout << "UNDEF KEY" << std::endl;
       //
       break; // n'importe quelle autre touche
     }

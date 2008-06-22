@@ -46,6 +46,9 @@ class TestWinImpl : public QDialog, public Ui::TestWin
 
     void init(void);
 
+    void keyPressEvent(QKeyEvent * event);
+
+
     //MainWinImpl * m_win;
 
   };

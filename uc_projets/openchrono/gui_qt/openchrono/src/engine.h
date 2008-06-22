@@ -53,6 +53,8 @@ class Engine : public QObject
     Temperature temperature_1;
     Temperature temperature_2;
 
+
+
     QDomElement to_node( QDomDocument &dom_doc );
 
 
