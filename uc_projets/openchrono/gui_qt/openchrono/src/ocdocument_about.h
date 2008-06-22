@@ -1,6 +1,6 @@
 /*
 OpenChrono
-Copyright (C) 2007  Sebastien CELLES
+Copyright (C) 2008  Sebastien CELLES
  
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -17,23 +17,18 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-#ifndef OCVIEW_ENGINE_H
-#define OCVIEW_ENGINE_H
-//
-#include "ocview.h"
+#ifndef OCDOCUMENT_ABOUT_H
+#define OCDOCUMENT_ABOUT_H
 
-//#include "ui_message.h"
-#include "messageimpl.h"
+#include "ocdocument.h"
 
-class OCDocument;
 
-class OCView_Engine : public OCView//, public MessageImpl //public Ui::frmMessage
+class OCDocument_About : public OCDocument
   {
   public:
-    //OCView_Engine();
-    OCView_Engine(OCDocument * ocdoc);
+    OCDocument_About();
 
-    virtual ~OCView_Engine();
+    virtual ~OCDocument_About();
 
   private:
 

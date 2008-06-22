@@ -17,25 +17,19 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-#ifndef OCVIEW_ENGINE_H
-#define OCVIEW_ENGINE_H
+#ifndef OCVIEW_ABOUT_H
+#define OCVIEW_ABOUT_H
 //
-#include "ocview.h"
+#include "ui_about.h"
+//
+#include "data.h"
 
-//#include "ui_message.h"
-#include "messageimpl.h"
-
-class OCDocument;
-
-class OCView_Engine : public OCView//, public MessageImpl //public Ui::frmMessage
+class OCView_About : public QDialog, public Ui::About
   {
+    Q_OBJECT
+
   public:
-    //OCView_Engine();
-    OCView_Engine(OCDocument * ocdoc);
-
-    virtual ~OCView_Engine();
-
-  private:
-
+    OCView_About( QWidget * parent = 0, Qt::WFlags f = 0 );
+    virtual ~OCView_About();
   };
 #endif

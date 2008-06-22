@@ -17,25 +17,15 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-#ifndef OCVIEW_ENGINE_H
-#define OCVIEW_ENGINE_H
-//
-#include "ocview.h"
+#include "ocdocument_about.h"
+#include "ocview_about.h"
 
-//#include "ui_message.h"
-#include "messageimpl.h"
+OCDocument_About::OCDocument_About()
+{
+  std::cout << "OCDocument_About contructor" << std::endl;
+  set_view(new OCView_About(this));
+}
 
-class OCDocument;
-
-class OCView_Engine : public OCView//, public MessageImpl //public Ui::frmMessage
-  {
-  public:
-    //OCView_Engine();
-    OCView_Engine(OCDocument * ocdoc);
-
-    virtual ~OCView_Engine();
-
-  private:
-
-  };
-#endif
+OCDocument_About::~OCDocument_MainWin()
+{
+}
