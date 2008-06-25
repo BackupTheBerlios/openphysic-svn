@@ -54,6 +54,9 @@ class OCView : public QDialog
     void activate_brother_previous(void);
     void activate_child_first(void);
 
+    void is_brother_of(OCView * ocview);
+    void is_first_child_of(OCView * ocview);
+    void is_last_child();
 
   protected:
     //OCDocument * document;

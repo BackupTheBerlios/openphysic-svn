@@ -108,20 +108,10 @@ int main(int argc, char ** argv)
   //OCView_Plot winPlot(&LogData);
 
 
-  winMain.set_parent(&winMain);
-  winMain.set_brother_next(&winEngine);
-  winMain.set_brother_previous(&winAbout);
-  winMain.set_no_child(); // set_child_first(&winMain);
-
-  winEngine.set_parent(&winMain);
-  winEngine.set_brother_next(&winAbout);
-  winEngine.set_brother_previous(&winMain);
-  winEngine.set_no_child();
-
-  winAbout.set_parent(&winMain);
-  winAbout.set_brother_next(&winMain);
-  winAbout.set_brother_previous(&winEngine);
-  winAbout.set_no_child();
+  winMain.set_parent(&winMain); /* page par defaut */
+  winEngine.is_brother_of(&winMain);
+  winAbout.is_brother_of(&winEngine);
+  winAbout.is_last_child();
 
 
   //winPlot.activate();

@@ -33,7 +33,7 @@ OCView::OCView(void)
   page_parent = NULL;
   page_brother_next = NULL;
   page_brother_previous = NULL;
-  page_child_first = NULL;
+  page_child_first = NULL; //this; // null
 
 
 /*
@@ -45,6 +45,8 @@ OCView::OCView(void)
 */
 
   //m_data = NULL;
+
+  this->set_no_child();
 }
 
 
@@ -139,6 +141,32 @@ void OCView::activate_child_first(void)
     }
 }
 
+
+void OCView::is_brother_of(OCView * ocview)
+{
+  /* liens de fraternite */
+  this->set_brother_previous(ocview);
+  ocview->set_brother_next(this);
+  //ocview=NULL;
+
+  /* des freres ont le même pere */
+  this->set_parent(ocview->page_parent);
+}
+
+
+void OCView::is_last_child()
+{
+  this->set_brother_next(page_parent);
+  page_parent->set_brother_previous(this);
+}
+
+
+/* ToTest */
+void OCView::is_first_child_of(OCView * ocview)
+{
+  this->page_parent=ocview;
+  ocview->set_child_first(this);
+}
 
 
 void OCView::activate(void)
