@@ -52,6 +52,8 @@ void OCView::init_view(QDialog * win)
   std::cout << "post init view" << std::endl;
 
   win->setGeometry(100,100,320,240);
+  win->setWindowFlags(Qt::SplashScreen);
+
 }
 
 /*

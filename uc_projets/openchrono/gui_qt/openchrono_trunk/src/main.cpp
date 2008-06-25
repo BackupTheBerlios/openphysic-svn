@@ -24,8 +24,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 // Application (QT / QTopia ...)
 #include <Qt>
 #include <QApplication> // QT
+
+#include <QStyle>
 #include <QPlastiqueStyle> // style
+//#include <QWindowsXPStyle>
+
 #include <QTranslator> // i18n
+
 //#include <qtopiaapplication> // QTopia
 
 // Test GUI
@@ -62,6 +67,8 @@ int main(int argc, char ** argv)
 
   /* Style */
   QApplication::setStyle(new QPlastiqueStyle);
+  //QApplication::setStyle(new QWindowsStyle); 
+  //QApplication::setStyle("QPushButton { color: white }");
 
   /* Traduction openchrono.qrc translations/openchrono_fr_FR.qm */
   QTranslator appTranslator;
@@ -78,6 +85,9 @@ int main(int argc, char ** argv)
 
   std::cout << "OpenChrono2" << std::endl;
 
+
+  //QWidget win;
+  //win.show();
 
   /* Données */
   Data myCurrentData;

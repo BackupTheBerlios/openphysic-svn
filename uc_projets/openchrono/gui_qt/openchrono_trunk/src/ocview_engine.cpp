@@ -26,8 +26,8 @@ OCView_Engine::OCView_Engine()
   std::cout << "init view engine" << std::endl;
 
   setWindowTitle(QApplication::translate("frmMessage", "Engine", 0, QApplication::UnicodeUTF8));
-  lblTitle->setText(QApplication::translate("frmMessage", "Engine", 0, QApplication::UnicodeUTF8));
-  lblMessage->setText(QApplication::translate("frmMessage", "Click <strong>OK</strong> to enter in this menu.", 0, QApplication::UnicodeUTF8));
+  lblTitle->setText(QApplication::translate("frmMessage", "<h1>Engine</h1>", 0, QApplication::UnicodeUTF8));
+  lblMessage->setText(QApplication::translate("frmMessage", "<h2>Click <u><i>OK</i></u> to enter in this menu.</h2>", 0, QApplication::UnicodeUTF8));
 
   init_view(this);
 }
