@@ -57,6 +57,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "testwinimpl.h"
 
+//#include "qaccelerometer.h"
+//#include "qrpmmeter.h"
 
 #include "engine_state.h"
 
@@ -134,8 +136,9 @@ int main(int argc, char ** argv)
   app.connect( &app, SIGNAL( lastWindowClosed() ), &app, SLOT( quit() ) );
 
 
-  QWidget accel;
-  accel.show();
+  //QWidget accel;
+  //QAccelerometer accel;
+  //accel.show();
 
   //winTest.close();
 

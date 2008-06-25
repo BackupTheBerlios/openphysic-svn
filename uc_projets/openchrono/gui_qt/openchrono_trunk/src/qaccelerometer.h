@@ -20,5 +20,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef QACCELEROMETER_H
 #define QACCELEROMETER_H
 
+class QAccelerometer : public QWidget
+  {
+//    Q_OBJECT
+
+  }
 
 #endif

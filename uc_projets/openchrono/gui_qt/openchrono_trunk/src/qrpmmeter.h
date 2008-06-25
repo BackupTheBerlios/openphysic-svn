@@ -20,5 +20,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef QRPMMETER_H
 #define QRPMMETER_H
 
+class QRPMMeter : public QWidget // public QProgressBar
+  {
+//    Q_OBJECT
+
+  }
 
 #endif
