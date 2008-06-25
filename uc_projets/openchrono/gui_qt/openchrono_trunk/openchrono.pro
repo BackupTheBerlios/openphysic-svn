@@ -28,6 +28,7 @@ HEADERS += src/chrono.h \
            src/logtime.h \
            src/ocview.h \
            src/ocview_mainwin.h \
+           src/ocview_about.h \
            src/ocview_engine.h \
            src/ocview_plot.h \
            src/pilot.h \
@@ -37,9 +38,14 @@ HEADERS += src/chrono.h \
            src/testwinimpl.h \
            src/track.h \
            src/vehicule.h \
-           src/ocview_about.h \
-           src/messageimpl.h 
-FORMS += ui/about.ui ui/dialog.ui ui/mainwin.ui ui/message.ui ui/questions.ui ui/testwin.ui
+
+FORMS += ui/about.ui \
+         ui/dialog.ui \
+         ui/mainwin.ui \
+         ui/message.ui \
+         ui/questions.ui \
+         ui/testwin.ui \
+
 SOURCES += src/chrono.cpp \
            src/data.cpp \
            src/engine.cpp \
@@ -49,6 +55,7 @@ SOURCES += src/chrono.cpp \
            src/main.cpp \
            src/ocview.cpp \
            src/ocview_mainwin.cpp \
+           src/ocview_about.cpp \
            src/ocview_engine.cpp \
            src/ocview_plot.cpp \
            src/pilot.cpp \
@@ -58,6 +65,5 @@ SOURCES += src/chrono.cpp \
            src/testwinimpl.cpp \
            src/track.cpp \
            src/vehicule.cpp \
-           src/ocview_about.cpp \
-           src/messageimpl.cpp 
+
 

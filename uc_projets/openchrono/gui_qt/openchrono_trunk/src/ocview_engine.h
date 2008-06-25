@@ -22,13 +22,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 #include "ocview.h"
 
-//#include "ui_message.h"
-#include "messageimpl.h"
+#include "ui_message.h"
 
-class OCDocument;
+//class OCDocument;
 
-class OCView_Engine : public OCView//, public MessageImpl //public Ui::frmMessage
+class OCView_Engine : public OCView//, public Ui::Message
   {
+  //Q_OBJECT
+
   public:
     OCView_Engine();
     //OCView_Engine(OCDocument * ocdoc);
