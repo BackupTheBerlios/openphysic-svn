@@ -53,7 +53,7 @@ void OCView::init_view(QDialog * win)
 
   win->setGeometry(100,100,320,240);
   win->setWindowFlags(Qt::SplashScreen);
-
+  //win->setWindowFlags(Qt::Popup);
 }
 
 /*
