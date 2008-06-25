@@ -133,6 +133,10 @@ int main(int argc, char ** argv)
   //app.connect( &winTest, SIGNAL( accepted() ), &app, SLOT( quit() ) );
   app.connect( &app, SIGNAL( lastWindowClosed() ), &app, SLOT( quit() ) );
 
+
+  QWidget accel;
+  accel.show();
+
   //winTest.close();
 
   int exit;
