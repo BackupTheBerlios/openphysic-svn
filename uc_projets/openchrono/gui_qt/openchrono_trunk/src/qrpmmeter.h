@@ -24,6 +24,6 @@ class QRPMMeter : public QWidget // public QProgressBar
   {
 //    Q_OBJECT
 
-  }
+  };
 
 #endif

@@ -24,6 +24,6 @@ class QAccelerometer : public QWidget
   {
 //    Q_OBJECT
 
-  }
+  };
 
 #endif
