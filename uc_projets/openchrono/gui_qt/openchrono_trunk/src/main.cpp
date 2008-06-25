@@ -124,8 +124,10 @@ int main(int argc, char ** argv)
 
   winMain.activate();
 
+  //app.connect( &winTest, SIGNAL( accepted() ), &app, SLOT( quit() ) );
   app.connect( &app, SIGNAL( lastWindowClosed() ), &app, SLOT( quit() ) );
 
+  //winTest.close();
 
   int exit;
   exit = app.exec();

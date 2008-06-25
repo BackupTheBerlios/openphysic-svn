@@ -27,7 +27,7 @@ OCView_Engine::OCView_Engine()
 
   setWindowTitle(QApplication::translate("frmMessage", "Engine", 0, QApplication::UnicodeUTF8));
   lblTitle->setText(QApplication::translate("frmMessage", "Engine", 0, QApplication::UnicodeUTF8));
-  lblMessage->setText(QApplication::translate("frmMessage", "Click ok to enter in this menu", 0, QApplication::UnicodeUTF8));
+  lblMessage->setText(QApplication::translate("frmMessage", "Click <strong>OK</strong> to enter in this menu.", 0, QApplication::UnicodeUTF8));
 
   init_view(this);
 }
