@@ -111,6 +111,8 @@ int main(int argc, char ** argv)
   winMain.set_parent(&winMain); /* page par defaut */
   winEngine.is_brother_of(&winMain);
     //winEngineMenu1.is_first_child_of(&winEngine);
+    //winEngineMenu2.is_brother_of(&winEngineMenu1);
+    //winEngineMenu2.is_last_child();
 
   winAbout.is_brother_of(&winEngine);
   winAbout.is_last_child();
