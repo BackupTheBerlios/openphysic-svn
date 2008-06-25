@@ -34,11 +34,12 @@ class OCView : public QDialog
     OCView();
     virtual ~OCView();
 
-    void init(void);
+    //void init(void);
+    void init(QDialog * win);
+    //void init_view(QDialog * win);
 
     void keyPressEvent(QKeyEvent *event);
 
-    void init_view(QDialog * win);
 
     void set_parent(OCView * ocview);
     void set_brother_next(OCView * ocview);

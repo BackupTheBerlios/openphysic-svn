@@ -29,7 +29,7 @@ OCView_Engine::OCView_Engine()
   lblTitle->setText(QApplication::translate("frmMessage", "<h1>Engine</h1>", 0, QApplication::UnicodeUTF8));
   lblMessage->setText(QApplication::translate("frmMessage", "<h2>Click <u><i>OK</i></u> to enter in this menu.</h2>", 0, QApplication::UnicodeUTF8));
 
-  init_view(this);
+  init(this);
 }
 
 OCView_Engine::~OCView_Engine()

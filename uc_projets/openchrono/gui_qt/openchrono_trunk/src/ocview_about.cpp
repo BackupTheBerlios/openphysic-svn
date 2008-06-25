@@ -33,7 +33,7 @@ OCView_About::OCView_About()
   lblTitle->setText(QApplication::translate("frmMessage", "OpenChrono", 0, QApplication::UnicodeUTF8));
   lblMessage->setText(QApplication::translate("frmMessage", "<h3>a chronometer for go-karts and others mechanical sports</h3><h4>Copyright (C) 2007 S. Celles</h4><h5>under GNU General Public License</h5>", 0, QApplication::UnicodeUTF8));
 
-  init_view(this);
+  init(this);
 
   //QString str = QString("<h1>OpenChrono</h1><h2>a chronometer for go-karts and others mechanical sports</h2><h3>Copyright (C) 2008 S. Celles</h3><h4>under GNU General Public License</h4>");
 

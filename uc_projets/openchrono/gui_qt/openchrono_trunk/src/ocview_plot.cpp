@@ -27,7 +27,7 @@ OCView_Plot::OCView_Plot(LogData * logdata)
 
   connect( &timer, SIGNAL( timeout() ), this, SLOT( update() ) );
 
-  //init_view(this);
+  //init(this);
 }
 
 OCView_Plot::~OCView_Plot()

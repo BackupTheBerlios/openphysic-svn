@@ -47,14 +47,6 @@ OCView::OCView(void)
   //m_data = NULL;
 }
 
-void OCView::init_view(QDialog * win)
-{
-  std::cout << "post init view" << std::endl;
-
-  win->setGeometry(100,100,320,240);
-  win->setWindowFlags(Qt::SplashScreen);
-  //win->setWindowFlags(Qt::Popup);
-}
 
 /*
 OCView::OCView(Data * data)
@@ -205,10 +197,22 @@ OCView::~OCView(void)
   // destruct
 }
 
-
-void OCView::init(void)
+/*
+void OCView::init_view(QDialog * win)
 {
-  setGeometry(WIN_POS_X,WIN_POS_Y,WIN_WIDTH,WIN_HEIGHT);
+
+}
+*/
+
+//void OCView::init(void)
+void OCView::init(QDialog * win)
+{
+//  setGeometry(WIN_POS_X,WIN_POS_Y,WIN_WIDTH,WIN_HEIGHT);
+  std::cout << "post init view" << std::endl;
+
+  win->setGeometry(100,100,320,240);
+  win->setWindowFlags(Qt::SplashScreen);
+  //win->setWindowFlags(Qt::Popup);
 }
 
 void OCView::keyPressEvent(QKeyEvent * event)

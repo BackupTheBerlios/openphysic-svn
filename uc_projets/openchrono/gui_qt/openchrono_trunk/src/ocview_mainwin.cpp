@@ -54,7 +54,7 @@ OCView_MainWin::OCView_MainWin(Data * data)
   connect( timer, SIGNAL(timeout()), this, SLOT(UpdateData()) );
   timer->start(25); //
 
-  init_view(this);
+  init(this);
 }
 
 OCView_MainWin::~OCView_MainWin()
