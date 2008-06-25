@@ -19,9 +19,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "qaccelerometer.h"
 
-/*
-QAccelerometer::QAccelerometer()
+
+QAccelerometer::QAccelerometer(QWidget *parent = 0)
 {
 
 }
-*/
+
+void QAccelerometer::paintEvent(QPaintEvent * event)
+{
+  //QPainter painter(this);
+}
+

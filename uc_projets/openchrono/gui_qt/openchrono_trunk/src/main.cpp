@@ -137,8 +137,8 @@ int main(int argc, char ** argv)
 
 
   //QWidget accel;
-  //QAccelerometer accel;
-  //accel.show();
+  QAccelerometer accel;
+  accel.show();
 
   //QRPMMeter rpm;
   //rpm.set(10000);

@@ -20,16 +20,51 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef QACCELEROMETER_H
 #define QACCELEROMETER_H
 
+#include <QColor>
+#include <QImage>
 #include <QWidget>
 
 class QAccelerometer : public QWidget
   {
-//    Q_OBJECT
+    Q_OBJECT
+    //QPROPERTY(double GX READ GX WRITE setGX)
 
-/*
+
     public:
-      QAccelerometer();
-*/
+      QAccelerometer(QWidget *parent = 0);
+
+      void setGX(const double g);
+      double GX() const {return m_GX; };
+
+      void setGY(const double g);
+      double GY() const {return m_GY; };
+
+
+      void setGXmin(const double g);
+      double GXmin() const {return m_GXmin; };
+
+      void setGXmax(const double g);
+      double GXmax() const {return m_GXmax; };
+
+      void setGYmin(const double g);
+      double GYmin() const {return m_GYmin; };
+
+      void setGYmax(const double g);
+      double GYmax() const {return m_GYmax; };
+
+    protected:
+      void paintEvent(QPaintEvent * event);
+
+    private:
+      double m_GX;
+      double m_GY;
+
+      double m_GXmin;
+      double m_GXmax;
+      double m_GYmin;
+      double m_GYmax;
+
+      QImage image;
 
   };
 
