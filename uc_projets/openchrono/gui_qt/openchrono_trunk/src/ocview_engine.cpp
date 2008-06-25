@@ -21,10 +21,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 OCView_Engine::OCView_Engine()
 {
-  //setupUi(this);
+  setupUi(this);
 
-  setWindowTitle(tr("Engine"));
-
+  setWindowTitle(QApplication::translate("frmMessage", "Engine", 0, QApplication::UnicodeUTF8));
+  lblTitle->setText(QApplication::translate("frmMessage", "Engine", 0, QApplication::UnicodeUTF8));
+  lblMessage->setText(QApplication::translate("frmMessage", "Click ok to enter in this menu", 0, QApplication::UnicodeUTF8));
 
 }
 

@@ -47,6 +47,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "ocview_mainwin.h"
 #include "ocview_engine.h"
+#include "ocview_about.h"
 #include "ocview_plot.h"
 
 #include "testwinimpl.h"
@@ -93,22 +94,24 @@ int main(int argc, char ** argv)
   /* Fenêtres de l'application */
   OCView_MainWin winMain(&myCurrentData);
   OCView_Engine winEngine; //(&myCurrentData);
-  //OCView_About winAbout;
+  OCView_About winAbout;
   //OCView_Plot winPlot(&LogData);
 
 
   winMain.set_parent(&winMain);
   winMain.set_brother_next(&winEngine);
-  winMain.set_brother_previous(&winEngine);
+  winMain.set_brother_previous(&winAbout);
   winMain.set_no_child(); // set_child_first(&winMain);
 
-
   winEngine.set_parent(&winMain);
-  winEngine.set_brother_next(&winMain);
+  winEngine.set_brother_next(&winAbout);
   winEngine.set_brother_previous(&winMain);
   winEngine.set_no_child();
 
-
+  winAbout.set_parent(&winMain);
+  winAbout.set_brother_next(&winMain);
+  winAbout.set_brother_previous(&winEngine);
+  winAbout.set_no_child();
 
 
   //winPlot.activate();

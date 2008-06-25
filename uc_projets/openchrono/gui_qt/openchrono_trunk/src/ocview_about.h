@@ -20,11 +20,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef OCVIEW_ABOUT_H
 #define OCVIEW_ABOUT_H
 //
-#include "ui_about.h"
+//#include "ui_about.h"
+#include "ui_message.h"
 #include "ocview.h"
 //
 
-class OCView_About : public OCView
+class OCView_About : public OCView,public Ui::frmMessage //, public Ui::frmAbout
   {
     Q_OBJECT
 

@@ -1,20 +1,32 @@
 TEMPLATE = app
+
 QT += gui \
   core \
   xml
+
 TARGET = 
+
 DEPENDPATH += . build src ui
+
 INCLUDEPATH += . src build
+
 CONFIG +=   qt \
   debug \
   warn_on \
   console
+
 DESTDIR +=   bin
+
 OBJECTS_DIR +=   build
+
 MOC_DIR +=   build
+
 UI_DIR +=   build
+
 DEFINES += QT_NO_CAST_FROM_ASCII
+
 TRANSLATIONS = translations/openchrono_fr_FR.ts
+
 RESOURCES = openchrono.qrc
 
 # Input
