@@ -21,9 +21,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 OCView_Plot::OCView_Plot(LogData * logdata)
 {
+  //setup_ui(this);
+ 
   m_logdata = logdata;
 
   connect( &timer, SIGNAL( timeout() ), this, SLOT( update() ) );
+
+  //init_view(this);
 }
 
 OCView_Plot::~OCView_Plot()

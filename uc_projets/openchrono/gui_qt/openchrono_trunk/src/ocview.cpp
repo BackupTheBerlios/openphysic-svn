@@ -27,6 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 OCView::OCView(void)
 {
   // contruct
+  std::cout << "init view" << std::endl;
 
   // in case of error : segfault
   page_parent = NULL;
@@ -44,6 +45,11 @@ OCView::OCView(void)
 */
 
   //m_data = NULL;
+}
+
+void OCView::init_view(QDialog * win)
+{
+  std::cout << "post init view" << std::endl;
 }
 
 /*

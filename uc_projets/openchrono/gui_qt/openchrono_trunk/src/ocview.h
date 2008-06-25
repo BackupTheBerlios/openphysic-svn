@@ -24,6 +24,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <QDialog>
 #include <QKeyEvent>
 
+#include <iostream>
+
 //class OCDocument;
 
 class OCView : public QDialog
@@ -36,10 +38,12 @@ class OCView : public QDialog
 
     void keyPressEvent(QKeyEvent *event);
 
-    void set_parent(OCView * ocdoc);
-    void set_brother_next(OCView * ocdoc);
-    void set_brother_previous(OCView * ocdoc);
-    void set_child_first(OCView * ocdoc);
+    void init_view(QDialog * win);
+
+    void set_parent(OCView * ocview);
+    void set_brother_next(OCView * ocview);
+    void set_brother_previous(OCView * ocview);
+    void set_child_first(OCView * ocview);
     void set_no_child(void);
 
     void activate(void);
