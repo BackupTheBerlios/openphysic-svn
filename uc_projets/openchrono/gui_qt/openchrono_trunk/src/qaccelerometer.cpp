@@ -19,14 +19,34 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "qaccelerometer.h"
 
+#include <QtGui>
+
+#include <iostream>
 
 QAccelerometer::QAccelerometer(QWidget *parent = 0)
 {
+  setGeometry(QRect(0,0,100,100));
+  //setSize(100,100);
 
+  /* Tests */
+  setGX(0.5);
+  setGY(1.5);
 }
+
 
 void QAccelerometer::paintEvent(QPaintEvent * event)
 {
-  //QPainter painter(this);
+  std::cout << "paint accelero" << std::endl;
+
+  QPainter painter(this);
+
+  QPen penCercle;
+  penCercle.setWidth(3);
+  penCercle.setColor(Qt::black);
+  painter.setPen(penCercle);
+
+  //painter.drawLine(0,0,30,30);
+  //painter.drawEllipse(QRect(0,0,100,100));
+painter.drawEllipse(QRect(0,0,100,100));
 }
 

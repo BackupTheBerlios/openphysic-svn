@@ -33,23 +33,23 @@ class QAccelerometer : public QWidget
     public:
       QAccelerometer(QWidget *parent = 0);
 
-      void setGX(const double g);
+      void setGX(const double g) { m_GX = g; };
       double GX() const {return m_GX; };
 
-      void setGY(const double g);
+      void setGY(const double g) { m_GY = g; };
       double GY() const {return m_GY; };
 
 
-      void setGXmin(const double g);
+      void setGXmin(const double g) { m_GXmin = g; };
       double GXmin() const {return m_GXmin; };
 
-      void setGXmax(const double g);
+      void setGXmax(const double g) { m_GXmax = g; };
       double GXmax() const {return m_GXmax; };
 
-      void setGYmin(const double g);
+      void setGYmin(const double g) { m_GYmin = g; };
       double GYmin() const {return m_GYmin; };
 
-      void setGYmax(const double g);
+      void setGYmax(const double g) { m_GYmax = g; };
       double GYmax() const {return m_GYmax; };
 
     protected:
