@@ -62,6 +62,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "engine_state.h"
 
+
+ #include <QLineEdit>
+
 int main(int argc, char ** argv)
 {
   /* Application */
@@ -137,8 +140,8 @@ int main(int argc, char ** argv)
 
 
   //QWidget accel;
-  QAccelerometer accel;
-  accel.show();
+  //QAccelerometer accel;
+  //accel.show();
 
   //QRPMMeter rpm;
   //rpm.set(10000);
@@ -147,6 +150,9 @@ int main(int argc, char ** argv)
   //rpm.show();
 
   //winTest.close();
+
+  QLineEdit txt;
+  txt.show();
 
   int exit;
   exit = app.exec();
