@@ -321,7 +321,7 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QProgressBar" name="GraphicRPM" >
+  <widget class="QRPMMeter" name="GraphicRPM" >
    <property name="geometry" >
     <rect>
      <x>0</x>
@@ -360,6 +360,13 @@
    </property>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QRPMMeter</class>
+   <extends>QProgressBar</extends>
+   <header>qrpmmeter.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
