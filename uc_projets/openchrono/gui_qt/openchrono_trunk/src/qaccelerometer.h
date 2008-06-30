@@ -73,8 +73,9 @@ class QAccelerometer : public QWidget
       double m_GYmin;
       double m_GYmax;
 */
-      QImage image;
+      //QImage image;
 
+      void drawCercle(QPainter & painter, double g);
   };
 
 #endif
