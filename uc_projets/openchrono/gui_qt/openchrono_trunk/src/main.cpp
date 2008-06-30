@@ -63,7 +63,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "engine_state.h"
 
 
- #include <QLineEdit>
+#include <QLineEdit>
+#include <QPainter>
 
 int main(int argc, char ** argv)
 {
@@ -150,6 +151,7 @@ int main(int argc, char ** argv)
   //rpm.show();
 
   //winTest.close();
+
 
   //QLineEdit txt;
   //txt.show();
