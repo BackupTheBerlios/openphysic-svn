@@ -151,8 +151,8 @@ int main(int argc, char ** argv)
 
   //winTest.close();
 
-  QLineEdit txt;
-  txt.show();
+  //QLineEdit txt;
+  //txt.show();
 
   int exit;
   exit = app.exec();

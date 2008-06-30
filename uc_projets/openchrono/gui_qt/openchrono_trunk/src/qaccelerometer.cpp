@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <iostream>
 
-QAccelerometer::QAccelerometer(QWidget *parent = 0)
+QAccelerometer::QAccelerometer(QWidget *parent = 0) : QWidget(parent)
 {
   setGeometry(QRect(0,0,100,100));
   //setSize(100,100);

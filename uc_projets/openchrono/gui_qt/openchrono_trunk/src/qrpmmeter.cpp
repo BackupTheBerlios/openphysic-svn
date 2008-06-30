@@ -19,7 +19,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "qrpmmeter.h"
 
-QRPMMeter::QRPMMeter(QWidget *parent)
-{
+#include <iostream>
 
+QRPMMeter::QRPMMeter(QWidget *parent) : QProgressBar(parent)
+{
+  std::cout << "RPMmeter" << std::endl;
 }
