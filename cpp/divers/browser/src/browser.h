@@ -26,16 +26,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 class Browser : public QDialog, public Ui::Browser
   {
     Q_OBJECT
+    //Q_PROPERTY(QUrl url READ url WRITE setUrl)
 
   public:
     Browser( QWidget * parent = 0, Qt::WFlags f = 0 );
     ~Browser();
 
+    //void setUrl(const QUrl &url);
+    //QUrl url() const;
+
   private slots:
     void update(void);
 
-  //private:
-    //int page;
 
   };
 #endif

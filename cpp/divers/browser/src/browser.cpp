@@ -40,7 +40,7 @@ Browser::Browser( QWidget * parent, Qt::WFlags f) : QDialog(parent, f)
 
   //this->page = 0;
 
-  //this->update();
+  this->update();
 }
 
 
@@ -53,6 +53,27 @@ void Browser::update(void)
   std::cout << "Update" << std::endl;
 
   //this->webView->setUrl(QUrl("about:blank"));
-  this->webView->setUrl(QUrl("http://www.google.fr"));
+  //this->webView->setUrl(QUrl("http://acid3.acidtests.org"));
+  //this->webView->setUrl(QUrl("http://www.google.fr"));
   //this->webView->setUrl(QUrl("http://www.orange.fr"));
+
+  // ToDo double buffering (next) or triple buffering (next/previous) 
+  //this->webView_2->setUrl(QUrl("http://www.orange.fr"));
+
 }
+
+/*
+void Browser::setUrl(const QUrl &url)
+{
+    webView->setUrl(url);
+}
+*/
+
+/*
+QUrl QWebView::url() const
+{
+    if (d->page)
+        return d->page->mainFrame()->url();
+    return QUrl();
+}
+*/
