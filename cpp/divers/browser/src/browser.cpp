@@ -26,4 +26,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 Browser::Browser( QWidget * parent, Qt::WFlags f) : QDialog(parent, f)
 {
   setupUi(this);
+
+// url = about:blank
+
+//  this->setGeometry(100,100,320,240);
+  //this->setWindowFlags(Qt::SplashScreen);
+  //this->setWindowFlags(Qt::Popup);
+}
+
+
+Browser::~Browser( )
+{
 }

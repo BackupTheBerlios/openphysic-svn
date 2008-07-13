@@ -32,6 +32,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "browser.h"
 
+#include <iostream>
+
 
 int main(int argc, char ** argv)
 {
@@ -46,14 +48,17 @@ int main(int argc, char ** argv)
   /* Traduction openchrono.qrc translations/openchrono_fr_FR.qm */
   /*
   QTranslator appTranslator;
-  QString strTrans = QLatin1String("openchrono_")+QLocale::system().name();
+  QString strTrans = QLatin1String("browser_")+QLocale::system().name();
   std::cout << ("Translation : ") << qPrintable(strTrans) << std::endl;
   //appTranslator.load(strTrans, qApp->applicationDirPath()+QLatin1String("/translations")); // sans ressource
-  appTranslator.load(QLatin1String(":translations/")+strTrans); // avec ressource openchrono.qrc
+  appTranslator.load(QLatin1String(":translations/")+strTrans); // avec ressource browser.qrc
   app.installTranslator(&appTranslator);
   */
 
-  std::cout << "Browser" << std::endl;
+  Browser browser;
+  browser.show();
+
+  std::cout << "Running browser" << std::endl;
 
   app.connect( &app, SIGNAL( lastWindowClosed() ), &app, SLOT( quit() ) );
 

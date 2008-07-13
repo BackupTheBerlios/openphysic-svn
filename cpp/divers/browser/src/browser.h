@@ -30,5 +30,6 @@ class Browser : public QDialog, public Ui::Browser
   public:
     Browser( QWidget * parent = 0, Qt::WFlags f = 0 );
     ~Browser();
+
   };
 #endif

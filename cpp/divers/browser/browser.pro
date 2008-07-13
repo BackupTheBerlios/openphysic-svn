@@ -1,6 +1,7 @@
 TEMPLATE = app
 
-QT += gui \
+QT += \
+  gui \
   core \
   xml \
   webkit \
@@ -12,7 +13,8 @@ DEPENDPATH += . build src ui
 
 INCLUDEPATH += . src build
 
-CONFIG +=   qt \
+CONFIG += \
+  qt \
   debug \
   warn_on \
   console
@@ -25,14 +27,14 @@ MOC_DIR +=   build
 
 UI_DIR +=   build
 
-DEFINES += QT_NO_CAST_FROM_ASCII
-
-
 # Input
-HEADERS += src/browser.h \
+HEADERS += \
+  src/browser.h \
 
-FORMS += ui/browser.ui \
+FORMS += \
+  ui/browser.ui \
 
-SOURCES += src/browser.cpp \
+SOURCES += \
   src/main.cpp \
+  src/browser.cpp \
 
