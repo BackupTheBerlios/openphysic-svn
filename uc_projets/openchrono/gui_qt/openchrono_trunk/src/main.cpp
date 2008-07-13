@@ -152,8 +152,8 @@ int main(int argc, char ** argv)
   //rpm.setMin(0);
   //rpm.show();
 
-  Ticker ticker("OpenChrono");
-  ticker.show();
+  //Ticker ticker("OpenChrono");
+  //ticker.show();
   //QString str = "test";
   //str = QString("bla bla");
   //ticker.setText(str);
