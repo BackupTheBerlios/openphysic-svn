@@ -59,12 +59,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "qaccelerometer.h"
 #include "qrpmmeter.h"
+#include "ticker.h"
 
 #include "engine_state.h"
 
 
 #include <QLineEdit>
 #include <QPainter>
+//#include <QString>
 
 int main(int argc, char ** argv)
 {
@@ -149,6 +151,12 @@ int main(int argc, char ** argv)
   //rpm.setMax(16000);
   //rpm.setMin(0);
   //rpm.show();
+
+  Ticker ticker;
+  ticker.show();
+  QString str = "test";
+  //str = QString("bla bla");
+  //ticker.setText(str);
 
   //winTest.close();
 

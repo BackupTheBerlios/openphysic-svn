@@ -48,6 +48,7 @@ HEADERS += src/chrono.h \
   src/rpm.h \
   src/temperature.h \
   src/testwinimpl.h \
+  src/ticker.h \
   src/track.h \
   src/vehicule.h \
   src/qaccelerometer.h \
@@ -78,6 +79,7 @@ SOURCES += src/chrono.cpp \
   src/rpm.cpp \
   src/temperature.cpp \
   src/testwinimpl.cpp \
+  src/ticker.cpp \
   src/track.cpp \
   src/vehicule.cpp \
   src/qaccelerometer.cpp \
