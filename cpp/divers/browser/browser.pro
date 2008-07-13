@@ -32,3 +32,5 @@ HEADERS += src/browser.h \
 FORMS += ui/browser.ui \
 
 SOURCES += src/browser.cpp \
+  src/main.cpp \
+
