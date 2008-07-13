@@ -54,6 +54,8 @@ OCView_MainWin::OCView_MainWin(Data * data)
   connect( timer, SIGNAL(timeout()), this, SLOT(UpdateData()) );
   timer->start(25); //
 
+  lblMessage->setText(QLatin1String("OpenChrono - Copyright (c) 2008 S. Celles - under GNU General Public License --- "));
+
   init(this);
 }
 

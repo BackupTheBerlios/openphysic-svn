@@ -19,13 +19,22 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "ticker.h"
 
-Ticker::Ticker(const QString &text, QWidget *parent) : QWidget(parent), txt(text), offset(0) {
+Ticker::Ticker(QWidget *parent) : QLabel(parent), offset(0) {
+  setBackgroundRole(QPalette::Base);
+  setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
+  timer.setInterval(20);
+  connect(&timer, SIGNAL(timeout()), this, SLOT(progress()));
+}
+
+/*
+Ticker::Ticker(const QString &text, QWidget *parent) : QLabel(parent), txt(text), offset(0) {
   //setFrameStyle(WinPanel | Sunken);
   setBackgroundRole(QPalette::Base);
   setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
   timer.setInterval(20);
   connect(&timer, SIGNAL(timeout()), this, SLOT(progress()));
 }
+*/
 
 QSize Ticker::sizeHint() const {
   //return QSize(40 * fontMetrics().width('x'), fontMetrics().lineSpacing() + 2 * frameWidth());

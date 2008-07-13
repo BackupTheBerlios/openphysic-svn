@@ -22,14 +22,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <QtGui>
 
-class Ticker : public QWidget {
+class Ticker : public QLabel {
 
   Q_OBJECT
   Q_PROPERTY(QString text READ text WRITE setText)
   Q_PROPERTY(int speed READ speed WRITE setSpeed)
 
 public:
-  Ticker(const QString &text, QWidget *parent = 0);
+  Ticker(QWidget *parent = 0);
+  //Ticker(const QString &text, QWidget *parent = 0);
+
   void setText(const QString &text) { txt = text; update(); }
   QString text() const { return txt; }
   QSize sizeHint() const;

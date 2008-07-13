@@ -266,7 +266,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QLabel" name="lblMessage" >
+  <widget class="Ticker" name="lblMessage" >
    <property name="geometry" >
     <rect>
      <x>2</x>
@@ -276,7 +276,7 @@
     </rect>
    </property>
    <property name="text" >
-    <string>OpenChrono</string>
+    <string>lblMessage</string>
    </property>
    <property name="alignment" >
     <set>Qt::AlignCenter</set>
@@ -326,6 +326,11 @@
    <class>QRPMMeter</class>
    <extends>QProgressBar</extends>
    <header>qrpmmeter.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Ticker</class>
+   <extends>QLabel</extends>
+   <header>ticker.h</header>
   </customwidget>
  </customwidgets>
  <resources/>
