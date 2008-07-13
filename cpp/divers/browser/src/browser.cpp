@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <iostream> //for test
 
 #include "browser.h"
-TestWinImpl::TestWinImpl( QWidget * parent, Qt::WFlags f) : QDialog(parent, f)
+Browser::Browser( QWidget * parent, Qt::WFlags f) : QDialog(parent, f)
 {
   setupUi(this);
 }

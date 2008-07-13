@@ -2,7 +2,9 @@ TEMPLATE = app
 
 QT += gui \
   core \
-  xml
+  xml \
+  webkit \
+  network \
 
 TARGET = 
 
