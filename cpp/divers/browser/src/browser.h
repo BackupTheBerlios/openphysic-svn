@@ -31,5 +31,11 @@ class Browser : public QDialog, public Ui::Browser
     Browser( QWidget * parent = 0, Qt::WFlags f = 0 );
     ~Browser();
 
+  private slots:
+    void update(void);
+
+  //private:
+    //int page;
+
   };
 #endif

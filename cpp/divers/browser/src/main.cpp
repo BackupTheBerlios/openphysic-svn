@@ -37,11 +37,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 int main(int argc, char ** argv)
 {
+  std::cout << "Running browser" << std::endl;
+
   /* Application */
   QApplication app( argc, argv );
 
   /* Style */
   QApplication::setStyle(new QPlastiqueStyle);
+
   //QApplication::setStyle(new QWindowsStyle); 
   //QApplication::setStyle("QPushButton { color: white }");
 
@@ -58,7 +61,6 @@ int main(int argc, char ** argv)
   Browser browser;
   browser.show();
 
-  std::cout << "Running browser" << std::endl;
 
   app.connect( &app, SIGNAL( lastWindowClosed() ), &app, SLOT( quit() ) );
 

@@ -32,9 +32,27 @@ Browser::Browser( QWidget * parent, Qt::WFlags f) : QDialog(parent, f)
 //  this->setGeometry(100,100,320,240);
   //this->setWindowFlags(Qt::SplashScreen);
   //this->setWindowFlags(Qt::Popup);
+
+
+  QTimer * timer = new QTimer(this);
+  connect( timer, SIGNAL( timeout() ), this, SLOT( update() ) );
+  timer->start(5000);
+
+  //this->page = 0;
+
+  //this->update();
 }
 
 
 Browser::~Browser( )
 {
+}
+
+void Browser::update(void)
+{
+  std::cout << "Update" << std::endl;
+
+  //this->webView->setUrl(QUrl("about:blank"));
+  this->webView->setUrl(QUrl("http://www.google.fr"));
+  //this->webView->setUrl(QUrl("http://www.orange.fr"));
 }
