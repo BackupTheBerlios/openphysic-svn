@@ -1,6 +1,6 @@
 #include <QtGui>
 
-class Ticker : public QWidget {
+class Ticker : public QLabel {
 
   Q_OBJECT
   Q_PROPERTY(QString text READ text WRITE setText)

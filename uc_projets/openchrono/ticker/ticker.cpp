@@ -1,6 +1,6 @@
 #include "ticker.h"
 
-Ticker::Ticker(const QString &text, QWidget *parent) : QWidget(parent), txt(text), offset(0) {
+Ticker::Ticker(const QString &text, QWidget *parent) : QLabel(parent), txt(text), offset(0) {
   //setFrameStyle(WinPanel | Sunken);
   setBackgroundRole(QPalette::Base);
   setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
