@@ -23,6 +23,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "ui_browser.h"
 //
 
+#include <QKeyEvent>
+
+
 class Browser : public QDialog, public Ui::Browser
   {
     Q_OBJECT
@@ -35,9 +38,33 @@ class Browser : public QDialog, public Ui::Browser
     //void setUrl(const QUrl &url);
     //QUrl url() const;
 
+    void keyPressEvent(QKeyEvent *event);
+
+  public slots:
+    void save(void);
+    void load(void);
+
   private slots:
     void update(void);
+    void update_view(void);
 
+  private:
+    QTimer * timer;
+    int default_interval;
 
+    int page;
+    //WebView[3] wv;
+    //int current_webview;
+
+    QVector <QUrl> url_list;
+
+    void next();
+    void previous();
+
+    void reset_timer();
   };
+
+#define CFG_FILE QLatin1String("browser.xml")
+#define CFG_DIR QDir::homePath()
+
 #endif

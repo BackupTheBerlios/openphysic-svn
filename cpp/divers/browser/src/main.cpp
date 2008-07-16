@@ -37,7 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 int main(int argc, char ** argv)
 {
-  std::cout << "Running browser" << std::endl;
+  //std::cout << "Running browser" << std::endl;
 
   /* Application */
   QApplication app( argc, argv );
@@ -59,11 +59,11 @@ int main(int argc, char ** argv)
   */
 
   Browser browser;
-  Browser browser_next;
-  browser.webView->setUrl(QUrl("http://www.google.fr"));
-  browser_next.webView->setUrl(QUrl("http://www.orange.fr"));
+  //Browser browser_next;
+  //browser.webView->setUrl(QUrl("http://www.google.fr"));
+  //browser_next.webView->setUrl(QUrl("http://www.orange.fr"));
   browser.show();
-  browser_next.show();
+  //browser_next.show();
 
   app.connect( &app, SIGNAL( lastWindowClosed() ), &app, SLOT( quit() ) );
 
