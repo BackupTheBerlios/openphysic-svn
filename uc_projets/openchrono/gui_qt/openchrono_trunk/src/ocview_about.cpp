@@ -28,12 +28,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 OCView_About::OCView_About()
 {
   setupUi(this);
+  setupOCView(this);
 
   setWindowTitle(QApplication::translate("frmMessage", "About", 0, QApplication::UnicodeUTF8));
   lblTitle->setText(QApplication::translate("frmMessage", "OpenChrono", 0, QApplication::UnicodeUTF8));
   lblMessage->setText(QApplication::translate("frmMessage", "<h3>a chronometer for go-karts and others mechanical sports</h3><h4>Copyright © 2008 S. Celles</h4><h5>under GNU General Public License</h5>", 0, QApplication::UnicodeUTF8));
-
-  init(this);
 
   //QString str = QString("<h1>OpenChrono</h1><h2>a chronometer for go-karts and others mechanical sports</h2><h3>Copyright (C) 2008 S. Celles</h3><h4>under GNU General Public License</h4>");
 

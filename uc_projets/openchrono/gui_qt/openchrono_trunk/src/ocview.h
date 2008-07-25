@@ -35,8 +35,10 @@ class OCView : public QDialog
     virtual ~OCView();
 
     //void init(void);
-    void init(QDialog * win);
+    //void init(QDialog * win);
     //void init_view(QDialog * win);
+    void setupOCView(QDialog * win);
+
 
     void keyPressEvent(QKeyEvent *event);
 

@@ -19,11 +19,24 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "ocview_reset_time.h"
 
-OCView_Reset_Time::OCView_Reset_Time()
+OCView_Reset_Time::OCView_Reset_Time(Data * data)
 {
   setupUi(this);
+  setupOCView(this);
+
+  m_data=data;
 
   std::cout << "init view reset time" << std::endl;
+
+/*
+  QString str = tr("Press <b>Ok</b> to <i>enter</i> here.");
+    str += ( QLatin1String("<br/>") + tr("Press <b>Cancel</b> to <i>quit</i>.") );
+    str += ( QLatin1String("<br/>") + tr("Press <b>Right</b> to go to <i>next page</i>.") );
+    str += ( QLatin1String("<br/>") + tr("Press <b>Left</b> to go to <i>previous page</i>.") );
+*/
+  setWindowTitle(QApplication::translate("frmResetTime", "Reset time", 0, QApplication::UnicodeUTF8));
+  lblTitle->setText(QApplication::translate("frmResetTime", "Reset time", 0, QApplication::UnicodeUTF8));
+  lblQuestion->setText(QApplication::translate("frmResetTime", "Do you really want to reset time ?", 0, QApplication::UnicodeUTF8));
 
 /*
   setWindowTitle(QApplication::translate("frmMessage", "Engine", 0, QApplication::UnicodeUTF8));
@@ -38,7 +51,6 @@ QString str = tr("Press <b>Ok</b> to <i>enter</i> here.");
   str += ( QLatin1String("<br/>") + tr("Press <b>Left</b> to go to <i>previous page</i>.") );
 */
 
-  init(this);
 }
 
 

@@ -33,6 +33,7 @@ OCView_MainWin::OCView_MainWin(Data * data)
   m_data = data;
 
   setupUi(this);
+  setupOCView(this);
 
   setWindowTitle(QLatin1String("MainWin"));
 
@@ -57,7 +58,6 @@ OCView_MainWin::OCView_MainWin(Data * data)
   //lblMessage->setText(QLatin1String("OpenChrono - Copyright (c) 2008 S. Celles - under GNU General Public License --- "));
   lblMessage->setText(QLatin1String("OpenChrono   ***   "));
 
-  init(this);
 }
 
 OCView_MainWin::~OCView_MainWin()

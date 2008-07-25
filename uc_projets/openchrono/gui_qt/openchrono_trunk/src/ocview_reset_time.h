@@ -23,6 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "ocview.h"
 
 #include "ui_question.h"
+#include "data.h"
 
 //class OCDocument;
 
@@ -31,12 +32,13 @@ class OCView_Reset_Time : public OCView, public Ui::frmQuestion
 //  Q_OBJECT
 
   public:
-    OCView_Reset_Time();
+    OCView_Reset_Time(Data * data);
     //OCView_Engine(OCDocument * ocdoc);
 
     virtual ~OCView_Reset_Time(){};
 
   private:
+    Data * m_data;
 
   };
 #endif

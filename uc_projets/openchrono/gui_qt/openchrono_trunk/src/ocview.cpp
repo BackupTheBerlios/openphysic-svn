@@ -47,7 +47,23 @@ OCView::OCView(void)
   //m_data = NULL;
 
   this->set_no_child();
+
 }
+
+//void OCView::init(void)
+
+void OCView::setupOCView(QDialog * win)
+{
+// This method must be loaded after setupUi(this)
+
+//  setGeometry(WIN_POS_X,WIN_POS_Y,WIN_WIDTH,WIN_HEIGHT);
+  std::cout << "post init view" << std::endl;
+
+  win->setGeometry(100,100,320,240);
+  //win->setWindowFlags(Qt::SplashScreen);
+  //win->setWindowFlags(Qt::Popup);
+}
+
 
 
 /*
@@ -231,17 +247,6 @@ void OCView::init_view(QDialog * win)
 
 }
 */
-
-//void OCView::init(void)
-void OCView::init(QDialog * win)
-{
-//  setGeometry(WIN_POS_X,WIN_POS_Y,WIN_WIDTH,WIN_HEIGHT);
-  std::cout << "post init view" << std::endl;
-
-  win->setGeometry(100,100,320,240);
-  win->setWindowFlags(Qt::SplashScreen);
-  //win->setWindowFlags(Qt::Popup);
-}
 
 void OCView::keyPressEvent(QKeyEvent * event)
 {

@@ -112,7 +112,7 @@ int main(int argc, char ** argv)
 
   /* Fenêtres de l'application */
   OCView_MainWin winMain(&myCurrentData);
-  OCView_Reset_Time winResetTime; //(&myCurrentData);
+  OCView_Reset_Time winResetTime(&myCurrentData);
   OCView_Engine winEngine; //(&myCurrentData);
   OCView_About winAbout;
   //OCView_Plot winPlot(&LogData);

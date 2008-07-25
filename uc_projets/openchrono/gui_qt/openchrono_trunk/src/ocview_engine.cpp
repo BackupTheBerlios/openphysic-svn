@@ -22,6 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 OCView_Engine::OCView_Engine()
 {
   setupUi(this);
+  setupOCView(this);
 
   std::cout << "init view engine" << std::endl;
 
@@ -35,8 +36,6 @@ QString str = tr("Press <b>Ok</b> to <i>enter</i> here.");
   str += ( QLatin1String("<br/>") + tr("Press <b>Right</b> to go to <i>next page</i>.") );
   str += ( QLatin1String("<br/>") + tr("Press <b>Left</b> to go to <i>previous page</i>.") );
 */
-
-  init(this);
 }
 
 OCView_Engine::~OCView_Engine()
