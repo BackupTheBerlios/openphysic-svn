@@ -55,8 +55,7 @@ HEADERS += src/chrono.h \
   src/qrpmmeter.h \
 
 
-FORMS += ui/about.ui \
-  ui/dialog.ui \
+FORMS += \
   ui/mainwin.ui \
   ui/message.ui \
   ui/questions.ui \
