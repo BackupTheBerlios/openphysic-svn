@@ -31,6 +31,20 @@ OCView_Reset_Time::OCView_Reset_Time(Data * data)
   setWindowTitle(QApplication::translate("frmResetTime", "Reset time", 0, QApplication::UnicodeUTF8));
   lblTitle->setText(QApplication::translate("frmResetTime", "Reset time", 0, QApplication::UnicodeUTF8));
   lblQuestion->setText(QApplication::translate("frmResetTime", "Do you really want to reset time ?", 0, QApplication::UnicodeUTF8));
+
+  QString text;
+  QVariant userData;
+
+  //answers->addItem (tr("No"), userData ); // QListView
+
+  //cboAnswers->addItem (tr("No"), userData ); // QComboBox
+  //cboAnswers->addItem (tr("Yes"), userData );
+
+  /* ToDo : add icon for 
+    - yes : a green tick
+    - no : a red cross
+      http://www.kde-look.org
+  */
 }
 
 
