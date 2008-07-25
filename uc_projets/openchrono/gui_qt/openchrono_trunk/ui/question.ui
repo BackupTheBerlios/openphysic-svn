@@ -121,7 +121,11 @@
        </widget>
       </item>
       <item>
-       <widget class="QComboBox" name="cboAnswers" />
+       <widget class="QComboBox" name="cboAnswers" >
+        <property name="focusPolicy" >
+         <enum>Qt::NoFocus</enum>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>
