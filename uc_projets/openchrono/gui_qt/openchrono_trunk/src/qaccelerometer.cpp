@@ -35,40 +35,64 @@ QAccelerometer::QAccelerometer(QWidget *parent) : QWidget(parent)
   setGX(0.5);
   setGY(1.5);
   */
+/*
   setGX(0.5);
   setGY(-1.5);
+*/
+  setG(0.0, 0.0);
 
   m_editable = false;
 }
 
+void QAccelerometer::setGX(const double g)
+{
+  m_GX = g;
+  this->update();
+}
+
+void QAccelerometer::setGY(const double g)
+{
+  m_GY = g;
+  this->update();
+}
+
+void QAccelerometer::setG(const double gx, const double gy)
+{
+  m_GX = gx;
+  m_GY = gy;
+  this->update();
+}
 
 double QAccelerometer::gx_to_x(double g)
 {
-  int w = this->geometry().width()-1;
+  double w = (double) (this->geometry().width()-1);
   return w/(2.0*Gmax())*(g-Gmax())+w;
 }
 
 double QAccelerometer::gy_to_y(double g)
 {
-  int h = this->geometry().height()-1;
+  double h = (double) (this->geometry().height()-1);
   return -h/(2.0*Gmax())*(g-Gmax());
 }
 
 double QAccelerometer::x_to_gx(double x)
 {
-  int w = this->geometry().width()-1;
-  return 0.0;
+/*
+x = w/(2.0*Gmax)*(g-Gmax)+w
+(x-w)*(2.0*Gmax)/w+Gmax
+*/
+  double w = (double) (this->geometry().width()-1);
+  return (x-w)*(2.0*Gmax())/w+Gmax();
 }
 
 double QAccelerometer::y_to_gy(double y)
 {
-  int h = this->geometry().height()-1;
+  double h = (double) (this->geometry().height()-1);
 /* 
 y = -h/(2.0*Gmax)*(g-Gmax)
 y * 2.0*Gmax/h + Gmax
 */
-  //return 0.0;
-  return Gmax() - y * 2.0*Gmax()/h;
+  return Gmax() - ((double) y) * 2.0*Gmax()/((double) h);
 }
 
 void QAccelerometer::drawCercle(QPainter & painter, double g)
@@ -83,7 +107,7 @@ void QAccelerometer::drawCercle(QPainter & painter, double g)
 
 void QAccelerometer::paintEvent(QPaintEvent * event)
 {
-  std::cout << "paint accelero" << std::endl;
+  //std::cout << "paint accelero" << std::endl;
 
   QPainter painter(this);
 
@@ -127,10 +151,19 @@ void QAccelerometer::unsetEditable() {
 void QAccelerometer::mousePressEvent (QMouseEvent * event)
 {
   if (m_editable) {
+/*
     std::cout << "mousePressEvent on QAccelerometer "
       << "X=" << event->x() << " ; " << "Y=" << event->y()
       << " - "
       << "Gx=" << x_to_gx(event->x()) << " ; " << "Gy=" << y_to_gy(event->y()) << std::endl;
+*/
+
+    setGX(x_to_gx(event->x()));
+    setGY(y_to_gy(event->y()));
+
+    emit clicked();
+
+    this->update();
   }
 }
 

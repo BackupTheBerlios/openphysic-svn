@@ -54,6 +54,7 @@ class OCView_MainWin : public OCView, public Ui::MainWin
     void showBestLapTime(void);
     void showLap(void);
     void showEtap(void);
+    void showG(void);
 
     Data * m_data;
 

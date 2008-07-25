@@ -30,7 +30,9 @@ TRANSLATIONS = translations/openchrono_fr_FR.ts
 RESOURCES = openchrono.qrc
 
 # Input
-HEADERS += src/chrono.h \
+HEADERS += \
+  src/acceleration.h \
+  src/chrono.h \
   src/color.h \
   src/data.h \
   src/engine.h \
@@ -62,7 +64,9 @@ FORMS += \
   ui/question.ui \
   ui/testwin.ui \
 
-SOURCES += src/chrono.cpp \
+SOURCES += \
+  src/acceleration.cpp \
+  src/chrono.cpp \
   src/data.cpp \
   src/engine.cpp \
   src/engine_state.cpp \

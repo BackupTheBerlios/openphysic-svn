@@ -172,6 +172,11 @@ void OCView_MainWin::UpdateData(void)
   showBestLapTime();
   showLap();
   showEtap();
+  showG();
 }
 
-
+void OCView_MainWin::showG(void)
+{
+  accelerometer->setGX(m_data->vehicule.acceleration.GX());
+  accelerometer->setGY(m_data->vehicule.acceleration.GY());
+}

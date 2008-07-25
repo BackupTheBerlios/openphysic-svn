@@ -1,6 +1,6 @@
 /*
 OpenChrono
-Copyright (C) 2007  Sebastien CELLES
+Copyright (C) 2008  Sebastien CELLES
  
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -17,37 +17,44 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-#ifndef VEHICULE_H
-#define VEHICULE_H
-
-//
-#include <QString>
-#include <QObject>
-#include <QtXml>
-//
-
-#include "engine.h"
 #include "acceleration.h"
+//
 
-class Vehicule : public QObject
-  {
-    Q_OBJECT
 
-  public:
-    Vehicule( );
+Acceleration::Acceleration(  )
+{
+  setGX(0.0);
+  setGY(0.0);
+  setGZ(0.0);
+}
 
-    QString name(void) const;
-    void setName(const QString name);
+double Acceleration::GX(void) const
+{
+  return m_GX;
+}
 
-    Engine engine;
-    Acceleration acceleration;
+void Acceleration::setGX(const double g)
+{
+  m_GX = g;
+}
 
-    QDomElement to_node( QDomDocument &dom_doc );
+double Acceleration::GY(void) const
+{
+  return m_GY;
+}
 
-  private:
-    QString m_name;
+void Acceleration::setGY(const double g)
+{
+  m_GY = g;
+}
 
-  };
+double Acceleration::GZ(void) const
+{
+  return m_GZ;
+}
 
-#endif
+void Acceleration::setGZ(const double g)
+{
+  m_GZ = g;
+}
 

@@ -33,11 +33,13 @@ class QAccelerometer : public QWidget
     public:
       QAccelerometer(QWidget *parent = 0);
 
-      void setGX(const double g) { m_GX = g; };
+      void setGX(const double g); // { m_GX = g; };
       double GX() const {return m_GX; };
 
-      void setGY(const double g) { m_GY = g; };
+      void setGY(const double g); // { m_GY = g; };
       double GY() const {return m_GY; };
+
+      void setG(const double gx, const double gy);
 
       void setGmax(const double g) { m_Gmax = g; };
       double Gmax() const {return m_Gmax; };
@@ -68,6 +70,9 @@ class QAccelerometer : public QWidget
     protected:
       void paintEvent(QPaintEvent * event);
       void mousePressEvent (QMouseEvent * event);
+
+    signals:
+      void clicked( );
 
     private:
       double m_GX;

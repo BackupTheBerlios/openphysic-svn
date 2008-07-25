@@ -57,6 +57,7 @@ TestWinImpl::TestWinImpl( QWidget * parent, Qt::WFlags f, Data * data) : QDialog
     connect(butRight, SIGNAL( clicked() ), m_win, SLOT( on_right() ) );
   */
 
+  connect(accelerometer, SIGNAL( clicked() ), this, SLOT( updateGlabels() ) );
   accelerometer->setEditable();
   //accelerometer->unsetEditable();
 
@@ -143,3 +144,14 @@ void TestWinImpl::keyPressEvent(QKeyEvent * event)
   std::cout << "KeyPressed" << std::endl;
 }
 
+void TestWinImpl::updateGlabels()
+{
+  QString str;
+  str.sprintf("%f", accelerometer->GX());
+  lblgx->setText(str);
+  str.sprintf("%f", accelerometer->GY());
+  lblgy->setText(str);
+
+  m_data->vehicule.acceleration.setGX(accelerometer->GX());
+  m_data->vehicule.acceleration.setGY(accelerometer->GY());
+}

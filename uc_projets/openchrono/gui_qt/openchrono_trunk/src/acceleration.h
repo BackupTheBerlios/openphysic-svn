@@ -1,6 +1,6 @@
 /*
 OpenChrono
-Copyright (C) 2007  Sebastien CELLES
+Copyright (C) 2008  Sebastien CELLES
  
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -17,41 +17,38 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-#ifndef TESTWINIMPL_H
-#define TESTWINIMPL_H
-//
-#include "ui_testwin.h"
-//
-#include "data.h"
-//#include "mainwinimpl.h"
-#include "logdata.h"
+#ifndef ACCELERATION_H
+#define ACCELERATION_H
 
-class TestWinImpl : public QDialog, public Ui::TestWin
+//
+#include <QObject>
+#include <QtXml>
+//
+
+class Acceleration : public QObject
   {
     Q_OBJECT
 
   public:
-    //TestWinImpl( QWidget * parent = 0, Qt::WFlags f = 0, Data * data = 0, LogData * logdata = 0  );
-    TestWinImpl( QWidget * parent = 0, Qt::WFlags f = 0, Data * data = 0 );
-    ~TestWinImpl();
+    Acceleration( );
 
-  private slots:
-    void test(void);
-    void update(void);
-    void updateGlabels(void);
+    double GX(void) const;
+    void setGX(const double g);
+
+    double GY(void) const;
+    void setGY(const double g);
+
+    double GZ(void) const;
+    void setGZ(const double g);
+
+    //QDomElement to_node( QDomDocument &dom_doc );
 
   private:
-    Data * m_data;
-    LogData * m_logdata;
-
-
-    void init(void);
-
-    void keyPressEvent(QKeyEvent * event);
-
-
-    //MainWinImpl * m_win;
+    double m_GX;
+    double m_GY;
+    double m_GZ;
 
   };
+
 #endif
 
