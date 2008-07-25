@@ -12,213 +12,82 @@
   <property name="windowTitle" >
    <string>OpenChrono - Main window</string>
   </property>
+  <widget class="QAccelerometer" name="graphicsView" >
+   <property name="geometry" >
+    <rect>
+     <x>30</x>
+     <y>60</y>
+     <width>101</width>
+     <height>101</height>
+    </rect>
+   </property>
+  </widget>
   <widget class="QWidget" name="layoutWidget" >
    <property name="geometry" >
     <rect>
-     <x>2</x>
-     <y>78</y>
-     <width>317</width>
-     <height>161</height>
+     <x>0</x>
+     <y>0</y>
+     <width>321</width>
+     <height>56</height>
     </rect>
    </property>
-   <layout class="QGridLayout" >
-    <property name="margin" >
-     <number>0</number>
-    </property>
-    <property name="spacing" >
-     <number>6</number>
-    </property>
-    <item row="2" column="0" >
-     <widget class="QLabel" name="lbl2LastTime" >
-      <property name="font" >
-       <font>
-        <pointsize>9</pointsize>
-       </font>
-      </property>
+   <layout class="QVBoxLayout" name="verticalLayout_4" >
+    <item>
+     <widget class="Ticker" name="lblMessage" >
       <property name="text" >
-       <string>Last lap time</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="1" >
-     <widget class="QLabel" name="lblBestLapTime" >
-      <property name="text" >
-       <string>00:00:000</string>
+       <string>lblMessage</string>
       </property>
       <property name="alignment" >
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
     </item>
-    <item row="0" column="0" >
-     <widget class="QLabel" name="lbl2CurrTime" >
+    <item>
+     <widget class="QRPMMeter" name="GraphicRPM" >
       <property name="font" >
        <font>
-        <pointsize>9</pointsize>
-       </font>
-      </property>
-      <property name="text" >
-       <string>Current lap time</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0" >
-     <widget class="QLabel" name="lblCurrLapTime" >
-      <property name="font" >
-       <font>
-        <pointsize>14</pointsize>
+        <pointsize>11</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
-      <property name="text" >
-       <string>00:00:000</string>
+      <property name="maximum" >
+       <number>16000</number>
+      </property>
+      <property name="value" >
+       <number>11000</number>
       </property>
       <property name="alignment" >
-       <set>Qt::AlignCenter</set>
+       <set>Qt::AlignHCenter</set>
+      </property>
+      <property name="textVisible" >
+       <bool>true</bool>
+      </property>
+      <property name="orientation" >
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="invertedAppearance" >
+       <bool>false</bool>
+      </property>
+      <property name="format" >
+       <string>%v RPM</string>
       </property>
      </widget>
     </item>
-    <item row="0" column="1" >
-     <widget class="QLabel" name="lbl2BestTime" >
-      <property name="font" >
-       <font>
-        <pointsize>9</pointsize>
-       </font>
-      </property>
-      <property name="text" >
-       <string>Best lap time</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="0" >
-     <widget class="QLabel" name="lblLastLapTime" >
-      <property name="text" >
-       <string>00:00:000</string>
-      </property>
-      <property name="alignment" >
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="1" >
-     <layout class="QHBoxLayout" >
-      <property name="spacing" >
-       <number>6</number>
-      </property>
-      <property name="margin" >
-       <number>0</number>
-      </property>
-      <item>
-       <widget class="QLabel" name="lbl2Lap" >
-        <property name="font" >
-         <font>
-          <pointsize>9</pointsize>
-         </font>
-        </property>
-        <property name="text" >
-         <string>Lap</string>
-        </property>
-        <property name="alignment" >
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="lblLap" >
-        <property name="text" >
-         <string>1</string>
-        </property>
-        <property name="alignment" >
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="spacing" >
-         <number>6</number>
-        </property>
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <item>
-         <widget class="QLabel" name="lbl2Etap" >
-          <property name="font" >
-           <font>
-            <pointsize>9</pointsize>
-           </font>
-          </property>
-          <property name="text" >
-           <string>Etap</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="lblEtap" >
-          <property name="text" >
-           <string>01 / 02</string>
-          </property>
-          <property name="alignment" >
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-     </layout>
-    </item>
-    <item row="3" column="1" >
-     <layout class="QHBoxLayout" >
-      <property name="spacing" >
-       <number>6</number>
-      </property>
-      <property name="margin" >
-       <number>0</number>
-      </property>
-      <item>
-       <widget class="QLabel" name="lbl2Tmp1" >
-        <property name="sizePolicy" >
-         <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="font" >
-         <font>
-          <pointsize>9</pointsize>
-         </font>
-        </property>
-        <property name="text" >
-         <string>T 1</string>
-        </property>
-        <property name="alignment" >
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="lblTemp1" >
-        <property name="sizePolicy" >
-         <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
-          <horstretch>1</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize" >
-         <size>
-          <width>42</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="text" >
-         <string>50°C</string>
-        </property>
-        <property name="alignment" >
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="layoutWidget" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>180</y>
+     <width>155</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout" >
+    <item row="1" column="1" >
+     <layout class="QHBoxLayout" name="horizontalLayout_4" >
       <item>
        <widget class="QLabel" name="lbl2Temp2" >
         <property name="sizePolicy" >
@@ -264,57 +133,215 @@
       </item>
      </layout>
     </item>
+    <item row="1" column="0" >
+     <layout class="QHBoxLayout" name="horizontalLayout_3" >
+      <item>
+       <widget class="QLabel" name="lbl2Tmp1" >
+        <property name="sizePolicy" >
+         <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font" >
+         <font>
+          <pointsize>9</pointsize>
+         </font>
+        </property>
+        <property name="text" >
+         <string>T 1</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="lblTemp1" >
+        <property name="sizePolicy" >
+         <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+          <horstretch>1</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize" >
+         <size>
+          <width>42</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="text" >
+         <string>50°C</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="0" >
+     <layout class="QHBoxLayout" name="horizontalLayout_2" >
+      <item>
+       <widget class="QLabel" name="lbl2Lap" >
+        <property name="font" >
+         <font>
+          <pointsize>9</pointsize>
+         </font>
+        </property>
+        <property name="text" >
+         <string>Lap</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="lblLap" >
+        <property name="text" >
+         <string>1</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="1" >
+     <layout class="QHBoxLayout" name="horizontalLayout" >
+      <item>
+       <widget class="QLabel" name="lbl2Etap" >
+        <property name="font" >
+         <font>
+          <pointsize>9</pointsize>
+         </font>
+        </property>
+        <property name="text" >
+         <string>Etap</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="lblEtap" >
+        <property name="text" >
+         <string>01 / 02</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
    </layout>
+   <zorder></zorder>
   </widget>
   <widget class="QWidget" name="" >
    <property name="geometry" >
     <rect>
-     <x>0</x>
-     <y>2</y>
-     <width>321</width>
-     <height>71</height>
+     <x>170</x>
+     <y>131</y>
+     <width>139</width>
+     <height>44</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout" >
+   <layout class="QVBoxLayout" name="verticalLayout_2" >
     <item>
-     <widget class="Ticker" name="lblMessage" >
+     <widget class="QLabel" name="lbl2BestTime" >
+      <property name="font" >
+       <font>
+        <pointsize>9</pointsize>
+       </font>
+      </property>
       <property name="text" >
-       <string>lblMessage</string>
+       <string>Best lap time</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="lblBestLapTime" >
+      <property name="text" >
+       <string>00:00:000</string>
       </property>
       <property name="alignment" >
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
     </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="" >
+   <property name="geometry" >
+    <rect>
+     <x>170</x>
+     <y>181</y>
+     <width>139</width>
+     <height>44</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_3" >
     <item>
-     <widget class="QRPMMeter" name="GraphicRPM" >
+     <widget class="QLabel" name="lbl2LastTime" >
       <property name="font" >
        <font>
-        <pointsize>11</pointsize>
+        <pointsize>9</pointsize>
+       </font>
+      </property>
+      <property name="text" >
+       <string>Last lap time</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="lblLastLapTime" >
+      <property name="text" >
+       <string>00:00:000</string>
+      </property>
+      <property name="alignment" >
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="" >
+   <property name="geometry" >
+    <rect>
+     <x>170</x>
+     <y>72</y>
+     <width>141</width>
+     <height>54</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout" >
+    <item>
+     <widget class="QLabel" name="lbl2CurrTime" >
+      <property name="font" >
+       <font>
+        <pointsize>9</pointsize>
+       </font>
+      </property>
+      <property name="text" >
+       <string>Current lap time</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="lblCurrLapTime" >
+      <property name="font" >
+       <font>
+        <pointsize>14</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
-      <property name="maximum" >
-       <number>16000</number>
-      </property>
-      <property name="value" >
-       <number>11000</number>
+      <property name="text" >
+       <string>00:00:000</string>
       </property>
       <property name="alignment" >
-       <set>Qt::AlignHCenter</set>
-      </property>
-      <property name="textVisible" >
-       <bool>true</bool>
-      </property>
-      <property name="orientation" >
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="invertedAppearance" >
-       <bool>false</bool>
-      </property>
-      <property name="format" >
-       <string>%v RPM</string>
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
     </item>
@@ -331,6 +358,11 @@
    <class>Ticker</class>
    <extends>QLabel</extends>
    <header>ticker.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QAccelerometer</class>
+   <extends>QGraphicsView</extends>
+   <header>qaccelerometer.h</header>
   </customwidget>
  </customwidgets>
  <resources/>
