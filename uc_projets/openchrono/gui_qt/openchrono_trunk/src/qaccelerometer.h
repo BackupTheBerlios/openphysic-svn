@@ -70,9 +70,11 @@ class QAccelerometer : public QWidget
     protected:
       void paintEvent(QPaintEvent * event);
       void mousePressEvent (QMouseEvent * event);
+      void mouseMoveEvent (QMouseEvent * event);
+      void mouseClickOrMoveEvent (QMouseEvent * event);
 
     signals:
-      void clicked( );
+      void changed( );
 
     private:
       double m_GX;

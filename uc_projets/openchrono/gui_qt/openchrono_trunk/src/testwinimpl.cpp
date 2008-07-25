@@ -57,7 +57,7 @@ TestWinImpl::TestWinImpl( QWidget * parent, Qt::WFlags f, Data * data) : QDialog
     connect(butRight, SIGNAL( clicked() ), m_win, SLOT( on_right() ) );
   */
 
-  connect(accelerometer, SIGNAL( clicked() ), this, SLOT( updateGlabels() ) );
+  connect(accelerometer, SIGNAL( changed() ), this, SLOT( updateGlabels() ) );
   accelerometer->setEditable();
   //accelerometer->unsetEditable();
 

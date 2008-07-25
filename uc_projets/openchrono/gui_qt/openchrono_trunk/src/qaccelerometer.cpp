@@ -150,7 +150,24 @@ void QAccelerometer::unsetEditable() {
 
 void QAccelerometer::mousePressEvent (QMouseEvent * event)
 {
+  mouseClickOrMoveEvent(event);
+}
+
+void QAccelerometer::mouseMoveEvent (QMouseEvent * event)
+{
+//  std::cout << "mouseMoveEvent on QAccelerometer" << std::endl;
+  mouseClickOrMoveEvent(event);
+}
+
+
+void QAccelerometer::mouseClickOrMoveEvent (QMouseEvent * event)
+{
   if (m_editable) {
+    setG(x_to_gx(event->x()), y_to_gy(event->y()));
+    emit changed();
+    this->update();
+  }
+
 /*
     std::cout << "mousePressEvent on QAccelerometer "
       << "X=" << event->x() << " ; " << "Y=" << event->y()
@@ -158,12 +175,9 @@ void QAccelerometer::mousePressEvent (QMouseEvent * event)
       << "Gx=" << x_to_gx(event->x()) << " ; " << "Gy=" << y_to_gy(event->y()) << std::endl;
 */
 
+/*
     setGX(x_to_gx(event->x()));
     setGY(y_to_gy(event->y()));
+*/
 
-    emit clicked();
-
-    this->update();
-  }
 }
-
