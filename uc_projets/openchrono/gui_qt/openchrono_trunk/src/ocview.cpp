@@ -250,27 +250,27 @@ void OCView::keyPressEvent(QKeyEvent * event)
   switch ( event->key() )
     {
     case B_OK: // Ok
-      //std::cout << "OK" << std::endl;
+      std::cout << "OK" << std::endl;
       this->activate_child_first();
       break;
     case B_CANCEL: // Cancel
-      //std::cout << "CANCEL" << std::endl;
+      std::cout << "CANCEL" << std::endl;
       this->activate_parent();
       break;
     case B_UP:
-      //std::cout << "UP" << std::endl;
+      std::cout << "UP" << std::endl;
       //
       break;
     case B_DOWN:
-      //std::cout << "DOWN" << std::endl;
+      std::cout << "DOWN" << std::endl;
       //
       break;
     case B_LEFT:
-      //std::cout << "LEFT" << std::endl;
+      std::cout << "LEFT" << std::endl;
       this->activate_brother_previous();
       break;
     case B_RIGHT:
-      //std::cout << "RIGHT" << std::endl;
+      std::cout << "RIGHT" << std::endl;
       this->activate_brother_next();
       break;
     default:
@@ -281,3 +281,20 @@ void OCView::keyPressEvent(QKeyEvent * event)
 }
 
 
+/*
+void OCView::setTitle(QString str)
+{
+  this->setWindowTitle(str);
+}
+
+void OCView_Message::setMessage(QString str)
+{
+  lblMessage->setText(str);
+}
+
+void OCView_Message::setTitle(QString str)
+{
+  lblTitle->setText(str);
+  this->setWindowTitle(str);
+}
+*/

@@ -1,6 +1,6 @@
 /*
 OpenChrono
-Copyright (C) 2007  Sebastien CELLES
+Copyright (C) 2008  Sebastien CELLES
  
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -17,17 +17,19 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-#include "ocview_engine.h"
+#include "ocview_reset_time.h"
 
-OCView_Engine::OCView_Engine()
+OCView_Reset_Time::OCView_Reset_Time()
 {
   setupUi(this);
 
-  std::cout << "init view engine" << std::endl;
+  std::cout << "init view reset time" << std::endl;
 
+/*
   setWindowTitle(QApplication::translate("frmMessage", "Engine", 0, QApplication::UnicodeUTF8));
   lblTitle->setText(QApplication::translate("frmMessage", "<h1>Engine</h1>", 0, QApplication::UnicodeUTF8));
   lblMessage->setText(QApplication::translate("frmMessage", "<h2>Click <u><i>OK</i></u> to enter in this menu.</h2>", 0, QApplication::UnicodeUTF8));
+*/
 
 /*
 QString str = tr("Press <b>Ok</b> to <i>enter</i> here.");
@@ -39,6 +41,4 @@ QString str = tr("Press <b>Ok</b> to <i>enter</i> here.");
   init(this);
 }
 
-OCView_Engine::~OCView_Engine()
-{}
 

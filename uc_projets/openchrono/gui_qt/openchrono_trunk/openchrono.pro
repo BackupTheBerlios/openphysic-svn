@@ -43,6 +43,7 @@ HEADERS += src/chrono.h \
   src/ocview_about.h \
   src/ocview_engine.h \
   src/ocview_plot.h \
+  src/ocview_reset_time.h \
   src/pilot.h \
   src/position.h \
   src/rpm.h \
@@ -58,7 +59,7 @@ HEADERS += src/chrono.h \
 FORMS += \
   ui/mainwin.ui \
   ui/message.ui \
-  ui/questions.ui \
+  ui/question.ui \
   ui/testwin.ui \
 
 SOURCES += src/chrono.cpp \
@@ -73,6 +74,7 @@ SOURCES += src/chrono.cpp \
   src/ocview_about.cpp \
   src/ocview_engine.cpp \
   src/ocview_plot.cpp \
+  src/ocview_reset_time.cpp \
   src/pilot.cpp \
   src/position.cpp \
   src/rpm.cpp \
