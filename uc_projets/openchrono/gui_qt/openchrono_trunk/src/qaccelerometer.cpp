@@ -35,9 +35,10 @@ QAccelerometer::QAccelerometer(QWidget *parent) : QWidget(parent)
   setGX(0.5);
   setGY(1.5);
   */
-  setGX(0.);
+  setGX(0.5);
   setGY(-1.5);
 
+  m_editable = false;
 }
 
 
@@ -53,19 +54,22 @@ double QAccelerometer::gy_to_y(double g)
   return -h/(2.0*Gmax())*(g-Gmax());
 }
 
-/*
 double QAccelerometer::x_to_gx(double x)
 {
+  int w = this->geometry().width()-1;
   return 0.0;
 }
-*/
 
-/*
 double QAccelerometer::y_to_gy(double y)
 {
-  return 0.0;
-}
+  int h = this->geometry().height()-1;
+/* 
+y = -h/(2.0*Gmax)*(g-Gmax)
+y * 2.0*Gmax/h + Gmax
 */
+  //return 0.0;
+  return Gmax() - y * 2.0*Gmax()/h;
+}
 
 void QAccelerometer::drawCercle(QPainter & painter, double g)
 {
@@ -110,5 +114,23 @@ void QAccelerometer::paintEvent(QPaintEvent * event)
   x2 = (int) gx_to_x(GX())+2;
   y2 = (int) gy_to_y(GY())+2;
   painter.drawEllipse(x1,y1,x2-x1,y2-y1);
+}
+
+void QAccelerometer::setEditable() {
+  m_editable = true;
+}
+
+void QAccelerometer::unsetEditable() {
+  m_editable = false;
+}
+
+void QAccelerometer::mousePressEvent (QMouseEvent * event)
+{
+  if (m_editable) {
+    std::cout << "mousePressEvent on QAccelerometer "
+      << "X=" << event->x() << " ; " << "Y=" << event->y()
+      << " - "
+      << "Gx=" << x_to_gx(event->x()) << " ; " << "Gy=" << y_to_gy(event->y()) << std::endl;
+  }
 }
 

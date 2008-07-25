@@ -28,8 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 class QAccelerometer : public QWidget
   {
     Q_OBJECT
-    //QPROPERTY(double GX READ GX WRITE setGX)
-
+    Q_PROPERTY(double GX READ GX WRITE setGX)
 
     public:
       QAccelerometer(QWidget *parent = 0);
@@ -43,9 +42,11 @@ class QAccelerometer : public QWidget
       void setGmax(const double g) { m_Gmax = g; };
       double Gmax() const {return m_Gmax; };
 
-     double gx_to_x(double g);
-     double gy_to_y(double g);
+      double gx_to_x(double g);
+      double gy_to_y(double g);
 
+      double x_to_gx(double x);
+      double y_to_gy(double y);
 /*
       void setGXmin(const double g) { m_GXmin = g; };
       double GXmin() const {return m_GXmin; };
@@ -60,8 +61,13 @@ class QAccelerometer : public QWidget
       double GYmax() const {return m_GYmax; };
 */
 
+      void setEditable();
+      void unsetEditable();
+
+
     protected:
       void paintEvent(QPaintEvent * event);
+      void mousePressEvent (QMouseEvent * event);
 
     private:
       double m_GX;
@@ -77,6 +83,8 @@ class QAccelerometer : public QWidget
       //QImage image;
 
       void drawCercle(QPainter & painter, double g);
+
+      bool m_editable;
   };
 
 #endif

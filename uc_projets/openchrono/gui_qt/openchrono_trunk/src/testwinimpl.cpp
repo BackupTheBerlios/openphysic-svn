@@ -32,7 +32,8 @@ TestWinImpl::TestWinImpl( QWidget * parent, Qt::WFlags f, Data * data) : QDialog
  
   //m_win = win;
 
-  setGeometry(450,100,580,240);
+  //setGeometry(450,100,580,240);
+  setGeometry(450,100,730,240);
 
   // connection bouton StartStop page de test
   connect(        StartStop	, SIGNAL( clicked() ),
@@ -55,6 +56,10 @@ TestWinImpl::TestWinImpl( QWidget * parent, Qt::WFlags f, Data * data) : QDialog
     connect(butLeft, SIGNAL( clicked() ), m_win, SLOT( on_left() ) );
     connect(butRight, SIGNAL( clicked() ), m_win, SLOT( on_right() ) );
   */
+
+  accelerometer->setEditable();
+  //accelerometer->unsetEditable();
+
 
   init(); // initial values of the test window
 
