@@ -90,8 +90,8 @@ int main(int argc, char ** argv)
 
   //std::cout << "OpenChrono1" << std::endl;
 
-  Engine_State es;
-  es.show();
+  //Engine_State es;
+  //es.show();
 
   //std::cout << "OpenChrono2" << std::endl;
 
