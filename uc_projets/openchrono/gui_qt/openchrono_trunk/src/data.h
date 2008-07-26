@@ -75,8 +75,8 @@ class Data : public QObject
     void on_last_lap(void);
     void on_race_over(void);
 
-    void save(void);
     void load(void);
+    void save(void);
 
 
   signals:

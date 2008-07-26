@@ -180,3 +180,18 @@ void OCView_MainWin::showG(void)
   accelerometer->setGX(m_data->vehicule.acceleration.GX());
   accelerometer->setGY(m_data->vehicule.acceleration.GY());
 }
+
+
+void OCView_MainWin::keyPressEvent(QKeyEvent * event)
+{
+  switch ( event->key() ) {
+    case B_OK: // Ok
+      std::cout << "OK on OCView_MainWin will save data" << std::endl;
+      m_data->save();
+      break;
+    default: // n'importe quelle autre touche
+      OCView::keyPressEvent(event);
+      break;
+  }
+}
+

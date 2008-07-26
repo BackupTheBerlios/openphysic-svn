@@ -40,9 +40,6 @@ class OCView : public QDialog
     void setupOCView(QDialog * win);
 
 
-    void keyPressEvent(QKeyEvent *event);
-
-
     void set_parent(OCView * ocview);
     void set_brother_next(OCView * ocview);
     void set_brother_previous(OCView * ocview);
@@ -61,6 +58,7 @@ class OCView : public QDialog
     void is_last_child();
 
   protected:
+    void keyPressEvent(QKeyEvent *event);
     //OCDocument * document;
 
     //Data * m_data;

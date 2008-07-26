@@ -41,6 +41,8 @@ class OCView_MainWin : public OCView, public Ui::MainWin
 
     void test(void);
 
+    void keyPressEvent(QKeyEvent *event);
+
 
   private slots:
     void UpdateData();
