@@ -19,6 +19,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "ocview_reset_time.h"
 
+#include "keyboard.h"
+
 OCView_Reset_Time::OCView_Reset_Time(Data * data)
 {
   setupUi(this);
@@ -32,10 +34,15 @@ OCView_Reset_Time::OCView_Reset_Time(Data * data)
   lblTitle->setText(QApplication::translate("frmResetTime", "Reset time", 0, QApplication::UnicodeUTF8));
   lblQuestion->setText(QApplication::translate("frmResetTime", "Do you really want to reset time ?", 0, QApplication::UnicodeUTF8));
 
-  QString text;
-  QVariant userData;
+  no = new QListWidgetItem(tr("No"));
+  yes = new QListWidgetItem(tr("Yes"));
 
-  //answers->addItem (tr("No"), userData ); // QListView
+  answers->addItem(no);
+  answers->addItem(yes);
+
+  //answers->addItem (tr("No")); // QListWidget
+  //answers->addItem (tr("Yes")); // QListWidget
+  //answers->
 
   //cboAnswers->addItem (tr("No"), userData ); // QComboBox
   //cboAnswers->addItem (tr("Yes"), userData );
@@ -47,4 +54,43 @@ OCView_Reset_Time::OCView_Reset_Time(Data * data)
   */
 }
 
-
+void OCView_Reset_Time::keyPressEvent(QKeyEvent * event)
+{
+  switch ( event->key() )
+    {
+    case B_OK: // Ok
+      std::cout << "OK on OCView_Reset_Time" << std::endl;
+      //std::cout << answers->currentItem() << std::endl;
+      if (answers->currentItem()==no) {
+        std::cout << "no" << std::endl;
+      }
+      else if (answers->currentItem()==yes) {
+        std::cout << "yes" << std::endl;
+      }
+      break;
+    case B_CANCEL: // Cancel
+      std::cout << "CANCEL on OCView_Reset_Time" << std::endl;
+      this->activate_parent();
+      break;
+    case B_UP:
+      std::cout << "UP on OCView_Reset_Time" << std::endl;
+      //
+      break;
+    case B_DOWN:
+      std::cout << "DOWN on OCView_Reset_Time" << std::endl;
+      //
+      break;
+    case B_LEFT:
+      std::cout << "LEFT on OCView_Reset_Time" << std::endl;
+      this->activate_brother_previous();
+      break;
+    case B_RIGHT:
+      std::cout << "RIGHT on OCView_Reset_Time" << std::endl;
+      this->activate_brother_next();
+      break;
+    default:
+      //std::cout << "UNDEF KEY on OCView_Reset_Time" << std::endl;
+      //
+      break; // n'importe quelle autre touche
+    }
+}

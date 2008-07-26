@@ -35,7 +35,7 @@ OCView_MainWin::OCView_MainWin(Data * data)
   setupUi(this);
   setupOCView(this);
 
-  setWindowTitle(QLatin1String("MainWin"));
+  setWindowTitle(QLatin1String("OpenChrono main window"));
 
   //test();
 

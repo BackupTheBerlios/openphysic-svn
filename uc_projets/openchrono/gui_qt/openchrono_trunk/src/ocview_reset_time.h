@@ -37,8 +37,14 @@ class OCView_Reset_Time : public OCView, public Ui::frmQuestion
 
     virtual ~OCView_Reset_Time(){};
 
+    void keyPressEvent(QKeyEvent *event);
+
   private:
     Data * m_data;
+
+    QListWidgetItem * no;
+    QListWidgetItem * yes;
+
 
   };
 #endif

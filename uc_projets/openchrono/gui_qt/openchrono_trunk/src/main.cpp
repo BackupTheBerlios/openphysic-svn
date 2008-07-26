@@ -87,12 +87,12 @@ int main(int argc, char ** argv)
   appTranslator.load(QLatin1String(":translations/")+strTrans); // avec ressource openchrono.qrc
   app.installTranslator(&appTranslator);
 
-  std::cout << "OpenChrono1" << std::endl;
+  //std::cout << "OpenChrono1" << std::endl;
 
   Engine_State es;
   es.show();
 
-  std::cout << "OpenChrono2" << std::endl;
+  //std::cout << "OpenChrono2" << std::endl;
 
 
   //QWidget win;
@@ -108,12 +108,26 @@ int main(int argc, char ** argv)
   /* Log Time */
   LogTime logtime(&myCurrentData);
 
-  std::cout << "OpenChrono3" << std::endl;
+  //std::cout << "OpenChrono3" << std::endl;
 
   /* Fenêtres de l'application */
   OCView_MainWin winMain(&myCurrentData);
   OCView_Reset_Time winResetTime(&myCurrentData);
   OCView_Engine winEngine; //(&myCurrentData);
+/*
+  OCView_Engine_Select winEngineSelect(&myCurrentData);
+  OCView_Engine_Stroke winEngineStroke(&myCurrentData);
+  OCView_Engine_Reset_Time winEngineResetTime(&myCurrentData);
+  OCView_Track winTrack;
+  OCView_Track_Select winTrackSelect(&myCurrentData);
+  OCView_Track_Name winTrackEtap(&myCurrentData);
+  OCView_Track_Etap winTrackEtap(&myCurrentData);
+  OCView_Track_Laps winTrackEtap(&myCurrentData);
+  OCView_Recall winRecall;
+  OCView_Recall_Laps winRecallLaps(&myCurrentData);
+  OCView_Recall_Laps_Etaps winRecallLapsEtaps(&myCurrentData);
+*/
+
   OCView_About winAbout;
   //OCView_Plot winPlot(&LogData);
 

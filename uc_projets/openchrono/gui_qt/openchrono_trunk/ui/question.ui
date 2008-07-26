@@ -12,13 +12,13 @@
   <property name="windowTitle" >
    <string>Question</string>
   </property>
-  <widget class="QWidget" name="" >
+  <widget class="QWidget" name="layoutWidget" >
    <property name="geometry" >
     <rect>
      <x>0</x>
      <y>2</y>
      <width>321</width>
-     <height>241</height>
+     <height>397</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout" >
@@ -117,23 +117,7 @@
      </layout>
     </item>
     <item>
-     <spacer name="verticalSpacer" >
-      <property name="orientation" >
-       <enum>Qt::Vertical</enum>
-      </property>
-      <property name="sizeType" >
-       <enum>QSizePolicy::Minimum</enum>
-      </property>
-      <property name="sizeHint" stdset="0" >
-       <size>
-        <width>20</width>
-        <height>13</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item>
-     <widget class="QListView" name="answers" />
+     <widget class="QListWidget" name="answers" />
     </item>
     <item>
      <spacer>
