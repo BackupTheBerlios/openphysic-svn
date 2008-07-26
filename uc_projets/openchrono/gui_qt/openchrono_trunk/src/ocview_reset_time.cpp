@@ -58,6 +58,36 @@ OCView_Reset_Time::OCView_Reset_Time(Data * data)
 
 void OCView_Reset_Time::keyPressEvent(QKeyEvent * event)
 {
+  switch ( event->key() ) {
+    case B_OK: // Ok
+      std::cout << "OK on OCView_Reset_Time" << std::endl;
+      //std::cout << answers->currentItem() << std::endl;
+      if (answers->currentItem()==no) {
+        std::cout << "no" << std::endl;
+	this->activate_parent();
+        break;
+      }
+      else if (answers->currentItem()==yes) {
+        std::cout << "yes" << std::endl;
+	this->activate_parent();
+        m_data->reset();
+        break;
+      }
+      break;
+    case B_UP:
+      std::cout << "UP on OCView_Reset_Time" << std::endl;
+      answers->setCurrentItem(yes);
+      break;
+    case B_DOWN:
+      std::cout << "DOWN on OCView_Reset_Time" << std::endl;
+      answers->setCurrentItem(no);
+      break;
+    default: // n'importe quelle autre touche
+      OCView::keyPressEvent(event);
+      break;
+  }
+
+/*
   switch ( event->key() )
     {
     case B_OK: // Ok
@@ -101,6 +131,7 @@ void OCView_Reset_Time::keyPressEvent(QKeyEvent * event)
       //
       break; // n'importe quelle autre touche
     }
+*/
 }
 
 void OCView_Reset_Time::init(void)

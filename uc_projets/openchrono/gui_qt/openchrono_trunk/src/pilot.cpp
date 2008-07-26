@@ -22,7 +22,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 Pilot::Pilot(  )
 {
-  setName(tr("Pilot"));
+//  setName(tr("Pilot"));
+  setName(tr("PILOT"));
 }
 
 QString Pilot::name(void) const
