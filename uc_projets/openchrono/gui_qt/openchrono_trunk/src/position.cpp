@@ -23,8 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 Position::Position(  )
 {
-  clearLap();
-  clearEtap();
+  reset();
 //    setLap(0);
 //    setEtap(1);
 }
@@ -83,4 +82,9 @@ QDomElement Position::to_node( QDomDocument &dom_doc )
   return dom_elt;
 }
 
+void Position::reset(void)
+{
+  clearLap();
+  clearEtap();
+}
 

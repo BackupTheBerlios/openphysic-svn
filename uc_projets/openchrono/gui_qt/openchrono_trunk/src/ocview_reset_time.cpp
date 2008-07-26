@@ -52,6 +52,8 @@ OCView_Reset_Time::OCView_Reset_Time(Data * data)
     - no : a red cross
       http://www.kde-look.org
   */
+
+  init();
 }
 
 void OCView_Reset_Time::keyPressEvent(QKeyEvent * event)
@@ -63,10 +65,14 @@ void OCView_Reset_Time::keyPressEvent(QKeyEvent * event)
       //std::cout << answers->currentItem() << std::endl;
       if (answers->currentItem()==no) {
         std::cout << "no" << std::endl;
+	this->activate_parent();
+        break;
       }
       else if (answers->currentItem()==yes) {
         std::cout << "yes" << std::endl;
-      }
+	this->activate_parent();
+        m_data->reset();
+        break;      }
       break;
     case B_CANCEL: // Cancel
       std::cout << "CANCEL on OCView_Reset_Time" << std::endl;
@@ -74,10 +80,12 @@ void OCView_Reset_Time::keyPressEvent(QKeyEvent * event)
       break;
     case B_UP:
       std::cout << "UP on OCView_Reset_Time" << std::endl;
+      answers->setCurrentItem(yes);
       //
       break;
     case B_DOWN:
       std::cout << "DOWN on OCView_Reset_Time" << std::endl;
+      answers->setCurrentItem(no);
       //
       break;
     case B_LEFT:
@@ -94,3 +102,17 @@ void OCView_Reset_Time::keyPressEvent(QKeyEvent * event)
       break; // n'importe quelle autre touche
     }
 }
+
+void OCView_Reset_Time::init(void)
+{
+  //std::cout << "OCView_Reset_Time::init" << std::endl;
+  answers->setCurrentItem(no);
+}
+
+void OCView_Reset_Time::showEvent ( QShowEvent * event )
+{
+  //std::cout << "OCView_Reset_Time::showEvent" << std::endl;
+  init();
+}
+
+

@@ -42,6 +42,8 @@ class Position : public QObject
     void clearEtap(void);
     void newEtap(void);
 
+    void reset(void);
+
     QDomElement to_node( QDomDocument &dom_doc );
 
   private:

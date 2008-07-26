@@ -39,6 +39,10 @@ class OCView_Reset_Time : public OCView, public Ui::frmQuestion
 
     void keyPressEvent(QKeyEvent *event);
 
+    void init(void);
+
+    void showEvent ( QShowEvent * event ); /* after activating */
+
   private:
     Data * m_data;
 

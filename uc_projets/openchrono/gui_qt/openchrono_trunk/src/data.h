@@ -67,6 +67,8 @@ class Data : public QObject
   public slots:
     void start(void);
 
+    void reset(void);
+
     void on_starting_first_lap(void);
     void on_new_etap(void);
     void on_new_lap(void);

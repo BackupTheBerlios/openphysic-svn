@@ -46,6 +46,7 @@ class Chrono : public QObject
     void clear(void);
     bool is_running(void);
 
+    void reset(void);
 
     //void get_current_time(struct timeval * time);
     //void get_string_time(void);

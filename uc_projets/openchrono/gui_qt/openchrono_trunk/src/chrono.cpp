@@ -30,20 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 Chrono::Chrono( )
 {
-  running = false;
-
-  //clear();
-  // current lap time
-  gettimeofday(&tv_initial, NULL);
-  //gettimeofday(&tv_current, NULL); // FiXeD = use memcpy
-  memcpy(&tv_current, &tv_initial, sizeof(struct timeval));
-
-  // best lap time
-  best_lap_time = max_lap_time();
-
-  // last lap time
-  last_lap_time = max_lap_time();
-
+  reset();
 }
 
 struct timeval Chrono::max_lap_time(void)
@@ -260,6 +247,20 @@ QDomElement Chrono::to_node( QDomDocument &dom_doc )
   return dom_elt;
 }
 
+void Chrono::reset(void)
+{
+  running = false;
 
+  //clear();
+  // current lap time
+  gettimeofday(&tv_initial, NULL);
+  //gettimeofday(&tv_current, NULL); // FiXeD = use memcpy
+  memcpy(&tv_current, &tv_initial, sizeof(struct timeval));
 
+  // best lap time
+  best_lap_time = max_lap_time();
+
+  // last lap time
+  last_lap_time = max_lap_time();
+}
 

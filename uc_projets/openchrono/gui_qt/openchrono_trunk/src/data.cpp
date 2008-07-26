@@ -295,5 +295,12 @@ void Data::save(void)
   std::cout << qPrintable(tr(" ")) << qPrintable(tr("Data saved")) << std::endl;
 }
 
+
+void Data::reset(void)
+{
+  chrono.reset();
+  position.reset();
+}
+
 //
 
