@@ -23,7 +23,7 @@ MOC_DIR +=   build
 
 UI_DIR +=   build
 
-DEFINES += QT_NO_CAST_FROM_ASCII
+#DEFINES += QT_NO_CAST_FROM_ASCII
 
 TRANSLATIONS = translations/openchrono_fr_FR.ts
 
@@ -44,6 +44,7 @@ HEADERS += \
   src/ocview_mainwin.h \
   src/ocview_about.h \
   src/ocview_engine.h \
+  src/ocview_pilot_name.h \
   src/ocview_plot.h \
   src/ocview_reset_time.h \
   src/pilot.h \
@@ -63,6 +64,7 @@ FORMS += \
   ui/message.ui \
   ui/question.ui \
   ui/testwin.ui \
+  ui/text.ui \
 
 SOURCES += \
   src/acceleration.cpp \
@@ -77,6 +79,7 @@ SOURCES += \
   src/ocview_mainwin.cpp \
   src/ocview_about.cpp \
   src/ocview_engine.cpp \
+  src/ocview_pilot_name.cpp \
   src/ocview_plot.cpp \
   src/ocview_reset_time.cpp \
   src/pilot.cpp \

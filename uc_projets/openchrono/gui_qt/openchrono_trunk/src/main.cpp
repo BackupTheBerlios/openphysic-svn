@@ -54,6 +54,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "ocview_reset_time.h"
 #include "ocview_engine.h"
 #include "ocview_about.h"
+#include "ocview_pilot_name.h"
 #include "ocview_plot.h"
 
 #include "testwinimpl.h"
@@ -114,6 +115,8 @@ int main(int argc, char ** argv)
   OCView_MainWin winMain(&myCurrentData);
   OCView_Reset_Time winResetTime(&myCurrentData);
   OCView_Engine winEngine; //(&myCurrentData);
+
+  OCView_Pilot_Name winPilotName(&myCurrentData);
 /*
   OCView_Engine_Select winEngineSelect(&myCurrentData);
   OCView_Engine_Stroke winEngineStroke(&myCurrentData);
@@ -133,7 +136,8 @@ int main(int argc, char ** argv)
 
 
   winMain.set_parent(&winMain); /* page par defaut */
-  winResetTime.is_brother_of(&winMain);
+  winPilotName.is_brother_of(&winMain);
+  winResetTime.is_brother_of(&winPilotName);
   //winEngine.is_brother_of(&winMain);
   winEngine.is_brother_of(&winResetTime);
     //winEngineMenu1.is_first_child_of(&winEngine);
