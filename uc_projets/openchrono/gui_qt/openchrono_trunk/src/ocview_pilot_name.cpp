@@ -69,8 +69,14 @@ QChar OCView_Pilot_Name::next(QChar chr) {
   QChar new_chr;
   //new_chr='*';
   new_chr=chr;
-  if (new_chr.unicode()>=QChar('A') && new_chr.unicode()<QChar('Z')) {
+  if (new_chr.unicode()==QChar(' ')) {
+    new_chr=QChar('A');
+  } else if (new_chr.unicode()>=QChar('A') && new_chr.unicode()<QChar('Z')
+          || new_chr.unicode()>=QChar('0') && new_chr.unicode()<QChar('9')
+            ) {
     new_chr.unicode()++;
+  } else if (new_chr.unicode()==QChar('Z')) {
+    new_chr=QChar('0');
   } else {
     new_chr=QChar('A');
   }
