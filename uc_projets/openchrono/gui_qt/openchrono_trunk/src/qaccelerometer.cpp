@@ -63,6 +63,10 @@ void QAccelerometer::setG(const double gx, const double gy)
   this->update();
 }
 
+/*
+ ToDo : utiliser window-viewport
+ graph.setWindow(xmin,ymin,width,height);
+*/
 double QAccelerometer::gx_to_x(double g)
 {
   double w = (double) (this->geometry().width()-1);
@@ -110,6 +114,8 @@ void QAccelerometer::paintEvent(QPaintEvent * event)
   //std::cout << "paint accelero" << std::endl;
 
   QPainter painter(this);
+  //painter.setWindow(-Gmax(),Gmax(),2*Gmax(),-2*Gmax()); /* ToDo */
+  //painter.drawLine(-Gmax(),-Gmax(),Gmax(),Gmax());
 
   QPen pen;
   pen.setWidth(1);
@@ -120,23 +126,35 @@ void QAccelerometer::paintEvent(QPaintEvent * event)
   painter.setBrush(Qt::NoBrush);
 
   pen.setColor(Qt::black);
+  pen.setWidth(1);
   painter.setPen(pen);
   for (g=1 ; g<=Gmax() ; g+=1) {
-    drawCercle(painter,g); 
+    drawCercle(painter,g);
+    //painter.drawEllipse(-g,-g,2*g,2*g);
   }
+  //painter.drawEllipse(-2,-2,4,4);
 
   pen.setColor(Qt::gray);
   painter.setPen(pen);
   for (g=0.5 ; g<=Gmax() ; g+=1) {
-    drawCercle(painter,g); 
+    drawCercle(painter,g);
+    //painter.drawEllipse(-g,-g,2*g,2*g);
   }
 
   painter.setBrush(Qt::red);
   painter.setPen(Qt::red);
+  
   x1 = (int) gx_to_x(GX())-2;
   y1 = (int) gy_to_y(GY())-2;
   x2 = (int) gx_to_x(GX())+2;
   y2 = (int) gy_to_y(GY())+2;
+  
+  /*
+  x1 = GX()-0.1;
+  y1 = GY()-0.1;
+  x2 = GX()+0.1;
+  y2 = GY()+0.1;
+  */
   painter.drawEllipse(x1,y1,x2-x1,y2-y1);
 }
 
