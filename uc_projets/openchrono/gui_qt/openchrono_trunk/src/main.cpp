@@ -56,6 +56,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "ocview_about.h"
 #include "ocview_pilot_name.h"
 #include "ocview_plot.h"
+#include "ocview_recall_laptime.h"
 
 #include "testwinimpl.h"
 
@@ -130,6 +131,7 @@ int main(int argc, char ** argv)
   OCView_Recall_Laps winRecallLaps(&myCurrentData);
   OCView_Recall_Laps_Etaps winRecallLapsEtaps(&myCurrentData);
 */
+  OCView_Recall_Laptime winRecallLaptime;
 
   OCView_About winAbout;
   //OCView_Plot winPlot(&LogData);
@@ -144,7 +146,8 @@ int main(int argc, char ** argv)
     //winEngineMenu2.is_brother_of(&winEngineMenu1);
     //winEngineMenu2.is_last_child();
 
-  winAbout.is_brother_of(&winEngine);
+  winRecallLaptime.is_brother_of(&winEngine);
+  winAbout.is_brother_of(&winRecallLaptime);
   winAbout.is_last_child();
 
 

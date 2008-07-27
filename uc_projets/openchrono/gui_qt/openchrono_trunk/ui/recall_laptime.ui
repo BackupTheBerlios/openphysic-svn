@@ -1,6 +1,6 @@
 <ui version="4.0" >
- <class>frmMessage</class>
- <widget class="QDialog" name="frmMessage" >
+ <class>frmRecallLaptime</class>
+ <widget class="QDialog" name="frmRecallLaptime" >
   <property name="geometry" >
    <rect>
     <x>0</x>

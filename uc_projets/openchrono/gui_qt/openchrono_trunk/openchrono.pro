@@ -46,6 +46,7 @@ HEADERS += \
   src/ocview_engine.h \
   src/ocview_pilot_name.h \
   src/ocview_plot.h \
+  src/ocview_recall_laptime.h \
   src/ocview_reset_time.h \
   src/pilot.h \
   src/position.h \
@@ -65,6 +66,7 @@ FORMS += \
   ui/question.ui \
   ui/testwin.ui \
   ui/text.ui \
+  ui/recall_laptime.ui \
 
 SOURCES += \
   src/acceleration.cpp \
@@ -81,6 +83,7 @@ SOURCES += \
   src/ocview_engine.cpp \
   src/ocview_pilot_name.cpp \
   src/ocview_plot.cpp \
+  src/ocview_recall_laptime.cpp \
   src/ocview_reset_time.cpp \
   src/pilot.cpp \
   src/position.cpp \
