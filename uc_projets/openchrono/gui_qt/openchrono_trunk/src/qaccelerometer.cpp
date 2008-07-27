@@ -114,11 +114,12 @@ void QAccelerometer::paintEvent(QPaintEvent * event)
   //std::cout << "paint accelero" << std::endl;
 
   QPainter painter(this);
-  //painter.setWindow(-Gmax(),Gmax(),2*Gmax(),-2*Gmax()); /* ToDo */
+  //double eps=1.2; //5;
+  //painter.setWindow(QRect(-Gmax()*eps,Gmax()*eps,2*Gmax()*eps,-2*Gmax()*eps)); /* ToDo */
   //painter.drawLine(-Gmax(),-Gmax(),Gmax(),Gmax());
 
   QPen pen;
-  pen.setWidth(1);
+  //pen.setWidth(1);
 
 
   int x1, y1, x2, y2;
@@ -126,19 +127,18 @@ void QAccelerometer::paintEvent(QPaintEvent * event)
   painter.setBrush(Qt::NoBrush);
 
   pen.setColor(Qt::black);
-  pen.setWidth(1);
+  //pen.setWidthF(0.0);
   painter.setPen(pen);
   for (g=1 ; g<=Gmax() ; g+=1) {
     drawCercle(painter,g);
-    //painter.drawEllipse(-g,-g,2*g,2*g);
+    //painter.drawEllipse(QRectF(-g,-g,2*g,2*g));
   }
-  //painter.drawEllipse(-2,-2,4,4);
 
   pen.setColor(Qt::gray);
   painter.setPen(pen);
   for (g=0.5 ; g<=Gmax() ; g+=1) {
     drawCercle(painter,g);
-    //painter.drawEllipse(-g,-g,2*g,2*g);
+    //painter.drawEllipse(QRectF(-g,-g,2*g,2*g));
   }
 
   painter.setBrush(Qt::red);
