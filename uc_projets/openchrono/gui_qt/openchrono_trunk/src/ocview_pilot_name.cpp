@@ -64,7 +64,6 @@ void OCView_Pilot_Name::write(void) {
   text->setText(strText);
 }
 
-/* _ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'- */
 QChar OCView_Pilot_Name::next(QChar chr) {
   QChar new_chr;
   new_chr=chr;
@@ -86,18 +85,22 @@ QChar OCView_Pilot_Name::next(QChar chr) {
   return new_chr; //chr
 }
 
+/* _ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'- */
+
 QChar OCView_Pilot_Name::previous(QChar chr) {
   QChar new_chr; 
   new_chr=chr;
-  if (new_chr.unicode()==QChar('-')) {
-    new_chr=QChar(' ');
-  } else if (
+  if (
              new_chr.unicode()>QChar('A') && new_chr.unicode()<=QChar('Z')
           || new_chr.unicode()>QChar('0') && new_chr.unicode()<=QChar('9')
             ) {
     new_chr.unicode()--;
+  } else if (new_chr.unicode()==QChar('A')) {
+    new_chr=QChar(' ');
   } else if (new_chr.unicode()==QChar('0')) {
     new_chr=QChar('Z');
+  } else if (new_chr.unicode()==QChar('-')) {
+    new_chr=QChar('\'');
   } else if (new_chr.unicode()==QChar('\'')) {
     new_chr=QChar('9');
   } else {
