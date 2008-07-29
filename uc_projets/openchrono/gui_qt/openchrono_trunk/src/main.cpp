@@ -76,6 +76,8 @@ int main(int argc, char ** argv)
   /* Application */
   QApplication app( argc, argv );
 
+  //app.setIcon(QIcon(":/icons/openchrono.png"));
+
   /* Style */
   QApplication::setStyle(new QPlastiqueStyle);
   //QApplication::setStyle(new QWindowsStyle); 

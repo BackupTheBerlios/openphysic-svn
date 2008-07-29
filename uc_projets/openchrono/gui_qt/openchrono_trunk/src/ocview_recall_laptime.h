@@ -1,6 +1,6 @@
 /*
 OpenChrono
-Copyright (C) 2008  Sebastien CELLES
+Copyright (C) 2007  Sebastien CELLES
  
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -17,23 +17,23 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-#ifndef QRPMMETER_H
-#define QRPMMETER_H
+#ifndef OCVIEW_RECALL_LAPTIME_H
+#define OCVIEW_RECALL_LAPTIME_H
+//
+#include "ocview.h"
 
-#include <QProgressBar>
+#include "ui_recall_laptime.h"
 
-class QRPMMeter : public QProgressBar
+
+class OCView_Recall_Laptime : public OCView, public Ui::frmRecallLaptime
   {
-    Q_OBJECT
 
-    public:
-      QRPMMeter (QWidget *parent = 0);
+  public:
+    OCView_Recall_Laptime();
 
+    virtual ~OCView_Recall_Laptime(){};
 
-    protected:
-      void paintEvent(QPaintEvent * event);
-      double bottom(int value);
+  private:
 
   };
-
 #endif

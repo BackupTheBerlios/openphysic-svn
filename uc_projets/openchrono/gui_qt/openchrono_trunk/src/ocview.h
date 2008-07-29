@@ -39,6 +39,10 @@ class OCView : public QDialog
     //void init_view(QDialog * win);
     void setupOCView(QDialog * win);
 
+/*
+    void setIcon(QIcon & icon);
+    void setTitle(QString str);
+*/
 
     void set_parent(OCView * ocview);
     void set_brother_next(OCView * ocview);

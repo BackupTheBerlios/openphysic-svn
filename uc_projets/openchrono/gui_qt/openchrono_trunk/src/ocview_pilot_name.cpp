@@ -31,7 +31,7 @@ OCView_Pilot_Name::OCView_Pilot_Name(Data * data)
   std::cout << "init view pilot name" << std::endl;
 
   setWindowTitle(QApplication::translate("frmPilotName", "Pilot name", 0, QApplication::UnicodeUTF8));
-  lblTitle->setText(QApplication::translate("frmPilotName", "Pilot name", 0, QApplication::UnicodeUTF8));
+  lblTitle->setText(QApplication::translate("frmPilotName", "<img src=\":/icons/openchrono.png\" width=\"32\" height=\"32\"/>  Pilot name <img src=\":/icons/pilot.png\" width=\"32\" height=\"32\"/>", 0, QApplication::UnicodeUTF8));
   lblQuestion->setText(QApplication::translate("frmPilotName", "What is your name ?", 0, QApplication::UnicodeUTF8));
 
   init();

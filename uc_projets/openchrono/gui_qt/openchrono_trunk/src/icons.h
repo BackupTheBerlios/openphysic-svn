@@ -17,23 +17,4 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-#ifndef QRPMMETER_H
-#define QRPMMETER_H
 
-#include <QProgressBar>
-
-class QRPMMeter : public QProgressBar
-  {
-    Q_OBJECT
-
-    public:
-      QRPMMeter (QWidget *parent = 0);
-
-
-    protected:
-      void paintEvent(QPaintEvent * event);
-      double bottom(int value);
-
-  };
-
-#endif

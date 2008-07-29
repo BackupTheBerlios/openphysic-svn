@@ -33,7 +33,7 @@ TestWinImpl::TestWinImpl( QWidget * parent, Qt::WFlags f, Data * data) : QDialog
   //m_win = win;
 
   //setGeometry(450,100,580,240);
-  setGeometry(450,100,730,240);
+  setGeometry(450,100,800,240);
 
   // connection bouton StartStop page de test
   connect(        StartStop	, SIGNAL( clicked() ),

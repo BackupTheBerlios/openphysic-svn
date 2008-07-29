@@ -27,8 +27,13 @@ OCView_Engine::OCView_Engine()
   std::cout << "init view engine" << std::endl;
 
   setWindowTitle(QApplication::translate("frmMessage", "Engine", 0, QApplication::UnicodeUTF8));
-  lblTitle->setText(QApplication::translate("frmMessage", "<h1>Engine</h1>", 0, QApplication::UnicodeUTF8));
+  lblTitle->setText(QApplication::translate("frmMessage", "<img src=\":/icons/openchrono.png\" width=\"32\" height=\"32\"/> Engine <img src=\":/icons/openchrono.png\" width=\"32\" height=\"32\"/>", 0, QApplication::UnicodeUTF8));
+
+/*
   lblMessage->setText(QApplication::translate("frmMessage", "<h2>Click <u><i>OK</i></u> to enter in this menu.</h2>", 0, QApplication::UnicodeUTF8));
+ */
+
+  lblMessage->setText(QApplication::translate("frmMessage", "Click <img src=\":/icons/ok.png\"/> to enter in this menu <br/> or <img src=\":/icons/cancel.png\"/> to back <img src=\":/icons/home.png\"/>.", 0, QApplication::UnicodeUTF8));
 
 /*
 QString str = tr("Press <b>Ok</b> to <i>enter</i> here.");

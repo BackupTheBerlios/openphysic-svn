@@ -17,23 +17,15 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-#ifndef QRPMMETER_H
-#define QRPMMETER_H
+#include "ocview_recall_laptime.h"
 
-#include <QProgressBar>
+OCView_Recall_Laptime::OCView_Recall_Laptime()
+{
+  setupUi(this);
+  setupOCView(this);
 
-class QRPMMeter : public QProgressBar
-  {
-    Q_OBJECT
+  std::cout << "init recall laptime" << std::endl;
 
-    public:
-      QRPMMeter (QWidget *parent = 0);
-
-
-    protected:
-      void paintEvent(QPaintEvent * event);
-      double bottom(int value);
-
-  };
-
-#endif
+  setWindowTitle(QApplication::translate("frmMessage", "Recall laptime", 0, QApplication::UnicodeUTF8));
+  lblTitle->setText(QApplication::translate("frmMessage", "<img src=\":/icons/openchrono.png\" width=\"32\" height=\"32\"/> Laptime <img src=\":/icons/clock.svg\" width=\"32\" height=\"32\"/>", 0, QApplication::UnicodeUTF8));
+}

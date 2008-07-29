@@ -41,6 +41,9 @@ QAccelerometer::QAccelerometer(QWidget *parent) : QWidget(parent)
 */
   setG(0.0, 0.0);
 
+
+  matrix.scale(0.9,0.9);
+
   m_editable = false;
 }
 
@@ -67,6 +70,7 @@ void QAccelerometer::setG(const double gx, const double gy)
  ToDo : utiliser window-viewport
  graph.setWindow(xmin,ymin,width,height);
 */
+/*
 double QAccelerometer::gx_to_x(double g)
 {
   double w = (double) (this->geometry().width()-1);
@@ -78,6 +82,7 @@ double QAccelerometer::gy_to_y(double g)
   double h = (double) (this->geometry().height()-1);
   return -h/(2.0*Gmax())*(g-Gmax());
 }
+*/
 
 double QAccelerometer::x_to_gx(double x)
 {
@@ -85,20 +90,23 @@ double QAccelerometer::x_to_gx(double x)
 x = w/(2.0*Gmax)*(g-Gmax)+w
 (x-w)*(2.0*Gmax)/w+Gmax
 */
-  double w = (double) (this->geometry().width()-1);
-  return (x-w)*(2.0*Gmax())/w+Gmax();
+  //double w = (double) (this->geometry().width()-1);
+  double w = qMin(width(), height());
+  return ((x-w)*(2.0*Gmax())/w+Gmax())/0.9;
 }
 
 double QAccelerometer::y_to_gy(double y)
 {
   double h = (double) (this->geometry().height()-1);
+  //double h = (double) qMin(this->geometry().width()-1, this->geometry().height()-1);
 /* 
 y = -h/(2.0*Gmax)*(g-Gmax)
 y * 2.0*Gmax/h + Gmax
 */
-  return Gmax() - ((double) y) * 2.0*Gmax()/((double) h);
+  return (Gmax() - ((double) y) * 2.0*Gmax()/((double) h))/0.9;
 }
 
+/*
 void QAccelerometer::drawCercle(QPainter & painter, double g)
 {
   int x1, y1, x2, y2;
@@ -108,21 +116,37 @@ void QAccelerometer::drawCercle(QPainter & painter, double g)
   y2 = (int) gy_to_y(-g);
   painter.drawEllipse(x1,y1,x2-x1,y2-y1);    
 }
+*/
 
 void QAccelerometer::paintEvent(QPaintEvent * event)
 {
   //std::cout << "paint accelero" << std::endl;
 
   QPainter painter(this);
-  //double eps=1.2; //5;
+  painter.setRenderHint(QPainter::Antialiasing, true);
+
+  //painter.save();
+
+  int side = qMin(width(), height());
+  //double eps=1.3; //5;
+
+  painter.setViewport( (width()-side)/2, (height()-side)/2, side, side);
   //painter.setWindow(QRect(-Gmax()*eps,Gmax()*eps,2*Gmax()*eps,-2*Gmax()*eps)); /* ToDo */
-  //painter.drawLine(-Gmax(),-Gmax(),Gmax(),Gmax());
+  //painter.drawLine(QPointF(-Gmax(),-Gmax()),QPointF(Gmax(),Gmax()));
+
+  painter.setWindow( QRect( -Gmax(), Gmax(), 2*Gmax(), -2*Gmax() ) );
+  //painter.setWindow(QRect(-Gmax()*eps,Gmax()*eps,2*Gmax()*eps,-2*Gmax()*eps));
+  //painter.drawLine( QPointF(-2,-2), QPointF(2,2) );
+  //painter.drawLine( QPointF(-1.5,1.5), QPointF(1.5,-1.5) );
+
+  //QMatrix matrix;
+
+  painter.setMatrix(matrix);
 
   QPen pen;
   //pen.setWidth(1);
 
 
-  int x1, y1, x2, y2;
   double g;
   painter.setBrush(Qt::NoBrush);
 
@@ -130,32 +154,22 @@ void QAccelerometer::paintEvent(QPaintEvent * event)
   //pen.setWidthF(0.0);
   painter.setPen(pen);
   for (g=1 ; g<=Gmax() ; g+=1) {
-    drawCercle(painter,g);
-    //painter.drawEllipse(QRectF(-g,-g,2*g,2*g));
+    painter.drawEllipse( QRectF( -g, -g, 2*g, 2*g ) );
   }
 
   pen.setColor(Qt::gray);
   painter.setPen(pen);
   for (g=0.5 ; g<=Gmax() ; g+=1) {
-    drawCercle(painter,g);
-    //painter.drawEllipse(QRectF(-g,-g,2*g,2*g));
+    painter.drawEllipse( QRectF( -g, -g, 2*g, 2*g ) );
   }
 
   painter.setBrush(Qt::red);
   painter.setPen(Qt::red);
   
-  x1 = (int) gx_to_x(GX())-2;
-  y1 = (int) gy_to_y(GY())-2;
-  x2 = (int) gx_to_x(GX())+2;
-  y2 = (int) gy_to_y(GY())+2;
-  
-  /*
-  x1 = GX()-0.1;
-  y1 = GY()-0.1;
-  x2 = GX()+0.1;
-  y2 = GY()+0.1;
-  */
-  painter.drawEllipse(x1,y1,x2-x1,y2-y1);
+  const double epsG = 0.05;
+  painter.drawEllipse( QRectF( GX()-epsG, GY()-epsG, 2*epsG, 2*epsG ) );
+
+  //painter.restore();
 }
 
 void QAccelerometer::setEditable() {
@@ -181,7 +195,10 @@ void QAccelerometer::mouseMoveEvent (QMouseEvent * event)
 void QAccelerometer::mouseClickOrMoveEvent (QMouseEvent * event)
 {
   if (m_editable) {
+    //QPainter painter(this);
     setG(x_to_gx(event->x()), y_to_gy(event->y()));
+    //QPointF point = event->pos() - rect().center();
+    //setG( point.x(), point.y() );
     emit changed();
     this->update();
   }

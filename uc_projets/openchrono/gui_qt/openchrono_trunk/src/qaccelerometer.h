@@ -44,8 +44,8 @@ class QAccelerometer : public QWidget
       void setGmax(const double g) { m_Gmax = g; };
       double Gmax() const {return m_Gmax; };
 
-      double gx_to_x(double g);
-      double gy_to_y(double g);
+      //double gx_to_x(double g);
+      //double gy_to_y(double g);
 
       double x_to_gx(double x);
       double y_to_gy(double y);
@@ -89,7 +89,10 @@ class QAccelerometer : public QWidget
 */
       //QImage image;
 
-      void drawCercle(QPainter & painter, double g);
+      //QPainter painter;
+      QMatrix matrix;
+
+      //void drawCercle(QPainter & painter, double g);
 
       bool m_editable;
   };

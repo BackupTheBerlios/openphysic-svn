@@ -31,11 +31,20 @@ OCView_Reset_Time::OCView_Reset_Time(Data * data)
   std::cout << "init view reset time" << std::endl;
 
   setWindowTitle(QApplication::translate("frmResetTime", "Reset time", 0, QApplication::UnicodeUTF8));
-  lblTitle->setText(QApplication::translate("frmResetTime", "Reset time", 0, QApplication::UnicodeUTF8));
+  lblTitle->setText(QApplication::translate("frmResetTime", "<img src=\":/icons/openchrono.png\" width=\"32\" height=\"32\"/> Reset time <img src=\":/icons/clock.svg\" width=\"32\" height=\"32\"/>", 0, QApplication::UnicodeUTF8));
   lblQuestion->setText(QApplication::translate("frmResetTime", "Do you really want to reset time ?", 0, QApplication::UnicodeUTF8));
 
   no = new QListWidgetItem(tr("No"));
+  no->setTextAlignment(Qt::AlignCenter|Qt::AlignVCenter);
+  //QIcon noIcon("xclock.png");
+  //no->setIcon(QIcon(":/icons/openchrono.png"));
+  no->setIcon(QIcon(":/icons/home.png"));
+  //no->setIcon(QIcon(":/icons/laptop_battery.svg")); /* Qt seems to support .svg files */
+  //no->setIcon(QIcon(":/icons/laptop_battery.svgz")); /* Qt doesn't seems to support .svgz files */
+
   yes = new QListWidgetItem(tr("Yes"));
+  yes->setTextAlignment(Qt::AlignCenter|Qt::AlignVCenter);
+  yes->setIcon(QIcon(":/icons/eraser.png"));
 
   answers->addItem(no);
   answers->addItem(yes);
@@ -51,6 +60,9 @@ OCView_Reset_Time::OCView_Reset_Time(Data * data)
     - yes : a green tick
     - no : a red cross
       http://www.kde-look.org
+
+    See also /usr/share/icons
+    See also Qt Ressources .qrc
   */
 
   init();

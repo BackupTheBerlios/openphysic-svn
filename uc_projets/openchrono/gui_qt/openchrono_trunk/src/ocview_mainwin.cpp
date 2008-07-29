@@ -35,6 +35,8 @@ OCView_MainWin::OCView_MainWin(Data * data)
   setupUi(this);
   setupOCView(this);
 
+  //setIcon(QIcon(":/icons/openchrono.png"));
+
   setWindowTitle(QLatin1String("OpenChrono main window"));
 
   //test();
@@ -47,6 +49,8 @@ OCView_MainWin::OCView_MainWin(Data * data)
 
   GraphicRPM->setMaximum((int) m_data->vehicule.engine.rpm.max());
   GraphicRPM->setMinimum((int) m_data->vehicule.engine.rpm.min());
+  //GraphicRPM->setMaximum(15000);
+  //GraphicRPM->setMinimum(1000);
 
   //delete layout();
   //setLayout(vboxLayout);
