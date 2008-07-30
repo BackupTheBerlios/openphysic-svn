@@ -28,6 +28,7 @@ UI_DIR +=   build
 TRANSLATIONS = translations/openchrono_fr_FR.ts
 
 RESOURCES = openchrono.qrc
+#RC_FILE = openchrono.rc
 
 # Input
 HEADERS += \

@@ -76,7 +76,12 @@ int main(int argc, char ** argv)
   /* Application */
   QApplication app( argc, argv );
 
-  //app.setIcon(QIcon(":/icons/openchrono.png"));
+  /* Icon */
+  /*
+   http://doc.trolltech.com/4.4/appicon.html
+   http://doc.trolltech.com/4.4/qapplication.html#windowIcon-prop
+   */
+  app.setWindowIcon(QIcon(":/icons/openchrono.png"));
 
   /* Style */
   QApplication::setStyle(new QPlastiqueStyle);
