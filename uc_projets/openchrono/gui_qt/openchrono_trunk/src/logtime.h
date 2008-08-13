@@ -24,15 +24,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <QObject>
 #include <QVector>
 //
-#include "data.h"
-#include "chrono.h"
+//#include "data.h"
+//#include "chrono.h"
 
 class LogTime : public QObject
   {
     Q_OBJECT
 
   public:
-    LogTime( Data * data );
+    LogTime( );
+    //LogTime( Data * data );
+    ~LogTime( ){};
 
 /*
     QVector <> laptime;
@@ -40,7 +42,7 @@ class LogTime : public QObject
 */    
 
   private:
-    Data * m_data;
+    //Data * m_data;
   };
 
 #endif

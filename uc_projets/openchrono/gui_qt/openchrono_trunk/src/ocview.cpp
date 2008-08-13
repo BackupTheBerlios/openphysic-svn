@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 OCView::OCView(void)
 {
   // contruct
-  std::cout << "init view" << std::endl;
+  //std::cout << "init view" << std::endl;
 
   // in case of error : segfault
   page_parent = NULL;
@@ -57,7 +57,7 @@ void OCView::setupOCView(QDialog * win)
 // This method must be loaded after setupUi(this)
 
 //  setGeometry(WIN_POS_X,WIN_POS_Y,WIN_WIDTH,WIN_HEIGHT);
-  std::cout << "post init view" << std::endl;
+  //std::cout << "post init view" << std::endl;
 
   win->setGeometry(0,0,320,240);
   //win->setWindowFlags(Qt::SplashScreen);
@@ -255,28 +255,31 @@ void OCView::keyPressEvent(QKeyEvent * event)
   switch ( event->key() )
     {
     case B_OK: // Ok
-      std::cout << "OK on OCView" << std::endl;
+      //std::cout << "OK on OCView" << std::endl;
       this->activate_child_first();
       break;
     case B_CANCEL: // Cancel
-      std::cout << "CANCEL on OCView" << std::endl;
+      //std::cout << "CANCEL on OCView" << std::endl;
       this->activate_parent();
       break;
     case B_UP:
-      std::cout << "UP on OCView" << std::endl;
+      //std::cout << "UP on OCView" << std::endl;
       //
       break;
     case B_DOWN:
-      std::cout << "DOWN on OCView" << std::endl;
+      //std::cout << "DOWN on OCView" << std::endl;
       //
       break;
     case B_LEFT:
-      std::cout << "LEFT on OCView" << std::endl;
+      //std::cout << "LEFT on OCView" << std::endl;
       this->activate_brother_previous();
       break;
     case B_RIGHT:
-      std::cout << "RIGHT on OCView" << std::endl;
+      //std::cout << "RIGHT on OCView" << std::endl;
       this->activate_brother_next();
+      break;
+    case B_TEST:
+      //std::cout << "TEST on OCView" << std::endl;
       break;
     default:
       //std::cout << "UNDEF KEY" << std::endl;

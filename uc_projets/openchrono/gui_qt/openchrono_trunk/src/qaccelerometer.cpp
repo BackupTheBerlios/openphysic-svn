@@ -118,7 +118,7 @@ void QAccelerometer::drawCercle(QPainter & painter, double g)
 }
 */
 
-void QAccelerometer::paintEvent(QPaintEvent * event)
+void QAccelerometer::paintEvent(QPaintEvent * /* event */)
 {
   //std::cout << "paint accelero" << std::endl;
 
@@ -196,6 +196,8 @@ void QAccelerometer::mouseClickOrMoveEvent (QMouseEvent * event)
 {
   if (m_editable) {
     //QPainter painter(this);
+    //QMatrix matrix_inv;
+    
     setG(x_to_gx(event->x()), y_to_gy(event->y()));
     //QPointF point = event->pos() - rect().center();
     //setG( point.x(), point.y() );

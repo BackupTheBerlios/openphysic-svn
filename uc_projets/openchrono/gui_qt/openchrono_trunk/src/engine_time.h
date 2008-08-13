@@ -1,6 +1,6 @@
 /*
 OpenChrono
-Copyright (C) 2007  Sebastien CELLES
+Copyright (C) 2008  Sebastien CELLES
  
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -17,53 +17,49 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-#ifndef ENGINE_STATE_H
-#define ENGINE_STATE_H
+#ifndef ENGINE_TIME_H
+#define ENGINE_TIME_H
 
-//
 #include <QObject>
+#include <QTime>
 //
 
 #include <iostream>
 
-class Engine_State : public QObject
+#include <sys/time.h>
+#include <unistd.h>
+
+#include <cstdlib> // memcpy
+
+class Engine_Time : public QObject // public QTime
   {
     Q_OBJECT
 
   public:
-    Engine_State( );
+    Engine_Time( );
 
-    bool on(void);
-    bool off(void);
-    bool idle(void);
+    void start(void);
+    void stop(void);
+    void reset(void);
 
-    void switch_on(void);
-    void switch_off(void);
-    void set_to_idle(void);
-    void unset_idle(void);
+    QString toString(void);
 
-    void show(void);
-
-    int state(void);
-
-
-  signals:
-    void switched_on(void);
-    void switched_off(void);
-    void was_set_to_idle(void);
-    void was_unset_to_idle(void);
-
-
-    void changed(void); // ?
-
-
-  public slots:
-    void on_changed(void); // ?
-    void change(double RPM);
+    bool is_running(void);
 
   private:
-    bool m_on;
-    bool m_idle;
+    bool m_running;
+
+    /* QTime are limited to 24 hours ! */
+    QTime time;
+    QTime t;
+
+    // Instants
+    struct timeval tv_start, tv_stop;
+
+    // Durées
+    struct timeval total_engine_time, session_engine_time;
+
+
   };
 
 #endif

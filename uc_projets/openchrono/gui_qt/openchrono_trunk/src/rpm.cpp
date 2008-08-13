@@ -22,12 +22,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 //#include "engine_state.h"
 
+#include <iostream>
+
 Rpm::Rpm(  )
 {
 //  set(0.0);
-  set(100.0);
+//  set(100.0);
   setMax(16000.0);
   setMin(0.0);
+
+/*
+  connect(this, SIGNAL( changed(double) ),
+          this, SLOT( on_changed() ) );
+*/
 }
 
 double Rpm::value(void) const
@@ -37,8 +44,23 @@ double Rpm::value(void) const
 
 void Rpm::set(double const RPM)
   {
-    m_RPM=RPM;
+/*
+    const double rpmOff = 50;
+    const double rpmIdle = 150;
 
+    if ( RPM <= rpmOff && m_RPM>rpmOff )
+      {
+        emit switched_off;
+      }
+    else if ( RPM < rpmIdle )
+      {
+
+      }
+*/
+    if (m_RPM!=RPM) {
+      m_RPM=RPM;
+      emit changed(m_RPM);
+    }
   }
 
 /*
@@ -63,6 +85,11 @@ void Rpm::set(double const RPM)
 
   }
 */
+
+void Rpm::on_changed(void)
+  {
+    std::cout << "RPM changed" << std::endl;
+  }
 
 double Rpm::max(void) const
   {

@@ -1,6 +1,6 @@
 /*
 OpenChrono
-Copyright (C) 2007  Sebastien CELLES
+Copyright (C) 2008  Sebastien CELLES
  
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -21,14 +21,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //#include <iostream> // cout << "Test" << endl;
 //using namespace std;
 
+#include "openchrono.h"
+
 // Application (QT / QTopia ...)
 #include <Qt>
 #include <QApplication> // QT
-
-#include <QStyle>
-#include <QPlastiqueStyle> // style
-//#include <QWindowsXPStyle>
-
 #include <QTranslator> // i18n
 
 //#include <qtopiaapplication> // QTopia
@@ -45,7 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 #include "data.h"
 #include "logdata.h"
-#include "logtime.h"
+//#include "logtime.h"
 //
 //#include "ocdocument.h" // ocview ocdocument (ex ocwindows)
 //#include "ocview.h"
@@ -63,6 +60,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "qaccelerometer.h"
 #include "qrpmmeter.h"
 #include "ticker.h"
+#include "qtemperature.h"
 
 #include "engine_state.h"
 
@@ -73,28 +71,46 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 int main(int argc, char ** argv)
 {
+  std::cout << "Running OpenChrono" << std::endl;
+
   /* Application */
-  QApplication app( argc, argv );
+  OpenChrono app( argc, argv );
 
-  /* Icon */
-  /*
-   http://doc.trolltech.com/4.4/appicon.html
-   http://doc.trolltech.com/4.4/qapplication.html#windowIcon-prop
-   */
-  app.setWindowIcon(QIcon(":/icons/openchrono.png"));
-
-  /* Style */
-  QApplication::setStyle(new QPlastiqueStyle);
-  //QApplication::setStyle(new QWindowsStyle); 
-  //QApplication::setStyle("QPushButton { color: white }");
 
   /* Traduction openchrono.qrc translations/openchrono_fr_FR.qm */
   QTranslator appTranslator;
-  QString strTrans = QLatin1String("openchrono_")+QLocale::system().name();
+  QString strTrans = QLatin1String("openchrono_")+QLocale::system().name(); // To Fix
+  //QString strTrans = QLatin1String("openchrono_fr_FR.qm");
+
   std::cout << ("Translation : ") << qPrintable(strTrans) << std::endl;
   //appTranslator.load(strTrans, qApp->applicationDirPath()+QLatin1String("/translations")); // sans ressource
   appTranslator.load(QLatin1String(":translations/")+strTrans); // avec ressource openchrono.qrc
   app.installTranslator(&appTranslator);
+
+
+  QDateTime datetime;
+  datetime = QDateTime::currentDateTime();
+  //QString strFormat ="YY";
+  std::cout << qPrintable(datetime.toString("yyyy-MM-dd hh:mm:ss.zzz")) << std::endl;
+/* see also
+file:///usr/share/qt4/doc/html/qtime.html
+int QTime::restart ()
+*/
+
+/*
+ QTime t, t2;
+ t.start();
+ t2 = t;
+ //some_lengthy_task();
+ qDebug("Time elapsed: %d ms", t.elapsed());
+std::cout << qPrintable(t2.toString("yyyy-MM-dd hh:mm:ss.zzz")) << std::endl;
+*/
+
+/*
+QTime t(0,0,0,0);
+t=t.addMSecs(86400000-1);
+std::cout << qPrintable(t.toString("mm:ss.zzz")) << std::endl;
+*/
 
   //std::cout << "OpenChrono1" << std::endl;
 
@@ -115,7 +131,7 @@ int main(int argc, char ** argv)
   LogData logdata(&myCurrentData);
 
   /* Log Time */
-  LogTime logtime(&myCurrentData);
+  //LogTime logtime(&myCurrentData);
 
   //std::cout << "OpenChrono3" << std::endl;
 
@@ -192,6 +208,9 @@ int main(int argc, char ** argv)
 
   //winTest.close();
 
+  /* Dégradé froid-chaud */
+  //QTemperature temp;
+  //temp.show();
 
   //QLineEdit txt;
   //txt.show();

@@ -1,6 +1,6 @@
 /*
 OpenChrono
-Copyright (C) 2007  Sebastien CELLES
+Copyright (C) 2008  Sebastien CELLES
  
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -31,6 +31,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <cstdlib> // memcpy
 
+//#include "logtime.h"
+
 class Chrono : public QObject
   {
     Q_OBJECT
@@ -51,12 +53,7 @@ class Chrono : public QObject
     //void get_current_time(struct timeval * time);
     //void get_string_time(void);
 
-    struct timeval get_current_lap_time(void);
-    struct timeval get_current_etap_time(void);
-    struct timeval get_last_lap_time(void);
-    struct timeval get_best_lap_time(void);
 
-    void update_last_and_best_lap_time(void);
 
     QString getStrTimeMmSsXxx(struct timeval tv); // mm:ss:xxx
     QString getStrTimeMSsXxx(struct timeval tv); //  m:ss:xxx
@@ -68,11 +65,14 @@ class Chrono : public QObject
 
     QDomElement to_node( QDomDocument &dom_doc );
 
+    //LogTime logtime;
 
+    static int timeval_subtract (struct timeval *result, const struct timeval *x, struct timeval *y);
+    static int timeval_add (struct timeval *result, const struct timeval *x, struct timeval *y);
 
+    void show(void);
 
   private:
-    int timeval_subtract (struct timeval *result, const struct timeval *x, struct timeval *y);
 
     // Instants
     struct timeval tv_initial, tv_current, tv_interm;
@@ -86,6 +86,10 @@ class Chrono : public QObject
     // Ecart
     struct timeval diff_best, diff_last;
 
+    QVector <struct timeval> t_lap;
+    QVector <struct timeval> laptime;
+    //QVector <QVector <struct timeval> > etaptime;
+
     bool running;
     struct tm * ptm;
     char time_string[15];
@@ -93,5 +97,12 @@ class Chrono : public QObject
 
     struct timeval max_lap_time(void);
 
+
+    struct timeval get_current_lap_time(void);
+    struct timeval get_current_etap_time(void);
+    struct timeval get_last_lap_time(void);
+    struct timeval get_best_lap_time(void);
+
+    void update_last_and_best_lap_time(void);
   };
 #endif

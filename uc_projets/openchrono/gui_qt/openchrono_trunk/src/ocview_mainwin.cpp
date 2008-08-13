@@ -60,12 +60,14 @@ OCView_MainWin::OCView_MainWin(Data * data)
   timer->start(25); //
 
   //lblMessage->setText(QLatin1String("OpenChrono - Copyright (c) 2008 S. Celles - under GNU General Public License --- "));
-  lblMessage->setText(QLatin1String("OpenChrono   ***   "));
+  //lblMessage->setText(QLatin1String("OpenChrono   ***   "));
 
 }
 
 OCView_MainWin::~OCView_MainWin()
-{}
+{
+  
+}
 
 
 void OCView_MainWin::test(void)
@@ -105,29 +107,79 @@ void OCView_MainWin::showRPM(void)
 
   GraphicRPM->setValue(value);
 
-  // couleur
-  //QColormap ? QLineargradient ?
-  //GraphicRPM->
-  //QPalette palette;
-  //QPalette::ColorRole colorrole = QPalette::Window;
-  //QGradient gradient;
-  //gradient.setColorAt(0, Qt::green);
-  //gradient.setColorAt(.5, Qt::yellow);
-  //gradient.setColorAt(1, Qt::red);
-  //QColor color = Qt::red;
-  //palette.setColor(QPalette::Window, color);
-  //this->setPalette ( palette );
-
 }
 
 void OCView_MainWin::showT1(void)
 {
-  lblTemp1->setText(m_data->vehicule.engine.temperature_1.getStr());
+  QPalette palette;
+  QColor color;
+
+  //QGradient gradient;
+  //QLinearGradient gradient(0, 0, width(), 0);
+  //gradient.setColorAt(0.0, Qt::green);
+  //gradient.setColorAt(0.8, Qt::yellow);
+  //gradient.setColorAt(1.0, Qt::red);
+  /* ToDo : a better gradient that fit with temperature measurements
+    cold is blue - hot/warm is red
+    see colormap (in geography / maps)
+   */
+  //QPen pen(gradient, 0); // no contour
+  //color = gradient.getColorAt(0.5); // unfortunately it doesn't exist ! ToDo
+  /* Look into the QT source for gradient qt4/src/gui/painting/brush.h & .cpp */
+
+  if (m_data->vehicule.engine.temperature[0].value()>100) {
+    color = Qt::red;
+  } else {
+    color = Qt::black;
+  }
+
+  //QBrush brush(color);
+
+  palette.setBrush(QPalette::WindowText, color); // text
+  //palette.setBrush(QPalette::Window, Qt::yellow); // background ToDo : I can't change the background of the label !
+  // QPalette::Base has ever been tested !!!
+
+  lblTemp1->setPalette(palette); // apply the palette to the label
+
+
+  //lblTemp1->setText(m_data->vehicule.engine.temperature_1.getStr());
+  lblTemp1->setText(m_data->vehicule.engine.temperature[0].getStr());
+
+
+  //QPen pen;
+  //pen.setColor(color);
+
+  //std::cout << "color for temperature" << std::endl;
+  //lblTemp1->setStyleSheet("color: blue; background-color: yellow");
+
+  //lblTemp1->setStyleSheet("background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #616161, stop: 0.5 #505050, stop: 0.6 #434343, stop:1 #656565);");
+ 
+ //lblTemp1->setStyleSheet("color: #FF0000;");
+
+/* see also QTextFormat / QTextDocument / QTextEdit
+ void QTextFormat::setForeground ( const QBrush & brush )
+ void QTextFormat::setBackground ( const QBrush & brush )
+ */
+  
 }
 
 void OCView_MainWin::showT2(void)
 {
-  lblTemp2->setText(m_data->vehicule.engine.temperature_2.getStr());
+  QPalette palette;
+  QColor color;
+
+  if (m_data->vehicule.engine.temperature[1].value()>100) {
+    color = Qt::red;
+  } else {
+    color = Qt::black;
+  }
+
+  palette.setBrush(QPalette::WindowText, color); // text
+
+  lblTemp2->setPalette(palette); // apply the palette to the label
+
+  //lblTemp2->setText(m_data->vehicule.engine.temperature_2.getStr());
+  lblTemp2->setText(m_data->vehicule.engine.temperature[1].getStr());
 }
 
 void OCView_MainWin::showCurrentLapTime(void)
@@ -166,8 +218,18 @@ void OCView_MainWin::showEtap(void)
   lblEtap->setText(strEtap);
 }
 
+void OCView_MainWin::showMsg(void)
+{
+  QDateTime datetime = QDateTime::currentDateTime();
+  //QString strFormat ="YY";
+  const QString sep = QString("   ***   ");
+  //lblMessage->setText(QLatin1String("OpenChrono") + sep);
+  lblMessage->setText(QLatin1String("OpenChrono") + sep + datetime.toString("yyyy-MM-dd hh:mm:ss") + sep);
+}
+
 void OCView_MainWin::UpdateData(void)
 {
+  showMsg();
   showRPM();
   showT1();
   showT2();
@@ -190,8 +252,15 @@ void OCView_MainWin::keyPressEvent(QKeyEvent * event)
 {
   switch ( event->key() ) {
     case B_OK: // Ok
-      std::cout << "OK on OCView_MainWin will save data" << std::endl;
+      //std::cout << "OK on OCView_MainWin will save data" << std::endl;
       m_data->save();
+      break;
+    case B_CANCEL:
+      m_data->reset();
+      break;
+    case B_TEST:
+      //std::cout << "TEST on OCView_MainWin" << std::endl;
+      m_data->test();
       break;
     default: // n'importe quelle autre touche
       OCView::keyPressEvent(event);

@@ -38,6 +38,7 @@ HEADERS += \
   src/data.h \
   src/engine.h \
   src/engine_state.h \
+  src/engine_time.h \
   src/keyboard.h \
   src/logdata.h \
   src/logtime.h \
@@ -49,6 +50,7 @@ HEADERS += \
   src/ocview_plot.h \
   src/ocview_recall_laptime.h \
   src/ocview_reset_time.h \
+  src/openchrono.h \
   src/pilot.h \
   src/position.h \
   src/rpm.h \
@@ -59,6 +61,7 @@ HEADERS += \
   src/vehicule.h \
   src/qaccelerometer.h \
   src/qrpmmeter.h \
+  src/qtemperature.h \
 
 
 FORMS += \
@@ -75,6 +78,7 @@ SOURCES += \
   src/data.cpp \
   src/engine.cpp \
   src/engine_state.cpp \
+  src/engine_time.cpp \
   src/logdata.cpp \
   src/logtime.cpp \
   src/main.cpp \
@@ -86,6 +90,7 @@ SOURCES += \
   src/ocview_plot.cpp \
   src/ocview_recall_laptime.cpp \
   src/ocview_reset_time.cpp \
+  src/openchrono.cpp \
   src/pilot.cpp \
   src/position.cpp \
   src/rpm.cpp \
@@ -96,4 +101,5 @@ SOURCES += \
   src/vehicule.cpp \
   src/qaccelerometer.cpp \
   src/qrpmmeter.cpp \
+  src/qtemperature.cpp \
 

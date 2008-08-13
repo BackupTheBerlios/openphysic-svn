@@ -25,20 +25,64 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 QRPMMeter::QRPMMeter(QWidget *parent) : QProgressBar(parent)
 {
-  std::cout << "RPMmeter" << std::endl;
+  //std::cout << "RPMmeter" << std::endl;
+
+  setType(rectangle);
+  //setType(triangle);
+  //setType(x2);
+  //setType(barre_x2);
 
 }
 
 double QRPMMeter::bottom(int value)
 {
   //return 0.0;
-  //return (this->geometry().height()*value)/this->maximum()+this->geometry().height()*1.0/4.0;
-  return (geometry().height()*3.0/4.0*value)/maximum()+this->geometry().height()*1.0/4.0;
-  //return this->geometry().height();
+  //return (height()*value)/maximum()+height()*1.0/4.0;
+  return (height()*3.0/4.0*value)/maximum()+height()*1.0/4.0;
+  //return height();
 }
 
-void QRPMMeter::paintEvent(QPaintEvent * event)
+double QRPMMeter::bottom_x2(double i)
 {
+  return (((Bar_Height_Max-Bar_Height_Min)*(N_Bar/2.0-1)-(Bar_Height_Mid-Bar_Height_Min)*(N_Bar-1))
+	/(pow((N_Bar-1),2)*(N_Bar/2.0-1)-(pow(N_Bar/2.0-1,2)*(N_Bar-1))))*pow(i,2)
+  + (((Bar_Height_Max-Bar_Height_Min)*pow(N_Bar/2.0-1,2)-(Bar_Height_Mid-Bar_Height_Min)*pow(N_Bar-1,2))
+    /((N_Bar-1)*pow(N_Bar/2.0-1,2)-(N_Bar/2.0-1)*pow(N_Bar-1,2)))*i
+  + Bar_Height_Min;
+}
+
+int QRPMMeter::type() const
+{
+  return m_type;
+}
+
+void QRPMMeter::setType(int t)
+{
+  m_type = t;
+}
+
+void QRPMMeter::paintEvent(QPaintEvent * /* event */)
+{
+  N_Bar=70; // nombre de barres du RPMmetre
+  //Bar_Width=2.0; // largeur de la barre
+  //Bar_X_Space=2.0; // ecartement horizontal entre les barres
+  Bar_Width=width()/(2.0*N_Bar); // largeur de la barre
+  Bar_X_Space=width()/(2.0*N_Bar); // ecartement horizontal entre les barres
+
+  Bar_Height_Max=height()-1; // hauteur maxi de la barre
+  Bar_Height_Min=Bar_Height_Max*0.25; // hauteur mini de la barre
+  Bar_Height_Mid=Bar_Height_Max*0.4; // hauteur de la barre du milieu
+
+
+/*
+  N_Bar=30; // nombre de barres du RPMmetre
+  Bar_Width=0.75*width()/((double) N_Bar); // largeur de la barre
+  Bar_X_Space=0.25*width()/((double) N_Bar); // ecartement horizontal entre les barres
+
+  Bar_Height_Max=height()-1; // hauteur maxi de la barre
+  Bar_Height_Min=Bar_Height_Max*0.25; // hauteur mini de la barre
+  Bar_Height_Mid=Bar_Height_Max*0.4; // hauteur de la barre du milieu
+*/
   //std::cout << "paint RPMmeter" << std::endl;
   //std::cout << "value=" << this->value() << std::endl;
 
@@ -53,103 +97,138 @@ void QRPMMeter::paintEvent(QPaintEvent * event)
   //painter.setRenderHint(QPainter::SmoothPixmapTransform, true);
   //painter.setRenderHint(QPainter::HighQualityAntialiasing, true);
 
-  QLinearGradient gradientON(0, 0, geometry().width(), 0);
+  double RPM=value();
+
+  QLinearGradient gradientON(0, 0, width(), 0);
   gradientON.setColorAt(0.0, Qt::green);
   gradientON.setColorAt(0.8, Qt::yellow);
   gradientON.setColorAt(1.0, Qt::red);
-  painter.setBrush(gradientON);
-  //painter.drawRect(0,0,this->geometry().width(),this->geometry().height());
-  //QRectF rect(0,0,((this->geometry().width()-1)*this->value())/(this->maximum()),this->geometry().height()-1);
-
-  // nothing // with contour
-  //painter.setPen(QPen(gradient, 0)); // no contour
-
-  // rectangle with gradient
-  //painter.drawRect(rect);
-  //painter.drawRoundedRect(rect,10.0,10.0);
-  //painter.drawRoundedRect(rectangle, 20.0, 20.0);
-
-  /* parallelogramme */
-
-  // path (triangle, polygon) with gradient
-/*
-  QPainterPath path;
-  path.moveTo(0.0, 0.0);
-  path.lineTo((this->geometry().width()-1)*this->value()/(this->maximum()), 0.0);
-  path.lineTo((this->geometry().width()-1)*this->value()/(this->maximum()), bottom(this->value()));
-  path.lineTo(0, this->geometry().height()*1.0/4.0);
-  path.closeSubpath();
-  painter.drawPath(path);
-*/
+  QPen penON(gradientON, 0); // no contour
 
 
-  /* barres */
-  QLinearGradient gradientOFF(0, 0, geometry().width(), 0);
+  QLinearGradient gradientOFF(0, 0, width(), 0);
   QColor green = Qt::green;
   QColor yellow = Qt::yellow;
   QColor red = Qt::red;
-  const int dark=250;
-  gradientOFF.setColorAt(0.0, green.darker(dark));
-  gradientOFF.setColorAt(0.8, yellow.darker(dark));
-  gradientOFF.setColorAt(1.0, red.darker(dark));
-  //gradientOFF=gradient.darker(150);
+  const int dark=200; /* Darker */
+  green = green.darker(dark);
+  yellow = yellow.darker(dark);
+  red = red.darker(dark);
+  const int alpha=200; /* Alpha-Blended Drawing : fully transparent color 0-255 fully opaque color */
+  green.setAlpha(alpha);
+  yellow.setAlpha(alpha);
+  red.setAlpha(alpha);
+  gradientOFF.setColorAt(0.0, green);
+  gradientOFF.setColorAt(0.8, yellow);
+  gradientOFF.setColorAt(1.0, red);
+  //gradientOFF=gradient.darker(150); // this method (unfortunatel doesn't exist
+  QPen penOFF(gradientOFF, 0); // no contour
 
-
-  const int N_Bar=80; // nombre de barres du RPMmetre
-  const int Bar_Width=2; // largeur de la barre
-  const double Bar_Height_Max=geometry().height()-1; // hauteur maxi de la barre
-  const double Bar_Height_Min=Bar_Height_Max*0.25; // hauteur mini de la barre
-  const double Bar_Height_Mid=Bar_Height_Max*0.4; // hauteur de la barre du milieu
-  const double Bar_X_Space=2.0; // ecartement horizontal entre les barres
-
-
-  QPen penOFF(gradientOFF, 0);
-  QPen penON(gradientON, 0);
-
-  for ( int i=0 ; i < N_Bar ; i++ ) {
-    if (i<(((double) N_Bar)*(value()-minimum()))/(maximum()-minimum())) {
-      painter.setPen(penON);
-      painter.setBrush(gradientON);
-    } else {
-      painter.setPen(penOFF);
-      painter.setBrush(gradientOFF);
-    }
-    QRectF rect(
-      i * (Bar_Width + Bar_X_Space),
-      0,
-      Bar_Width,
-      (((Bar_Height_Max-Bar_Height_Min)*(N_Bar/2.0-1)-(Bar_Height_Mid-Bar_Height_Min)*(N_Bar-1))
-	   /(pow((N_Bar-1),2)*(N_Bar/2.0-1)-(pow(N_Bar/2.0-1,2)*(N_Bar-1))))*pow(i,2)
-	  + (((Bar_Height_Max-Bar_Height_Min)*pow(N_Bar/2.0-1,2)-(Bar_Height_Mid-Bar_Height_Min)*pow(N_Bar-1,2))
-           /((N_Bar-1)*pow(N_Bar/2.0-1,2)-(N_Bar/2.0-1)*pow(N_Bar-1,2)))*i
-	  + Bar_Height_Min
-    );
-    //painter.drawRect(rect);
-    painter.drawRoundedRect(rect,3,3);
-/*
-    QPainterPath path;
-    path.moveTo(Bar_X_Space + i * (Bar_Width + Bar_X_Space), 0.0);
-    path.lineTo((this->geometry().width()-1)*this->value()/(this->maximum()), 0.0);
-    path.lineTo((this->geometry().width()-1)*this->value()/(this->maximum()), bottom(this->value()));
-    path.lineTo(0, this->geometry().height()*1.0/4.0);
-    path.closeSubpath();
-    painter.drawPath(path);
-*/
 
   // Value of RPM
   // format = "%v RPM"
   //painter.setRenderHint(QPainter::Antialiasing, false);
   QString strRPM;
-  strRPM.sprintf("%d RPM", this->value());
+  strRPM.sprintf("%d RPM", (int) RPM);
   QPen penTxt(Qt::black);
   //penTxt.setWidth(0);
-  if (value()>=maximum())
+  if (RPM>=maximum())
     penTxt.setColor(Qt::red);
-  painter.setPen(penTxt);
-  //painter.drawText(rect, Qt::AlignCenter, tr("16000 RPM"));
-  QRectF rectTxt(0,0,this->geometry().width()*0.62,this->geometry().height());
-  painter.drawText(rectTxt, Qt::AlignRight, strRPM);
+  QRectF rectTxt(0, 0, width()*0.62, height());
+  //painter.drawText(rectTxt, Qt::AlignRight|Qt::AlignVCenter, strRPM);
 
+  if (type()==rectangle) {
+    // rectangle with gradient
+    QRectF rectOFF(0, 0, width()-1, height()-1);
+    painter.setBrush(gradientOFF);
+    painter.setPen(penOFF); // no contour
+    painter.drawRect(rectOFF);
+    //painter.drawRoundedRect(rectOFF,10.0,10.0);
+
+    if (RPM>0) {
+      QRectF rectON(0, 0, ((width()-1)*RPM)/(maximum()), height()-1);
+      painter.setBrush(gradientON);
+      painter.setPen(penON); // no contour
+      painter.drawRect(rectON);
+      //painter.drawRoundedRect(rectON,10.0,10.0);
+    }
+
+    //QRectF rectTxt(0, 0, width()*0.62, height());
+    painter.setPen(penTxt);
+    painter.drawText(rectTxt, Qt::AlignRight|Qt::AlignVCenter, strRPM);
+  } else if (type()==triangle) {
+    // path (triangle, polygon) with gradient
+    QPainterPath pathOFF;
+    pathOFF.moveTo(0.0, 0.0);
+    pathOFF.lineTo(width()-1, 0.0);
+    pathOFF.lineTo(width()-1, height()-1);
+    pathOFF.lineTo(0, height()*1.0/4.0);
+    pathOFF.closeSubpath();
+    painter.setBrush(gradientOFF);
+    painter.setPen(penOFF); // no contour
+    painter.drawPath(pathOFF);
+
+    QPainterPath pathON;
+    pathON.moveTo(0.0, 0.0);
+    pathON.lineTo((width()-1)*RPM/(maximum()), 0.0);
+    pathON.lineTo((width()-1)*RPM/(maximum()), bottom(RPM));
+    pathON.lineTo(0, height()*1.0/4.0);
+    pathON.closeSubpath();
+    painter.setBrush(gradientON);
+    painter.setPen(penON); // no contour
+    painter.drawPath(pathON);
+    //QRectF rectTxt(0, 0, width()*0.62, height());
+    painter.setPen(penTxt);
+    painter.drawText(rectTxt, Qt::AlignRight|Qt::AlignTop, strRPM);
+  } else if (type()==x2) {
+    QPainterPath pathOFF;
+    pathOFF.moveTo(0.0, 0.0);
+    pathOFF.lineTo(0, height()*1.0/4.0);
+    for ( int i=0 ; i <= N_Bar ; ++i ) {
+      pathOFF.lineTo((width()-1)*((double) i)/((double) N_Bar), bottom_x2(i));
+    }
+    pathOFF.lineTo(width()-1, 0.0);
+    pathOFF.closeSubpath();
+    painter.setBrush(gradientOFF);
+    painter.setPen(penOFF); // no contour
+    painter.drawPath(pathOFF);
+
+    QPainterPath pathON;
+    pathON.moveTo(0.0, 0.0);
+    pathON.lineTo(0, height()*1.0/4.0);
+    for ( double i=0 ; i <= (((double) N_Bar)*(RPM-minimum()))/(maximum()-minimum()) ; ++i ) {
+      pathON.lineTo((width()-1)/((double) N_Bar)*((double) i), bottom_x2(i));
+    }
+    pathON.lineTo((width()-1)*(RPM-minimum())/(maximum()-minimum()), 0.0);
+    pathON.closeSubpath();
+    painter.setBrush(gradientON);
+    painter.setPen(penON); // no contour
+    painter.drawPath(pathON);
+
+    painter.setPen(penTxt);
+    painter.drawText(rectTxt, Qt::AlignRight|Qt::AlignTop, strRPM);
+  } else if (type()==barre_x2) {
+    /* barres */
+    for ( int i=0 ; i < N_Bar ; i++ ) {
+      if (i<(((double) N_Bar)*(RPM-minimum()))/(maximum()-minimum())) { // nb de barres à allumer / éteindre
+        painter.setPen(penON);
+        painter.setBrush(gradientON);
+      } else {
+        painter.setPen(penOFF);
+        painter.setBrush(gradientOFF);
+      }
+      QRectF rect(
+        Bar_X_Space/2.0 + i * (Bar_Width + Bar_X_Space),
+        0,
+        Bar_Width,
+        bottom_x2(i)
+      );
+      //painter.drawRect(rect);
+      painter.drawRoundedRect(rect,3,3);
+    }
+    //QRectF rectTxt(0, 0, width()*0.62, height());
+    painter.setPen(penTxt);
+    painter.drawText(rectTxt, Qt::AlignRight|Qt::AlignTop, strRPM);
   }
 }
 

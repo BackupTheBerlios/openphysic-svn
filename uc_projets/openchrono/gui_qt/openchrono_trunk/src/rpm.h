@@ -45,10 +45,19 @@ class Rpm : public QObject
 
     QDomElement to_node( QDomDocument &dom_doc );
 
+  signals:
+    void changed(double);
+
+  public slots:
+    void on_changed(void);
+
   private:
     double m_RPM;
     double m_RPMmax;
     double m_RPMmin;
+
+    //double m_RPMoff;
+    //double m_RPMidle;
 
   };
 

@@ -48,6 +48,7 @@ class OCView_MainWin : public OCView, public Ui::MainWin
     void UpdateData();
 
   private:
+    void showMsg(void);
     void showRPM(void);
     void showT1(void);
     void showT2(void);

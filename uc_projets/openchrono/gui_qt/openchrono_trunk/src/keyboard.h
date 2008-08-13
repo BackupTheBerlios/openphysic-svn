@@ -40,4 +40,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define B_UP Qt::Key_Up
 #define B_DOWN Qt::Key_Down
 
+#define B_TEST Qt::Key_T
+
 #endif

@@ -31,7 +31,12 @@ class Temperature : public QObject
     Q_OBJECT
 
   public:
-    Temperature( );
+    Temperature( ); // default constructor
+
+    Temperature(const Temperature &temp); // a copy constructor
+
+    Temperature &operator=(const Temperature &temp); // assignment operator
+
 
     double value(void) const; // in celcius
     void set(double const temperatureCelsius);

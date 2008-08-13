@@ -22,12 +22,26 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 //#include "engine_state.h"
 
+//#include "temperature.h"
+
 Engine::Engine(  )
 {
   setName(QLatin1String("Engine1")); // tr(?)
   set_two_strokes();
 
   //rpm.m_engine_state = &engine_state;
+
+  temperature.resize(2);
+
+  connect(&(this->rpm), SIGNAL( changed(double) ),
+          &(this->state), SLOT( change(double) ) );
+
+  connect(&(this->state), SIGNAL( changed() ),
+          this, SLOT( on_state_changed() ) );
+
+  //t = QTime(0,0,0,0);
+  //time = QTime(0,0,0,0);
+  //time.start();
 }
 
 QString Engine::name(void) const
@@ -94,10 +108,26 @@ QDomElement Engine::to_node( QDomDocument &dom_doc )
   dom_elt.appendChild( rpm.to_node(dom_doc) );
 
   QDomElement dom_temperatures = dom_doc.createElement( QLatin1String("temperatures") );
-  dom_temperatures.appendChild( temperature_1.to_node(dom_doc) );
-  dom_temperatures.appendChild( temperature_2.to_node(dom_doc) );
+  //dom_temperatures.appendChild( temperature_1.to_node(dom_doc) );
+  //dom_temperatures.appendChild( temperature_2.to_node(dom_doc) );
+  dom_temperatures.appendChild( temperature[0].to_node(dom_doc) );
+  dom_temperatures.appendChild( temperature[1].to_node(dom_doc) );
   dom_elt.appendChild(dom_temperatures);
 
   return dom_elt;
 }
 
+void Engine::on_state_changed(void)
+{
+  //std::cout << "Test engine" << std::endl;
+  //time.show();
+  if (state.off()) {
+    time.stop();
+  } else {
+    // engine on (idle or not)
+      time.start();
+  }
+  //time.show();
+  std::cout << "Engine time = " << qPrintable(time.toString()) << std::endl;
+  //std::cout << qPrintable(time.toString("hh:mm:ss.zzz")) << std::endl;
+}

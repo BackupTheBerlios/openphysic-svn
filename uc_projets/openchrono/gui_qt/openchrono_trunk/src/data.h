@@ -31,6 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "vehicule.h"
 
 //#include "logdata.h"
+#include "logtime.h"
 
 #include <iostream> // ForTest std::cout << "Test" << std::endl;
 
@@ -52,9 +53,8 @@ class Data : public QObject
     Chrono chrono;
 
     //LogData logdata;
+    LogTime logtime;
 
-
-    void test(void);
 
     // Alarms / message ToDo
     // Log des données mesurees
@@ -78,6 +78,7 @@ class Data : public QObject
     void load(void);
     void save(void);
 
+    void test(void);
 
   signals:
     void starting_first_lap(void);
@@ -90,7 +91,7 @@ class Data : public QObject
 
   };
 
-#define OC_CFG_FILE QLatin1String("openchrono.xml")
+#define OC_CFG_FILE QLatin1String("openchrono.xml") // ".openchrono.xml" or "openchrono.xml"
 #define OC_CFG_DIR QDir::homePath()
 
 

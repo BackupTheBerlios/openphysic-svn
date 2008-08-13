@@ -23,6 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <QDialog>
 #include <QKeyEvent>
+//#include <QIcon>
 
 #include <iostream>
 
@@ -40,8 +41,8 @@ class OCView : public QDialog
     void setupOCView(QDialog * win);
 
 /*
-    void setIcon(QIcon & icon);
-    void setTitle(QString str);
+    void setOCIcon(QIcon & icon);
+    void setOCTitle(QString str);
 */
 
     void set_parent(OCView * ocview);
@@ -73,6 +74,11 @@ class OCView : public QDialog
     OCView * page_brother_next;
     OCView * page_brother_previous;
     OCView * page_child_first;
+
+    //QString m_title;
+    //QIcon m_icon;
+
+  private:
 
   };
 #endif

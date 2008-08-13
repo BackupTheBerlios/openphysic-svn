@@ -1,6 +1,6 @@
 /*
 OpenChrono
-Copyright (C) 2007  Sebastien CELLES
+Copyright (C) 2008  Sebastien CELLES
  
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -75,14 +75,54 @@ int Chrono::timeval_subtract (struct timeval *result, const struct timeval *x, s
   return x->tv_sec < y->tv_sec;
 }
 
+int Chrono::timeval_add (struct timeval *result, const struct timeval *x, struct timeval *y)
+{
+  /* To Do */
+
+  memcpy(result, y, sizeof(struct timeval)); 
+}
+
 void Chrono::start(void)
 {
-  running = true;
+get_current_lap_time(); // TO FIX
+  clear(); // TO FIX
+
+  if (!running) // first start
+  {
+    running = true;
+  } else { // restart
+    update_last_and_best_lap_time();
+
+    laptime.append(current_lap_time);
+  }
+  t_lap.append(tv_initial);
 }
 
 void Chrono::stop(void)
 {
   running = false;
+}
+
+/*
+void Chrono::etap(void)
+void Chrono::etap(int nb)
+{
+
+}
+*/
+
+void Chrono::show(void)
+{
+  std::cout << "Show laptime" << std::endl;
+  for (int i = 0 ; i < laptime.count() ; ++i) {
+    std::cout << "Lap " << i << "=" << qPrintable(getStrTimeMSsXxx(laptime[i])) << std::endl;
+  }
+
+  for (int i = 1 ; i <= laptime.count() ; ++i) {
+    struct timeval tv;
+    timeval_subtract(&tv, &t_lap[i], &t_lap[i-1]);
+    std::cout << "Lap v2 " << i-1 << "=" << qPrintable(getStrTimeMSsXxx(tv)) << std::endl;
+  }
 }
 
 /*
@@ -106,7 +146,7 @@ void Chrono::clear(void)
 {
   gettimeofday(&tv_initial, NULL);
   //gettimeofday(&tv_current, NULL); // FiXeD = use memcpy
-  memcpy(&tv_current, &tv_initial, sizeof(struct timeval));
+  memcpy(&tv_current, &tv_initial, sizeof(struct timeval)); // copy from initial to current (<---)
 }
 
 bool Chrono::is_running(void)
@@ -122,6 +162,7 @@ void Chrono::get_current_time(struct timeval * time)
 }
 */
 
+
 struct timeval Chrono::get_current_lap_time(void)
   {
     if (running)
@@ -132,11 +173,13 @@ struct timeval Chrono::get_current_lap_time(void)
     return current_lap_time;
   };
 
+
+/*
 struct timeval Chrono::get_current_etap_time(void)
   {
-/* temps intermédiaire ; temps de passage ; temps partiel */
-/* split time ; etap time ; partial time */
-/* http://www.lexique-jo.org/liste4.cfm?rubrique=CYCL */
+// temps intermédiaire ; temps de passage ; temps partiel
+// split time ; etap time ; partial time
+// http://www.lexique-jo.org/liste4.cfm?rubrique=CYCL
     if (running)
       {
         gettimeofday(&tv_current, NULL);
@@ -144,6 +187,7 @@ struct timeval Chrono::get_current_etap_time(void)
     timeval_subtract(&current_etap_time, &tv_current, &tv_interm);
     return current_etap_time;
   };
+*/
 
 struct timeval Chrono::get_last_lap_time(void)
   {
@@ -178,13 +222,14 @@ QString Chrono::getStrTimeMmSsXxx(struct timeval tv)
   ptm = localtime (&tv.tv_sec);
   strftime (time_string, sizeof (time_string), "%M:%S", ptm); //"%Y-%m-%d %H:%M:%S"
   milliseconds = tv.tv_usec / 1000;
-  strTime.sprintf("%s.%03ld\n", time_string, milliseconds);
+  strTime.sprintf("%s.%03ld", time_string, milliseconds);
   return strTime;
 }
 
 QString Chrono::getStrCurrentLapTime(void)
 {
   return getStrTimeMSsXxx(get_current_lap_time());
+  //return getStrTimeMSsXxx(current_lap_time);
 }
 
 QString Chrono::getStrBestLapTime(void)
@@ -249,13 +294,8 @@ QDomElement Chrono::to_node( QDomDocument &dom_doc )
 
 void Chrono::reset(void)
 {
-  running = false;
-
-  //clear();
-  // current lap time
-  gettimeofday(&tv_initial, NULL);
-  //gettimeofday(&tv_current, NULL); // FiXeD = use memcpy
-  memcpy(&tv_current, &tv_initial, sizeof(struct timeval));
+  stop();
+  clear();
 
   // best lap time
   best_lap_time = max_lap_time();

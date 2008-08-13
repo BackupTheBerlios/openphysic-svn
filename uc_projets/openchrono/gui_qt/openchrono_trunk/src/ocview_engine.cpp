@@ -24,7 +24,7 @@ OCView_Engine::OCView_Engine()
   setupUi(this);
   setupOCView(this);
 
-  std::cout << "init view engine" << std::endl;
+  //std::cout << "init view engine" << std::endl;
 
   setWindowTitle(QApplication::translate("frmMessage", "Engine", 0, QApplication::UnicodeUTF8));
   lblTitle->setText(QApplication::translate("frmMessage", "<img src=\":/icons/openchrono.png\" width=\"32\" height=\"32\"/> Engine <img src=\":/icons/openchrono.png\" width=\"32\" height=\"32\"/>", 0, QApplication::UnicodeUTF8));

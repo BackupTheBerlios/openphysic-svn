@@ -30,6 +30,19 @@ Temperature::Temperature(  )
   set(20.0);
 }
 
+Temperature::Temperature(const Temperature &temp)
+{
+  // a copy constructor
+  m_T = temp.m_T;
+}
+
+Temperature & Temperature::operator=(const Temperature &temp)
+{
+ // assignment operator
+ m_T = temp.m_T;
+ return *this;
+}
+
 double Temperature::value(void) const
   {
     return m_T;

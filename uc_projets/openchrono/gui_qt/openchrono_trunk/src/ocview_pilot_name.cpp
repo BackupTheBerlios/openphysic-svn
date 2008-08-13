@@ -26,9 +26,11 @@ OCView_Pilot_Name::OCView_Pilot_Name(Data * data)
   setupUi(this);
   setupOCView(this);
 
+  //this->setLayout(verticalLayout);
+
   m_data=data;
 
-  std::cout << "init view pilot name" << std::endl;
+  //std::cout << "init view pilot name" << std::endl;
 
   setWindowTitle(QApplication::translate("frmPilotName", "Pilot name", 0, QApplication::UnicodeUTF8));
   lblTitle->setText(QApplication::translate("frmPilotName", "<img src=\":/icons/openchrono.png\" width=\"32\" height=\"32\"/>  Pilot name <img src=\":/icons/pilot.png\" width=\"32\" height=\"32\"/>", 0, QApplication::UnicodeUTF8));
@@ -109,24 +111,30 @@ QChar OCView_Pilot_Name::previous(QChar chr) {
   return new_chr; //chr
 }
 
+/*
+Focus
+cf QWidget
+this.focus() : QApplication::focusWidget() == this.
+*/
 
 void OCView_Pilot_Name::keyPressEvent(QKeyEvent * event)
 {
   switch ( event->key() )
     {
     case B_OK: // Ok
-      std::cout << "OK on OCView_Pilot_Name" << std::endl;
+      //std::cout << "OK on OCView_Pilot_Name" << std::endl;
       if (focus==0) {
         focus=1;
+        //text->setFocus(Qt::OtherFocusReason);
       }
       else if (focus==1) {
-        std::cout << "set pilot name" << std::endl;
+        //std::cout << "set pilot name" << std::endl;
         m_data->pilot.setName(str);
       }
       write();
       break;
     case B_CANCEL: // Cancel
-      std::cout << "CANCEL on OCView_Pilot_Name" << std::endl;
+      //std::cout << "CANCEL on OCView_Pilot_Name" << std::endl;
       if (focus==0) {
         this->activate_parent();
       }
@@ -136,7 +144,7 @@ void OCView_Pilot_Name::keyPressEvent(QKeyEvent * event)
       write();
       break;
     case B_UP:
-      std::cout << "UP on OCView_Pilot_Name" << std::endl;
+      //std::cout << "UP on OCView_Pilot_Name" << std::endl;
       if (focus==0) {
       }
       else if (focus==1) {
@@ -146,7 +154,7 @@ void OCView_Pilot_Name::keyPressEvent(QKeyEvent * event)
       //
       break;
     case B_DOWN:
-      std::cout << "DOWN on OCView_Pilot_Name" << std::endl;
+      //std::cout << "DOWN on OCView_Pilot_Name" << std::endl;
       if (focus==0) {
       }
       else if (focus==1) {
@@ -156,7 +164,7 @@ void OCView_Pilot_Name::keyPressEvent(QKeyEvent * event)
       //
       break;
     case B_LEFT:
-      std::cout << "LEFT on OCView_Pilot_Name" << std::endl;
+      //std::cout << "LEFT on OCView_Pilot_Name" << std::endl;
       if (focus==0) {
         this->activate_brother_previous();
       }
@@ -170,7 +178,7 @@ void OCView_Pilot_Name::keyPressEvent(QKeyEvent * event)
       write();
       break;
     case B_RIGHT:
-      std::cout << "RIGHT on OCView_Pilot_Name" << std::endl;
+      //std::cout << "RIGHT on OCView_Pilot_Name" << std::endl;
       if (focus==0) {
         this->activate_brother_next();
       }
@@ -186,7 +194,7 @@ void OCView_Pilot_Name::keyPressEvent(QKeyEvent * event)
     default:
       //std::cout << "UNDEF KEY on OCView_Reset_Time" << std::endl;
       //
-      std::cout << focus << std::endl;
+      //std::cout << focus << std::endl;
       write();
       break; // n'importe quelle autre touche
     }
@@ -203,7 +211,7 @@ void OCView_Pilot_Name::init(void)
   write();
 }
 
-void OCView_Pilot_Name::showEvent ( QShowEvent * event )
+void OCView_Pilot_Name::showEvent ( QShowEvent * /* event */ )
 {
   //std::cout << "OCView_Reset_Time::showEvent" << std::endl;
   init();

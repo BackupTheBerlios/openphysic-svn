@@ -117,7 +117,7 @@ TestWinImpl::~TestWinImpl()
 
 void TestWinImpl::init(void)
 {
-  SliderRPM->setValue(2000);
+  SliderRPM->setValue(0);
   SliderTemp1->setValue(51);
   SliderTemp2->setValue(52);
 }
@@ -125,8 +125,10 @@ void TestWinImpl::init(void)
 void TestWinImpl::update(void)
 {
   m_data->vehicule.engine.rpm.set(SliderRPM->value());
-  m_data->vehicule.engine.temperature_1.set(SliderTemp1->value());
-  m_data->vehicule.engine.temperature_2.set(SliderTemp2->value());
+  //m_data->vehicule.engine.temperature_1.set(SliderTemp1->value());
+  //m_data->vehicule.engine.temperature_2.set(SliderTemp2->value());
+  m_data->vehicule.engine.temperature[0].set(SliderTemp1->value());
+  m_data->vehicule.engine.temperature[1].set(SliderTemp2->value());
 }
 
 void TestWinImpl::test(void)
@@ -139,7 +141,7 @@ void TestWinImpl::test(void)
   m_logdata->show();
 }
 
-void TestWinImpl::keyPressEvent(QKeyEvent * event)
+void TestWinImpl::keyPressEvent(QKeyEvent * /* event */)
 {
   std::cout << "KeyPressed" << std::endl;
 }

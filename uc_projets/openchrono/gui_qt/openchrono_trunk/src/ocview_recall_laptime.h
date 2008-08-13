@@ -24,6 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "ui_recall_laptime.h"
 
+#include <QTreeWidget>
 
 class OCView_Recall_Laptime : public OCView, public Ui::frmRecallLaptime
   {
@@ -33,7 +34,15 @@ class OCView_Recall_Laptime : public OCView, public Ui::frmRecallLaptime
 
     virtual ~OCView_Recall_Laptime(){};
 
-  private:
+    void init(void);
+    void showEvent ( QShowEvent * /* event */ );
 
+  private:
+    //QTreeWidget * laptimeWidget;
+    void keyPressEvent(QKeyEvent * event);
+
+    void test();
+
+    int focus;
   };
 #endif

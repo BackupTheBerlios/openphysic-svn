@@ -19,8 +19,13 @@
 
 #include "logtime.h"
 
+/*
 LogTime::LogTime( Data * data )
 {
   m_data = data;
 }
+*/
 
+LogTime::LogTime( )
+{
+}

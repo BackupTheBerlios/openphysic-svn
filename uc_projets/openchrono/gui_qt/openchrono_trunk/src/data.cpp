@@ -93,6 +93,11 @@ void Data::start(void)
 void Data::test(void)
 {
   std::cout << qPrintable(tr("Test Data")) << std::endl;
+  vehicule.engine.state.show();
+  //std::cout << qPrintable(tr("Nb of temperatures = ")) << vehicule.engine.temperature.count() << std::endl;
+  //std::cout << qPrintable(tr("Temperature 1 ")) << vehicule.engine.temperature_1.value() << std::endl;
+  //std::cout << qPrintable(tr("Temperature 2 ")) << vehicule.engine.temperature_2.value() << std::endl;
+  chrono.show();
 }
 
 void Data::on_starting_first_lap(void)
@@ -103,16 +108,15 @@ void Data::on_starting_first_lap(void)
 void Data::on_new_etap(void)
 {
   std::cout << " " << qPrintable(tr("New etap")) << std::endl;
+  //chrono.etap(etap);
 }
 
 void Data::on_new_lap(void)
 {
   std::cout << qPrintable(tr("New lap")) << std::endl;
 
-  chrono.update_last_and_best_lap_time();
 
   chrono.start();
-  chrono.clear();
 }
 
 void Data::on_last_lap(void)

@@ -40,5 +40,7 @@ eraser.png     home.png       laptop_battery.svgz  README.TXT
         <file>icons/clock.svg</file>
         <file>icons/pilot.png</file>
 
+        <file>icons/best_lap.png</file>
+        <file>icons/best_etap.svg</file>
     </qresource>
 </RCC>

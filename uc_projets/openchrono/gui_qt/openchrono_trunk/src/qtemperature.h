@@ -1,6 +1,6 @@
 /*
 OpenChrono
-Copyright (C) 2007  Sebastien CELLES
+Copyright (C) 2008  Sebastien CELLES
  
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -17,53 +17,27 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-#ifndef ENGINE_STATE_H
-#define ENGINE_STATE_H
+#ifndef QTEMPERATURE_H
+#define QTEMPERATURE_H
 
-//
-#include <QObject>
-//
 
-#include <iostream>
+#include <QWidget>
+#include <QtGui>
 
-class Engine_State : public QObject
+class QTemperature : public QWidget
   {
     Q_OBJECT
+    //Q_PROPERTY(double GX READ GX WRITE setGX)
 
-  public:
-    Engine_State( );
+    public:
+      QTemperature(QWidget *parent = 0);
 
-    bool on(void);
-    bool off(void);
-    bool idle(void);
+    protected:
+      void paintEvent(QPaintEvent * event);
 
-    void switch_on(void);
-    void switch_off(void);
-    void set_to_idle(void);
-    void unset_idle(void);
+    signals:
 
-    void show(void);
-
-    int state(void);
-
-
-  signals:
-    void switched_on(void);
-    void switched_off(void);
-    void was_set_to_idle(void);
-    void was_unset_to_idle(void);
-
-
-    void changed(void); // ?
-
-
-  public slots:
-    void on_changed(void); // ?
-    void change(double RPM);
-
-  private:
-    bool m_on;
-    bool m_idle;
+    private:
   };
 
 #endif

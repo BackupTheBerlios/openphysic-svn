@@ -28,7 +28,7 @@ OCView_Reset_Time::OCView_Reset_Time(Data * data)
 
   m_data=data;
 
-  std::cout << "init view reset time" << std::endl;
+  //std::cout << "init view reset time" << std::endl;
 
   setWindowTitle(QApplication::translate("frmResetTime", "Reset time", 0, QApplication::UnicodeUTF8));
   lblTitle->setText(QApplication::translate("frmResetTime", "<img src=\":/icons/openchrono.png\" width=\"32\" height=\"32\"/> Reset time <img src=\":/icons/clock.svg\" width=\"32\" height=\"32\"/>", 0, QApplication::UnicodeUTF8));
@@ -45,6 +45,8 @@ OCView_Reset_Time::OCView_Reset_Time(Data * data)
   yes = new QListWidgetItem(tr("Yes"));
   yes->setTextAlignment(Qt::AlignCenter|Qt::AlignVCenter);
   yes->setIcon(QIcon(":/icons/eraser.png"));
+
+  answers->clear();
 
   answers->addItem(no);
   answers->addItem(yes);
@@ -72,26 +74,26 @@ void OCView_Reset_Time::keyPressEvent(QKeyEvent * event)
 {
   switch ( event->key() ) {
     case B_OK: // Ok
-      std::cout << "OK on OCView_Reset_Time" << std::endl;
+      //std::cout << "OK on OCView_Reset_Time" << std::endl;
       //std::cout << answers->currentItem() << std::endl;
       if (answers->currentItem()==no) {
-        std::cout << "no" << std::endl;
+        //std::cout << "no" << std::endl;
 	this->activate_parent();
         break;
       }
       else if (answers->currentItem()==yes) {
-        std::cout << "yes" << std::endl;
+        //std::cout << "yes" << std::endl;
 	this->activate_parent();
         m_data->reset();
         break;
       }
       break;
     case B_UP:
-      std::cout << "UP on OCView_Reset_Time" << std::endl;
+      //std::cout << "UP on OCView_Reset_Time" << std::endl;
       answers->setCurrentItem(yes);
       break;
     case B_DOWN:
-      std::cout << "DOWN on OCView_Reset_Time" << std::endl;
+      //std::cout << "DOWN on OCView_Reset_Time" << std::endl;
       answers->setCurrentItem(no);
       break;
     default: // n'importe quelle autre touche
@@ -152,7 +154,7 @@ void OCView_Reset_Time::init(void)
   answers->setCurrentItem(no);
 }
 
-void OCView_Reset_Time::showEvent ( QShowEvent * event )
+void OCView_Reset_Time::showEvent ( QShowEvent * /* event */ )
 {
   //std::cout << "OCView_Reset_Time::showEvent" << std::endl;
   init();
