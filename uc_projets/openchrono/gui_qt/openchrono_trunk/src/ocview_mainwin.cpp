@@ -112,7 +112,8 @@ void OCView_MainWin::showRPM(void)
 void OCView_MainWin::showT1(void)
 {
   QPalette palette;
-  QColor color;
+  QColor colorTxt;
+  QColor colorBack(255,255,255,0);
 
   //QGradient gradient;
   //QLinearGradient gradient(0, 0, width(), 0);
@@ -128,16 +129,18 @@ void OCView_MainWin::showT1(void)
   /* Look into the QT source for gradient qt4/src/gui/painting/brush.h & .cpp */
 
   if (m_data->vehicule.engine.temperature[0].value()>100) {
-    color = Qt::red;
+    colorTxt = Qt::red;
   } else {
-    color = Qt::black;
+    colorTxt = Qt::black;
   }
 
   //QBrush brush(color);
 
-  palette.setBrush(QPalette::WindowText, color); // text
+  palette.setBrush(QPalette::WindowText, colorTxt); // text
+
   //palette.setBrush(QPalette::Window, Qt::yellow); // background ToDo : I can't change the background of the label !
   // QPalette::Base has ever been tested !!!
+  lblTemp1->setStyleSheet("background-color: " + colorBack.name()+ ";");
 
   lblTemp1->setPalette(palette); // apply the palette to the label
 
