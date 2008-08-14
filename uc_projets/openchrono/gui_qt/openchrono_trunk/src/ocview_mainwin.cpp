@@ -129,13 +129,16 @@ void OCView_MainWin::showT1(void)
   /* Look into the QT source for gradient qt4/src/gui/painting/brush.h & .cpp */
 
   if (m_data->vehicule.engine.temperature[0].value()>=100) {
-    colorTxt = Qt::black;
+    //colorTxt = Qt::black;
     colorBack = Qt::red;
+    colorBack = colorBack.darker(120);
   } else {
-    colorTxt = Qt::black;
+    //colorTxt = Qt::black;
     //colorBack = Qt::white;
     colorBack = this->palette().color(QPalette::Window);
   }
+
+  colorTxt = QColor(255-colorBack.red(),255-colorBack.green(),255-colorBack.blue());
 
   palette.setColor(QPalette::WindowText, colorTxt); // text (setBrush or setColor)
   palette.setColor(lblTemp1->backgroundRole(), colorBack); // background
@@ -179,12 +182,15 @@ void OCView_MainWin::showT2(void)
   QColor colorBack;//(255,255,255,0);
 
   if (m_data->vehicule.engine.temperature[1].value()>=100) {
-    colorTxt = Qt::black;
+    //colorTxt = Qt::black;
     colorBack = Qt::red;
+    colorBack = colorBack.darker(120);
   } else {
-    colorTxt = Qt::black;
+    //colorTxt = Qt::black;
     colorBack = this->palette().color(QPalette::Window);
   }
+
+  colorTxt = QColor(255-colorBack.red(),255-colorBack.green(),255-colorBack.blue());
 
   palette.setColor(QPalette::WindowText, colorTxt); // text (setBrush or setColor)
   palette.setColor(lblTemp1->backgroundRole(), colorBack); // background
