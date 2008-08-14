@@ -134,10 +134,10 @@
   <widget class="QLabel" name="lbl2Temp2" >
    <property name="geometry" >
     <rect>
-     <x>84</x>
+     <x>81</x>
      <y>208</y>
-     <width>17</width>
-     <height>18</height>
+     <width>20</width>
+     <height>20</height>
     </rect>
    </property>
    <property name="sizePolicy" >
@@ -183,7 +183,7 @@
     <string>250°C</string>
    </property>
    <property name="alignment" >
-    <set>Qt::AlignCenter</set>
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
    </property>
   </widget>
   <widget class="QLabel" name="lbl2Tmp1" >
@@ -191,7 +191,7 @@
     <rect>
      <x>4</x>
      <y>208</y>
-     <width>17</width>
+     <width>21</width>
      <height>18</height>
     </rect>
    </property>
@@ -238,7 +238,7 @@
     <string>50°C</string>
    </property>
    <property name="alignment" >
-    <set>Qt::AlignCenter</set>
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
    </property>
   </widget>
   <widget class="QLabel" name="lbl2Lap" >
@@ -301,7 +301,7 @@
     <rect>
      <x>115</x>
      <y>182</y>
-     <width>38</width>
+     <width>41</width>
      <height>18</height>
     </rect>
    </property>

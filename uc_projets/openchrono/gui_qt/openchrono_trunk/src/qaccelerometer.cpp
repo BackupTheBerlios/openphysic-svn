@@ -163,10 +163,16 @@ void QAccelerometer::paintEvent(QPaintEvent * /* event */)
     painter.drawEllipse( QRectF( -g, -g, 2*g, 2*g ) );
   }
 
+  const double epsG = 0.05;
+
+  pen.setColor(Qt::gray);
+  painter.setPen(pen);
+  painter.drawLine( QPointF(-2*epsG, 0), QPointF(2*epsG, 0) );
+  painter.drawLine( QPointF(0, -2*epsG), QPointF(0, 2*epsG) );
+
   painter.setBrush(Qt::red);
   painter.setPen(Qt::red);
-  
-  const double epsG = 0.05;
+
   painter.drawEllipse( QRectF( GX()-epsG, GY()-epsG, 2*epsG, 2*epsG ) );
 
   //painter.restore();

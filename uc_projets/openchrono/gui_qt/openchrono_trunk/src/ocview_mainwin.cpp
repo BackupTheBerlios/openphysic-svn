@@ -111,9 +111,9 @@ void OCView_MainWin::showRPM(void)
 
 void OCView_MainWin::showT1(void)
 {
-  QPalette palette;
-  QColor colorTxt;
-  QColor colorBack(255,255,255,0);
+  QPalette palette = lblTemp1->palette();;
+  QColor colorTxt;//(0,0,0,0);
+  QColor colorBack;//(255,255,255,0);
 
   //QGradient gradient;
   //QLinearGradient gradient(0, 0, width(), 0);
@@ -128,20 +128,18 @@ void OCView_MainWin::showT1(void)
   //color = gradient.getColorAt(0.5); // unfortunately it doesn't exist ! ToDo
   /* Look into the QT source for gradient qt4/src/gui/painting/brush.h & .cpp */
 
-  if (m_data->vehicule.engine.temperature[0].value()>100) {
-    colorTxt = Qt::red;
+  if (m_data->vehicule.engine.temperature[0].value()>=100) {
+    colorTxt = Qt::black;
+    colorBack = Qt::red;
   } else {
     colorTxt = Qt::black;
+    //colorBack = Qt::white;
+    colorBack = this->palette().color(QPalette::Window);
   }
 
-  //QBrush brush(color);
-
-  palette.setBrush(QPalette::WindowText, colorTxt); // text
-
-  //palette.setBrush(QPalette::Window, Qt::yellow); // background ToDo : I can't change the background of the label !
-  // QPalette::Base has ever been tested !!!
-  lblTemp1->setStyleSheet("background-color: " + colorBack.name()+ ";");
-
+  palette.setColor(QPalette::WindowText, colorTxt); // text (setBrush or setColor)
+  palette.setColor(lblTemp1->backgroundRole(), colorBack); // background
+  lblTemp1->setAutoFillBackground( true );
   lblTemp1->setPalette(palette); // apply the palette to the label
 
 
@@ -158,6 +156,7 @@ void OCView_MainWin::showT1(void)
   //lblTemp1->setStyleSheet("background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #616161, stop: 0.5 #505050, stop: 0.6 #434343, stop:1 #656565);");
  
  //lblTemp1->setStyleSheet("color: #FF0000;");
+  //lblTemp1->setStyleSheet("background-color: " + colorBack.name()+ ";"); // ok
 
 /* see also QTextFormat / QTextDocument / QTextEdit
  void QTextFormat::setForeground ( const QBrush & brush )
@@ -166,19 +165,30 @@ void OCView_MainWin::showT1(void)
   
 }
 
+/*
+QPalette OCView_MainWin::TempPalette(Temperature temp, Alarm alarm)
+{
+
+}
+*/
+
 void OCView_MainWin::showT2(void)
 {
-  QPalette palette;
-  QColor color;
+  QPalette palette = lblTemp2->palette();;
+  QColor colorTxt;//(0,0,0,0);
+  QColor colorBack;//(255,255,255,0);
 
-  if (m_data->vehicule.engine.temperature[1].value()>100) {
-    color = Qt::red;
+  if (m_data->vehicule.engine.temperature[1].value()>=100) {
+    colorTxt = Qt::black;
+    colorBack = Qt::red;
   } else {
-    color = Qt::black;
+    colorTxt = Qt::black;
+    colorBack = this->palette().color(QPalette::Window);
   }
 
-  palette.setBrush(QPalette::WindowText, color); // text
-
+  palette.setColor(QPalette::WindowText, colorTxt); // text (setBrush or setColor)
+  palette.setColor(lblTemp1->backgroundRole(), colorBack); // background
+  lblTemp2->setAutoFillBackground( true );
   lblTemp2->setPalette(palette); // apply the palette to the label
 
   //lblTemp2->setText(m_data->vehicule.engine.temperature_2.getStr());
