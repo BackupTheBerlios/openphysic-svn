@@ -6,6 +6,7 @@ QT += \
   xml \
   webkit \
   network \
+  dbus \
 
 TARGET = 
 

@@ -32,13 +32,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <QtXml>
 #include <QMessageBox>
 
+
 Browser::Browser( QWidget * parent, Qt::WFlags f) : QDialog(parent, f)
 {
   setupUi(this);
 
 // url = about:blank
 
-  this->setGeometry(0,0,320,240);
+  //this->setGeometry(0,0,320,240);
   //this->setWindowFlags(Qt::SplashScreen);
   //this->setWindowFlags(Qt::Popup);
 
