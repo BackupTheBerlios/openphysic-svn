@@ -126,6 +126,9 @@ void Browser::keyPressEvent(QKeyEvent * event)
       //save();
       this->close();
       break;
+    case Qt::Key_R: /* Reload config file - just for test */
+      this->reload();
+      break;
     default: // n'importe quelle autre touche
       std::cout << "UNDEF KEY" << std::endl;
       break;
@@ -341,4 +344,13 @@ void Browser::save(void)
   file.close();
 
   std::cout << qPrintable(tr(" ")) << qPrintable(tr("Data saved")) << std::endl;
+}
+
+void Browser::reload(void)
+{
+  std::cout << qPrintable(tr("(RE)-Loading data")) << std::endl;
+
+  // ToDo clear QVector
+
+  // ToDo Load
 }

@@ -43,6 +43,7 @@ class Browser : public QDialog, public Ui::Browser
   public slots:
     void save(void);
     void load(void);
+    void reload(void);
 
   private slots:
     void update(void);
