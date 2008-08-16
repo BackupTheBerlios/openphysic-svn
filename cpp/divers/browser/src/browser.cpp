@@ -38,7 +38,7 @@ Browser::Browser( QWidget * parent, Qt::WFlags f) : QDialog(parent, f)
 
 // url = about:blank
 
-//  this->setGeometry(100,100,320,240);
+  this->setGeometry(0,0,320,240);
   //this->setWindowFlags(Qt::SplashScreen);
   //this->setWindowFlags(Qt::Popup);
 
@@ -129,6 +129,9 @@ void Browser::keyPressEvent(QKeyEvent * event)
     case Qt::Key_R: /* Reload config file - just for test */
       this->reload();
       break;
+    case Qt::Key_T: /* just for debug */
+      this->test();
+      break;
     default: // n'importe quelle autre touche
       std::cout << "UNDEF KEY" << std::endl;
       break;
@@ -145,7 +148,7 @@ void Browser::next()
 //  page = (page + 1) % url_list.count(); // next page (modulo for circular)
 }
 
-void Browser::previous()
+void Browser::previous()	
 {
   page--;
   if (page==-1)
@@ -349,8 +352,12 @@ void Browser::save(void)
 void Browser::reload(void)
 {
   std::cout << qPrintable(tr("(RE)-Loading data")) << std::endl;
+  url_list.clear();
+  load();
+}
 
-  // ToDo clear QVector
-
-  // ToDo Load
+void Browser::test(void)
+{
+  std::cout << qPrintable(tr("Test")) << std::endl;
+  std::cout << url_list.count() << std::endl;
 }

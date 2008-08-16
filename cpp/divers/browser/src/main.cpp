@@ -63,8 +63,8 @@ int main(int argc, char ** argv)
   //browser.webView->setUrl(QUrl("http://www.google.fr"));
   //browser_next.webView->setUrl(QUrl("http://www.orange.fr"));
 
-  //browser.show();
-  browser.showFullScreen();
+  browser.show();
+  //browser.showFullScreen();
 
   //browser_next.show();
 
