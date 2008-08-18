@@ -30,14 +30,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 //#include <qtopiaapplication> // QTopia
 
-//#include "mainapplicationadaptor.h"
 
 #include "browser.h"
 
 #include <iostream>
 
-#include <QtDBus> // ToDo : DBus for reloading config file
+//#include <QtDBus> // ToDo : DBus for reloading config file
 
+//#include "mainapplicationadaptor.h"
 
 int main(int argc, char ** argv)
 {

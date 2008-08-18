@@ -43,7 +43,7 @@ class MainApplicationAdaptor: public QDBusAbstractAdaptor
              MainApplicationAdaptor(QApplication *application)
                  : QDBusAbstractAdaptor(application), app(application)
              {
-                 connect(application, SIGNAL(aboutToQuit()), SIGNAL(aboutToQuit());
+                 connect(application, SIGNAL(aboutToQuit()), SIGNAL(aboutToQuit()));
                  connect(application, SIGNAL(focusChanged(QWidget*, QWidget*)),
                          SLOT(focusChangedSlot(QWidget*, QWidget*)));
              }

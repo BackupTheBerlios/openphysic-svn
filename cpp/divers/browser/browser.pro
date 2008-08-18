@@ -31,7 +31,7 @@ UI_DIR +=   build
 # Input
 HEADERS += \
   src/browser.h \
-  src/mainapplicationadaptor.h \
+#  src/mainapplicationadaptor.h \
 
 FORMS += \
   ui/browser.ui \
