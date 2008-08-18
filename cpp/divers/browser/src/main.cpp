@@ -30,6 +30,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 //#include <qtopiaapplication> // QTopia
 
+//#include "mainapplicationadaptor.h"
+
 #include "browser.h"
 
 #include <iostream>
@@ -59,6 +61,14 @@ int main(int argc, char ** argv)
   appTranslator.load(QLatin1String(":translations/")+strTrans); // avec ressource browser.qrc
   app.installTranslator(&appTranslator);
   */
+
+  /* D-Bus */
+  // create the MainApplication adaptor:
+  //new MainApplicationAdaptor(app);
+
+  // connect to D-Bus and register as an object:
+  //QDBusConnection::sessionBus().registerObject("/MainApplication", app);
+
 
   Browser browser;
   //Browser browser_next;
