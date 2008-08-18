@@ -26,7 +26,7 @@ usage()
 }
 
 PATH=/sbin:/bin:/usr/sbin:/usr/bin
-NAME=browser
+NAME=browser #browser_run_no_close.sh #browser
 DAEMON=/home/scls/openphysic/cpp/divers/browser/bin/${NAME} # /usr/sbin/${NAME}
 PIDFILE=/var/run/${NAME}.pid
 OPTIONS=""
@@ -39,11 +39,12 @@ test -x $DAEMON || exit 0
 case "$1" in
   start)
 	#log_warning_msg "Not starting Browser"
-	log_begin_msg "Starting ${DESC}... $PIDFILE"
+	log_begin_msg "Starting ${DESC}..."
 	#start-stop-daemon --start --quiet --oknodo --pidfile $PIDFILE --name browser $SSD_ARG -- $CONFIG_FILE >/dev/null 2>&1 || log_end_msg 1
 	#start-stop-daemon --start --quiet --oknodo --pidfile $PIDFILE --name browser >/dev/null 2>&1 || log_end_msg 1
-	start-stop-daemon --start --background --quiet --oknodo --exec $DAEMON -- start $OPTIONS
         #start-stop-daemon --start --quiet --oknodo ---pidfile $PIDFILE --name browser -- start $OPTIONS
+	start-stop-daemon --start --background --make-pidfile --pidfile $PIDFILE --quiet --exec $DAEMON -- start $OPTIONS
+	#pidof $NAME > $PIDFILE # use start-stop-daemon with --make-pidfile --pidfile $PIDFILE instead
 	log_end_msg $?
   ;;
   stop)
@@ -52,17 +53,25 @@ case "$1" in
 	#start-stop-daemon --stop --oknodo --quiet --exec $DAEMON -- stop
 	start-stop-daemon --stop --quiet --exec $DAEMON -- stop
 	log_end_msg $? # $?=0
-	#rm -f "$PIDFILE"
+	rm -f $PIDFILE
   ;;
-#  reload)
-#	log_begin_msg "Reloading ${DESC} configuration..."
-#	log_warning_msg "Changes will take effect when all current X sessions have ended."
-#	start-stop-daemon --stop --signal USR1 --quiet --pidfile \
-#		$PIDFILE --name gdm $SSD_ARG >/dev/null 2>&1
-#	log_end_msg 0
-#  ;;
-#  restart|force-reload)
-  restart|force-reload|reload)
+  reload)
+	log_warning_msg "Reloading ${DESC} configuration not yet implemented. Restarting daemon."
+	$0 restart
+	#
+	# If the daemon can reload its configuration without
+	# restarting (for example, when it is sent a SIGHUP),
+	# then implement that here.
+	#
+	#start-stop-daemon --stop --signal 1 --quiet --pidfile $PIDFILE --name $NAME
+	#return 0
+	#log_begin_msg "Reloading ${DESC} configuration..."
+	#start-stop-daemon --stop --signal USR1 --quiet --pidfile \
+	#	$PIDFILE --name gdm $SSD_ARG >/dev/null 2>&1
+	#log_end_msg 0
+  ;;
+
+  restart|force-reload)
 	$0 stop || true
 	#sleep 2
 	$0 start
