@@ -22,22 +22,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <Qt>
 #include <QApplication> // QT
 
-#include <QStyle>
-#include <QPlastiqueStyle> // style
-//#include <QWindowsXPStyle>
 
-//#include <QTranslator> // i18n
 
 //#include <qtopiaapplication> // QTopia
 
 
+#include "mainapplication.h"
 #include "browser.h"
 
 #include <iostream>
 
 //#include <QtDBus> // ToDo : DBus for reloading config file
 
-//#include "mainapplicationadaptor.h"
+#include "mainapplicationadaptor.h"
 
 int main(int argc, char ** argv)
 {
@@ -45,22 +42,9 @@ int main(int argc, char ** argv)
 
   /* Application */
   QApplication app( argc, argv );
+  //MainApplication app( argc, argv );
 
-  /* Style */
-  QApplication::setStyle(new QPlastiqueStyle);
 
-  //QApplication::setStyle(new QWindowsStyle); 
-  //QApplication::setStyle("QPushButton { color: white }");
-
-  /* Traduction openchrono.qrc translations/openchrono_fr_FR.qm */
-  /*
-  QTranslator appTranslator;
-  QString strTrans = QLatin1String("browser_")+QLocale::system().name();
-  std::cout << ("Translation : ") << qPrintable(strTrans) << std::endl;
-  //appTranslator.load(strTrans, qApp->applicationDirPath()+QLatin1String("/translations")); // sans ressource
-  appTranslator.load(QLatin1String(":translations/")+strTrans); // avec ressource browser.qrc
-  app.installTranslator(&appTranslator);
-  */
 
   /* D-Bus */
   // create the MainApplication adaptor:

@@ -48,6 +48,7 @@ class MainApplicationAdaptor: public QDBusAbstractAdaptor
                          SLOT(focusChangedSlot(QWidget*, QWidget*)));
              }
 
+/*
              QString caption()
              {
                  if (app->hasMainWindow())
@@ -60,6 +61,7 @@ class MainApplicationAdaptor: public QDBusAbstractAdaptor
                  if (app->hasMainWindow())
                      app->mainWindow()->setCaption(newCaption);
              }
+*/
 
              QString organizationName()
              {
@@ -75,6 +77,7 @@ class MainApplicationAdaptor: public QDBusAbstractAdaptor
              Q_NOREPLY void quit()
              { app->quit(); }
 
+/*
              void reparseConfiguration()
              { app->reparseConfiguration(); }
 
@@ -92,14 +95,16 @@ class MainApplicationAdaptor: public QDBusAbstractAdaptor
                  else
                     app->disableSessionManagement();
              }
+*/
 
          private slots:
+/*
              void focusChangedSlot(QWidget *, QWidget *now)
              {
                  if (now == app->mainWindow())
                      emit mainWindowHasFocus();
              }
-
+*/
          signals:
              void aboutToQuit();
              void mainWindowHasFocus();

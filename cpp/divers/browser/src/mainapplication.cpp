@@ -19,11 +19,44 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "mainapplication.h"
 
+#include <QStyle>
+#include <QPlastiqueStyle> // style
+//#include <QWindowsXPStyle>
+
+//#include <QTranslator> // i18n
 
 #include <iostream> // std::cout
 
+#include "browser.h"
+
 MainApplication::MainApplication(int &argc, char *argv[]) : QApplication(argc, argv)
 {
+  /* Style */
+  QApplication::setStyle(new QPlastiqueStyle);
 
+  //QApplication::setStyle(new QWindowsStyle); 
+  //QApplication::setStyle("QPushButton { color: white }");
+
+  /* Traduction openchrono.qrc translations/openchrono_fr_FR.qm */
+  /*
+  QTranslator appTranslator;
+  QString strTrans = QLatin1String("browser_")+QLocale::system().name();
+  std::cout << ("Translation : ") << qPrintable(strTrans) << std::endl;
+  //appTranslator.load(strTrans, qApp->applicationDirPath()+QLatin1String("/translations")); // sans ressource
+  appTranslator.load(QLatin1String(":translations/")+strTrans); // avec ressource browser.qrc
+  app.installTranslator(&appTranslator);
+  */
+
+/*
+  Browser browser;
+  //Browser browser_next;
+  //browser.webView->setUrl(QUrl("http://www.google.fr"));
+  //browser_next.webView->setUrl(QUrl("http://www.orange.fr"));
+
+  browser.show();
+  //browser.showFullScreen();
+
+  //browser_next.show();
+*/
 }
 
