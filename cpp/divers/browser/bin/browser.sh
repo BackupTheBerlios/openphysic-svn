@@ -42,7 +42,7 @@ case "$1" in
 	log_begin_msg "Starting ${DESC}... $PIDFILE"
 	#start-stop-daemon --start --quiet --oknodo --pidfile $PIDFILE --name browser $SSD_ARG -- $CONFIG_FILE >/dev/null 2>&1 || log_end_msg 1
 	#start-stop-daemon --start --quiet --oknodo --pidfile $PIDFILE --name browser >/dev/null 2>&1 || log_end_msg 1
-	start-stop-daemon --start --quiet --oknodo --exec $DAEMON -- start $OPTIONS
+	start-stop-daemon --start --background --quiet --oknodo --exec $DAEMON -- start $OPTIONS
         #start-stop-daemon --start --quiet --oknodo ---pidfile $PIDFILE --name browser -- start $OPTIONS
 	log_end_msg $?
   ;;
@@ -78,5 +78,6 @@ exit 0
 #  http://www.debian.org/doc/debian-policy/ch-opersys.html#s-sysvinit
 #  /etc/init.d/gdm
 #  /etc/init.d/aiccu
+#  /etc/init.d/skeleton
 #  man start-stop-daemon
 
