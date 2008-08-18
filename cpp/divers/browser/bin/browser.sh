@@ -26,11 +26,12 @@ usage()
 }
 
 PATH=/sbin:/bin:/usr/sbin:/usr/bin
-NAME=browser #browser_run_no_close.sh #browser
+NAME=browser #browser_run_no_close.sh #browser #daemonexecutablename
 DAEMON=/home/scls/openphysic/cpp/divers/browser/bin/${NAME} # /usr/sbin/${NAME}
 PIDFILE=/var/run/${NAME}.pid
 OPTIONS=""
 DESC="Browser for dynamic display (${NAME})"
+#SCRIPTNAME=/etc/init.d/$NAME
 
 test -x $DAEMON || exit 0
 
