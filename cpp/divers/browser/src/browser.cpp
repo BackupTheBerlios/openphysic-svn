@@ -50,7 +50,7 @@ Browser::Browser( QWidget * parent, Qt::WFlags f) : QDialog(parent, f)
 
   load(); // load value in ~/browser.
 
-  reset_timer();
+  play();
 
 
   //this->webView->setUrl(QUrl("about:blank"));
@@ -123,12 +123,15 @@ void Browser::keyPressEvent(QKeyEvent * event)
       previous();
       update_view();
       break;
-    case Qt::Key_Q:
+    case Qt::Key_Q: /* quit - just for test */
       //save();
-      this->close();
+      close();
       break;
     case Qt::Key_R: /* Reload config file - just for test */
-      this->reload();
+      reload();
+      break;
+    case Qt::Key_P:
+      playpause();
       break;
     case Qt::Key_T: /* just for debug */
       this->test();
@@ -158,7 +161,29 @@ void Browser::previous()
 
 void Browser::reset_timer()
 {
-  timer->start(default_interval);
+  if (m_playing) {
+    timer->start(default_interval);
+  } else {
+    timer->stop();
+  }
+}
+
+void Browser::play()
+{
+  m_playing = true;
+  reset_timer();
+}
+
+void Browser::pause()
+{
+  m_playing = false;
+  reset_timer();
+}
+
+void Browser::playpause()
+{
+  m_playing = !m_playing;
+  reset_timer();
 }
 
 

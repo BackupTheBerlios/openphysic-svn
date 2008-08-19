@@ -45,6 +45,9 @@ class Browser : public QDialog, public Ui::Browser
     void load(void);
     void reload(void);
     void test(void);
+    void play(void);
+    void pause(void);
+    void playpause(void);
 
   private slots:
     void update(void);
@@ -64,6 +67,8 @@ class Browser : public QDialog, public Ui::Browser
     void previous();
 
     void reset_timer();
+    
+    bool m_playing;
   };
 
 #define CFG_FILE QLatin1String("browser.xml")
