@@ -23,6 +23,13 @@ Devel :
 Dépendances : qt4 qtwebkit
 
 
+Relancer la lecture du fichier de conf
+bin/browser_restart.sh
+
+Rem : à distance on peut relancer la lecture du fichier de conf
+mais pas faire stop puis start
+(browser: cannot connect to X server)
+
 ToDo : Utilisation de D-Bus pour relancer la lecture du fichier de conf
 http://doc.trolltech.com/4.4/qdbus.html
 http://doc.trolltech.com/4.4/intro-to-dbus.html
