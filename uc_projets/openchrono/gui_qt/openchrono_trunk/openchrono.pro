@@ -61,7 +61,7 @@ HEADERS += \
   src/vehicule.h \
   src/qaccelerometer.h \
   src/qrpmmeter.h \
-  src/qtemperature.h \
+  src/qtemperature.h
 
 
 FORMS += \
@@ -70,7 +70,7 @@ FORMS += \
   ui/question.ui \
   ui/testwin.ui \
   ui/text.ui \
-  ui/recall_laptime.ui \
+  ui/recall_laptime.ui
 
 SOURCES += \
   src/acceleration.cpp \
@@ -101,5 +101,5 @@ SOURCES += \
   src/vehicule.cpp \
   src/qaccelerometer.cpp \
   src/qrpmmeter.cpp \
-  src/qtemperature.cpp \
+  src/qtemperature.cpp
 
