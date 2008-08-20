@@ -47,18 +47,58 @@ cmd() # show the command and execute it
 
 # ToDo : tester le nb de paramètres / erreur de syntaxe ? -> usage
 
-input=$1
-template=$2
-output=$3
+input=
+template=
+output=
+loading=
+
+#input=$1
+#template=$2
+#output=$3
 
 temp="temp.swf"
 temp2="temp2.swf"
 #temp3="temp3.swf"
 
-if [ "$#" = "3" ]; then
+while [ $# -gt 0 ]
+do
+  case $1 in
+  -i|--input)
+    input=$2
+    shift
+    ;;
+  -o|--output)
+    output=$2
+    shift
+    ;;
+  -t|--template)
+    template=$2
+    shift
+    ;;
+  -l|--loading)
+    loading=$2
+    shift
+    ;;
+  -h|--help)
+    usage
+    shift
+    ;;
+  --)
+    shift
+    break
+    ;;
+  -*)
+    echo "$SCRIPTNAME: l'option $1 est incorrecte" >&2
+    usage
+    ;;
+  *)
+    break
+    ;;
+  esac
+  shift
+done
 
-  msg "Hello"
-  cmd "touch hello"
+echo "Running: $SCRIPTNAME --input $input --output $output --template $template --loading $loading"
 
   msg "Converting the documents"
   cmd "pdf2swf -b $input $temp" && \
@@ -83,6 +123,6 @@ if [ "$#" = "3" ]; then
   msg "Remove temporary files" && \
   rm -f $temp $temp2 $temp3
 
-else
-  usage
-fi
+#else
+#  usage
+#fi
