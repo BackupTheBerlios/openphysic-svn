@@ -30,27 +30,27 @@ usage()
 
 msg()
 {
-  #if [ "$?" = "0" ]; then
+  if [ "$?" = "0" ]; then
 	echo "****** $1 ******"
-  #else
-  #  exit 1
-    #echo ""
-    #usage
-  #fi
+  else
+    exit 1
+    echo ""
+    usage
+  fi
 }
 
 cmd() # show the command and execute it
 {
 	echo " > $1"
-	`$1`
+	eval $1
 }
 
 # ToDo : tester le nb de paramètres / erreur de syntaxe ? -> usage
 
-input=
-template=
-output=
-loading=
+input=""
+template=""
+output=""
+loading=""
 
 #input=$1
 #template=$2
@@ -100,29 +100,34 @@ done
 
 echo "Running: $SCRIPTNAME --input $input --output $output --template $template --loading $loading"
 
-  msg "Converting the documents"
-  cmd "pdf2swf -b $input $temp" && \
+
+if [ -n "$input" ]; then
+  msg "Converting the documents" && \
+  cmd "pdf2swf -b $input $temp"
 
   msg "Linking a viewer" && \
   swfcombine -o $temp2 $template viewport=$temp && \
 
-  msg "Linking a Preloader" && \
-  preloader="PreLoader.swf" && \ # preloader
-  loading="loading.swf" && \ # loading animation
-  #swfcombine -o $temp2 $preloader loader=$loading movie=$temp2 && \
-  swfcombine -o $temp2 $preloader -x 3000 -y 3000 loader=$loading movie=$temp2 && \ 
+  if [ -n "$loading" ]; then
+    msg "Linking a Preloader" && \
+    preloader="PreLoader.swf" && \ # preloader
+    #loading="loading.swf" && \ # loading animation
+    #swfcombine -o $temp2 $preloader loader=$loading movie=$temp2 && \
+    swfcombine -o $temp2 $preloader -x 3000 -y 3000 loader=$loading movie=$temp2 && \ 
   #cp $temp2 $temp3 && \
+  fi
 
   msg "Correcting the size and framerate" && \
   swfcombine --dummy `swfdump -XY temp.swf` $temp2 -o $output && \
 
   msg "Embedding the SWF into a html page" && \
   #echo "Copy/paste it in your HTML code"
-  swfdump --html $output && \
+  swfdump --html $output
+
 
   msg "Remove temporary files" && \
   rm -f $temp $temp2 $temp3
 
-#else
-#  usage
-#fi
+else
+  usage
+fi
