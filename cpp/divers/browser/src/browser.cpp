@@ -50,7 +50,7 @@ Browser::Browser( QWidget * parent, Qt::WFlags f) : QDialog(parent, f)
 
   load(); // load value in ~/browser.
 
-  play();
+  //play();
   //pause();
   
   //gotopage(2);
@@ -65,18 +65,20 @@ Browser::Browser( QWidget * parent, Qt::WFlags f) : QDialog(parent, f)
 //webView_2->hide();
 
 
-  page=url_list.count()-1;
+  //page=url_list.count()-1;
 
   //std::cout << "page=" << page << std::endl;
 
 
-  update();
+  //update();
   
   //play();
   //pause();
   
   //gotopage(-1);
+  //pause();
   gotopage(0);
+  play();
   //gotopage(2);
   //gotopage(5);
   //gotopage(6);  
@@ -185,19 +187,21 @@ void Browser::previous()
 void Browser::reset_timer()
 {
   if (m_playing) {
+    std::cout << "play" << std::endl;
     timer->start(default_interval);
   } else {
+    std::cout << "pause" << std::endl;
     timer->stop();
   }
 }
 
-void Browser::play()
+void Browser::play(void)
 {
   m_playing = true;
   reset_timer();
 }
 
-void Browser::pause()
+void Browser::pause(void)
 {
   m_playing = false;
   reset_timer();
