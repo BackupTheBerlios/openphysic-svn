@@ -39,9 +39,9 @@ Browser::Browser( QWidget * parent, Qt::WFlags f) : QDialog(parent, f)
 
 // url = about:blank
 
-  //this->setGeometry(0,0,320,240);
-  //this->setWindowFlags(Qt::SplashScreen);
-  //this->setWindowFlags(Qt::Popup);
+  //setGeometry(0,0,320,240);
+  //setWindowFlags(Qt::SplashScreen);
+  //setWindowFlags(Qt::Popup);
 
 
   timer = new QTimer(this);
@@ -51,23 +51,35 @@ Browser::Browser( QWidget * parent, Qt::WFlags f) : QDialog(parent, f)
   load(); // load value in ~/browser.
 
   play();
+  //pause();
+  
+  //gotopage(2);
 
+  //webView->setUrl(QUrl("about:blank"));
+  //webView->setUrl(QUrl("http://acid3.acidtests.org"));
+  //webView->setUrl(QUrl("http://www.google.fr"));
+  //webView->setUrl(QUrl("http://www.orange.fr"));
 
-  //this->webView->setUrl(QUrl("about:blank"));
-  //this->webView->setUrl(QUrl("http://acid3.acidtests.org"));
-  //this->webView->setUrl(QUrl("http://www.google.fr"));
-  //this->webView->setUrl(QUrl("http://www.orange.fr"));
+//webView->load(QUrl("http://www.trolltech.com/"));
 
-//this->webView->load(QUrl("http://www.trolltech.com/"));
-
-//this->webView_2->hide();
+//webView_2->hide();
 
 
   page=url_list.count()-1;
 
   //std::cout << "page=" << page << std::endl;
 
-  this->update();
+
+  update();
+  
+  //play();
+  //pause();
+  
+  //gotopage(-1);
+  gotopage(0);
+  //gotopage(2);
+  //gotopage(5);
+  //gotopage(6);  
 }
 
 
@@ -87,7 +99,7 @@ void Browser::update(void)
 
 void Browser::update_view(void)
 {
-  this->webView->load(url_list[page]);
+  webView->load(url_list[page]);
 }
 
 /*
@@ -106,22 +118,29 @@ QUrl Browser::url() const
 }
 */
 
+void Browser::nextpage(void)
+{
+  reset_timer();
+  next();
+  update_view();
+}
+
+void Browser::previouspage(void)
+{
+ reset_timer();
+ previous();
+ update_view(); 
+}
 
 void Browser::keyPressEvent(QKeyEvent * event)
 {
   switch ( event->key() )
     {
     case Qt::Key_Plus:
-      //std::cout << "next" << std::endl;
-      reset_timer();
-      next();
-      update_view();
+      nextpage();
       break;
     case Qt::Key_Minus:
-      //std::cout << "previous" << std::endl;
-      reset_timer();
-      previous();
-      update_view();
+      previouspage();
       break;
     case Qt::Key_Q: /* quit - just for test */
       //save();
@@ -134,7 +153,7 @@ void Browser::keyPressEvent(QKeyEvent * event)
       playpause();
       break;
     case Qt::Key_T: /* just for debug */
-      this->test();
+      test();
       break;
     default: // n'importe quelle autre touche
       std::cout << "UNDEF KEY" << std::endl;
@@ -145,6 +164,8 @@ void Browser::keyPressEvent(QKeyEvent * event)
 
 void Browser::next()
 {
+  //std::cout << "next" << std::endl;
+
   page++;
   if (page==url_list.count())
     page=0;
@@ -154,6 +175,8 @@ void Browser::next()
 
 void Browser::previous()	
 {
+  //std::cout << "previous" << std::endl;
+
   page--;
   if (page==-1)
     page=url_list.count()-1;
@@ -185,6 +208,30 @@ void Browser::playpause()
   m_playing = !m_playing;
   reset_timer();
 }
+
+
+int Browser::gotopage(int new_page)
+{
+  if (new_page<url_list.count() && new_page>=0) {
+    page=new_page;
+    update_view();
+    return 0; // ok  
+  } else {
+  	// + return to first page
+  	//page=0;
+  	//update_view();
+  	
+  	// + nothing is done
+    return 1; // erreur page inexistante
+  }
+}
+
+/*
+int Browser::page()
+{
+  return page;
+}
+*/
 
 
 void Browser::load(void)
@@ -355,8 +402,8 @@ void Browser::save(void)
   doc.appendChild(doc.createTextNode(QLatin1String("\n"))); // for nicer output
 
   QDomElement root = doc.createElement(QLatin1String("browser")); // racine
-  root.setAttribute( QLatin1String("timer"), this->timer->interval() );
-  //std::cout << "timer=" << this->timer->interval() << std::endl;
+  root.setAttribute( QLatin1String("timer"), timer->interval() );
+  //std::cout << "timer=" << timer->interval() << std::endl;
 
   doc.appendChild(root);
 

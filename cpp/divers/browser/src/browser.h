@@ -43,17 +43,25 @@ class Browser : public QDialog, public Ui::Browser
   public slots:
     void save(void);
     void load(void);
+    
     void reload(void);
+
     void test(void);
+
     void play(void);
     void pause(void);
     void playpause(void);
+    void nextpage(void);
+    void previouspage(void);
+    int gotopage(int page); // set
+    //int page(); // get
 
   private slots:
     void update(void);
-    void update_view(void);
 
   private:
+    void update_view(void);
+    
     QTimer * timer;
     int default_interval;
 
