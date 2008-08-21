@@ -122,6 +122,7 @@ echo "Running: $SCRIPTNAME --input $input --output $output --template $template 
 if [ -n "$input" ]; then
 
 # get input extension (.ppt .odt ... ?)
+# convert it to lower case
 
 inputext="ppt"
 #echo <filename> | grep -o '\.[^.]*$'
