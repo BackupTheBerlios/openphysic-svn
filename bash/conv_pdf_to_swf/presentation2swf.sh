@@ -47,6 +47,22 @@ cmd() # show the command and execute it
   fi
 }
 
+#function namename()
+#{
+#  local name=${1##*/}
+#  local name0="${name%.*}"
+#  echo "${name0:-$name}"
+#}
+
+#function ext()
+#{
+#  local name=${1##*/}
+#  local name0="${name%.*}"
+#  local ext=${name0:+${name#$name0}}
+#  echo "${ext:-.}"
+#}
+
+
 # ToDo : tester le nb de paramètres / erreur de syntaxe ? -> usage
 
 input=""
@@ -104,12 +120,23 @@ echo "Running: $SCRIPTNAME --input $input --output $output --template $template 
 
 
 if [ -n "$input" ]; then
-  msg "Convert the presentation to a .pdf file"
-  cmd "unoconv -f pdf $input"
+
+# get input extension (.ppt .odt ... ?)
+
+inputext="ppt"
+#echo <filename> | grep -o '\.[^.]*$'
+inputext=`echo $input | grep -o '\.[^.]*$'`
+
+  msg "Convert the .$inputext presentation to a .pdf file"
+#exit 1
+  #cmd "ooffice"
+  #cmd "unoconv -f pdf $input"
+
 
   msg "Converting the documents"
-  cmd "pdf2swf -b `basename $input .odp`.pdf $temp" # TO FIX : get file extension of $input
-
+  #cmd "pdf2swf -b `basename $input .odp`.pdf $temp" # TO FIX : get file extension of $input
+  cmd "pdf2swf -b `basename $input .$inputext`.pdf $temp" # TO FIX : get file extension of $input
+exit 1
   msg "Linking a viewer"
   cmd "swfcombine -o $temp2 $template viewport=$temp"
 
@@ -136,3 +163,4 @@ if [ -n "$input" ]; then
 else
   usage
 fi
+
