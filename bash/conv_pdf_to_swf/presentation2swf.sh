@@ -35,6 +35,7 @@ usage()
 
 msg()
 {
+  echo ""
   echo "****** $1 ******"
 }
 
@@ -43,7 +44,7 @@ cmd() # show the command and execute it
   echo " > $1"
   eval $1
   if [ "$?" != "0" ]; then
-    echo " !!!! Error - script stopped !!!!"
+    echo " !!!! Error - script $SCRIPTNAME stopped !!!!"
     exit 1 # stop the script in case of error
   fi
 }
@@ -63,6 +64,14 @@ cmd() # show the command and execute it
 #  echo "${ext:-.}"
 #}
 
+
+toLower() {
+  echo $1 | tr "[:upper:]" "[:lower:]" 
+} 
+
+toUpper() {
+  echo $1 | tr "[:lower:]" "[:upper:]" 
+} 
 
 # ToDo : tester le nb de paramètres / erreur de syntaxe ? -> usage
 
@@ -118,26 +127,23 @@ do
 done
 
 echo "Running: $SCRIPTNAME --input $input --output $output --template $template --loading $loading"
-
+echo ""
 
 if [ -n "$input" ]; then
 
-# get input extension (.ppt .odt ... ?)
-# convert it to lower case
+# get input extension (.ppt .odt ... ?) and convert it to lower case
 
-#inputext="odp"
 inputext="${input##*.}" #"ppt"
-#inputext=${input/*./} #"ppt"
-#echo <filename> | grep -o '\.[^.]*$'
-#inputext=`echo $input | grep -o '\.[^.]*$'`
+inputext="`toLower $inputext`"
 
+if [ $inputext != "pdf" ]; then
   msg "Convert the .$inputext presentation to a .pdf file"
 #exit 1
   #cmd "ooffice" # ooffice must be running before running unoconv
   cmd "unoconv -f pdf $input"
+fi
 
-
-  msg "Converting the documents"
+  msg "Converting $input document to `basename $input .$inputext`.pdf"
   #cmd "pdf2swf -b `basename $input .odp`.pdf $temp" # TO FIX : get file extension of $input
   cmd "pdf2swf -b `basename $input .$inputext`.pdf $temp" # TO FIX : get file extension of $input
 #exit 1
@@ -146,7 +152,8 @@ inputext="${input##*.}" #"ppt"
 
   if [ -n "$loading" ]; then
     msg "Linking a Preloader"
-    preloader="PreLoader.swf" # preloader
+    #preloader="PreLoader.swf" # preloader
+    preloader="/usr/share/swftools/swfs/PreLoaderTemplate.swf"
     #loading="loading.swf" loading animation
     #swfcombine -o $temp2 $preloader loader=$loading movie=$temp2
     cmd "swfcombine -o $temp2 $preloader -x 3000 -y 3000 loader=$loading movie=$temp2"

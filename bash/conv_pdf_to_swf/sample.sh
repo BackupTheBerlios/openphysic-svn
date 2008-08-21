@@ -14,6 +14,7 @@
 
 msg()
 {
+  echo ""
   echo "========== $1 =========="
 }
 
@@ -22,17 +23,20 @@ cmd() # show the command and execute it
   echo " >> $1"
   eval $1
   if [ "$?" != "0" ]; then
-    echo " !!!! Error - test script stopped !!!!"
+    echo " !!!! Error - script $SCRIPTNAME stopped !!!!"
     exit 1 # stop the script in case of error
   fi
 }
 
-input=sample.ppt #odp #.odp .ppt
-output=sample.swf
+input="sample.pdf" #pdf #odp #.odp .ppt
+output="sample.swf"
+template="/usr/local/share/swftools/swfs/default_viewer.swf" # /usr/local/share/swftools/... or /usr/share/swftools/...
+loader="/usr/local/share/swftools/swfs/default_loader.swf" #loading.swf
 
 msg "Convert $input presentation to $output browsable .swf Flash file"
 #cmd "./presentation2swf.sh -i $input -o $output -t SimpleViewer.swf -l loading.swf"
-cmd "./presentation2swf.sh -i $input -o $output -t rfxview.swf -l loading.swf"
+#cmd "./presentation2swf.sh -i $input -o $output -t $template -l $loader"
+cmd "./presentation2swf.sh -i $input -o $output -t $template"
 
 #msg "Convert from .ppt"
 #cmd "./presentation2swf.sh -i sample.ppt -o $output -t SimpleViewer.swf -l loading.swf"
