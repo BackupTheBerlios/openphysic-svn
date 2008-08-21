@@ -36,14 +36,15 @@ output=sample.swf
 #msg "Convert from .ppt"
 #cmd "./presentation2swf.sh -i sample.ppt -o sample.swf -t SimpleViewer.swf -l loading.swf"
 
-msg "Make an HTML file"
+msg "Make an HTML file with"
 cmd "swfdump --html $output > object.html" # ToDo insert it in html code bellow
 html='<html>
   <head>
     <title>index.html</title>
   </head>
   <body>
-    <h1>Test page</h1>
+<!--    <h1>'$output'</h1> -->
+'`swfdump --html $output`.'
   </body>
 </html>'
 
