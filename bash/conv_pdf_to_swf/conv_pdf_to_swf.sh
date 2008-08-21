@@ -21,7 +21,8 @@ SCRIPTNAME=`basename $0`
 usage()
 {
 	echo $DESC >&2
-	echo "Usage: $SCRIPTNAME input.pdf template.swf output.swf" >&2
+	echo "Usage: $SCRIPTNAME -i input.pdf [-t template.swf] [-o output.swf] [-l loading.swf]" >&2
+	#echo "Usage: $SCRIPTNAME input.pdf template.swf output.swf" >&2
 	#echo "Usage: $SCRIPTNAME -i input.pdf [-t template.swf] [-o output.swf] [-l loading.swf]" >&2 # ToDo getopts
         #http://doc.msieurx.fr/scripts_bash_howto.htm
 	exit 3

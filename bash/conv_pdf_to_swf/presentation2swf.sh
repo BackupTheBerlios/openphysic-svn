@@ -25,9 +25,9 @@ SCRIPTNAME=`basename $0`
 usage()
 {
 	echo $DESC >&2
-	echo "Usage: $SCRIPTNAME inputfile template.swf output.swf" >&2
-        echo " inputfile can be a .pps/.ppt MS Powerpoint file or a .odt OpenOffice Impress file"
-	#echo "Usage: $SCRIPTNAME -i inputfile [-t template.swf] [-o output.swf] [-l loading.swf]" >&2 # ToDo getopts
+	#echo "Usage: $SCRIPTNAME inputfile template.swf output.swf" >&2
+	echo "Usage: $SCRIPTNAME -i inputfile [-t template.swf] [-o output.swf] [-l loading.swf]" >&2 # ToDo getopts
+        echo " inputfile can be a .pps/.ppt MS Powerpoint file or a .odt OpenOffice Impress file" >&2
         #http://doc.msieurx.fr/scripts_bash_howto.htm
 	exit 3
         # ./conv_pdf_to_swf.sh gte.pdf SimpleViewer.swf gte.swf
@@ -35,19 +35,17 @@ usage()
 
 msg()
 {
-  if [ "$?" = "0" ]; then
-	echo "****** $1 ******"
-  else
-    exit 1
-    echo ""
-    usage
-  fi
+  echo "****** $1 ******"
 }
 
 cmd() # show the command and execute it
 {
-	echo " > $1"
-	eval $1
+  echo " > $1"
+  eval $1
+  if [ "$?" != "0" ]; then
+    echo " !!!! Error - script stopped !!!!"
+    exit 1 # stop the script in case of error
+  fi
 }
 
 # ToDo : tester le nb de paramètres / erreur de syntaxe ? -> usage
@@ -107,31 +105,34 @@ echo "Running: $SCRIPTNAME --input $input --output $output --template $template 
 
 
 if [ -n "$input" ]; then
-  msg "Converting the documents" && \
-  cmd "pdf2swf -b $input $temp"
+  msg "Convert the presentation to a .pdf file"
+  cmd "unoconv -f pdf $input"
 
-  msg "Linking a viewer" && \
-  swfcombine -o $temp2 $template viewport=$temp && \
+  msg "Converting the documents"
+  cmd "pdf2swf -b `basename $input`.pdf $temp"
+
+  msg "Linking a viewer"
+  cmd "swfcombine -o $temp2 $template viewport=$temp"
 
   if [ -n "$loading" ]; then
-    msg "Linking a Preloader" && \
-    preloader="PreLoader.swf" && \ # preloader
-    #loading="loading.swf" && \ # loading animation
-    #swfcombine -o $temp2 $preloader loader=$loading movie=$temp2 && \
-    swfcombine -o $temp2 $preloader -x 3000 -y 3000 loader=$loading movie=$temp2 && \ 
-  #cp $temp2 $temp3 && \
+    msg "Linking a Preloader"
+    preloader="PreLoader.swf" # preloader
+    #loading="loading.swf" loading animation
+    #swfcombine -o $temp2 $preloader loader=$loading movie=$temp2
+    cmd "swfcombine -o $temp2 $preloader -x 3000 -y 3000 loader=$loading movie=$temp2"
+  #cp $temp2 $temp3
   fi
 
-  msg "Correcting the size and framerate" && \
-  swfcombine --dummy `swfdump -XY temp.swf` $temp2 -o $output && \
+  msg "Correcting the size and framerate"
+  cmd "swfcombine --dummy `swfdump -XY temp.swf` $temp2 -o $output"
 
-  msg "Embedding the SWF into a html page" && \
-  #echo "Copy/paste it in your HTML code"
-  swfdump --html $output
+  msg "Embedding the SWF into a html page"
+  echo "Copy/paste it in your HTML code"
+  cmd "swfdump --html $output"
 
 
-  msg "Remove temporary files" && \
-  rm -f $temp $temp2 $temp3
+  msg "Remove temporary files"
+  cmd "rm -f $temp $temp2 $temp3"
 
 else
   usage
