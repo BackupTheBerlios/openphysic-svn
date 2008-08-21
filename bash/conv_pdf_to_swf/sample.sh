@@ -27,6 +27,9 @@ cmd() # show the command and execute it
   fi
 }
 
+input=sample.odp #.odp .ppt
+output=sample.swf
+
 #msg "Convert from .odp"
 #cmd "./presentation2swf.sh -i sample.odp -o sample.swf -t SimpleViewer.swf -l loading.swf"
 
@@ -34,6 +37,7 @@ cmd() # show the command and execute it
 #cmd "./presentation2swf.sh -i sample.ppt -o sample.swf -t SimpleViewer.swf -l loading.swf"
 
 msg "Make an HTML file"
+cmd "swfdump --html $output > object.html"
 html='<html>
   <head>
     <title>index.html</title>
@@ -43,17 +47,17 @@ html='<html>
   </body>
 </html>'
 
-url="/home/scls/openphysic/bash/conv_pdf_to_swf/index.htm" # ToFix get current dir (getcwd ? getwd ?)
+url="`pwd`/index.htm" #pwd=print working directory
 echo "$html" > $url
 cat $url
 
 
 msg "Show it with default browser"
-#cmd "xdg-open file://$url"
-cmd "firefox file://$url"
+cmd "xdg-open file://$url"
+#cmd "firefox file://$url"
 
 
-#msg "Remove temporary files"
-#cmd "rm -f filetoremove"
+msg "Remove temporary files"
+#cmd "rm -f object.html"
 
 
