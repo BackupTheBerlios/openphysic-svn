@@ -10,6 +10,8 @@
 #   http://www.swftools.org/
 #   http://www.swftools.org/pdf2swf_usage.html
 #   http://www.quiss.org/swftools/pdf2swf_usage.html
+# Required-files :
+#  preloader.swf
 # Description:
 #   Convert a presentation to a browsable .swf
 #   The presentation file is converted to a .pdf file
@@ -106,7 +108,7 @@ if [ -n "$input" ]; then
   cmd "unoconv -f pdf $input"
 
   msg "Converting the documents"
-  cmd "pdf2swf -b `basename $input .odp`.pdf $temp" # TO FIX
+  cmd "pdf2swf -b `basename $input .odp`.pdf $temp" # TO FIX : get file extension of $input
 
   msg "Linking a viewer"
   cmd "swfcombine -o $temp2 $template viewport=$temp"
@@ -123,9 +125,9 @@ if [ -n "$input" ]; then
   msg "Correcting the size and framerate"
   cmd "swfcombine --dummy `swfdump -XY temp.swf` $temp2 -o $output"
 
-  msg "Embedding the SWF into a html page"
-  echo "Copy/paste it in your HTML code"
-  cmd "swfdump --html $output"
+  #msg "Embedding the SWF into a html page"
+  #echo "Copy/paste it in your HTML code"
+  #cmd "swfdump --html $output"
 
 
   msg "Remove temporary files"
