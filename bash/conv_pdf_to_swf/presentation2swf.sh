@@ -25,12 +25,9 @@ SCRIPTNAME=`basename $0`
 usage()
 {
 	echo $DESC >&2
-	#echo "Usage: $SCRIPTNAME inputfile template.swf output.swf" >&2
 	echo "Usage: $SCRIPTNAME -i inputfile [-t template.swf] [-o output.swf] [-l loading.swf]" >&2 # ToDo getopts
         echo " inputfile can be a .pps/.ppt MS Powerpoint file or a .odt OpenOffice Impress file" >&2
-        #http://doc.msieurx.fr/scripts_bash_howto.htm
-	exit 3
-        # ./conv_pdf_to_swf.sh gte.pdf SimpleViewer.swf gte.swf
+ 	exit 3
 }
 
 msg()
@@ -109,7 +106,7 @@ if [ -n "$input" ]; then
   cmd "unoconv -f pdf $input"
 
   msg "Converting the documents"
-  cmd "pdf2swf -b `basename $input`.pdf $temp"
+  cmd "pdf2swf -b `basename $input .odp`.pdf $temp" # TO FIX
 
   msg "Linking a viewer"
   cmd "swfcombine -o $temp2 $template viewport=$temp"
