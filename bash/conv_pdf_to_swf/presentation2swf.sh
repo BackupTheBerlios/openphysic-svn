@@ -5,6 +5,7 @@
 # Required-packages :
 #  unoconv
 #   (convert pps/ppt or odp to pdf)  
+#   http://dag.wieers.com/home-made/unoconv/
 #  swftools
 #   (convert pdf to swf)
 #   http://www.swftools.org/
@@ -124,20 +125,22 @@ if [ -n "$input" ]; then
 # get input extension (.ppt .odt ... ?)
 # convert it to lower case
 
-inputext="ppt"
+#inputext="odp"
+inputext="${input##*.}" #"ppt"
+#inputext=${input/*./} #"ppt"
 #echo <filename> | grep -o '\.[^.]*$'
-inputext=`echo $input | grep -o '\.[^.]*$'`
+#inputext=`echo $input | grep -o '\.[^.]*$'`
 
   msg "Convert the .$inputext presentation to a .pdf file"
 #exit 1
-  #cmd "ooffice"
-  #cmd "unoconv -f pdf $input"
+  #cmd "ooffice" # ooffice must be running before running unoconv
+  cmd "unoconv -f pdf $input"
 
 
   msg "Converting the documents"
   #cmd "pdf2swf -b `basename $input .odp`.pdf $temp" # TO FIX : get file extension of $input
   cmd "pdf2swf -b `basename $input .$inputext`.pdf $temp" # TO FIX : get file extension of $input
-exit 1
+#exit 1
   msg "Linking a viewer"
   cmd "swfcombine -o $temp2 $template viewport=$temp"
 

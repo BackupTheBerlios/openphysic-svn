@@ -27,11 +27,12 @@ cmd() # show the command and execute it
   fi
 }
 
-input=sample.odp #odp #.odp .ppt
+input=sample.ppt #odp #.odp .ppt
 output=sample.swf
 
 msg "Convert $input presentation to $output browsable .swf Flash file"
-cmd "./presentation2swf.sh -i $input -o $output -t SimpleViewer.swf -l loading.swf"
+#cmd "./presentation2swf.sh -i $input -o $output -t SimpleViewer.swf -l loading.swf"
+cmd "./presentation2swf.sh -i $input -o $output -t rfxview.swf -l loading.swf"
 
 #msg "Convert from .ppt"
 #cmd "./presentation2swf.sh -i sample.ppt -o $output -t SimpleViewer.swf -l loading.swf"
