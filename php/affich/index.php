@@ -24,7 +24,7 @@ class pages {
   }
 
   public function __destruct() {
-    echo "DESTRUCT";
+    //echo "DESTRUCT";
   }
 
 /*
@@ -81,11 +81,11 @@ function Redirect()
 }
 // --></script>\n";
 
-    echo "Show page n $this->i : {$this->liste[$this->i]}<br>\n";
+    //echo "Show page n $this->i : {$this->liste[$this->i]}<br>\n";
     include $this->liste[$this->i];
 
-    echo "<a href='$url_next'>Page suivante<br></a>\n";
-    echo "<a href='$url_previous'>Page pr&eacute;c&eacute;dente<br></a>\n";
+    //echo "<a href='$url_next'>Page suivante<br></a>\n";
+    //echo "<a href='$url_previous'>Page pr&eacute;c&eacute;dente<br></a>\n";
 
   }
 
