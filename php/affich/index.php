@@ -70,15 +70,22 @@ class pages {
 */
 
   private function show() {
-    echo "Show page n $this->i : {$this->liste[$this->i]}<br>\n";
-    include $this->liste[$this->i];
-    //$this->goto_next_page();
     $url_next= "{$_SERVER['PHP_SELF']}?page=" . $this->get_next_i();
     $url_previous= "{$_SERVER['PHP_SELF']}?page=" . $this->get_previous_i();
-    $_POST['page']=2;
+
+    echo "<script type=\"text/javascript\"><!--
+setTimeout('Redirect()',4000);
+function Redirect()
+{
+ location.href = '$url_next';
+}
+// --></script>\n";
+
+    echo "Show page n $this->i : {$this->liste[$this->i]}<br>\n";
+    include $this->liste[$this->i];
+
     echo "<a href='$url_next'>Page suivante<br></a>\n";
     echo "<a href='$url_previous'>Page pr&eacute;c&eacute;dente<br></a>\n";
-
 
   }
 
