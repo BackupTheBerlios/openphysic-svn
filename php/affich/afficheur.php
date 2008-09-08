@@ -103,7 +103,6 @@ function Redirect()
   }
 }
 
-
 $list = new pages(
   array(
     "page0.php",
@@ -111,8 +110,6 @@ $list = new pages(
     "page2.php?param1=1",
     "page3.php")
 );
-
- //    page2.php?param=blabla,
 
 $page=$_GET['page'];
 if (!is_numeric($page)) {
