@@ -70,9 +70,15 @@ class pages {
 */
 
   private function show() {
+    //echo $_GET['page'];
+    //echo "<pre>".print_r($this->liste, false)."</pre>";
+    //echo "<br>\n";
+    //echo print_r($_GET);
+
     $url_next= "{$_SERVER['PHP_SELF']}?page=" . $this->get_next_i();
     $url_previous= "{$_SERVER['PHP_SELF']}?page=" . $this->get_previous_i();
 
+/*
     echo "<script type=\"text/javascript\"><!--
 setTimeout('Redirect()',4000);
 function Redirect()
@@ -80,12 +86,28 @@ function Redirect()
  location.href = '$url_next';
 }
 // --></script>\n";
+*/
 
     //echo "Show page n $this->i : {$this->liste[$this->i]}<br>\n";
-    include $this->liste[$this->i];
+    $url_include = $this->liste[$this->i]['url'];
 
-    //echo "<a href='$url_next'>Page suivante<br></a>\n";
-    //echo "<a href='$url_previous'>Page pr&eacute;c&eacute;dente<br></a>\n";
+    if ( ! count($this->liste[$this->i]['params']) == 0 ) {
+/*
+	for ($i=0;$i<count($this->liste[$this->i]['params']);$i++) {
+          echo "param $i : {$this->liste[$this->i]['params'][$i]}<br>\n";
+        }
+*/
+        foreach ($this->liste[$this->i]['params'] as $param => $valeur) {
+          echo "Key: $param; Value: $valeur<br />\n";
+	  $param=$valeur;
+          //$_GET['param1']=$valeur;
+          //echo print_r($_GET);
+        }
+    }
+    include $url_include;
+
+    echo "<a href='$url_next'>Page suivante<br></a>\n";
+    echo "<a href='$url_previous'>Page pr&eacute;c&eacute;dente<br></a>\n";
 
   }
 
@@ -111,12 +133,14 @@ $list->set_pages(
 
 $list = new pages(
   array(
-    "page0.php",
-    "page1.php",
-    "page2.php",
-    "page3.php"
+    array(url=>"page0.php"),
+    array(url=>"page1.php"),
+    array(url=>"page2.php", params=>array(param1=>1, param2=>2)),
+    array(url=>"page3.php")
   )
 );
+
+ //    page2.php?param=blabla,
 
 $page=$_GET['page'];
 if (!is_numeric($page)) {
