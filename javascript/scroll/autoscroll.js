@@ -6,10 +6,10 @@ var step=5;
 
 var obj=null;
 
-function pageScroll() {
-  scrolldelay = setTimeout('pageScroll()', delay); // scrolls every 1000 milliseconds
+function pageScroll(new_obj) {
+  scrolldelay = setTimeout('pageScroll(obj)', delay); // scrolls every xxx milliseconds
 
-  set_scrollable(document.body);
+  obj=new_obj;
 
   if (scroll) {
     if ( bottom() )
@@ -44,6 +44,3 @@ function top()
   }
 }
 
-function set_scrollable(new_obj) {
-  obj=new_obj;
-}
