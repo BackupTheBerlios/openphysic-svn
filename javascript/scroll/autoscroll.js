@@ -18,6 +18,10 @@ function pageScroll(new_obj) {
   scrolldelay = setTimeout('pageScroll(obj)', delay); // scrolls every xxx milliseconds
 
   obj=new_obj;
+  //obj=document.body;
+  //obj=document.getElementById('mydata').src;
+
+  //alert('objet autoscroll "'+obj.value+"'")
 
   if (scroll) {
     if ( bottom() ) {
