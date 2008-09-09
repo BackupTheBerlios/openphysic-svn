@@ -15,3 +15,6 @@ http://www.mozilla.org/projects/security/components/same-origin.html
 http://www.webmasterworld.com/forum91/5373.htm
 http://toto.domain.fr et http://www.domain.fr ne sont pas dans le même domaine !!!
 voir apache mod_proxy
+
+
+http://www.javascriptfr.com/forum/sujet-DEFILEMENT-AUTOMATIQUE-PAGE_1199777.aspx?p=2
