@@ -5,7 +5,7 @@
   <script language="javascript" src="autoscroll.js"></script>
 </head>
 
-<body onLoad="pageScroll(document.body, window)">
+<body onLoad="pageScroll(document, window)">
 <!-- <body onLoad="pageScroll()"> -->
 <h1>Scroll</h1>
 <?php

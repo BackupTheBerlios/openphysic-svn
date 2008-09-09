@@ -56,7 +56,7 @@ function pageScroll(new_obj, new_win) {
 
 function bottom()
 {
-  if ( (obj.scrollTop + obj.clientHeight) == obj.scrollHeight ) {
+  if ( (obj.body.scrollTop + obj.body.clientHeight) == obj.body.scrollHeight ) {
     return true;
   } else {
     return false;
@@ -65,7 +65,7 @@ function bottom()
 
 function top()
 {
-  if ( obj.scrollTop==0 ) {
+  if ( obj.body.scrollTop==0 ) {
     return true;
   } else {
     return false;
@@ -74,7 +74,7 @@ function top()
 
 function debug()
 {
-  alert(obj.innerHTML);
+  alert(obj.body.innerHTML);
   //alert("hello");
 }
 
