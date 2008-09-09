@@ -1,11 +1,12 @@
 <html>
   <head>
-    <title>Afficheur</title>
+    <title>Scroll an iframe</title>
+    <script language="javascript" src="autoscroll.js"></script>
   </head>
 
-  <body>
+  <body onLoad="pageScroll(document.getElementById('mydata'))">
 
-    <iframe src="content.php" height="100%" width="100%" frameborder="0">
+    <iframe id="mydata" src="content.php" height="100%" width="100%" frameborder="0">
       Alternative text for browsers that do not understand IFrames.
     </iframe>
   </body>

@@ -1,3 +1,11 @@
+/*
+Gestion du scrolling vertical d'une page HTML ou d'un iframe
+Défile vers le bas.
+Quand le bas est atteint défile vers le haut
+Quand le haut est atteint, défile vers le bas
+etc...
+*/
+
 var direction = true; // true=bas false=haut
 var scroll = true;
 
@@ -12,11 +20,15 @@ function pageScroll(new_obj) {
   obj=new_obj;
 
   if (scroll) {
-    if ( bottom() )
+    if ( bottom() ) {
       direction=false;
+      //alert("bottom");
+    }
 
-    if ( top() )
+    if ( top() ) {
       direction=true;
+      //alert("top");
+    }
 
     if ( direction ) {
       window.scrollBy(0, step);
