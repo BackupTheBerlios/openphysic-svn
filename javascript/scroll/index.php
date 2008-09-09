@@ -5,23 +5,26 @@
 <title>Scroll</title>
 
 <script language="JavaScript">
-var direction = 'bas';
+var direction = true; // true=bas false=haut
+var scroll = true;
 
 function pageScroll() {
-  if (bottom() == 'yes')
-    direction='haut';
+if (scroll) {
+  if (bottom())
+    direction=false;
 
-  //if (top() == 'yes')
-  //  direction='bas';
+  if (top())
+    direction=true;
 
-  if (direction == 'bas') {
-    window.scrollBy(0,-10);
+  if (direction) {
+    window.scrollBy(0,10);
   } else {
-    window.scrollBy(0,10);    
+    window.scrollBy(0,-10);    
   }
-
+}
   scrolldelay = setTimeout('pageScroll()',100); // scrolls every 1000 milliseconds
 }
+
 /*
 function stopScroll() {
   clearTimeout(scrolldelay);
@@ -34,16 +37,16 @@ function jumpScroll() {
 function bottom()
 {
 if ((document.body.scrollTop + document.body.clientHeight) == document.body.scrollHeight)
-  return 'yes'
+  return true;
 }
 
-/*
 function top()
 {
-if (document.body.scrollTop == 0)
-  return 'yes'
+  return false;
+//if (document.body.scrollTop == 0)
+//  return true;
 }
-*/
+
 </script>
 
 </head>
@@ -56,6 +59,7 @@ $str="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nulla metus veli
 for ($i==0 ; $i<20 ; $i++) {
   echo $str;
 }
+echo "\n";
 ?>
 </body>
 
