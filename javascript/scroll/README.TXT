@@ -7,3 +7,11 @@ etc...
 Mots clés : Javascript iframe scroller
 Références :
 http://theopensourcery.com/jscrollers3.htm
+
+
+Pb de sécurité
+Erreur : uncaught exception: Permission refusée d'obtenir la propriété HTMLDocument.body
+http://www.mozilla.org/projects/security/components/same-origin.html
+http://www.webmasterworld.com/forum91/5373.htm
+http://toto.domain.fr et http://www.domain.fr ne sont pas dans le même domaine !!!
+voir apache mod_proxy
