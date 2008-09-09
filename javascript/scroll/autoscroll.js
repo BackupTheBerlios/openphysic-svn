@@ -13,13 +13,16 @@ var delay=100;
 var step=5;
 
 var obj=null;
+var win=null;
 
-function pageScroll(new_obj) {
-  scrolldelay = setTimeout('pageScroll(obj)', delay); // scrolls every xxx milliseconds
+function pageScroll(new_obj, new_win) {
+  scrolldelay = setTimeout('pageScroll(obj,win)', delay); // scrolls every xxx milliseconds
 
   obj=new_obj;
   //obj=document.body;
   //obj=document.getElementById('mydata').contentDocument.body;
+
+  win=new_win
 
   //alert('objet autoscroll "'+obj.value+"'")
 
@@ -34,12 +37,19 @@ function pageScroll(new_obj) {
       //alert("top");
     }
 
+    //var win=window;
+    //var=top.framename;
+    //var=top.frames[1];
+    //var win=window.frames[0];
+
     if ( direction ) {
       //document.getElementById('mydata').scrollBy(0, step);
-      window.scrollBy(0, step);
+      //window.scrollBy(0, step);
+      win.scrollBy(0, step);
     } else {
       //document.getElementById('mydata').scrollBy(0, -step); 
-      window.scrollBy(0, -step);    
+      //window.scrollBy(0, -step);    
+      win.scrollBy(0, -step);
     }
   }
 }
