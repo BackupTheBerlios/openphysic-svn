@@ -3,7 +3,12 @@
 <head>
 <title>Scroll</title>
 
-<script language="javascript" src="autoscroll.js"></script>
+<script language="javascript" src="autoscroll.js">
+</script>
+
+<script language="javascript">
+
+</script>
 
 </head>
 
