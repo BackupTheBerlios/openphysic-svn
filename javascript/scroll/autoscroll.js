@@ -19,7 +19,7 @@ function pageScroll(new_obj) {
 
   obj=new_obj;
   //obj=document.body;
-  //obj=document.getElementById('mydata').src;
+  //obj=document.getElementById('mydata').contentDocument.body;
 
   //alert('objet autoscroll "'+obj.value+"'")
 
@@ -35,8 +35,10 @@ function pageScroll(new_obj) {
     }
 
     if ( direction ) {
+      //document.getElementById('mydata').scrollBy(0, step);
       window.scrollBy(0, step);
     } else {
+      //document.getElementById('mydata').scrollBy(0, -step); 
       window.scrollBy(0, -step);    
     }
   }
@@ -58,5 +60,11 @@ function top()
   } else {
     return false;
   }
+}
+
+function debug()
+{
+  alert(obj.innerHTML);
+  //alert("hello");
 }
 
