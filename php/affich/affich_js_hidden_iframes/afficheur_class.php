@@ -51,8 +51,6 @@ function next_page() {
   }
 }
 
-setTimeout('update()',{$this->get_timeout()});
-
 function update()
 {
 //  Cache tous les iframes
