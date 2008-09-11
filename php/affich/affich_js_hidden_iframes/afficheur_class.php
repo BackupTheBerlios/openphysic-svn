@@ -84,8 +84,10 @@ req = new XMLHttpRequest();
          } else {
            // Page non accessible
            // Ne rien faire
-           alert(\"page non accessible\");
+           //alert(\"page non accessible (status<>200)\");
          }
+       } else {
+           //alert(\"page non accessible (readyState<>4)\");
        }
    };
  req.send(null);
