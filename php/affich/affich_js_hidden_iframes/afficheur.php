@@ -9,7 +9,8 @@ $list = new pages(
     "page2.php?param1=1",
     "page3.php")
 );
-$list->set_timeout(2000);
+$list->set_timeout(2000); // duree d'une page
+$list->set_refresh_timeout(30000); // relecture du script PHP (mise à jour EDT)
 $list->show();
 
 ?>

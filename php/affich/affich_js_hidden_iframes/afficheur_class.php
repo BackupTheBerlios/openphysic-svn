@@ -10,10 +10,12 @@ Principe : les différentes pages à afficher sont placées
 class pages { 
   private $liste;
   private $default_timeout;
+  private $default_refresh_timeout;
 
   public function __construct($liste) {
     $this->liste=$liste;
-    $this->default_timeout=4000;
+    $this->default_timeout=4000; // duree d'une page : 4s par défaut
+    $this->set_refresh_timeout(60000); // relecture du script : 60s par défaut
   }
 
   public function __destruct() {
@@ -31,6 +33,14 @@ class pages {
     return $this->default_timeout;
   }
 
+  public function set_refresh_timeout($t) {
+    $this->default_refresh_timeout=$t;
+  }
+
+  private function get_refresh_timeout() {
+    return $this->default_refresh_timeout;
+  }
+
   public function show() {
 echo "<html>
   <head>
@@ -45,8 +55,14 @@ var i_affich = 0;
 
 function load()
 {
-  setTimeout('refresh()',60000);
-  //refresh();
+  /*
+   Rappel du script PHP
+    1000=1s
+   60000=60s=1min
+  300000=5min
+  */
+  setTimeout('refresh()',{$this->get_refresh_timeout()});
+
   update();
 }
 
@@ -103,5 +119,7 @@ echo "
   }
 
 }
+
+
 
 ?>
