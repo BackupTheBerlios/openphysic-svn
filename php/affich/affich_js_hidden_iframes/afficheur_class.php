@@ -82,15 +82,19 @@ req.onreadystatechange = function ()
            // Page accessible
            // Reloader la page
            location.href = '{$_SERVER['PHP_SELF']}';
+           document.getElementById(\"status\").style.backgroundColor=\"#00FF00\";
+           document.getElementById(\"status\").innerHTML=\"status OK\";
          } else {
            // Page non accessible
            // Ne rien faire
            //alert(\"page {$_SERVER['PHP_SELF']} non accessible (status<>200)\");
            document.getElementById(\"status\").style.backgroundColor=\"#FFFF00\";
+           document.getElementById(\"status\").innerHTML=\"page {$_SERVER['PHP_SELF']} non accessible (status<>200)\";
          }
        } else {
            //alert(\"page {$_SERVER['PHP_SELF']} non accessible (readyState<>4)\");
            document.getElementById(\"status\").style.backgroundColor=\"#FF0000\";
+           document.getElementById(\"status\").innerHTML=\"page {$_SERVER['PHP_SELF']} non accessible (readyState<>4)\";
        }
    };
 req.send(null);
@@ -110,7 +114,6 @@ function next_page() {
 function update()
 {
 //document.getElementById(\"status\").setAttribute(\"innerHTML\", \"id javascript\");
-document.getElementById(\"status\").style.backgroundColor=\"#00FF00\";
 
 //  Cache tous les iframes
 for(i=0;i<={$this->nb()};i++) {
