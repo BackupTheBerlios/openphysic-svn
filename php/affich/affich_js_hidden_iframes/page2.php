@@ -12,6 +12,11 @@ echo "OK ! param1 est bien pass&eacute; !";
   } else {
 echo "Erreur param1 $param1 n'est pas passé<br>\n";
   }
+
+echo "<br>";
+
+echo date(DATE_RFC822);
+
 ?>
   </body>
 </html>
