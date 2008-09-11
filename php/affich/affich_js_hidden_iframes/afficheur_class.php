@@ -82,24 +82,38 @@ class pages {
 
 echo "<html>
   <head>
-    <title>Afficheur</title>
+    <title>Afficheur avec iframes cach&eacute;s</title>
   </head>
 
   <body>
 
   <script type=\"text/javascript\"><!--
-setTimeout('Redirect()',{$this->get_timeout()});
-function Redirect()
+setTimeout('update()',{$this->get_timeout()});
+function update()
 {
- location.href = '$url_next';
+//  document.getElementById(\"page0\" ).style.visibility=\"hidden\";
+//for() {
+  var i = 0;
+  document.getElementById(\"page\"+i).style.display=\"none\";
+//}
+//alert(\"update\");
+//alert(\"p\");
+//setTimeout('update()',{$this->get_timeout()});
 }
 // --></script>
 
 <!-- Show page n $this->i : {$this->liste[$this->i]}<br> -->
+";
 
-    <iframe src=\"$url_include\" height=\"100%\" width=\"100%\" frameborder=\"0\">
+for ($i=0;$i<=count($this->liste)-1;$i++) {
+echo "aa
+    <iframe id=\"page$i\" name=\"page$i\" src=\"{$this->liste[$i]}\" height=\"100%\" width=\"100%\" frameborder=\"0\">
       Alternative text for browsers that do not understand IFrames.
     </iframe>
+bb";
+}
+
+echo "
   </body>
 
 <!-- <a href='$url_next'>Page suivante<br></a> -->

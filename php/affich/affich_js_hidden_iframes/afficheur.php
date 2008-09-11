@@ -9,7 +9,7 @@ $list = new pages(
     "page2.php?param1=1",
     "page3.php")
 );
-$list->set_timeout(2000);
+$list->set_timeout(1000);
 $page=$_GET['page'];
 $list->goto_page($page);
 
