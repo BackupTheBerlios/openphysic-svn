@@ -37,11 +37,26 @@ echo "<html>
     <title>Afficheur avec iframes cach&eacute;s</title>
   </head>
 
-  <body onload=\"update()\">
+  <body onload=\"load()\">
 
   <script type=\"text/javascript\"><!--
 
 var i_affich = 0;
+
+function load()
+{
+  setTimeout('refresh()',60000);
+  //refresh();
+  update();
+}
+
+/*
+ Appel periodique du script PHP en cas de mise à jour de l'emploi du temps
+*/
+function refresh()
+{
+ location.href = '{$_SERVER['PHP_SELF']}';
+}
 
 function next_page() {
   if (i_affich=={$this->nb()}) {
@@ -51,6 +66,9 @@ function next_page() {
   }
 }
 
+/*
+ Changement de page
+*/
 function update()
 {
 //  Cache tous les iframes
