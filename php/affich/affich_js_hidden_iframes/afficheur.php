@@ -8,7 +8,7 @@ $list = new pages(
     "page1.php",
     "page2.php?param1=1",
     "page3.php",
-    "http://www.celles.net/php/hello.php",
+    "http://www.celles.net/php/hello.php?name=TOTO",
   )
 );
 $list->set_timeout(1000); // duree d'une page

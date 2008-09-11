@@ -22,7 +22,7 @@ class pages {
   }
 
   public function nb() {
-   return count($this->liste)-1;
+    return count($this->liste)-1;
   }
 
   public function set_timeout($t) {
