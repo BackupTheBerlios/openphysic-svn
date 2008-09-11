@@ -9,7 +9,7 @@ etc...
 var direction = true; // true=bas false=haut
 var scroll = true;
 
-var delay=100;
+var delay=500;
 var step=5;
 
 var obj=null;

@@ -12,7 +12,18 @@
 
 <?php
   $src="content.php";
-  //$src="http://www.celles.net/php/content.php"; // XSS !!
+
+  /* Pb si domaine différent - same origin policy (SOP) */
+  //$src="http://www.celles.net/php/content.php"; // XSS !! Javascript cross-domain !!!
+/*
+http://developer.yahoo.com/javascript/howto-proxy.html
+    <script type="text/javascript">
+      document.domain="celles.net";
+    </script>
+http://blog.pascal-martin.fr/post/Requete-Ajax-Cross-domain-proxy
+
+libapache2-mod-proxy : 
+ */
 ?>
 
   <body onLoad="pageScroll(document.getElementById('mydata').contentDocument, window.frames['mydataname'])">
