@@ -71,7 +71,24 @@ function load()
 */
 function refresh()
 {
- location.href = '{$_SERVER['PHP_SELF']}';
+req = new XMLHttpRequest();
+ req.open('GET', '{$_SERVER['PHP_SELF']}', true);
+ req.onreadystatechange = function ()
+   {
+     if (req.readyState == 4)
+       {
+         if(req.status == 200) {
+           // Page accessible
+           // Reloader la page
+           location.href = '{$_SERVER['PHP_SELF']}';
+         } else {
+           // Page non accessible
+           // Ne rien faire
+           alert(\"page non accessible\");
+         }
+       }
+   };
+ req.send(null);
 }
 
 function next_page() {
