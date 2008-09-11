@@ -2,18 +2,20 @@
 
 /*
 Affiche différentes pages présentes dans l'array $liste
-Usage : http://127.0.0.1/php/affich/index.php?page=0
+Principe : les différentes pages à afficher sont placées
+ dans différents iframes.
+ Tous les iframes sont cachés sauf celui à afficher
  */
 
 class pages { 
-  private $i;
+  //private $i;
 
   private $liste;
 
   private $default_timeout;
 
   public function __construct($liste) {
-    $this->i=0;
+    //$this->i=0;
     $this->liste=$liste;
     $this->default_timeout=4000;
   }
@@ -22,12 +24,17 @@ class pages {
     //echo "DESTRUCT";
   }
 
+  public function nb() {
+   return count($this->liste)-1;
+  }
+
 /*
   private function set_pages($liste) {
     $this->liste=$liste;
   }
 */
 
+/*
   private function set_i($i) {
     if ($i<=count($this->liste)-1) {
       $this->i=$i;
@@ -51,6 +58,7 @@ class pages {
       return ($this->i-1);
     }    
   }
+*/
 
 /*
   public function goto_next_page() {
@@ -72,56 +80,57 @@ class pages {
     return $this->default_timeout;
   }
 
-  private function show() {
-
-    $url_next= "{$_SERVER['PHP_SELF']}?page=" . $this->get_next_i();
-    $url_previous= "{$_SERVER['PHP_SELF']}?page=" . $this->get_previous_i();
-
-    //echo "Show page n $this->i : {$this->liste[$this->i]}<br>\n";
-    $url_include = $this->liste[$this->i];
-
+  public function show() {
 echo "<html>
   <head>
     <title>Afficheur avec iframes cach&eacute;s</title>
   </head>
 
-  <body>
+  <body onload=\"update()\">
 
   <script type=\"text/javascript\"><!--
+
+var i_affich = 2;
+
+function goto_next_page() {
+  i_affich=get_next_i();
+}
+
 setTimeout('update()',{$this->get_timeout()});
+
 function update()
 {
-//  document.getElementById(\"page0\" ).style.visibility=\"hidden\";
-//for() {
-  var i = 0;
-  document.getElementById(\"page\"+i).style.display=\"none\";
-//}
-//alert(\"update\");
-//alert(\"p\");
-//setTimeout('update()',{$this->get_timeout()});
+//  Cache tous les iframes
+for(i=0;i<={$this->nb()};i++) {
+  document.getElementById(\"page\"+i).style.display=\"none\"; // ou style.visibility=\"hidden\"
+}
+
+// Affiche l'iframe actuel
+document.getElementById(\"page\"+i_affich).style.display=\"\";
+
+//setTimeout('update()',{$this->get_timeout()}); // refresh périodique
 }
 // --></script>
 
-<!-- Show page n $this->i : {$this->liste[$this->i]}<br> -->
 ";
 
 for ($i=0;$i<=count($this->liste)-1;$i++) {
-echo "aa
-    <iframe id=\"page$i\" name=\"page$i\" src=\"{$this->liste[$i]}\" height=\"100%\" width=\"100%\" frameborder=\"0\">
+echo "
+    <iframe id=\"page$i\" name=\"page$i\" src=\"{$this->liste[$i]}\" height=\"100%\" width=\"100%\" >
       Alternative text for browsers that do not understand IFrames.
     </iframe>
-bb";
+";
 }
+// frameborder=\"0\"
 
 echo "
   </body>
 
-<!-- <a href='$url_next'>Page suivante<br></a> -->
-<!-- <a href='$url_previous'>Page pr&eacute;c&eacute;dente<br></a> -->
 </html>";
 
   }
 
+/*
   public function goto_page($i) {
     if (!is_numeric($i)) {
       $i=0;
@@ -129,6 +138,7 @@ echo "
     $this->set_i($i);
     $this->show();
   }
+*/
 }
 
 ?>

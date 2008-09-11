@@ -10,7 +10,6 @@ $list = new pages(
     "page3.php")
 );
 $list->set_timeout(1000);
-$page=$_GET['page'];
-$list->goto_page($page);
+$list->show();
 
 ?>
