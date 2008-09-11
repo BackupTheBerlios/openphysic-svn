@@ -71,9 +71,10 @@ function load()
 */
 function refresh()
 {
+
 req = new XMLHttpRequest();
- req.open('GET', '{$_SERVER['PHP_SELF']}', true);
- req.onreadystatechange = function ()
+req.open('GET', '{$_SERVER['PHP_SELF']}', true);
+req.onreadystatechange = function ()
    {
      if (req.readyState == 4)
        {
@@ -84,13 +85,15 @@ req = new XMLHttpRequest();
          } else {
            // Page non accessible
            // Ne rien faire
-           //alert(\"page non accessible (status<>200)\");
+           //alert(\"page {$_SERVER['PHP_SELF']} non accessible (status<>200)\");
+           document.getElementById(\"status\").style.backgroundColor=\"#FFFF00\";
          }
        } else {
-           //alert(\"page non accessible (readyState<>4)\");
+           //alert(\"page {$_SERVER['PHP_SELF']} non accessible (readyState<>4)\");
+           document.getElementById(\"status\").style.backgroundColor=\"#FF0000\";
        }
    };
- req.send(null);
+req.send(null);
 }
 
 function next_page() {
@@ -106,13 +109,16 @@ function next_page() {
 */
 function update()
 {
+//document.getElementById(\"status\").setAttribute(\"innerHTML\", \"id javascript\");
+document.getElementById(\"status\").style.backgroundColor=\"#00FF00\";
+
 //  Cache tous les iframes
 for(i=0;i<={$this->nb()};i++) {
   document.getElementById(\"page\"+i).style.display=\"none\"; // ou style.visibility=\"hidden\"
 }
 
 // Affiche l'iframe actuel
-document.getElementById(\"page\"+i_affich).style.display=\"\";
+document.getElementById(\"page\"+i_affich).style.display=\"\"; // ou removeAttribute(\"style\")
 
 next_page();
 
@@ -121,6 +127,8 @@ setTimeout('update()',{$this->get_timeout()}); // refresh périodique
 // --></script>
 
 ";
+
+echo "<div id=\"status\">Status</div>";
 
 for ($i=0;$i<=count($this->liste)-1;$i++) {
 echo "
