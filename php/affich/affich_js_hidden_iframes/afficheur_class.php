@@ -97,7 +97,7 @@ req.onreadystatechange = function ()
            document.getElementById(\"status\").innerHTML=\"page {$_SERVER['PHP_SELF']} non accessible (readyState<>4)\";
        }
    };
-req.send(null);
+req.send(null);	
 }
 
 function next_page() {
@@ -113,8 +113,6 @@ function next_page() {
 */
 function update()
 {
-//document.getElementById(\"status\").setAttribute(\"innerHTML\", \"id javascript\");
-
 //  Cache tous les iframes
 for(i=0;i<={$this->nb()};i++) {
   document.getElementById(\"page\"+i).style.display=\"none\"; // ou style.visibility=\"hidden\"
@@ -131,10 +129,12 @@ setTimeout('update()',{$this->get_timeout()}); // refresh périodique
 
 ";
 
-echo "<div id=\"status\">Status</div>";
+echo "
+    <div id=\"status\">Status</div>";
 
 for ($i=0;$i<=count($this->liste)-1;$i++) {
 echo "
+
     <iframe id=\"page$i\" name=\"page$i\" src=\"{$this->liste[$i]}\" height=\"100%\" width=\"100%\" frameborder=\"0\">
       Alternative text for browsers that do not understand IFrames.
     </iframe>
