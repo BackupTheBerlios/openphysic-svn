@@ -7,7 +7,9 @@ $list = new pages(
     "page0.php",
     "page1.php",
     "page2.php?param1=1",
-    "page3.php")
+    "page3.php",
+    "http://www.celles.net/php/hello.php",
+  )
 );
 $list->set_timeout(1000); // duree d'une page
 $list->set_refresh_timeout(5000); // relecture du script PHP (mise à jour EDT)

@@ -61,7 +61,7 @@ function load()
    60000=60s=1min
   300000=5min
   */
-  setTimeout('refresh()',{$this->get_refresh_timeout()});
+  //setTimeout('refresh()',{$this->get_refresh_timeout()});
 
   update();
 }
@@ -82,19 +82,19 @@ req.onreadystatechange = function ()
            // Page accessible
            // Reloader la page
            location.href = '{$_SERVER['PHP_SELF']}';
-           document.getElementById(\"status\").style.backgroundColor=\"#00FF00\";
-           document.getElementById(\"status\").innerHTML=\"status OK\";
+           //document.getElementById(\"status\").style.backgroundColor=\"#00FF00\";
+           //document.getElementById(\"status\").innerHTML=\"status OK\";
          } else {
            // Page non accessible
            // Ne rien faire
            //alert(\"page {$_SERVER['PHP_SELF']} non accessible (status<>200)\");
-           document.getElementById(\"status\").style.backgroundColor=\"#FFFF00\";
-           document.getElementById(\"status\").innerHTML=\"page {$_SERVER['PHP_SELF']} non accessible (status<>200)\";
+           //document.getElementById(\"status\").style.backgroundColor=\"#FFFF00\";
+           //document.getElementById(\"status\").innerHTML=\"page {$_SERVER['PHP_SELF']} non accessible (status<>200)\";
          }
        } else {
            //alert(\"page {$_SERVER['PHP_SELF']} non accessible (readyState<>4)\");
-           document.getElementById(\"status\").style.backgroundColor=\"#FF0000\";
-           document.getElementById(\"status\").innerHTML=\"page {$_SERVER['PHP_SELF']} non accessible (readyState<>4)\";
+           //document.getElementById(\"status\").style.backgroundColor=\"#FF0000\";
+           //document.getElementById(\"status\").innerHTML=\"page {$_SERVER['PHP_SELF']} non accessible (readyState<>4)\";
        }
    };
 req.send(null);	
@@ -129,8 +129,10 @@ setTimeout('update()',{$this->get_timeout()}); // refresh périodique
 
 ";
 
+/*
 echo "
     <div id=\"status\">Status</div>";
+*/
 
 for ($i=0;$i<=count($this->liste)-1;$i++) {
 echo "
