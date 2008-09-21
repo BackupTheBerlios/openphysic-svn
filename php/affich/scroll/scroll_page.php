@@ -3,9 +3,14 @@
 <head>
   <title>Scroll</title>
   <script language="javascript" src="autoscroll.js"></script>
+  <script language="javascript">
+    document.onload=pageScroll(document, window);
+  </script>
+  
 </head>
 
-<body onLoad="pageScroll(document, window)">
+<body>
+<!-- <body onLoad="pageScroll(document, window)"> -->
 <!-- <body onLoad="pageScroll()"> -->
 <h1>Scroll</h1>
 <?php
