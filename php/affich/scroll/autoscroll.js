@@ -6,17 +6,19 @@ Quand le haut est atteint, défile vers le bas
 etc...
 */
 
+var delay=50;
+var step=1;
+
+var pause_delay_bottom = 1500; //0; //1500; // pause en ms en bas
+var pause_delay_top = 1500; //0; //1500; // pause en ms en haut
+
 var direction = true; // true=bas false=haut
 var scroll = true;
-
-var delay=500;
-var step=5;
 
 var obj=null;
 var win=null;
 
 function pageScroll(new_obj, new_win) {
-  scrolldelay = setTimeout('pageScroll(obj,win)', delay); // scrolls every xxx milliseconds
 
   obj=new_obj;
   //obj=document.body;
@@ -30,11 +32,13 @@ function pageScroll(new_obj, new_win) {
     if ( bottom() ) {
       direction=false;
       //alert("bottom");
-    }
-
-    if ( top() ) {
+      scrolldelay = setTimeout('pageScroll(obj,win)', pause_delay_bottom);
+    } else if ( top() ) {
       direction=true;
       //alert("top");
+      scrolldelay = setTimeout('pageScroll(obj,win)', pause_delay_top);
+    } else {
+      scrolldelay = setTimeout('pageScroll(obj,win)', delay); // scrolls every xxx milliseconds    
     }
 
     //var win=window;
