@@ -18,6 +18,14 @@ var scroll = true;
 var obj=null;
 var win=null;
 
+function play()  {
+
+}
+
+function pause()  {
+
+}
+
 function pageScroll(new_obj, new_win) {
 
   obj=new_obj;
