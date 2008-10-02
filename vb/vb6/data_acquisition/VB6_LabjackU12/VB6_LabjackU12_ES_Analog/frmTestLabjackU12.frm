@@ -9,6 +9,22 @@ Begin VB.Form frmTestLabjackU12
    ScaleHeight     =   4080
    ScaleWidth      =   7845
    StartUpPosition =   3  'Windows Default
+   Begin VB.CommandButton cmdRien 
+      Caption         =   "&Rien"
+      Height          =   495
+      Left            =   3600
+      TabIndex        =   3
+      Top             =   3120
+      Width           =   1215
+   End
+   Begin VB.CommandButton cmdTout 
+      Caption         =   "&Tout"
+      Height          =   495
+      Left            =   3600
+      TabIndex        =   2
+      Top             =   2520
+      Width           =   1215
+   End
    Begin TestLabjackU12.ES_Analog ES_Analog1 
       Height          =   2295
       Left            =   240
@@ -39,10 +55,23 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+Option Explicit
+
+Private Sub cmdRien_Click()
+ES_Analog1.Sortie(0) = 0
+'ES_Analog1.Sortie(0) = -2 ' pour provoquer une erreur
+
+End Sub
+
+Private Sub cmdTout_Click()
+ES_Analog1.Sortie(0) = 5
+'ES_Analog1.Sortie(0) = 10 ' pour provoquer une erreur
+End Sub
+
 Private Sub Form_Load()
 
     'ES_Analog1.sortie1 = 3
-    ES_Analog1.Sortie(0) = 3
+    'ES_Analog1.Sortie(0) = 3
     'ES_Analog1.
 End Sub
 

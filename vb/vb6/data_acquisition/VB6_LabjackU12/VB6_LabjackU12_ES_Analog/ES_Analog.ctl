@@ -342,7 +342,7 @@ Attribute VB_Name = "ES_Analog"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
-Attribute VB_Exposed = False
+Attribute VB_Exposed = True
 ' Labjack U12
 ' objet ES_Analog (entrée/sortie analogique) pour VB 6
 ' Sebastien CELLES
@@ -406,15 +406,17 @@ Else
     val = CSng(canal_sortie(Index))
 End If
 
-If val < Tension_Sortie_Analogique_Min Then
-    Erreur ("Erreur tension sortie analogique : " + CStr(val) + " demandé en sortie")
-    canal_sortie(Index).Text = Tension_Sortie_Analogique_Min
-End If
+val = limitation_tension_sortie(val)
+canal_sortie(Index).Text = val
+'If val < Tension_Sortie_Analogique_Min Then
+'    Erreur ("Erreur tension sortie analogique : " + CStr(val) + " demandé en sortie")
+'    canal_sortie(Index).Text = Tension_Sortie_Analogique_Min
+'End If
 
-If val > Tension_Sortie_Analogique_Max Then
-    Erreur ("Erreur tension sortie analogique : " + CStr(val) + " demandé en sortie")
-    canal_sortie(Index).Text = Tension_Sortie_Analogique_Max
-End If
+'If val > Tension_Sortie_Analogique_Max Then
+'    Erreur ("Erreur tension sortie analogique : " + CStr(val) + " demandé en sortie")
+'    canal_sortie(Index).Text = Tension_Sortie_Analogique_Max
+'End If
 
 sorties_tensions_analogiques(Index) = val
 
@@ -568,10 +570,26 @@ End Property
 ' ====================================
 ' voie allant de 0 à 7
 Public Property Let Sortie(ByVal voie As Byte, ByVal tension As Single)
+    Debug.Print tension
+    tension = limitation_tension_sortie(tension)
     canal_sortie(voie).Text = CStr(tension)
     PropertyChanged "sortie"
     PropertyChanged "sortie" + CStr(voie)
 End Property
+
+' Fonction limitant la valeur de la tension de sortie
+' ===================================================
+Private Function limitation_tension_sortie(ByVal tension As Single) As Single
+    If tension < Tension_Sortie_Analogique_Min Then
+        limitation_tension_sortie = Tension_Sortie_Analogique_Min
+        Erreur ("Erreur tension sortie analogique : " + CStr(tension) + " demandé en sortie")
+    ElseIf tension > Tension_Sortie_Analogique_Max Then
+        limitation_tension_sortie = Tension_Sortie_Analogique_Max
+        Erreur ("Erreur tension sortie analogique : " + CStr(tension) + " demandé en sortie")
+    Else
+        limitation_tension_sortie = tension
+    End If
+End Function
 
 
 ' Accesseur/modificateur nb_entrées_analogiques_max
