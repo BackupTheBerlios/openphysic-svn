@@ -8,7 +8,7 @@
 # Pour obtenir un modele depuis une table existante
 #propel.database.url = mysql://scls:00000@localhost/votes
 #propel.database.url = mysql://scls:00000@localhost/votes_symfony
-#propel.database.url = mysql://scls:00000@localhost/askeet
+propel.database.url = mysql://scls:00000@localhost/askeet
 
 all:
   propel:
