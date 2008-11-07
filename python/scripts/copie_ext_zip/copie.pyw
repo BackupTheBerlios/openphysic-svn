@@ -7,9 +7,10 @@
 
 import os
 import zipfile
+import tkMessageBox
 
-dirOrigine = "\\\\Andromede\Comptes\GTE\dut\aalibert"
-zFile =  "C:\Documents and Settings\scelles\Mes documents\copie_autocad.zip"
+dirOrigine = "\\\\Andromede\\Comptes\\GTE\\dut\\aalibert"
+zFile =  "C:\\Documents and Settings\\scelles\\Mes documents\\copie_autocad.zip"
 
 extensions = [".dwg",".dwt"]
 
@@ -28,6 +29,7 @@ for root, dirs, files in os.walk(dirOrigine, topdown=True):
   for file in files:
     (shortname, extension) = os.path.splitext(file)
     if (extension in extensions):
+      print os.path.join(root, file)
       zip.write(os.path.join(root, file))
 
 zip.close()
