@@ -9,11 +9,14 @@ $textcolor="#000000";
 //$backgroundcolor="#00FF00"; // vert vif
 //$backgroundcolor="#0000FF"; // bleu vif
 
-$backgroundcolor="#400000"; // rouge foncé
-//$backgroundcolor="#005000"; // vert foncé
-//$backgroundcolor="#000080"; // bleu foncé
-
-
+$backgroundcolor=substr($_GET["backgroundcolor"],0,6);
+if ($backgroundcolor=="") {
+  $backgroundcolor="#400000"; // rouge foncé
+  //$backgroundcolor="#005000"; // vert foncé
+  //$backgroundcolor="#000080"; // bleu foncé
+} else {
+  $backgroundcolor="#".$backgroundcolor;
+}
 $oldbackgroundcolor=$backgroundcolor;
 
 
