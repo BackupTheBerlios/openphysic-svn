@@ -10,8 +10,8 @@ $textcolor="#000000";
 //$backgroundcolor="#0000FF"; // bleu vif
 
 $backgroundcolor="#400000"; // rouge foncé
-$backgroundcolor="#005000"; // vert foncé
-$backgroundcolor="#000080"; // bleu foncé
+//$backgroundcolor="#005000"; // vert foncé
+//$backgroundcolor="#000080"; // bleu foncé
 
 
 $oldbackgroundcolor=$backgroundcolor;
