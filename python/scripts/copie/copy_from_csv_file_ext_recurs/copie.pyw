@@ -41,7 +41,7 @@ log.addHandler(hdlr)
 #log.addHandler(hdlrConsole)
 log.setLevel(logging.DEBUG) #set verbosity to show all messages of severity >= DEBUG CRITICAL
 
-log.info("Ouverture du fichier .csv contenant les logins en lecture")
+log.info("Ouverture (en lecture) du fichier "+liste+" contenant les logins")
 file = csv.reader(open(liste,"rb"), delimiter=';')
 
 log.info("Creation du fichier "+zFile)
