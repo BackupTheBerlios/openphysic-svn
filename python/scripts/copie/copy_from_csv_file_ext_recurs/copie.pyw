@@ -17,10 +17,12 @@ import shutil
 import zipfile
 #import tkMessageBox
 import logging
+import datetime
 
 dirOrigine = "\\\\Andromede\\Comptes\\GTE\\dut" # repertoire reseau contenant les fichiers
 #zFile =  "C:\\Documents and Settings\\scelles\\Mes documents\\copie_autocad.zip"
-zFile =  "copie_autocad.zip" #fichier zip final
+timestamp=datetime.datetime.now().strftime("%Y-%m-%d-%H%M%S")
+zFile=zFile =  "copie_autocad_"+timestamp+".zip" #fichier zip final
 
 #liste = "C:\\Documents and Settings\\scelles\\Mes documents\\liste.csv"
 liste = "Z1PT11-500.csv" # fichier csv contenant les login
