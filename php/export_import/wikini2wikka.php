@@ -9,7 +9,7 @@ class wikini2wikka extends Translator {
     //$this->add('/^\b[a-z0-9]+:\/\/[^ \t\n\r\f"\|\\\\\^\`\{\}\[\]><]+$/', 'URL'); // link
     //$this->add('/:\/\//', 'URL'); // link
     //$this->add('/\[{2}([a-z0-9]+:\/\/[^ \t\n\r\f"\|\\\\\^\`\{\}\[\]><]+) (.*)\]{2}/', 'URL=$1 ALT=$2FIN');
-    $this->add('/\[{2}([a-z0-9]+:\/\/[^ \t\n\r\f"\|\\\\\^\`\{\}\[\]><]+) (.*)\]{2}/', '{{image url="$1" title="$2" alt="$2"}}');
+    $this->add('/\[{2}([a-z0-9]+:\/\/[^ \t\n\r\f"\|\\\\\^\`\{\}\[\]><]+\.(gif|png|jpg|jpeg)) (.*)\]{2}/', '{{image url="$1" title="$2" alt="$2"}}');
   }
 
 }
