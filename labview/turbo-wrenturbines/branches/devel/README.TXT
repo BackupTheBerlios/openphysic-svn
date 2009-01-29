@@ -35,3 +35,7 @@ de la trame en 4ième position.
 
 ========
 
+Autre idée... ne lire que 50 octets (longueur d'une trame)
+mais utiliser la fonction modulo
+on aura ainsi l'impression d'avoir une seule trame mais en fait
+ça sera la fin d'une trame et le début de la suivante
