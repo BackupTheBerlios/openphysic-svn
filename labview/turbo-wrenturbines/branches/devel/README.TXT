@@ -1,3 +1,7 @@
+http://www.celles.net/wiki/ProjetInstrumentationTurboreacteur
+
+========
+
 Synchronisation liaison série (cable Xicoy USB)
 Permet de récupérer RPM, EGT, ...
 
@@ -28,3 +32,6 @@ partir de 0).
 
 Le programme synchro.vi détecte bien le début
 de la trame en 4ième position.
+
+========
+
