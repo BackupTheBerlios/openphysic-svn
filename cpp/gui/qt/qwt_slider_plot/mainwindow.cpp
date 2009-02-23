@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "slider.h"
+#include "plot.h"
 
 #include <math.h>
 
@@ -12,10 +13,11 @@ MainWindow::MainWindow(QWidget *p):
 {
 QHBoxLayout *mainLayout = new QHBoxLayout();
 Slider *slider = new Slider(p);
-QLabel *pix = new QLabel("Add a graph here");
+//QLabel *plot = new QLabel("Add a graph here");
+Plot *plot = new Plot(p);
 
 mainLayout->addWidget(slider);
-mainLayout->addWidget(pix);
+mainLayout->addWidget(plot);
 
 this->setLayout(mainLayout);
 

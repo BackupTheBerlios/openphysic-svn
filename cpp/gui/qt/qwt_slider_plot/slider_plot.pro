@@ -15,7 +15,7 @@ INCLUDEPATH += $${QwtBase}/include
 
 
 # Input
-HEADERS += mainwindow.h slider.h
-SOURCES += mainwindow.cpp slider.cpp main.cpp
+HEADERS += mainwindow.h slider.h plot.h
+SOURCES += mainwindow.cpp slider.cpp plot.cpp main.cpp
 
 LIBS        += -L$${QwtBase}/lib -lqwt
