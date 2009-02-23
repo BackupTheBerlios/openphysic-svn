@@ -1,9 +1,10 @@
-#include <qwidget.h>
+//#include <qwidget.h>
+#include <qwt_plot.h>
 
 //#include <qlabel.h>
 //#include <qwt_slider.h>
 
-class Plot: public QWidget
+class Plot: public QwtPlot
 {
     Q_OBJECT
 public:

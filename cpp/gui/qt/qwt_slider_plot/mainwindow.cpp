@@ -21,6 +21,7 @@ mainLayout->addWidget(plot);
 
 this->setLayout(mainLayout);
 
+this->setGeometry(0, 0, 600, 400);
 
 }
 
