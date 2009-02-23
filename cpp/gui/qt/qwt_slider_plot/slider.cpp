@@ -25,7 +25,7 @@ Slider::Slider(QWidget *parent):
     layout = new QVBoxLayout(this);
 
     layout->addWidget(d_slider);
-    layout->addWidget(d_label);
+    layout->addWidget(d_label); // Add QTextEdit or QSpinBox or QDoubleSpinBox instead of QLabel
 }
 
 
