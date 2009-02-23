@@ -9,7 +9,7 @@ Slider::Slider(QWidget *parent):
 {
     d_slider = new QwtSlider(parent, 
             Qt::Vertical, QwtSlider::LeftScale, QwtSlider::BgSlot);
-    d_slider->setRange(0.0, 100.0, 1.0, 5);
+    d_slider->setRange(0.0, 100.0, 0.5, 5);
     d_slider->setScaleMaxMinor(5);
 
     QFlags<Qt::AlignmentFlag> alignment;
