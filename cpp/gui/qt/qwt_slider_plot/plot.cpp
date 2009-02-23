@@ -11,4 +11,9 @@ Plot::Plot(QWidget *parent):
     // Set axis titles
     setAxisTitle(xBottom, "t");
     setAxisTitle(yLeft, "y");
+
+    // Set axis scale
+    setAxisScale(QwtPlot::yLeft, 0.0, 100.0);
+    setAxisScale(QwtPlot::xBottom, 0.0, 60.0);
+
 }
