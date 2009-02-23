@@ -3,6 +3,8 @@
 class MainWindow : public QWidget
 {
 public:
-    MainWindow(QWidget *p = NULL);
+    MainWindow(QWidget *parent = NULL);
+protected:
+    void timerEvent(QTimerEvent *e);
 };
 
