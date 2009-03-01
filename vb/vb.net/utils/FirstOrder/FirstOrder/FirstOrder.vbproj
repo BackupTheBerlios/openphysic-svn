@@ -66,6 +66,12 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ctlFirstOrder.Designer.vb">
+      <DependentUpon>ctlFirstOrder.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ctlFirstOrder.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="frmMain.Designer.vb">
       <DependentUpon>frmMain.vb</DependentUpon>
     </Compile>
@@ -89,6 +95,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ctlFirstOrder.resx">
+      <DependentUpon>ctlFirstOrder.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.vb</DependentUpon>
       <SubType>Designer</SubType>
