@@ -4,9 +4,9 @@ Begin VB.UserControl ctlFirstOrder
    ClientHeight    =   1140
    ClientLeft      =   0
    ClientTop       =   0
-   ClientWidth     =   3255
+   ClientWidth     =   4830
    ScaleHeight     =   1140
-   ScaleWidth      =   3255
+   ScaleWidth      =   4830
    Begin VB.Timer Timer1 
       Enabled         =   0   'False
       Interval        =   100
@@ -18,27 +18,27 @@ Begin VB.UserControl ctlFirstOrder
       Left            =   120
       TabIndex        =   3
       Top             =   600
-      Width           =   1215
+      Width           =   2175
    End
    Begin VB.Label lblOutput 
       Height          =   375
-      Left            =   1920
+      Left            =   2520
       TabIndex        =   4
       Top             =   600
-      Width           =   1215
+      Width           =   2175
    End
    Begin VB.Label Label3 
       BackStyle       =   0  'Transparent
-      Caption         =   "Output"
+      Caption         =   "Sortie"
       Height          =   255
-      Left            =   1920
+      Left            =   2520
       TabIndex        =   2
       Top             =   360
       Width           =   1215
    End
    Begin VB.Label Label2 
       BackStyle       =   0  'Transparent
-      Caption         =   "Input"
+      Caption         =   "Entree"
       Height          =   255
       Left            =   120
       TabIndex        =   1
@@ -46,8 +46,9 @@ Begin VB.UserControl ctlFirstOrder
       Width           =   1215
    End
    Begin VB.Label Label1 
+      Alignment       =   2  'Center
       BackStyle       =   0  'Transparent
-      Caption         =   "Simulator"
+      Caption         =   "Simulateur"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
          Size            =   8.25
@@ -58,10 +59,10 @@ Begin VB.UserControl ctlFirstOrder
          Strikethrough   =   0   'False
       EndProperty
       Height          =   255
-      Left            =   1200
+      Left            =   120
       TabIndex        =   0
       Top             =   120
-      Width           =   855
+      Width           =   4575
    End
 End
 Attribute VB_Name = "ctlFirstOrder"
@@ -92,6 +93,9 @@ Option Explicit
 
 
 Dim m_input As Double
+'Dim m_input_noisy As Double
+'Dim m_input_old As Double
+
 Dim m_output As Double
 Dim m_output_old As Double
 
@@ -100,6 +104,8 @@ Const m_delta_t As Integer = 100 ' ms
 Const m_K As Double = 1
 Const m_tau As Double = 2 ' seconds
 
+'Const add_noise As Boolean = True
+
 Public Event InputChanged()
 
 
@@ -107,6 +113,8 @@ Public Event InputChanged()
 
 
 Private Sub UserControl_Initialize()
+'Randomize ' for Noise generation
+
 Timer1.Interval = m_delta_t
 Timer1.Enabled = True
 End Sub
@@ -118,6 +126,17 @@ End Sub
 
 
 Private Sub Timer1_Timer()
+'Dim temp_input As Double
+
+'m_input_noisy = noise(m_input, 0.05)
+
+'If add_noise Then
+'    temp_input = m_input_noisy ' with noise
+'Else
+'    temp_input = m_input ' without noise
+'End If
+'txtInput.Text = CStr(temp_input)
+
 ' calculate output
 m_output_old = m_output
 '
@@ -127,7 +146,15 @@ m_output_old = m_output
 ' o(t) + tau * do/dt = K i(t)
 ' with do/dt = ( o(t) - o(t-delta_t) ) / delta_t
 ' we get o(t)=f(K,tau,i,o(t-delta_t))
+
+' with or without noise
+'m_output = (m_K * temp_input + 1000 * m_tau / CDbl(m_delta_t) * m_output_old) / (1 + 1000 * m_tau / CDbl(m_delta_t))
+
+' without noise
 m_output = (m_K * m_input + 1000 * m_tau / CDbl(m_delta_t) * m_output_old) / (1 + 1000 * m_tau / CDbl(m_delta_t))
+
+
+'m_output = Noise(m_output, 0.05)
 
 ' Method 2
 ' do/dt = K/tau i(t) - o(t)
@@ -144,12 +171,15 @@ m_output = (m_K * m_input + 1000 * m_tau / CDbl(m_delta_t) * m_output_old) / (1 
 'dodt_old = dodt
 
 Afficher
+
+'Debug.Print m_input
 End Sub
 
 
 
 Public Property Let Entree(ByVal new_input As Double)
 If m_input <> new_input Then
+    'm_input_old = m_input
     m_input = new_input
     RaiseEvent InputChanged
 End If
@@ -170,6 +200,9 @@ Private Sub txtInput_Change()
 Entree = CDbl(txtInput.Text)
 End Sub
 
+Private Function noise(ByVal val As Double, ByVal absnoise As Double) As Double
+noise = val + absnoise * (Rnd() - 0.5) * 2
+End Function
 
 ' ToDo
 '

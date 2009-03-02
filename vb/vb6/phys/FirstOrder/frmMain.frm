@@ -26,8 +26,8 @@ Begin VB.Form frmMain
       Left            =   0
       TabIndex        =   0
       Top             =   0
-      Width           =   3255
-      _extentx        =   5741
+      Width           =   4815
+      _extentx        =   8493
       _extenty        =   2143
    End
    Begin VB.Label lblOutput 
@@ -38,7 +38,7 @@ Begin VB.Form frmMain
       Width           =   1215
    End
    Begin VB.Label Label2 
-      Caption         =   "Output"
+      Caption         =   "Sortie"
       Height          =   255
       Left            =   1920
       TabIndex        =   3
@@ -46,7 +46,7 @@ Begin VB.Form frmMain
       Width           =   1215
    End
    Begin VB.Label Label1 
-      Caption         =   "Input"
+      Caption         =   "Entree"
       Height          =   255
       Left            =   120
       TabIndex        =   2
