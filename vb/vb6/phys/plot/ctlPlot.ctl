@@ -89,7 +89,7 @@ Private Sub UserControl_Initialize()
 'Debug.Print "Initialize"
 
 Set m_buffer = New clsCircularBuffer
-m_buffer.Capacity = 128
+m_buffer.Capacity = 64
 
 Picture1.ScaleMode = 0
 

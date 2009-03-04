@@ -15,8 +15,8 @@ Begin VB.Form frmMain
       TabIndex        =   5
       Top             =   1200
       Width           =   4695
-      _extentx        =   8281
-      _extenty        =   5741
+      _ExtentX        =   8281
+      _ExtentY        =   5741
    End
    Begin VB.Timer Timer1 
       Interval        =   500
@@ -36,8 +36,8 @@ Begin VB.Form frmMain
       TabIndex        =   0
       Top             =   0
       Width           =   4815
-      _extentx        =   8493
-      _extenty        =   2143
+      _ExtentX        =   8493
+      _ExtentY        =   2143
    End
    Begin VB.Label lblOutput 
       Height          =   255
@@ -72,7 +72,7 @@ Option Explicit
 
 
 Private Sub Form_Load()
-txtInput.Text = CStr(0#)
+txtInput.Text = CStr(3#)
 lblOutput.Caption = CStr(0#)
 End Sub
 
