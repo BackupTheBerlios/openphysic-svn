@@ -36,6 +36,8 @@ Private Sub Picture1_Paint()
 
 'Debug.Print "Paint"
 
+
+
 Dim xmin As Double
 Dim xmax As Double
 Dim ymin As Double
@@ -48,7 +50,7 @@ Dim margin_bottom As Double
 
 xmin = 0
 xmax = m_buffer.Capacity
-ymin = -1
+ymin = 0
 ymax = 5
 
 margin_left = (xmax - xmin) / 10
@@ -63,14 +65,21 @@ Picture1.ScaleLeft = xmin - margin_left
 
 Picture1.DrawWidth = 1
 Picture1.ForeColor = vbRed
-Picture1.Line (0, 0)-(xmax, ymax)
+'Picture1.Line (0, 0)-(xmax, ymax) 'diag pour tester
 
 Picture1.ForeColor = vbBlack
 Picture1.DrawWidth = 3
-Picture1.Line (xmin, 0)-(xmax, 0)
-Picture1.Line (0, ymin)-(0, ymax)
+Picture1.Line (xmin, 0)-(xmax, 0) ' axe abs
+Picture1.Line (0, ymin)-(0, ymax) ' axe ord
 
+Picture1.DrawWidth = 1
+Picture1.ForeColor = vbGreen
 Dim i As Integer
+For i = 1 To m_buffer.Used - 1
+    'List1.addItem Buffer.FromFirst(i - 1)
+    Picture1.Line (i - 1, m_buffer.FromFirst(i - 1))-(i, m_buffer.FromFirst(i))
+Next i
+
 
 
 
@@ -112,4 +121,6 @@ End Sub
 Public Sub add(ByVal value As Double)
 m_buffer.addItem (value)
 'Debug.Print "add"
+
+Picture1.Refresh
 End Sub
