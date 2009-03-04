@@ -1,4 +1,0 @@
-frmMain = 0, 0, 0, 0, C, 0, 0, 0, 0, C
-ctlFirstOrder = 0, 0, 0, 0, C, 0, 0, 0, 0, C
-ctlPlot = 0, 0, 0, 0, C, 0, 0, 0, 0, C
-clsCircularBuffer = 0, 0, 0, 0, C
