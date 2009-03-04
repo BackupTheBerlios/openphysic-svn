@@ -32,18 +32,29 @@ Dim m_buffer As clsCircularBuffer
 
 Private Sub Picture1_Paint()
 'Picture1.Line (0, Picture1.Height)-(Picture1.Width, 0)
+Picture1.Line (0, 0)-(m_buffer.Capacity, 5)
 
 Dim i As Integer
+
+
 
 End Sub
 
 Private Sub UserControl_Initialize()
-Set m_buffer = New clsCircularBuffer
-'m_buffer.Capacity = 128
+Debug.Print "Initialize"
 
-m_buffer.addItem (1)
-m_buffer.addItem (2)
-m_buffer.addItem (3)
+Set m_buffer = New clsCircularBuffer
+m_buffer.Capacity = 128
+
+'m_buffer.addItem (1)
+'m_buffer.addItem (2)
+'m_buffer.addItem (3)
+
+Picture1.ScaleMode = 0
+Picture1.ScaleWidth = m_buffer.Capacity
+Picture1.ScaleHeight = -5
+Picture1.ScaleTop = 10
+Picture1.ScaleLeft = 0
 
 End Sub
 
@@ -58,4 +69,8 @@ Picture1.Line (0, 0)-(Picture1.Width, Picture1.Height)
 Picture1.CurrentX = Picture1.Width / 2
 Picture1.CurrentY = Picture1.Height / 2
 Picture1.Print "hello"
+End Sub
+
+Public Sub add(ByVal value As Double)
+
 End Sub

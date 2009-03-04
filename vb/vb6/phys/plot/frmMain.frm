@@ -79,7 +79,8 @@ End Sub
 Private Sub Timer1_Timer()
 lblOutput.Caption = CStr(ctlFirstOrder1.Sortie)
 
-ctlPlot1.Show
+'ctlPlot1.Show
+ctlPlot1.add (ctlFirstOrder1.Sortie)
 End Sub
 
 Private Sub txtInput_Change()
