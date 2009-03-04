@@ -11,9 +11,9 @@ Begin VB.Form frmMain
    StartUpPosition =   3  'Windows Default
    Begin Plot.ctlPlot ctlPlot1 
       Height          =   3255
-      Left            =   3720
+      Left            =   3480
       TabIndex        =   5
-      Top             =   1440
+      Top             =   1200
       Width           =   4695
       _extentx        =   8281
       _extenty        =   5741

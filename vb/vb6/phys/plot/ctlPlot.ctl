@@ -1,5 +1,6 @@
 VERSION 5.00
 Begin VB.UserControl ctlPlot 
+   BackColor       =   &H00FFC0C0&
    ClientHeight    =   2580
    ClientLeft      =   0
    ClientTop       =   0
@@ -31,8 +32,8 @@ Dim m_buffer As clsCircularBuffer
 
 
 Private Sub Picture1_Paint()
-'Picture1.Line (0, Picture1.Height)-(Picture1.Width, 0)
-Picture1.Line (0, 0)-(m_buffer.Capacity, 5)
+Picture1.Line (0, Picture1.Height)-(Picture1.Width, 0)
+'Picture1.Line (0, 0)-(m_buffer.Capacity, 5)
 
 Dim i As Integer
 
@@ -50,11 +51,11 @@ m_buffer.Capacity = 128
 'm_buffer.addItem (2)
 'm_buffer.addItem (3)
 
-Picture1.ScaleMode = 0
-Picture1.ScaleWidth = m_buffer.Capacity
-Picture1.ScaleHeight = -5
-Picture1.ScaleTop = 10
-Picture1.ScaleLeft = 0
+'Picture1.ScaleMode = 0
+'Picture1.ScaleWidth = m_buffer.Capacity
+'Picture1.ScaleHeight = -5
+'Picture1.ScaleTop = 10
+'Picture1.ScaleLeft = 0
 
 End Sub
 
