@@ -1,7 +1,8 @@
 ﻿Option Explicit On
 Option Strict On
 
-Public Class clsCircularBuffer
+Public Class clsCircularBuffer '(Of itemType) = generics
+
     ' variable size
     Dim m_capacity As Integer
     Dim m_buffer() As Double
@@ -36,7 +37,8 @@ Public Class clsCircularBuffer
         m_index = (m_index + 1) Mod m_capacity
 
         If m_mode = LogMode.Fill And m_used = m_capacity Then
-            Err.Raise(2001, "CircularBuffer", "Memory Full")
+            'Err.Raise(2001, "CircularBuffer", "Memory Full")
+            Throw New Exception("Memory Full")
         End If
 
     End Sub
@@ -62,7 +64,8 @@ Public Class clsCircularBuffer
             If offset >= 0 And offset < m_used Then
                 FromLast = m_buffer((m_index + m_capacity - 1 - offset) Mod m_capacity)
             Else
-                Err.Raise(2000, "CircularBuffer", "offset out of bounds")
+                'Err.Raise(2000, "CircularBuffer", "offset out of bounds")
+                Throw New Exception("offset out of bounds")
             End If
         End Get
     End Property
@@ -76,7 +79,8 @@ Public Class clsCircularBuffer
                     FromFirst = m_buffer((m_index + offset) Mod m_capacity)
                 End If
             Else
-                Err.Raise(2000, "CircularBuffer", "offset out of bounds")
+                'Err.Raise(2000, "CircularBuffer", "offset out of bounds")
+                Throw New Exception("offset out of bounds")
             End If
         End Get
     End Property
