@@ -32,8 +32,43 @@ Dim m_buffer As clsCircularBuffer
 
 
 Private Sub Picture1_Paint()
-Picture1.Line (0, Picture1.Height)-(Picture1.Width, 0)
-'Picture1.Line (0, 0)-(m_buffer.Capacity, 5)
+'Picture1.Line (0, Picture1.Height)-(Picture1.Width, 0)
+
+'Debug.Print "Paint"
+
+Dim xmin As Double
+Dim xmax As Double
+Dim ymin As Double
+Dim ymax As Double
+
+Dim margin_left As Double
+Dim margin_right As Double
+Dim margin_top As Double
+Dim margin_bottom As Double
+
+xmin = 0
+xmax = m_buffer.Capacity
+ymin = -1
+ymax = 5
+
+margin_left = (xmax - xmin) / 10
+margin_right = margin_left
+margin_top = (ymax - ymin) / 10
+margin_bottom = margin_top
+
+Picture1.ScaleWidth = (xmax - xmin) + margin_right + margin_left
+Picture1.ScaleHeight = -(ymax - ymin + margin_top + margin_bottom)
+Picture1.ScaleTop = 5 + margin_top
+Picture1.ScaleLeft = xmin - margin_left
+
+Picture1.DrawWidth = 1
+Picture1.ForeColor = vbRed
+Picture1.Line (0, 0)-(xmax, ymax)
+
+Picture1.ForeColor = vbBlack
+Picture1.DrawWidth = 3
+Picture1.Line (xmin, 0)-(xmax, 0)
+Picture1.Line (0, ymin)-(0, ymax)
 
 Dim i As Integer
 
@@ -46,6 +81,8 @@ Debug.Print "Initialize"
 
 Set m_buffer = New clsCircularBuffer
 m_buffer.Capacity = 128
+
+Picture1.ScaleMode = 0
 
 'm_buffer.addItem (1)
 'm_buffer.addItem (2)
@@ -64,14 +101,15 @@ Picture1.Height = Height
 Picture1.Width = Width
 End Sub
 
-Public Sub Show()
-Picture1.Line (0, 0)-(Picture1.Width, Picture1.Height)
+'Public Sub Show()
+'Picture1.Line (0, 0)-(Picture1.Width, Picture1.Height)
 
-Picture1.CurrentX = Picture1.Width / 2
-Picture1.CurrentY = Picture1.Height / 2
-Picture1.Print "hello"
-End Sub
+'Picture1.CurrentX = Picture1.Width / 2
+'Picture1.CurrentY = Picture1.Height / 2
+'Picture1.Print "hello"
+'End Sub
 
 Public Sub add(ByVal value As Double)
-
+m_buffer.addItem (value)
+'Debug.Print "add"
 End Sub
