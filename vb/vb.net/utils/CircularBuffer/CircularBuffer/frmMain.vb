@@ -4,15 +4,11 @@ Option Strict On
 Public Class frmMain
     Dim Buffer As clsCircularBuffer
 
-    Private Sub cmdAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAdd.Click
-
-    End Sub
-
     Private Sub frmMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        'Set Buffer = New clsCircularBuffer
+        Buffer = New clsCircularBuffer
     End Sub
 
-    Private Sub cmdAdd_Click()
+    Private Sub cmdAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAdd.Click
         Buffer.addItem(CDbl(txtValue.Text))
         lblBufferUsed.Text = CStr(Buffer.Used)
 
@@ -20,15 +16,14 @@ Public Class frmMain
         'Show_last
 
         Show_full_buffer()
-
     End Sub
 
     Private Sub Show_first()
         ' Ordre chronologique
         Dim i As Integer
-        'ListBox1.clear() ' tofix
+        ListBox1.Items.Clear()
         For i = 1 To Buffer.Used
-            'ListBox1.addItem(Buffer.FromFirst(i - 1)) ' tofix
+            ListBox1.Items.Add(Buffer.FromFirst(i - 1))
         Next i
 
     End Sub
@@ -36,9 +31,9 @@ Public Class frmMain
     Private Sub Show_last()
         ' Ordre chronologique inversé
         Dim i As Integer
-        'ListBox1.clear() ' tofix
+        ListBox1.Items.Clear()
         For i = 1 To Buffer.Used
-            'List1.addItem(Buffer.FromLast(i - 1)) ' tofix
+            ListBox1.Items.Add(Buffer.FromLast(i - 1))
         Next i
 
     End Sub
@@ -48,12 +43,26 @@ Public Class frmMain
         Dim i As Integer
 
         ' Contenu du buffer (pour debug)
-        'ListBox2.clear() 'tofix
+        ListBox2.Items.Clear()
         For i = 1 To Buffer.Capacity
-            'Dim buf
-            'Set buf = Buffer.Buffer
-            'ListBox2.addItem(Buffer.value(i - 1)) ' tofix
+            ListBox2.Items.Add(Buffer.value(i - 1))
         Next i
     End Sub
+
+    Private Sub cmdRedim_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdRedim.Click
+        Buffer.Capacity = 10
+
+        Show_first()
+        Show_full_buffer()
+    End Sub
+
+    Private Sub ListBox1_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles ListBox1.Click
+        ListBox1.Items.Clear()
+    End Sub
+
+    Private Sub ListBox2_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles ListBox2.Click
+        ListBox2.Items.Clear()
+    End Sub
+
 
 End Class
