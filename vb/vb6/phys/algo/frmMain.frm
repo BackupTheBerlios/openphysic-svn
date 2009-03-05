@@ -56,7 +56,7 @@ List3.Clear
 
 Randomize
 
-ReDim tabl(N)
+ReDim tabl(0 To N - 1)
 
 Dim i As Integer
 Dim val As Double
@@ -72,11 +72,11 @@ List3.AddItem "Max=" & max(tabl, N)
 'List3.AddItem "Moy=" & mean(tabl, N)
 End Sub
 
-Public Function max(ByRef tabl, ByVal s As Double) As Double
+Public Function max(ByRef tabl() As Double, ByVal s As Integer) As Double
 Dim i As Integer
 Dim nmax As Double
 nmax = tabl(1)
-For i = 1 To N
+For i = 0 To N - 1
     If tabl(i) >= nmax Then
         Debug.Print tabl(i)
         nmax = tabl(i)
@@ -85,11 +85,11 @@ Next i
 max = nmax
 End Function
 
-Public Function min(ByRef tabl() As Double, ByVal s As Double) As Double
+Public Function min(ByRef tabl() As Double, ByVal s As Integer) As Double
 Dim i As Integer
 Dim nmin As Double
 nmin = tabl(1)
-For i = 1 To N
+For i = 0 To N - 1
     If tabl(i) <= nmin Then
         nmin = tabl(i)
     End If
@@ -98,6 +98,6 @@ min = nmin
 End Function
 
 
-Public Function mean(ByRef tabl, ByVal s As Double) As Double
+Public Function mean(ByRef tabl() As Double, ByVal s As Integer) As Double
 
 End Function
