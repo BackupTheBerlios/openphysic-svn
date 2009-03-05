@@ -72,6 +72,12 @@
     <Compile Include="ctlFirstOrder.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="ctlPlot.Designer.vb">
+      <DependentUpon>ctlPlot.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ctlPlot.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="frmMain.Designer.vb">
       <DependentUpon>frmMain.vb</DependentUpon>
     </Compile>
@@ -97,6 +103,10 @@
   <ItemGroup>
     <EmbeddedResource Include="ctlFirstOrder.resx">
       <DependentUpon>ctlFirstOrder.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ctlPlot.resx">
+      <DependentUpon>ctlPlot.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">

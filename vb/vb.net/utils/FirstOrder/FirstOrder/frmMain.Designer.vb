@@ -29,6 +29,7 @@ Partial Class frmMain
         Me.Label1 = New System.Windows.Forms.Label
         Me.Label2 = New System.Windows.Forms.Label
         Me.CtlFirstOrder1 = New FirstOrder.ctlFirstOrder
+        Me.CtlPlot1 = New FirstOrder.ctlPlot
         Me.SuspendLayout()
         '
         'lblOutput
@@ -76,18 +77,26 @@ Partial Class frmMain
         Me.CtlFirstOrder1.Size = New System.Drawing.Size(195, 68)
         Me.CtlFirstOrder1.TabIndex = 6
         '
+        'CtlPlot1
+        '
+        Me.CtlPlot1.Location = New System.Drawing.Point(276, 14)
+        Me.CtlPlot1.Name = "CtlPlot1"
+        Me.CtlPlot1.Size = New System.Drawing.Size(256, 136)
+        Me.CtlPlot1.TabIndex = 7
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(585, 189)
+        Me.Controls.Add(Me.CtlPlot1)
         Me.Controls.Add(Me.CtlFirstOrder1)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.txtInput)
         Me.Controls.Add(Me.lblOutput)
         Me.Name = "frmMain"
-        Me.Text = "Form1"
+        Me.Text = "Simulator"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -98,5 +107,6 @@ Partial Class frmMain
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents CtlFirstOrder1 As FirstOrder.ctlFirstOrder
+    Friend WithEvents CtlPlot1 As FirstOrder.ctlPlot
 
 End Class
