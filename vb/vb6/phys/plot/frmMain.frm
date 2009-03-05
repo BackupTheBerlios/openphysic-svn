@@ -1,55 +1,55 @@
 VERSION 5.00
 Begin VB.Form frmMain 
    Caption         =   "Simulator tester"
-   ClientHeight    =   5220
+   ClientHeight    =   3510
    ClientLeft      =   60
    ClientTop       =   450
-   ClientWidth     =   8940
+   ClientWidth     =   9825
    LinkTopic       =   "Form1"
-   ScaleHeight     =   5220
-   ScaleWidth      =   8940
+   ScaleHeight     =   3510
+   ScaleWidth      =   9825
    StartUpPosition =   3  'Windows Default
    Begin Plot.ctlPlot ctlPlot1 
       Height          =   3255
-      Left            =   3480
+      Left            =   5040
       TabIndex        =   5
-      Top             =   1200
+      Top             =   120
       Width           =   4695
-      _ExtentX        =   8281
-      _ExtentY        =   5741
+      _extentx        =   8281
+      _extenty        =   5741
    End
    Begin VB.Timer Timer1 
       Interval        =   500
-      Left            =   2760
-      Top             =   3000
+      Left            =   4440
+      Top             =   1560
    End
    Begin VB.TextBox txtInput 
       Height          =   375
-      Left            =   120
+      Left            =   240
       TabIndex        =   1
       Top             =   2160
-      Width           =   1215
+      Width           =   2175
    End
    Begin Plot.ctlFirstOrder ctlFirstOrder1 
       Height          =   1215
-      Left            =   0
+      Left            =   120
       TabIndex        =   0
-      Top             =   0
+      Top             =   120
       Width           =   4815
-      _ExtentX        =   8493
-      _ExtentY        =   2143
+      _extentx        =   8493
+      _extenty        =   2143
    End
    Begin VB.Label lblOutput 
       Height          =   255
-      Left            =   1920
+      Left            =   2640
       TabIndex        =   4
       Top             =   2160
-      Width           =   1215
+      Width           =   2175
    End
    Begin VB.Label Label2 
       Caption         =   "Sortie"
       Height          =   255
-      Left            =   1920
+      Left            =   2640
       TabIndex        =   3
       Top             =   1920
       Width           =   1215
@@ -57,7 +57,7 @@ Begin VB.Form frmMain
    Begin VB.Label Label1 
       Caption         =   "Entree"
       Height          =   255
-      Left            =   120
+      Left            =   240
       TabIndex        =   2
       Top             =   1920
       Width           =   1215
@@ -75,6 +75,7 @@ Private Sub Form_Load()
 txtInput.Text = CStr(3#)
 lblOutput.Caption = CStr(0#)
 End Sub
+
 
 Private Sub Timer1_Timer()
 lblOutput.Caption = CStr(ctlFirstOrder1.Sortie)
