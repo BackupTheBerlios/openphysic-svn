@@ -18,7 +18,10 @@ Public Class frmMain
     End Sub
 
     Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
-        lblOutput.Text = CStr(CtlFirstOrder1.Output)
+        Dim outp As Double
+        outp = CtlFirstOrder1.Output
+        lblOutput.Text = CStr(outp)
+        CtlPlot1.add(outp)
     End Sub
 
 End Class
