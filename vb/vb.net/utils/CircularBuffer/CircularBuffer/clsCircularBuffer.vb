@@ -1,11 +1,11 @@
 ﻿Option Explicit On
 Option Strict On
 
-Public Class clsCircularBuffer '(Of itemType) = generics
+Public Class clsCircularBuffer(Of itemType) ' generics
 
     ' variable size
     Dim m_capacity As Integer
-    Dim m_buffer() As Double
+    Dim m_buffer() As itemType
 
     Dim m_used As Integer
     Dim m_index As Integer
@@ -25,7 +25,7 @@ Public Class clsCircularBuffer '(Of itemType) = generics
         clear()
     End Sub
 
-    Public Sub addItem(ByVal item As Double)
+    Public Sub addItem(ByVal item As itemType)
         m_buffer(m_index) = item
 
         If m_used < m_capacity Then
@@ -43,13 +43,13 @@ Public Class clsCircularBuffer '(Of itemType) = generics
 
     End Sub
 
-    Public ReadOnly Property Last() As Double
+    Public ReadOnly Property Last() As itemType
         Get
             Return m_buffer((m_index + m_capacity - 1) Mod m_capacity)
         End Get
     End Property
 
-    Public ReadOnly Property First() As Double
+    Public ReadOnly Property First() As itemType
         Get
             If m_used < m_capacity Then
                 First = m_buffer(0)
@@ -59,7 +59,7 @@ Public Class clsCircularBuffer '(Of itemType) = generics
         End Get
     End Property
 
-    Public ReadOnly Property FromLast(ByVal offset As Integer) As Double
+    Public ReadOnly Property FromLast(ByVal offset As Integer) As itemType
         Get
             If offset >= 0 And offset < m_used Then
                 FromLast = m_buffer((m_index + m_capacity - 1 - offset) Mod m_capacity)
@@ -70,7 +70,7 @@ Public Class clsCircularBuffer '(Of itemType) = generics
         End Get
     End Property
 
-    Public ReadOnly Property FromFirst(ByVal offset As Integer) As Double
+    Public ReadOnly Property FromFirst(ByVal offset As Integer) As itemType
         Get
             If offset >= 0 And offset < m_used Then
                 If m_used < m_capacity Then
@@ -103,7 +103,7 @@ Public Class clsCircularBuffer '(Of itemType) = generics
         End Get
     End Property
 
-    Public ReadOnly Property value(ByVal offset As Integer) As Double
+    Public ReadOnly Property value(ByVal offset As Integer) As itemType
         Get
             Return m_buffer(offset)
         End Get
@@ -120,10 +120,10 @@ Public Class clsCircularBuffer '(Of itemType) = generics
 
 
     Private Sub clear()
-        Dim i As Integer
-        For i = 0 To m_capacity - 1
-            m_buffer(i) = 0
-        Next i
+        'Dim i As Integer
+        'For i = 0 To m_capacity - 1
+        'm_buffer(i) = DBNull 'itemType
+        'Next i
         m_index = 0
         m_used = 0
         m_mode = LogMode.Wrap

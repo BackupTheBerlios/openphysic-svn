@@ -17,6 +17,6 @@ puis copie en 2 parties (d'abord les données les plus récentes puis les plus anc
 envisager aussi le cas du redimensionnement vers un buffer plus petit
 
 
-à faire:
+Fait: 2009-03-05
 rendre le conteneur générique (generics)
 http://www.ondotnet.com/pub/a/dotnet/2004/05/25/whidbey_vbnet_pt2.html

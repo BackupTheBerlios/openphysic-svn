@@ -2,10 +2,10 @@
 Option Strict On
 
 Public Class frmMain
-    Dim Buffer As clsCircularBuffer
+    Dim Buffer As clsCircularBuffer(Of Double)
 
     Private Sub frmMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Buffer = New clsCircularBuffer
+        Buffer = New clsCircularBuffer(Of Double)
     End Sub
 
     Private Sub cmdAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAdd.Click
