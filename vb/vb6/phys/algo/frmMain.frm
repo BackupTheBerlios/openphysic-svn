@@ -60,7 +60,7 @@ ReDim tabl(0 To N - 1)
 
 Dim i As Integer
 Dim val As Double
-For i = 0 To N - 1
+For i = 0 To UBound(tabl) ' UBound(t)=N-1
     val = Rnd
     tabl(i) = val
     List1.AddItem val
@@ -75,29 +75,28 @@ Private Sub cmdDo_Click()
 clear
 
 'Call Affiche(tabl())
-List3.AddItem "Max=" & max(tabl(), N)
-List3.AddItem "Min=" & min(tabl, N)
-List3.AddItem "Moy=" & mean(tabl, N)
+List3.AddItem "Max=" & max(tabl())
+List3.AddItem "Min=" & min(tabl())
+List3.AddItem "Moy=" & mean(tabl())
 End Sub
 
-Public Function max(ByRef t() As Double, ByVal s As Integer) As Double
+Public Function max(ByRef t() As Double) As Double
 Dim i As Integer
 Dim nmax As Double
 nmax = t(1)
 For i = 0 To N - 1
     If tabl(i) >= nmax Then
-        Debug.Print t(i)
         nmax = t(i)
     End If
 Next i
 max = nmax
 End Function
 
-Public Function min(ByRef t() As Double, ByVal s As Integer) As Double
+Public Function min(ByRef t() As Double) As Double
 Dim i As Integer
 Dim nmin As Double
 nmin = t(1)
-For i = 0 To N - 1
+For i = 0 To UBound(t)
     If t(i) <= nmin Then
         nmin = t(i)
     End If
@@ -106,19 +105,30 @@ min = nmin
 End Function
 
 
-Public Function sum(ByRef t() As Double, ByVal s As Integer) As Double
+Public Function sum(ByRef t() As Double) As Double
 Dim i As Integer
 sum = 0
-For i = 0 To N - 1
+For i = 0 To UBound(t)
     sum = sum + t(i)
 Next i
 End Function
 
-Public Function mean(ByRef t() As Double, ByVal s As Integer) As Double
-mean = sum(t(), s) / s
+Public Function mean(ByRef t() As Double) As Double
+mean = sum(t()) / (UBound(t) + 1)
 End Function
 
+
+'Public Function power(ByRef t() As Double) As Double
+'mean = sum(t()) / (UBound(t) + 1)
+'End Function
+
+'Public Function square()
+'End Function
+
 ' rms (root mean square)
+'Public Function rms(ByRef t() As Double, ByVal s As Integer) As Double
+
+'End Function
 
 ' fft
 
@@ -127,7 +137,7 @@ End Function
 
 Public Sub Affiche(ByRef t() As Double)
 Dim i As Integer
-For i = 0 To N - 1
+For i = 0 To UBound(t)
     Debug.Print t(i)
 Next i
 End Sub
