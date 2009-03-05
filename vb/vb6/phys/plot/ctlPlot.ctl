@@ -27,9 +27,40 @@ Option Explicit
 
 Dim m_buffer As clsCircularBuffer
 
+Enum Points_Mode
+    None
+    Dot
+    AddCross
+    TimesCross
+End Enum
+Dim m_points_mode As Points_Mode
 
 
+Const m_ray As Double = 0.4
+Dim m_delta_x As Double
+Dim m_delta_y As Double
 
+Private Sub UserControl_Initialize()
+'Debug.Print "Initialize"
+
+Set m_buffer = New clsCircularBuffer
+m_buffer.Capacity = 64
+
+Picture1.ScaleMode = 0
+
+'m_buffer.addItem (1)
+'m_buffer.addItem (2)
+'m_buffer.addItem (3)
+
+'Picture1.ScaleMode = 0
+'Picture1.ScaleWidth = m_buffer.Capacity
+'Picture1.ScaleHeight = -5
+'Picture1.ScaleTop = 10
+'Picture1.ScaleLeft = 0
+
+m_points_mode = Points_Mode.Dot
+
+End Sub
 
 Private Sub Picture1_Paint()
 'Picture1.Line (0, Picture1.Height)-(Picture1.Width, 0)
@@ -72,38 +103,56 @@ Picture1.DrawWidth = 3
 Picture1.Line (xmin, 0)-(xmax, 0) ' axe abs
 Picture1.Line (0, ymin)-(0, ymax) ' axe ord
 
+' Lines
 Picture1.DrawWidth = 1
 Picture1.ForeColor = vbGreen
 Dim i As Integer
 For i = 1 To m_buffer.Used - 1
-    'List1.addItem Buffer.FromFirst(i - 1)
     Picture1.Line (i - 1, m_buffer.FromFirst(i - 1))-(i, m_buffer.FromFirst(i))
 Next i
 
+' Points (dot or circle)
+
+If m_points_mode = Points_Mode.Dot Then ' .
+    Picture1.DrawWidth = 1
+    Picture1.ForeColor = vbRed
+    Picture1.FillStyle = 0
+    Picture1.FillColor = vbRed
+    For i = 1 To m_buffer.Used
+        Picture1.Circle (i - 1, m_buffer.FromFirst(i - 1)), m_ray
+    Next i
+
+ElseIf m_points_mode = Points_Mode.AddCross Then ' +
+    m_delta_x = Picture1.ScaleWidth / 50 ' 1#
+    m_delta_y = Abs(Picture1.ScaleHeight) / 50
+    Picture1.DrawWidth = 1
+    Picture1.ForeColor = vbRed
+    Picture1.FillStyle = 0
+    Picture1.FillColor = vbRed
+    For i = 1 To m_buffer.Used
+        Picture1.Line (i - 1 - m_delta_x, m_buffer.FromFirst(i - 1))-(i - 1 + m_delta_x, m_buffer.FromFirst(i - 1))
+        Picture1.Line (i - 1, m_buffer.FromFirst(i - 1) - m_delta_y)-(i - 1, m_buffer.FromFirst(i - 1) + m_delta_y)
+    Next i
+
+ElseIf m_points_mode = Points_Mode.TimesCross Then  ' x
+    m_delta_x = Picture1.ScaleWidth / 70
+    m_delta_y = Abs(Picture1.ScaleHeight) / 70
+    Picture1.DrawWidth = 1
+    Picture1.ForeColor = vbRed
+    Picture1.FillStyle = 0
+    Picture1.FillColor = vbRed
+    For i = 1 To m_buffer.Used
+        Picture1.Line (i - 1 - m_delta_x, m_buffer.FromFirst(i - 1) - m_delta_y)-(i - 1 + m_delta_x, m_buffer.FromFirst(i - 1) + m_delta_y)
+        Picture1.Line (i - 1 - m_delta_x, m_buffer.FromFirst(i - 1) + m_delta_y)-(i - 1 + m_delta_x, m_buffer.FromFirst(i - 1) - m_delta_y)
+    Next i
+
+End If
 
 
 
 End Sub
 
-Private Sub UserControl_Initialize()
-'Debug.Print "Initialize"
 
-Set m_buffer = New clsCircularBuffer
-m_buffer.Capacity = 64
-
-Picture1.ScaleMode = 0
-
-'m_buffer.addItem (1)
-'m_buffer.addItem (2)
-'m_buffer.addItem (3)
-
-'Picture1.ScaleMode = 0
-'Picture1.ScaleWidth = m_buffer.Capacity
-'Picture1.ScaleHeight = -5
-'Picture1.ScaleTop = 10
-'Picture1.ScaleLeft = 0
-
-End Sub
 
 Private Sub UserControl_Resize()
 Picture1.Height = Height
