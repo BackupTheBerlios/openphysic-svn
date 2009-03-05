@@ -28,8 +28,8 @@ Partial Class frmMain
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Label1 = New System.Windows.Forms.Label
         Me.Label2 = New System.Windows.Forms.Label
-        Me.CtlFirstOrder1 = New FirstOrder.ctlFirstOrder
         Me.CtlPlot1 = New FirstOrder.ctlPlot
+        Me.CtlFirstOrder1 = New FirstOrder.ctlFirstOrder
         Me.SuspendLayout()
         '
         'lblOutput
@@ -68,6 +68,13 @@ Partial Class frmMain
         Me.Label2.TabIndex = 5
         Me.Label2.Text = "Output"
         '
+        'CtlPlot1
+        '
+        Me.CtlPlot1.Location = New System.Drawing.Point(259, 12)
+        Me.CtlPlot1.Name = "CtlPlot1"
+        Me.CtlPlot1.Size = New System.Drawing.Size(314, 165)
+        Me.CtlPlot1.TabIndex = 7
+        '
         'CtlFirstOrder1
         '
         Me.CtlFirstOrder1.BackColor = System.Drawing.SystemColors.ActiveCaption
@@ -76,13 +83,6 @@ Partial Class frmMain
         Me.CtlFirstOrder1.Name = "CtlFirstOrder1"
         Me.CtlFirstOrder1.Size = New System.Drawing.Size(195, 68)
         Me.CtlFirstOrder1.TabIndex = 6
-        '
-        'CtlPlot1
-        '
-        Me.CtlPlot1.Location = New System.Drawing.Point(276, 14)
-        Me.CtlPlot1.Name = "CtlPlot1"
-        Me.CtlPlot1.Size = New System.Drawing.Size(256, 136)
-        Me.CtlPlot1.TabIndex = 7
         '
         'frmMain
         '
