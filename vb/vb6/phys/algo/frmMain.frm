@@ -117,6 +117,19 @@ Public Function mean(ByRef t() As Double) As Double
 mean = sum(t()) / (UBound(t) + 1)
 End Function
 
+'Public Function add(ByRef t1() As Double, ByRef t2() As Double) As Double()
+'add =
+'End Function
+
+'Public Function substract(ByRef t1() As Double, ByRef t2() As Double) As Double()
+'End Function
+
+'Public Function multiply(ByRef t1() As Double, ByRef t2() As Double) As Double()
+'End Function
+
+'Public Function divide(ByRef t1() As Double, ByRef t2() As Double) As Double()
+'End Function
+
 
 'Public Function power(ByRef t() As Double) As Double
 'mean = sum(t()) / (UBound(t) + 1)
