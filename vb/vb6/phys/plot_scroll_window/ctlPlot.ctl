@@ -36,15 +36,18 @@ Dim m_buffer As clsCircularBuffer
 
 Dim m_window_capacity As Integer ' <= m_buffer.Capacity
 Dim m_window_position As Integer ' 0 <= x <= m_buffer.Capacity-m_window_capacity
+Dim m_window_real_position As Integer
 
+Dim m_plot_state As Integer
+    
 Enum Points_Mode
     None
     Dot
+    DotCircle
     AddCross
     TimesCross
 End Enum
 Dim m_points_mode As Points_Mode
-
 
 Dim m_ray As Double
 Dim m_delta_x As Double
@@ -52,36 +55,60 @@ Dim m_delta_y As Double
 
 
 Private Sub UserControl_Initialize()
+m_plot_state = 0
 'Debug.Print "Initialize"
 
 Set m_buffer = New clsCircularBuffer
-m_buffer.Capacity = 10
-
-m_window_capacity = 6
+'m_buffer.Capacity = 10
+'m_window_capacity = 6
 'm_window_position = 4 ' =window_capacity => affiche les derniers points
 'm_window_position = 0 ' =0 => affiche les premiers points
-m_window_position = 4
+'m_window_position = 4
+
+m_buffer.Capacity = 30
+m_window_capacity = 18
+m_window_position = 12
 
 Picture1.ScaleMode = 0
 
-'m_buffer.addItem (1)
-'m_buffer.addItem (2)
-'m_buffer.addItem (3)
-
-'Picture1.ScaleMode = 0
-'Picture1.ScaleWidth = m_buffer.Capacity
-'Picture1.ScaleHeight = -5
-'Picture1.ScaleTop = 10
-'Picture1.ScaleLeft = 0
-
-m_points_mode = Points_Mode.Dot
+m_points_mode = Points_Mode.DotCircle       '.AddCross
 
 
-update_scroll_bar
+'update_scroll_bar
+HScroll1.Min = 0
 
 End Sub
 
 Private Sub Picture1_Paint()
+Dim points_number As Integer ' number of points to draw
+If m_buffer.Used <= m_window_capacity Then
+    points_number = m_buffer.Used
+Else
+    points_number = m_window_capacity
+End If
+
+If m_window_position > m_buffer.Used - m_window_capacity Then
+    If m_buffer.Used <= m_window_capacity Then
+        m_plot_state = 0
+        m_window_real_position = 0
+        HScroll1.Max = 0
+        HScroll1.value = 0
+    Else
+        m_plot_state = 1
+        m_window_real_position = m_buffer.Used - m_window_capacity
+        HScroll1.Max = m_buffer.Used - m_window_capacity
+        HScroll1.value = m_window_real_position
+        m_plot_state = 2
+    End If
+Else
+    m_plot_state = 3
+    m_window_real_position = m_window_position
+    HScroll1.Max = m_buffer.Used - m_window_capacity
+    HScroll1.value = m_window_real_position
+    m_plot_state = 4
+End If
+
+
 'Picture1.Line (0, Picture1.Height)-(Picture1.Width, 0)
 
 'Debug.Print "Paint"
@@ -99,7 +126,7 @@ Dim margin_top As Double
 Dim margin_bottom As Double
 
 xmin = 0
-xmax = m_window_capacity - 1 'm_buffer.Capacity - 1 'm_window_capacity 'm_buffer.Capacity
+xmax = m_window_capacity - 1
 ymin = 0
 ymax = 5
 
@@ -125,71 +152,60 @@ Picture1.Line (0, ymin)-(0, ymax) ' axe ord
 Dim i As Integer
 
 ' Lines
-'Picture1.DrawWidth = 1
-'Picture1.ForeColor = vbGreen
-'For i = 1 To m_buffer.Used - 1
-'    Picture1.Line (i - 1, m_buffer.FromFirst(i - 1))-(i, m_buffer.FromFirst(i))
-'Next i
+Picture1.DrawWidth = 1
+Picture1.ForeColor = vbGreen
+For i = 1 To points_number - 1
+    Picture1.Line (i - 1, m_buffer.FromFirst(i - 1 + m_window_real_position))-(i, m_buffer.FromFirst(i + m_window_real_position))
+Next i
+
+
+Picture1.DrawWidth = 1
+Picture1.ForeColor = vbRed
+Picture1.FillStyle = 0
+Picture1.FillColor = vbRed
 
 ' Points (dot or circle)
 
-'If m_points_mode = Points_Mode.Dot Then ' .
+If m_points_mode = Points_Mode.Dot Then ' .
+    
+    For i = 0 To points_number - 1
+        Picture1.PSet (i, m_buffer.FromFirst(i + m_window_real_position))
+    Next i
+
+ElseIf m_points_mode = Points_Mode.DotCircle Then ' o
+
+    m_ray = Abs(Picture1.ScaleHeight) / 20
+    For i = 0 To points_number - 1
+        Picture1.Circle (i, m_buffer.FromFirst(i + m_window_real_position)), m_ray
+    Next i
+
+ElseIf m_points_mode = Points_Mode.AddCross Then ' +
+
+    m_delta_x = Picture1.ScaleWidth / 50 ' 1#
+    m_delta_y = Abs(Picture1.ScaleHeight) / 50
     Picture1.DrawWidth = 1
     Picture1.ForeColor = vbRed
     Picture1.FillStyle = 0
     Picture1.FillColor = vbRed
-    
-    Dim points_number As Integer
-    If m_buffer.Used <= m_window_capacity Then
-        points_number = m_buffer.Used
-    Else
-        points_number = m_window_capacity
-    End If
-    Dim real_window_position As Integer
-    If m_window_position > m_buffer.Used - m_window_capacity Then
-        If m_buffer.Used <= m_window_capacity Then
-            real_window_position = 0
-        Else
-            real_window_position = m_buffer.Used - m_window_capacity
-        End If
-    'ElseIf con Then
-    '    real_window_position =
-    Else
-        real_window_position = m_window_position
-    End If
-    m_ray = Abs(Picture1.ScaleHeight) / 40
-    For i = 1 To points_number 'm_buffer.Used 'points_number ' m_buffer.Used
-        'Picture1.PSet (i - 1, m_buffer.FromFirst(i - 1 + real_window_position))
-        Picture1.Circle (i - 1, m_buffer.FromFirst(i - 1 + real_window_position)), m_ray
+    For i = 0 To points_number - 1
+        Picture1.Line (i - m_delta_x, m_buffer.FromFirst(i + m_window_real_position))-(i + m_delta_x, m_buffer.FromFirst(i + m_window_real_position))
+        Picture1.Line (i, m_buffer.FromFirst(i + m_window_real_position) - m_delta_y)-(i, m_buffer.FromFirst(i + m_window_real_position) + m_delta_y)
     Next i
 
-'ElseIf m_points_mode = Points_Mode.AddCross Then ' +
-'    m_delta_x = Picture1.ScaleWidth / 50 ' 1#
-'    m_delta_y = Abs(Picture1.ScaleHeight) / 50
-'    Picture1.DrawWidth = 1
-'    Picture1.ForeColor = vbRed
-'    Picture1.FillStyle = 0
-'    Picture1.FillColor = vbRed
-'    For i = 1 To m_buffer.Used
-'        Picture1.Line (i - 1 - m_delta_x, m_buffer.FromFirst(i - 1))-(i - 1 + m_delta_x, m_buffer.FromFirst(i - 1))
-'        Picture1.Line (i - 1, m_buffer.FromFirst(i - 1) - m_delta_y)-(i - 1, m_buffer.FromFirst(i - 1) + m_delta_y)
-'    Next i
+ElseIf m_points_mode = Points_Mode.TimesCross Then  ' x
 
-'ElseIf m_points_mode = Points_Mode.TimesCross Then  ' x
-'    m_delta_x = Picture1.ScaleWidth / 70
-'    m_delta_y = Abs(Picture1.ScaleHeight) / 70
-'    Picture1.DrawWidth = 1
-'    Picture1.ForeColor = vbRed
-'    Picture1.FillStyle = 0
-'    Picture1.FillColor = vbRed
-'    For i = 1 To m_buffer.Used
-'        Picture1.Line (i - 1 - m_delta_x, m_buffer.FromFirst(i - 1) - m_delta_y)-(i - 1 + m_delta_x, m_buffer.FromFirst(i - 1) + m_delta_y)
-'        Picture1.Line (i - 1 - m_delta_x, m_buffer.FromFirst(i - 1) + m_delta_y)-(i - 1 + m_delta_x, m_buffer.FromFirst(i - 1) - m_delta_y)
-'    Next i
+    m_delta_x = Picture1.ScaleWidth / 70
+    m_delta_y = Abs(Picture1.ScaleHeight) / 70
+    Picture1.DrawWidth = 1
+    Picture1.ForeColor = vbRed
+    Picture1.FillStyle = 0
+    Picture1.FillColor = vbRed
+    For i = 0 To points_number - 1
+        Picture1.Line (i - m_delta_x, m_buffer.FromFirst(i + m_window_real_position) - m_delta_y)-(i + m_delta_x, m_buffer.FromFirst(i + m_window_real_position) + m_delta_y)
+        Picture1.Line (i - m_delta_x, m_buffer.FromFirst(i + m_window_real_position) + m_delta_y)-(i + m_delta_x, m_buffer.FromFirst(i + m_window_real_position) - m_delta_y)
+    Next i
 
-'End If
-
-
+End If
 
 End Sub
 
@@ -217,41 +233,54 @@ m_buffer.addItem (value)
 'Debug.Print "add"
 
 Picture1.Refresh
-update_scroll_bar
+'update_scroll_bar
+'Fix_HScroll1_Focus
 End Sub
 
-Public Sub update_scroll_bar()
-HScroll1.Min = 0
-If m_buffer.Used <= m_window_capacity Then
-    HScroll1.Max = 0
-Else
-    HScroll1.Max = m_buffer.Used - m_window_capacity
-End If
+'Public Sub update_scroll_bar()
+'HScroll1.Min = 0
+'If m_buffer.Used <= m_window_capacity Then
+'    HScroll1.Max = 0
+'Else
+'    HScroll1.Max = m_buffer.Used - m_window_capacity
+'End If
 
 'If m_window_position > HScroll1.Max Then
-    'HScroll1.value = HScroll1.Max
+'    HScroll1.value = HScroll1.Max
 'Else
-'    HScroll1.value = m_window_position
+'    HScroll1.value = m_window_real_position
 'End If
 
 
-Debug.Print m_window_position
+'Debug.Print m_window_position
 'Debug.Print HScroll1.value
-End Sub
+'End Sub
 
 Private Sub HScroll1_Update()
-'If m_buffer.Used > m_window_capacity Then
+Debug.Print "HScroll1_Update " & m_plot_state
+If m_plot_state = 4 Or m_plot_state = 3 Or m_plot_state = 2 Then
     m_window_position = HScroll1.value
-'End If
-Picture1.Refresh
+    Picture1.Refresh
+    'Fix_HScroll1_Focus
+End If
+
 End Sub
 
 Private Sub HScroll1_Change()
 'Debug.Print "HScroll1_Change"
-'HScroll1_Update
+HScroll1_Update
+'Debug.Print HScroll1.value
 End Sub
 
 Private Sub HScroll1_Scroll()
-'Debug.Print "HScroll1_Scroll"
-'HScroll1_Update
+HScroll1_Update
+End Sub
+
+Private Sub Fix_HScroll1_Focus()
+'HScroll1.Refresh
+'Picture1.SetFocus
+'HScroll1.SetFocus
+'Picture1.SetFocus
+'Dim obj As Variant
+
 End Sub
