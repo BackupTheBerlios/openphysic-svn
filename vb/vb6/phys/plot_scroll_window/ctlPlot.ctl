@@ -55,12 +55,12 @@ Private Sub UserControl_Initialize()
 'Debug.Print "Initialize"
 
 Set m_buffer = New clsCircularBuffer
-m_buffer.Capacity = 10
+m_buffer.Capacity = 100
 
-m_window_capacity = 6
+m_window_capacity = 60
 'm_window_position = 4 ' =window_capacity => affiche les derniers points
 'm_window_position = 0 ' =0 => affiche les premiers points
-m_window_position = 0
+m_window_position = 40
 
 Picture1.ScaleMode = 0
 
@@ -75,6 +75,9 @@ Picture1.ScaleMode = 0
 'Picture1.ScaleLeft = 0
 
 m_points_mode = Points_Mode.Dot
+
+
+update_scoll_bar
 
 End Sub
 
@@ -211,14 +214,14 @@ End Sub
 
 Public Sub update_scoll_bar()
 HScroll1.Min = 0
-HScroll1.Max = m_buffer.Capacity - 1
-'HScroll1.r = 0
+HScroll1.Max = m_buffer.Capacity - m_window_capacity
+HScroll1.value = m_window_position
 End Sub
 
-Private Sub HScroll1_Change()
-Debug.Print "HScroll Change"
-End Sub
+'Private Sub HScroll1_Change()
+'m_window_position = HScroll1.value
+'End Sub
 
 Private Sub HScroll1_Scroll()
-Debug.Print "HScroll Scroll"
+m_window_position = HScroll1.value
 End Sub
