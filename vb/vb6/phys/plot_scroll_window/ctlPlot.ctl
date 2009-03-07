@@ -86,7 +86,7 @@ Private Sub Picture1_Paint()
 
 'Debug.Print "Paint"
 
-
+Picture1.Cls
 
 Dim xmin As Double
 Dim xmax As Double
@@ -153,7 +153,8 @@ Dim i As Integer
     'End If
     
     For i = 1 To points_number 'm_buffer.Used 'points_number ' m_buffer.Used
-        Picture1.Circle (i - 1, m_buffer.FromFirst(i - 1 + real_window_position)), m_ray
+        'Picture1.Circle (i - 1, m_buffer.FromFirst(i - 1 + real_window_position)), m_ray
+        Picture1.PSet (i - 1, m_buffer.FromFirst(i - 1 + real_window_position))
     Next i
 
 'ElseIf m_points_mode = Points_Mode.AddCross Then ' +
@@ -218,10 +219,15 @@ HScroll1.Max = m_buffer.Capacity - m_window_capacity
 HScroll1.value = m_window_position
 End Sub
 
-'Private Sub HScroll1_Change()
-'m_window_position = HScroll1.value
-'End Sub
+
+Private Sub HScroll1_Change()
+Debug.Print "HScroll1_Change"
+m_window_position = HScroll1.value
+Picture1.Refresh
+End Sub
 
 Private Sub HScroll1_Scroll()
+Debug.Print "HScroll1_Scroll"
 m_window_position = HScroll1.value
+Picture1.Refresh
 End Sub
