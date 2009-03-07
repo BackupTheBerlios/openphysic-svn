@@ -1,24 +1,24 @@
 VERSION 5.00
 Begin VB.UserControl ctlPlot 
    BackColor       =   &H00FFC0C0&
-   ClientHeight    =   2580
+   ClientHeight    =   2745
    ClientLeft      =   0
    ClientTop       =   0
-   ClientWidth     =   3945
-   ScaleHeight     =   2580
-   ScaleWidth      =   3945
+   ClientWidth     =   4635
+   ScaleHeight     =   2745
+   ScaleWidth      =   4635
    Begin VB.HScrollBar HScroll1 
       Height          =   255
-      Left            =   240
+      Left            =   0
       TabIndex        =   1
-      Top             =   2040
-      Width           =   1335
+      Top             =   2400
+      Width           =   2415
    End
    Begin VB.PictureBox Picture1 
       BackColor       =   &H00FFFFFF&
-      Height          =   1695
+      Height          =   2295
       Left            =   0
-      ScaleHeight     =   1635
+      ScaleHeight     =   2235
       ScaleWidth      =   1995
       TabIndex        =   0
       Top             =   0
@@ -46,7 +46,7 @@ End Enum
 Dim m_points_mode As Points_Mode
 
 
-Const m_ray As Double = 0.4
+Dim m_ray As Double
 Dim m_delta_x As Double
 Dim m_delta_y As Double
 
@@ -55,12 +55,12 @@ Private Sub UserControl_Initialize()
 'Debug.Print "Initialize"
 
 Set m_buffer = New clsCircularBuffer
-m_buffer.Capacity = 100
+m_buffer.Capacity = 10
 
-m_window_capacity = 60
+m_window_capacity = 6
 'm_window_position = 4 ' =window_capacity => affiche les derniers points
 'm_window_position = 0 ' =0 => affiche les premiers points
-m_window_position = 40
+m_window_position = 4
 
 Picture1.ScaleMode = 0
 
@@ -77,7 +77,7 @@ Picture1.ScaleMode = 0
 m_points_mode = Points_Mode.Dot
 
 
-update_scoll_bar
+update_scroll_bar
 
 End Sub
 
@@ -146,15 +146,21 @@ Dim i As Integer
         points_number = m_window_capacity
     End If
     Dim real_window_position As Integer
-    'If m_window_position >= m_buffer.Capacity - m_window_capacity Then
-    '    real_window_position = 0
-    'Else
+    If m_window_position > m_buffer.Used - m_window_capacity Then
+        If m_buffer.Used <= m_window_capacity Then
+            real_window_position = 0
+        Else
+            real_window_position = m_buffer.Used - m_window_capacity
+        End If
+    'ElseIf con Then
+    '    real_window_position =
+    Else
         real_window_position = m_window_position
-    'End If
-    
+    End If
+    m_ray = Abs(Picture1.ScaleHeight) / 40
     For i = 1 To points_number 'm_buffer.Used 'points_number ' m_buffer.Used
-        'Picture1.Circle (i - 1, m_buffer.FromFirst(i - 1 + real_window_position)), m_ray
-        Picture1.PSet (i - 1, m_buffer.FromFirst(i - 1 + real_window_position))
+        'Picture1.PSet (i - 1, m_buffer.FromFirst(i - 1 + real_window_position))
+        Picture1.Circle (i - 1, m_buffer.FromFirst(i - 1 + real_window_position)), m_ray
     Next i
 
 'ElseIf m_points_mode = Points_Mode.AddCross Then ' +
@@ -211,23 +217,41 @@ m_buffer.addItem (value)
 'Debug.Print "add"
 
 Picture1.Refresh
+update_scroll_bar
 End Sub
 
-Public Sub update_scoll_bar()
+Public Sub update_scroll_bar()
 HScroll1.Min = 0
-HScroll1.Max = m_buffer.Capacity - m_window_capacity
-HScroll1.value = m_window_position
+If m_buffer.Used <= m_window_capacity Then
+    HScroll1.Max = 0
+Else
+    HScroll1.Max = m_buffer.Used - m_window_capacity
+End If
+
+'If m_window_position > HScroll1.Max Then
+    'HScroll1.value = HScroll1.Max
+'Else
+'    HScroll1.value = m_window_position
+'End If
+
+
+Debug.Print m_window_position
+'Debug.Print HScroll1.value
 End Sub
 
+Private Sub HScroll1_Update()
+'If m_buffer.Used > m_window_capacity Then
+    m_window_position = HScroll1.value
+'End If
+Picture1.Refresh
+End Sub
 
 Private Sub HScroll1_Change()
-Debug.Print "HScroll1_Change"
-m_window_position = HScroll1.value
-Picture1.Refresh
+'Debug.Print "HScroll1_Change"
+'HScroll1_Update
 End Sub
 
 Private Sub HScroll1_Scroll()
-Debug.Print "HScroll1_Scroll"
-m_window_position = HScroll1.value
-Picture1.Refresh
+'Debug.Print "HScroll1_Scroll"
+'HScroll1_Update
 End Sub
