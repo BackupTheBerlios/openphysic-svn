@@ -71,7 +71,7 @@ m_window_position = 12
 
 Picture1.ScaleMode = 0
 
-m_points_mode = Points_Mode.DotCircle       '.AddCross
+m_points_mode = Points_Mode.DotCircle
 
 
 'update_scroll_bar
