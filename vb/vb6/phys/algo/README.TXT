@@ -1,6 +1,11 @@
 
-ToDo : http://www.vb-helper.com/howto_min_max_functions.html
+ToDo : 
 
+Min Max
+MŽthode des moindres carres (approx lin)
+
+
+http://www.vb-helper.com/howto_min_max_functions.html
 
 The Min and Max functions take ParamArray parameters so you can use them with any number of arguments. These functions simply loop over the values passed to them looking for the smallest/largest.
  
