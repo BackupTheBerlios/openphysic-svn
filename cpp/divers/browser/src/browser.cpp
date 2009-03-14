@@ -35,6 +35,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 Browser::Browser( QWidget * parent, Qt::WFlags f) : QDialog(parent, f)
 {
+  m_playing = false;
+
   setupUi(this);
 
 // url = about:blank
@@ -194,7 +196,7 @@ void Browser::previous()
 
 void Browser::reset_timer()
 {
-  if (m_playing) {
+  if (m_playing && default_interval!=0) {
     std::cout << "play" << std::endl;
     timer->start(default_interval);
   } else {
