@@ -63,7 +63,7 @@ Browser::Browser( QWidget * parent, Qt::WFlags f) : QDialog(parent, f)
 //webView->load(QUrl("http://www.trolltech.com/"));
 
 //webView_2->hide();
-
+  webView->setZoomFactor(1.50);
 
   //page=url_list.count()-1;
 
@@ -153,6 +153,14 @@ void Browser::keyPressEvent(QKeyEvent * event)
       break;
     case Qt::Key_P:
       playpause();
+      break;
+    case Qt::Key_K: /* next */
+      next();
+      update_view();
+      break;
+    case Qt::Key_J: /* previous */
+      previous();
+      update_view();
       break;
     case Qt::Key_T: /* just for debug */
       test();
@@ -367,7 +375,8 @@ void Browser::load(void)
   std::cout << qPrintable(tr(" ")) << qPrintable(tr("Data loaded")) << std::endl;
 
   if (url_list.count()==0) {
-    url_list.append(QUrl("about:blank"));
+    //url_list.append(QUrl("about:blank"));
+    url_list.append(QUrl("http://www.google.fr"));
   }
 
 }
