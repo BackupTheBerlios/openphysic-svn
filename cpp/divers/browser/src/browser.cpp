@@ -444,6 +444,13 @@ void Browser::reload(void)
 
 void Browser::test(void)
 {
-  std::cout << qPrintable(tr("Test")) << std::endl;
-  std::cout << url_list.count() << std::endl;
+  std::cout << qPrintable(tr("Test browser")) << std::endl;
+  if (m_playing) {
+    std::cout << qPrintable(tr(" Playing")) << std::endl;
+  } else {
+    std::cout << qPrintable(tr(" Not Playing")) << std::endl;
+  }
+  std::cout << qPrintable(tr(" There is ")) << url_list.count() << qPrintable(tr(" URL(s) in memory")) << std::endl;
+  std::cout << qPrintable(tr(" Timer is set to ")) << timer->interval() << qPrintable(tr(" ms")) << std::endl;
+
 }
