@@ -42,6 +42,7 @@ Browser::Browser( QWidget * parent, Qt::WFlags f) : QDialog(parent, f)
 // url = about:blank
 
   //setGeometry(0,0,320,240);
+  setGeometry(0,0,640,480);
   //setWindowFlags(Qt::SplashScreen);
   //setWindowFlags(Qt::Popup);
 
@@ -104,6 +105,12 @@ void Browser::update(void)
 void Browser::update_view(void)
 {
   webView->load(url_list[page]);
+  std::cout << qPrintable(tr("Showing page ")) << qPrintable(url_list[page].toString()) << std::endl;
+  if (url_list[page].isValid()) {
+    std::cout << qPrintable(tr("Valid URL")) << std::endl;
+  } else {
+    std::cout << qPrintable(tr("INVALID URL")) << std::endl;
+  }
 }
 
 /*
@@ -292,6 +299,10 @@ void Browser::load(void)
  <url>http://127.0.0.1/test/4.html</url>
  <url>http://127.0.0.1/test/5.html</url>
 </browser>
+
+http://www.google.fr/search?hl=fr&q=test
+http%3A%2F%2Fwww.google.fr%2Fsearch%3Fhl%3Dfr%26q%3Dtest
+
 
 */
 
