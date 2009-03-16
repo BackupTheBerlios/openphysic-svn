@@ -147,10 +147,10 @@ void Browser::keyPressEvent(QKeyEvent * event)
 {
   switch ( event->key() )
     {
-    case Qt::Key_Plus:
+    case Qt::Key_K: /* next */
       nextpage();
       break;
-    case Qt::Key_Minus:
+    case Qt::Key_J: /* previous */
       previouspage();
       break;
     case Qt::Key_Q: /* quit - just for test */
@@ -162,14 +162,6 @@ void Browser::keyPressEvent(QKeyEvent * event)
       break;
     case Qt::Key_P:
       playpause();
-      break;
-    case Qt::Key_K: /* next */
-      next();
-      update_view();
-      break;
-    case Qt::Key_J: /* previous */
-      previous();
-      update_view();
       break;
     case Qt::Key_T: /* just for debug */
       test();
@@ -279,13 +271,12 @@ void Browser::load(void)
 
       /* Default values */
       default_interval = 5000;
-      url_list.append(QUrl("http://www.google.fr/search?hl=fr&q=test"));
-      url_list.append(QUrl("http://127.0.0.1/test/1.html"));
-      url_list.append(QUrl("http://127.0.0.1/test/2.html"));
-      url_list.append(QUrl("http://127.0.0.1/test/3.html"));
-      url_list.append(QUrl("http://127.0.0.1/test/4.html"));
-      url_list.append(QUrl("http://127.0.0.1/test/5.html"));
-
+      url_list.append(QUrl("http://www.google.fr/search?hl=fr&q=test%200"));
+      url_list.append(QUrl("http://www.google.fr/search?hl=fr&q=test%201"));
+      url_list.append(QUrl("http://www.google.fr/search?hl=fr&q=test%202"));
+      url_list.append(QUrl("http://www.google.fr/search?hl=fr&q=test%203"));
+      url_list.append(QUrl("http://www.google.fr/search?hl=fr&q=test%204"));
+      url_list.append(QUrl("http://www.google.fr/search?hl=fr&q=test%205"));
 /*
 
 <!DOCTYPE BrowserML PUBLIC '-//CELLES//DTD Browser 0.1 //EN' 'http://www.celles.net/dtd/browser/browser_data-0_1.dtd'>
