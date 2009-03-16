@@ -279,7 +279,7 @@ void Browser::load(void)
 
       /* Default values */
       default_interval = 5000;
-      url_list.append(QUrl("http://127.0.0.1/test/0.html"));
+      url_list.append(QUrl("http://www.google.fr/search?hl=fr&q=test"));
       url_list.append(QUrl("http://127.0.0.1/test/1.html"));
       url_list.append(QUrl("http://127.0.0.1/test/2.html"));
       url_list.append(QUrl("http://127.0.0.1/test/3.html"));
@@ -301,8 +301,7 @@ void Browser::load(void)
 </browser>
 
 http://www.google.fr/search?hl=fr&q=test
-http%3A%2F%2Fwww.google.fr%2Fsearch%3Fhl%3Dfr%26q%3Dtest
-
+http://www.google.fr/search?hl=fr&amp;q=test
 
 */
 
@@ -368,7 +367,15 @@ http%3A%2F%2Fwww.google.fr%2Fsearch%3Fhl%3Dfr%26q%3Dtest
         {
           std::cout << qPrintable(tr(" ")) << qPrintable(tr("Parsing"))  << qPrintable(tr(" ")) << qPrintable(element.tagName()) << std::endl;
           std::cout << "  " << qPrintable(element.text()) << std::endl;
-          url_list.append(QUrl(element.text()));
+         // QString
+          QUrl url = QUrl(element.text());
+          //QUrl url = QUrl(element.text(),QUrl::TolerantMode);
+          //QString str = QString("http://www.google.fr/search?hl=fr&q=test");
+          //QUrl url = QUrl(str);
+          //url.ParsingMode=QUrl::TolerantMode;
+          url_list.append(url);
+          //url_list.append(element.text());
+          //url_list.append(QUrl::fromEncoded(element.text().toStdString()));
         }
       else
         {
