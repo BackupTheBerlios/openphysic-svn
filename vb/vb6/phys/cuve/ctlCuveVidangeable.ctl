@@ -29,11 +29,19 @@ Option Explicit
 
 Const delta_t As Double = 100  ' ms
 
+Const g As Double = 9.81
+Const rho As Double = 1000 ' kg/m^3
+Const S As Double = 1 ' m^2
+
 Dim m_qin As Double
+Dim m_Kv As Double
+
 Dim m_qout As Double
 
+
 Private Sub Timer1_Timer()
-Debug.Print "ok"
+'Debug.Print "ok"
+ctlCuve1.Level = (1 / S * (Qin - Qout)) * (delta_t / 1000#) + ctlCuve1.Level
 End Sub
 
 Private Sub UserControl_Initialize()
@@ -55,11 +63,16 @@ Public Property Let Qin(ByVal new_qin As Double)
 m_qin = new_qin
 End Property
 
-Public Property Get Qout() As Double
-Qout = m_qout
+Public Property Get Kv() As Double
+Kv = m_Kv
 End Property
 
-Public Property Let Qout(ByVal new_qout As Double)
-m_qout = new_qout
+Public Property Let Kv(ByVal new_Kv As Double)
+m_Kv = new_Kv
+End Property
+
+Public Property Get Qout() As Double
+m_qout = Sqr(rho * g * ctlCuve1.Level)
+Qout = m_qout
 End Property
 

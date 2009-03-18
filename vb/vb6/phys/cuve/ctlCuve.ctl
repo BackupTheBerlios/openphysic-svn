@@ -93,7 +93,14 @@ Level = m_level
 End Property
 
 Public Property Let Level(ByVal new_level As Double)
-m_level = new_level
+'If new_level >= m_level_min And new_level <= m_level_max Then
+    m_level = new_level
+'ElseIf new_level < m_level_min Then
+'    m_level = m_level_min
+'ElseIf new_level > m_level_max Then
+'    m_level = m_level_max
+'End If
+
 RaiseEvent LevelChanged
 Picture1_Paint
 End Property
