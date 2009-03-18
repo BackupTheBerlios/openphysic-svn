@@ -25,7 +25,7 @@ Begin VB.Form frmMain
       Top             =   1920
       Width           =   1215
    End
-   Begin Cuve.ctlCuve ctlCuve1 
+   Begin TestCuve.ctlCuve ctlCuve1 
       Height          =   3615
       Left            =   5040
       TabIndex        =   0
@@ -35,11 +35,11 @@ Begin VB.Form frmMain
       _ExtentY        =   6376
    End
    Begin VB.Label Label1 
-      Caption         =   "Label1"
+      Caption         =   "Niveau de la cuve (de 0 à 1m)"
       Height          =   495
-      Left            =   720
+      Left            =   1920
       TabIndex        =   4
-      Top             =   1200
+      Top             =   720
       Width           =   1215
    End
    Begin VB.Label lblLevel 
@@ -63,6 +63,3 @@ ctlCuve1.Level = CDbl(txtLevel.Text)
 lblLevel.Caption = ctlCuve1.Level
 End Sub
 
-Private Sub Form_Load()
-
-End Sub
