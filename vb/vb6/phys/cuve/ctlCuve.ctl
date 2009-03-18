@@ -21,8 +21,8 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
-' Tank user control
-' =================
+' Contrôle utilisateur niveau de cuve
+' ===================================
 
 ' Contrôle utilisateur représentant une cuve contenant un liquide
 
@@ -93,13 +93,13 @@ Level = m_level
 End Property
 
 Public Property Let Level(ByVal new_level As Double)
-'If new_level >= m_level_min And new_level <= m_level_max Then
+If new_level >= m_level_min And new_level <= m_level_max Then
     m_level = new_level
-'ElseIf new_level < m_level_min Then
-'    m_level = m_level_min
-'ElseIf new_level > m_level_max Then
-'    m_level = m_level_max
-'End If
+ElseIf new_level < m_level_min Then
+    m_level = m_level_min
+ElseIf new_level > m_level_max Then
+    m_level = m_level_max
+End If
 
 RaiseEvent LevelChanged
 Picture1_Paint

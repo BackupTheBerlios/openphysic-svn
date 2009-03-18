@@ -3,6 +3,7 @@ Form=frmTestVidangeCuve.frm
 Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#C:\WINDOWS\system32\stdole2.tlb#OLE Automation
 UserControl=ctlCuveVidangeable.ctl
 UserControl=ctlCuve.ctl
+IconForm="frmTestVidangeCuve"
 Startup="frmTestVidangeCuve"
 Command32=""
 Name="TestVidangeCuve"
