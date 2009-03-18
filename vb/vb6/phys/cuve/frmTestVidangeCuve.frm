@@ -9,31 +9,43 @@ Begin VB.Form frmTestVidangeCuve
    ScaleHeight     =   6180
    ScaleWidth      =   7290
    StartUpPosition =   3  'Windows Default
+   Begin VB.TextBox txtQout 
+      Height          =   495
+      Left            =   2160
+      TabIndex        =   4
+      Text            =   "0"
+      Top             =   3480
+      Width           =   1215
+   End
+   Begin VB.TextBox txtQin 
+      Height          =   495
+      Left            =   480
+      TabIndex        =   3
+      Text            =   "0"
+      Top             =   3480
+      Width           =   1215
+   End
    Begin VB.CheckBox chkVider 
       Caption         =   "Vider"
       Height          =   495
-      Left            =   2040
+      Left            =   2160
       TabIndex        =   2
-      Top             =   2880
+      Top             =   3960
       Width           =   1215
    End
    Begin VB.CheckBox chkRemplir 
       Caption         =   "Remplir"
       Height          =   495
-      Left            =   600
+      Left            =   480
       TabIndex        =   1
-      Top             =   2880
+      Top             =   3960
       Width           =   1215
-   End
-   Begin VB.Timer Timer1 
-      Left            =   4440
-      Top             =   3840
    End
    Begin TestVidangeCuve.ctlCuveVidangeable ctlCuveVidangeable1 
       Height          =   2415
-      Left            =   5040
+      Left            =   1320
       TabIndex        =   0
-      Top             =   840
+      Top             =   480
       Width           =   1335
       _ExtentX        =   2355
       _ExtentY        =   4260
@@ -44,3 +56,20 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+Option Explicit
+
+Private Sub chkRemplir_Click()
+If chkRemplir.Value = False Then
+    ctlCuveVidangeable1.Qin = 0
+Else
+    ctlCuveVidangeable1.Qin = CDbl(txtQin.Text)
+End If
+End Sub
+
+Private Sub ctlCuveVidangeable1_GotFocus()
+If chkRemplir.Value = False Then
+    ctlCuveVidangeable1.Qout = 0
+Else
+    ctlCuveVidangeable1.Qout = CDbl(txtQout.Text)
+End If
+End Sub

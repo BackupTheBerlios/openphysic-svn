@@ -6,6 +6,10 @@ Begin VB.UserControl ctlCuveVidangeable
    ClientWidth     =   1230
    ScaleHeight     =   2430
    ScaleWidth      =   1230
+   Begin VB.Timer Timer1 
+      Left            =   0
+      Top             =   960
+   End
    Begin TestVidangeCuve.ctlCuve ctlCuve1 
       Height          =   2295
       Left            =   0
@@ -23,11 +27,39 @@ Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
 Option Explicit
 
+Const delta_t As Double = 100  ' ms
+
+Dim m_qin As Double
+Dim m_qout As Double
+
+Private Sub Timer1_Timer()
+Debug.Print "ok"
+End Sub
+
 Private Sub UserControl_Initialize()
 ctlCuve1.Level = 0.8
+
+Timer1.Interval = delta_t
 End Sub
 
 Private Sub UserControl_Resize()
 ctlCuve1.Width = UserControl.Width
 ctlCuve1.Height = UserControl.Height
 End Sub
+
+Public Property Get Qin() As Double
+Qin = m_qin
+End Property
+
+Public Property Let Qin(ByVal new_qin As Double)
+m_qin = new_qin
+End Property
+
+Public Property Get Qout() As Double
+Qout = m_qout
+End Property
+
+Public Property Let Qout(ByVal new_qout As Double)
+m_qout = new_qout
+End Property
+
