@@ -1,5 +1,5 @@
 VERSION 5.00
-Begin VB.UserControl ctlFirstOrder 
+Begin VB.UserControl ctlSecondOrder 
    BackColor       =   &H00FFFF00&
    ClientHeight    =   1140
    ClientLeft      =   0
@@ -65,16 +65,16 @@ Begin VB.UserControl ctlFirstOrder
       Width           =   4575
    End
 End
-Attribute VB_Name = "ctlFirstOrder"
+Attribute VB_Name = "ctlSecondOrder"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
-' FirstOrder SISO simulator
-' =========================
+' SecondOrder SISO simulator
+' ==========================
 
 ' Simulateur d'un système mono-entrée / mono-sortie
-' linéaire et du 1er ordre
+' linéaire et du 2nd ordre
 
 ' Sébastien CELLES
 ' IUT de Poitiers
@@ -107,9 +107,6 @@ Const m_tau As Double = 2 ' seconds
 'Const add_noise As Boolean = True
 
 Public Event InputChanged()
-
-
-
 
 
 Private Sub UserControl_Initialize()
