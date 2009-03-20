@@ -4,17 +4,26 @@ Begin VB.Form frmMain
    ClientHeight    =   5400
    ClientLeft      =   60
    ClientTop       =   450
-   ClientWidth     =   5490
+   ClientWidth     =   11460
    LinkTopic       =   "Form1"
    ScaleHeight     =   5400
-   ScaleWidth      =   5490
+   ScaleWidth      =   11460
    StartUpPosition =   3  'Windows Default
+   Begin Thermometer.ctlScale ctlScale1 
+      Height          =   615
+      Left            =   1080
+      TabIndex        =   1
+      Top             =   600
+      Width           =   10095
+      _extentx        =   6376
+      _extenty        =   450
+   End
    Begin Thermometer.ctlThermometer ctlThermometer1 
       Height          =   3495
-      Left            =   2880
+      Left            =   240
       TabIndex        =   0
-      Top             =   1080
-      Width           =   255
+      Top             =   480
+      Width           =   615
       _extentx        =   3625
       _extenty        =   6376
    End

@@ -27,7 +27,7 @@ m_color = vbRed
 
 m_t_min = 0
 m_t_max = 100
-m_t = 0
+m_t = 70
 
 BackColor = vbWhite '&H8000000F  '&H909090 'vbWhite
 m_backcolor = &H909090
