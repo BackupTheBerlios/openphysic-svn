@@ -2,6 +2,7 @@ Type=Exe
 Form=frmMain.frm
 Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#..\..\..\..\..\..\..\WINDOWS\system32\STDOLE2.TLB#OLE Automation
 Class=clsColorMap; clsColorMap.cls
+Module=modColor; modColor.bas
 IconForm="frmMain"
 Startup="frmMain"
 Command32=""
