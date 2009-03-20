@@ -1,6 +1,8 @@
 Type=Exe
 Form=frmMain.frm
 Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#..\..\..\..\..\..\..\WINDOWS\system32\STDOLE2.TLB#OLE Automation
+Module=modAlgo; algo.bas
+Module=modSort; modSort.bas
 IconForm="frmMain"
 Startup="frmMain"
 Command32=""
