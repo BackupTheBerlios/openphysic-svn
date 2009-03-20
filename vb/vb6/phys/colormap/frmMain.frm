@@ -88,7 +88,7 @@ For x = 0 To 1 Step pas
     'Debug.Print x
 Next x
 
-colormap.PrintDebug
+'colormap.PrintDebug
 
 'Picture1.ForeColor = colormap.colorAt(0.75)
 'Debug.Print colormap.colorAt(0.2)
