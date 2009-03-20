@@ -94,6 +94,19 @@ Option Explicit
 
 Dim m_input As Double
 
+' y'' + b y' + c y = d ou y'' + 2m*w0^2 y' + w0^2 y = K*w0^2 e
+' on pose u1=y et u2=y'
+
+' u1' = u2
+' u2' = d - b u2 - c u1
+
+' (u1-u1_old)/delta_t = u2
+'  -> u1 = u2*delta_t+u1_old
+
+Const b As Double = 1
+Const c As Double = 1
+Dim d As Double
+
 Dim m_u1 As Double
 Dim m_u1_old As Double
 Dim m_u2 As Double
@@ -102,7 +115,6 @@ Dim m_u2_old As Double
 Const m_delta_t As Integer = 100 ' ms
 
 Public Event InputChanged()
-
 
 Private Sub UserControl_Initialize()
 Timer1.Interval = m_delta_t
@@ -114,34 +126,18 @@ txtInput.Text = CStr(m_input)
 lblOutput.Caption = CStr(m_u1)
 End Sub
 
-
 Private Sub Timer1_Timer()
-Const b As Double = 1
-Const c As Double = 1
-Dim d As Double
 d = m_input
-
-' y'' + b y' + c y = d
-' on pose u1=y et u2=y'
-'
-' u1' = u2
-' u2' = d - b u2 - c u1
-
-' (u1-u1_old)/delta_t = u2
-'  -> u1 = u2*delta_t+u1_old
 
 m_u1_old = m_u1
 m_u2_old = m_u2
 
 ' calculate output
-m_u1 = m_u2_old * m_delta_t + m_u1_old
-m_u2 = (d - b * m_u2_old - c * m_u1_old) * m_delta_t + m_u2_old
+m_u1 = m_u2_old * (m_delta_t / 1000#) + m_u1_old
+m_u2 = (d - b * m_u2_old - c * m_u1_old) * (m_delta_t / 1000#) + m_u2_old
 
 Afficher
-
 End Sub
-
-
 
 Public Property Let Entree(ByVal new_input As Double)
 If m_input <> new_input Then
@@ -155,11 +151,9 @@ Public Property Get Entree() As Double
 Entree = m_input
 End Property
             
-
 Public Property Get Sortie() As Double
 Sortie = m_u1
 End Property
-
 
 Private Sub txtInput_Change()
 Entree = CDbl(txtInput.Text)
