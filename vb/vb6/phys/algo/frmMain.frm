@@ -60,10 +60,21 @@ ReDim tabl(0 To N - 1)
 
 Dim i As Integer
 Dim val As Double
-For i = 0 To UBound(tabl) ' UBound(t)=N-1
+For i = LBound(tabl) To UBound(tabl) ' UBound(t)=N-1
     val = Rnd
     tabl(i) = val
     List1.AddItem val
+Next i
+
+'Call Affiche(tabl())
+List3.AddItem "Max=" & max(tabl())
+List3.AddItem "Min=" & min(tabl())
+List3.AddItem "Moy=" & mean(tabl())
+
+' tri de tableau
+sort tabl()
+For i = LBound(tabl) To UBound(tabl) ' UBound(t)=N-1
+    List2.AddItem tabl(i)
 Next i
 End Sub
 
@@ -73,11 +84,6 @@ End Sub
 
 Private Sub cmdDo_Click()
 clear
-
-'Call Affiche(tabl())
-List3.AddItem "Max=" & max(tabl())
-List3.AddItem "Min=" & min(tabl())
-List3.AddItem "Moy=" & mean(tabl())
 End Sub
 
 
