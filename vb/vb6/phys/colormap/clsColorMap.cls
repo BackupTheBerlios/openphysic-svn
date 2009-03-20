@@ -75,7 +75,7 @@ getRGB m_colors(i + 1), R2, G2, B2
 R = (R2 - R1) / (m_index(i + 1) - m_index(i)) * (index - m_index(i)) + R1
 G = (G2 - G1) / (m_index(i + 1) - m_index(i)) * (index - m_index(i)) + G1
 B = (B2 - B1) / (m_index(i + 1) - m_index(i)) * (index - m_index(i)) + B1
-colorAt = CLng(R) + CLng(G) * &H100 + CLng(B) * &H10000
+colorAt = getColor(R, G, B)
 End Property
             
 Public Property Let colorAt(ByVal index As Double, ByVal color As Long)
@@ -114,9 +114,4 @@ End If
 End Sub
 
 
-Public Sub getRGB(ByVal color As Long, ByRef R As Integer, ByRef G As Integer, ByRef B As Integer)
-R = color And &HFF&
-G = (color And &HFF00&) \ &H100&
-B = (color And &HFF0000) \ &H10000
-End Sub
 

@@ -11,7 +11,7 @@ Begin VB.Form frmMain
    StartUpPosition =   3  'Windows Default
    Begin VB.PictureBox Picture1 
       Height          =   2655
-      Left            =   1320
+      Left            =   1200
       ScaleHeight     =   2595
       ScaleWidth      =   675
       TabIndex        =   0
@@ -38,9 +38,11 @@ Picture1.ScaleTop = 1
 Set colormap = New clsColorMap
 End Sub
 
+
 Private Sub Picture1_Paint()
 'Picture1.Line (0, 0)-(1, 1)
 
+' tests
 'colormap.colorAt(0,vbWhite)
 'colormap.colorAt(1.,vbWhite)
 'colormap.colorAt(0#) = vbGreen
@@ -49,9 +51,31 @@ Private Sub Picture1_Paint()
 'colormap.colorAt(0.9) = vbBlack
 'colormap.colorAt(1#) = vbRed
 
+' vert-jaune-rouge
+Set colormap = New clsColorMap
 colormap.colorAt(0#) = vbGreen
 colormap.colorAt(0.75) = vbYellow
 colormap.colorAt(1#) = vbRed
+
+' blanc-bleu 50%
+'Set colormap = New clsColorMap
+'colormap.colorAt(0#) = vbWhite
+'colormap.colorAt(1#) = vbBlue
+
+' blanc - bleu 75% - bleu
+'Set colormap = New clsColorMap
+'Dim color As Long
+'Dim R As Integer
+'Dim G As Integer
+'Dim B As Integer
+'Dim pourcent As Double
+'pourcent = 0.75
+'getRGB vbBlue, R, G, B
+'color = getColor(R, G, B * pourcent)
+'colormap.colorAt(0#) = vbWhite
+'colormap.colorAt(pourcent) = color
+'colormap.colorAt(1#) = vbBlue
+
 
 
 Picture1.DrawWidth = 1
