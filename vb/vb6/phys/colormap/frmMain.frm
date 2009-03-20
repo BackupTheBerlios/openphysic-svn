@@ -43,15 +43,30 @@ Private Sub Picture1_Paint()
 
 'colormap.colorAt(0,vbWhite)
 'colormap.colorAt(1.,vbWhite)
+'colormap.colorAt(0#) = vbGreen
+'colormap.colorAt(0.5) = vbBlue
+'colormap.colorAt(0.75) = vbYellow
+'colormap.colorAt(0.9) = vbBlack
+'colormap.colorAt(1#) = vbRed
+
+colormap.colorAt(0#) = vbGreen
+colormap.colorAt(0.75) = vbYellow
+colormap.colorAt(1#) = vbRed
+
 
 Picture1.DrawWidth = 1
 
 Dim x As Double
 Const pas As Double = 0.001
-For x = 0 To 1 + pas Step pas
+For x = 0 To 1 Step pas
     Picture1.ForeColor = colormap.colorAt(x)
     Picture1.Line (0, x)-(1, x)
     'Debug.Print x
 Next x
+
+colormap.PrintDebug
+
+'Picture1.ForeColor = colormap.colorAt(0.75)
+'Debug.Print colormap.colorAt(0.2)
 
 End Sub
