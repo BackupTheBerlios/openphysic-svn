@@ -30,7 +30,7 @@ Begin VB.Form frmMain
       Top             =   2160
       Width           =   2175
    End
-   Begin Plot.ctlSecondOrder ctlFirstOrder1 
+   Begin Plot.ctlSecondOrder ctlSecondOrder1 
       Height          =   1215
       Left            =   120
       TabIndex        =   0
@@ -78,12 +78,12 @@ End Sub
 
 
 Private Sub Timer1_Timer()
-lblOutput.Caption = CStr(ctlFirstOrder1.Sortie)
+lblOutput.Caption = CStr(ctlSecondOrder1.Sortie)
 
 'ctlPlot1.Show
-ctlPlot1.add (ctlFirstOrder1.Sortie)
+ctlPlot1.add (ctlSecondOrder1.Sortie)
 End Sub
 
 Private Sub txtInput_Change()
-ctlFirstOrder1.Entree = CDbl(txtInput.Text)
+ctlSecondOrder1.Entree = CDbl(txtInput.Text)
 End Sub

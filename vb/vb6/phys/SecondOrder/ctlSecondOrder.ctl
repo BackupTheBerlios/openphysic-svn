@@ -93,90 +93,58 @@ Option Explicit
 
 
 Dim m_input As Double
-'Dim m_input_noisy As Double
-'Dim m_input_old As Double
 
-Dim m_output As Double
-Dim m_output_old As Double
+Dim m_u1 As Double
+Dim m_u1_old As Double
+Dim m_u2 As Double
+Dim m_u2_old As Double
 
 Const m_delta_t As Integer = 100 ' ms
-
-Const m_K As Double = 1
-Const m_tau As Double = 2 ' seconds
-
-'Const add_noise As Boolean = True
 
 Public Event InputChanged()
 
 
 Private Sub UserControl_Initialize()
-'Randomize ' for Noise generation
-
 Timer1.Interval = m_delta_t
 Timer1.Enabled = True
 End Sub
 
 Private Sub Afficher()
 txtInput.Text = CStr(m_input)
-lblOutput.Caption = CStr(m_output)
+lblOutput.Caption = CStr(m_u1)
 End Sub
 
 
 Private Sub Timer1_Timer()
-'Dim temp_input As Double
+Const b As Double = 1
+Const c As Double = 1
+Dim d As Double
+d = m_input
 
-'m_input_noisy = noise(m_input, 0.05)
+' y'' + b y' + c y = d
+' on pose u1=y et u2=y'
+'
+' u1' = u2
+' u2' = d - b u2 - c u1
 
-'If add_noise Then
-'    temp_input = m_input_noisy ' with noise
-'Else
-'    temp_input = m_input ' without noise
-'End If
-'txtInput.Text = CStr(temp_input)
+' (u1-u1_old)/delta_t = u2
+'  -> u1 = u2*delta_t+u1_old
+
+m_u1_old = m_u1
+m_u2_old = m_u2
 
 ' calculate output
-m_output_old = m_output
-'
-' O(p) / I(p) = K / (1 + tau p)
-' Method 1
-' O(p) * (1 + tau p) = K I(p)
-' o(t) + tau * do/dt = K i(t)
-' with do/dt = ( o(t) - o(t-delta_t) ) / delta_t
-' we get o(t)=f(K,tau,i,o(t-delta_t))
-
-' with or without noise
-'m_output = (m_K * temp_input + 1000 * m_tau / CDbl(m_delta_t) * m_output_old) / (1 + 1000 * m_tau / CDbl(m_delta_t))
-
-' without noise
-m_output = (m_K * m_input + 1000 * m_tau / CDbl(m_delta_t) * m_output_old) / (1 + 1000 * m_tau / CDbl(m_delta_t))
-
-
-'m_output = Noise(m_output, 0.05)
-
-' Method 2
-' do/dt = K/tau i(t) - o(t)
-'
-' -i-->*K/tau---->+ --|intgrate|---- o
-'                 -              |
-'                 ^--o-----------
-' integrate do/dt to get o(t) (using trapezium rule or Simpson's Rule)
-        
-' ToFix
-        
-'dodt = input * K / tau - output
-'output = CDbl(delta_t) / (2.0 * 1000.0) * (dodt + dodt_old)
-'dodt_old = dodt
+m_u1 = m_u2_old * m_delta_t + m_u1_old
+m_u2 = (d - b * m_u2_old - c * m_u1_old) * m_delta_t + m_u2_old
 
 Afficher
 
-'Debug.Print m_input
 End Sub
 
 
 
 Public Property Let Entree(ByVal new_input As Double)
 If m_input <> new_input Then
-    'm_input_old = m_input
     m_input = new_input
     RaiseEvent InputChanged
 End If
@@ -189,37 +157,11 @@ End Property
             
 
 Public Property Get Sortie() As Double
-Sortie = m_output
+Sortie = m_u1
 End Property
 
 
 Private Sub txtInput_Change()
 Entree = CDbl(txtInput.Text)
 End Sub
-
-Private Function noise(ByVal val As Double, ByVal absnoise As Double) As Double
-noise = val + absnoise * (Rnd() - 0.5) * 2
-End Function
-
-' ToDo
-'
-'Public Overloads Shared Function Differentiate( _
-'    ByVal inputData As Double(), _
-'    ByVal dt As Double, _
-'    ByVal initialCondition As Double, _
-'    ByVal finalCondition As Double _
-') As Double()
-'Differentiate = System.DBNull
-'End Function
-
-
-'Public Shared Function Integrate( _
-'    ByVal inputData As Double(), _
-'    ByVal dt As Double, _
-'    ByVal initialCondition As Double, _
-'    ByVal finalCondition As Double _
-') As Double()
-'Integrate=
-'End Function
-
 
