@@ -1,42 +1,7 @@
 Attribute VB_Name = "modAlgo"
 Option Explicit
 
-Public Function max(ByRef t() As Double) As Double
-Dim i As Integer
-Dim nmax As Double
-nmax = t(1)
-For i = LBound(t) To UBound(t)
-    If t(i) >= nmax Then
-        nmax = t(i)
-    End If
-Next i
-max = nmax
-End Function
 
-Public Function min(ByRef t() As Double) As Double
-Dim i As Integer
-Dim nmin As Double
-nmin = t(1)
-For i = LBound(t) To UBound(t)
-    If t(i) <= nmin Then
-        nmin = t(i)
-    End If
-Next i
-min = nmin
-End Function
-
-
-Public Function sum(ByRef t() As Double) As Double
-Dim i As Integer
-sum = 0
-For i = LBound(t) To UBound(t)
-    sum = sum + t(i)
-Next i
-End Function
-
-Public Function mean(ByRef t() As Double) As Double
-mean = sum(t()) / (UBound(t) + 1)
-End Function
 
 'Public Function add(ByRef t1() As Double, ByRef t2() As Double) As Double()
 'add =
@@ -64,5 +29,28 @@ End Function
 
 'End Function
 
+
+' mediane
+
+' moyenne pondérées
+
+' variance
+' covariance
+' ecart type
+
+' coeff correlation
+' coeff autocorrelation
+
 ' fft
 
+' calcul matriciel
+' A+B A*B A-B
+' lambda*A ; A/lambda=(1/lambda)*A
+' determinant
+' valeurs propres (eigen values)
+' Resol syst equations lin A*X=Y (pivot de Gauss...)
+
+' syst physiques lineaires (Laplace -> Espace d'etat ...)
+' retard (approx paddé)
+' transf en z
+' filtrage numérique RIF RII ...
