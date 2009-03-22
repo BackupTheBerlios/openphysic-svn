@@ -46,6 +46,9 @@ Option Explicit
 ' calcul matriciel
 ' A+B A*B A-B
 ' lambda*A ; A/lambda=(1/lambda)*A
+' recupération d'une valeur A(i,j)
+' recupération d'une ligne, d'une colonne, d'une "sous-matrice"
+' transposition
 ' determinant
 ' valeurs propres (eigen values)
 ' Resol syst equations lin A*X=Y (pivot de Gauss...)
