@@ -77,6 +77,10 @@ colormap.colorAt(1#) = vbRed
 'colormap.colorAt(1#) = vbBlue
 
 
+'Set colormap = New clsColorMap
+'colormap.colorAt(0#) = vbBlue
+'colormap.colorAt(0.5) = &H8080
+'colormap.colorAt(1#) = vbRed
 
 Picture1.DrawWidth = 1
 
