@@ -277,7 +277,40 @@
          </Item>
          <Item Name="usbtc08.dll" Type="Document" URL="/Y/Instruments mesure/carte_acquisition/pico_tc08/tests_pico_tc_08/lv8.2/usbtc08.dll"/>
          <Item Name="lvStorage.dll" Type="Document" URL="../../National Instruments/LabVIEW 8.5/resource/objmgr/lvStorage.dll"/>
+         <Item Name="lvanlys.dll" Type="Document" URL="../../National Instruments/LabVIEW 8.5/resource/lvanlys.dll"/>
       </Item>
-      <Item Name="Spécifications de construction" Type="Build"/>
+      <Item Name="Spécifications de construction" Type="Build">
+         <Item Name="tp_resist_th_contact" Type="EXE">
+            <Property Name="App_applicationGUID" Type="Str">{33A24EBC-AE1C-4576-924C-06DC8780C59A}</Property>
+            <Property Name="App_applicationName" Type="Str">tp_resist_th_contact.exe</Property>
+            <Property Name="App_companyName" Type="Str">IUT POITIERS</Property>
+            <Property Name="App_fileDescription" Type="Str">tp_resist_th_contact</Property>
+            <Property Name="App_fileType" Type="Int">1</Property>
+            <Property Name="App_fileVersion.major" Type="Int">1</Property>
+            <Property Name="App_INI_aliasGUID" Type="Str">{EFA1AE00-690B-4240-AD96-6BB83FA65833}</Property>
+            <Property Name="App_INI_GUID" Type="Str">{212405DF-697B-45C5-829D-7858126386C9}</Property>
+            <Property Name="App_internalName" Type="Str">tp_resist_th_contact</Property>
+            <Property Name="App_legalCopyright" Type="Str">Copyright 2009 IUT POITIERS</Property>
+            <Property Name="App_productName" Type="Str">tp_resist_th_contact</Property>
+            <Property Name="Bld_buildSpecName" Type="Str">tp_resist_th_contact</Property>
+            <Property Name="Bld_defaultLanguage" Type="Str">French</Property>
+            <Property Name="Bld_excludeLibraryItems" Type="Bool">true</Property>
+            <Property Name="Bld_excludePolymorphicVIs" Type="Bool">true</Property>
+            <Property Name="Bld_modifyLibraryFile" Type="Bool">true</Property>
+            <Property Name="Destination[0].destName" Type="Str">tp_resist_th_contact.exe</Property>
+            <Property Name="Destination[0].path" Type="Path">../builds/internal.llb</Property>
+            <Property Name="Destination[0].type" Type="Str">App</Property>
+            <Property Name="Destination[1].destName" Type="Str">Répertoire de support</Property>
+            <Property Name="Destination[1].path" Type="Path">../builds/data</Property>
+            <Property Name="DestinationCount" Type="Int">2</Property>
+            <Property Name="Source[0].itemID" Type="Str">{0B669EAD-2DE7-4D13-9110-16B26EB5EF91}</Property>
+            <Property Name="Source[0].type" Type="Str">Container</Property>
+            <Property Name="Source[1].destinationIndex" Type="Int">0</Property>
+            <Property Name="Source[1].itemID" Type="Ref">/Poste de travail/main.vi</Property>
+            <Property Name="Source[1].sourceInclusion" Type="Str">TopLevel</Property>
+            <Property Name="Source[1].type" Type="Str">VI</Property>
+            <Property Name="SourceCount" Type="Int">2</Property>
+         </Item>
+      </Item>
    </Item>
 </Project>
