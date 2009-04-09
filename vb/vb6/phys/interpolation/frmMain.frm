@@ -79,10 +79,17 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
 
+Dim interpol As clsInterpolation
+Private Sub Form_Load()
+Set interpol = New clsInterpolation
+End Sub
+
 Private Sub cmdInterpolerX_Click()
-lblY.Caption = CStr(linear_interpolation_gety(CDbl(txtX.Text)))
+lblY.Caption = CStr(interpol.linear_interpolation_gety(CDbl(txtX.Text)))
 End Sub
 
 Private Sub cmInterpolerY_Click()
-lblX.Caption = CStr(linear_interpolation_getx(CDbl(txtY.Text)))
+lblX.Caption = CStr(interpol.linear_interpolation_getx(CDbl(txtY.Text)))
 End Sub
+
+
