@@ -59,10 +59,7 @@ For i = 0 To m_size - 2
         Exit For
     End If
 Next i
-'xa = 0
-'ya = 1
-'xb = 1
-'yb = 2
+
 If flag Then
     linear_interpolation_gety = linear_interpolation(x, xa, ya, xb, yb)
 Else
@@ -72,11 +69,25 @@ End Function
 
 Public Function linear_interpolation_getx(ByVal y As Double) As Double
 Dim xa, xb, ya, yb As Double
-xa = 0
-ya = 1
-xb = 1
-yb = 2
-linear_interpolation_getx = linear_interpolation(y, ya, xa, yb, xb)
+Dim i As Integer
+Dim flag As Boolean
+flag = False
+For i = 0 To m_size - 2
+    xa = m_x(i)
+    ya = m_y(i)
+    xb = m_x(i + 1)
+    yb = m_y(i + 1)
+    If x >= xa And x <= xb Then
+        flag = True
+        Exit For
+    End If
+Next i
+
+If flag Then
+    linear_interpolation_getx = linear_interpolation(y, ya, xa, yb, xb)
+Else
+    Err.Raise 3002, "clsInterpolation", "y ne peut pas être interpolé"
+End If
 End Function
 
 
