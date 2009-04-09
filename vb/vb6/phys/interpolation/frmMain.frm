@@ -1,14 +1,22 @@
 VERSION 5.00
-Begin VB.Form lblY 
+Begin VB.Form frmMain 
    Caption         =   "Interpolation"
-   ClientHeight    =   1965
+   ClientHeight    =   2880
    ClientLeft      =   60
    ClientTop       =   450
    ClientWidth     =   5970
    LinkTopic       =   "Form1"
-   ScaleHeight     =   1965
+   ScaleHeight     =   2880
    ScaleWidth      =   5970
    StartUpPosition =   3  'Windows Default
+   Begin VB.CommandButton cmdDebug 
+      Caption         =   "&Debug"
+      Height          =   495
+      Left            =   1920
+      TabIndex        =   8
+      Top             =   2160
+      Width           =   1935
+   End
    Begin VB.TextBox txtY 
       Height          =   495
       Left            =   480
@@ -72,7 +80,7 @@ Begin VB.Form lblY
       Width           =   1215
    End
 End
-Attribute VB_Name = "lblY"
+Attribute VB_Name = "frmMain"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
@@ -80,8 +88,15 @@ Attribute VB_Exposed = False
 Option Explicit
 
 Dim interpol As clsInterpolation
+
+Private Sub cmdDebug_Click()
+interpol.Test
+End Sub
+
 Private Sub Form_Load()
 Set interpol = New clsInterpolation
+interpol.add_values(0) = 1
+interpol.add_values(1) = 2
 End Sub
 
 Private Sub cmdInterpolerX_Click()
