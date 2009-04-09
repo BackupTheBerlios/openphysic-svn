@@ -28,16 +28,13 @@ m_size = 0
 m_interpolation_mode = InterpolationMode.Linear
 End Sub
 
-Public Function linear_interpolation_gety(ByVal x As Double) As Double
-Dim xa, xb, ya, yb As Double
-xa = 0
-ya = 1
-xb = 1
-yb = 2
-linear_interpolation_gety = linear_interpolation(x, xa, ya, xb, yb)
-End Function
-
 Public Property Let add_values(ByVal x As Double, ByVal y As Double)
+If m_size > 0 Then
+    If x <= m_x(m_size - 1) Then
+        Err.Raise 3000, "clsInterpolation", "x doit être strictement supérieur au x précédent"
+    End If
+End If
+
 m_size = m_size + 1
 
 ReDim Preserve m_x(0 To m_size - 1)
@@ -46,6 +43,32 @@ ReDim Preserve m_y(0 To m_size - 1)
 m_x(m_size - 1) = x
 m_y(m_size - 1) = y
 End Property
+
+Public Function linear_interpolation_gety(ByVal x As Double) As Double
+Dim xa, xb, ya, yb As Double
+Dim i As Integer
+Dim flag As Boolean
+flag = False
+For i = 0 To m_size - 2
+    xa = m_x(i)
+    ya = m_y(i)
+    xb = m_x(i + 1)
+    yb = m_y(i + 1)
+    If x >= xa And x <= xb Then
+        flag = True
+        Exit For
+    End If
+Next i
+'xa = 0
+'ya = 1
+'xb = 1
+'yb = 2
+If flag Then
+    linear_interpolation_gety = linear_interpolation(x, xa, ya, xb, yb)
+Else
+    Err.Raise 3001, "clsInterpolation", "x ne peut pas être interpolé"
+End If
+End Function
 
 Public Function linear_interpolation_getx(ByVal y As Double) As Double
 Dim xa, xb, ya, yb As Double
