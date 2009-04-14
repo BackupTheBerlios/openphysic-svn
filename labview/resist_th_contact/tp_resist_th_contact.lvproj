@@ -303,10 +303,10 @@
             <Property Name="Destination[1].destName" Type="Str">Répertoire de support</Property>
             <Property Name="Destination[1].path" Type="Path">../builds/data</Property>
             <Property Name="DestinationCount" Type="Int">2</Property>
-            <Property Name="Source[0].itemID" Type="Str">{0B669EAD-2DE7-4D13-9110-16B26EB5EF91}</Property>
+            <Property Name="Source[0].itemID" Type="Str">{40F2D77E-0E26-4427-804D-A5E7CD455736}</Property>
             <Property Name="Source[0].type" Type="Str">Container</Property>
             <Property Name="Source[1].destinationIndex" Type="Int">0</Property>
-            <Property Name="Source[1].itemID" Type="Ref"></Property>
+            <Property Name="Source[1].itemID" Type="Ref">/Poste de travail/main.vi</Property>
             <Property Name="Source[1].sourceInclusion" Type="Str">TopLevel</Property>
             <Property Name="Source[1].type" Type="Str">VI</Property>
             <Property Name="SourceCount" Type="Int">2</Property>
