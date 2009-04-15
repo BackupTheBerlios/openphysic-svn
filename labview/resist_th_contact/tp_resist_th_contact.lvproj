@@ -18,6 +18,7 @@
       <Item Name="linear_xy.vi" Type="VI" URL="linear_xy.vi"/>
       <Item Name="main.vi" Type="VI" URL="main.vi"/>
       <Item Name="main_sim.vi" Type="VI" URL="main_sim.vi"/>
+      <Item Name="splash.vi" Type="VI" URL="splash.vi"/>
       <Item Name="Dépendances" Type="Dependencies">
          <Item Name="vi.lib" Type="Folder">
             <Item Name="Get File Extension.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/libraryn.llb/Get File Extension.vi"/>
@@ -303,13 +304,16 @@
             <Property Name="Destination[1].destName" Type="Str">Répertoire de support</Property>
             <Property Name="Destination[1].path" Type="Path">../builds/data</Property>
             <Property Name="DestinationCount" Type="Int">2</Property>
-            <Property Name="Source[0].itemID" Type="Str">{40F2D77E-0E26-4427-804D-A5E7CD455736}</Property>
+            <Property Name="Source[0].itemID" Type="Str">{D4E51B9C-9BA5-461E-9F0D-773E9DCB275C}</Property>
             <Property Name="Source[0].type" Type="Str">Container</Property>
             <Property Name="Source[1].destinationIndex" Type="Int">0</Property>
             <Property Name="Source[1].itemID" Type="Ref">/Poste de travail/main.vi</Property>
-            <Property Name="Source[1].sourceInclusion" Type="Str">TopLevel</Property>
             <Property Name="Source[1].type" Type="Str">VI</Property>
-            <Property Name="SourceCount" Type="Int">2</Property>
+            <Property Name="Source[2].destinationIndex" Type="Int">0</Property>
+            <Property Name="Source[2].itemID" Type="Ref">/Poste de travail/splash.vi</Property>
+            <Property Name="Source[2].sourceInclusion" Type="Str">TopLevel</Property>
+            <Property Name="Source[2].type" Type="Str">VI</Property>
+            <Property Name="SourceCount" Type="Int">3</Property>
          </Item>
       </Item>
    </Item>
