@@ -304,14 +304,14 @@
             <Property Name="Destination[1].destName" Type="Str">Répertoire de support</Property>
             <Property Name="Destination[1].path" Type="Path">../builds/data</Property>
             <Property Name="DestinationCount" Type="Int">2</Property>
-            <Property Name="Source[0].itemID" Type="Str">{D4E51B9C-9BA5-461E-9F0D-773E9DCB275C}</Property>
+            <Property Name="Source[0].itemID" Type="Str">{5948A7FC-0900-47C0-8D37-A364C651C590}</Property>
             <Property Name="Source[0].type" Type="Str">Container</Property>
             <Property Name="Source[1].destinationIndex" Type="Int">0</Property>
             <Property Name="Source[1].itemID" Type="Ref">/Poste de travail/main.vi</Property>
+            <Property Name="Source[1].sourceInclusion" Type="Str">TopLevel</Property>
             <Property Name="Source[1].type" Type="Str">VI</Property>
             <Property Name="Source[2].destinationIndex" Type="Int">0</Property>
             <Property Name="Source[2].itemID" Type="Ref">/Poste de travail/splash.vi</Property>
-            <Property Name="Source[2].sourceInclusion" Type="Str">TopLevel</Property>
             <Property Name="Source[2].type" Type="Str">VI</Property>
             <Property Name="SourceCount" Type="Int">3</Property>
          </Item>
