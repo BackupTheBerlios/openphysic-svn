@@ -21,11 +21,11 @@ int main(void)
   while(1) {
     printf("mydevice> ");
     scanf("%s",s);
-    for (i=0 ; i<STR_SIZE ; ++i)
+    for (i=0 ; i<sizeof(s)-1 ; ++i)
     {
       s2[i]=toupper(s[i]);
     }
-    if ( SCPI_Compare(s2,"*IDN?") ) {
+    if ( SCPI_Compare(s2,"IDN") ) {
       printf("*IDN? = device identification\n");
     } else {
       fprintf(stderr,"Error ! this firmware doesn't understand this command\n");
