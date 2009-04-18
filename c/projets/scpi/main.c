@@ -9,6 +9,7 @@ Standard Commands for Programmable Instruments (SCPI)
 
 #define STR_SIZE 10
 char s[STR_SIZE];
+char * p;
   
 int main(void)
 {
@@ -17,7 +18,6 @@ int main(void)
   while(1) {
     puts("mydevice> ");
     fgets(s, STR_SIZE, stdin);
-    
     if ( strcmp(s,"*IDN?\n")==0 ) {
       puts("*IDN? = device identification");
     } else {
