@@ -5,14 +5,11 @@ Standard Commands for Programmable Instruments (SCPI)
 */
 
 #include <stdio.h> 
-#include <ctype.h>
 
 #include "scpi.h"
+#include "cmds.h"
 
-#define STR_SIZE 50
 char s[STR_SIZE]; /* received string */
-char s2[STR_SIZE]; /* string converted to upper case */
-int i;
 int parse_result;
 
 int main(void)
@@ -23,15 +20,9 @@ int main(void)
     printf("mydevice> "); /* show device prompt */
     scanf("%s",s); /* sending query string to device */
     
-    /* convert to upper case */
-    for (i=0 ; i<sizeof(s)-1 ; ++i)
-    {
-      s2[i] = toupper(s[i]);
-    }
-    
     /* parse query string */
     do {
-      parse_result = SCPI_Parse(s2);
+      parse_result = SCPI_Parse(s);
     } while (parse_result != 0);
     
   }
