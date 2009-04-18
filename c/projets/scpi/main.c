@@ -7,15 +7,16 @@ Standard Commands for Programmable Instruments (SCPI)
 #include <stdio.h> 
 #include <string.h>
 
+#define STR_SIZE 10
+char s[STR_SIZE];
+  
 int main(void)
 {
   puts("Running");
-
-  char* s;
   
   while(1) {
     puts("mydevice> ");
-    fgets(s, 10, stdin);
+    fgets(s, STR_SIZE, stdin);
     
     if ( strcmp(s,"IDN")==0 ) {
       puts("*IDN? identification \r\n");
