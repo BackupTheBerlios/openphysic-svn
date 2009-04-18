@@ -10,7 +10,7 @@ Standard Commands for Programmable Instruments (SCPI)
 #define STR_SIZE 10
 char s[STR_SIZE];
 char * p;
-  
+
 int main(void)
 {
   puts("Running");
@@ -18,14 +18,18 @@ int main(void)
   while(1) {
     puts("mydevice> ");
     fgets(s, STR_SIZE, stdin);
-    if ( strcmp(s,"*IDN?\n")==0 ) {
+    /* ToDo 
+      Enlever le \n dans la cha”ne
+      Mettre en majuscule
+    */
+    if ( strcmp(s, "*IDN?\n")==0 ) {
       puts("*IDN? = device identification");
     } else {
-      puts("Error ! this firmware doesn't understand this command");
+      fprintf(stderr,"Error ! this firmware doesn't understand this command");
     }
   }
 
-  puts("Stopping\r\n"); /* it should never happen */
+  puts("Stopping"); /* it should never happen */
   
   return 0;
 }
