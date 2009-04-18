@@ -5,8 +5,9 @@ Standard Commands for Programmable Instruments (SCPI)
 */
 
 #include <stdio.h> 
-#include <string.h>
 #include <ctype.h>
+
+#include "scpi.h"
 
 #define STR_SIZE 10
 char s[STR_SIZE]; /* received string */
@@ -24,7 +25,7 @@ int main(void)
     {
       s2[i]=toupper(s[i]);
     }
-    if ( strcmp(s2, "*IDN?")==0 ) {
+    if ( SCPI_Compare(s2,"*IDN?") ) {
       printf("*IDN? = device identification\n");
     } else {
       fprintf(stderr,"Error ! this firmware doesn't understand this command\n");
