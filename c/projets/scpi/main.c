@@ -6,30 +6,32 @@ Standard Commands for Programmable Instruments (SCPI)
 
 #include <stdio.h> 
 #include <string.h>
+#include <ctype.h>
 
 #define STR_SIZE 10
-char s[STR_SIZE];
-char * p;
+char s[STR_SIZE]; /* received string */
+char s2[STR_SIZE]; /* string converted to upper case */
+int i;
 
 int main(void)
 {
-  puts("Running");
+  printf("Running\n");
   
   while(1) {
-    puts("mydevice> ");
-    fgets(s, STR_SIZE, stdin);
-    /* ToDo 
-      Enlever le \n dans la cha”ne
-      Mettre en majuscule
-    */
-    if ( strcmp(s, "*IDN?\n")==0 ) {
-      puts("*IDN? = device identification");
+    printf("mydevice> ");
+    scanf("%s",s);
+    for (i=0 ; i<STR_SIZE ; ++i)
+    {
+      s2[i]=toupper(s[i]);
+    }
+    if ( strcmp(s2, "*IDN?")==0 ) {
+      printf("*IDN? = device identification\n");
     } else {
-      fprintf(stderr,"Error ! this firmware doesn't understand this command");
+      fprintf(stderr,"Error ! this firmware doesn't understand this command\n");
     }
   }
 
-  puts("Stopping"); /* it should never happen */
+  printf("Stopping\n"); /* it should never happen */
   
   return 0;
 }
