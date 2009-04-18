@@ -18,7 +18,7 @@ int main(void)
     puts("mydevice> ");
     fgets(s, STR_SIZE, stdin);
     
-    if ( strcmp(s,"IDN")==0 ) {
+    if ( strcmp(s,"IDN\n")==0 ) {
       puts("*IDN? identification \r\n");
     } else {
       puts("Error ! this firmware doesn't understand this command\r\n");
