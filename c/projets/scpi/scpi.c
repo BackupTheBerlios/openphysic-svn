@@ -8,6 +8,7 @@
 int i;
 
 int SCPI_Compare(char * s1, char * s2) {
+  /* s2=strupr(s2); */
   return strcmp(s1, s2)==0;
 }
 
@@ -21,9 +22,9 @@ char * strupr(char * s) {
 }
 
 int SCPI_Parse(char * s) {
-  s=strupr(s);
+  /* s=strupr(s); */
   
-  printf("%s",s);
+  /* printf("%s",s); */
 
   if ( SCPI_Compare(s,"*IDN?") ) {
     printf("*IDN? = device identification\n");
