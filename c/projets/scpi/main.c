@@ -1,6 +1,6 @@
 /*
 This program emulate a device's firmware which is
-able to uderstand some SCPI commands
+able to understand some SCPI commands
 Standard Commands for Programmable Instruments (SCPI)
 */
 
@@ -36,7 +36,7 @@ int main(void)
     
   }
 
-  printf("Stopping\n"); /* it should never happen */
+  printf("Stopping\n"); /* it should never happen on a real device ! */
   
   return 0;
 }
