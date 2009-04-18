@@ -13,23 +13,27 @@ Standard Commands for Programmable Instruments (SCPI)
 char s[STR_SIZE]; /* received string */
 char s2[STR_SIZE]; /* string converted to upper case */
 int i;
+int parse_result;
 
 int main(void)
 {
   printf("Running\n");
   
   while(1) {
-    printf("mydevice> ");
-    scanf("%s",s);
+    printf("mydevice> "); /* show device prompt */
+    scanf("%s",s); /* sending query string to device */
+    
+    /* convert to upper case */
     for (i=0 ; i<sizeof(s)-1 ; ++i)
     {
       s2[i]=toupper(s[i]);
     }
-    if ( SCPI_Compare(s2,"IDN") ) {
-      printf("*IDN? = device identification\n");
-    } else {
-      fprintf(stderr,"Error ! this firmware doesn't understand this command\n");
-    }
+    
+    /* parse query string */
+    do {
+      parse_result=SCPI_Parse(s2);
+    } while (parse_result!=0);
+    
   }
 
   printf("Stopping\n"); /* it should never happen */
