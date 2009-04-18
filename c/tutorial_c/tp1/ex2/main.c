@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 int main(void)
 {
   printf("Entrez un nombre : ");
@@ -6,7 +8,7 @@ int main(void)
 
   printf("Quel format (o / h) ?");
   char c;
-  getchar(); // pour eviter le bug a cause du CR-LF
+  getchar(); /* pour eviter le bug a cause du CR-LF */
   scanf("%c",&c);
 
   if (c=='o')
