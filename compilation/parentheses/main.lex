@@ -1,4 +1,4 @@
-/* -- par.lex --
+ /* -- par.lex --
     Ce programme compte le nb de parentheses ouvrantes et
     verifie si le nb de parenthese fermante correspond.
     */
