@@ -9,12 +9,10 @@ Standard Commands for Programmable Instruments (SCPI)
 
 #include "scpi.h"
 #include "cmds.h"
+#include "tests.h"
 
 char s[STR_SIZE]; /* received string */
 int parse_result;
-
-char s1[STR_SIZE];
-char * s2;
 
 /**
  * \fn int main (void)
@@ -25,12 +23,7 @@ char * s2;
 int main(void) {
   printf("Running\n");
   
-  
-  strcpy(s1,"*MEASSSure???ureME");
-  s2=SCPI_Abbreviate(s1);
-  printf("%s\n",s1);
-  printf("%s\n",s2);
-  
+  tests();
   
   while(1) {
     printf("mydevice> "); /* show device prompt */

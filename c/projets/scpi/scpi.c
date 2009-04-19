@@ -58,8 +58,8 @@ char * SCPI_Abbreviate (const char *ct) {
     s = malloc (sizeof (*s) * (strlen (ct) + 1)); 
     
     if (ct != NULL) {
-      int i, j, state;  
-      state=0;
+      int i, j;
+      /* int state=0; */
       j=0;
       /*
       state==0 : upper case
@@ -70,14 +70,14 @@ char * SCPI_Abbreviate (const char *ct) {
       for (i = 0; i<strlen(ct)+1 ; i++) {
         if ( isalpha(ct[i]) ) {
           if (isupper(ct[i])) {
-            state=0;
+            /* state=0; */
             s[j]=ct[i];
             j=j+1;
-          } else {
+          } /* else {
             state=1;
-          }
+          } */
         } else {
-          state=2;
+          /* state=2; */
           s[j]=ct[i];
           j=j+1;
         }
