@@ -29,15 +29,12 @@ int SCPI_Compare(char * s1, char * s2) {
  * \param ct string to convert.
  * \return Converted string.
  */
-char * str_toupper (const char *ct)
-{
+char * str_toupper (const char *ct) {
   char *s = NULL;
   if (ct != NULL) {
     int i;
-    /* (1) */
     s = malloc (sizeof (*s) * (strlen (ct) + 1));
     if (s != NULL) {
-      /* (2) */
       for (i = 0; ct[i]; i++) {
         s[i] = toupper (ct[i]);
       }
@@ -55,18 +52,47 @@ char * str_toupper (const char *ct)
  * \param ct string to convert.
  * \return Converted string.
  */
-char * SCPI_Abbreviate (const char *ct)
-{
-/*
+char * SCPI_Abbreviate (const char *ct) {
   char *s = NULL;
-	strcpy(s,ct);
+/*	strcpy(s,ct);
   
   if (ct != NULL) {
 	strcpy(s,ct);
   }
   return s;
   */
-  return str_toupper(ct);
+  
+  int i;
+  
+  int state;
+  state=0;
+  /*
+  state==0 : upper case
+  state==1 : lower case
+  state==2 : end of query string (symbol ? ...)
+  */
+  for (i = 0; i<strlen(ct)+1 ; i++) {
+    if(state==0) {
+    
+    }
+    
+    if (state==1) {
+    
+    }
+    
+    if (state==2) {
+    
+    }
+  
+    printf("%c",ct[i]);
+  }
+  printf("\n");
+      
+  /* printf("%d\n",sizeof (*s) * (strlen (ct) + 1)); */
+  
+  /* return str_toupper(ct); */
+  
+  return s;
 }
 
 

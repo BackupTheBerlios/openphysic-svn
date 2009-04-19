@@ -22,8 +22,7 @@ char * s2;
  *
  * \return 0 - Arrêt normal du programme.
  */
-int main(void)
-{
+int main(void) {
   printf("Running\n");
   
   
