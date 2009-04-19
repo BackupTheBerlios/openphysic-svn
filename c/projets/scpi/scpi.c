@@ -18,7 +18,9 @@ int i;
  */
 int SCPI_Compare(char * s1, char * s2) {
   /* s2=strupr(s2); */
-  return strcmp(s1, s2)==0;
+  char *s2_abb = NULL;
+  s2_abb=SCPI_Abbreviate(s2);
+  return ( strcmp(s1, s2)==0 ) || ( strcmp(s1, s2_abb)==0 ) ;
 }
 
 
@@ -106,7 +108,7 @@ int SCPI_Parse(char * s) {
   if ( SCPI_Compare(s,"*IDN?") ) {
     printf("*IDN? = device identification\n");
   } else if ( SCPI_Compare(s,"MEASure?") ) {
-    printf("Measure=\n");
+    printf("measure=%d\n",measure);
   } else {
     fprintf(stderr,"Error ! this firmware doesn't understand this command\n");
   }

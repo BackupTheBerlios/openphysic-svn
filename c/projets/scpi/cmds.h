@@ -3,4 +3,6 @@
 
 #define STR_SIZE 50 /* buffer size */
 
+int measure;
+
 #endif

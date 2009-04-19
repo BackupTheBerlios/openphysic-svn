@@ -2,6 +2,10 @@
 This program emulate a device's firmware which is
 able to understand some SCPI commands
 Standard Commands for Programmable Instruments (SCPI)
+
+Supported commands are:
+*IDN? : get device identification
+MEASure? : get value stored in the device
 */
 
 #include <stdio.h>
