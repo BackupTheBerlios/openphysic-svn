@@ -8,13 +8,28 @@
 
 int i;
 
+/**
+ * \fn int SCPI_Compare(char * s1, char * s2)
+ * \brief Compare two strings
+ *
+ * \param s1 string to compare.
+ * \param s2 string to compare.
+ * \return 0 if s1==s2.
+ */
 int SCPI_Compare(char * s1, char * s2) {
   /* s2=strupr(s2); */
   return strcmp(s1, s2)==0;
 }
 
-/* convert to upper case */
-char *str_toupper (const char *ct)
+
+/**
+ * \fn char * str_toupper (const char *ct)
+ * \brief Convert a string to upper case.
+ *
+ * \param ct string to convert.
+ * \return Converted string.
+ */
+char * str_toupper (const char *ct)
 {
   char *s = NULL;
   if (ct != NULL) {
@@ -32,6 +47,14 @@ char *str_toupper (const char *ct)
   return s;
 }
 
+
+/**
+ * \fn int SCPI_Parse(char * s)
+ * \brief Parse a query string.
+ *
+ * \param s string to parse.
+ * \return 0 if string has been well parsed.
+ */
 int SCPI_Parse(char * s) {
   /* s=strupr(s); */
   
