@@ -6,6 +6,7 @@ Standard Commands for Programmable Instruments (SCPI)
 
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 #include "scpi.h"
 #include "cmds.h"
@@ -38,5 +39,5 @@ int main(void) {
 
   printf("Stopping\n"); /* it should never happen on a real device ! */
   
-  return 0;
+  return EXIT_SUCCESS;
 }
