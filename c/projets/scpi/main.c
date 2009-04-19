@@ -4,7 +4,8 @@ able to understand some SCPI commands
 Standard Commands for Programmable Instruments (SCPI)
 */
 
-#include <stdio.h> 
+#include <stdio.h>
+#include <string.h>
 
 #include "scpi.h"
 #include "cmds.h"
@@ -12,9 +13,20 @@ Standard Commands for Programmable Instruments (SCPI)
 char s[STR_SIZE]; /* received string */
 int parse_result;
 
+char s1[STR_SIZE];
+char * s2;
+
+
 int main(void)
 {
   printf("Running\n");
+  
+  /*
+  strcpy(s1,"MEASure?");
+  s2=str_toupper(s1);
+  printf("%s\n",s1);
+  printf("%s\n",s2);
+  */
   
   while(1) {
     printf("mydevice> "); /* show device prompt */

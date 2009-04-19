@@ -4,6 +4,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <ctype.h>
+#include <stdlib.h>
 
 int i;
 
@@ -13,10 +14,20 @@ int SCPI_Compare(char * s1, char * s2) {
 }
 
 /* convert to upper case */
-char * strupr(char * s) {
-  for (i=0 ; i<sizeof(s) ; ++i)
-  {
-    s[i] = toupper(s[i]);
+char *str_toupper (const char *ct)
+{
+  char *s = NULL;
+  if (ct != NULL) {
+    int i;
+    /* (1) */
+    s = malloc (sizeof (*s) * (strlen (ct) + 1));
+    if (s != NULL) {
+      /* (2) */
+      for (i = 0; ct[i]; i++) {
+        s[i] = toupper (ct[i]);
+      }
+      s[i] = '\0';
+    }
   }
   return s;
 }
