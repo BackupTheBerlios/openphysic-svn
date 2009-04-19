@@ -54,6 +54,7 @@ char * str_toupper (const char *ct) {
  */
 char * SCPI_Abbreviate (const char *ct) {
   char *s = NULL;
+      s = malloc (sizeof (*s) * (strlen (ct) + 1));
 /*	strcpy(s,ct);
   
   if (ct != NULL) {
@@ -73,18 +74,27 @@ char * SCPI_Abbreviate (const char *ct) {
   */
   for (i = 0; i<strlen(ct)+1 ; i++) {
     if(state==0) {
-    
+      if ( islower(ct[i]) && isalpha(ct[i]) ) { /* && isalpha(ct[i]) */
+        state=1;
+      } else {
+        s[i]=ct[i];
+      }
     }
     
     if (state==1) {
-    
+      if ( isalpha(ct[i]) ) {
+        /* s[i]=ct[i]; */
+      } else {
+        state=2;
+      }
     }
     
     if (state==2) {
-    
+      s[i]=ct[i];
+      /* printf("state2"); */
     }
   
-    printf("%c",ct[i]);
+    printf("%i",isupper(ct[i]));
   }
   printf("\n");
       
