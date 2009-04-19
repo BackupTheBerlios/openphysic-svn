@@ -28,7 +28,7 @@ int main(void)
   
   
   strcpy(s1,"MEASure?");
-  s2=str_toupper(s1);
+  s2=SCPI_Abbreviate(s1);
   printf("%s\n",s1);
   printf("%s\n",s2);
   

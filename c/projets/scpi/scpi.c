@@ -49,6 +49,28 @@ char * str_toupper (const char *ct)
 
 
 /**
+ * \fn char * SCPI_Abbreviate (const char *ct)
+ * \brief Convert a string to its abbreviated form.
+ *
+ * \param ct string to convert.
+ * \return Converted string.
+ */
+char * SCPI_Abbreviate (const char *ct)
+{
+/*
+  char *s = NULL;
+	strcpy(s,ct);
+  
+  if (ct != NULL) {
+	strcpy(s,ct);
+  }
+  return s;
+  */
+  return str_toupper(ct);
+}
+
+
+/**
  * \fn int SCPI_Parse(char * s)
  * \brief Parse a query string.
  *
