@@ -26,7 +26,7 @@ int main(void) {
   printf("Running\n");
   
   
-  strcpy(s1,"*MEASure?");
+  strcpy(s1,"*MEASSSure???ureME");
   s2=SCPI_Abbreviate(s1);
   printf("%s\n",s1);
   printf("%s\n",s2);

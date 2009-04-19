@@ -55,51 +55,37 @@ char * str_toupper (const char *ct) {
 char * SCPI_Abbreviate (const char *ct) {
   char *s = NULL;
   if (ct != NULL) {
-    s = malloc (sizeof (*s) * (strlen (ct) + 1));  
+    s = malloc (sizeof (*s) * (strlen (ct) + 1)); 
     
     if (ct != NULL) {
-
-      int i;
-  
-      int state;
+      int i, j, state;  
       state=0;
+      j=0;
       /*
       state==0 : upper case
       state==1 : lower case
-      state==2 : end of query string (symbol ? ...)
+      state==2 : symbol ? * ...
       */
     
       for (i = 0; i<strlen(ct)+1 ; i++) {
-        if(state==0) {
-          if ( islower(ct[i]) && isalpha(ct[i]) ) { /* && isalpha(ct[i]) */
+        if ( isalpha(ct[i]) ) {
+          if (isupper(ct[i])) {
+            state=0;
+            s[j]=ct[i];
+            j=j+1;
+          } else {
             state=1;
-          } else {
-            s[i]=ct[i];
           }
-        }
-    
-        if (state==1) {
-          if ( isalpha(ct[i]) ) {
-            /* s[i]=ct[i]; */
-          } else {
-            state=2;
-          }
-        }
-    
-        if (state==2) {
-          s[i]=ct[i];
-          /* printf("state2"); */
+        } else {
+          state=2;
+          s[j]=ct[i];
+          j=j+1;
         }
   
-        /* printf("%i",isupper(ct[i])); */
-        printf("%i",state);
+        /* printf("%i",state); */
       }
     }
-    printf("\n");
-      
-    /* printf("%d\n",sizeof (*s) * (strlen (ct) + 1)); */
-  
-    /* return str_toupper(ct); */
+    /* printf("\n"); */
   }
   return s;
 }
