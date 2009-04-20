@@ -6,11 +6,13 @@ ENTIER   [0-9]+
 
 %%
 
-#"*IDN?"  {printf ("IDENTIFICATION=");}
-#"MEAS?"|"MEASure?"  {printf ("MEASURE=");}
+"*IDN\?"  {printf ("IDENTIFICATION=");}
+"MEAS\?"|"MEASure?"  {printf ("MEASURE=");}
 #"SET"  {printf ("SET");}
 
-[-+]?[0-9]*\.?[0-9]*  {printf ("REEL");}
+[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?  {printf ("REEL");}
+
+#[-+]?[0-9]*\.?[0-9]*  {printf ("DECIMAL");}
 [0-9]+  {printf ("ENTIER");}
 #ENTIER  {printf ("ENTIER");}
 
