@@ -1,27 +1,35 @@
  /* 
-    Ce programme interpète quelques commandes SCPI
+This program emulate a device's firmware which is
+able to understand some SCPI commands
+Standard Commands for Programmable Instruments (SCPI)
     */
 
-ENTIER   [0-9]+
+%{
+#define IDENT "MyDevice"
+double value;
+%}
+
+INTEGER   [0-9]+
 
 %%
 
-"*IDN\?"  {printf ("IDENTIFICATION=");}
-"MEAS\?"|"MEASure?"  {printf ("MEASURE=");}
-#"SET"  {printf ("SET");}
+"*IDN\?"  {printf ("IDENTIFICATION=%s",IDENT);}
+"MEAS\?"|"MEASure?"  {printf ("MEASURE=%f",value);}
+"SET"  {printf ("SET");}
 
-[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?  {printf ("REEL");}
+[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?  {printf ("FLOATING_POINT_NUMBER");}
 
-#[-+]?[0-9]*\.?[0-9]*  {printf ("DECIMAL");}
-[0-9]+  {printf ("ENTIER");}
-#ENTIER  {printf ("ENTIER");}
+#[-+]?[0-9]*\.?[0-9]*  {printf ("FIXED_POINT_NUMBER");}
+#[0-9]+  {printf ("INTEGER");}
+#INTEGER  {printf ("INTEGER");}
 
 
-[*]?[A-Z]+[a-z]*[\?]?  {printf ("SCPI_Command");}
+#[*]?[A-Z]+[a-z]*[\?]?  {printf ("SCPI_Command");}
 
 %%
 
 int main(void) {
+  value=5.1;
   yylex();
   return 0;
 }
