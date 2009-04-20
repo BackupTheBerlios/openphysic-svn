@@ -32,7 +32,11 @@ int main(void) {
   
   while(1) {
     printf("mydevice> "); /* show device prompt */
-    scanf("%s",s); /* sending query string to device */
+    /* scanf("%s",s); *//* sending query string to device */
+    fgets(s, STR_SIZE, stdin);
+    /* delete \n char */
+    s[strlen(s)-1]='\0';
+    printf("%s\n",s);
     
     /* parse query string */
     do {
