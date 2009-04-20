@@ -13,8 +13,8 @@ INTEGER   [0-9]+
 
 %%
 
-"*IDN\?"  {printf ("IDENTIFICATION=%s",IDENT);}
-"MEAS\?"|"MEASure?"  {printf ("MEASURE=%f",value);}
+"*IDN\?"  {printf ("IDENTIFICATION=%s", IDENT);}
+"MEAS\?"|"MEASure?"  {printf ("MEASURE=%f", value);}
 "SET"  {printf ("SET");}
 
 [-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?  {printf ("FLOATING_POINT_NUMBER");}
