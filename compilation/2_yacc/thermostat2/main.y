@@ -27,14 +27,14 @@ target_set:
         TOKSET TOKTEMPERATURE NUMBER
         {
         		value=yylval;
-                printf("\tTemperature set to %d\n",value); /* ToFiX */
+                printf("\tTemperature set to %d\n",value);
         }
         ;
         
 target_get:
         TOKGET TOKTEMPERATURE
         {
-                printf("\tTemperature is %d\n",value); /* ToFiX */
+                printf("\tTemperature is %d\n",value);
         }
         ;
 %%
