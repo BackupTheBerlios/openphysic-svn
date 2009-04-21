@@ -9,3 +9,4 @@ set temperature 22
 get temperature
         Temperature is 22
 
+rem : temperature is integer
