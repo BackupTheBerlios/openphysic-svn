@@ -1,7 +1,8 @@
+INTEGER                 [0-9]+
 
 %%
 
-[0-9]+                  {yylval=atoi(yytext); return NUMBER;}
+{INTEGER}                  {yylval=atoi(yytext); return NUMBER;}
 heat                    return TOKHEAT;
 on|off                  {yylval=!strcmp(yytext,"on"); return STATE;}
 set                     return TOKSET;
