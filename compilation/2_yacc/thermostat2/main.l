@@ -3,13 +3,13 @@ FLOATING                [-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?
 
 %%
 
-{INTEGER}               {yylval=atoi(yytext); return NUMBER;}
-heat                    return TOKHEAT;
-on|off                  {yylval=!strcmp(yytext,"on"); return STATE;}
-set                     return TOKSET;
-temperature             return TOKTEMPERATURE;
-get                     return TOKGET;
-\n                      return TOKEOL; /* end of line */;
+{INTEGER}               {yylval=atoi(yytext); return TOK_NUMBER;}
+heat                    return TOK_HEAT;
+on|off                  {yylval=!strcmp(yytext,"on"); return TOK_STATE;}
+set                     return TOK_SET;
+temperature             return TOK_TEMPERATURE;
+get                     return TOK_GET;
+\n                      return TOK_EOL; /* end of line */;
 [ \t]+                  /* ignore whitespace */;
 
 %%

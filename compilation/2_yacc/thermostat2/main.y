@@ -1,11 +1,11 @@
 
 
-%token NUMBER TOKHEAT STATE TOKSET TOKTEMPERATURE TOKGET TOKEOL
+%token TOK_NUMBER TOK_HEAT TOK_STATE TOK_SET TOK_TEMPERATURE TOK_GET TOK_EOL
 
 %%
 
 commands: /* empty */
-        | commands command TOKEOL
+        | commands command TOK_EOL
         ;
 
 command:
@@ -19,7 +19,7 @@ command:
         ;
 
 heat_switch:
-        TOKHEAT STATE
+        TOK_HEAT TOK_STATE
         {
         		if ($2==0) {
         		  state=off;
@@ -31,7 +31,7 @@ heat_switch:
         ;
 
 heat_get:
-        TOKGET TOKHEAT
+        TOK_GET TOK_HEAT
         {
                 show_heat_state();        
         }
@@ -39,7 +39,7 @@ heat_get:
 
 
 target_set:
-        TOKSET TOKTEMPERATURE NUMBER
+        TOK_SET TOK_TEMPERATURE TOK_NUMBER
         {
         		value=$3;
                 printf("\tTemperature set to %d\n",value);
@@ -47,7 +47,7 @@ target_set:
         ;
         
 target_get:
-        TOKGET TOKTEMPERATURE
+        TOK_GET TOK_TEMPERATURE
         {
                 printf("\tTemperature is %d\n",value);
         }

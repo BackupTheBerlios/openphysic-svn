@@ -3,13 +3,13 @@ FLOATING                [-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?
 
 %%
 
-{INTEGER}               printf("NUMBER ");
-heat                    printf("TOKHEAT ");
-on|off                  printf("STATE ");
-set                     printf("TOKSET ");
-temperature             printf("TOKTEMPERATURE ");
-get                     printf("TOKGET ");
-\n                      printf("TOKEOL "); /* end of line */;
+{FLOATING}              printf("TOK_NUMBER ");
+heat                    printf("TOK_HEAT ");
+on|off                  printf("TOK_STATE ");
+set                     printf("TOK_SET ");
+temperature             printf("TOK_TEMPERATURE ");
+get                     printf("TOK_GET ");
+\n                      printf("TOK_EOL "); /* end of line */;
 [ \t]+                  /* ignore whitespace */;
 
 %%
