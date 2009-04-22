@@ -11,6 +11,7 @@ temperature             printf("TOK_TEMPERATURE ");
 get                     printf("TOK_GET ");
 \n                      printf("TOK_EOL "); /* end of line */;
 [ \t]+                  /* ignore whitespace */;
+.				        fprintf(stderr,"!!!ERROR!!!");
 
 %%
 
