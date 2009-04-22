@@ -1,9 +1,11 @@
 http://ds9a.nl/lex-yacc/cvs/lex-yacc-howto.html
 
 heat on
-        Heater on!
+        Heat is on
 heat off
-        Heater off!
+        Heat is off
+get heat
+        Heat is off
 set temperature 22
         New temperature set to 22!
 get temperature
