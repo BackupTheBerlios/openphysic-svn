@@ -43,6 +43,7 @@ char * str_toupper (const char *ct) {
       s[i] = '\0';
     }
   }
+  free(s);
   return s;
 }
 
