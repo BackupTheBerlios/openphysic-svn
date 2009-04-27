@@ -16,3 +16,4 @@ do
 done
 echo "End of jobs"
 rm *.tif
+#cat *.txt > all.txt
