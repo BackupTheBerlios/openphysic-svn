@@ -29,6 +29,14 @@ enum _state {
 };
 enum _state state;
 
+void show_heat_state() {
+  if (state==off) {
+    printf("\tHeat is off\n");
+  } else {
+    printf("\tHeat is on\n");
+  }
+}
+
 %}
 
 
@@ -88,20 +96,14 @@ target_get:
 
  
 void yyerror(const char *str) {
-  fprintf(stderr,"error: %s\n",str);
+  fprintf(stderr,"yyerror: %s\n",str);
 }
  
 int yywrap() {
   return 1;
 }
 
-void show_heat_state() {
-  if (state==off) {
-    printf("\tHeat is off\n");
-  } else {
-    printf("\tHeat is on\n");
-  }
-}
+
   
 int main(void) {
 
