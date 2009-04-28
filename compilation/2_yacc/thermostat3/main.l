@@ -3,6 +3,8 @@
 #include "main.tab.h"
 %}
 
+%option case-insensitive
+
 INTEGER                 [0-9]+
 FLOATING                [-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?
 
