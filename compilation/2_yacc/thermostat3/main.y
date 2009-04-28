@@ -2,6 +2,9 @@
 #include <stdio.h>
 #include <string.h>
 
+/* char * str; */
+
+
 int value; /* temperature value */
 
 enum _state {
@@ -83,6 +86,10 @@ void show_heat_state() {
 }
   
 int main(void) {
+/*
+  strcpy(str,"*MEASSSure???ureME");
+  printf(str);
+*/
   value=0;
   state=off;
 

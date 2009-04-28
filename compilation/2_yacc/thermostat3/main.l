@@ -1,6 +1,25 @@
 %{
 #include <string.h>
 #include "main.tab.h"
+
+#define STR_SIZE 50 /* buffer size */
+char str[STR_SIZE];
+
+/*
+int myinput(char *buf, int max);
+#undef YY_INPUT
+#define YY_INPUT(b, r, ms) (r=myinput(b, ms))
+
+int myinput(char *buf, int max){
+  int n = min(max, gStringLimit-gStringPtr);
+  if(n>0){
+    memcpy(buf, gStringPtr, n);
+    gStringPtr +=n;
+  }
+  return n;
+}
+*/
+
 %}
 
 %option case-insensitive
