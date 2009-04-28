@@ -2,7 +2,23 @@
 #include <stdio.h>
 #include <string.h>
 
-/* char * str; */
+/*
+#define STR_SIZE 50
+char str[STR_SIZE];
+
+int myinput(char *buf, int max){
+  memcpy(buf, str, STR_SIZE);
+}
+*/
+/*
+  int n = min(max, gStringLimit-gStringPtr);
+  if(n>0){
+    memcpy(buf, gStringPtr, n);
+    gStringPtr +=n;
+  }
+  return n;
+}
+*/
 
 
 int value; /* temperature value */
@@ -12,7 +28,9 @@ enum _state {
    on
 };
 enum _state state;
+
 %}
+
 
 %token TOK_NUMBER TOK_HEAT TOK_STATE TOK_SET TOK_TEMPERATURE TOK_GET TOK_EOL
 
@@ -86,10 +104,10 @@ void show_heat_state() {
 }
   
 int main(void) {
-/*
-  strcpy(str,"*MEASSSure???ureME");
-  printf(str);
-*/
+
+  /* strcpy(str,"get temperature"); */
+  /* printf(str); */
+
   value=0;
   state=off;
 
