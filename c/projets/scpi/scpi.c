@@ -8,6 +8,17 @@
 
 int i;
 
+/*
+http://groups.google.de/group/de.sci.electronics/msg/c1467276cd3776c9
+http://groups.google.fr/group/comp.arch.embedded/browse_thread/thread/ccb95613fc65cb27#
+enum TokenType {
+        TOKEN_IDN,
+        TOKEN_MEAS,
+        TOKEN_SET,
+        TOKEN_NUMBER
+};
+*/
+
 /**
  * \fn int SCPI_Compare(char * s1, char * s2)
  * \brief Compare two strings
@@ -20,7 +31,11 @@ int SCPI_Compare(char * s1, char * s2) {
   /* s2=strupr(s2); */
   char *s2_abb = NULL;
   s2_abb=SCPI_Abbreviate(s2);
-  return ( strcmp(s1, s2)==0 ) || ( strcmp(s1, s2_abb)==0 ) ;
+  return ( strcasecmp(s1, s2)==0 ) || ( strcasecmp(s1, s2_abb)==0 ) ;
+  /*
+  strcmp, strncmp - Comparaison de deux chaînes.
+  strcasecmp, strncasecmp - Comparer deux chaînes en ignorant les différences majuscules/minuscules. 
+  */
 }
 
 
@@ -102,6 +117,13 @@ char * SCPI_Abbreviate (const char *ct) {
  * \return 0 if string has been well parsed.
  */
 int SCPI_Parse(char * s) {
+/*
+    do {
+      parse_result = SCPI_Parse(s);
+    } while (parse_result != 0);
+
+*/
+
   /* s=strupr(s); */
   
   /* printf("%s",s); */

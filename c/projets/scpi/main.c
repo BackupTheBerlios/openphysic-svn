@@ -39,9 +39,7 @@ int main(void) {
     printf("%s\n",s);
     
     /* parse query string */
-    do {
-      parse_result = SCPI_Parse(s);
-    } while (parse_result != 0);
+    SCPI_Parse(s);
     
   }
 

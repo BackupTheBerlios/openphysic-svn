@@ -19,12 +19,9 @@ INTEGER   [0-9]+
 
 [-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?  {printf ("FLOATING_POINT_NUMBER");}
 
-#[-+]?[0-9]*\.?[0-9]*  {printf ("FIXED_POINT_NUMBER");}
-#[0-9]+  {printf ("INTEGER");}
-#INTEGER  {printf ("INTEGER");}
 
-
-#[*]?[A-Z]+[a-z]*[\?]?  {printf ("SCPI_Command");}
+\n                      printf("\n");
+[ \t]+                  /* ignore whitespace */;
 
 %%
 
