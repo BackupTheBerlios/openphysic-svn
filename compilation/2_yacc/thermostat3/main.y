@@ -136,8 +136,10 @@ int main(void) {
   value=0;
   state=off;
 
-  /*yyparse();*/
-
+  /* suite de commandes ˆ parser */
+  set_parse_string("*idn?\n");
+  yyparse();
+  
   /* suite de commandes ˆ parser */
   set_parse_string("*IDN?\n");
   yyparse();
