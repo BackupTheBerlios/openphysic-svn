@@ -135,6 +135,8 @@ int main(void) {
 
   value=0;
   state=off;
+  
+  /* yyparse(); */ /* parser les commandes envoyes sur stdin */
 
   /* suite de commandes ˆ parser */
   set_parse_string("*idn?\n");
