@@ -2,10 +2,11 @@
 #include <string.h>
 #include "main.tab.h"
 
-/*
+/* comment undef/define YY_INPUT to parse stdin
+   uncomment it to parse a string using set_parse_string(...) */
 #undef YY_INPUT
 #define YY_INPUT(b,r,ms) (r = my_yyinput(b, ms))
-*/
+
 extern char* g_str;
 extern size_t g_str_size; /* taille de g_str */
 extern int g_str_read; /* nombre de caractère déjà envoyés à lex, initializé au départ à 0 */
@@ -38,6 +39,7 @@ FLOATING                [-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?
 %%
 
 {INTEGER}               {yylval=atoi(yytext); return TOK_NUMBER;}
+"*IDN?"                 return TOK_IDENT;	
 heat                    return TOK_HEAT;
 on|off                  {yylval=!strcmp(yytext,"on"); return TOK_STATE;}
 set                     return TOK_SET;

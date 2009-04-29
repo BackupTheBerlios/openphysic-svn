@@ -2,12 +2,23 @@
 #include <stdio.h>
 #include <string.h>
 
-#define STR_SIZE 50
-char g_str[STR_SIZE];
-/*char* g_str;*/
-size_t g_str_size; /* taille de g_str */
-int g_str_read; /* nombre de caractère déjà envoyés à lex, initializé au départ à 0 */
+char* g_str = NULL;
+size_t g_str_size;
+size_t g_str_read;
 
+int set_parse_string(char* str) {
+  size_t length = strlen(str);
+  if (g_str != NULL) free(g_str);
+
+  g_str = (char*) malloc(length+1);
+  if (g_str == NULL) return 0;
+
+  strcpy(g_str, str);
+  g_str_size = length;
+  g_str_read = 0;
+
+  return 1;
+}
 /*
 #define STR_SIZE 50
 char str[STR_SIZE];
@@ -46,7 +57,7 @@ void show_heat_state() {
 %}
 
 
-%token TOK_NUMBER TOK_HEAT TOK_STATE TOK_SET TOK_TEMPERATURE TOK_GET TOK_EOL
+%token TOK_IDENT TOK_NUMBER TOK_HEAT TOK_STATE TOK_SET TOK_TEMPERATURE TOK_GET TOK_EOL
 
 %%
 
@@ -55,14 +66,20 @@ commands: /* empty */
         ;
 
 command:
-        heat_switch
-        |
-        heat_get
-        |
-        target_set
-        |
-        target_get
+		identification
+        | heat_switch
+        | heat_get
+        | target_set
+        | target_get
         ;
+
+identification:
+        TOK_IDENT
+        {
+                printf("\tMyDevice\n",value);
+        }
+        ;
+
 
 heat_switch:
         TOK_HEAT TOK_STATE
@@ -113,12 +130,40 @@ int yywrap() {
   
 int main(void) {
 
-  strcpy(g_str,"get temperature");
+  /* strcpy(g_str,"get temperature"); */
   /* printf(g_str); */
 
   value=0;
   state=off;
 
+  /*yyparse();*/
+
+  /* suite de commandes à parser */
+  set_parse_string("*IDN?\n");
+  yyparse();
+
+  /* suite de commandes à parser */
+  set_parse_string("heat on\n");
+  yyparse();
+
+  /* suite de commandes à parser */
+  set_parse_string("get heat\n");
+  yyparse();
+
+  /* suite de commandes à parser */
+  set_parse_string("heat off\n");
+  yyparse();
+
+  /* suite de commandes à parser */
+  set_parse_string("get heat\n");
+  yyparse();
+  
+  /* suite de commandes à parser */
+  set_parse_string("set temperature 12\n");
+  yyparse();
+  
+  /* suite commandes à parser */
+  set_parse_string("get temperature\n");
   yyparse();
 
   return 0;
