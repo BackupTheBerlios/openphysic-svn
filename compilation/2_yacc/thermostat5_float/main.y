@@ -34,6 +34,8 @@ int yydebug=1;
 	double dbl;
 	int integer;
 }
+%type <integer> TOK_STATE
+%type <dbl> TOK_NUMBER
 
 
 %%
@@ -62,9 +64,9 @@ identification:
 heat_switch:
         TOK_HEAT TOK_STATE
         {
-        	if ($<integer>2==0) {
+        	if ($2==0) { /* or $<integer>2==0 if no %type definition */
 				state=off;
-			} else if ($<integer>2==1) {
+			} else if ($2==1) {
 				state=on;
 			}
 			show_heat_state();
@@ -82,7 +84,7 @@ heat_get:
 target_set:
         TOK_SET TOK_TEMPERATURE TOK_NUMBER
         {
-        	value=$<dbl>3;
+        	value=$3; /* $<dbl>3 */
 			printf("\tTemperature set to %f\n",value);
         }
         ;
