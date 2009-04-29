@@ -2,11 +2,31 @@
 #include <string.h>
 #include "main.tab.h"
 
-/*
-extern int myinput(char *buf, int max);
 #undef YY_INPUT
-#define YY_INPUT(b, r, ms) (r=myinput(b, ms))
-*/
+#define YY_INPUT(b,r,ms) (r = my_yyinput(b, ms))
+
+extern char* g_str;
+extern size_t g_str_size; /* taille de g_str */
+extern int g_str_read; /* nombre de caractre dŽjˆ envoyŽs ˆ lex, initializŽ au dŽpart ˆ 0 */
+
+int my_yyinput(char* buf, int max_size)
+{
+    /* on calcule le nombre de caractres ˆ copier dans buf,
+     * soit on a assez de caractres pour remplir, buf, soit on prend le reste de la chaine
+     */
+    int num = fmin(max_size, g_str_size-g_str_read);
+    
+
+    /* on copie notre chaine dans buf */
+    if (num > 0)
+    {
+        memcpy(buf, g_str+g_str_read, num);
+        g_str_read += num;
+    }
+    return num;
+}
+
+
 %}
 
 %option case-insensitive

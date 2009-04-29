@@ -2,6 +2,12 @@
 #include <stdio.h>
 #include <string.h>
 
+#define STR_SIZE 50
+char g_str[STR_SIZE];
+/*char* g_str;*/
+size_t g_str_size; /* taille de g_str */
+int g_str_read; /* nombre de caractère déjà envoyés à lex, initializé au départ à 0 */
+
 /*
 #define STR_SIZE 50
 char str[STR_SIZE];
@@ -107,8 +113,8 @@ int yywrap() {
   
 int main(void) {
 
-  /* strcpy(str,"get temperature"); */
-  /* printf(str); */
+  strcpy(g_str,"get temperature");
+  /* printf(g_str); */
 
   value=0;
   state=off;
