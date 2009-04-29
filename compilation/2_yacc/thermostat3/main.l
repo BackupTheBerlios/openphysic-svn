@@ -2,9 +2,10 @@
 #include <string.h>
 #include "main.tab.h"
 
+/*
 #undef YY_INPUT
 #define YY_INPUT(b,r,ms) (r = my_yyinput(b, ms))
-
+*/
 extern char* g_str;
 extern size_t g_str_size; /* taille de g_str */
 extern int g_str_read; /* nombre de caractère déjà envoyés à lex, initializé au départ à 0 */
