@@ -1,5 +1,6 @@
 %{
 #include <string.h>
+#include <math.h>
 #include "main.tab.h"
 
 /* comment undef/define YY_INPUT to parse stdin
