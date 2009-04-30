@@ -23,6 +23,10 @@ int main(void) {
   /* yyparse(); */ /* parser les commandes envoyes sur stdin */
 
   /* suite de commandes ˆ parser */
+  yy_scan_string("*identification?\n");
+  yyparse();
+  
+  /* suite de commandes ˆ parser */
   yy_scan_string("*idn?\n");
   yyparse();
   
