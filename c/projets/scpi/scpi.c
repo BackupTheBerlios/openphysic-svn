@@ -108,9 +108,17 @@ char * SCPI_Abbreviate (const char *ct) {
   return s;
 }
 
+
+int state;
 char *token;
+char *p_token;
+
 /* const char delimiters[] = " .,;:!-"; */
-const char delimiters[] = " ";
+const char delimiters[] = " \n";
+
+int itisanumber(char *s) { /* ToFix */
+  return 1;
+}
 
 /**
  * \fn int SCPI_Parse(char * s)
@@ -126,10 +134,25 @@ int SCPI_Parse(char * s) {
   while (token!=NULL) {
     if ( SCPI_Compare(token,"*IDN?") ) {
       printf("*IDN? = device identification\n");
+      state=0;
     } else if ( SCPI_Compare(token,"MEASure?") ) {
       printf("measure=%d\n",measure);
+      state=0;
+    } else if ( SCPI_Compare(token,"SET") || SCPI_Compare(token,"MEASure") || isnumber(token) ) { /* ToFix */
+      if ( SCPI_Compare(token,"SET") && state==0) {
+        state=1;
+      } else if ( SCPI_Compare(token,"MEASure") && state==1 ) {
+        state=2;
+      } else if ( state==2 ) { // && isnumber(token) ToFiX
+		printf("set meas to %s\n",token);
+        state=0;
+      } else {
+      	printf("bahhh\n");
+        state=0;
+      }
     } else {
       fprintf(stderr,"Error ! this firmware doesn't understand this command\n");
+      state=0;
     }
     token = strtok (NULL, delimiters);
   }
