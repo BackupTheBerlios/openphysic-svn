@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <stdlib.h>
+#include <regex.h>
 
 int i;
 
@@ -146,7 +147,7 @@ int SCPI_Parse(char * s) {
         state=2;
       } else if ( state==2 ) { // && isnumber(token) ToFiX
 		printf("set measure to %s\n",token);
-		// atoi atof
+		// atoi atof strtold strtoll strtoul strtoull...
 		measure=atoi(token);
         state=0;
       } else {
