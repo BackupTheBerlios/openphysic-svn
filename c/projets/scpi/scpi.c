@@ -9,6 +9,13 @@
 
 int i;
 
+int state;
+
+char *token;
+
+/* const char delimiters[] = " .,;:!-"; */
+const char delimiters[] = " \n";
+
 
 /*
 http://groups.google.de/group/de.sci.electronics/msg/c1467276cd3776c9
@@ -76,6 +83,7 @@ int SCPI_Compare(char * s1, char * s2) {
  * \param ct string to convert.
  * \return Converted string.
  */
+ /*
 char * str_toupper (const char *ct) {
   char *s = NULL;
   if (ct != NULL) {
@@ -91,6 +99,7 @@ char * str_toupper (const char *ct) {
   free(s);
   return s;
 }
+*/
 
 
 /**
@@ -139,12 +148,13 @@ char * SCPI_Abbreviate (const char *ct) {
 }
 
 
-int state;
-char *token;
-
-/* const char delimiters[] = " .,;:!-"; */
-const char delimiters[] = " \n";
-
+/**
+ * \fn int contain_number(const char * token)
+ * \brief Return if string contain a number or not.
+ *
+ * \param s string to parse.
+ * \return true if string contains only a number.
+ */
 int contain_number(const char * token) { /* ToFix */
   //long int strtol ( const char * str, char ** endptr, int base );
   //char ** endptr;
