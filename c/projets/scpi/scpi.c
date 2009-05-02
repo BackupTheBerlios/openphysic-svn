@@ -145,7 +145,7 @@ int SCPI_Parse(char * s) {
       } else if ( SCPI_Compare(token,"MEASure") && state==1 ) {
         state=2;
       } else if ( state==2 ) { // && isnumber(token) ToFiX
-		printf("set meas to %s\n",token);
+		printf("set measure to %s\n",token);
 		// atoi atof
 		measure=atoi(token);
         state=0;
