@@ -30,18 +30,31 @@ int main(void) {
   
   tests();
   
+  /*
   while(1) {
-    printf("mydevice> "); /* show device prompt */
-    /* scanf("%s",s); *//* sending query string to device */
+    printf("mydevice> "); // show device prompt
+    // scanf("%s",s); // sending query string to device
     fgets(s, STR_SIZE, stdin);
-    /* delete \n char */
+    // delete \n char
     s[strlen(s)-1]='\0';
     printf("%s\n",s);
     
-    /* parse query string */
+    // parse query string
     SCPI_Parse(s);
-    
   }
+  */
+  
+  /*
+  *IDN?
+  *IDN? *IDN?
+  MEAS?
+  SET MEAS 52
+  SET MEASure 52
+  */
+  strcpy(s,"*IDN? *IDN?");
+  SCPI_Parse(s);
+
+  
 
   printf("Stopping\n"); /* it should never happen on a real device ! */
   

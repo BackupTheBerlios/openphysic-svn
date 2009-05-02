@@ -108,6 +108,9 @@ char * SCPI_Abbreviate (const char *ct) {
   return s;
 }
 
+char *token;
+/* const char delimiters[] = " .,;:!-"; */
+const char delimiters[] = " ";
 
 /**
  * \fn int SCPI_Parse(char * s)
@@ -117,23 +120,19 @@ char * SCPI_Abbreviate (const char *ct) {
  * \return 0 if string has been well parsed.
  */
 int SCPI_Parse(char * s) {
-/*
-    do {
-      parse_result = SCPI_Parse(s);
-    } while (parse_result != 0);
-
-*/
-
-  /* s=strupr(s); */
+  // puts(s);
   
-  /* printf("%s",s); */
-
-  if ( SCPI_Compare(s,"*IDN?") ) {
-    printf("*IDN? = device identification\n");
-  } else if ( SCPI_Compare(s,"MEASure?") ) {
-    printf("measure=%d\n",measure);
-  } else {
-    fprintf(stderr,"Error ! this firmware doesn't understand this command\n");
+  token = strtok (s, delimiters);
+  while (token!=NULL) {
+    if ( SCPI_Compare(token,"*IDN?") ) {
+      printf("*IDN? = device identification\n");
+    } else if ( SCPI_Compare(token,"MEASure?") ) {
+      printf("measure=%d\n",measure);
+    } else {
+      fprintf(stderr,"Error ! this firmware doesn't understand this command\n");
+    }
+    token = strtok (NULL, delimiters);
   }
+  
   return 0;
 }

@@ -1,2 +1,4 @@
 all:
-	gcc -o main *.c -ansi -pedantic -Wall
+	gcc -o main *.c -Wall -pedantic
+	#-ansi
+	./main
