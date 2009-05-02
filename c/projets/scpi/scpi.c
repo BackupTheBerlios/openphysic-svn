@@ -9,10 +9,13 @@
 
 int i;
 
+
 /*
 http://groups.google.de/group/de.sci.electronics/msg/c1467276cd3776c9
 http://groups.google.fr/group/comp.arch.embedded/browse_thread/thread/ccb95613fc65cb27#
+*/
 enum TokenType {
+        T_UNDEF,
         T_IDN,
         T_MEAS_GET, // MEAS? or MEASure?
         T_MEAS,
@@ -20,7 +23,31 @@ enum TokenType {
         T_GET,
         T_NUMBER
 };
-*/
+int token_type;
+
+/**
+ * \fn enum TokenType get_token_type(char * token)
+ * \brief Send the type of a token
+ *
+ * \param token to know type.
+ * \return enum TokenType
+ */
+enum TokenType get_token_type(char * token) {
+	if ( SCPI_Compare(token, "*IDN?") ) {
+	  return T_IDN;
+	} else if ( SCPI_Compare(token, "MEASure?") ) {
+	  return T_MEAS_GET;
+	} else if ( SCPI_Compare(token, "MEASure") ) {
+	  return T_MEAS;
+	} else if ( SCPI_Compare(token, "SET") ) {
+	  return T_SET;
+	} else if ( contain_number(token) ) {	  
+	   return T_NUMBER;
+	} else {
+	  return T_UNDEF;
+	}	
+}
+
 
 /**
  * \fn int SCPI_Compare(char * s1, char * s2)
@@ -140,14 +167,16 @@ int SCPI_Parse(char * s) {
   
   token = strtok (s, delimiters);
   while (token!=NULL) {
+    token_type=get_token_type(token);
+  
   	//printf("%s ",token);
-    if ( SCPI_Compare(token,"*IDN?") ) {
+    if ( token_type==T_IDN ) {
       printf("\t*IDN? = device identification\n");
       state=0;
-    } else if ( SCPI_Compare(token,"MEASure?") ) {
+    } else if ( token_type==T_MEAS_GET  ) {
       printf("\tmeasure=%li\n",measure);
       state=0;
-    } else if ( SCPI_Compare(token,"SET") || SCPI_Compare(token,"MEASure") || contain_number(token) ) {
+    } else if ( token_type==T_SET || token_type==T_MEAS || token_type==T_NUMBER ) {
       if ( SCPI_Compare(token,"SET") && state==0) {
         state=1;
       } else if ( SCPI_Compare(token,"MEASure") && state==1 ) {
@@ -163,7 +192,7 @@ int SCPI_Parse(char * s) {
         state=0;
       }
     } else {
-      fprintf(stderr, "\tError ! this firmware doesn't understand this command (%s)\n",token);
+      fprintf(stderr, "\tError ! this firmware doesn't understand this command (%s : %d)\n",token,token_type);
       state=0;
     }
     token = strtok(NULL, delimiters);
