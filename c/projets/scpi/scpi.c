@@ -121,11 +121,11 @@ const char delimiters[] = " \n";
 int contain_number(const char * token) { /* ToFix */
   //long int strtol ( const char * str, char ** endptr, int base );
   //char ** endptr;
-  //long int val;
-  //val= strtol ( token, endptr, 0);
-  //return s==endptr;
+  long int val;
+  val=strtol(token, NULL, 0);
+  return !(val==0 && 1);
   
-  return 1;
+  //return 1;
 }
 
 /**
@@ -140,11 +140,12 @@ int SCPI_Parse(char * s) {
   
   token = strtok (s, delimiters);
   while (token!=NULL) {
+  	//printf("%s ",token);
     if ( SCPI_Compare(token,"*IDN?") ) {
-      printf("*IDN? = device identification\n");
+      printf("\t*IDN? = device identification\n");
       state=0;
     } else if ( SCPI_Compare(token,"MEASure?") ) {
-      printf("measure=%li\n",measure);
+      printf("\tmeasure=%li\n",measure);
       state=0;
     } else if ( SCPI_Compare(token,"SET") || SCPI_Compare(token,"MEASure") || contain_number(token) ) {
       if ( SCPI_Compare(token,"SET") && state==0) {
@@ -152,20 +153,20 @@ int SCPI_Parse(char * s) {
       } else if ( SCPI_Compare(token,"MEASure") && state==1 ) {
         state=2;
       } else if ( state==2 && contain_number(token) ) {
-		printf("set measure to %s\n",token);
+		printf("\tset measure to %s\n",token);
 		// atoi atof strtold strtoll strtoul strtoull...
 		//measure=atoi(token);
 		measure=strtol(token, NULL, 0);
         state=0;
       } else {
-      	printf("bahhh\n");
+      	fprintf(stderr, "\tError ! Correct syntax is 'SET MEAS value'\n");
         state=0;
       }
     } else {
-      fprintf(stderr,"Error ! this firmware doesn't understand this command (%s)\n",token);
+      fprintf(stderr, "\tError ! this firmware doesn't understand this command (%s)\n",token);
       state=0;
     }
-    token = strtok (NULL, delimiters);
+    token = strtok(NULL, delimiters);
   }
   
   return 0;
