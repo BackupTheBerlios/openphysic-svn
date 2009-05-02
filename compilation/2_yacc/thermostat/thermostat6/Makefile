@@ -5,10 +5,8 @@ YACC=bison
 all:	main
 	./main
 
-objects = main.o lex.yy.o main.tab.o
-
-main:	$(objects)
-	$(CC) $(objects) -o $@
+main:	main.o lex.yy.o main.tab.o
+	$(CC) $? -o $@
 
 main.o:	main.c main.h main.tab.h
 
