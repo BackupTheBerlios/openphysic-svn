@@ -4,16 +4,22 @@
 
 #define NS 10 /* nb de sous-motifs */
 
+char* str; // = "mardi 29 janvier";
+char* pattern; // = "([a-z]+) ([0-9]+) ([a-z]+)";
+
 int main (int argc, char *argv[])
 {
   regex_t re;
   regmatch_t subs[NS];
   int err;
-  
+    
   if (argc==3) {
-    err=regcomp(&re, argv[1], REG_EXTENDED);
+    pattern=argv[1];
+	str=argv[2];
+  
+    err=regcomp(&re, pattern, REG_EXTENDED);
 	if (!err) {
-	  err=regexec(&re, argv[2], (size_t) NS, subs, 0);
+	  err=regexec(&re, str, (size_t) NS, subs, 0);
 	  if (!err) {
 	    //printf("oui\n");
 		
@@ -21,7 +27,7 @@ int main (int argc, char *argv[])
 		len=(subs[0].rm_eo - subs[0].rm_so);
 		if (subs[0].rm_so != -1) {
 		  if (len !=0) {
-		    printf("-> '%.*s'\n", (int) len, argv[2] + subs[0].rm_so);
+		    printf("-> '%.*s'\n", (int) len, str + subs[0].rm_so);
 		  }
 		}
 		int i;
@@ -29,7 +35,7 @@ int main (int argc, char *argv[])
 		  if(subs[i].rm_so!=-1) {
 		    printf("(%d) '%.*s'\n", i,
 			  (int)(subs[i].rm_eo-subs[i].rm_so),
-			  argv[2]+subs[i].rm_so);
+			  str+subs[i].rm_so);
 		  }
 		}
 	  } else {
