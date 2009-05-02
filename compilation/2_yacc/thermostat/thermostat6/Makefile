@@ -3,32 +3,35 @@ LEX=flex
 YACC=bison
 
 all:	main
+	./main
 
-main:	main.o lex.yy.o main.tab.o
-	$(CC) main.o lex.yy.o main.tab.o
+objects = main.o lex.yy.o main.tab.o
+
+main:	$(objects)
+	$(CC) $(objects) -o $@
 
 main.o:	main.c main.h main.tab.h
 
 lex.yy.o:	lex.yy.c main.tab.h
-	$(CC) -c lex.yy.c
+	$(CC) -c $<
 
 main.tab.o:	main.tab.c main.tab.h
-	$(CC) -c main.tab.c
+	$(CC) -c $<
 
 lex.yy.c:	main.l
-	$(LEX) main.l
+	$(LEX) $<
 
 main.tab.h:	main.y
-	$(YACC) -d --verbose main.y
+	$(YACC) -d --verbose $<
 
 main.tab.c:	main.tab.h
 
 
-#flexbison:
-#	flex main.l
-#	bison -d --verbose main.y
-#	gcc main.c lex.yy.c main.tab.c -lfl -o main 
-#	./main
+flexbison:
+	flex main.l
+	bison -d --verbose main.y
+	gcc main.c lex.yy.c main.tab.c -lfl -o main 
+	./main
 
 #lexyacc:
 #	lex main.l
@@ -39,4 +42,4 @@ main.tab.c:	main.tab.h
 .PHONY:	clean
 
 clean:
-	$(RM) *.o main.tab.h main.tab.c lex.yy.c main.output
+	$(RM) main *.o main.tab.h main.tab.c lex.yy.c main.output
