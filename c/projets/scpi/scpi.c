@@ -118,7 +118,14 @@ char *token;
 /* const char delimiters[] = " .,;:!-"; */
 const char delimiters[] = " \n";
 
-int itisnumber(char *s) { /* ToFix */
+int contain_number(const char * token) { /* ToFix */
+//long int strtol ( const char * str, char ** endptr, int base );
+  //char ** endptr;
+  //long int val;
+  //int base;
+  //val= strtol ( token, endptr, base);
+  //return s==endptr;
+  
   return 1;
 }
 
@@ -138,14 +145,14 @@ int SCPI_Parse(char * s) {
       printf("*IDN? = device identification\n");
       state=0;
     } else if ( SCPI_Compare(token,"MEASure?") ) {
-      printf("measure=%d\n",measure);
+      printf("measure=%li\n",measure);
       state=0;
-    } else if ( SCPI_Compare(token,"SET") || SCPI_Compare(token,"MEASure") || itisnumber(token) ) { /* ToFix */
+    } else if ( SCPI_Compare(token,"SET") || SCPI_Compare(token,"MEASure") || contain_number(token) ) { /* ToFix */
       if ( SCPI_Compare(token,"SET") && state==0) {
         state=1;
       } else if ( SCPI_Compare(token,"MEASure") && state==1 ) {
         state=2;
-      } else if ( state==2 ) { // && isnumber(token) ToFiX
+      } else if ( state==2 && contain_number(token) ) { //  ToFiX
 		printf("set measure to %s\n",token);
 		// atoi atof strtold strtoll strtoul strtoull...
 		measure=atoi(token);
