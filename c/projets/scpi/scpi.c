@@ -13,8 +13,8 @@ http://groups.google.de/group/de.sci.electronics/msg/c1467276cd3776c9
 http://groups.google.fr/group/comp.arch.embedded/browse_thread/thread/ccb95613fc65cb27#
 enum TokenType {
         T_IDN,
-        T_MEAS_GET,
-        T_MEAS_SET,
+        T_MEAS_GET, // MEAS? or MEASure?
+        T_MEAS,
         T_SET,
         T_GET,
         T_NUMBER
@@ -117,7 +117,7 @@ char *token;
 /* const char delimiters[] = " .,;:!-"; */
 const char delimiters[] = " \n";
 
-int itisanumber(char *s) { /* ToFix */
+int itisnumber(char *s) { /* ToFix */
   return 1;
 }
 
@@ -139,13 +139,15 @@ int SCPI_Parse(char * s) {
     } else if ( SCPI_Compare(token,"MEASure?") ) {
       printf("measure=%d\n",measure);
       state=0;
-    } else if ( SCPI_Compare(token,"SET") || SCPI_Compare(token,"MEASure") || isnumber(token) ) { /* ToFix */
+    } else if ( SCPI_Compare(token,"SET") || SCPI_Compare(token,"MEASure") || itisnumber(token) ) { /* ToFix */
       if ( SCPI_Compare(token,"SET") && state==0) {
         state=1;
       } else if ( SCPI_Compare(token,"MEASure") && state==1 ) {
         state=2;
       } else if ( state==2 ) { // && isnumber(token) ToFiX
 		printf("set meas to %s\n",token);
+		// atoi atof
+		measure=atoi(token);
         state=0;
       } else {
       	printf("bahhh\n");
