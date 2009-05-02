@@ -113,7 +113,6 @@ char * SCPI_Abbreviate (const char *ct) {
 
 int state;
 char *token;
-char *p_token;
 
 /* const char delimiters[] = " .,;:!-"; */
 const char delimiters[] = " \n";
@@ -153,7 +152,7 @@ int SCPI_Parse(char * s) {
         state=0;
       }
     } else {
-      fprintf(stderr,"Error ! this firmware doesn't understand this command\n");
+      fprintf(stderr,"Error ! this firmware doesn't understand this command (%s)\n",token);
       state=0;
     }
     token = strtok (NULL, delimiters);
