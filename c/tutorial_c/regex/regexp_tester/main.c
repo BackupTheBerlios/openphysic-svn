@@ -15,9 +15,25 @@ int main (int argc, char *argv[])
 	if (!err) {
 	  err=regexec(&re, argv[2], (size_t) NS, subs, 0);
 	  if (!err) {
-	    printf("oui\n");
+	    //printf("oui\n");
+		
+		size_t len;
+		len=(subs[0].rm_eo - subs[0].rm_so);
+		if (subs[0].rm_so != -1) {
+		  if (len !=0) {
+		    printf("-> '%.*s'\n", (int) len, argv[2] + subs[0].rm_so);
+		  }
+		}
+		int i;
+		for (i=1;i<NS;i++) {
+		  if(subs[i].rm_so!=-1) {
+		    printf("(%d) '%.*s'\n", i,
+			  (int)(subs[i].rm_eo-subs[i].rm_so),
+			  argv[2]+subs[i].rm_so);
+		  }
+		}
 	  } else {
-	    printf("non\n");
+	    printf("non ! a ne matche pas !\n");
 	  }
 	}
   }
