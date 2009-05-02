@@ -6,8 +6,10 @@ regcomp() and regexec()
 #include <stdio.h>
 #include <regex.h>
 
-char* str="world";
-char* pattern="[a-z]*";
+//char* str="mardi 10 janvier"; // match
+char* str="mardi 10"; // doesn't match
+char* pattern="([a-z]+) ([0-9]+) ([a-z]+)";
+int err;
 
 int main (void)
 {
@@ -18,7 +20,9 @@ int main (void)
   puts(str);
   puts(pattern);
   
-  if (regexec(&re, str, 0, NULL, 0)) {
+  err=regexec(&re, str, 0, NULL, 0);
+  putchar(err);
+  if (!err) {
     puts("match");
   } else {
     puts("doesn't match");
