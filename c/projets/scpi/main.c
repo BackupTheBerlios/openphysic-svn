@@ -51,7 +51,7 @@ int main(void) {
   SET MEAS 52
   SET MEASure 52
   */
-  strcpy(s,"*IDN? *IDN?\n*IDN? MEAS? SET MEAS 52 MEAS? SET MEAS 0 MEAS? SET 53 SET MEAS BADVALUE  MEAS?");
+  strcpy(s,"*IDN? *IDN?\n*IDN? MEAS? SET MEAS 0 MEAS? SET MEAS 52 MEAS? SET 53 SET MEAS BADVALUE  MEAS?");
   SCPI_Parse(s);
 
   

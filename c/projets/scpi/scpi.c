@@ -156,13 +156,13 @@ char * SCPI_Abbreviate (const char *ct) {
  * \param s string to parse.
  * \return true if string contains only a number.
  */
-int contain_number(char * token) {
+int contain_number(const char * token) {
   /* long int strtol ( const char * str, char ** endptr, int base ); */
-  char ** endptr = NULL;
+  const char * endptr;
   long int val;
-  val=strtol(token, endptr, 0);
+  val=strtol(token, &endptr, 0);
   
-  return !(val==0 && *endptr==token);
+  return !(val==0 && endptr==token);
 }
 
 /**
