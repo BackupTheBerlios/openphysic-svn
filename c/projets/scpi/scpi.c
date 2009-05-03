@@ -155,8 +155,8 @@ char * SCPI_Abbreviate (const char *ct) {
  * \param s string to parse.
  * \return true if string contains only a number.
  */
-int contain_number(const char * token) { /* ToFix */
-  //long int strtol ( const char * str, char ** endptr, int base );
+int contain_number(const char * token) {
+  /* long int strtol ( const char * str, char ** endptr, int base ); */
   char ** endptr = NULL;
   long int val;
   val=strtol(token, endptr, 0);
