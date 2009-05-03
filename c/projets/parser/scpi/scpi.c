@@ -158,7 +158,7 @@ char * SCPI_Abbreviate (const char *ct) {
  */
 int contain_number(const char * token) {
   /* long int strtol ( const char * str, char ** endptr, int base ); */
-  const char * endptr;
+  char * endptr;
   long int val;
   val=strtol(token, &endptr, 0);
   
