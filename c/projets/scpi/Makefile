@@ -19,8 +19,8 @@ $(FILENAME) : $(OBJECTS)
 clean:
 	$(RM) *.o $(FILENAME)
 
-#all:
-#	gcc -o main *.c -Wall -pedantic
-#	./main
+full:
+	gcc -o main *.c -Wall -pedantic
+	./main
 
 #-ansi

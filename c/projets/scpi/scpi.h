@@ -6,6 +6,6 @@ int SCPI_Compare(char * s1, char * s2);
 char * SCPI_Abbreviate (const char *ct);
 
 /* char *str_toupper (const char *ct); */
-int contain_number(const char * token);
+int contain_number(char * token);
 
 #endif
