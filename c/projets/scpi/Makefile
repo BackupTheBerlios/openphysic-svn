@@ -12,7 +12,7 @@ $(FILENAME) : $(OBJECTS)
 	$(CC) $(OBJECTS) -o $(FILENAME)
 
 %.o : %.c %.h
-	$(CC) -c $<
+#	$(CC) -c $<
 
 .PHONY: clean
 
