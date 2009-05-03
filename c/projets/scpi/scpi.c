@@ -5,7 +5,8 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <stdlib.h>
-#include <regex.h>
+//#include <regex.h>
+#include <stdbool.h>
 
 int i;
 
@@ -160,9 +161,13 @@ int contain_number(const char * token) {
   char ** endptr = NULL;
   long int val;
   val=strtol(token, endptr, 0);
-  return !(val==0 && endptr==token);
   
-  //return 1;
+  //if (**endptr!=NULL) {
+  //  return !(val==0 && *endptr==token);
+  //} else {
+  //  return 0;
+  //}
+  return true;
 }
 
 /**
