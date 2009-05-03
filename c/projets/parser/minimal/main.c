@@ -11,7 +11,7 @@ float temp = 22.6;
 
 void set(char *param) {
   if (*param++) {
-    if (sscanf(param,"temperature %f",param,&temp) == 2)
+    if (sscanf(param,"temperature %f",&temp) == 1)
       printf("New temperature set to %3.1f\n", temp);
   }
 }
@@ -66,7 +66,7 @@ int main(void) {
   parse("heat off");
   parse("get heat");
   parse("get temperature");
-  parse("set temperature 12");
+  parse("set temperature 32.6");
   parse("get temperature");
     
   return 0;
