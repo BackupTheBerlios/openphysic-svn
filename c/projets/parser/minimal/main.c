@@ -2,7 +2,11 @@
 #include <string.h>
 #include <stdio.h>
 
-int heat_state = 0;
+enum _heat_state {
+  off,
+  on
+};
+enum _heat_state heat_state = off;
 float temp = 22.6;
 
 void set(char *param) {
@@ -24,11 +28,11 @@ void get(char *param) {
 void heat(char *param) {
   if (*param++) {
     if (!strcmp("on",param))
-      heat_state = 1;
+      heat_state = on;
     if (!strcmp("off",param))
-      heat_state = 0;
+      heat_state = off;
   }
-  printf("Heat is %s\n", heat_state?"on":"off");
+  printf("Heat is set to %s\n", heat_state?"on":"off");
 }
 
 typedef struct cmdlist_t {
@@ -56,6 +60,14 @@ int parse(char *cmdline) {
 }
 
 int main(void) {
+  parse("get heat");
   parse("heat on");
+  parse("get heat");
   parse("heat off");
+  parse("get heat");
+  parse("get temperature");
+  parse("set temperature 12");
+  parse("get temperature");
+    
+  return 0;
 }
