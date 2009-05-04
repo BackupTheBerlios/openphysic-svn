@@ -57,16 +57,16 @@ t?
         Temperature is 22.6
 
 
-Other ideas
+Other ideas more "SCPI like"
 *IDN?
         MyDevice
-heat 1
+HEATing on
         Heat is on
-heat 0
+HEATing off
         Heat is off
-heat?
+HEAT?
         Heat is off
-temperature 22.6
+TEMPerature 22.6
         New temperature set to 22.6!
-temperature?
+TEMPerature?
         Temperature is 22.6
