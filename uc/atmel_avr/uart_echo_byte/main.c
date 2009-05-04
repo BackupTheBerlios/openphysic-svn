@@ -17,6 +17,23 @@ Remarque : pour les caractères ASCII codés sur 8 bits
 il faut penser à modifier le terminal "Data bits=8"
  */
 
+inline void about(void) {
+	rprintf(" ______________________________________________________________________ \r\n");
+	rprintf(">                                                                      <\r\n");
+	rprintf(">                               MyDevice                               <\r\n");
+	rprintf(">                                                                      <\r\n");
+	rprintf(">                           Sebastien Celles                           <\r\n");
+	rprintf(">                         sebastien@celles.net                         <\r\n");
+	rprintf(">                   sebastien.celles@univ-poitiers.fr                  <\r\n");
+	rprintf(">                                                                      <\r\n");
+	rprintf(">                           IUT de Poitiers                            <\r\n");
+	rprintf(">                  Departement Genie Thermique Energie                 <\r\n");
+	rprintf(">                         6, allee Jean Monnet                         <\r\n");
+	rprintf(">                        86010 POITIERS CELLES                         <\r\n");
+	rprintf(">                                                                      <\r\n");
+	rprintf(" ______________________________________________________________________ \r\n");
+}
+
 int uart_init(void)
 {
 	// initialize our libraries
@@ -88,8 +105,21 @@ inline void print_g(void) {
 		while(c==-1) {
 			c=uartGetByte();
 		}
+		/*
 		if (c=='g') {
 			rprintf("You can 'g'et a value %d\r\n",value);
+		}
+		*/
+		switch (c) {
+			case 'g':
+				rprintf("You can 'g'et a value %d\r\n",value);
+				break;
+			case 'a':
+				about();
+				break;
+			default:
+				uartSendByte(c); // echo
+				break;
 		}
 	}
 }
@@ -98,19 +128,24 @@ int main(void)
 {
 	uart_init();
 	rprintf("Init\r\n");
+	
+	//about();
 
 	// Echo a char/byte
-	echo();
+	//echo();
 	//echoV2();
 	//echo_buff();
 
-	// Print a message when 'g' char is received
-	//print_g();
+	// Print a message (containing a value) when 'g' char is received
+	// Print about() when 'a' is pressed
+	// Else, Echo char
+	print_g();
 
 	rprintf("Stop\r\n"); // should never happen
 
    return(0);
 }
+
 
 
 
