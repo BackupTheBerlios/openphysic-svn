@@ -89,7 +89,7 @@ inline void print_g(void) {
 			c=uartGetByte();
 		}
 		if (c=='g') {
-			rprintf("You can 'g'et a value %d",value);
+			rprintf("You can 'g'et a value %d\r\n",value);
 		}
 	}
 }
