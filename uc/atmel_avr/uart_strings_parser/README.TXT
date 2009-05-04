@@ -38,3 +38,35 @@ using the main.prj file
 
 ToFix : doesn't compile with the WinAVR gcc toolchain !
 flag -lfl ?
+
+It doesn't seems to be a good idea to have such commands
+for an only 8 bits microcontroller.
+
+Simpler commands could be
+*IDN?
+        MyDevice
+h1
+        Heat is on
+h0
+        Heat is on
+h?
+        Heat is off
+t22.6
+        New temperature set to 22.6!
+t?
+        Temperature is 22.6
+
+
+Other ideas
+*IDN?
+        MyDevice
+heat 1
+        Heat is on
+heat 0
+        Heat is off
+heat?
+        Heat is off
+temperature 22.6
+        New temperature set to 22.6!
+temperature?
+        Temperature is 22.6
