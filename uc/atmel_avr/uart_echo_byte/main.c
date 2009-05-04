@@ -78,13 +78,36 @@ inline void echo_buff(void) {
 }
 */
 
+volatile int value;
+
+inline void print_g(void) {
+	value=123;
+
+   while (1) {
+		c=-1;
+		while(c==-1) {
+			c=uartGetByte();
+		}
+		if (c=='g') {
+			rprintf("You can 'g'et a value %d",value);
+		}
+	}
+}
+
 int main(void)
 {
 	uart_init();
+	rprintf("Init\r\n");
 
+	// Echo a char/byte
 	echo();
 	//echoV2();
 	//echo_buff();
+
+	// Print a message when 'g' char is received
+	//print_g();
+
+	rprintf("Stop\r\n"); // should never happen
 
    return(0);
 }
