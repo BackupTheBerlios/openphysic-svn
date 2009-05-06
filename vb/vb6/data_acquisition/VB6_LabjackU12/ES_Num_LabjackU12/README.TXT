@@ -13,6 +13,18 @@ C:\Program Files\DevStudio\VB\ES_Num_LabjackU12
 ou
 C:\Program Files\Microsoft Visual Studio\VB98\ES_Analog_LabjackU12
 
+Première utilisation (par administrateur)
+Fichier Nouveau projet Exe
+Clic droit sur composant et Parcourir
+Led.ocx
+ByteDisplay.ocx
+ES_Num_Labjack_U12.ocx
+
+Placer sur la feuille ES_Num_Labjack_U12
+
+Tester avec un utilisateur restreint
+
+
 Utilisation du composant
 ========================
 Fichier Nouveau projet Exe
