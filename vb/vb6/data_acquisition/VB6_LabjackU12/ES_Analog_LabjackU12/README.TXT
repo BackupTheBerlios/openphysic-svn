@@ -11,10 +11,22 @@ C:\Program Files\DevStudio\VB\ES_Analog_LabjackU12
 ou
 C:\Program Files\Microsoft Visual Studio\VB98\ES_Analog_LabjackU12
 
+
+Première utilisation (par administrateur)
+Fichier Nouveau projet Exe
+Clic droit sur composant et Parcourir
+ES_Analog_Labjack_U12.ocx
+
+Placer sur la feuille ES_Analog_Labjack_U12
+
+Tester avec un utilisateur restreint
+
+
 Utilisation du composant
 ========================
 Fichier Nouveau projet Exe
 Clic droit sur composant et ajouter ES_Analog_LabjackU12
+
 
 
 Développeur (pour modifier l'objet et en recréer un)
