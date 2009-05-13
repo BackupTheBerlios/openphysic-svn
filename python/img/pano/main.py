@@ -12,12 +12,16 @@ W, H = im.size
 print im.format, W, H, im.mode
 #im.show()
 
+newW=W/2 # largeur image finale
+
+
 def img(image, i, Nb):
 	# i = 0..Nb-1
-	box = (i*W/Nb, 0, (i+1)*W/Nb, H)
+	box = (0, 0, newW, H)
 	return im.crop(box)
+
 	
-Nb=10
+Nb=20
 for i in range(0, Nb):
 	region=img(im,i,Nb)
 	outfile_region="logo_%d.gif"%i
