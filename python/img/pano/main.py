@@ -20,5 +20,5 @@ for i in range(0, Nb-Nbsize):
 	box = (i*W/Nb, 0, (i+Nbsize)*W/Nb, H)
 	#box = (i*W/Nb*Nbsize, 0, (i+1)*W/Nb*Nbsize, H)
 	region=im.crop(box)
-	outfile_region="logo_%d.gif"%i
+	outfile_region="logo_%.4d.gif"%i
 	region.save(outfile_region, "GIF")
