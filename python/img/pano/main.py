@@ -16,7 +16,7 @@ print im.format, W, H, im.mode
 Nb=10 # nb total de tranches
 Nbsize=3 # nb de tranches dans une image
 for i in range(0, Nb):
-	outfile_region="logo_%.4d.gif" % i
+	outfile_region="temp%.4d.gif" % i
 	if i<Nb-Nbsize:
 		print "%d-%d" % (i, i+Nbsize)
 		box = (i*W/Nb, 0, (i+Nbsize)*W/Nb, H)
