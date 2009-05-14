@@ -34,8 +34,12 @@ for i in range(0, Nb):
 		part1 = im.crop((i1*W/Nb, 0, W, H))
 		part2 = im.crop((0, 0, (i4+1)*W/Nb, H))
 		#region = im.crop((0,0,W/Nb*Nbsize,H))
-		region = im.copy()
-		#region.paste(part1, None)
+		#region = im.copy()
+		x1, y1 = part1.size
+		x2, y2 = part2.size
+		region = Image.new("RGB", (x1+x2,H), "red")
+		region.paste(part1, (0,0,x1,y1))
+		region.paste(part2, (x1,0,x2+x1,y2))
 		#region.paste(part2, (0, 0, W/Nb*Nbsize, H))
     	#region.paste(part2, (xsize-delta, 0, xsize, ysize))
     	#region = im.resize((128, 128))
