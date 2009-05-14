@@ -13,8 +13,8 @@ print im.format, W, H, im.mode
 #im.show()
 
 	
-Nb=20 # nb total de tranches
-Nbsize=2 # nb de tranches dans une image
+Nb=200 # nb total de tranches
+Nbsize=60 # nb de tranches dans une image
 for i in range(0, Nb):
 	outfile_region="temp_%.4d.gif" % i
 	if i<=Nb-Nbsize:
