@@ -24,6 +24,9 @@ private:
 
     void (*p_testpattern)();
     void testpattern1(void);
+    int x,y,w,h;
+
+    QVector<QColor> colors;
 };
 
 #endif // TESTPATTERN_H
