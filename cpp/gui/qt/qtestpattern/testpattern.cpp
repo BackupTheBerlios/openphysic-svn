@@ -65,10 +65,12 @@ void Testpattern::testpattern1(void)
 
 Testpattern::~Testpattern()
 {
+    //print_colors();
+
     delete ui;
 }
 
-Testpattern::print_color()
+void Testpattern::print_colors(void)
 {
     int r,g,b,a;
     cout << "k" <<  "\t" << "R"<< "\t" << "G" << "\t" << "B" << endl;

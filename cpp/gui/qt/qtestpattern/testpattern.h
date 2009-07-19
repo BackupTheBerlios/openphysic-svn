@@ -27,6 +27,9 @@ private:
     int x,y,w,h;
 
     QVector<QColor> colors;
+
+    void print_colors(void);
+
 };
 
 #endif // TESTPATTERN_H
