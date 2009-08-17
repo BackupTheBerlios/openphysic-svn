@@ -11,6 +11,10 @@ class CouleursHelper extends AppHelper {
 	*/
 	
 	function heures_restantes($x) {
+		return $this->three_colors($x);
+	}
+	
+	function three_colors($x) {
 		if ($x==0) {
 			$rgb="00ff00"; // vert
 		} elseif ($x<0) {
