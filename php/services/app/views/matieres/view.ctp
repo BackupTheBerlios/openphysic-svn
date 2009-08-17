@@ -138,9 +138,9 @@
 		</tr>
 		<tr class="altrow">
 			<th>restant</th>
-			<td <?php echo $couleurs->heures_restantes($vol_horaire_total['restant']['h_cours']); ?>><?php echo $vol_horaire_total['restant']['h_cours']; ?></td>
-			<td <?php echo $couleurs->heures_restantes($vol_horaire_total['restant']['h_td']); ?>><?php echo $vol_horaire_total['restant']['h_td']; ?></td>
-			<td <?php echo $couleurs->heures_restantes($vol_horaire_total['restant']['h_tp']); ?>><?php echo $vol_horaire_total['restant']['h_tp']; ?></td>
+			<td <?php echo $couleurs->heures_restantes($vol_horaire_total['restant']['h_cours'], $vol_horaire_total['a_effectuer']['h_cours']); ?>><?php echo $vol_horaire_total['restant']['h_cours']; ?></td>
+			<td <?php echo $couleurs->heures_restantes($vol_horaire_total['restant']['h_td'], $vol_horaire_total['a_effectuer']['h_td']); ?>><?php echo $vol_horaire_total['restant']['h_td']; ?></td>
+			<td <?php echo $couleurs->heures_restantes($vol_horaire_total['restant']['h_tp'], $vol_horaire_total['a_effectuer']['h_tp']); ?>><?php echo $vol_horaire_total['restant']['h_tp']; ?></td>
 			<td>&nbsp;</td>
 			<td><?php echo $heures->h_tot($vol_horaire_total['restant']); ?></td>
 			<td><?php echo $heures->h_eq_td($vol_horaire_total['restant']); ?></td>

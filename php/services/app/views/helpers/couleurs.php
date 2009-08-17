@@ -10,8 +10,17 @@ class CouleursHelper extends AppHelper {
 	}
 	*/
 	
-	function heures_restantes($x) {
-		return $this->three_colors($x);
+	function heures_restantes($h_restantes, $h_a_attribuer) {
+		return $this->three_colors($h_restantes);
+		
+		/*
+		if ($h_a_attribuer<>0) {
+			$x=$h_restantes/$h_a_attribuer;
+		} else {
+			$x=0;
+		}
+		return $this->gradient_3colors($x);
+		*/
 	}
 	
 	function three_colors($x) {

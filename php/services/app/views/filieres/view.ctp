@@ -138,9 +138,9 @@
 		<tr<?php echo $class;?>>
 			<td>&nbsp;</td>
 			<td>&nbsp;</td>
-			<td <?php echo $couleurs->heures_restantes($matiere['VueMatieresRestantsBesoin']['h_cours']); ?>><?php echo $matiere['VueMatieresRestantsBesoin']['h_cours'];?></td>
-			<td <?php echo $couleurs->heures_restantes($matiere['VueMatieresRestantsBesoin']['h_td']); ?>><?php echo $matiere['VueMatieresRestantsBesoin']['h_td'];?></td>
-			<td <?php echo $couleurs->heures_restantes($matiere['VueMatieresRestantsBesoin']['h_tp']); ?>><?php echo $matiere['VueMatieresRestantsBesoin']['h_tp'];?></td>
+			<td <?php echo $couleurs->heures_restantes($matiere['VueMatieresRestantsBesoin']['h_cours'], $matiere['VueMatieresTotalBesoin']['h_cours']); ?>><?php echo $matiere['VueMatieresRestantsBesoin']['h_cours'];?></td>
+			<td <?php echo $couleurs->heures_restantes($matiere['VueMatieresRestantsBesoin']['h_td'], $matiere['VueMatieresTotalBesoin']['h_td']); ?>><?php echo $matiere['VueMatieresRestantsBesoin']['h_td'];?></td>
+			<td <?php echo $couleurs->heures_restantes($matiere['VueMatieresRestantsBesoin']['h_tp'], $matiere['VueMatieresTotalBesoin']['h_tp']); ?>><?php echo $matiere['VueMatieresRestantsBesoin']['h_tp'];?></td>
 			<td>restant</td>
 			<td><?php echo $heures->h_tot($matiere['VueMatieresRestantsBesoin']); ?></td>
 			<td><?php echo $heures->h_eq_td($matiere['VueMatieresRestantsBesoin']); ?></td>
@@ -183,9 +183,9 @@
 		</tr>
 		<tr class="altrow">
 			<th>restant</th>
-			<td><?php echo $heures->get($filiere['VueFilieresRestantsBesoin'], 'h_cours'); ?></td>
-			<td><?php echo $heures->get($filiere['VueFilieresRestantsBesoin'], 'h_td'); ?></td>
-			<td><?php echo $heures->get($filiere['VueFilieresRestantsBesoin'], 'h_tp'); ?></td>
+			<td <?php echo $couleurs->heures_restantes($filiere['VueFilieresRestantsBesoin']['h_cours'], $filiere['VueFilieresRestantsBesoin']['h_cours']); ?>><?php echo $heures->get($filiere['VueFilieresRestantsBesoin'], 'h_cours'); ?></td>
+			<td <?php echo $couleurs->heures_restantes($filiere['VueFilieresRestantsBesoin']['h_cours'], $filiere['VueFilieresRestantsBesoin']['h_td']); ?>><?php echo $heures->get($filiere['VueFilieresRestantsBesoin'], 'h_td'); ?></td>
+			<td <?php echo $couleurs->heures_restantes($filiere['VueFilieresRestantsBesoin']['h_tp'], $filiere['VueFilieresRestantsBesoin']['h_tp']); ?>><?php echo $heures->get($filiere['VueFilieresRestantsBesoin'], 'h_tp'); ?></td>
 			<td>&nbsp;</td>
 			<td><?php echo $heures->h_tot($filiere['VueFilieresRestantsBesoin']); ?></td>
 			<td><?php echo $heures->h_eq_td($filiere['VueFilieresRestantsBesoin']); ?></td>

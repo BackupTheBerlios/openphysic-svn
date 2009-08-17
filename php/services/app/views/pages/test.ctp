@@ -8,9 +8,9 @@
 		<th width="33%">>0</th>
 	</tr>
 	<tr>
-		<td <?php echo $couleurs->heures_restantes(-1); ?>>x</td>
-		<td <?php echo $couleurs->heures_restantes(0); ?>>x</td>
-		<td <?php echo $couleurs->heures_restantes(1); ?>>x</td>
+		<td <?php echo $couleurs->three_colors(-1); ?>>x</td>
+		<td <?php echo $couleurs->three_colors(0); ?>>x</td>
+		<td <?php echo $couleurs->three_colors(1); ?>>x</td>
 	</tr>
 </table>
 
