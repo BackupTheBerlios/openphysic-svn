@@ -125,6 +125,10 @@ vert si =0
 rouge si >=heure à effectuer
 entre rouge et vert si entre 0 et heure à effectuer
 
+* matiere_perso (add, edit ou del)
+après validation rediriger ver la page
+du personnel en question ou de la matière en question (selon le contexte)
+
 * gestion des droits (ACL, ARO, ACO)
 voir http://book.cakephp.org/fr/view/171/Access-Control-Lists
 http://stackoverflow.com/questions/54230/cakephp-acl-database-setup-aro-aco-structure

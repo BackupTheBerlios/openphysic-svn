@@ -30,10 +30,6 @@
 		<li><?php echo $html->link(__('Nouvelle Filière', true), array('action'=>'add')); ?> </li>
 		<li><?php echo $html->link(__('Supprimer Filière', true), array('action'=>'delete', $filiere['Filiere']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $filiere['Filiere']['id'])); ?> </li>
 	</ul>
-	<ul>
-		<li><?php echo $html->link(__('Bilan des besoins par filière', true), array('controller'=> 'vue_filieres_total_besoins', 'action'=>'index')); ?> </li>	
-	</ul>
-
 </div>
 <div class="related">
 	<h3><?php __('Matières enseignées dans la filière');?></h3>

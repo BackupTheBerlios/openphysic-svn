@@ -27,7 +27,27 @@ class MatieresPersosController extends AppController {
 			$this->MatieresPerso->create();
 			if ($this->MatieresPerso->save($this->data)) {
 				$this->Session->setFlash(__('The MatieresPerso has been saved', true));
-				$this->redirect(array('action'=>'index'));
+				
+				
+				//debug($this->data);
+				
+				//$this->redirect(array('action'=>'index'));
+				
+				$this->redirect(array('controller'=>'matieres', 'action'=>'view', $this->data['MatieresPerso']['matiere_id']));
+				
+				//$this->redirect($this->referer());
+
+				/*
+				if (isset($this->passedArgs['perso'])) {
+					$this->redirect(array('controller'=>'persos', 'action'=>'view'), $this->passedArgs['perso']);
+				}
+		
+				if (isset($this->passedArgs['matiere'])) {
+					$this->redirect(array('controller'=>'matieres', 'action'=>'view'), $this->passedArgs['matiere']);				
+				}
+				*/
+				
+				
 				//$this->referer()
 			} else {
 				$this->Session->setFlash(__('The MatieresPerso could not be saved. Please, try again.', true));
@@ -85,7 +105,8 @@ class MatieresPersosController extends AppController {
 		if (!empty($this->data)) {
 			if ($this->MatieresPerso->save($this->data)) {
 				$this->Session->setFlash(__('The MatieresPerso has been saved', true));
-				$this->redirect(array('action'=>'index'));
+				//$this->redirect(array('action'=>'index'));
+				$this->redirect(array('controller'=>'matieres', 'action'=>'view', $this->data['MatieresPerso']['matiere_id']));
 			} else {
 				$this->Session->setFlash(__('The MatieresPerso could not be saved. Please, try again.', true));
 			}
@@ -106,7 +127,13 @@ class MatieresPersosController extends AppController {
 		}
 		if ($this->MatieresPerso->del($id)) {
 			$this->Session->setFlash(__('MatieresPerso deleted', true));
-			$this->redirect(array('action'=>'index'));
+			
+			//$this->redirect(array('action'=>'index'));
+			
+			//$this->redirect(array('controller'=>'matiere', 'action'=>'index', ... ));
+			
+			$this->redirect($this->referer());
+
 		}
 	}
 
