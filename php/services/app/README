@@ -124,3 +124,34 @@ orange si <0
 vert si =0
 rouge si >=heure à effectuer
 entre rouge et vert si entre 0 et heure à effectuer
+
+* gestion des droits (ACL, ARO, ACO)
+voir http://book.cakephp.org/fr/view/171/Access-Control-Lists
+http://stackoverflow.com/questions/54230/cakephp-acl-database-setup-aro-aco-structure
+http://bakery.cakephp.org/articles/view/user-permissions-and-cakephp-acl
+http://bakery.cakephp.org/articles/view/how-to-use-acl-in-1-2-x
+
+utilisateur
+ peut consulter son service (si 'user' est attaché à un 'perso')
+ peut modifier son mot de passe
+ ne peut pas editer son username !
+ 
+administrateur de filière
+ peut	créer des matières dans la filière à laquelle il est rattaché
+ 		créer des perso
+ 		attacher des perso et des user
+ 		modifier le nb de groupe d'une filière (editer filiere)
+ 		affecter un perso sur une matière
+ 		visualiser les services de n'importe quel perso
+ 		visualiser les bilans de matière
+
+(
+administrateur de département (à confondre avec admin de filière ?)
+ peut ajouter filiere / supprimer filiere
+)
+
+
+administrateur
+ peut : tout faire
+ ne peut pas : rien
+ 
