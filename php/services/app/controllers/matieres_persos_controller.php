@@ -34,7 +34,7 @@ class MatieresPersosController extends AppController {
 				//$this->redirect(array('action'=>'index'));
 				
 				$this->redirect(array('controller'=>'matieres', 'action'=>'view', $this->data['MatieresPerso']['matiere_id']));
-				//$this->redirect(array('controller'=>'matieres_persos', 'action'=>'view', $id));
+				//$this->redirect(array('controller'=>'matieres_persos', 'action'=>'view', $this->data['MatieresPerso']['id']));
 				
 				//$this->redirect($this->referer());
 
