@@ -1,5 +1,5 @@
 <div class="persos view">
-<h2><?php  __('Bilan individualisé de service d\'un personnel');?></h2>
+<h2><?php  __('Bilan de service prévisionnel d\'un personnel');?></h2>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Id'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
