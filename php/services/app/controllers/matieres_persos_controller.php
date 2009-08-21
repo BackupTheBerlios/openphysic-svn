@@ -26,7 +26,7 @@ class MatieresPersosController extends AppController {
 		if (!empty($this->data)) {
 			$this->MatieresPerso->create();
 			if ($this->MatieresPerso->save($this->data)) {
-				$this->Session->setFlash(__('The MatieresPerso has been saved', true));
+				$this->Session->setFlash(__('L\'occupation a été sauvegardée', true));
 				
 				
 				//debug($this->data);
@@ -51,7 +51,7 @@ class MatieresPersosController extends AppController {
 				
 				//$this->referer()
 			} else {
-				$this->Session->setFlash(__('The MatieresPerso could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('L\'occupation ne peut pas être sauvegardée. Veuillez réessayer, merci.', true));
 			}
 		
 		}
@@ -68,9 +68,9 @@ class MatieresPersosController extends AppController {
 			$this->data['MatieresPerso']['matiere_id']=$this->passedArgs['matiere'];			
 		}
 		
-		$this->data['MatieresPerso']['h_cours']=0;
-		$this->data['MatieresPerso']['h_td']=0;
-		$this->data['MatieresPerso']['h_tp']=0;
+		$this->data['MatieresPerso']['h_cours'] = 0;
+		$this->data['MatieresPerso']['h_td'] = 0;
+		$this->data['MatieresPerso']['h_tp'] = 0;
 		
 		$conditionsMatieres='';
 		if (isset($this->passedArgs['filiere'])) {
@@ -105,30 +105,48 @@ class MatieresPersosController extends AppController {
 		}
 		if (!empty($this->data)) {
 			if ($this->MatieresPerso->save($this->data)) {
-				$this->Session->setFlash(__('The MatieresPerso has been saved', true));
+				$this->Session->setFlash(__('L\'occupation a été sauvegardée', true));
 				//$this->redirect(array('action'=>'index'));
 				//$this->redirect(array('controller'=>'matieres', 'action'=>'view', $this->data['MatieresPerso']['matiere_id']));
 				$this->redirect(array('controller'=>'matieres_persos', 'action'=>'view', $id));
 			} else {
-				$this->Session->setFlash(__('The MatieresPerso could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('L\'occupation ne peut pas être sauvegardée. Veuillez réessayer, merci.', true));
 			}
 		}
 		if (empty($this->data)) {
 			$this->data = $this->MatieresPerso->read(null, $id);
 		}
+		
 		$persos = $this->MatieresPerso->Perso->find('list');
+		//$persos = $this->MatieresPerso->Perso->find('list', array ('fields' => array ('Perso.id', 'Perso.name')) );
+		/*
+		$persos = $this->MatieresPerso->Perso->find('all', array('recursive'=>-1) );
+		$persos = Set::combine($persos, '{n}.Perso.id', '{n}.Perso.initiales');
+		debug($persos);
+		*/
+		
 		//$persos = $this->MatieresPerso->Perso->find('all', array('recursive'=>-1) );
+		//$persos = Set::combine($persos, '{n}.Perso.id', '{n}.Perso');
+		//$ids = Set::extract($persos, '{n}.Perso.id');
+		//debug($ids);
+		//debug($persos);
+		//$persos_format = Set::format($persos, '({0}) {1} {2}', array('{n}.Perso.initiales', '{n}.Perso.nom', '{n}.Perso.prenom') );
+		//$persos_format = Set::format($persos, '({0}) {1} {2}', array('{n}.initiales', '{n}.nom', '{n}.prenom') );
+		//debug($persos);
+		//debug($persos_format);
+		
 		$matieres = $this->MatieresPerso->Matiere->find('list');
 		$this->set(compact('persos','matieres'));
+		//$this->set('persos_format', $persos_format);
 	}
 
 	function delete($id = null) {
 		if (!$id) {
-			$this->Session->setFlash(__('Invalid id for MatieresPerso', true));
+			$this->Session->setFlash(__('Occupation Invalide', true));
 			$this->redirect(array('action'=>'index'));
 		}
 		if ($this->MatieresPerso->del($id)) {
-			$this->Session->setFlash(__('MatieresPerso deleted', true));
+			$this->Session->setFlash(__('Occupation supprimée', true));
 			
 			//$this->redirect(array('action'=>'index'));
 			

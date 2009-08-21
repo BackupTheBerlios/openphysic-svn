@@ -4,10 +4,25 @@
  		<legend><?php __('Ajouter Matiere');?></legend>
 	<?php
 		echo $form->input('filiere_id');
-		echo $form->input('name');
-		echo $form->input('h_cours');
-		echo $form->input('h_td');
-		echo $form->input('h_tp');
+		echo $form->input('name', array('label' => 'Nom'));
+	?>
+
+		<table cellpadding = "0" cellspacing = "0">
+		<tr>
+			<th width="16%">&nbsp;</th>
+			<th width="16%">H Cours</th>
+			<th width="16%">H Td</th>
+			<th width="16%">H Tp</th>
+		</tr>
+		<tr>
+			<th>à attribuer (par groupe)</th>		
+			<td><?php echo $form->input('h_cours', array('label' => false)); ?></td>
+			<td><?php echo $form->input('h_td', array('label' => false)); ?></td>
+			<td><?php echo $form->input('h_tp', array('label' => false)); ?></td>
+		</tr>
+		</table>
+
+	<?php
 		echo $form->input('commentaire');
 	?>
 	</fieldset>

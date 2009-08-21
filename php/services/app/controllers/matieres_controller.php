@@ -64,8 +64,9 @@ class MatieresController extends AppController {
 		if (!empty($this->data)) {
 			$this->Matiere->create();
 			if ($this->Matiere->save($this->data)) {
-				$this->Session->setFlash(__('The Matiere has been saved', true));
-				$this->redirect(array('action'=>'index'));
+				$this->Session->setFlash(__('La matière a été sauvegardée', true));
+				//$this->redirect(array('action'=>'index'));
+				$this->redirect(array('controller'=>'filieres', 'action'=>'view', $this->data['Matiere']['filiere_id']));
 			} else {
 				$this->Session->setFlash(__('The Matiere could not be saved. Please, try again.', true));
 			}
@@ -75,6 +76,9 @@ class MatieresController extends AppController {
 			$this->data['Matiere']['filiere_id']=$this->passedArgs['filiere'];
 		}
 		
+		$this->data['Matiere']['h_cours'] = 0;
+		$this->data['Matiere']['h_td'] = 0;
+		$this->data['Matiere']['h_tp'] = 0;
 		
 		$filieres = $this->Matiere->Filiere->find('list');
 		$this->set(compact('filieres'));
@@ -82,15 +86,16 @@ class MatieresController extends AppController {
 
 	function edit($id = null) {
 		if (!$id && empty($this->data)) {
-			$this->Session->setFlash(__('Invalid Matiere', true));
+			$this->Session->setFlash(__('id matière invalide', true));
 			$this->redirect(array('action'=>'index'));
 		}
 		if (!empty($this->data)) {
 			if ($this->Matiere->save($this->data)) {
-				$this->Session->setFlash(__('The Matiere has been saved', true));
-				$this->redirect(array('action'=>'index'));
+				$this->Session->setFlash(__('La matière a été sauvegardée', true));
+				//$this->redirect(array('action'=>'index'));
+				$this->redirect(array('controller'=>'filieres', 'action'=>'view', $this->data['Matiere']['filiere_id']));
 			} else {
-				$this->Session->setFlash(__('The Matiere could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('La matière n\'a pas été sauvegardée. Veuillez réessayer, merci.', true));
 			}
 		}
 		if (empty($this->data)) {
@@ -102,12 +107,17 @@ class MatieresController extends AppController {
 
 	function delete($id = null) {
 		if (!$id) {
-			$this->Session->setFlash(__('Invalid id for Matiere', true));
+			$this->Session->setFlash(__('id matière invalide', true));
 			$this->redirect(array('action'=>'index'));
 		}
+		
+		$this->Matiere->recursive=-1;
+		$matiere = $this->Matiere->read(null, $id);
+
 		if ($this->Matiere->del($id)) {
-			$this->Session->setFlash(__('Matiere deleted', true));
-			$this->redirect(array('action'=>'index'));
+			$this->Session->setFlash(__('Matière supprimée', true));
+			//$this->redirect(array('action'=>'index'));
+			$this->redirect(array('controller'=>'filieres', 'action'=>'view', $matiere['Matiere']['filiere_id']));
 		}
 	}
 	
