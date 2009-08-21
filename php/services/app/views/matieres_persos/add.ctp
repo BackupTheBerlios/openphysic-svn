@@ -5,10 +5,23 @@
 	<?php
 		echo $form->input('perso_id');
 		echo $form->input('matiere_id');
-		echo $form->input('h_cours');
-		echo $form->input('h_td');
-		echo $form->input('h_tp');
 	?>
+
+		<table cellpadding = "0" cellspacing = "0">
+		<tr>
+			<th width="16%">&nbsp;</th>
+			<th width="16%">H Cours</th>
+			<th width="16%">H Td</th>
+			<th width="16%">H Tp</th>
+		</tr>
+		<tr>
+			<th>attribu&eacute;</th>		
+			<td><?php echo $form->input('h_cours', array('label' => false)); ?></td>
+			<td><?php echo $form->input('h_td', array('label' => false)); ?></td>
+			<td><?php echo $form->input('h_tp', array('label' => false)); ?></td>
+		</tr>
+		</table>
+	
 	</fieldset>
 <?php echo $form->end(__('Submit', true));?>
 </div>
