@@ -8,7 +8,7 @@
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Perso'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $html->link($matieresPerso['Perso']['initiales'], array('controller'=> 'persos', 'action'=>'view', $matieresPerso['Perso']['id'])); ?>
+			<?php echo $html->link("({$matieresPerso['Perso']['initiales']}) {$matieresPerso['Perso']['nom']} {$matieresPerso['Perso']['prenom']}", array('controller'=> 'persos', 'action'=>'view', $matieresPerso['Perso']['id'])); ?>
 			&nbsp;
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Matiere'); ?></dt>
@@ -16,6 +16,23 @@
 			<?php echo $html->link($matieresPerso['Matiere']['name'], array('controller'=> 'matieres', 'action'=>'view', $matieresPerso['Matiere']['id'])); ?>
 			&nbsp;
 		</dd>
+		
+		<table cellpadding = "0" cellspacing = "0">
+		<tr>
+			<th width="16%">&nbsp;</th>
+			<th width="16%">H Cours</th>
+			<th width="16%">H Td</th>
+			<th width="16%">H Tp</th>
+		</tr>
+		<tr>
+			<th>attribu&eacute;</th>		
+			<td><?php echo $matieresPerso['MatieresPerso']['h_cours']; ?></td>
+			<td><?php echo $matieresPerso['MatieresPerso']['h_td']; ?></td>
+			<td><?php echo $matieresPerso['MatieresPerso']['h_tp']; ?></td>
+		</tr>
+		</table>
+		
+		<!--
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('H Cours'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $matieresPerso['MatieresPerso']['h_cours']; ?>
@@ -31,6 +48,9 @@
 			<?php echo $matieresPerso['MatieresPerso']['h_tp']; ?>
 			&nbsp;
 		</dd>
+		-->
+		
+		
 	</dl>
 </div>
 <div class="actions">

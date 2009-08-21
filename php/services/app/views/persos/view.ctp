@@ -53,9 +53,9 @@
 		<th><?php __('Id'); ?></th>
 		<th><?php __('Filière'); ?></th>		
 		<th><?php __('Matière'); ?></th>
-		<th><?php __('H Cours'); ?></th>
-		<th><?php __('H Td'); ?></th>
-		<th><?php __('H Tp'); ?></th>
+		<th width="8%"><?php __('H Cours'); ?></th>
+		<th width="8%"><?php __('H Td'); ?></th>
+		<th width="8%"><?php __('H Tp'); ?></th>
 		<th class="actions"><?php __('Actions');?></th>
 	</tr>
 	<?php
@@ -94,13 +94,13 @@
 <h3>Volume horaire total</h3>
 		<table cellpadding = "0" cellspacing = "0">
 		<tr>
+			<th width="16%">&nbsp;</th>
+			<th width="16%">H Cours</th>
+			<th width="16%">H Td</th>
+			<th width="16%">H Tp</th>
 			<th>&nbsp;</th>
-			<th>H Cours</th>
-			<th>H Td</th>
-			<th>H Tp</th>
-			<th>&nbsp;</th>
-			<th>H Tot</th>
-			<th>H Eq_Td</th>  
+			<th width="16%">H Tot</th>
+			<th width="16%">H Eq_Td</th>  
 		</tr>
 		<tr>
 			<th>attribué</th>
