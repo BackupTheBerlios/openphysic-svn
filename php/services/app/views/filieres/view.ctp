@@ -39,9 +39,9 @@
 	<tr>
 		<th><?php __('Id'); ?></th>
 		<th><?php __('Name'); ?></th>
-		<th><?php __('H Cours'); ?></th>
-		<th><?php __('H Td'); ?></th>
-		<th><?php __('H Tp'); ?></th>
+		<th width="8%"><?php __('H Cours'); ?></th>
+		<th width="8%"><?php __('H Td'); ?></th>
+		<th width="8%"><?php __('H Tp'); ?></th>
 		<th><?php __('Commentaire'); ?></th>
 		<th class="actions"><?php __('Actions');?></th>
 	</tr>
@@ -86,12 +86,12 @@
 	<tr>
 		<th><?php __('Id'); ?></th>
 		<th><?php __('Name'); ?></th>
-		<th><?php __('H Cours'); ?></th>
-		<th><?php __('H Td'); ?></th>
-		<th><?php __('H Tp'); ?></th>
+		<th width="6%"><?php __('H Cours'); ?></th>
+		<th width="6%"><?php __('H Td'); ?></th>
+		<th width="6%"><?php __('H Tp'); ?></th>
 		<th>&nbsp;</th>
-		<th><?php __('H Tot'); ?></th>
-		<th><?php __('H Eq Td'); ?></th>		
+		<th width="6%"><?php __('H Tot'); ?></th>
+		<th width="6%"><?php __('H Eq Td'); ?></th>		
 		<th class="actions"><?php __('Actions');?></th>
 	</tr>
 

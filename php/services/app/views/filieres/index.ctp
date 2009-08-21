@@ -9,10 +9,10 @@ echo $paginator->counter(array(
 <table cellpadding="0" cellspacing="0">
 <tr>
 	<th><?php echo $paginator->sort('id');?></th>
-	<th><?php echo $paginator->sort('name');?></th>
-	<th><?php echo $paginator->sort('nb_gr_td');?></th>
-	<th><?php echo $paginator->sort('nb_gr_tp');?></th>
-	<th class="actions"><?php __('Actions');?></th>
+	<th width="30%"><?php echo $paginator->sort('name');?></th>
+	<th width="15%"><?php echo $paginator->sort('nb_gr_td');?></th>
+	<th width="15%"><?php echo $paginator->sort('nb_gr_tp');?></th>
+	<th width="35%" class="actions"><?php __('Actions');?></th>
 </tr>
 <?php
 $i = 0;
