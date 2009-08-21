@@ -44,7 +44,7 @@
 	<ul>
 		<li><?php echo $html->link(__('Editer Matière', true), array('action'=>'edit', $matiere['Matiere']['id'])); ?> </li>
 		<li><?php echo $html->link(__('Lister Matières', true), array('action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('Nouvelle Matière', true), array('action'=>'add')); ?> </li>
+		<li><?php echo $html->link(__('Nouvelle Matière', true), array('action'=>'add', 'filiere'=>$matiere['Filiere']['id'])); ?> </li>
 		<li><?php echo $html->link(__('Supprimer Matière', true), array('action'=>'delete', $matiere['Matiere']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $matiere['Matiere']['id'])); ?> </li>
 	</ul>
 	<ul>

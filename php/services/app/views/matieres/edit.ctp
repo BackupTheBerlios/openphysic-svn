@@ -3,12 +3,12 @@
 	<fieldset>
  		<legend><?php __('Editer Matiere');?></legend>
 	<?php
+		echo $form->input('filiere_id');
 		echo $form->input('id');
 		echo $form->input('name');
 		echo $form->input('h_cours');
 		echo $form->input('h_td');
 		echo $form->input('h_tp');
-		echo $form->input('filiere_id');
 		echo $form->input('commentaire');
 	?>
 	</fieldset>
