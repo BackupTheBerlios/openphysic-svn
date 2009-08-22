@@ -18,5 +18,40 @@ class VueMatieresTotalBesoin extends AppModel {
 	
 	var $hasOne = array('Matiere');
 
+	/*
+	var $_schema = array(
+		'id' => array(
+			'type' => 'integer',
+			'null' => '',
+			'default' => 0,
+			'length' => 10
+				),
+		'matiere_id' => array(
+			'type' => 'string',
+			'null' => '',
+			'default' => 0,
+			'length' => 10
+				),
+		'h_cours' => array(
+			'type' => 'float',
+			'null' => '',
+			'default' => 0,
+			'length' => ''
+				),
+		'h_td' => array(
+			'type' => 'float',
+			'null' => '',
+			'default' => 0,
+			'length' => ''
+				),
+		'h_tp' => array(
+			'type' => 'float',
+			'null' => '',
+			'default' => 0,
+			'length' => ''
+				),
+	);
+	*/
+
 }
 ?>

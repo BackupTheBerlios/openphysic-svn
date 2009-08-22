@@ -45,7 +45,7 @@ class Matiere extends AppModel {
 			$this->VueMatieresTotalBesoin->recursive = -1;
 			$temp = $this->VueMatieresTotalBesoin->read(null, $id);
 			return $temp['VueMatieresTotalBesoin'];
-
+			
 	        /*  Méthode 2 : à l'aide d'une requête read recursive et d'une boucle */
     	   	/*
 			$this->recursive=0;

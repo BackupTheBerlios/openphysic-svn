@@ -36,9 +36,15 @@ class MatieresController extends AppController {
 		/* = Volume attribue */
 		$vol_h_attribue = $this->Matiere->get_vol_horaire_attribue($id);
 		/* = Volume restant */
-		$vol_h_restant=$this->Matiere->get_vol_horaire_restant($id);		
+		$vol_h_restant=$this->Matiere->get_vol_horaire_restant($id);
 		
-				
+		/*
+		$this->VueMatieresTotalBesoin =& ClassRegistry::init('VueMatieresTotalBesoin');
+		pr($this->VueMatieresTotalBesoin->schema());
+		pr($this->VueMatieresTotalBesoin->_schema);
+		exit();
+		*/
+		
 		$this->set('vol_horaire_total',
 			array(
        			'a_effectuer'=>array(
