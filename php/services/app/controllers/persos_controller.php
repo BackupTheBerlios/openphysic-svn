@@ -103,10 +103,14 @@ class PersosController extends AppController {
 	}
 	
 	function debug() {
-		debug($this->Perso->getBilanService(16));
+		//debug($this->Perso->getBilanService(16));
 		//debug($this->Perso->getBilanService());
-		debug($this->Perso->getBilanService('all'));
+		//debug($this->Perso->getBilanService('all'));
 		//debug($this->Perso->getBilanService(null));
+		
+		debug($this->Perso->getBilanServiceWithSqlView(16));
+		debug($this->Perso->getBilanServiceWithSqlQuery(16));
+		
 		//exit();
 	}
 

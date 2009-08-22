@@ -33,7 +33,11 @@ class Perso extends AppModel {
 	var $validate = array( 'initiales'=>'alphaNumeric', 'nom'=>'alphaNumeric', 'prenom'=>'alphaNumeric' );
 	
 	function getBilanService($id='all') {
-		/*  Méthode 1 : à l'aide d'une vue SQL dans la base */
+		return $this->getBilanServiceWithSqlView($id);
+	}
+	
+	function getBilanServiceWithSqlView($id='all') {
+		//  Méthode 1 : à l'aide d'une vue SQL dans la base
 		$this->VuePersosBilanServices =& ClassRegistry::init('VuePersosBilanServices');
 		$this->VuePersosBilanServices->recursive=-1;
 		if($id=='all' or $id==null) {
@@ -43,23 +47,26 @@ class Perso extends AppModel {
 			$temp = $this->VuePersosBilanServices->read(null, $id);
 			return $temp['VuePersosBilanServices'];
 		}
-
-		/*  Méthode 2 : à l'aide d'une d'une boucle */		
-		//ToDo
+	}
 		
-		/*  Méthode 3 : à l'aide d'une requête SQL directe */        
+	function getBilanServiceWithLoop($id='all') {
+		//  Méthode 2 : à l'aide d'une d'une boucle
+		//ToDo
+	}
+
+	function getBilanServiceWithSqlQuery($id='all') {
+		//  Méthode 3 : à l'aide d'une requête SQL directe
 		$prefix = 'services_'; // ToDo récupérer le préfixe avec $this->tablePrefix
-		if(!$id) {
-			// id not null
-			$sql = "SELECT perso_id AS id, perso_id, SUM( h_cours ) AS h_cours, SUM( h_td ) AS h_td, SUM( h_tp ) AS h_tp FROM {$prefix}matieres_persos WHERE perso_id=$id GROUP BY perso_id";
-        } else {
-			// id=null
+		if($id=='all' or $id==null) {
 			$sql = "SELECT perso_id AS id, perso_id, SUM( h_cours ) AS h_cours, SUM( h_td ) AS h_td, SUM( h_tp ) AS h_tp FROM {$prefix}matieres_persos GROUP BY perso_id";
+        } else {
+        	// ToFix : use Sanatize to avoid SQL injection
+			$sql = "SELECT perso_id AS id, perso_id, SUM( h_cours ) AS h_cours, SUM( h_td ) AS h_td, SUM( h_tp ) AS h_tp FROM {$prefix}matieres_persos WHERE perso_id=$id GROUP BY perso_id";
 		}
 		//debug($sql);
-		//$result = $this->query($sql);
+		$result = $this->query($sql);
 		//debug($result);
-		//return $result[0][0];
+		return $result;
 	}
 }
 ?>
