@@ -117,20 +117,20 @@ class MatieresPersosController extends AppController {
 			$this->data = $this->MatieresPerso->read(null, $id);
 		}
 		
-		$persos = $this->MatieresPerso->Perso->find('list');
-		//$persos = $this->MatieresPerso->Perso->find('list', array ('fields' => array ('Perso.id', 'Perso.name')) );
+		//$persos = $this->MatieresPerso->Perso->find('list');
+		//$persos = $this->MatieresPerso->Perso->find('list', array ('fields' => array ('Perso.id', 'Perso.nom')) );
 		/*
 		$persos = $this->MatieresPerso->Perso->find('all', array('recursive'=>-1) );
 		$persos = Set::combine($persos, '{n}.Perso.id', '{n}.Perso.initiales');
 		debug($persos);
 		*/
 		
-		//$persos = $this->MatieresPerso->Perso->find('all', array('recursive'=>-1) );
+		$persos = $this->MatieresPerso->Perso->find('all', array('recursive'=>-1) );
 		//$persos = Set::combine($persos, '{n}.Perso.id', '{n}.Perso');
 		//$ids = Set::extract($persos, '{n}.Perso.id');
 		//debug($ids);
 		//debug($persos);
-		//$persos_format = Set::format($persos, '({0}) {1} {2}', array('{n}.Perso.initiales', '{n}.Perso.nom', '{n}.Perso.prenom') );
+		//
 		//$persos_format = Set::format($persos, '({0}) {1} {2}', array('{n}.initiales', '{n}.nom', '{n}.prenom') );
 		//debug($persos);
 		//debug($persos_format);

@@ -4,7 +4,15 @@
  		<legend><?php __('Editer Occupation');?></legend>
 	<?php
 		echo $form->input('id');
-		echo $form->input('perso_id');
+		
+		//echo $form->input('perso_id');
+		
+		$ar = array ( );
+		foreach ( $persos as $key => $perso  ) {
+			$ar [ $perso [ 'Perso' ] [ 'id' ] ] = '(' . $perso [ 'Perso' ] [ 'initiales' ] . ') ' . $perso [ 'Perso' ] [ 'nom' ] . ' '. $perso [ 'Perso' ] [ 'prenom' ];
+		}
+		echo $form->input('perso_id', array('options' =>$ar ) );
+		
 		echo $form->input('matiere_id');
 	?>
 	
