@@ -24,9 +24,9 @@ class VueMatieresTotalBesoin extends AppModel {
 	//$this->VueMatieresTotalBesoin->query("SELECT * FROM pictures LIMIT 2;");
 	//$this->Matiere->tablePrefix
 
-	/*
-	var $useTable = false;
-	
+	//var $useTable = false;
+
+	/*	
 	var $_schema = array(
 		'id' => array(
 			'type' => 'integer',
@@ -66,6 +66,7 @@ class VueMatieresTotalBesoin extends AppModel {
 		//debug("Construct VueMatieresTotalBesoin");
     }
     */
+    
 
 
 }
