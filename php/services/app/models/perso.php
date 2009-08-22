@@ -52,21 +52,29 @@ class Perso extends AppModel {
 	function getBilanServiceWithLoop($id='all') {
 		//  Méthode 2 : à l'aide d'une d'une boucle
 		//ToDo
+
+		if($id=='all' or $id==null) {
+			return "ToDo";		
+		} else {
+			return "ToDo";
+		}
 	}
 
 	function getBilanServiceWithSqlQuery($id='all') {
 		//  Méthode 3 : à l'aide d'une requête SQL directe
-		$prefix = 'services_'; // ToDo récupérer le préfixe avec $this->tablePrefix
+		$prefix = $this->tablePrefix;
 		if($id=='all' or $id==null) {
 			$sql = "SELECT perso_id AS id, perso_id, SUM( h_cours ) AS h_cours, SUM( h_td ) AS h_td, SUM( h_tp ) AS h_tp FROM {$prefix}matieres_persos GROUP BY perso_id";
+			$result = $this->query($sql);
+			// ToDo
+			return $result;
         } else {
-        	// ToFix : use Sanatize to avoid SQL injection
-			$sql = "SELECT perso_id AS id, perso_id, SUM( h_cours ) AS h_cours, SUM( h_td ) AS h_td, SUM( h_tp ) AS h_tp FROM {$prefix}matieres_persos WHERE perso_id=$id GROUP BY perso_id";
+        	// ToFix : use Sanitize to avoid SQL injection
+			$sql = "SELECT perso_id AS id, perso_id, SUM( h_cours ) AS h_cours, SUM( h_td ) AS h_td, SUM( h_tp ) AS h_tp FROM {$prefix}matieres_persos WHERE perso_id=$id GROUP BY perso_id LIMIT 1";
+			$result = $this->query($sql);
+			$result = Set::merge($result[0]["{$prefix}matieres_persos"], $result[0][0]);
+			return $result;
 		}
-		//debug($sql);
-		$result = $this->query($sql);
-		//debug($result);
-		return $result;
 	}
 }
 ?>

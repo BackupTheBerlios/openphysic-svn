@@ -108,9 +108,21 @@ class PersosController extends AppController {
 		//debug($this->Perso->getBilanService('all'));
 		//debug($this->Perso->getBilanService(null));
 		
-		debug($this->Perso->getBilanServiceWithSqlView(16));
-		debug($this->Perso->getBilanServiceWithSqlQuery(16));
-		
+		$id=16;
+		debug("<h1>getBilanServiceWithSqlView($id)</h1>");
+		debug($this->Perso->getBilanServiceWithSqlView($id));
+		debug("<h1>getBilanServiceWithSqlQuery($id)</h1>");
+		debug($this->Perso->getBilanServiceWithSqlQuery($id));
+		debug("<h1>getBilanServiceWithSqlQuery($id)</h1>");
+		debug($this->Perso->getBilanServiceWithLoop($id));
+
+		debug("<h1>getBilanServiceWithSqlView('all')</h1>");
+		debug($this->Perso->getBilanServiceWithSqlView('all'));
+		debug("<h1>getBilanServiceWithSqlQuery('all')</h1>");
+		debug($this->Perso->getBilanServiceWithSqlQuery('all'));
+		debug("<h1>getBilanServiceWithLoop('all')</h1>");
+		debug($this->Perso->getBilanServiceWithLoop('all'));
+
 		//exit();
 	}
 
