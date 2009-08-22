@@ -15,7 +15,7 @@
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('Supprimer', true), array('action'=>'delete', $form->value('Perso.id')), null, sprintf(__('Are you sure you want to delete # %s?', true), $form->value('Perso.id'))); ?></li>
+		<li><?php echo $html->link(__('Supprimer', true), array('action'=>'delete', $form->value('Perso.id')), null, sprintf(__('Êtes-vous sûr de vouloir supprimer le personnel # %s ?', true), $form->value('Perso.id'))); ?></li>
 		<li><?php echo $html->link(__('Lister Persos', true), array('action'=>'index'));?></li>
 	</ul>
 	<ul>

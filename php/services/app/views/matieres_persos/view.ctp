@@ -58,7 +58,7 @@
 		<li><?php echo $html->link(__('Editer Occupation', true), array('action'=>'edit', $matieresPerso['MatieresPerso']['id'])); ?> </li>
 		<li><?php echo $html->link(__('Lister Occupations', true), array('action'=>'index')); ?> </li>
 		<li><?php echo $html->link(__('Nouvelle Occupation', true), array('action'=>'add')); ?> </li>
-		<li><?php echo $html->link(__('Supprimer Occupation', true), array('action'=>'delete', $matieresPerso['MatieresPerso']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $matieresPerso['MatieresPerso']['id'])); ?> </li>
+		<li><?php echo $html->link(__('Supprimer Occupation', true), array('action'=>'delete', $matieresPerso['MatieresPerso']['id']), null, sprintf(__('Êtes-vous sûr de vouloir supprimer l\'occupation # %s ?', true), $matieresPerso['MatieresPerso']['id'])); ?> </li>
 	</ul>
 	<ul>
 		<li><?php echo $html->link(__('Lister Persos', true), array('controller'=> 'persos', 'action'=>'index')); ?> </li>

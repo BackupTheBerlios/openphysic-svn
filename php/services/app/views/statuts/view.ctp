@@ -28,7 +28,7 @@
 		<li><?php echo $html->link(__('Editer Statut', true), array('action'=>'edit', $statut['Statut']['id'])); ?> </li>
 		<li><?php echo $html->link(__('Lister Statuts', true), array('action'=>'index')); ?> </li>
 		<li><?php echo $html->link(__('Nouveau Statut', true), array('action'=>'add')); ?> </li>
-		<li><?php echo $html->link(__('Supprimer Statut', true), array('action'=>'delete', $statut['Statut']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $statut['Statut']['id'])); ?> </li>
+		<li><?php echo $html->link(__('Supprimer Statut', true), array('action'=>'delete', $statut['Statut']['id']), null, sprintf(__('Êtes-vous sûr de vouloir supprimer le statut # %s ?', true), $statut['Statut']['id'])); ?> </li>
 	</ul>
 	<ul>
 		<li><?php echo $html->link(__('Lister Persos', true), array('controller'=> 'persos', 'action'=>'index')); ?> </li>
@@ -64,7 +64,7 @@
 			<td class="actions">
 				<?php echo $html->link(__('View', true), array('controller'=> 'persos', 'action'=>'view', $perso['id'])); ?>
 				<?php echo $html->link(__('Edit', true), array('controller'=> 'persos', 'action'=>'edit', $perso['id'])); ?>
-				<?php echo $html->link(__('Delete', true), array('controller'=> 'persos', 'action'=>'delete', $perso['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $perso['id'])); ?>
+				<?php echo $html->link(__('Delete', true), array('controller'=> 'persos', 'action'=>'delete', $perso['id']), null, sprintf(__('Êtes-vous sûr de vouloir supprimer le personnel # %s ?', true), $perso['id'])); ?>
 			</td>
 		</tr>
 	<?php endforeach; ?>

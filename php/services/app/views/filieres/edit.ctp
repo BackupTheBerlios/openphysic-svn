@@ -13,7 +13,7 @@
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('Supprimer', true), array('action'=>'delete', $form->value('Filiere.id')), null, sprintf(__('Are you sure you want to delete # %s?', true), $form->value('Filiere.id'))); ?></li>
+		<li><?php echo $html->link(__('Supprimer', true), array('action'=>'delete', $form->value('Filiere.id')), null, sprintf(__('Êtes-vous sûr de vouloir supprimer la filière # %s ?', true), $form->value('Filiere.id'))); ?></li>
 		<li><?php echo $html->link(__('Lister Filieres', true), array('action'=>'index'));?></li>
 	</ul>
 	<ul>

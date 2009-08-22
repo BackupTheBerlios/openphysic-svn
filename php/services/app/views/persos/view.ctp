@@ -38,7 +38,7 @@
 		<li><?php echo $html->link(__('Editer Perso', true), array('action'=>'edit', $perso['Perso']['id'])); ?> </li>
 		<li><?php echo $html->link(__('Lister Persos', true), array('action'=>'index')); ?> </li>
 		<li><?php echo $html->link(__('Nouveau Perso', true), array('action'=>'add')); ?> </li>
-		<li><?php echo $html->link(__('Supprimer Perso', true), array('action'=>'delete', $perso['Perso']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $perso['Perso']['id'])); ?> </li>
+		<li><?php echo $html->link(__('Supprimer Perso', true), array('action'=>'delete', $perso['Perso']['id']), null, sprintf(__('Êtes-vous sûr de vouloir supprimer le personnel # %s ?', true), $perso['Perso']['id'])); ?> </li>
 	</ul>
 	<ul>
 		<li><?php echo $html->link(__('Lister Statuts', true), array('controller'=> 'statuts', 'action'=>'index')); ?> </li>
@@ -76,7 +76,7 @@
 			<td class="actions">
 				<?php echo $html->link(__('View', true), array('controller'=> 'matieres_persos', 'action'=>'view', $matierePerso['MatieresPerso']['id'])); ?>
 				<?php echo $html->link(__('Edit', true), array('controller'=> 'matieres_persos', 'action'=>'edit', $matierePerso['MatieresPerso']['id'])); ?>
-				<?php echo $html->link(__('Delete', true), array('controller'=> 'matieres_persos', 'action'=>'delete', $matierePerso['MatieresPerso']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $matierePerso['MatieresPerso']['id'])); ?>
+				<?php echo $html->link(__('Delete', true), array('controller'=> 'matieres_persos', 'action'=>'delete', $matierePerso['MatieresPerso']['id']), null, sprintf(__('Êtes-vous sûr de vouloir supprimer l\'occupation # %s ?', true), $matierePerso['MatieresPerso']['id'])); ?>
 			</td>
 		</tr>
 	<?php endforeach; ?>

@@ -45,7 +45,7 @@
 		<li><?php echo $html->link(__('Editer Matière', true), array('action'=>'edit', $matiere['Matiere']['id'])); ?> </li>
 		<li><?php echo $html->link(__('Lister Matières', true), array('action'=>'index')); ?> </li>
 		<li><?php echo $html->link(__('Nouvelle Matière', true), array('action'=>'add', 'filiere'=>$matiere['Filiere']['id'])); ?> </li>
-		<li><?php echo $html->link(__('Supprimer Matière', true), array('action'=>'delete', $matiere['Matiere']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $matiere['Matiere']['id'])); ?> </li>
+		<li><?php echo $html->link(__('Supprimer Matière', true), array('action'=>'delete', $matiere['Matiere']['id']), null, sprintf(__('Êtes-vous sûr de vouloir supprimer la matière # %s ?', true), $matiere['Matiere']['id'])); ?> </li>
 	</ul>
 	<ul>
 		<li><?php echo $html->link(__('Lister Filières', true), array('controller'=> 'filieres', 'action'=>'index')); ?> </li>
@@ -89,7 +89,7 @@
 			<td class="actions">
 				<?php echo $html->link(__('View', true), array('controller'=> 'matieres_persos', 'action'=>'view', $matierePerso['MatieresPerso']['id'])); ?>
 				<?php echo $html->link(__('Edit', true), array('controller'=> 'matieres_persos', 'action'=>'edit', $matierePerso['MatieresPerso']['id'])); ?>
-				<?php echo $html->link(__('Delete', true), array('controller'=> 'matieres_persos', 'action'=>'delete', $matierePerso['MatieresPerso']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $matierePerso['MatieresPerso']['id'])); ?>
+				<?php echo $html->link(__('Delete', true), array('controller'=> 'matieres_persos', 'action'=>'delete', $matierePerso['MatieresPerso']['id']), null, sprintf(__('Êtes-vous sûr de vouloir supprimer l\'occupation # %s ?', true), $matierePerso['MatieresPerso']['id'])); ?>
 			</td>
 		</tr>
 	<?php endforeach; ?>

@@ -28,7 +28,7 @@
 		<li><?php echo $html->link(__('Editer Filière', true), array('action'=>'edit', $filiere['Filiere']['id'])); ?> </li>
 		<li><?php echo $html->link(__('Lister Filières', true), array('action'=>'index')); ?> </li>
 		<li><?php echo $html->link(__('Nouvelle Filière', true), array('action'=>'add')); ?> </li>
-		<li><?php echo $html->link(__('Supprimer Filière', true), array('action'=>'delete', $filiere['Filiere']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $filiere['Filiere']['id'])); ?> </li>
+		<li><?php echo $html->link(__('Supprimer Filière', true), array('action'=>'delete', $filiere['Filiere']['id']), null, sprintf(__('Êtes-vous sûr de vouloir supprimer la filière # %s ?', true), $filiere['Filiere']['id'])); ?> </li>
 	</ul>
 </div>
 <div class="related">
@@ -65,7 +65,7 @@
 			<td class="actions">
 				<?php echo $html->link(__('View', true), array('controller'=> 'matieres', 'action'=>'view', $matiere['id'])); ?>
 				<?php echo $html->link(__('Edit', true), array('controller'=> 'matieres', 'action'=>'edit', $matiere['id'])); ?>
-				<?php echo $html->link(__('Delete', true), array('controller'=> 'matieres', 'action'=>'delete', $matiere['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $matiere['id'])); ?>
+				<?php echo $html->link(__('Delete', true), array('controller'=> 'matieres', 'action'=>'delete', $matiere['id']), null, sprintf(__('Êtes-vous sûr de vouloir supprimer la matière # %s ?', true), $matiere['id'])); ?>
 			</td>
 		</tr>
 	<?php endforeach; ?>
@@ -128,7 +128,7 @@
 			<td class="actions">
 				<?php echo $html->link(__('View', true), array('controller'=> 'matieres', 'action'=>'view', $matiere['id'])); ?>
 				<?php echo $html->link(__('Edit', true), array('controller'=> 'matieres', 'action'=>'edit', $matiere['id'])); ?>
-				<?php echo $html->link(__('Delete', true), array('controller'=> 'matieres', 'action'=>'delete', $matiere['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $matiere['id'])); ?>
+				<?php echo $html->link(__('Delete', true), array('controller'=> 'matieres', 'action'=>'delete', $matiere['id']), null, sprintf(__('Êtes-vous sûr de vouloir supprimer la matière # %s ?', true), $matiere['id'])); ?>
 			</td>
 		</tr>
 		<tr<?php echo $class;?>>

@@ -38,7 +38,7 @@ foreach ($filieres as $filiere):
 		<td class="actions">
 			<?php echo $html->link(__('View', true), array('action'=>'view', $filiere['Filiere']['id'])); ?>
 			<?php echo $html->link(__('Edit', true), array('action'=>'edit', $filiere['Filiere']['id'])); ?>
-			<?php echo $html->link(__('Delete', true), array('action'=>'delete', $filiere['Filiere']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $filiere['Filiere']['id'])); ?>
+			<?php echo $html->link(__('Delete', true), array('action'=>'delete', $filiere['Filiere']['id']), null, sprintf(__('Êtes-vous sûr de vouloir supprimer la filière # %s ?', true), $filiere['Filiere']['id'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -53,8 +53,5 @@ foreach ($filieres as $filiere):
 	<ul>
 		<li><?php echo $html->link(__('Nouvelle Filiere', true), array('action'=>'add')); ?></li>
 		<li><?php echo $html->link(__('Lister Matieres', true), array('controller'=> 'matieres', 'action'=>'index')); ?> </li>
-	</ul>
-	<ul>
-		<li><?php echo $html->link(__('Bilan des besoins par filière', true), array('controller'=> 'vue_filieres_total_besoins', 'action'=>'index')); ?> </li>	
 	</ul>
 </div>

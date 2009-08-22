@@ -31,7 +31,7 @@
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('Supprimer', true), array('action'=>'delete', $form->value('Matiere.id')), null, sprintf(__('Are you sure you want to delete # %s?', true), $form->value('Matiere.id'))); ?></li>
+		<li><?php echo $html->link(__('Supprimer', true), array('action'=>'delete', $form->value('Matiere.id')), null, sprintf(__('Êtes-vous sûr de vouloir supprimer la matière # %s ?', true), $form->value('Matiere.id'))); ?></li>
 		<li><?php echo $html->link(__('Lister Matières', true), array('action'=>'index'));?></li>
 	</ul>
 	<ul>

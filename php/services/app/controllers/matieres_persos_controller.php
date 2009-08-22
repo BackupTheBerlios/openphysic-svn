@@ -88,7 +88,9 @@ class MatieresPersosController extends AppController {
 		//$this->data=array('h_cours'=>14);
 				
 		//$matieres = $this->MatieresPerso->Matiere->find('list');
-		$persos = $this->MatieresPerso->Perso->find('list');
+		//$persos = $this->MatieresPerso->Perso->find('list');
+		$persos = $this->MatieresPerso->Perso->find('all', array('recursive'=>-1) );
+		
 		//$persos = $this->MatieresPerso->Perso->find('all', array('recursive'=>-1) );
 		$matieres = $this->MatieresPerso->Matiere->find('list', array('conditions'=>$conditionsMatieres) );
 		$this->set(compact('persos', 'matieres'));
