@@ -60,6 +60,13 @@ class VueMatieresTotalBesoin extends AppModel {
 				),
 	);
 	*/
+	
+	/*
+    function __construct() {
+		//debug("Construct VueMatieresTotalBesoin");
+    }
+    */
+
 
 }
 ?>
