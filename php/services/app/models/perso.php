@@ -57,17 +57,30 @@ class Perso extends AppModel {
 		$this->MatieresPerso->recursive=-1;
 
 		if($id=='all' or $id==null) {
-			$temp="ToDo";
-			return $temp;		
-		} else {
-			$temp = $this->MatieresPerso->find('all', array('conditions'=>array('perso_id' => $id)));
-			$result = array('h_cours'=>0, 'h_td'=>0, 'h_tp'=>0);
+			$temp = $this->MatieresPerso->find('all');
+			//$h = array('h_cours'=>0, 'h_td'=>0, 'h_tp'=>0);
+			/*
 			foreach ( $temp as $key => $matieresperso  ) {
-				$result['h_cours'] = $result['h_cours'] + $matieresperso['MatieresPerso']['h_cours'];
-				$result['h_td'] = $result['h_td'] + $matieresperso['MatieresPerso']['h_td'];
-				$result['h_tp'] = $result['h_tp'] + $matieresperso['MatieresPerso']['h_tp'];				
+				$h['h_cours'] = $h['h_cours'] + $matieresperso['MatieresPerso']['h_cours'];
+				$h['h_td'] = $h['h_td'] + $matieresperso['MatieresPerso']['h_td'];
+				$h['h_tp'] = $h['h_tp'] + $matieresperso['MatieresPerso']['h_tp'];				
 			}
 			return $result;
+			*/
+			//return $temp;
+			// ToDo ToFix
+			
+			return "ToDo";
+			
+		} else {
+			$temp = $this->MatieresPerso->find('all', array('conditions'=>array('perso_id' => $id)));
+			$h = array('h_cours'=>0, 'h_td'=>0, 'h_tp'=>0);
+			foreach ( $temp as $key => $matieresperso  ) {
+				$h['h_cours'] = $h['h_cours'] + $matieresperso['MatieresPerso']['h_cours'];
+				$h['h_td'] = $h['h_td'] + $matieresperso['MatieresPerso']['h_td'];
+				$h['h_tp'] = $h['h_tp'] + $matieresperso['MatieresPerso']['h_tp'];				
+			}
+			return $h;
 		}
 	}
 
@@ -75,16 +88,23 @@ class Perso extends AppModel {
 		//  Méthode 3 : à l'aide d'une requête SQL directe
 		$prefix = $this->tablePrefix;
 		if($id=='all' or $id==null) {
-			$sql = "SELECT perso_id AS id, perso_id, SUM( h_cours ) AS h_cours, SUM( h_td ) AS h_td, SUM( h_tp ) AS h_tp FROM {$prefix}matieres_persos GROUP BY perso_id";
+			$sql = "SELECT perso_id AS id, perso_id, SUM( h_cours ) AS h_cours, SUM( h_td ) AS h_td, SUM( h_tp ) AS h_tp FROM {$prefix}matieres_persos AS MatieresPerso GROUP BY perso_id";
 			$result = $this->query($sql);
-			// ToDo
+			// ToDo : mettre en forme l'array pour avoir perso_id comme clé
 			return $result;
         } else {
-        	// ToFix : use Sanitize to avoid SQL injection
-			$sql = "SELECT perso_id AS id, perso_id, SUM( h_cours ) AS h_cours, SUM( h_td ) AS h_td, SUM( h_tp ) AS h_tp FROM {$prefix}matieres_persos WHERE perso_id=$id GROUP BY perso_id LIMIT 1";
+        	// ToFix : use Sanitize for $id to avoid SQL injection
+			App::import('Sanitize');
+			$id=Sanitize::paranoid($id);
+			$sql = "SELECT perso_id AS id, perso_id, SUM( h_cours ) AS h_cours, SUM( h_td ) AS h_td, SUM( h_tp ) AS h_tp FROM {$prefix}matieres_persos AS MatieresPerso WHERE perso_id=$id GROUP BY perso_id LIMIT 1";
 			$result = $this->query($sql);
-			$result = Set::merge($result[0]["{$prefix}matieres_persos"], $result[0][0]);
-			return $result;
+			if (!empty($result[0])) {
+				//$result = Set::merge($result[0]["MatieresPerso"], $result[0][0]);
+				//return $result;
+				return $result[0][0];
+			} else {
+				return array('h_cours'=>0, 'h_td'=>0, 'h_tp'=>0);				
+			}
 		}
 	}
 }

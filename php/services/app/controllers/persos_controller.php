@@ -108,6 +108,7 @@ class PersosController extends AppController {
 		//debug($this->Perso->getBilanService('all'));
 		//debug($this->Perso->getBilanService(null));
 		
+		
 		$id=16;
 		debug("<h1>getBilanServiceWithSqlView($id)</h1>");
 		debug($this->Perso->getBilanServiceWithSqlView($id));
@@ -122,6 +123,8 @@ class PersosController extends AppController {
 		debug($this->Perso->getBilanServiceWithSqlQuery('all'));
 		debug("<h1>getBilanServiceWithLoop('all')</h1>");
 		debug($this->Perso->getBilanServiceWithLoop('all'));
+		
+		
 
 		//exit();
 	}
