@@ -101,6 +101,14 @@ class PersosController extends AppController {
 			$this->redirect(array('action'=>'index'));
 		}
 	}
+	
+	function debug() {
+		debug($this->Perso->getBilanService(16));
+		//debug($this->Perso->getBilanService());
+		debug($this->Perso->getBilanService('all'));
+		//debug($this->Perso->getBilanService(null));
+		//exit();
+	}
 
 }
 ?>

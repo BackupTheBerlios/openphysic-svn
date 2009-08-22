@@ -28,7 +28,7 @@ class Matiere extends AppModel {
 	/* Bilan horaire par matiere : $id=... */
 	/* Bilan horaire pour toutes les matières $id=null ou 'all' */
 
-	function get_vol_horaire_a_attribuer($id=null) {
+	function get_vol_horaire_a_attribuer($id='all') {
 		if ($id==null or $id=='all') {
 
 			/*  Méthode 1 : à l'aide d'une vue SQL dans la base */
