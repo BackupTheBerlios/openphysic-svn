@@ -53,10 +53,21 @@ class Perso extends AppModel {
 		//  Méthode 2 : à l'aide d'une d'une boucle
 		//ToDo
 
+		$this->MatieresPerso =& ClassRegistry::init('MatieresPerso');
+		$this->MatieresPerso->recursive=-1;
+
 		if($id=='all' or $id==null) {
-			return "ToDo";		
+			$temp="ToDo";
+			return $temp;		
 		} else {
-			return "ToDo";
+			$temp = $this->MatieresPerso->find('all', array('conditions'=>array('perso_id' => $id)));
+			$result = array('h_cours'=>0, 'h_td'=>0, 'h_tp'=>0);
+			foreach ( $temp as $key => $matieresperso  ) {
+				$result['h_cours'] = $result['h_cours'] + $matieresperso['MatieresPerso']['h_cours'];
+				$result['h_td'] = $result['h_td'] + $matieresperso['MatieresPerso']['h_td'];
+				$result['h_tp'] = $result['h_tp'] + $matieresperso['MatieresPerso']['h_tp'];				
+			}
+			return $result;
 		}
 	}
 
