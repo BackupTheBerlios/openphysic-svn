@@ -18,7 +18,15 @@ class VueMatieresTotalBesoin extends AppModel {
 	
 	var $hasOne = array('Matiere');
 
+
+	// without SQL View
+	//SELECT services_matieres.id AS id, services_matieres.id AS matiere_id, services_matieres.h_cours AS h_cours, services_matieres.h_td * services_filieres.nb_gr_td AS h_td, h_tp * services_filieres.nb_gr_tp AS h_tp FROM services_matieres, services_filieres WHERE services_matieres.filiere_id = services_filieres.id;
+	//$this->VueMatieresTotalBesoin->query("SELECT * FROM pictures LIMIT 2;");
+	//$this->Matiere->tablePrefix
+
 	/*
+	var $useTable = false;
+	
 	var $_schema = array(
 		'id' => array(
 			'type' => 'integer',

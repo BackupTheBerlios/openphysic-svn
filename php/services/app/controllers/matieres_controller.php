@@ -45,6 +45,9 @@ class MatieresController extends AppController {
 		exit();
 		*/
 		
+		//pr($this->Matiere->tablePrefix);
+		//exit();
+		
 		$this->set('vol_horaire_total',
 			array(
        			'a_effectuer'=>array(
