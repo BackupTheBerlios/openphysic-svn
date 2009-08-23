@@ -9,7 +9,27 @@ class PersosController extends AppController {
 	
 	function index() {
 		$this->Perso->recursive = 0;
-		$this->set('persos', $this->paginate());
+		$persos =  $this->paginate();
+		
+		//debug($persos);
+
+		$bilanservice=$this->Perso->getBilanService('all');
+		
+		foreach($persos as $key => $perso) {
+			$id=$perso['Perso']['id'];
+			//debug($id);
+			if (!empty($bilanservice[$id])) {
+				$persos[$key]['BilanService']=$bilanservice[$id];
+			} else {
+				$persos[$key]['BilanService']=array('h_cours'=>0, 'h_td'=>0, 'h_tp'=>0);
+			}
+		}
+
+		
+		$this->set('persos', $persos);
+		
+		
+		//$this->set('bilanservice', $bilanservice);		
 	}
 	
 	/*
