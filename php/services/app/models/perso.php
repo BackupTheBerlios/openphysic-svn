@@ -33,7 +33,9 @@ class Perso extends AppModel {
 	var $validate = array( 'initiales'=>'alphaNumeric', 'nom'=>'alphaNumeric', 'prenom'=>'alphaNumeric' );
 	
 	function getBilanService($id='all') {
-		return $this->getBilanServiceWithSqlView($id);
+		//return $this->getBilanServiceWithSqlView($id);
+		return $this->getBilanServiceWithSqlQuery($id);
+		//return "ToFix";
 	}
 	
 	function getBilanServiceWithSqlView($id='all') {
@@ -48,9 +50,15 @@ class Perso extends AppModel {
 			foreach ( $temp as $key => $matieresperso ) {
 				//debug($result($matieresperso['VuePersosBilanServices']['id'])=1);
 				//$result($matieresperso['VuePersosBilanServices']['id'])=$matieresperso['VuePersosBilanServices']['h_cours'];
+				$result=Set::insert($result, $matieresperso['VuePersosBilanServices']['id'],
+					array(	'h_cours'=>$matieresperso['VuePersosBilanServices']['h_cours'],
+							'h_td'=>$matieresperso['VuePersosBilanServices']['h_td'],
+							'h_tp'=>$matieresperso['VuePersosBilanServices']['h_tp']
+							)
+				);
 			}
-			return $temp;
-			//return $result;			
+			return $result;			
+			//return $temp;
 		} else {
 			$temp = $this->VuePersosBilanServices->read(null, $id);
 			return $temp['VuePersosBilanServices'];
@@ -101,9 +109,8 @@ class Perso extends AppModel {
 			$result = Set::combine ($result, '{n}.MatieresPerso.id', '{n}.0'); // Mise en forme l'array pour avoir perso_id comme clé
 			return $result;
         } else {
-        	// ToFix : use Sanitize for $id to avoid SQL injection
 			App::import('Sanitize');
-			$id=Sanitize::paranoid($id);
+			$id=Sanitize::paranoid($id); // use Sanitize for $id to avoid SQL injection
 			$sql = "SELECT perso_id AS id, perso_id, SUM( h_cours ) AS h_cours, SUM( h_td ) AS h_td, SUM( h_tp ) AS h_tp FROM {$prefix}matieres_persos AS MatieresPerso WHERE perso_id=$id GROUP BY perso_id LIMIT 1";
 			$result = $this->query($sql);
 			if (!empty($result[0])) {

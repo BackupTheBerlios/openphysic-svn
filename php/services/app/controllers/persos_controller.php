@@ -12,6 +12,7 @@ class PersosController extends AppController {
 		$this->set('persos', $this->paginate());
 	}
 	
+	/*
 	function vol_horaire_attribue($perso) {
 		//$perso=$this->find('all', array('conditions'=>'matiere_id='.$id_matiere));
 		$result=array('h_cours'=>0, 'h_td'=>0, 'h_tp'=>0);
@@ -23,6 +24,7 @@ class PersosController extends AppController {
 		}
 		return $result;
 	}
+	*/
         
 	function view($id = null) {
 		if (!$id) {
