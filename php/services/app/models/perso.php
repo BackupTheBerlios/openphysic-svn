@@ -98,8 +98,7 @@ class Perso extends AppModel {
 		if($id=='all' or $id==null) {
 			$sql = "SELECT perso_id AS id, perso_id, SUM( h_cours ) AS h_cours, SUM( h_td ) AS h_td, SUM( h_tp ) AS h_tp FROM {$prefix}matieres_persos AS MatieresPerso GROUP BY perso_id";
 			$result = $this->query($sql);
-			// ToDo : mettre en forme l'array pour avoir perso_id comme clé
-			// Set::combine ($data, $path1 = null, $path2 = null, $groupPath = null)
+			$result = Set::combine ($result, '{n}.MatieresPerso.id', '{n}.0'); // Mise en forme l'array pour avoir perso_id comme clé
 			return $result;
         } else {
         	// ToFix : use Sanitize for $id to avoid SQL injection
