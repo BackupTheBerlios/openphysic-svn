@@ -42,7 +42,15 @@ class Perso extends AppModel {
 		$this->VuePersosBilanServices->recursive=-1;
 		if($id=='all' or $id==null) {
 			$temp = $this->VuePersosBilanServices->find('all');
+			// ToDo : mettre en forme l'array pour avoir perso_id comme clé
+			//$temp=Set::combine($temp, '{n}.VuePersosBilanServices.id', '{n}.VuePersosBilanServices.h_tp');
+			$result=array();
+			foreach ( $temp as $key => $matieresperso ) {
+				//debug($result($matieresperso['VuePersosBilanServices']['id'])=1);
+				//$result($matieresperso['VuePersosBilanServices']['id'])=$matieresperso['VuePersosBilanServices']['h_cours'];
+			}
 			return $temp;
+			//return $result;			
 		} else {
 			$temp = $this->VuePersosBilanServices->read(null, $id);
 			return $temp['VuePersosBilanServices'];
@@ -91,6 +99,7 @@ class Perso extends AppModel {
 			$sql = "SELECT perso_id AS id, perso_id, SUM( h_cours ) AS h_cours, SUM( h_td ) AS h_td, SUM( h_tp ) AS h_tp FROM {$prefix}matieres_persos AS MatieresPerso GROUP BY perso_id";
 			$result = $this->query($sql);
 			// ToDo : mettre en forme l'array pour avoir perso_id comme clé
+			// Set::combine ($data, $path1 = null, $path2 = null, $groupPath = null)
 			return $result;
         } else {
         	// ToFix : use Sanitize for $id to avoid SQL injection
