@@ -1745,3 +1745,28 @@ msgstr "Êtes-vous sûr de vouloir supprimer # %s ?"
 msgid "Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%"
 msgstr "Page %page% sur %pages%, montrant %current% enregistrements parmi %count% au total, à partir de l'enregistrement n° %start% et jusqu'au n° %end%"
 
+#: \app\views\users\view.ctp:24
+msgid "Created"
+msgstr "Créé"
+
+#: \app\views\users\view.ctp:29
+msgid "Modified"
+msgstr "Modifié"
+
+#: \app\views\users\view.ctp:58
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+#: \app\views\users\view.ctp:14
+msgid "Password"
+msgstr "Mot de passe"
+
+msgid "Confirm password"
+msgstr "Confirmer le mot de passe"
+
+msgid "Name"
+msgstr "Nom"
+
+msgid "Group"
+msgstr "Groupe"
+
