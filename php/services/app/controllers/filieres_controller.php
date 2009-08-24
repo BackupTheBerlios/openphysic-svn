@@ -80,11 +80,20 @@ class FilieresController extends AppController {
 		}
 	}
 	
-	/*
+	
 	function debug($id = null) {
+		debug("<h1>debug($id)</h1>");
+		
+		debug("<h2>With SQL Views</h2>");
+		$this->Filiere->recursive = 0;
+		$filiere = $this->Filiere->read(null, $id);
+		debug($filiere);
+
+		debug("<h2>Without SQL Views</h2>");
+		debug($this->Filiere->get_vol_horaire($id));
 		
 	}
-	*/
+	
 
 }
 ?>
