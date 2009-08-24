@@ -48,7 +48,7 @@ or using a GUI tool for SVN called <a href="http://en.wikipedia.org/wiki/Tortois
     <ul>
       <li>SVN Checkout...</li>
       <ul>
-        <li>URL of repository : svn://svn.berlios.de/openphysic/python/scripts/copie/copy_from_csv_file_ext_recurs/</li>
+        <li>URL of repository : svn://svn.berlios.de/openphysic/php/services/</li>
         <li>Checkout directory : (nouveau répertoire local quelconque)</li>
       </ul>
      </ul>
