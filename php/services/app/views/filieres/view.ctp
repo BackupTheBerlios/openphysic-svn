@@ -106,12 +106,12 @@
 		<tr<?php echo $class;?>>
 			<td>&nbsp;</td>
 			<td>&nbsp;</td>
-			<td><?php echo $matiere['TotalBesoin']['h_cours'];?></td>
-			<td><?php echo $matiere['TotalBesoin']['h_td'];?></td>
-			<td><?php echo $matiere['TotalBesoin']['h_tp'];?></td>
+			<td><?php echo $matiere['vol_horaire_total']['a_effectuer']['h_cours'];?></td>
+			<td><?php echo $matiere['vol_horaire_total']['a_effectuer']['h_td'];?></td>
+			<td><?php echo $matiere['vol_horaire_total']['a_effectuer']['h_tp'];?></td>
 			<td>à&nbsp;attribuer</td>
-			<td><?php echo $heures->h_tot($matiere['TotalBesoin']); ?></td>
-			<td><?php echo $heures->h_eq_td($matiere['TotalBesoin']); ?></td>
+			<td><?php echo $heures->h_tot($matiere['vol_horaire_total']['a_effectuer']); ?></td>
+			<td><?php echo $heures->h_eq_td($matiere['vol_horaire_total']['a_effectuer']); ?></td>
 			<td>&nbsp;</td>
 		</tr>
 		<tr<?php echo $class;?>>
@@ -119,12 +119,12 @@
 			<td><?php
 				echo $html->link($matiere['name'], array('controller'=> 'matieres', 'action'=>'view', $matiere['id']));
 			?></td>
-			<td><?php echo $heures->get($matiere['ComblesBesoin'], 'h_cours'); ?></td>
-			<td><?php echo $heures->get($matiere['ComblesBesoin'], 'h_td'); ?></td>
-			<td><?php echo $heures->get($matiere['ComblesBesoin'], 'h_tp'); ?></td>
+			<td><?php echo $heures->get($matiere['vol_horaire_total']['attribue'], 'h_cours'); ?></td>
+			<td><?php echo $heures->get($matiere['vol_horaire_total']['attribue'], 'h_td'); ?></td>
+			<td><?php echo $heures->get($matiere['vol_horaire_total']['attribue'], 'h_tp'); ?></td>
 			<td>attribué</td>
-			<td><?php echo $heures->h_tot($heures->get($matiere['ComblesBesoin'])); ?></td>
-			<td><?php echo $heures->h_eq_td($heures->get($matiere['ComblesBesoin'])); ?></td>
+			<td><?php echo $heures->h_tot($heures->get($matiere['vol_horaire_total']['attribue'])); ?></td>
+			<td><?php echo $heures->h_eq_td($heures->get($matiere['vol_horaire_total']['attribue'])); ?></td>
 			<td class="actions">
 				<?php echo $html->link(__('View', true), array('controller'=> 'matieres', 'action'=>'view', $matiere['id'])); ?>
 				<?php echo $html->link(__('Edit', true), array('controller'=> 'matieres', 'action'=>'edit', $matiere['id'])); ?>
@@ -134,12 +134,12 @@
 		<tr<?php echo $class;?>>
 			<td>&nbsp;</td>
 			<td>&nbsp;</td>
-			<td <?php echo $couleurs->heures_restantes($matiere['RestantsBesoin']['h_cours'], $matiere['TotalBesoin']['h_cours']); ?>><?php echo $matiere['RestantsBesoin']['h_cours'];?></td>
-			<td <?php echo $couleurs->heures_restantes($matiere['RestantsBesoin']['h_td'], $matiere['TotalBesoin']['h_td']); ?>><?php echo $matiere['RestantsBesoin']['h_td'];?></td>
-			<td <?php echo $couleurs->heures_restantes($matiere['RestantsBesoin']['h_tp'], $matiere['TotalBesoin']['h_tp']); ?>><?php echo $matiere['RestantsBesoin']['h_tp'];?></td>
+			<td <?php echo $couleurs->heures_restantes($matiere['vol_horaire_total']['restant']['h_cours'], $matiere['vol_horaire_total']['a_effectuer']['h_cours']); ?>><?php echo $matiere['vol_horaire_total']['restant']['h_cours'];?></td>
+			<td <?php echo $couleurs->heures_restantes($matiere['vol_horaire_total']['restant']['h_td'], $matiere['vol_horaire_total']['a_effectuer']['h_td']); ?>><?php echo $matiere['vol_horaire_total']['restant']['h_td'];?></td>
+			<td <?php echo $couleurs->heures_restantes($matiere['vol_horaire_total']['restant']['h_tp'], $matiere['vol_horaire_total']['a_effectuer']['h_tp']); ?>><?php echo $matiere['vol_horaire_total']['restant']['h_tp'];?></td>
 			<td>restant</td>
-			<td><?php echo $heures->h_tot($matiere['RestantsBesoin']); ?></td>
-			<td><?php echo $heures->h_eq_td($matiere['RestantsBesoin']); ?></td>
+			<td><?php echo $heures->h_tot($matiere['vol_horaire_total']['restant']); ?></td>
+			<td><?php echo $heures->h_eq_td($matiere['vol_horaire_total']['restant']); ?></td>
 			<td>&nbsp;</td>
 		</tr>
 	<?php endforeach; ?>

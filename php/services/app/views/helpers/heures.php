@@ -8,6 +8,7 @@ class HeuresHelper extends AppHelper {
 		return $a_heures['h_cours']+$a_heures['h_td']+$a_heures['h_tp'];
 	}
 	
+	
 	function get($a_heures, $param=null) { // param=h_cours or h_td or h_tp or null
 		$h0=array('h_cours'=>0, 'h_td'=>0, 'h_tp'=>0);
 		
@@ -25,5 +26,6 @@ class HeuresHelper extends AppHelper {
 			}
 		}
 	}
+	
 }
 ?>

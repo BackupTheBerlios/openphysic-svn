@@ -26,17 +26,9 @@ class FilieresController extends AppController {
 		$matieres=$filiere['Matiere'];
 		$this->Matiere =& ClassRegistry::init('Matiere');
 		foreach ( $matieres as $key => $matiere ) {
-			//$filiere['Matiere'][$key]['vol_horaire_total']=$this->Matiere->get_vol_horaire($filiere['Matiere'][$key]['id']);
-			$filiere['Matiere'][$key]['TotalBesoin'] = $this->Matiere->get_vol_horaire_a_attribuer($filiere['Matiere'][$key]['id']);
-			$filiere['Matiere'][$key]['ComblesBesoin'] = $this->Matiere->get_vol_horaire_attribue($filiere['Matiere'][$key]['id']);
-			$filiere['Matiere'][$key]['RestantsBesoin'] = $this->Matiere->get_vol_horaire_restant($filiere['Matiere'][$key]['id']);
+			$filiere['Matiere'][$key]['vol_horaire_total']=$this->Matiere->get_vol_horaire($filiere['Matiere'][$key]['id']);
 		}
-		//debug($matieres);		
-		
 		$this->set('filiere', $filiere);
-		
-		//exit();
-
 		
 	}
 
