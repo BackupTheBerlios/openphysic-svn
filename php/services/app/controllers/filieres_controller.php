@@ -20,23 +20,23 @@ class FilieresController extends AppController {
 			$this->Session->setFlash(__('Invalid Filiere.', true));
 			$this->redirect(array('action'=>'index'));
 		}
-		$this->Filiere->recursive = 2;
-		$this->set('filiere', $this->Filiere->read(null, $id));
+		$this->Filiere->recursive = 2; // 1
+		$filiere = $this->Filiere->read(null, $id);
 		
+		$matieres=$filiere['Matiere'];
+		$this->Matiere =& ClassRegistry::init('Matiere');
+		foreach ( $matieres as $key => $matiere ) {
+			//$filiere['Matiere'][$key]['vol_horaire_total']=$this->Matiere->get_vol_horaire($filiere['Matiere'][$key]['id']);
+			$filiere['Matiere'][$key]['TotalBesoin'] = $this->Matiere->get_vol_horaire_a_attribuer($filiere['Matiere'][$key]['id']);
+			$filiere['Matiere'][$key]['ComblesBesoin'] = $this->Matiere->get_vol_horaire_attribue($filiere['Matiere'][$key]['id']);
+			$filiere['Matiere'][$key]['RestantsBesoin'] = $this->Matiere->get_vol_horaire_restant($filiere['Matiere'][$key]['id']);
+		}
+		//debug($matieres);		
 		
-		/* === Volume horaire total === */
-		//$this->Matiere =& ClassRegistry::init('Matiere');
-		//$this->Matiere->get_vol_horaire_a_attribuer();
+		$this->set('filiere', $filiere);
 		
-		$this->set('vol_horaire_total',
-       		array(
-       			'h_cours' => 'x h_cours',
-       			'h_td' => 'x h_td',
-       			'h_tp' => 'x h_tp',
-       			'h_tot' => 'x h_tot',
-       			'h_eq_td' => 'x h_eq_td'        			
-       			)
-       	);
+		//exit();
+
 		
 	}
 

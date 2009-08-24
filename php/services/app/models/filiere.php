@@ -31,5 +31,14 @@ class Filiere extends AppModel {
 		}
 	}
 	*/
+	
+	
+	/*=============================
+	 = Volume horaire à attribuer =
+	 =============================*/
+	function get_vol_horaire_a_attribuer_with_sql_view($id='all') {
+	}
+	
+	
 }
 ?>

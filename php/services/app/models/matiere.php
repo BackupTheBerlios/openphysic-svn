@@ -19,7 +19,7 @@ class Matiere extends AppModel {
 		)
 	);
 
-	var $hasOne = array('VueMatieresTotalBesoin', 'VueMatieresComblesBesoin', 'VueMatieresRestantsBesoin');
+	//var $hasOne = array('VueMatieresTotalBesoin', 'VueMatieresComblesBesoin', 'VueMatieresRestantsBesoin');
 
 	var $validate = array( 'name'=>'alphaNumeric', 'h_cours'=>'numeric', 'h_td'=>'numeric', 'h_tp'=>'numeric' );
 
