@@ -42,7 +42,6 @@
 	</ul>
 	<ul>
 		<li><?php echo $html->link(__('Lister Statuts', true), array('controller'=> 'statuts', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('Nouveau Statut', true), array('controller'=> 'statuts', 'action'=>'add')); ?> </li>
 	</ul>
 </div>
 <div class="related">
