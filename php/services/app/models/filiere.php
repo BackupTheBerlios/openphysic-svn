@@ -36,9 +36,31 @@ class Filiere extends AppModel {
 	/*=============================
 	 = Volume horaire à attribuer =
 	 =============================*/
-	function get_vol_horaire_a_attribuer_with_sql_view($id='all') {
+	function get_vol_horaire_a_attribuer($id=null) {
+	}
+
+
+	/*=========================
+	 = Volume horaire restant =
+	 =========================*/
+    function get_vol_horaire_restant($id=null) {
+	}
+
+	
+	/*==========================
+	 = Volume horaire attribué =
+	 ==========================*/
+	 
+	function get_vol_horaire_attribue($id=null) {
 	}
 	
 	
+	/*=========================
+	 = Volume horaire (bilan) =
+	 =========================*/
+	function get_vol_horaire($id=null) {
+	}
+
+
 }
 ?>
