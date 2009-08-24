@@ -30,43 +30,7 @@ class MatieresController extends AppController {
 		
         
 		/* === Volume horaire total === */
-		//$todo = array('h_cours'=>'ToDo', 'h_td'=>'ToDo', 'h_tp'=>'ToDo');	
-		/* = Volume à attribuer = */		
-		$vol_h_a_attribuer = $this->Matiere->get_vol_horaire_a_attribuer($id);
-		/* = Volume attribue */
-		$vol_h_attribue = $this->Matiere->get_vol_horaire_attribue($id);
-		/* = Volume restant */
-		$vol_h_restant=$this->Matiere->get_vol_horaire_restant($id);
-		
-		/*
-		$this->VueMatieresTotalBesoin =& ClassRegistry::init('VueMatieresTotalBesoin');
-		pr($this->VueMatieresTotalBesoin->schema());
-		pr($this->VueMatieresTotalBesoin->_schema);
-		exit();
-		*/
-		
-		//pr($this->Matiere->tablePrefix);
-		//exit();
-		
-		$this->set('vol_horaire_total',
-			array(
-       			'a_effectuer'=>array(
-       				'h_cours' => $vol_h_a_attribuer['h_cours'],
-       				'h_td' => $vol_h_a_attribuer['h_td'],
-       				'h_tp' => $vol_h_a_attribuer['h_tp'],
-       				),
-       			'attribue'=>array(
-       				'h_cours' => $vol_h_attribue['h_cours'],
-       				'h_td' => $vol_h_attribue['h_td'],
-       				'h_tp' => $vol_h_attribue['h_tp'],
-       				),
-       			'restant'=>array(
-       				'h_cours' => $vol_h_restant['h_cours'],
-       				'h_td' => $vol_h_restant['h_td'],
-       				'h_tp' => $vol_h_restant['h_tp'],
-       				)
-       			)
-       	);
+		$this->set('vol_horaire_total', $this->Matiere->get_vol_horaire($id));
 	}
 
 	function add() {
@@ -129,23 +93,8 @@ class MatieresController extends AppController {
 			$this->redirect(array('controller'=>'filieres', 'action'=>'view', $matiere['Matiere']['filiere_id']));
 		}
 	}
-	
-	/* ====== */
+		
 	/*
-	function besoins_totaux() {
-		$this->Matiere->recursive = 0;
-		$this->set('matieres', $this->Matiere->find('list'));
-    }
-    */
-    
-    
-    /*
-    function test() {
-    	//debug("the test");
-    	debug($this->Matiere->test());
-    }
-	*/
-	
 	function debug() {
 		//$id=53;
 		$id='all';
@@ -163,5 +112,6 @@ class MatieresController extends AppController {
 		//debug("<h1>get_vol_horaire_restant_with_sql_view($id)</h1>");
 		//debug($this->Matiere->get_vol_horaire_restant_with_sql_view($id));				
 	}
+	*/
 }
 ?>

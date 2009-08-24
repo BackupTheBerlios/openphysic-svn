@@ -216,6 +216,18 @@ class Matiere extends AppModel {
 		//return $this->get_vol_horaire_restant_with_sql_view($id);
 		return $this->get_vol_horaire_restant_without_sql_view($id);
 	}
+	
+	
+	/*=========================
+	 = Volume horaire (bilan) =
+	 =========================*/
+	 function get_vol_horaire($id) {
+	 	return array(
+       		'a_effectuer'=>$this->get_vol_horaire_a_attribuer($id),
+       		'attribue'=>$this->get_vol_horaire_attribue($id),
+       		'restant'=>$this->get_vol_horaire_restant($id)
+       	);
+	 }
 
 		/*
 		function test() {
