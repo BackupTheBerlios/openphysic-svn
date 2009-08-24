@@ -15,7 +15,7 @@ class Filiere extends AppModel {
 		)
 	);
 			
-	var $hasOne = array('VueFilieresTotalBesoin', 'VueFilieresComblesBesoin', 'VueFilieresRestantsBesoin');
+	//var $hasOne = array('VueFilieresTotalBesoin', 'VueFilieresComblesBesoin', 'VueFilieresRestantsBesoin');
 		
 	var $validate = array( 'name' => 'alphaNumeric',
 		'nb_gr_td' => array( 'rule' => array('custom', '/^[0-9]*$/') ), // ToFix integer <> decimal <> numeric ???
