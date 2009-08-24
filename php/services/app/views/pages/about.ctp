@@ -49,11 +49,11 @@ or using a GUI tool for SVN called <a href="http://en.wikipedia.org/wiki/Tortois
       <li>SVN Checkout...</li>
       <ul>
         <li>URL of repository : <tt>svn://svn.berlios.de/openphysic/php/services/</tt></li>
-        <li>Checkout directory : (nouveau répertoire local quelconque)</li>
+        <li>Checkout directory : (local folder name you want)</li>
       </ul>
      </ul>
    </ul>
-  <li>The folder (répertoire local quelconque) does not exist.</li>
+  <li>The folder (folder name) does not exist.</li>
   <li>Would you like to create it first? Yes</li>
 <ul>
 
