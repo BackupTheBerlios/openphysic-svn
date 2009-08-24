@@ -29,6 +29,8 @@ class Matiere extends AppModel {
 	/* Bilan horaire pour toutes les matières $id=null ou 'all' */
 
 	
+	/* Volume horaire à attribuer */
+	
 	function get_vol_horaire_a_attribuer_with_sql_view($id='all') {
 		//  Méthode 1 : à l'aide d'une vue SQL dans la base
 
@@ -118,20 +120,26 @@ class Matiere extends AppModel {
 	}
 
 	function get_vol_horaire_a_attribuer($id='all') {
-		return $this->get_vol_horaire_a_attribuer_with_sql_view($id);
+		return $this->get_vol_horaire_a_attribuer_with_sql_query($id);
 	}
+	
+	
+	/* Volume horaire attribué */
 
 	function get_vol_horaire_attribue($id='all') {
-		/*  Méthode 1 : à l'aide d'une vue SQL dans la base */
+		//  Méthode 1 : à l'aide d'une vue SQL dans la base
 		$this->VueMatieresComblesBesoin =& ClassRegistry::init('VueMatieresComblesBesoin');
 		$this->VueMatieresComblesBesoin->recursive=-1;
 		$temp = $this->VueMatieresComblesBesoin->read(null, $id);
 		//debug($temp);
 		return $temp['VueMatieresComblesBesoin'];                
 	}
+	
+	
+	/* Volume horaire restant */
     
     function get_vol_horaire_restant($id='all') {
-		/*  Méthode 1 : à l'aide d'une vue SQL dans la base */
+		//  Méthode 1 : à l'aide d'une vue SQL dans la base
 		$this->VueMatieresRestantsBesoin =& ClassRegistry::init('VueMatieresRestantsBesoin');
 		$this->VueMatieresRestantsBesoin->recursive=-1;
 		$temp = $this->VueMatieresRestantsBesoin->read(null, $id);
