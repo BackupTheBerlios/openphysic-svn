@@ -52,6 +52,5 @@ foreach ($filieres as $filiere):
 <div class="actions">
 	<ul>
 		<li><?php echo $html->link(__('Nouvelle Filiere', true), array('action'=>'add')); ?></li>
-		<li><?php echo $html->link(__('Lister Matieres', true), array('controller'=> 'matieres', 'action'=>'index')); ?> </li>
 	</ul>
 </div>

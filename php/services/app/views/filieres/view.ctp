@@ -27,8 +27,6 @@
 	<ul>
 		<li><?php echo $html->link(__('Editer Filière', true), array('action'=>'edit', $filiere['Filiere']['id'])); ?> </li>
 		<li><?php echo $html->link(__('Lister Filières', true), array('action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('Nouvelle Filière', true), array('action'=>'add')); ?> </li>
-		<li><?php echo $html->link(__('Supprimer Filière', true), array('action'=>'delete', $filiere['Filiere']['id']), null, sprintf(__('Êtes-vous sûr de vouloir supprimer la filière # %s ?', true), $filiere['Filiere']['id'])); ?> </li>
 	</ul>
 </div>
 <div class="related">
@@ -75,7 +73,6 @@
 	<div class="actions">
 		<ul>
 			<li><?php echo $html->link(__('Nouvelle Matière', true), array('controller'=> 'matieres', 'action'=>'add', 'filiere'=>$filiere['Filiere']['id'] ));?> </li>
-			<li><?php echo $html->link(__('Lister Matières', true), array('controller'=> 'matieres', 'action'=>'index')); ?> </li>
 		</ul>
 	</div>
 
