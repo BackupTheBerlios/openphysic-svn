@@ -104,12 +104,12 @@
 		</tr>
 		<tr>
 			<th>attribué</th>
-			<td><?php echo $heures->get($vol_horaire_total, 'h_cours'); ?></td>
-			<td><?php echo $heures->get($vol_horaire_total, 'h_td'); ?></td>
-			<td><?php echo $heures->get($vol_horaire_total, 'h_tp'); ?></td>
+			<td><?php echo $perso['BilanService']['h_cours']; ?></td>
+			<td><?php echo $perso['BilanService']['h_td']; ?></td>
+			<td><?php echo $perso['BilanService']['h_tp']; ?></td>
 			<td>&nbsp;</td>
-			<td><?php echo $heures->h_tot($vol_horaire_total); ?></td>
-			<td><?php echo $heures->h_eq_td($vol_horaire_total); ?></td>
+			<td><?php echo $heures->h_tot($perso['BilanService']); ?></td>
+			<td><?php echo $heures->h_eq_td($perso['BilanService']); ?></td>
 		</tr>
 		</table>
 

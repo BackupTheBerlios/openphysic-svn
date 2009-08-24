@@ -145,5 +145,23 @@ class MatieresController extends AppController {
     	debug($this->Matiere->test());
     }
 	*/
+	
+	function debug() {
+		//$id=53;
+		$id='all';
+		debug("<h1>get_vol_horaire_a_attribuer_with_sql_view($id)</h1>");
+		debug($this->Matiere->get_vol_horaire_a_attribuer_with_sql_view($id));
+		debug("<h1>get_vol_horaire_a_attribuer_with_sql_query($id)</h1>");
+		debug($this->Matiere->get_vol_horaire_a_attribuer_with_sql_query($id));
+		debug("<h1>get_vol_horaire_a_attribuer_with_loop($id)</h1>");
+		debug($this->Matiere->get_vol_horaire_a_attribuer_with_loop($id));
+		
+		//debug("<h1>get_vol_horaire_attribue_with_sql_view($id)</h1>");
+		//debug($this->Matiere->get_vol_horaire_attribue_with_sql_view($id));		
+
+
+		//debug("<h1>get_vol_horaire_restant_with_sql_view($id)</h1>");
+		//debug($this->Matiere->get_vol_horaire_restant_with_sql_view($id));				
+	}
 }
 ?>

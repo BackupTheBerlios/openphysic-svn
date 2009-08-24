@@ -28,7 +28,7 @@ class Perso extends AppModel {
 	
 	//var $hasAndBelongsToMany = array('Matieres');
 	
-	var $hasOne = array('VuePersosBilanService');
+	//var $hasOne = array('VuePersosBilanService');
 	
 	var $validate = array( 'initiales'=>'alphaNumeric', 'nom'=>'alphaNumeric', 'prenom'=>'alphaNumeric' );
 	

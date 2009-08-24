@@ -54,6 +54,7 @@ class PersosController extends AppController {
 
 		$this->Perso->recursive = 0;
 		$perso = $this->Perso->read(null, $id);
+		$perso['BilanService'] = $this->Perso->getBilanService($id);
 		$this->set('perso', $perso);
 		
 		$this->MatieresPerso =& ClassRegistry::init('MatieresPerso');
@@ -68,7 +69,9 @@ class PersosController extends AppController {
         $this->set('filieres', $filieres);
         
  		/* === Volume horaire total === */
+ 		/*
 		$vol_horaire_attribue = $this->Perso->getBilanService($id);
+		
 				
 		$this->set('vol_horaire_total',
        		array(
@@ -77,6 +80,7 @@ class PersosController extends AppController {
        			'h_tp' => $vol_horaire_attribue['h_tp'],
        			)
        	);
+       	*/
 	}
 
 	function add() {

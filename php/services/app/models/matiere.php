@@ -28,57 +28,116 @@ class Matiere extends AppModel {
 	/* Bilan horaire par matiere : $id=... */
 	/* Bilan horaire pour toutes les matières $id=null ou 'all' */
 
-	function get_vol_horaire_a_attribuer($id='all') {
-		if ($id==null or $id=='all') {
+	
+	function get_vol_horaire_a_attribuer_with_sql_view($id='all') {
+		//  Méthode 1 : à l'aide d'une vue SQL dans la base
 
-			/*  Méthode 1 : à l'aide d'une vue SQL dans la base */
+		if ($id==null or $id=='all') {
 			$this->VueMatieresTotalBesoin =& ClassRegistry::init('VueMatieresTotalBesoin');
-			$this->VueMatieresTotalBesoin->recursive = 0;
+			$this->VueMatieresTotalBesoin->recursive = -1;
 			$temp = $this->VueMatieresTotalBesoin->find('all');
 			//debug($temp);
 			return $temp;
 				
 		} else {
-			
-        	/*  Méthode 1 : à l'aide d'une vue SQL dans la base */
+		
+
 			$this->VueMatieresTotalBesoin =& ClassRegistry::init('VueMatieresTotalBesoin');
 			$this->VueMatieresTotalBesoin->recursive = -1;
 			$temp = $this->VueMatieresTotalBesoin->read(null, $id);
 			return $temp['VueMatieresTotalBesoin'];
-			
-	        /*  Méthode 2 : à l'aide d'une requête read recursive et d'une boucle */
-    	   	/*
+
+		}
+	}
+
+	function get_vol_horaire_a_attribuer_with_sql_query($id='all') {
+		// Méthode 2
+		$prefix = $this->tablePrefix;
+		
+		if ($id==null or $id=='all') {
+			//  à l'aide d'une requête SQL
+			$sql = "SELECT {$prefix}matieres.id AS id, {$prefix}matieres.h_cours as h_cours, {$prefix}matieres.h_td * {$prefix}filieres.nb_gr_td AS h_td, h_tp * {$prefix}filieres.nb_gr_tp AS h_tp FROM {$prefix}matieres, {$prefix}filieres WHERE {$prefix}matieres.filiere_id = {$prefix}filieres.id;";
+			$temp = $this->query($sql);
+			$result = array();
+			foreach ( $temp as $key => $matiere ) {
+				$matiere_id=$matiere['services_matieres']['id'];
+				$result=Set::insert($result, $matiere_id,
+					array(	'h_cours'=>$matiere['services_matieres']['h_cours'],
+							'h_td'=>$matiere[0]['h_td'],
+							'h_tp'=>$matiere[0]['h_tp']
+							)
+				);
+				//debug($matiere_id);
+			}
+			//$result = Set::combine ($result, '{n}.services_matieres.id', '{n}.0'); // Mise en forme l'array pour avoir matiere_id comme clé
+			return $result;
+
+
+		} else {
+			// à l'aide d'une requête read recursive et d'une boucle
 			$this->recursive=0;
 			$matiere = $this->read(null, $id);
 			$result = array(
 				'h_cours'=>$matiere['Matiere']['h_cours'],
 				'h_td'=>$matiere['Matiere']['h_td']*$matiere['Filiere']['nb_gr_td'],
-	        	'h_tp'=>$matiere['Matiere']['h_tp']*$matiere['Filiere']['nb_gr_tp']
-	        );
+				'h_tp'=>$matiere['Matiere']['h_tp']*$matiere['Filiere']['nb_gr_tp']
+			);
 			return $result;
-			*/
-			
-			/* Méthode 3 : à l'aide d'une requête find all et d'une boucle */			
-			}
-        }
+		}
+		
+	}
 
-        function get_vol_horaire_attribue($id=null) {
-			/*  Méthode 1 : à l'aide d'une vue SQL dans la base */
-			$this->VueMatieresComblesBesoin =& ClassRegistry::init('VueMatieresComblesBesoin');
-			$this->VueMatieresComblesBesoin->recursive=-1;
-			$temp = $this->VueMatieresComblesBesoin->read(null, $id);
-			//debug($temp);
-			return $temp['VueMatieresComblesBesoin'];                
-        }        
-        
-        function get_vol_horaire_restant($id=null) {
-			/*  Méthode 1 : à l'aide d'une vue SQL dans la base */
-			$this->VueMatieresRestantsBesoin =& ClassRegistry::init('VueMatieresRestantsBesoin');
-			$this->VueMatieresRestantsBesoin->recursive=-1;
-			$temp = $this->VueMatieresRestantsBesoin->read(null, $id);
-			//debug($temp);
-			return $temp['VueMatieresRestantsBesoin'];
-        }
+	function get_vol_horaire_a_attribuer_with_loop($id='all') {
+		// Méthode 3
+		if ($id==null or $id=='all') {
+			// à l'aide d'une requête find all et d'une boucle
+			$temp = $this->find('all');
+			$result = array();
+			foreach ( $temp as $key => $matiere ) {
+				$matiere_id=$matiere['Matiere']['id'];
+				$result=Set::insert($result, $matiere_id,
+					array(	'h_cours'=>$matiere['Matiere']['h_cours'],
+							'h_td'=>$matiere['Matiere']['h_td']*$matiere['Filiere']['nb_gr_td'],
+							'h_tp'=>$matiere['Matiere']['h_tp']*$matiere['Filiere']['nb_gr_tp']
+							)
+						);
+			}
+			return $result;
+
+		} else {
+			// à l'aide d'une requête read recursive et d'une boucle
+			$this->recursive=0;
+			$matiere = $this->read(null, $id);
+			$result = array(
+				'h_cours'=>$matiere['Matiere']['h_cours'],
+				'h_td'=>$matiere['Matiere']['h_td']*$matiere['Filiere']['nb_gr_td'],
+				'h_tp'=>$matiere['Matiere']['h_tp']*$matiere['Filiere']['nb_gr_tp']
+			);
+			return $result;
+		}
+	}
+
+	function get_vol_horaire_a_attribuer($id='all') {
+		return $this->get_vol_horaire_a_attribuer_with_sql_view($id);
+	}
+
+	function get_vol_horaire_attribue($id='all') {
+		/*  Méthode 1 : à l'aide d'une vue SQL dans la base */
+		$this->VueMatieresComblesBesoin =& ClassRegistry::init('VueMatieresComblesBesoin');
+		$this->VueMatieresComblesBesoin->recursive=-1;
+		$temp = $this->VueMatieresComblesBesoin->read(null, $id);
+		//debug($temp);
+		return $temp['VueMatieresComblesBesoin'];                
+	}
+    
+    function get_vol_horaire_restant($id='all') {
+		/*  Méthode 1 : à l'aide d'une vue SQL dans la base */
+		$this->VueMatieresRestantsBesoin =& ClassRegistry::init('VueMatieresRestantsBesoin');
+		$this->VueMatieresRestantsBesoin->recursive=-1;
+		$temp = $this->VueMatieresRestantsBesoin->read(null, $id);
+		//debug($temp);
+		return $temp['VueMatieresRestantsBesoin'];
+	}
 
 		/*
 		function test() {
