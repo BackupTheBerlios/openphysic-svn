@@ -32,41 +32,36 @@ class Filiere extends AppModel {
 	}
 	*/
 	
-	
-	/*=============================
-	 = Volume horaire à attribuer =
-	 =============================*/
-	function get_vol_horaire_a_attribuer($id=null) {
-		return array('h_cours'=>'ToDo', 'h_td'=>'ToDo', 'h_tp'=>'ToDo');
-	}
-
-
-	/*=========================
-	 = Volume horaire restant =
-	 =========================*/
-    function get_vol_horaire_restant($id=null) {
-		return array('h_cours'=>'ToDo', 'h_td'=>'ToDo', 'h_tp'=>'ToDo');
-	}
-
-	
-	/*==========================
-	 = Volume horaire attribué =
-	 ==========================*/
-	 
-	function get_vol_horaire_attribue($id=null) {
-		return array('h_cours'=>'ToDo', 'h_td'=>'ToDo', 'h_tp'=>'ToDo');
-	}
-	
-	
+		
 	/*=========================
 	 = Volume horaire (bilan) =
 	 =========================*/
 	function get_vol_horaire($id=null) {
-	 	return array(
-       		'a_effectuer'=>$this->get_vol_horaire_a_attribuer($id),
-       		'attribue'=>$this->get_vol_horaire_attribue($id),
-       		'restant'=>$this->get_vol_horaire_restant($id)
+       	$this->recursive = 1;
+		$filiere = $this->read(null, $id);
+		$matieres = $filiere['Matiere'];
+		$result = array(
+       		'a_effectuer'=>array('h_cours'=>0, 'h_td'=>0, 'h_tp'=>0),
+       		'attribue'=>array('h_cours'=>0, 'h_td'=>0, 'h_tp'=>0),
+       		'restant'=>array('h_cours'=>0, 'h_td'=>0, 'h_tp'=>0)
        	);
+		foreach($matieres as $key => $matiere) {
+			$matiere_total_groupes_a_attribuer=$this->Matiere->get_vol_horaire_a_attribuer($matiere['id']);
+			$result['a_effectuer']['h_cours']=$result['a_effectuer']['h_cours']+$matiere_total_groupes_a_attribuer['h_cours'];
+			$result['a_effectuer']['h_td']=$result['a_effectuer']['h_td']+$matiere_total_groupes_a_attribuer['h_td'];
+			$result['a_effectuer']['h_tp']=$result['a_effectuer']['h_tp']+$matiere_total_groupes_a_attribuer['h_tp'];
+			
+			$matiere_total_groupes_attribue=$this->Matiere->get_vol_horaire_attribue($matiere['id']);
+			$result['attribue']['h_cours']=$result['attribue']['h_cours']+$matiere_total_groupes_attribue['h_cours'];
+			$result['attribue']['h_td']=$result['attribue']['h_td']+$matiere_total_groupes_attribue['h_td'];
+			$result['attribue']['h_tp']=$result['attribue']['h_tp']+$matiere_total_groupes_attribue['h_tp'];
+			
+			$result['restant']['h_cours']=$result['a_effectuer']['h_cours']-$result['attribue']['h_cours'];
+			$result['restant']['h_td']=$result['a_effectuer']['h_td']-$result['attribue']['h_td'];
+			$result['restant']['h_tp']=$result['a_effectuer']['h_tp']-$result['attribue']['h_tp'];
+		}
+	
+	 	return $result;
 	}
 
 
