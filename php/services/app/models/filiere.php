@@ -37,6 +37,7 @@ class Filiere extends AppModel {
 	 = Volume horaire à attribuer =
 	 =============================*/
 	function get_vol_horaire_a_attribuer($id=null) {
+		return array('h_cours'=>'ToDo', 'h_td'=>'ToDo', 'h_tp'=>'ToDo');
 	}
 
 
@@ -44,6 +45,7 @@ class Filiere extends AppModel {
 	 = Volume horaire restant =
 	 =========================*/
     function get_vol_horaire_restant($id=null) {
+		return array('h_cours'=>'ToDo', 'h_td'=>'ToDo', 'h_tp'=>'ToDo');
 	}
 
 	
@@ -52,6 +54,7 @@ class Filiere extends AppModel {
 	 ==========================*/
 	 
 	function get_vol_horaire_attribue($id=null) {
+		return array('h_cours'=>'ToDo', 'h_td'=>'ToDo', 'h_tp'=>'ToDo');
 	}
 	
 	
@@ -59,6 +62,11 @@ class Filiere extends AppModel {
 	 = Volume horaire (bilan) =
 	 =========================*/
 	function get_vol_horaire($id=null) {
+	 	return array(
+       		'a_effectuer'=>$this->get_vol_horaire_a_attribuer($id),
+       		'attribue'=>$this->get_vol_horaire_attribue($id),
+       		'restant'=>$this->get_vol_horaire_restant($id)
+       	);
 	}
 
 
