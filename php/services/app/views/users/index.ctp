@@ -31,10 +31,10 @@ foreach ($users as $user):
 			<?php echo $user['User']['id']; ?>
 		</td>
 		<td>
-			<?php echo $user['User']['username']; ?>
+			<?php echo $html->link($user['User']['username'], array('action'=>'view', $user['User']['id'])); ?>
 		</td>
 		<td>
-			<?php echo $user['User']['password']; ?>
+			<?php echo $password->hide($user['User']['password']); ?>
 		</td>
 		<td>
 			<?php echo $html->link($user['Group']['name'], array('controller'=> 'groups', 'action'=>'view', $user['Group']['id'])); ?>
