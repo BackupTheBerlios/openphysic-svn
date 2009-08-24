@@ -5,8 +5,8 @@ class AppController extends Controller {
 	function beforeFilter() {
 		$this->Auth->allow(''); // ToFix
 		
-		debug("beforeFilter");
-		exit();
+		//debug("beforeFilter");
+		//exit();
 		
 		$this->Auth->loginAction = array('controller'=>'users','action'=>'login');
 		
