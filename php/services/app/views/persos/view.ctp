@@ -112,26 +112,4 @@
 			<td><?php echo $heures->h_eq_td($perso['BilanService']); ?></td>
 		</tr>
 		</table>
-
-<!--
-<dl>
-	<dt>H Cours</dt>
-	<dd><?php echo $vol_horaire_total['h_cours']; ?>&nbsp;</dd>
-	
-	<dt>H Td</dt>
-	<dd><?php echo $vol_horaire_total['h_td']; ?>&nbsp;</dd>
-
-	<dt>H Tp</dt>
-	<dd><?php echo $vol_horaire_total['h_tp']; ?>&nbsp;</dd>
-	
-	<br/>
-
-	<dt>H Tot</dt>
-	<dd><?php echo $vol_horaire_total['h_tot']; ?>&nbsp;</dd>
-	
-	<dt>H Eq_Td</dt>  
-	<dd><?php echo $vol_horaire_total['h_eq_td']; ?>&nbsp;</dd>
-</dl>
--->
-
 </div>

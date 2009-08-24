@@ -17,7 +17,7 @@ class FilieresController extends AppController {
 
 	function view($id = null) {
 		if (!$id) {
-			$this->Session->setFlash(__('Invalid Filiere.', true));
+			$this->Session->setFlash(__('Filière invalide.', true));
 			$this->redirect(array('action'=>'index'));
 		}
 		$this->Filiere->recursive = 2; // 1
@@ -36,25 +36,25 @@ class FilieresController extends AppController {
 		if (!empty($this->data)) {
 			$this->Filiere->create();
 			if ($this->Filiere->save($this->data)) {
-				$this->Session->setFlash(__('The Filiere has been saved', true));
+				$this->Session->setFlash(__('La filière a été sauvegardée.', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
-				$this->Session->setFlash(__('The Filiere could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('La filière n\'a pas pu être sauvegardée. Veuillez réessayer, merci.', true));
 			}
 		}
 	}
 
 	function edit($id = null) {
 		if (!$id && empty($this->data)) {
-			$this->Session->setFlash(__('Invalid Filiere', true));
+			$this->Session->setFlash(__('Filière invalide.', true));
 			$this->redirect(array('action'=>'index'));
 		}
 		if (!empty($this->data)) {
 			if ($this->Filiere->save($this->data)) {
-				$this->Session->setFlash(__('The Filiere has been saved', true));
+				$this->Session->setFlash(__('La filière a été sauvegardée.', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
-				$this->Session->setFlash(__('The Filiere could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('La filière n\'a pas pu être sauvegardée. Veuillez réessayer, merci.', true));
 			}
 		}
 		if (empty($this->data)) {
@@ -64,11 +64,11 @@ class FilieresController extends AppController {
 
 	function delete($id = null) {
 		if (!$id) {
-			$this->Session->setFlash(__('Invalid id for Filiere', true));
+			$this->Session->setFlash(__('Filière invalide.', true));
 			$this->redirect(array('action'=>'index'));
 		}
 		if ($this->Filiere->del($id)) {
-			$this->Session->setFlash(__('Filiere deleted', true));
+			$this->Session->setFlash(__('Filière supprimée', true));
 			$this->redirect(array('action'=>'index'));
 		}
 	}

@@ -131,9 +131,9 @@
 		</tr>
 		<tr>
 			<th>attribué</th>
-			<td><?php echo $heures->get($vol_horaire_total['attribue'], 'h_cours'); ?></td>
-			<td><?php echo $heures->get($vol_horaire_total['attribue'], 'h_td'); ?></td>
-			<td><?php echo $heures->get($vol_horaire_total['attribue'], 'h_tp'); ?></td>
+			<td><?php echo $vol_horaire_total['attribue']['h_cours']; ?></td>
+			<td><?php echo $vol_horaire_total['attribue']['h_td']; ?></td>
+			<td><?php echo $vol_horaire_total['attribue']['h_tp']; ?></td>
 			<td>&nbsp;</td>
 			<td><?php echo $heures->h_tot($vol_horaire_total['attribue']); ?></td>
 			<td><?php echo $heures->h_eq_td($vol_horaire_total['attribue']); ?></td>
