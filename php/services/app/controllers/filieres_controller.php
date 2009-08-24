@@ -28,12 +28,12 @@ class FilieresController extends AppController {
 		foreach ( $matieres as $key => $matiere ) {
 			$filiere['Matiere'][$key]['vol_horaire_total']=$this->Matiere->get_vol_horaire($filiere['Matiere'][$key]['id']);
 		}
-		
-		//$filiere['vol_horaire_total'] = $this->Filiere->get_vol_horaire($id);
-		
+				
 		$filiere['vol_horaire_total']['a_effectuer'] = $filiere['VueFilieresTotalBesoin'];
 		$filiere['vol_horaire_total']['attribue'] = $filiere['VueFilieresComblesBesoin'];
 		$filiere['vol_horaire_total']['restant'] = $filiere['VueFilieresRestantsBesoin'];
+
+		//$filiere['vol_horaire_total'] = $this->Filiere->get_vol_horaire($id);
 		
 		$this->set('filiere', $filiere);
 		
@@ -79,6 +79,12 @@ class FilieresController extends AppController {
 			$this->redirect(array('action'=>'index'));
 		}
 	}
+	
+	/*
+	function debug($id = null) {
+		
+	}
+	*/
 
 }
 ?>
