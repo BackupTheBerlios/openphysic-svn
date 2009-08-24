@@ -45,13 +45,13 @@
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('Edit User', true), array('action'=>'edit', $user['User']['id'])); ?> </li>
-		<li><?php echo $html->link(__('Delete User', true), array('action'=>'delete', $user['User']['id']), null, sprintf(__('Êtes-vous sûr de vouloir supprimer l\'utilisateur # %s ?', true), $user['User']['id'])); ?> </li>
-		<li><?php echo $html->link(__('List Users', true), array('action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New User', true), array('action'=>'add')); ?> </li>
+		<li><?php echo $html->link(__('Editer cet utilisateur', true), array('action'=>'edit', $user['User']['id'])); ?> </li>
+		<li><?php echo $html->link(__('Supprimer cet utilisateur', true), array('action'=>'delete', $user['User']['id']), null, sprintf(__('Êtes-vous sûr de vouloir supprimer l\'utilisateur # %s ?', true), $user['User']['id'])); ?> </li>
+		<li><?php echo $html->link(__('Lister les utilisateurs', true), array('action'=>'index')); ?> </li>
+		<li><?php echo $html->link(__('Nouvel utilisateur', true), array('action'=>'add')); ?> </li>
 	</ul>
 	<ul>
-		<li><?php echo $html->link(__('List Groups', true), array('controller'=> 'groups', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Group', true), array('controller'=> 'groups', 'action'=>'add')); ?> </li>
+		<li><?php echo $html->link(__('Lister les groupes d\'utilisateur', true), array('controller'=> 'groups', 'action'=>'index')); ?> </li>
+		<li><?php echo $html->link(__('Nouveau groupe d\'utilisateur', true), array('controller'=> 'groups', 'action'=>'add')); ?> </li>
 	</ul>
 </div>

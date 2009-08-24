@@ -1,5 +1,5 @@
 <div class="users index">
-<h2><?php __('Users');?></h2>
+<h2><?php __('Utilisateurs');?></h2>
 <p>
 <?php
 echo $paginator->counter(array(
@@ -67,10 +67,10 @@ foreach ($users as $user):
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('New User', true), array('action'=>'add')); ?></li>
+		<li><?php echo $html->link(__('Nouvel utilisateur', true), array('action'=>'add')); ?></li>
 	</ul>
 	<ul>
-		<li><?php echo $html->link(__('List Groups', true), array('controller'=> 'groups', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Group', true), array('controller'=> 'groups', 'action'=>'add')); ?> </li>
+		<li><?php echo $html->link(__('Lister les groupes d\'utilisateurs', true), array('controller'=> 'groups', 'action'=>'index')); ?> </li>
+		<li><?php echo $html->link(__('Nouveau groupe d\'utilisateurs', true), array('controller'=> 'groups', 'action'=>'add')); ?> </li>
 	</ul>
 </div>
