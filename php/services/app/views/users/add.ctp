@@ -16,6 +16,8 @@
 <div class="actions">
 	<ul>
 		<li><?php echo $html->link(__('Lister les utilisateurs', true), array('action'=>'index'));?></li>
+	</ul>
+	<ul>
 		<li><?php echo $html->link(__('Lister les groupes d\'utilisateurs', true), array('controller'=> 'groups', 'action'=>'index')); ?> </li>
 		<li><?php echo $html->link(__('Nouveau groupe d\'utilisateurs', true), array('controller'=> 'groups', 'action'=>'add')); ?> </li>
 	</ul>

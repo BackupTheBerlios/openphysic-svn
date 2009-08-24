@@ -4,9 +4,9 @@
  		<legend><?php __('Editer un utilisateur');?></legend>
 	<?php
 		echo $form->input('id');
-		echo $form->input('username', array('label'=>__('Username', true)));
-		echo $form->input('password', array('type'=>'password', 'label'=>__('Password', true)));
-		echo $form->input('password2', array('type'=>'password', 'label'=>__('Confirm password', true)));
+		echo $form->input('username', array('label'=>__("Nom d'utilisateur", true)));
+		echo $form->input('password', array('type'=>'password', 'label'=>__('Mot de passe', true)));
+		echo $form->input('password2', array('type'=>'password', 'label'=>__('Confirmer le mot de passe', true)));
 		echo $form->input('group_id');
 		echo $form->input('perso_id');
 		echo $form->input('role');

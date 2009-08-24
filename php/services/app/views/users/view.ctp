@@ -6,27 +6,27 @@
 			<?php echo $user['User']['id']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Username'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __("Nom d'utilisateur"); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $user['User']['username']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Password'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Mot de passe'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $password->hide($user['User']['password']); ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Group'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Groupe'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $html->link($user['Group']['name'], array('controller'=> 'groups', 'action'=>'view', $user['Group']['id'])); ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Created'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Créé'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $user['User']['created']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Modified'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Modifié'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $user['User']['modified']; ?>
 			&nbsp;
@@ -46,12 +46,12 @@
 <div class="actions">
 	<ul>
 		<li><?php echo $html->link(__('Editer cet utilisateur', true), array('action'=>'edit', $user['User']['id'])); ?> </li>
-		<li><?php echo $html->link(__('Supprimer cet utilisateur', true), array('action'=>'delete', $user['User']['id']), null, sprintf(__('Êtes-vous sûr de vouloir supprimer l\'utilisateur # %s ?', true), $user['User']['id'])); ?> </li>
 		<li><?php echo $html->link(__('Lister les utilisateurs', true), array('action'=>'index')); ?> </li>
 		<li><?php echo $html->link(__('Nouvel utilisateur', true), array('action'=>'add')); ?> </li>
+		<li><?php echo $html->link(__('Supprimer cet utilisateur', true), array('action'=>'delete', $user['User']['id']), null, sprintf(__('Êtes-vous sûr de vouloir supprimer l\'utilisateur # %s ?', true), $user['User']['id'])); ?> </li>
 	</ul>
 	<ul>
-		<li><?php echo $html->link(__('Lister les groupes d\'utilisateur', true), array('controller'=> 'groups', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('Nouveau groupe d\'utilisateur', true), array('controller'=> 'groups', 'action'=>'add')); ?> </li>
+		<li><?php echo $html->link(__('Lister les groupes d\'utilisateurs', true), array('controller'=> 'groups', 'action'=>'index')); ?> </li>
+		<li><?php echo $html->link(__('Nouveau groupe d\'utilisateurs', true), array('controller'=> 'groups', 'action'=>'add')); ?> </li>
 	</ul>
 </div>
