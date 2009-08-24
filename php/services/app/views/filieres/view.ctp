@@ -158,30 +158,30 @@
 		</tr>
 		<tr class="altrow">
 			<th>à effectuer</th>
-			<td><?php echo $heures->get($filiere['VueFilieresTotalBesoin'], 'h_cours'); ?></td>
-			<td><?php echo $heures->get($filiere['VueFilieresTotalBesoin'], 'h_td'); ?></td>
-			<td><?php echo $heures->get($filiere['VueFilieresTotalBesoin'], 'h_tp'); ?></td>
+			<td><?php echo $filiere['vol_horaire_total']['a_effectuer']['h_cours']; ?></td>
+			<td><?php echo $filiere['vol_horaire_total']['a_effectuer']['h_td']; ?></td>
+			<td><?php echo $filiere['vol_horaire_total']['a_effectuer']['h_tp']; ?></td>
 			<td>&nbsp;</td>
-			<td><?php echo $heures->h_tot($filiere['VueFilieresTotalBesoin']); ?></td>
-			<td><?php echo $heures->h_eq_td($filiere['VueFilieresTotalBesoin']); ?></td>
+			<td><?php echo $heures->h_tot($filiere['vol_horaire_total']['a_effectuer']); ?></td>
+			<td><?php echo $heures->h_eq_td($filiere['vol_horaire_total']['a_effectuer']); ?></td>
 		</tr>
 		<tr>
 			<th>attribué</th>
-			<td><?php echo $heures->get($filiere['VueFilieresComblesBesoin'], 'h_cours'); ?></td>
-			<td><?php echo $heures->get($filiere['VueFilieresComblesBesoin'], 'h_td'); ?></td>
-			<td><?php echo $heures->get($filiere['VueFilieresComblesBesoin'], 'h_tp'); ?></td>
+			<td><?php echo $filiere['vol_horaire_total']['attribue']['h_cours']; ?></td>
+			<td><?php echo $filiere['vol_horaire_total']['attribue']['h_td']; ?></td>
+			<td><?php echo $filiere['vol_horaire_total']['attribue']['h_tp']; ?></td>
 			<td>&nbsp;</td>
-			<td><?php echo $heures->h_tot($filiere['VueFilieresComblesBesoin']); ?></td>
-			<td><?php echo $heures->h_eq_td($filiere['VueFilieresComblesBesoin']); ?></td>
+			<td><?php echo $heures->h_tot($filiere['vol_horaire_total']['attribue']); ?></td>
+			<td><?php echo $heures->h_eq_td($filiere['vol_horaire_total']['attribue']); ?></td>
 		</tr>
 		<tr class="altrow">
 			<th>restant</th>
-			<td <?php echo $couleurs->heures_restantes($filiere['VueFilieresRestantsBesoin']['h_cours'], $filiere['VueFilieresRestantsBesoin']['h_cours']); ?>><?php echo $heures->get($filiere['VueFilieresRestantsBesoin'], 'h_cours'); ?></td>
-			<td <?php echo $couleurs->heures_restantes($filiere['VueFilieresRestantsBesoin']['h_cours'], $filiere['VueFilieresRestantsBesoin']['h_td']); ?>><?php echo $heures->get($filiere['VueFilieresRestantsBesoin'], 'h_td'); ?></td>
-			<td <?php echo $couleurs->heures_restantes($filiere['VueFilieresRestantsBesoin']['h_tp'], $filiere['VueFilieresRestantsBesoin']['h_tp']); ?>><?php echo $heures->get($filiere['VueFilieresRestantsBesoin'], 'h_tp'); ?></td>
+			<td <?php echo $couleurs->heures_restantes($filiere['vol_horaire_total']['restant']['h_cours'], $filiere['vol_horaire_total']['restant']['h_cours']); ?>><?php echo $filiere['vol_horaire_total']['restant']['h_cours']; ?></td>
+			<td <?php echo $couleurs->heures_restantes($filiere['vol_horaire_total']['restant']['h_td'], $filiere['vol_horaire_total']['restant']['h_td']); ?>><?php echo $filiere['vol_horaire_total']['restant']['h_td']; ?></td>
+			<td <?php echo $couleurs->heures_restantes($filiere['vol_horaire_total']['restant']['h_tp'], $filiere['vol_horaire_total']['restant']['h_tp']); ?>><?php echo $filiere['vol_horaire_total']['restant']['h_tp']; ?></td>
 			<td>&nbsp;</td>
-			<td><?php echo $heures->h_tot($filiere['VueFilieresRestantsBesoin']); ?></td>
-			<td><?php echo $heures->h_eq_td($filiere['VueFilieresRestantsBesoin']); ?></td>
+			<td><?php echo $heures->h_tot($filiere['vol_horaire_total']['restant']); ?></td>
+			<td><?php echo $heures->h_eq_td($filiere['vol_horaire_total']['restant']); ?></td>
 		</tr>
 		</table>
 

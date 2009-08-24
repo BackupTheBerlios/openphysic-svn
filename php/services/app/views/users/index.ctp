@@ -68,6 +68,8 @@ foreach ($users as $user):
 <div class="actions">
 	<ul>
 		<li><?php echo $html->link(__('New User', true), array('action'=>'add')); ?></li>
+	</ul>
+	<ul>
 		<li><?php echo $html->link(__('List Groups', true), array('controller'=> 'groups', 'action'=>'index')); ?> </li>
 		<li><?php echo $html->link(__('New Group', true), array('controller'=> 'groups', 'action'=>'add')); ?> </li>
 	</ul>
