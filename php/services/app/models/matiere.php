@@ -29,7 +29,9 @@ class Matiere extends AppModel {
 	/* Bilan horaire pour toutes les matières $id=null ou 'all' */
 
 	
-	/* Volume horaire à attribuer */
+	/*=============================
+	 = Volume horaire à attribuer =
+	 =============================*/
 	
 	function get_vol_horaire_a_attribuer_with_sql_view($id='all') {
 		// Méthode 1 : à l'aide d'une vue SQL dans la base
@@ -80,7 +82,7 @@ class Matiere extends AppModel {
 			$this->recursive=0;
 			$matiere = $this->read(null, $id);
 			$result = array(
-				'h_cours'=>$matiere['Matiere']['h_cours'],
+				'h_cours'=>$matiere['Matiere']['h_cours']*1,
 				'h_td'=>$matiere['Matiere']['h_td']*$matiere['Filiere']['nb_gr_td'],
 				'h_tp'=>$matiere['Matiere']['h_tp']*$matiere['Filiere']['nb_gr_tp']
 			);
@@ -124,7 +126,10 @@ class Matiere extends AppModel {
 	}
 	
 	
-	/* Volume horaire attribué */
+	/*==========================
+	 = Volume horaire attribué =
+	 ==========================*/
+	 
 	function get_vol_horaire_attribue_with_sql_view($id='all') {
 		// Méthode 1 : à l'aide d'une vue SQL dans la base
 		
@@ -181,15 +186,35 @@ class Matiere extends AppModel {
 	}
 	
 	
-	/* Volume horaire restant */
-    
-    function get_vol_horaire_restant($id='all') {
+	/*=========================
+	 = Volume horaire restant =
+	 =========================*/
+
+    function get_vol_horaire_restant_with_sql_view($id='all') {
 		//  Méthode 1 : à l'aide d'une vue SQL dans la base
 		$this->VueMatieresRestantsBesoin =& ClassRegistry::init('VueMatieresRestantsBesoin');
 		$this->VueMatieresRestantsBesoin->recursive=-1;
 		$temp = $this->VueMatieresRestantsBesoin->read(null, $id);
 		//debug($temp);
 		return $temp['VueMatieresRestantsBesoin'];
+	}
+
+    function get_vol_horaire_restant_without_sql_view($id='all') {
+    	$vol_horaire_a_effectuer=$this->get_vol_horaire_a_attribuer($id);
+    	$vol_horaire_attribue=$this->get_vol_horaire_attribue($id);
+    	    	
+    	$result=array(
+    		'h_cours'=>$vol_horaire_a_effectuer['h_cours']-$vol_horaire_attribue['h_cours'],
+    		'h_td'=>$vol_horaire_a_effectuer['h_td']-$vol_horaire_attribue['h_td'],
+    		'h_tp'=>$vol_horaire_a_effectuer['h_tp']-$vol_horaire_attribue['h_tp']
+    	);
+		return $result;
+	}
+
+    
+    function get_vol_horaire_restant($id='all') {
+		//return $this->get_vol_horaire_restant_with_sql_view($id);
+		return $this->get_vol_horaire_restant_without_sql_view($id);
 	}
 
 		/*
