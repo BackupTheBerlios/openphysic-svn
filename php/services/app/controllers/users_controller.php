@@ -113,6 +113,10 @@ class UsersController extends AppController {
 		$groups = $this->User->Group->find('list');
 		$this->set(compact('groups'));
 	}
+	
+	function change_password($id) {
+		$this->edit($id);
+	}
 
 	function delete($id = null) {
 		if (!$id) {
