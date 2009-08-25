@@ -1,0 +1,25 @@
+Copiez sur votre serveur via un client FTP le répertoire
+	/services
+ 		/app
+ 		/cake
+ 		/vendors
+ 		
+Ouvrez le fichier
+	/services/
+		/app
+			/config
+				/database.php
+				
+Editez les lignes marquées d'un ->
+
+	var $default = array(
+		'driver' => 'mysql',
+		'persistent' => false,
+->		'host' => 'localhost',
+->		'login' => 'root',
+->		'password' => 'root',
+->		'database' => 'services',
+		'prefix' => 'services_',
+	);
+	
+afin que cela corresponde à votre configuration de serveur de base de données
