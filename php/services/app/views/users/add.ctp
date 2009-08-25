@@ -8,7 +8,6 @@
 		echo $form->input('password2', array('type'=>'password', 'label'=>__('Confirmation du mot de passe', true)));
 		echo $form->input('group_id');
 		echo $form->input('perso_id');
-		echo $form->input('role');
 	?>
 	</fieldset>
 <?php echo $form->end(__('Submit', true));?>
