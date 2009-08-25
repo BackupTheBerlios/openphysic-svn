@@ -61,7 +61,7 @@ class UsersController extends AppController {
 
 	function view($id = null) {
 		if (!$id) {
-			$this->Session->setFlash(__('Invalid User.', true));
+			$this->Session->setFlash(__('Utilisateur invalide.', true));
 			$this->redirect(array('action'=>'index'));
 		}
 		$this->set('user', $this->User->read(null, $id));
@@ -72,13 +72,13 @@ class UsersController extends AppController {
 			if ( $this->data['User']['password']==$this->Auth->password($this->data['User']['password2']) ) {
 				$this->User->create();
 				if ($this->User->save($this->data)) {
-					$this->Session->setFlash(__('The User has been saved', true));
+					$this->Session->setFlash(__('L\'utilisateur a été sauvegardé', true));
 					$this->redirect(array('action'=>'index'));
 				} else {
-					$this->Session->setFlash(__('The User could not be saved. Please, try again.', true));
+					$this->Session->setFlash(__('L\'utilisateur n\'a pas pu être sauvegardé. Veuillez réessayer, merci.', true));
 				}
 			} else {
-				$this->Session->setFlash(__('The password wasn\'t confirmed correctly.', true));
+				$this->Session->setFlash(__('Le mot de passe n\'a pas été confirmé correctement.', true));
 				$this->data['User']['password'] = '';
 				$this->data['User']['password2'] = '';
 			}
@@ -89,19 +89,20 @@ class UsersController extends AppController {
 	
 	function edit($id = null) {
 		if (!$id && empty($this->data)) {
-			$this->Session->setFlash(__('Invalid User', true));
+			$this->Session->setFlash(__('Utilisateur invalide.', true));
 			$this->redirect(array('action'=>'index'));
 		}
 		if (!empty($this->data)) {
 			if ( $this->data['User']['password']==$this->Auth->password($this->data['User']['password2']) ) {
 				if ($this->User->save($this->data)) {
-					$this->Session->setFlash(__('The User has been saved', true));
+					$this->Session->setFlash(__('L\'utilisateur a été sauvegardé', true));
 					$this->redirect(array('action'=>'index'));
 				} else {
-					$this->Session->setFlash(__('The User could not be saved. Please, try again.', true));
+					$this->Session->setFlash(__('L\'utilisateur n\'a pas pu être sauvegardé. Veuillez réessayer, merci.', true));
 				}
 			} else {
-				$this->Session->setFlash(__('The password wasn\'t confirmed correctly.', true));
+				$this->Session->setFlash(__('Le mot de passe n\'a pas été confirmé correctement.', true));
+				$this->redirect(array('action'=>'view', $id));
 			}
 		}
 		if (empty($this->data)) {
@@ -120,11 +121,11 @@ class UsersController extends AppController {
 
 	function delete($id = null) {
 		if (!$id) {
-			$this->Session->setFlash(__('Invalid id for User', true));
+			$this->Session->setFlash(__('Utilisateur invalide.', true));
 			$this->redirect(array('action'=>'index'));
 		}
 		if ($this->User->del($id)) {
-			$this->Session->setFlash(__('User deleted', true));
+			$this->Session->setFlash(__('Utilisateur supprimé', true));
 			$this->redirect(array('action'=>'index'));
 		}
 	}

@@ -48,7 +48,7 @@ class PersosController extends AppController {
         
 	function view($id = null) {
 		if (!$id) {
-			$this->Session->setFlash(__('Invalid Perso.', true));
+			$this->Session->setFlash(__('Personnel inexistant.', true));
 			$this->redirect(array('action'=>'index'));
 		}		
 
@@ -87,10 +87,10 @@ class PersosController extends AppController {
 		if (!empty($this->data)) {
 			$this->Perso->create();
 			if ($this->Perso->save($this->data)) {
-				$this->Session->setFlash(__('The Perso has been saved', true));
+				$this->Session->setFlash(__('Le personnel a été sauvegardé', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
-				$this->Session->setFlash(__('The Perso could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('Le personnel n\'a pas pus être sauvegardé. Veuillez réessayer, merci.', true));
 			}
 		}
 		$statuts = $this->Perso->Statut->find('list');
@@ -99,15 +99,15 @@ class PersosController extends AppController {
 
 	function edit($id = null) {
 		if (!$id && empty($this->data)) {
-			$this->Session->setFlash(__('Invalid Perso', true));
+			$this->Session->setFlash(__('Personnel inexistant.', true));
 			$this->redirect(array('action'=>'index'));
 		}
 		if (!empty($this->data)) {
 			if ($this->Perso->save($this->data)) {
-				$this->Session->setFlash(__('The Perso has been saved', true));
+				$this->Session->setFlash(__('Le personnel a été sauvegardé', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
-				$this->Session->setFlash(__('The Perso could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('Le personnel n\'a pas pus être sauvegardé. Veuillez réessayer, merci.', true));
 			}
 		}
 		if (empty($this->data)) {
@@ -119,11 +119,11 @@ class PersosController extends AppController {
 
 	function delete($id = null) {
 		if (!$id) {
-			$this->Session->setFlash(__('Invalid id for Perso', true));
+			$this->Session->setFlash(__('Personnel inexistant.', true));
 			$this->redirect(array('action'=>'index'));
 		}
 		if ($this->Perso->del($id)) {
-			$this->Session->setFlash(__('Perso deleted', true));
+			$this->Session->setFlash(__('Personnel supprimé', true));
 			$this->redirect(array('action'=>'index'));
 		}
 	}
