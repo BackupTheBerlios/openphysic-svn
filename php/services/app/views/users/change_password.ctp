@@ -7,13 +7,13 @@
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __("Id"); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $user['User']['id']; ?>
+			<?php echo $this->data['User']['id']; ?>
 			&nbsp;
 		</dd>
 
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __("Nom d'utilisateur"); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $user['User']['username']; ?>
+			<?php echo $this->data['User']['username']; ?>
 			&nbsp;
 		</dd>
 
@@ -25,7 +25,7 @@
 
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __("Groupe"); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $user['Group']['name']; ?>
+			<?php echo $this->data['Group']['name']; ?>
 			&nbsp;
 		</dd>
 	

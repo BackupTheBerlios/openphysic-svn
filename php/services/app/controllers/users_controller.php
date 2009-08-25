@@ -2,7 +2,7 @@
 class UsersController extends AppController {
 
 	var $name = 'Users';
-	var $helpers = array('Html', 'Form', 'Password');
+	var $helpers = array('Html', 'Form', 'Password', 'People');
 	var $components = array('Auth', 'Session');
 	
 	/*
@@ -64,7 +64,9 @@ class UsersController extends AppController {
 			$this->Session->setFlash(__('Utilisateur invalide.', true));
 			$this->redirect(array('action'=>'index'));
 		}
-		$this->set('user', $this->User->read(null, $id));
+		$this->User->recursive = 0;
+		$user=$this->User->read(null, $id);
+		$this->set('user', $user);
 	}
 
 	function add() {

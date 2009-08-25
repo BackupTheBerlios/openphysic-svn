@@ -31,9 +31,9 @@
 			<?php echo $user['User']['modified']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Perso Id'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Perso'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $user['User']['perso_id']; ?>
+			<?php echo $html->link($people->format($user['Perso']), array('controller'=>'persos', 'action'=>'view', $user['User']['perso_id'])); ?>
 			&nbsp;
 		</dd>
 	</dl>
