@@ -16,11 +16,13 @@ class Filiere extends AppModel {
 	);
 			
 	//var $hasOne = array('VueFilieresTotalBesoin', 'VueFilieresComblesBesoin', 'VueFilieresRestantsBesoin');
-		
-	var $validate = array( 'name' => 'alphaNumeric',
+	
+	
+	var $validate = array(
+		//'name' => 'alphaNumeric',
 		'nb_gr_td' => array( 'rule' => array('custom', '/^[0-9]*$/') ), // ToFix integer <> decimal <> numeric ???
 		'nb_gr_tp' => array( 'rule' => array('custom', '/^[0-9]*$/') )
-	); // , 
+	);
 		
 	/*
 	function isAuthorized($user, $controller, $action) {

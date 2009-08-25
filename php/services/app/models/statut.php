@@ -15,7 +15,11 @@ class Statut extends AppModel {
 		)
 	); // utile principalement pour afficher sur la vue d'un statut la liste des Perso ayant ce statut
 		
-	var $validate = array( 'nom'=>'alphaNumeric', 'h_statut'=>'numeric', 'h_sup_max'=>'numeric' );
+	var $validate = array(
+		//'nom'=>'alphaNumeric',
+		'h_statut'=>'numeric',
+		'h_sup_max'=>'numeric'
+	);
 
 }
 ?>

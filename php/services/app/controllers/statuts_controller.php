@@ -13,7 +13,7 @@ class StatutsController extends AppController {
 
 	function view($id = null) {
 		if (!$id) {
-			$this->Session->setFlash(__('Invalid Statut.', true));
+			$this->Session->setFlash(__('Statut invalide.', true));
 			$this->redirect(array('action'=>'index'));
 		}
 		$this->set('statut', $this->Statut->read(null, $id));
@@ -23,25 +23,25 @@ class StatutsController extends AppController {
 		if (!empty($this->data)) {
 			$this->Statut->create();
 			if ($this->Statut->save($this->data)) {
-				$this->Session->setFlash(__('The Statut has been saved', true));
+				$this->Session->setFlash(__('Le statut a été sauvegardé', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
-				$this->Session->setFlash(__('The Statut could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('Le statut n\'a pas pu être sauvegardé. Veuillez réessayer, merci.', true));
 			}
 		}
 	}
 
 	function edit($id = null) {
 		if (!$id && empty($this->data)) {
-			$this->Session->setFlash(__('Invalid Statut', true));
+			$this->Session->setFlash(__('Statut invalide.', true));
 			$this->redirect(array('action'=>'index'));
 		}
 		if (!empty($this->data)) {
 			if ($this->Statut->save($this->data)) {
-				$this->Session->setFlash(__('The Statut has been saved', true));
+				$this->Session->setFlash(__('Le statut a été sauvegardé', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
-				$this->Session->setFlash(__('The Statut could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('Le statut n\'a pas pu être sauvegardé. Veuillez réessayer, merci.', true));
 			}
 		}
 		if (empty($this->data)) {
@@ -51,11 +51,11 @@ class StatutsController extends AppController {
 
 	function delete($id = null) {
 		if (!$id) {
-			$this->Session->setFlash(__('Invalid id for Statut', true));
+			$this->Session->setFlash(__('Statut invalide.', true));
 			$this->redirect(array('action'=>'index'));
 		}
 		if ($this->Statut->del($id)) {
-			$this->Session->setFlash(__('Statut deleted', true));
+			$this->Session->setFlash(__('Statut supprimé', true));
 			$this->redirect(array('action'=>'index'));
 		}
 	}
