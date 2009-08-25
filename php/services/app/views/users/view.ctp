@@ -36,11 +36,6 @@
 			<?php echo $user['User']['perso_id']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Role'); ?></dt>
-		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $user['User']['role']; ?>
-			&nbsp;
-		</dd>
 	</dl>
 </div>
 <div class="actions">

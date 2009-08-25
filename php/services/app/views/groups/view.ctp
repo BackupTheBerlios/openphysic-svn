@@ -46,7 +46,6 @@
 		<th><?php __('Created'); ?></th>
 		<th><?php __('Modified'); ?></th>
 		<th><?php __('Perso Id'); ?></th>
-		<th><?php __('Role'); ?></th>
 		<th class="actions"><?php __('Actions');?></th>
 	</tr>
 	<?php
@@ -64,7 +63,6 @@
 			<td><?php echo $user['created'];?></td>
 			<td><?php echo $user['modified'];?></td>
 			<td><?php echo $user['perso_id'];?></td>
-			<td><?php echo $user['role'];?></td>
 			<td class="actions">
 				<?php echo $html->link(__('View', true), array('controller' => 'users', 'action' => 'view', $user['id'])); ?>
 				<?php echo $html->link(__('Edit', true), array('controller' => 'users', 'action' => 'edit', $user['id'])); ?>
