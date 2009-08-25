@@ -15,7 +15,7 @@ class AppController extends Controller {
 		$this->User =& ClassRegistry::init('User');
 		$this->User->recursive = 0;
 		$user = $this->User->read(null, $id);
-		$this->set('user', $user);		
+		$this->set('loggeduser', $user);		
 	}
 }
 ?>

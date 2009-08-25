@@ -23,7 +23,7 @@
 			<?php if(!empty($loggedIn)): ?>
 			| <?php e($html->link(__('Page principale', true), array('controller' => 'pages', 'action' => 'home'))); ?>
 			| <?php e($html->link(__('Déconnecter', true) , array('controller' => 'users', 'action' => 'logout'))); ?>
-			| <?php e(sprintf(__("Vous &ecirc;tes <b>%s</b> (%s)", true), $html->link($user['User']['username'], array('controller' => 'users', 'action' => 'view', $user['User']['id'])), $user['Group']['name'])); // $user['User']['role'] ou $user['Group']['name']?> 
+			| <?php e(sprintf(__("Vous &ecirc;tes <b>%s</b> (%s)", true), $html->link($loggeduser['User']['username'], array('controller' => 'users', 'action' => 'view', $loggeduser['User']['id'])), $loggeduser['Group']['name'])); // $loggeduser['User']['role'] ou $loggeduser['Group']['name']?> 
 			<?php else: ?> 
 			| <?php e($html->link(__('Connecter', true) , array('controller' => 'users', 'action' => 'login'))); ?>
 			<?php endif; ?>
