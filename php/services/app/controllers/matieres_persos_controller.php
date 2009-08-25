@@ -128,6 +128,8 @@ class MatieresPersosController extends AppController {
 		*/
 		
 		$persos = $this->MatieresPerso->Perso->find('all', array('recursive'=>-1) );
+		
+		//$persos = Set::combine($persos, '{n}.Perso.id', array('({0}) {1} {2}', '{n}.Perso.initiales', '{n}.Perso.nom', '{n}.Perso.prenom') );
 		//$persos = Set::combine($persos, '{n}.Perso.id', '{n}.Perso');
 		//$ids = Set::extract($persos, '{n}.Perso.id');
 		//debug($ids);

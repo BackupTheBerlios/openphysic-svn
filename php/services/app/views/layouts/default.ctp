@@ -7,6 +7,8 @@
 		echo $html->meta('icon');
 
 		echo $html->css('cake.generic');
+		
+		echo $html->charset('utf-8');
 
 		echo $scripts_for_layout;
 	?>

@@ -13,6 +13,7 @@
 			//$ar [ $perso [ 'Perso' ] [ 'id' ] ] = "({$perso [ 'Perso' ] [ 'initiales' ]}) {$perso [ 'Perso' ] [ 'nom' ]} {$perso [ 'Perso' ] [ 'prenom' ]}";
 			$ar [ $perso [ 'Perso' ] [ 'id' ] ] = $people->format($perso['Perso']);
 		}
+		//$persos = Set::combine($persos, '{n}.Perso.id', array('({0}) {1} {2}', '{n}.Perso.initiales', '{n}.Perso.nom', '{n}.Perso.prenom') );
 		echo $form->input('perso_id', array('options' =>$ar ) );
 		
 		echo $form->input('matiere_id');
