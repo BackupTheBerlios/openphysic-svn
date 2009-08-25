@@ -67,7 +67,7 @@ Ouvrez le fichier
 	
 	Modifiez la variable debug aisi :
 	
-		Configure::write('debug', 0);
+	->	Configure::write('debug', 0);
 	
 	afin de ne pas faire apparaître (pour des raisons de sécurité) les messages d'erreur de l'application.
 
