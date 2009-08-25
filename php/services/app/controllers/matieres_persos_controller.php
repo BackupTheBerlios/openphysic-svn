@@ -2,7 +2,7 @@
 class MatieresPersosController extends AppController {
 
 	var $name = 'MatieresPersos';
-	var $helpers = array('Html', 'Form');
+	var $helpers = array('Html', 'Form', 'People');
 
 	var $components = array('Auth', 'Session');
 

@@ -9,8 +9,9 @@
 		
 		$ar = array ( );
 		foreach ( $persos as $key => $perso  ) {
-			$ar [ $perso [ 'Perso' ] [ 'id' ] ] = sprintf("(%s) %s %s", $perso [ 'Perso' ] [ 'initiales' ], $perso [ 'Perso' ] [ 'nom' ], $perso [ 'Perso' ] [ 'prenom' ]);
+			//$ar [ $perso [ 'Perso' ] [ 'id' ] ] = sprintf("(%s) %s %s", $perso [ 'Perso' ] [ 'initiales' ], $perso [ 'Perso' ] [ 'nom' ], $perso [ 'Perso' ] [ 'prenom' ]);
 			//$ar [ $perso [ 'Perso' ] [ 'id' ] ] = "({$perso [ 'Perso' ] [ 'initiales' ]}) {$perso [ 'Perso' ] [ 'nom' ]} {$perso [ 'Perso' ] [ 'prenom' ]}";
+			$ar [ $perso [ 'Perso' ] [ 'id' ] ] = $people->format($perso['Perso']);
 		}
 		echo $form->input('perso_id', array('options' =>$ar ) );
 		
