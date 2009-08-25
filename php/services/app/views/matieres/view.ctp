@@ -76,7 +76,7 @@
 		<tr<?php echo $class;?>>
 			<td><?php echo $matierePerso['MatieresPerso']['id'];?></td>
 			<td><?php echo $html->link($matierePerso['Perso']['initiales'], array('controller'=> 'persos', 'action'=>'view', $matierePerso['Perso']['id'])); ?></td>
-			<td><?php echo $html->link($matierePerso['Perso']['nom'], array('controller'=> 'persos', 'action'=>'view', $matierePerso['Perso']['id'])); ?></td>
+			<td><?php echo $html->link(strtoupper($matierePerso['Perso']['nom']), array('controller'=> 'persos', 'action'=>'view', $matierePerso['Perso']['id'])); ?></td>
 			<td><?php echo $html->link($matierePerso['Perso']['prenom'], array('controller'=> 'persos', 'action'=>'view', $matierePerso['Perso']['id'])); ?></td>
 			<td><?php echo $matierePerso['MatieresPerso']['h_cours'];?></td>
 			<td><?php echo $matierePerso['MatieresPerso']['h_td'];?></td>

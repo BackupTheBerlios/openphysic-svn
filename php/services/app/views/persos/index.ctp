@@ -33,7 +33,7 @@ foreach ($persos as $perso):
 	<tr<?php echo $class;?>>
 		<td><?php echo $perso['Perso']['id']; ?></td>
 		<td><?php echo $html->link($perso['Perso']['initiales'], array('action'=>'view', $perso['Perso']['id'])); ?></td>
-		<td><?php echo $html->link($perso['Perso']['nom'], array('action'=>'view', $perso['Perso']['id'])); ?></td>
+		<td><?php echo $html->link(strtoupper($perso['Perso']['nom']), array('action'=>'view', $perso['Perso']['id'])); ?></td>
 		<td><?php echo $html->link($perso['Perso']['prenom'], array('action'=>'view', $perso['Perso']['id'])); ?></td>
 		<td><?php echo $html->link($perso['Statut']['nom'], array('controller'=> 'statuts', 'action'=>'view', $perso['Statut']['id'])); ?></td>
 		<td><?php echo $boolean->yes_no( $perso['Perso']['permanent'] ); ?></td>

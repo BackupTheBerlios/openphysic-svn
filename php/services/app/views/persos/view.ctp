@@ -13,7 +13,7 @@
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Nom'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $perso['Perso']['nom']; ?>
+			<?php echo strtoupper($perso['Perso']['nom']); ?>
 			&nbsp;
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Prenom'); ?></dt>

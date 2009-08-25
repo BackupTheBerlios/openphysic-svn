@@ -30,7 +30,7 @@ class Perso extends AppModel {
 	
 	//var $hasOne = array('VuePersosBilanService');
 	
-	var $validate = array( 'initiales'=>'alphaNumeric', 'nom'=>'alphaNumeric', 'prenom'=>'alphaNumeric' );
+	//var $validate = array( 'initiales'=>'alphaNumeric', 'nom'=>'alphaNumeric', 'prenom'=>'alphaNumeric' );
 	
 	function getBilanService($id='all') {
 		//return $this->getBilanServiceWithSqlView($id);
