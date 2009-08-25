@@ -58,7 +58,7 @@
 		<tr<?php echo $class;?>>
 			<td><?php echo $perso['id'];?></td>
 			<td><?php echo $html->link($perso['initiales'], array('controller'=> 'persos', 'action'=>'view', $perso['id'])); ?></td>
-			<td><?php echo $html->link($perso['nom'], array('controller'=> 'persos', 'action'=>'view', $perso['id'])); ?></td>
+			<td><?php echo $html->link(strtoupper($perso['nom']), array('controller'=> 'persos', 'action'=>'view', $perso['id'])); ?></td>
 			<td><?php echo $html->link($perso['prenom'], array('controller'=> 'persos', 'action'=>'view', $perso['id'])); ?></td>
 			<td><?php echo $boolean->yes_no($perso['permanent']);?></td>
 			<td class="actions">
