@@ -5,6 +5,7 @@ class UsersController extends AppController {
 	var $helpers = array('Html', 'Form', 'Password');
 	var $components = array('Auth', 'Session');
 	
+	/*
 	function beforeFilter() {
         // Login failed. Invalid username or password.
 		//$this->Auth->loginError = 'Connexion échouée. Nom d\'utilisateur ou mot de passe incorrect.';
@@ -24,6 +25,7 @@ class UsersController extends AppController {
 		
 
 	}
+	*/
 
 	function login() {
 		
