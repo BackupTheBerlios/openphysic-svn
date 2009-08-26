@@ -1,38 +1,22 @@
 <div class="users form">
-
-<?php echo $form->create('User');?>
+<?php echo $form->create('User', array('action' => 'change_password'));?>
 	<fieldset>
- 		<legend><?php __('Modifiez le mot de passe');?></legend>
-
-
+ 		<legend><?php __('Editer un utilisateur');?></legend>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __("Id"); ?></dt>
-		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $user['User']['id']; ?>
-			&nbsp;
-		</dd>
-
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __("Nom d'utilisateur"); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $html->link($user['User']['username'], array('controller'=>'users', 'action'=>'view', $user['User']['id'])); ?>
+			<?php echo $this->data['User']['username']; ?>
 			&nbsp;
 		</dd>
-
+	</dl>
 	<?php
-	
+		echo $form->input('id');
+		echo $form->hidden('username');
 		echo $form->input('password', array('type'=>'password', 'label'=>__('Mot de passe', true)));
 		echo $form->input('password2', array('type'=>'password', 'label'=>__('Confirmer le mot de passe', true)));
+		//echo $form->input('group_id');
+		//echo $form->input('perso_id');
 	?>
-
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __("Groupe"); ?></dt>
-		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $html->link($user['Group']['name'], array('controller'=>'groups', 'action'=>'view', $user['Group']['id'])); ?>
-			&nbsp;
-		</dd>
-	
-	</dl>
-
 	</fieldset>
-<?php echo $form->end(__('Submit',true));?>
+<?php echo $form->end(__('Submit', true));?>
 </div>
-

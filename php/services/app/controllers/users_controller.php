@@ -98,13 +98,13 @@ class UsersController extends AppController {
 			if ( $this->data['User']['password']==$this->Auth->password($this->data['User']['password2']) ) {
 				if ($this->User->save($this->data)) {
 					$this->Session->setFlash(__('L\'utilisateur a été sauvegardé', true));
-					$this->redirect(array('action'=>'index'));
+					$this->redirect(array('action'=>'view', $id));
 				} else {
 					$this->Session->setFlash(__('L\'utilisateur n\'a pas pu être sauvegardé. Veuillez réessayer, merci.', true));
 				}
 			} else {
-				$this->Session->setFlash(__('eLe mot de passe n\'a pas été confirmé correctement.', true));
-				$this->redirect(array('action'=>'view', $id));
+				$this->Session->setFlash(__('Le mot de passe n\'a pas été confirmé correctement.', true));
+				$this->redirect(array('action'=>'edit', $id));
 			}
 		}
 		if (empty($this->data)) {
@@ -118,7 +118,7 @@ class UsersController extends AppController {
 		$this->set(compact('groups'));
 	}
 	
-	function change_password($id) {
+	function change_password($id = null) { // attention il faut préciser dans la vue $form->create('User', array('action' => 'change_password'))
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Utilisateur invalide.', true));
 			$this->redirect(array('action'=>'index'));
@@ -126,21 +126,25 @@ class UsersController extends AppController {
 		if (!empty($this->data)) {
 			if ( $this->data['User']['password']==$this->Auth->password($this->data['User']['password2']) ) {
 				if ($this->User->save($this->data)) {
-					$this->Session->setFlash(__('L\'utilisateur a été sauvegardé', true));
-					$this->redirect(array('action'=>'index'));
+					$this->Session->setFlash(__('Le mot de passe utilisateur a été sauvegardé', true));
+					$this->redirect(array('action'=>'view', $id));
 				} else {
-					$this->Session->setFlash(__('L\'utilisateur n\'a pas pu être sauvegardé. Veuillez réessayer, merci.', true));
+					$this->Session->setFlash(__('Le mot de passe n\'a pas pu être sauvegardé. Veuillez réessayer, merci.', true));
 				}
 			} else {
-				$this->Session->setFlash(__('cLe mot de passe n\'a pas été confirmé correctement.', true));
-				$this->redirect(array('action'=>'view', $id));
+				$this->Session->setFlash(__('Le mot de passe n\'a pas été confirmé correctement.', true));
+				$this->redirect(array('action'=>'change_password', $id));
 			}
-		} else {
-			$user = $this->User->read(null, $id);
-			$this->set('user', $user);
-			//debug($user);
 		}
-		//exit();
+		if (empty($this->data)) {
+			$this->data = $this->User->read(null, $id);
+		}
+
+		$this->data['User']['password'] = '';
+		$this->data['User']['password2'] = '';
+		
+		$groups = $this->User->Group->find('list');
+		$this->set(compact('groups'));
 	}
 
 	function delete($id = null) {
@@ -175,9 +179,7 @@ class UsersController extends AppController {
 		}
 
 		$this->redirect(array('action'=>'view', $id));		
-		//exit();
 	}
-
 
 }
 ?>
