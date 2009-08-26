@@ -153,9 +153,11 @@ class PersosController extends AppController {
     	$this->render();
 	}
 	
-	function bilanPdf() {
+	function bilanPdf() {	    	
 		$this->layout = 'pdf';
     	$this->render();
+    	
+	    //$this->redirect(array('action'=>'bilan'));
 	}
 
 }

@@ -1,3 +1,11 @@
+			<?php echo $html->link(
+					$html->image('print.jpg', array('alt'=> __("Made by: celles.net", true), 'border'=>"0")),
+					'http://www.celles.net/',
+					array('target'=>'_blank'), null, false
+				);
+			?>
+
+
 <?php foreach ($persos as $key=>$perso): ?>
 
 <div>
