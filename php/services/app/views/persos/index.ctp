@@ -69,4 +69,7 @@ foreach ($persos as $perso):
 		<li><?php echo $html->link(__('Lister les occupations', true), array('controller'=> 'matieres_persos', 'action'=>'index')); ?> </li>
 		<li><?php echo $html->link(__('Nouvelle occupation', true), array('controller'=> 'matieres_persos', 'action'=>'add')); ?> </li>
 	</ul>
+	<ul>
+		<li><?php echo $html->link(__('Bilan de service prévisionnel de l\'ensemble des personnels', true), array('action'=>'bilan')); ?> </li>
+	</ul>
 </div>
