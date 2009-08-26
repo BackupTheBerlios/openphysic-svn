@@ -41,6 +41,7 @@
 <div class="actions">
 	<ul>
 		<li><?php echo $html->link(__('Modifier le mot de passe', true), array('action'=>'change_password', $user['User']['id'])); ?> </li>
+		<li><?php echo $html->link(__('Réinitialiser le mot de passe', true), array('action'=>'reset_password', $user['User']['id'])); ?> </li>
 		<li><?php echo $html->link(__('Editer cet utilisateur', true), array('action'=>'edit', $user['User']['id'])); ?> </li>
 		<li><?php echo $html->link(__('Lister les utilisateurs', true), array('action'=>'index')); ?> </li>
 		<li><?php echo $html->link(__('Nouvel utilisateur', true), array('action'=>'add')); ?> </li>

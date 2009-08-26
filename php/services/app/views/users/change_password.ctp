@@ -1,4 +1,5 @@
 <div class="users form">
+
 <?php echo $form->create('User');?>
 	<fieldset>
  		<legend><?php __('Modifiez le mot de passe');?></legend>

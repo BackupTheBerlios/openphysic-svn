@@ -106,7 +106,8 @@ class UsersController extends AppController {
 				$this->Session->setFlash(__('eLe mot de passe n\'a pas été confirmé correctement.', true));
 				$this->redirect(array('action'=>'view', $id));
 			}
-		} else {
+		}
+		if (empty($this->data)) {
 			$this->data = $this->User->read(null, $id);
 		}
 
@@ -161,13 +162,14 @@ class UsersController extends AppController {
 		$this->User->recursive = -1;
 		$user=$this->User->read(null, $id);
 		
-		$user['User']['password']='123';
+		$password='123';
+		$user['User']['password']=$password;
 		$user=$this->Auth->hashPasswords($user); // necessite un champ username et un champ password pour que la 'magie' de CakePHP fonctionne
 		
 		//$user['User']['password'] = Security::hash('123', null, true);
 
 		if ( $this->User->save($user) ) {
-			$this->Session->setFlash(__('Mot de passe modifié', true));
+			$this->Session->setFlash(__(sprintf("Mot de passe initialisé à '%s'. Merci de le modifier.", $password), true));
 		} else {
 			$this->Session->setFlash(__('zLe mot de passe n\'a pas été modifié', true));		
 		}
