@@ -3,12 +3,14 @@ App::import('Vendor','xtcpdf');
 $tcpdf = new XTCPDF();
 $textfont = 'freesans'; // looks better, finer, and more condensed than 'dejavusans'
 
-$tcpdf->SetAuthor("KBS Homes & Properties at http://kbs-properties.com");
+$tcpdf->SetAuthor("Sebastien Celles - http://www.celles.net");
 $tcpdf->SetAutoPageBreak( false );
-$tcpdf->setHeaderFont(array($textfont,'',40));
-$tcpdf->xheadercolor = array(150,0,0);
-$tcpdf->xheadertext = 'KBS Homes & Properties';
-$tcpdf->xfootertext = 'Copyright © %d KBS Homes & Properties. All rights reserved.';
+$tcpdf->setHeaderFont(array($textfont,'',20));
+//$tcpdf->xheadercolor = array(150,0,0);
+
+$tcpdf->xheadertext = 'Gestion prévisionnelle des services';
+//$tcpdf->xheadertext = 'celles.net';
+$tcpdf->xfootertext = 'celles.net - CakePHP Powered';
 
 
 

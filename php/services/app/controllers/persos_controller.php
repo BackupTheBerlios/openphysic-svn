@@ -5,19 +5,17 @@ class PersosController extends AppController {
 	var $helpers = array('Html', 'Form', 'Heures', 'Boolean');
 	
 	//var $scaffold;
+	
 	var $components = array('Auth', 'Session');
 	
 	function index() {
 		$this->Perso->recursive = 0;
 		$persos =  $this->paginate();
 		
-		//debug($persos);
-
 		$bilanservice=$this->Perso->getBilanService('all');
 		
 		foreach($persos as $key => $perso) {
 			$id=$perso['Perso']['id'];
-			//debug($id);
 			if (!empty($bilanservice[$id])) {
 				$persos[$key]['BilanService']=$bilanservice[$id];
 			} else {
@@ -27,24 +25,7 @@ class PersosController extends AppController {
 
 		
 		$this->set('persos', $persos);
-		
-		
-		//$this->set('bilanservice', $bilanservice);		
 	}
-	
-	/*
-	function vol_horaire_attribue($perso) {
-		//$perso=$this->find('all', array('conditions'=>'matiere_id='.$id_matiere));
-		$result=array('h_cours'=>0, 'h_td'=>0, 'h_tp'=>0);
-		foreach($perso['Matieres'] as $matiere) {
-			//debug($matiere_perso);
-        	$result['h_cours'] = $result['h_cours'] + $matiere['MatieresPerso']['h_cours'];
-        	$result['h_td'] = $result['h_td'] + $matiere['MatieresPerso']['h_td'];
-        	$result['h_tp'] = $result['h_tp'] + + $matiere['MatieresPerso']['h_tp'];
-		}
-		return $result;
-	}
-	*/
         
 	function view($id = null) {
 		if (!$id) {
@@ -59,28 +40,12 @@ class PersosController extends AppController {
 		
 		$this->MatieresPerso =& ClassRegistry::init('MatieresPerso');
 		$matieres_persos = $this->MatieresPerso->findByPerso($id);
-		//debug($matieres_persos);
 		$this->set('matieres_persos', $matieres_persos);
 		
-        //$this->set(compact('perso', 'matieres'));
-
         $this->Filiere =& ClassRegistry::init('Filiere');
         $filieres = $this->Filiere->find('list');
         $this->set('filieres', $filieres);
         
- 		/* === Volume horaire total === */
- 		/*
-		$vol_horaire_attribue = $this->Perso->getBilanService($id);
-		
-				
-		$this->set('vol_horaire_total',
-       		array(
-       			'h_cours' => $vol_horaire_attribue['h_cours'],
-       			'h_td' => $vol_horaire_attribue['h_td'],
-       			'h_tp' => $vol_horaire_attribue['h_tp'],
-       			)
-       	);
-       	*/
 	}
 
 	function add() {
@@ -153,6 +118,25 @@ class PersosController extends AppController {
 		//exit();
 	}
 	*/
+	
+	function bilan() {
+		$this->Perso->recursive = 1;
+		$persos =  $this->Perso->find('all');
+		
+		$bilanservice=$this->Perso->getBilanService('all');
+		
+		foreach($persos as $key => $perso) {
+			$id=$perso['Perso']['id'];
+			if (!empty($bilanservice[$id])) {
+				$persos[$key]['BilanService']=$bilanservice[$id];
+			} else {
+				$persos[$key]['BilanService']=array('h_cours'=>0, 'h_td'=>0, 'h_tp'=>0);
+			}
+		}
+
+		
+		$this->set('persos', $persos);
+	}
 
 }
 ?>
