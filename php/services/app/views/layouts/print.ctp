@@ -19,6 +19,6 @@
 			<?php echo $content_for_layout; ?>
 		</div>
 	</div>
-	<?php // echo $cakeDebug; ?>
+	<?php echo $cakeDebug; ?>
 </body>
 </html>

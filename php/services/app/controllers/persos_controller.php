@@ -143,8 +143,7 @@ class PersosController extends AppController {
 			}
 			
 			foreach($persos[$key]['MatieresPerso'] as $key_matieresperso => $matieresperso) {
-				$persos[$key]['MatieresPerso'][$key_matieresperso]['Matiere'] = $this->Matiere->read(null, 81) ; //'x';
-				//$persos[$key]['MatieresPerso'][$key_matieresperso]['Matiere']['Filiere']='y';
+				$persos[$key]['MatieresPerso'][$key_matieresperso]['Matiere'] = $this->Matiere->read(null, $matieresperso['matiere_id']) ; //'x';
 			}
 			
 		}
@@ -152,7 +151,7 @@ class PersosController extends AppController {
 		
 		$this->set('persos', $persos);
 
-		Configure::write('debug',0);
+		//Configure::write('debug',0);
 		
 		$this->layout = 'print'; //this will use the pdf.ctp layout
     	$this->render();
