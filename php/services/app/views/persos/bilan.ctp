@@ -1,8 +1,6 @@
-<h2><?php  __('Bilan de service prévisionnel de l\'ensemble des personnels');?></h2>
-<hr>
 <?php foreach ($persos as $key=>$perso): ?>
 <div class="persos view">
-<h3><?php  __('Bilan de service prévisionnel');?></h3>
+<h2><?php  __('Bilan de service prévisionnel');?></h2>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Id'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
