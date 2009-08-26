@@ -121,10 +121,7 @@ class PersosController extends AppController {
 	
 	function bilan() {
 		$this->Perso->recursive = 1;
-		
-		//$this->Statut =& ClassRegistry::init('Statut');
-		//$this->Statut->unbindModel( array( 'hasMany'=>array() ) );
-		
+				
 		$this->Matiere =& ClassRegistry::init('Matiere');
 		$this->Matiere->recursive = 0;
 		//$this->Matiere->unbindModel( array( 'hasMany'=>array() ) );
@@ -147,13 +144,17 @@ class PersosController extends AppController {
 			}
 			
 		}
-
 		
 		$this->set('persos', $persos);
 
 		Configure::write('debug',0);
 		
-		$this->layout = 'print'; //this will use the pdf.ctp layout
+		$this->layout = 'print';
+    	$this->render();
+	}
+	
+	function bilanPdf() {
+		$this->layout = 'pdf';
     	$this->render();
 	}
 

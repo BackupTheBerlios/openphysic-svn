@@ -1,4 +1,7 @@
 <?php foreach ($persos as $key=>$perso): ?>
+
+<div>
+
 <div class="persos view">
 <h2><?php  __('Bilan de service prévisionnel');?></h2>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
@@ -95,7 +98,8 @@
 		</table>
 </div>
 
+</div>
 
-<div style="page-break-before:always; margin-top:2cm;">../..</div>
+<div style="page-break-before: always;">&nbsp;</div>
 
 <?php endforeach; ?>

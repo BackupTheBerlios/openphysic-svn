@@ -8,6 +8,7 @@
  * @license       http://www.gnu.org/copyleft/gpl.html
  */
 
+/*
 div.breakafter {
 	page-break-after: always;
 }
@@ -15,6 +16,7 @@ div.breakafter {
 hr {
 	page-break-after: always;
 }
+*/
 
 a {
 	/* background:#fff; */
@@ -23,6 +25,12 @@ a {
 	font-weight: normal;
 }
 
+/*
 h1 {
+	page-break-before:always;
+}
+*/
+
+h2 {
 	page-break-before:always;
 }
