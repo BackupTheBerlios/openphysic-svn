@@ -95,5 +95,7 @@
 		</table>
 </div>
 
-<hr>
+
+<div style="page-break-before:always; margin-top:2cm;">../..</div>
+
 <?php endforeach; ?>

@@ -151,7 +151,7 @@ class PersosController extends AppController {
 		
 		$this->set('persos', $persos);
 
-		//Configure::write('debug',0);
+		Configure::write('debug',0);
 		
 		$this->layout = 'print'; //this will use the pdf.ctp layout
     	$this->render();
