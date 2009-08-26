@@ -7,13 +7,13 @@
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __("Id"); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $this->data['User']['id']; ?>
+			<?php echo $user['User']['id']; ?>
 			&nbsp;
 		</dd>
 
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __("Nom d'utilisateur"); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $this->data['User']['username']; ?>
+			<?php echo $html->link($user['User']['username'], array('controller'=>'users', 'action'=>'view', $user['User']['id'])); ?>
 			&nbsp;
 		</dd>
 
@@ -25,7 +25,7 @@
 
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __("Groupe"); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $this->data['Group']['name']; ?>
+			<?php echo $html->link($user['Group']['name'], array('controller'=>'groups', 'action'=>'view', $user['Group']['id'])); ?>
 			&nbsp;
 		</dd>
 	
@@ -34,13 +34,4 @@
 	</fieldset>
 <?php echo $form->end(__('Submit',true));?>
 </div>
-<div class="actions">
-	<ul>
-		<li><?php echo $html->link(__('Supprimer', true), array('action'=>'delete', $form->value('User.id')), null, sprintf(__('Êtes-vous sûr de vouloir supprimer l\'utilisateur # %s ?', true), $form->value('User.id'))); ?></li>
-		<li><?php echo $html->link(__('Lister les utilisateurs', true), array('action'=>'index'));?></li>
-	</ul>
-	<ul>
-		<li><?php echo $html->link(__('Lister les groupes d\'utilisateurs', true), array('controller'=> 'groups', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('Nouveau groupe d\'utilisateurs', true), array('controller'=> 'groups', 'action'=>'add')); ?> </li>
-	</ul>
-</div>
+

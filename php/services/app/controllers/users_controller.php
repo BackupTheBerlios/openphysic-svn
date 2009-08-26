@@ -80,7 +80,7 @@ class UsersController extends AppController {
 					$this->Session->setFlash(__('L\'utilisateur n\'a pas pu être sauvegardé. Veuillez réessayer, merci.', true));
 				}
 			} else {
-				$this->Session->setFlash(__('Le mot de passe n\'a pas été confirmé correctement.', true));
+				$this->Session->setFlash(__('aLe mot de passe n\'a pas été confirmé correctement.', true));
 				$this->data['User']['password'] = '';
 				$this->data['User']['password2'] = '';
 			}
@@ -103,22 +103,43 @@ class UsersController extends AppController {
 					$this->Session->setFlash(__('L\'utilisateur n\'a pas pu être sauvegardé. Veuillez réessayer, merci.', true));
 				}
 			} else {
-				$this->Session->setFlash(__('Le mot de passe n\'a pas été confirmé correctement.', true));
+				$this->Session->setFlash(__('eLe mot de passe n\'a pas été confirmé correctement.', true));
 				$this->redirect(array('action'=>'view', $id));
 			}
-		}
-		if (empty($this->data)) {
+		} else {
 			$this->data = $this->User->read(null, $id);
 		}
 
 		$this->data['User']['password'] = '';
 		$this->data['User']['password2'] = '';
+		
 		$groups = $this->User->Group->find('list');
 		$this->set(compact('groups'));
 	}
 	
 	function change_password($id) {
-		$this->edit($id);
+		if (!$id && empty($this->data)) {
+			$this->Session->setFlash(__('Utilisateur invalide.', true));
+			$this->redirect(array('action'=>'index'));
+		}
+		if (!empty($this->data)) {
+			if ( $this->data['User']['password']==$this->Auth->password($this->data['User']['password2']) ) {
+				if ($this->User->save($this->data)) {
+					$this->Session->setFlash(__('L\'utilisateur a été sauvegardé', true));
+					$this->redirect(array('action'=>'index'));
+				} else {
+					$this->Session->setFlash(__('L\'utilisateur n\'a pas pu être sauvegardé. Veuillez réessayer, merci.', true));
+				}
+			} else {
+				$this->Session->setFlash(__('cLe mot de passe n\'a pas été confirmé correctement.', true));
+				$this->redirect(array('action'=>'view', $id));
+			}
+		} else {
+			$user = $this->User->read(null, $id);
+			$this->set('user', $user);
+			//debug($user);
+		}
+		//exit();
 	}
 
 	function delete($id = null) {
@@ -130,6 +151,29 @@ class UsersController extends AppController {
 			$this->Session->setFlash(__('Utilisateur supprimé', true));
 			$this->redirect(array('action'=>'index'));
 		}
+	}
+	
+	function reset_password($id = null) {
+		if (!$id) {
+			$this->Session->setFlash(__('Utilisateur invalide.', true));
+			$this->redirect(array('action'=>'index'));
+		}
+		$this->User->recursive = -1;
+		$user=$this->User->read(null, $id);
+		
+		$user['User']['password']='123';
+		$user=$this->Auth->hashPasswords($user); // necessite un champ username et un champ password pour que la 'magie' de CakePHP fonctionne
+		
+		//$user['User']['password'] = Security::hash('123', null, true);
+
+		if ( $this->User->save($user) ) {
+			$this->Session->setFlash(__('Mot de passe modifié', true));
+		} else {
+			$this->Session->setFlash(__('zLe mot de passe n\'a pas été modifié', true));		
+		}
+
+		$this->redirect(array('action'=>'view', $id));		
+		//exit();
 	}
 
 
