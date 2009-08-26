@@ -1,10 +1,16 @@
-			<?php echo $html->link(
-					$html->image('print.jpg', array('alt'=> __("Made by: celles.net", true), 'border'=>"0")),
-					'http://www.celles.net/',
-					array('target'=>'_blank'), null, false
-				);
-			?>
-
+<div style="text-align: center;">
+<?php echo $html->link(
+	$html->image('print.jpg', array('alt'=> __("Imprimer", true), 'border'=>"0")),
+	array('action'=>'bilanPdf'),
+	null, null, false
+);?>
+<br/>
+<?php echo $html->link(
+	"Imprimer",
+	array('action'=>'bilanPdf'),
+	null, null, false
+);?>
+</div>
 
 <?php foreach ($persos as $key=>$perso): ?>
 
