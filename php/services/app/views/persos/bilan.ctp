@@ -61,8 +61,8 @@
 		?>
 		<tr<?php echo $class;?>>
 			<td><?php echo $matierePerso['id'];?></td>
-			<td><?php echo $html->link($filieres[$matierePerso['Matiere']['filiere_id']], array('controller'=>'filieres', 'action'=>'view', $matierePerso['Matiere']['filiere_id'])); ?></td>
-			<td><?php echo $html->link($matierePerso['Matiere']['name'], array('controller'=>'matieres', 'action'=>'view', $matierePerso['Matiere']['id'])); ?></td>
+			<td><?php echo $html->link($matierePerso['Matiere']['Filiere']['name'], array('controller'=>'filieres', 'action'=>'view', $matierePerso['Matiere']['Matiere']['filiere_id'])); ?></td>
+			<td><?php echo $html->link($matierePerso['Matiere']['Matiere']['name'], array('controller'=>'matieres', 'action'=>'view', $matierePerso['Matiere']['Matiere']['id'])); ?></td>
 			<td><?php echo $matierePerso['h_cours'];?></td>
 			<td><?php echo $matierePerso['h_td'];?></td>
 			<td><?php echo $matierePerso['h_tp'];?></td>

@@ -6,7 +6,7 @@ class Statut extends AppModel {
 	var $displayField = 'nom';
 		
 	var $order = 'Statut.nom ASC';
-		
+	
 	var $hasMany = array('Perso' =>
        	array('className'    => 'Perso',
 			'conditions'   => '',

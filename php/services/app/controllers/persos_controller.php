@@ -121,17 +121,32 @@ class PersosController extends AppController {
 	
 	function bilan() {
 		$this->Perso->recursive = 1;
+		
+		//$this->Statut =& ClassRegistry::init('Statut');
+		//$this->Statut->unbindModel( array( 'hasMany'=>array() ) );
+		
+		$this->Matiere =& ClassRegistry::init('Matiere');
+		$this->Matiere->recursive = 0;
+		//$this->Matiere->unbindModel( array( 'hasMany'=>array() ) );
+		
 		$persos =  $this->Perso->find('all');
 		
 		$bilanservice=$this->Perso->getBilanService('all');
 		
 		foreach($persos as $key => $perso) {
 			$id=$perso['Perso']['id'];
+			
 			if (!empty($bilanservice[$id])) {
 				$persos[$key]['BilanService']=$bilanservice[$id];
 			} else {
 				$persos[$key]['BilanService']=array('h_cours'=>0, 'h_td'=>0, 'h_tp'=>0);
 			}
+			
+			foreach($persos[$key]['MatieresPerso'] as $key_matieresperso => $matieresperso) {
+				$persos[$key]['MatieresPerso'][$key_matieresperso]['Matiere'] = $this->Matiere->read(null, 81) ; //'x';
+				//$persos[$key]['MatieresPerso'][$key_matieresperso]['Matiere']['Filiere']='y';
+			}
+			
 		}
 
 		
