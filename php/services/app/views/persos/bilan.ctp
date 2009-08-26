@@ -115,5 +115,6 @@
 </div>
 
 <div style="page-break-before: always;">&nbsp;</div>
+<hr />
 
 <?php endforeach; ?>
