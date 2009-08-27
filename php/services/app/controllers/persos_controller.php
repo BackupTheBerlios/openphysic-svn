@@ -40,12 +40,15 @@ class PersosController extends AppController {
 		
 		$this->MatieresPerso =& ClassRegistry::init('MatieresPerso');
 		$matieres_persos = $this->MatieresPerso->findByPerso($id);
-		$this->set('matieres_persos', $matieres_persos);
 		
         $this->Filiere =& ClassRegistry::init('Filiere');
-        $filieres = $this->Filiere->find('list');
-        $this->set('filieres', $filieres);
-        
+		foreach($matieres_persos as $key=>$matieres_perso) {
+			$this->Filiere->recursive = -1;
+			$filiere = $this->Filiere->read(null, $matieres_persos[$key]['Matiere']['filiere_id']);
+			$matieres_persos[$key]['Filiere'] = $filiere['Filiere'];
+		}
+		
+		$this->set('matieres_persos', $matieres_persos);        
 	}
 
 	function add() {
