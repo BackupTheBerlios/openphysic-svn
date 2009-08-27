@@ -2,6 +2,26 @@ Gestion previsionnelle des services d'enseignement
 ==================================================
 
 Cette application a pour objectif de réaliser une gestion prévisionnelle des services d'enseignement.
+On défini les différentes filières (S1, S2, S3, S4, Licence...), le nb de groupes de TD, TP...
+puis on crée les matières associées à ces filières et le volume horaire
+(pour un groupe).
+On peut ensuite affecter des enseignants (avec un volume horaire donné).
+On peut alors obtenir des bilans (par filières, par matières, par enseignant)
+* Le bilan pour un enseignant permet :
+ - de connaître les matières dans lesquelles l'enseignant est impliqué (et dans quel volume horaire)
+ - de connaître le nb total d'heures de Cours, TD, TP que l'enseignant efffectue
+ aini que le nb d'heures équivalent TD et le nb d'heures total (tout type
+ d'enseignement confonduà
+* Le bilan pour une matière permet :
+ - de connaître les différents ensignants impliqués dans une matière (et dans
+ quel volume horaire)
+ - de comptabiliser le nombre d'heures de Cours, TD, TP à effectuer (fonction
+ du nb de groupe) ainsi que le nombre d'heures attribués aux enseignants et
+ surtout le nb d'heures n'étant pas encore attribuées
+* La bilan pour une filière permet :
+ - de connaître les matières associées à une filière ainsi que les volumes
+ horaires à effectuer, les volumes horaires attribués aux enseignants et
+ les volumes horaires restants non attribués.
 
  Copyright (C) 2009  Sébastien Celles
 
@@ -21,10 +41,6 @@ Cette application a pour objectif de réaliser une gestion prévisionnelle des s
 
 ToDo:
 * cf OpenOffice Base services.odb
-* Ajouter module d'authentification
-  http://www.lazareff.net/component/content/article/9-les-autorisations-avec-cakephp-12.html?showall=1
-  
-  ACL ARO ACO ...
   
 * Ajouter 2 niveaux au dessus des filières (formations)
  - niceau "département" (ex GTE, GEII...)
@@ -129,7 +145,11 @@ entre rouge et vert si entre 0 et heure à effectuer
 après validation rediriger ver la page
 du personnel en question ou de la matière en question (selon le contexte)
 
-* gestion des droits (ACL, ARO, ACO)
+* Ajouter module d'authentification et d'autorisation
+  http://www.lazareff.net/component/content/article/9-les-autorisations-avec-cakephp-12.html?showall=1
+  
+  ACL ARO ACO ...
+
 voir http://book.cakephp.org/fr/view/171/Access-Control-Lists
 http://stackoverflow.com/questions/54230/cakephp-acl-database-setup-aro-aco-structure
 http://bakery.cakephp.org/articles/view/user-permissions-and-cakephp-acl
@@ -160,7 +180,7 @@ administrateur
  ne peut pas : rien
  
  
-* Mise en forme
-Ajouter matière et editer matière
- mettre un tableau pour les heures (Cours, Td, Tp)
- 
+* Ajouter occupations
+devrait utiliser Ajax
+Liste déroulante pour choisir filière
+met à jour une liste déroulant pour choisir matières (de la filière sélectionnée précédemment)
