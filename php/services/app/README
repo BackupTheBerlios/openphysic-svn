@@ -22,6 +22,11 @@ On peut alors obtenir des bilans (par filières, par matières, par enseignant)
  - de connaître les matières associées à une filière ainsi que les volumes
  horaires à effectuer, les volumes horaires attribués aux enseignants et
  les volumes horaires restants non attribués.
+ 
+
+Pour les informations concernant l'installation de l'application
+ voir INSTALL.TXT
+
 
  Copyright (C) 2009  Sébastien Celles
 
@@ -40,6 +45,7 @@ On peut alors obtenir des bilans (par filières, par matières, par enseignant)
 
 
 ToDo:
+=====
 * cf OpenOffice Base services.odb
   
 * Ajouter 2 niveaux au dessus des filières (formations)
