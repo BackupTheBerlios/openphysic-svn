@@ -124,7 +124,8 @@ class UsersController extends AppController {
 			$this->redirect(array('action'=>'index'));
 		}
 		if (!empty($this->data)) {
-			if ( $this->data['User']['password']==$this->Auth->password($this->data['User']['password2']) ) {
+			if ( $this->data['User']['password']==$this->data['User']['password2'] ) {
+				$this->data['User']['password'] = Security::hash($this->data['User']['password'], null, true);
 				if ($this->User->save($this->data)) {
 					$this->Session->setFlash(__('Le mot de passe utilisateur a été sauvegardé', true));
 					$this->redirect(array('action'=>'view', $id));

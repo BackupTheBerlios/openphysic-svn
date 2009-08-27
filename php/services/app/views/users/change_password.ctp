@@ -11,7 +11,7 @@
 	</dl>
 	<?php
 		echo $form->input('id');
-		echo $form->hidden('username');
+		//echo $form->hidden('username');
 		echo $form->input('password', array('type'=>'password', 'label'=>__('Mot de passe', true)));
 		echo $form->input('password2', array('type'=>'password', 'label'=>__('Confirmer le mot de passe', true)));
 		//echo $form->input('group_id');
