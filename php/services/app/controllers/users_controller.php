@@ -80,11 +80,14 @@ class UsersController extends AppController {
 					$this->Session->setFlash(__('L\'utilisateur n\'a pas pu être sauvegardé. Veuillez réessayer, merci.', true));
 				}
 			} else {
-				$this->Session->setFlash(__('aLe mot de passe n\'a pas été confirmé correctement.', true));
+				$this->Session->setFlash(__('Le mot de passe n\'a pas été confirmé correctement.', true));
 				$this->data['User']['password'] = '';
 				$this->data['User']['password2'] = '';
 			}
+		} else {
+			$this->data['User']['perso_id'] = 0;
 		}
+		
 		$groups = $this->User->Group->find('list');
 		$this->set(compact('groups'));
 	}
