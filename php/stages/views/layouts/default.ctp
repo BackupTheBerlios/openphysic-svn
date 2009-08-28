@@ -50,7 +50,7 @@
 			<?php if(!empty($loggedIn)): ?>
 			| <?php e($html->link(__('Page principale', true), array('controller' => 'pages', 'action' => 'home'))); ?>
 			| <?php e($html->link(__('Déconnecter', true) , array('controller' => 'users', 'action' => 'logout'))); ?>
-			| <?php e(sprintf(__("Vous &ecirc;tes <b>%s</b>", true), $html->link($user['User']['username'], array('controller' => 'users', 'action' => 'view', $user['User']['id'])))); ?> 
+			| <?php e(sprintf(__("Vous &ecirc;tes <b>%s</b>", true), $html->link($loggeduser['User']['username'], array('controller' => 'users', 'action' => 'view', $loggeduser['User']['id'])))); ?> 
 			<?php else: ?> 
 			| <?php e($html->link(__('Connecter', true) , array('controller' => 'users', 'action' => 'login'))); ?>
 			<?php endif; ?>
