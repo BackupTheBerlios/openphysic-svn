@@ -46,8 +46,8 @@ class AppController extends Controller {
 		$this->set('loggedIn', $id);
 		$this->User =& ClassRegistry::init('User');
 		$this->User->recursive = 0;
-		$user = $this->User->read(null, $id);
-		$this->set('user', $user);
+		$loggeduser = $this->User->read(null, $id);
+		$this->set('loggeduser', $loggeduser);
 		
 		$this->set('ip', $this->RequestHandler->getClientIP() );
 
