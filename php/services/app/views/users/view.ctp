@@ -33,7 +33,13 @@
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Perso'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $html->link($people->format($user['Perso']), array('controller'=>'persos', 'action'=>'view', $user['User']['perso_id'])); ?>
+			<?php
+				if ($user['User']['perso_id']) {
+					echo $html->link($people->format($user['Perso']), array('controller'=>'persos', 'action'=>'view', $user['User']['perso_id']));
+				} else {
+					echo "pas de personnel attaché à cet utilisateur";
+				}
+			?>
 			&nbsp;
 		</dd>
 	</dl>
