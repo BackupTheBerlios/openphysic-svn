@@ -3,7 +3,7 @@ class UsersController extends AppController {
 
 	var $name = 'Users';
 	var $helpers = array('Html', 'Form', 'Password', 'People');
-	var $components = array('Auth', 'Session');
+	var $components = array('Auth', 'Session', 'Acl');
 	
 	/*
 	function beforeFilter() {
@@ -99,6 +99,7 @@ class UsersController extends AppController {
 		}
 		if (!empty($this->data)) {
 			if ( $this->data['User']['password']==$this->Auth->password($this->data['User']['password2']) ) {
+				$this->User->create();
 				if ($this->User->save($this->data)) {
 					$this->Session->setFlash(__('L\'utilisateur a été sauvegardé', true));
 					$this->redirect(array('action'=>'view', $id));
@@ -129,7 +130,8 @@ class UsersController extends AppController {
 		if (!empty($this->data)) {
 			if ( $this->data['User']['password']==$this->data['User']['password2'] ) {
 				$this->data['User']['password'] = Security::hash($this->data['User']['password'], null, true);
-				if ($this->User->save($this->data)) {
+				//$this->User->create();
+				if ($this->User->saveField('password', $this->data['User']['password'])) {
 					$this->Session->setFlash(__('Le mot de passe utilisateur a été sauvegardé', true));
 					$this->redirect(array('action'=>'view', $id));
 				} else {
@@ -167,23 +169,45 @@ class UsersController extends AppController {
 			$this->Session->setFlash(__('Utilisateur invalide.', true));
 			$this->redirect(array('action'=>'index'));
 		}
+
+		//$this->User->set(array());
+		//$this->User->create();
 		$this->User->recursive = -1;
 		$user=$this->User->read(null, $id);
 		
-		$password='123';
-		$user['User']['password']=$password;
-		$user=$this->Auth->hashPasswords($user); // necessite un champ username et un champ password pour que la 'magie' de CakePHP fonctionne
-		
-		//$user['User']['password'] = Security::hash('123', null, true);
+		$password = '123';
 
-		if ( $this->User->save($user) ) {
+		//$user['User']['password']=$password;
+		//$user=$this->Auth->hashPasswords($user); // necessite un champ username et un champ password pour que la 'magie' de CakePHP fonctionne
+		
+		$h_password = Security::hash('123', null, true);
+		//$user['User']['password'] = $h_password;
+
+
+		//if ( $this->User->save($user) ) {
+		if ( $this->User->saveField('password', $h_password) ) {
 			$this->Session->setFlash(__(sprintf("Mot de passe initialisé à '%s'. Merci de le modifier.", $password), true));
 		} else {
-			$this->Session->setFlash(__('zLe mot de passe n\'a pas été modifié', true));		
+			$this->Session->setFlash(__('Le mot de passe n\'a pas été modifié', true));		
 		}
 
 		$this->redirect(array('action'=>'view', $id));		
 	}
+
+	function initDB() {
+		$group =& $this->User->Group;
+		//Allow admins to everything
+		$group->id = 4;     
+		$this->Acl->allow($group, 'controllers');
+ 
+
+		//allow users to only manage Users
+		$group->id = 5;
+		$this->Acl->deny($group, 'controllers'); // deny all
+		//  except...
+		//$this->Acl->allow($group, 'controllers/Users/view');
+	}
+
 
 }
 ?>

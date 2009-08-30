@@ -4,7 +4,14 @@ class FilieresController extends AppController {
 	var $name = 'Filieres';
 	var $helpers = array('Html', 'Form', 'Couleurs', 'Heures');
 	
-	var $components = array('Auth', 'Session');
+	var $components = array('Auth', 'Session', 'Acl');
+
+	/*
+	function beforeFilter() {
+		parent::beforeFilter();
+	}
+	*/
+
 
 	function index() {
 		//debug($this->Auth->user());
