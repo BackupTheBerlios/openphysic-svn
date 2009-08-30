@@ -18,9 +18,9 @@ class AppController extends Controller {
 
 		//debug($this->Auth);
 
-		$this->User =& ClassRegistry::init('User');
-		$this->User->recursive = 0;
-		$loggeduser = $this->User->read(null, $id);
+		//$this->User =& ClassRegistry::init('User');
+		//$this->User->recursive = 0;
+		//$loggeduser = $this->User->read(null, $id);
 
 		//$this->LoggedUser =& ClassRegistry::init('User');
 		//$this->LoggedUser->recursive = 0;
@@ -30,8 +30,12 @@ class AppController extends Controller {
 		//debug($this->Auth->user('group_id'));
 		//$loggeduser['Group']['name']="toto";
 
-		$this->set('loggeduser', $loggeduser);
+		$this->User =& ClassRegistry::init('User');
+		$loggeduser = $this->User->findById($id);
 
+		//debug($loggeduser);
+
+		$this->set('loggeduser', $loggeduser);
 
 		$this->Auth->actionPath = 'controllers/';
 
