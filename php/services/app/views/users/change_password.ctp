@@ -1,7 +1,7 @@
 <div class="users form">
 <?php echo $form->create('User', array('action' => 'change_password'));?>
 	<fieldset>
- 		<legend><?php __('Editer un utilisateur');?></legend>
+ 		<legend><?php __('Modifier le mot de passe');?></legend>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __("Nom d'utilisateur"); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
