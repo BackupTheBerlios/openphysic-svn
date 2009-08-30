@@ -3,7 +3,7 @@ class UsersController extends AppController {
 
 	var $name = 'Users';
 	var $helpers = array('Html', 'Form', 'Password', 'People');
-	var $components = array('Auth', 'Session', 'Acl');
+	var $components = array('Acl', 'Auth', 'Session');
 	
 	/*
 	function beforeFilter() {
@@ -194,18 +194,33 @@ class UsersController extends AppController {
 		$this->redirect(array('action'=>'view', $id));		
 	}
 
+
+
+
+
 	function initDB() {
 		$group =& $this->User->Group;
-		//Allow admins to everything
-		$group->id = 4;     
-		$this->Acl->allow($group, 'controllers');
- 
+		
+		// Allow admins to everything
+		//$group->id = 4;
+		//$this->Acl->allow($group, 'controllers'); // syntaxe sans alias
+		$this->Acl->allow('administrateurs', 'controllers'); // syntaxe avec alias
 
-		//allow users to only manage Users
-		$group->id = 5;
+		// Allow users to do nothing
+		//$group->id = 5; // syntaxe sans alias
+		$group = 'utilisateurs'; // syntaxe avec alias
 		$this->Acl->deny($group, 'controllers'); // deny all
-		//  except...
-		//$this->Acl->allow($group, 'controllers/Users/view');
+		//     except...
+		$this->Acl->allow($group, 'controllers/Pages'); // static pages : home about ...
+
+		$this->Acl->allow($group, 'controllers/Users/login'); // login logout change_password reset_password
+		$this->Acl->allow($group, 'controllers/Users/logout'); // login logout change_password reset_password
+		$this->Acl->allow($group, 'controllers/Users/change_password'); // login logout change_password reset_password
+		$this->Acl->allow($group, 'controllers/Users/reset_password'); // login logout change_password reset_password
+		$this->Acl->allow($group, 'controllers/Users/view'); // login logout change_password reset_password
+
+		$this->Acl->allow($group, 'controllers/Persos');
+
 	}
 
 
