@@ -26,20 +26,17 @@ class UsersController extends AppController {
 
 	}
 	*/
+	
+	function beforeFilter() {
+		parent::beforeFilter();
+		$this->Auth->allow('logout', 'login');
+	} 
 
 	function login() {
-		
-		//$this->set('my_password',$this->Auth->password("admin"));
-		//$this->set('my_password',$this->Auth->password($this->data['User']['password']));
-		
-		//$this->redirect($this->Auth->login());
 	}
 	
 	function logout() {
 		$this->Session->setFlash('Au revoir !'); 
-
-		//$this->Session->delete('User');
-		//$this->Session->destroy();
 
 		$this->redirect($this->Auth->logout());
 	}
