@@ -1,9 +1,9 @@
 <?php
 class AppController extends Controller {
-	var $components = array('Auth', 'Session');
+	var $components = array('Auth', 'Session', 'Acl');
 	
 	function beforeFilter() {
-		$this->Auth->allow(''); // ToFix
+		//$this->Auth->allow(''); // ToFix
 		
 		//debug("beforeFilter");
 		//exit();
@@ -26,7 +26,15 @@ class AppController extends Controller {
 		//$this->LoggedUser->recursive = 0;
 		//$loggeduser = $this->LoggedUser->read(null, $id);
 
-		$this->set('loggeduser', $loggeduser);		
+		//$loggeduser=$this->Auth->user();
+		//debug($this->Auth->user('group_id'));
+		//$loggeduser['Group']['name']="toto";
+
+		$this->set('loggeduser', $loggeduser);
+
+
+		$this->Auth->actionPath = 'controllers/';
+
 	}
 }
 ?>
