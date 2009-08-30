@@ -8,8 +8,11 @@ class User extends AppModel {
 	//var $hasOne = array('Perso');
 
 	var $actsAs = array('Acl' => 'requester');
+	//var $actsAs = array('Acl');
 
 	function parentNode() {
+		//return null;
+
 		if (!$this->id && empty($this->data)) {
 			return null;
 		}
@@ -22,6 +25,13 @@ class User extends AppModel {
 		} else {
 			return array('Group' => array('id' => $data['User']['group_id']));
 		}
+	}
+
+	function bindNode($object) {
+		return array(
+			'model' => 'Group',
+			'foreign_key' => $object['User']['group_id']
+		);
 	}
 
 }
