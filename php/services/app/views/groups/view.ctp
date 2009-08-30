@@ -49,7 +49,7 @@
 		<th class="actions"><?php __('Actions');?></th>
 	</tr>
 	<?php
-		$i = 0;
+		$i = 1;
 		foreach ($group['User'] as $user):
 			$class = null;
 			if ($i++ % 2 == 0) {

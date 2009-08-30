@@ -66,7 +66,7 @@
 		<th class="actions"><?php __('Actions');?></th>
 	</tr>
 	<?php
-		$i = 0;
+		$i = 1;
 		foreach ($matieres_persos as $matierePerso):
 			$class = null;
 			if ($i++ % 2 == 0) {
