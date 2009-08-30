@@ -14,9 +14,12 @@ class AppController extends Controller {
 		$this->Auth->loginAction = array('controller'=>'users','action'=>'login');
         	//$this->Auth->logoutRedirect = array('controller' => 'users', 'action' => 'logout');
         	$this->Auth->loginRedirect = array('controller' => 'filieres', 'action' => 'index');
-        	
+        	$this->Auth->autoRedirect = true;
+
 		//$this->Auth->recursive = 0;
 		//$loggeduser = $this->Auth->user();
+
+		//debug($this->Auth);
 
 		$id = $this->Auth->user('id');
 		$this->set('loggedIn', $id);
