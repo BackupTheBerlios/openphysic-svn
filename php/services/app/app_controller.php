@@ -1,6 +1,6 @@
 <?php
 class AppController extends Controller {
-	var $components = array('Auth', 'Session', 'Acl');
+	var $components = array('Acl', 'Auth', 'Session');
 	
 	function beforeFilter() {
 		//$this->Auth->allow(''); // ToFix
@@ -8,8 +8,13 @@ class AppController extends Controller {
 		//debug("beforeFilter");
 		//exit();
 		
-		$this->Auth->loginAction = array('controller'=>'users','action'=>'login');
+		//$this->Auth->authorize = 'controller'; // isAuthorized()
+		$this->Auth->authorize = 'actions'; // ACL : ARO ACO ARO_ACO
 		
+		$this->Auth->loginAction = array('controller'=>'users','action'=>'login');
+        	//$this->Auth->logoutRedirect = array('controller' => 'users', 'action' => 'logout');
+        	$this->Auth->loginRedirect = array('controller' => 'filieres', 'action' => 'index');
+        	
 		//$this->Auth->recursive = 0;
 		//$loggeduser = $this->Auth->user();
 
