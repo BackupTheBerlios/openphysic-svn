@@ -2,7 +2,7 @@
 class UsersController extends AppController {
 
 	var $name = 'Users';
-	var $helpers = array('Html', 'Form', 'Password', 'People');
+	var $helpers = array('Html', 'Form', 'Formx', 'Password', 'People');
 	var $components = array('Acl', 'Auth', 'Session');
 	
 	/*
