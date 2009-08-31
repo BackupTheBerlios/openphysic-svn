@@ -2,14 +2,15 @@
 <?php echo $form->create('User');?>
 	<fieldset>
  		<legend><?php __('Editer un utilisateur');?></legend>
-	<?php
-		echo $form->input('id');
-		echo $form->input('username', array('label'=>__("Nom d'utilisateur", true)));
-		echo $form->input('password', array('type'=>'password', 'label'=>__('Mot de passe', true)));
-		echo $form->input('password2', array('type'=>'password', 'label'=>__('Confirmer le mot de passe', true)));
-		echo $form->input('group_id');
-		echo $form->input('perso_id');
-	?>
+		<?php echo $form->input('id')."\n"; ?>
+		<?php echo $form->input('username', array('label'=>__("Nom d'utilisateur", true)))."\n"; ?>
+		<?php // echo $formx->output('username'); ?>
+		<?php echo $form->input('password', array('type'=>'password', 'label'=>__('Mot de passe', true)))."\n"; ?>
+		<?php echo $form->input('password2', array('type'=>'password', 'label'=>__('Confirmer le mot de passe', true)))."\n"; ?>
+		<?php echo $form->input('group_id')."\n"; ?>
+		<?php //echo $formx->output('group_id'); ?>
+		<?php echo $form->input('perso_id')."\n"; ?>
+		<?php //echo $formx->output('perso_id'); ?>
 	</fieldset>
 <?php echo $form->end(__('Submit', true));?>
 </div>

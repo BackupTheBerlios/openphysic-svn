@@ -4,7 +4,7 @@
 </dl>
 
 <h2><?php e(__("Connexion", true)); ?></h2>
-<?php if ($session->check('Message.auth')) $session->flash('auth'); ?>
+<?php //if ($session->check('Message.auth')) $session->flash('auth'); ?>
 
 <?php echo $form->create('User', array('action'=>'login')); ?>
 
