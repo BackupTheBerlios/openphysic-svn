@@ -125,8 +125,7 @@ pb : comment récupérer le prefixe des tables ?
 gérer la redirection lors de l'ajout ou la suppression d'une occupation
 (retour vers la fiche enseignant correspondante ou vers la fiche matière correspondante
 ou vers la page index des occupations)
-voir referrers
-$this->referer()
+voir referrers $this->referer() ou passage d'un paramètre dans l'URL ?
 
 * filtre des pages index
 http://localhost:8888/services/filieres/index/filter:filiere:1
@@ -190,3 +189,18 @@ administrateur
 devrait utiliser Ajax
 Liste déroulante pour choisir filière
 met à jour une liste déroulant pour choisir matières (de la filière sélectionnée précédemment)
+
+
+* Grille annuelle horaire (pour 1 groupe ou pour l'ensemble ?)
+
+n° semaine -> 36 37 38 ..... 52 01 02 ... 
+Matière 
+  |
+ \ /
+ Electricité  ... ... 5h
+  Cours
+  TD
+  TP
+  
+  à l'intersection semaine / matière on note le nb d'heures à effectuer
+  
