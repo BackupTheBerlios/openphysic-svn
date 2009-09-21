@@ -1,6 +1,6 @@
 Type=Exe
 Form=frmMain.frm
-Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#..\..\..\..\WINNT\system32\STDOLE2.TLB#OLE Automation
+Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#..\..\..\..\WINDOWS\system32\stdole2.tlb#OLE Automation
 Object={E46BCC02-8469-11D5-B00B-00008654A834}#1.0#0; ljackuwx.ocx
 Module=modBitManipulation; modBitManipulation.bas
 UserControl=Led.ctl
