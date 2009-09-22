@@ -15,17 +15,16 @@
       <Item Name="calc_k.vi" Type="VI" URL="calc_k.vi"/>
       <Item Name="calc_lambda.vi" Type="VI" URL="calc_lambda.vi"/>
       <Item Name="ecartements_positions.vi" Type="VI" URL="ecartements_positions.vi"/>
-      <Item Name="main.vi" Type="VI" URL="main.vi"/>
       <Item Name="splash.vi" Type="VI" URL="splash.vi"/>
+      <Item Name="main_sim.vi" Type="VI" URL="main_sim.vi"/>
       <Item Name="Dépendances" Type="Dependencies">
          <Item Name="vi.lib" Type="Folder">
-            <Item Name="NI_AALPro.lvlib" Type="Library" URL="/&lt;vilib&gt;/Analysis/NI_AALPro.lvlib"/>
             <Item Name="Waveform Array To Dynamic.vi" Type="VI" URL="/&lt;vilib&gt;/express/express shared/transition.llb/Waveform Array To Dynamic.vi"/>
             <Item Name="subBuildXYGraph.vi" Type="VI" URL="/&lt;vilib&gt;/express/express controls/BuildXYGraphBlock.llb/subBuildXYGraph.vi"/>
             <Item Name="Dynamic To Waveform Array.vi" Type="VI" URL="/&lt;vilib&gt;/express/express shared/transition.llb/Dynamic To Waveform Array.vi"/>
             <Item Name="ex_CorrectErrorChain.vi" Type="VI" URL="/&lt;vilib&gt;/express/express shared/ex_CorrectErrorChain.vi"/>
+            <Item Name="NI_AALPro.lvlib" Type="Library" URL="/&lt;vilib&gt;/Analysis/NI_AALPro.lvlib"/>
          </Item>
-         <Item Name="lvanlys.dll" Type="Document" URL="/C/Program Files/National Instruments/LabVIEW 8.5/resource/lvanlys.dll"/>
       </Item>
       <Item Name="Spécifications de construction" Type="Build">
          <Item Name="tp_barre_semi_infinie" Type="EXE">
@@ -54,7 +53,7 @@
             <Property Name="Source[0].itemID" Type="Str">{5867DE9A-CA16-4D16-B0CA-BCB1618B049C}</Property>
             <Property Name="Source[0].type" Type="Str">Container</Property>
             <Property Name="Source[1].destinationIndex" Type="Int">0</Property>
-            <Property Name="Source[1].itemID" Type="Ref">/Poste de travail/main.vi</Property>
+            <Property Name="Source[1].itemID" Type="Ref"></Property>
             <Property Name="Source[1].sourceInclusion" Type="Str">TopLevel</Property>
             <Property Name="Source[1].type" Type="Str">VI</Property>
             <Property Name="Source[2].destinationIndex" Type="Int">0</Property>
