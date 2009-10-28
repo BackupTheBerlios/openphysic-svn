@@ -1,2 +1,7 @@
+input=input
+transform=transform
+output=output.html
+
 all:
-	xsltproc -o output.html transform.xsl input.xml
+	$(RM) ${output}
+	xsltproc -o ${output} ${transform}.xsl ${input}.xml
