@@ -18,4 +18,4 @@ valid-xsd:
 	
 # RelaxNG
 valid-rng:
-	xmllint ${file}.xml ---noout -relaxng ${file}.rng
+	xmllint ${file}.xml --noout --relaxng ${file}.rng
