@@ -1,0 +1,8 @@
+
+start = 
+element formation {
+  element session {
+  	text
+  }*
+}
+

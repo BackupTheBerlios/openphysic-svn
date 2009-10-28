@@ -3,6 +3,8 @@ file=formation
 all:
 	$(MAKE) valid-dtd
 	$(MAKE) valid-xsd
+	$(MAKE) valid-rng
+	$(MAKE) valid-compactrng
 
 indent:
 	xmllint ${file}.xml --format
@@ -19,3 +21,8 @@ valid-xsd:
 # RelaxNG
 valid-rng:
 	xmllint ${file}.xml --noout --relaxng ${file}.rng
+	
+# RelaxNG compact
+valid-compactrng:
+	trang ${file}.rnc ${file}_compact.rng
+	xmllint ${file}.xml --noout --relaxng ${file}_compact.rng
