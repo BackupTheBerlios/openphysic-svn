@@ -1,0 +1,4 @@
+start = personne
+personne = element personne {nom & prenom}
+nom = element nom {text}
+prenom = element prenom {text}

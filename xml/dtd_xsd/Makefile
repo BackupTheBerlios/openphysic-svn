@@ -4,14 +4,18 @@ all:
 	$(MAKE) valid-dtd
 	$(MAKE) valid-xsd
 
+indent:
+	xmllint ${file}.xml --format
+
 # DTD
 valid-dtd:
-	xmllint --noout --loaddtd --valid ${file}.xml
+	#xmllint ${file}.xml --noout --loaddtd --valid
+	xmllint ${file}.xml --noout --dtdvalid ${file}.dtd
 
 # XML Schema
 valid-xsd:
-	xmllint --noout ${file}.xml --schema ${file}.xsd
+	xmllint ${file}.xml --noout --schema ${file}.xsd
 	
 # RelaxNG
 valid-rng:
-	xmllint --relaxng ${file}.rng ${file}.xml
+	xmllint ${file}.xml ---noout -relaxng ${file}.rng
