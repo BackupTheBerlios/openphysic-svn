@@ -3,18 +3,28 @@
 // et affichage de la matrice
 // selon une Žchelle de couleur
 
+//clear
+
 function f=f(i,j)
-  f = i+j
+  //f = "a(" + string(i) + "," + string(j) + ")"
+  f = i+j;
 endfunction
 
-lig = [0:0.1:2];
-col = [0:0.1:1.2]';
+lig = [0:0.1:1.2];
+col = [0:0.1:0.8]';
 
-M = zeros(size(lig,'c'), size(col,'r'));
+clear M
+//M = zeros(size(lig,'c'), size(col,'r'));
 
-for i=1:size(M,'r')
-  for j=1:size(M,'c')
-    M(i,j)=f(i,j);
+nb_lig = size(col,'r')
+nb_col = size(lig,'c')
+for i=1:nb_lig
+  for j=1:nb_col
+    //y=i;
+    //x=j;
+    x=lig(1,j);
+    y=col(i,1);
+    M(i,j)=f(y,x);
   end
 end
 
@@ -42,7 +52,7 @@ clf();
 
 Matplot(M)
 
-//pause;
+//halt;
 
 //clf();
 //plot3d(lig,col,M)
