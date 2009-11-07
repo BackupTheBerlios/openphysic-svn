@@ -55,4 +55,4 @@ Matplot(M)
 //halt;
 
 //clf();
-//plot3d(lig,col,M)
+//plot3d(col,lig,M)
