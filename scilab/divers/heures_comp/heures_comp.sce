@@ -156,6 +156,7 @@ M_ecart_hc_abs = M_h_comp_total_2010 - M_h_comp_total_2009;
 M_ecart_hc_rel = M_ecart_hc_abs ./ h_comp_total_2009 * 100;
 
 M=abs(M_ecart_hc_rel);
+M=M($:-1:1,:); // inverser ordre lignes
 
 Mmax=max(M);
 cmap = jetcolormap(Mmax);
