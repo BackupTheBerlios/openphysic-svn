@@ -23,10 +23,12 @@ M
 //colormap
 //========
 
-//cmap = hotcolormap(32);
-//cmap = graycolormap(32);
-cmap = jetcolormap(max(M));
-//cmap = (hotcolormap(32) + jetcolormap(32))/2;
+Mmax=max(M);
+
+//cmap = hotcolormap(Mmax);
+//cmap = graycolormap(Mmax);
+cmap = jetcolormap(Mmax);
+//cmap = (hotcolormap(Mmax) + jetcolormap(Mmax))/2;
 
 //n=64;
 //r=linspace(0,1,n)';
@@ -40,7 +42,7 @@ clf();
 
 Matplot(M)
 
-pause
+//pause;
 
-clf();
-plot3d(lig,col,M)
+//clf();
+//plot3d(lig,col,M)
