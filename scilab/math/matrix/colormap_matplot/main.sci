@@ -35,7 +35,12 @@ cmap = jetcolormap(max(M));
 //cmap=[r g b];
 
 xset("colormap",cmap);
-xbasc();
+clf();
 //isoview();
 
 Matplot(M)
+
+pause
+
+clf();
+plot3d(lig,col,M)
