@@ -7,7 +7,7 @@ function f=f(i,j)
   f = i+j
 endfunction
 
-lig = [0:0.1:1];
+lig = [0:0.1:2];
 col = [0:0.1:1.2]';
 
 M = zeros(size(lig,'c'), size(col,'r'));
@@ -18,7 +18,7 @@ for i=1:size(M,'r')
   end
 end
 
-M
+//M
 
 //colormap
 //========
