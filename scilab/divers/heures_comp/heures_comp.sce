@@ -67,12 +67,18 @@ function service_regle_2010=service_regle_2010(h_effectuees)
   // au prorata cours, TD, TP
   
   //pc=h_effectuees/sum(h_effectuees)
-  pc=h_effectuees/h_eq_td(h_effectuees, coef_service)
+  heqtd=h_eq_td(h_effectuees, coef_service);
+  if heqtd<>0
+    pc=h_effectuees/heqtd;
+  else
+    pc=[1/3 1/3 1/3];
+  end
   
-  service=[0 0 0];
-  
-  //service_regle_2010=service
-  service_regle_2010=pc*h_stat
+  if heqtd>h_stat
+    service_regle_2010=pc*h_stat
+  else
+    service_regle_2010=h_effectuees
+  end
 endfunction
 
 function heures_comp=heures_comp(h_effectuees, h_service)
