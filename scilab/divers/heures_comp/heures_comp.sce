@@ -159,10 +159,29 @@ M=abs(M_ecart_hc_rel);
 M=M($:-1:1,:); // inverser ordre lignes
 
 Mmax=max(M);
+
+clf();
+
+// couleur
 cmap = jetcolormap(Mmax);
 xset("colormap",cmap);
-clf();
 Matplot(M)
+
+// couleur noir vers blanc
+//cmap = graycolormap(Mmax);
+//xset("colormap",cmap);
+//Matplot(M)
+
+// couleur blanc vers noir
+//offset=1
+//cmap = graycolormap(Mmax+offset);
+//cmap = cmap($:-1:1,:)
+//xset("colormap",cmap);
+//Matplot(M+offset)
+
+
+//Matplot((1:xget("lastpattern"))) // tester la colormap
+
 //plot3d(hc,pc_td_tp,M)
 
 
