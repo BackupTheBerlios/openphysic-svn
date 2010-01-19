@@ -9,8 +9,8 @@ for file in $input;
 do
   if [ "$file" != "$output" ]
   then
-    echo "================ $file ================" >> $output
-    cat $file >> $output
+    echo "% ================ $file ================" >> $output
+    cat "$file" >> $output
   fi 
 done
 echo "End of jobs"

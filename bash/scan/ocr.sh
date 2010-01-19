@@ -6,14 +6,13 @@ echo "Starting OCR"
 for file in *.png;
 do
   from=$file
-  base=$(basename $file .png)
-  to=$base.tif
-  echo " Processing $from"
-  echo "  Convert $from to $to"
-  convert $file $(basename $file .png).tif
-  echo "  OCR of $to to create $base.txt"
-  tesseract $(basename $file .png).tif $(basename $file .png) -l fra
+  base=$(basename "$file" .png)
+  #to=$base.tif
+  echo " Processing \"$from\" (basename=\"$base\")"
+  echo "  Convert \"$from\" to \"$base.tif\""
+  convert "$file" "$base.tif"
+  echo "  OCR of \"$base.tif\" to create \"$base.txt\""
+  tesseract "$base.tif" "$base" -l fra
 done
 echo "End of jobs"
 rm *.tif
-#cat *.txt > all.txt
