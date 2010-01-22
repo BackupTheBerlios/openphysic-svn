@@ -7,13 +7,13 @@ Begin VB.UserControl ctlCuve
    ScaleHeight     =   3600
    ScaleWidth      =   3495
    Begin VB.PictureBox Picture1 
-      Height          =   495
+      Height          =   2415
       Left            =   0
-      ScaleHeight     =   435
-      ScaleWidth      =   1155
+      ScaleHeight     =   2355
+      ScaleWidth      =   2475
       TabIndex        =   0
       Top             =   0
-      Width           =   1215
+      Width           =   2535
    End
 End
 Attribute VB_Name = "ctlCuve"
@@ -43,18 +43,24 @@ Option Explicit
 Dim m_color As Long ' couleur liquide
 
 Dim m_level As Double ' niveau liquide
-Dim m_level_min As Double ' niveau min (0)
-Dim m_level_max As Double ' niveau max
 
+Dim m_surface As Double
 
-Public Event LevelChanged() ' changement de niveau
+Dim m_volume_min As Double ' volume min (0)
+Dim m_volume_max As Double ' volume max
+'Dim m_volume As Double
 
+Public Event VolumeChanged() ' changement de volume
+'Public Event CuveVidée() '
+'Public Event CuveRemplie() '
 
 Private Sub UserControl_Initialize()
-m_level_min = 0#
-m_level_max = 1#
-m_level = 0
+m_surface = 2
 
+m_volume_min = 0#
+m_volume_max = 5#
+
+Me.Volume = 0
 m_color = vbBlue
 End Sub
 
@@ -69,8 +75,8 @@ Private Sub UserControl_InitializePictureBox()
 Picture1.ScaleMode = 0
 Picture1.ScaleWidth = 1
 Picture1.ScaleLeft = 0
-Picture1.ScaleHeight = -(m_level_max - m_level_min)
-Picture1.ScaleTop = m_level_max
+Picture1.ScaleHeight = -(m_volume_max - m_volume_min)
+Picture1.ScaleTop = m_volume_max
 End Sub
 
 
@@ -84,7 +90,7 @@ Picture1.ForeColor = m_color
 Picture1.FillStyle = 0
 Picture1.FillColor = m_color
 
-Picture1.Line (0, 0)-(1, m_level), , B
+Picture1.Line (0, 0)-(1, Me.Volume), , B
 
 End Sub
 
@@ -93,15 +99,56 @@ Level = m_level
 End Property
 
 Public Property Let Level(ByVal new_level As Double)
-If new_level >= m_level_min And new_level <= m_level_max Then
+If new_level >= m_volume_min / m_surface And new_level <= m_volume_max / m_surface Then
     m_level = new_level
-ElseIf new_level < m_level_min Then
-    m_level = m_level_min
-ElseIf new_level > m_level_max Then
-    m_level = m_level_max
+ElseIf new_level < m_volume_min / m_surface Then
+    m_level = m_volume_min / m_surface
+    Debug.Print "Vide"
+ElseIf new_level > m_volume_max / m_surface Then
+    m_level = m_volume_max / m_surface
+    Debug.Print "Trop plein"
 End If
-
-RaiseEvent LevelChanged
+RaiseEvent VolumeChanged
 Picture1_Paint
 End Property
 
+
+Public Property Get Surface() As Double
+Surface = m_surface
+End Property
+
+Public Property Let Surface(ByVal new_surface As Double)
+If new_surface <> m_surface Then
+    If new_surface > 0 Then
+        Me.Level = Me.Volume / new_surface   ' conservation du volume
+        m_surface = new_surface
+        UserControl_InitializePictureBox
+    End If
+End If
+End Property
+
+
+Public Property Get Volume() As Double
+Volume = m_surface * m_level
+End Property
+
+Public Property Get VolumeMin() As Double
+VolumeMin = m_volume_min
+End Property
+
+Public Property Get VolumeMax() As Double
+VolumeMax = m_volume_max
+End Property
+
+Public Property Let Volume(ByVal new_volume As Double)
+If new_volume <> Me.Volume Then
+    Me.Level = new_volume / m_surface
+    m_level = Me.Level
+End If
+End Property
+
+Public Sub test()
+    Debug.Print "S=" & Me.Surface & " ; h=" & Me.Level & " ; V=" & Me.Volume _
+        & " ; Vmin=" & Me.VolumeMin & " ; Vmax=" & Me.VolumeMax
+    
+End Sub
