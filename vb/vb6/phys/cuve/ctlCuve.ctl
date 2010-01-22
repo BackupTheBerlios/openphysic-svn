@@ -55,10 +55,10 @@ Public Event VolumeChanged() ' changement de volume
 'Public Event CuveRemplie() '
 
 Private Sub UserControl_Initialize()
-m_surface = 2
+m_surface = 1
 
 m_volume_min = 0#
-m_volume_max = 5#
+m_volume_max = 1#
 
 Me.Volume = 0
 m_color = vbBlue

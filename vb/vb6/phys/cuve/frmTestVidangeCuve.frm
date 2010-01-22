@@ -21,7 +21,7 @@ Begin VB.Form frmTestVidangeCuve
       Height          =   495
       Left            =   480
       TabIndex        =   4
-      Text            =   "0,5"
+      Text            =   "0,001"
       Top             =   4560
       Width           =   1215
    End
@@ -55,8 +55,8 @@ Begin VB.Form frmTestVidangeCuve
       TabIndex        =   0
       Top             =   1800
       Width           =   3015
-      _ExtentX        =   5318
-      _ExtentY        =   4048
+      _extentx        =   5318
+      _extenty        =   4048
    End
    Begin VB.Label lblTest 
       Height          =   495
@@ -97,13 +97,6 @@ Else
 End If
 End Sub
 
-Private Sub chkVider_Click()
-If chkVider.Value = 0 Then
-    ctlCuveVidangeable1.Kv = 0
-Else
-    txtKv_Change
-End If
-End Sub
 
 Private Sub cmdTest_Click()
 'lblTest.Caption = ctlCuveVidangeable1.Level
@@ -116,13 +109,21 @@ chkRemplir_Click
 chkVider_Click
 End Sub
 
-Private Sub Label1_Click()
-
-End Sub
-
 Private Sub txtKv_Change()
-ctlCuveVidangeable1.Kv = CDbl(txtKv.Text)
+'If chkVider.Value = True Then
+'    ctlCuveVidangeable1.Kv = CDbl(txtKv.Text)
+'End If
+chkVider_Click
 End Sub
+
+Private Sub chkVider_Click()
+If chkVider.Value = 0 Then
+    ctlCuveVidangeable1.Kv = 0
+Else
+    ctlCuveVidangeable1.Kv = CDbl(txtKv.Text)
+End If
+End Sub
+
 
 Private Sub txtQin_Change()
 ctlCuveVidangeable1.Qin = CDbl(txtQin.Text)

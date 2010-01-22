@@ -1,6 +1,6 @@
 Type=Exe
 Form=frmMain.frm
-Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#..\..\..\..\..\..\..\WINDOWS\system32\STDOLE2.TLB#OLE Automation
+Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#C:\WINDOWS\system32\stdole2.tlb#OLE Automation
 Class=clsColorMap; clsColorMap.cls
 Module=modColor; modColor.bas
 IconForm="frmMain"
@@ -14,6 +14,7 @@ MinorVer=0
 RevisionVer=0
 AutoIncrementVer=0
 ServerSupportFiles=0
+VersionCompanyName="EN"
 CompilationType=0
 OptimizationType=0
 FavorPentiumPro(tm)=0

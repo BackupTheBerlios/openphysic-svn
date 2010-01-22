@@ -44,7 +44,15 @@ m_size = 0
 End Sub
 
 Public Property Get colorAt(ByVal index As Double) As Long
-test_index_limit (index)
+' Dépassement limites index
+'test_index_limit (index) ' leve exception
+' saturation à 0 ou 1
+If index < 0 Then
+    index = 0
+ElseIf index > 1 Then
+    index = 1
+End If
+
 'colorAt = vbRed * (1 - index)
 
 If m_index(m_size - 1) <> 1 Then

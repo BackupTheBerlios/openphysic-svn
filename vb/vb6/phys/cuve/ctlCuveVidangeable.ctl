@@ -16,8 +16,8 @@ Begin VB.UserControl ctlCuveVidangeable
       TabIndex        =   0
       Top             =   0
       Width           =   1095
-      _extentx        =   1931
-      _extenty        =   4048
+      _ExtentX        =   1931
+      _ExtentY        =   4048
    End
    Begin VB.Label lblLevel 
       Caption         =   "level"
@@ -87,9 +87,9 @@ Private Sub Timer1_Timer()
 'Debug.Print "ok"
 ctlCuve1.Level = (1 / S * (Qin - Qout)) * (delta_t / 1000#) + ctlCuve1.Level
 
-lblQin.Caption = "Qin = " & Qin & " m^3/s"
-lblQout.Caption = "Qout = " & Qout & " m^3/s"
-lblLevel.Caption = "h = " & ctlCuve1.Level & " m"
+lblQin.Caption = "Qin = " & Format(Qin, "#0.00") & " m^3/s"
+lblQout.Caption = "Qout = " & Format(Qout, "#0.00") & " m^3/s"
+lblLevel.Caption = "h = " & Format(ctlCuve1.Level, "###0.00") & " m"
 End Sub
 
 Private Sub UserControl_Initialize()
@@ -122,6 +122,9 @@ End Property
 Public Property Get Qout() As Double
 m_qout = Kv * Sqr(rho * g * ctlCuve1.Level)
 Qout = m_qout
+If Qout <> 0 Then
+    Debug.Print Qout
+End If
 End Property
 
 
