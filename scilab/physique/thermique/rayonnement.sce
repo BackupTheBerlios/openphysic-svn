@@ -31,8 +31,13 @@ plot2d(lambda,phi_lambda)
 lambda_max = lambda(nmax);
 
 // Loi du déplacement de Wien : lambda_max*T=sigma_w
-lambda_max*T
+sigma_w_exp = lambda_max*T
 sigma_w = 2.898768651*10^(-3) // constante de Wien m.K
-eps=abs(sigma_w-lambda_max*T)/sigma_w*100
+eps = abs(sigma_w-sigma_w_exp)/sigma_w*100
 
-// M=sigma*T^4
+// Loi de Stefan-Boltzmann M=sigma*T^4
+L = inttrap(lambda, phi_lambda);
+M=%pi*L // Loi de Lambert
+sigma = 5.670400*10^(-8); // constante de Stefan-Boltzmann W m^-2.K^-4
+M_exp = sigma*T^4
+eps = (M-M_exp)/M*100
