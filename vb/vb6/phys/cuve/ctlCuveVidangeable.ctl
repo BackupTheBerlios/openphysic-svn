@@ -64,7 +64,7 @@ Attribute VB_Exposed = False
 
 ' Propriétés
 '  Level (en lecture seule) : niveau de la cuve (S=1m^2)
-'  Qin (en lecture/écriture) : débit entrant (en m^3/s)
+'  Qin (en lecture/écriture) : débit volumique entrant (en m^3/s)
 '  Kv (en lecture/écriture) : coefficient de la vanne de vidange (0..1)
 '  Qout (en lecture seule) : débit volumique sortant (en m^3/s)
 
@@ -85,7 +85,12 @@ Dim m_qout As Double
 Private Sub Timer1_Timer()
 
 'Debug.Print "ok"
-ctlCuve1.Level = (1 / S * (Qin - Qout)) * (delta_t / 1000#) + ctlCuve1.Level
+
+' Bilan de masse
+' ==============
+' rho = cst => simplif par rho => bilan de volume
+ctlCuve1.Volume = (Qin - Qout) * (delta_t / 1000#) + ctlCuve1.Volume
+'ctlCuve1.Level = (1 / S * (Qin - Qout)) * (delta_t / 1000#) + ctlCuve1.Level
 
 lblQin.Caption = "Qin = " & Format(Qin, "#0.00") & " m^3/s"
 lblQout.Caption = "Qout = " & Format(Qout, "#0.00") & " m^3/s"
@@ -122,9 +127,9 @@ End Property
 Public Property Get Qout() As Double
 m_qout = Kv * Sqr(rho * g * ctlCuve1.Level)
 Qout = m_qout
-If Qout <> 0 Then
-    Debug.Print Qout
-End If
+'If Qout <> 0 Then
+'    Debug.Print Qout
+'End If
 End Property
 
 
