@@ -3,9 +3,9 @@ Begin VB.UserControl ctlCuveVidangeable
    ClientHeight    =   2430
    ClientLeft      =   0
    ClientTop       =   0
-   ClientWidth     =   3705
+   ClientWidth     =   3975
    ScaleHeight     =   2430
-   ScaleWidth      =   3705
+   ScaleWidth      =   3975
    Begin VB.Timer Timer1 
       Left            =   0
       Top             =   960
@@ -16,8 +16,32 @@ Begin VB.UserControl ctlCuveVidangeable
       TabIndex        =   0
       Top             =   0
       Width           =   1095
-      _ExtentX        =   1931
-      _ExtentY        =   4048
+      _extentx        =   1931
+      _extenty        =   4048
+   End
+   Begin VB.Label lblTout 
+      Caption         =   "Tout"
+      Height          =   495
+      Left            =   1320
+      TabIndex        =   6
+      Top             =   2040
+      Width           =   2415
+   End
+   Begin VB.Label lblTemp 
+      Caption         =   "T"
+      Height          =   495
+      Left            =   1320
+      TabIndex        =   5
+      Top             =   1200
+      Width           =   2415
+   End
+   Begin VB.Label lblTin 
+      Caption         =   "Tin"
+      Height          =   495
+      Left            =   1320
+      TabIndex        =   4
+      Top             =   240
+      Width           =   2415
    End
    Begin VB.Label lblLevel 
       Caption         =   "level"
@@ -25,7 +49,7 @@ Begin VB.UserControl ctlCuveVidangeable
       Left            =   1320
       TabIndex        =   3
       Top             =   960
-      Width           =   1815
+      Width           =   2415
    End
    Begin VB.Label lblQout 
       Caption         =   "Qout"
@@ -33,15 +57,15 @@ Begin VB.UserControl ctlCuveVidangeable
       Left            =   1320
       TabIndex        =   2
       Top             =   1800
-      Width           =   1935
+      Width           =   2415
    End
    Begin VB.Label lblQin 
       Caption         =   "Qin"
       Height          =   495
       Left            =   1320
       TabIndex        =   1
-      Top             =   120
-      Width           =   1935
+      Top             =   0
+      Width           =   2415
    End
 End
 Attribute VB_Name = "ctlCuveVidangeable"
@@ -72,15 +96,34 @@ Option Explicit
 
 Const delta_t As Double = 100  ' ms
 
-Const g As Double = 9.81
+Const G As Double = 9.81
 Const rho As Double = 1000 ' kg/m^3
 Const S As Double = 1 ' m^2
 
-Dim m_qin As Double
+Dim m_qvin As Double
 Dim m_Kv As Double
 
-Dim m_qout As Double
+Dim m_qvout As Double
 
+Dim m_m As Double ' masse
+
+Dim m_Tin As Double
+
+Dim m_cp As Double
+
+Dim m_e As Double ' energie
+
+Private Sub UserControl_Initialize()
+ctlCuve1.Level = 0.8
+m_m = (ctlCuve1.Level * ctlCuve1.Surface) * rho
+
+Timer1.Interval = delta_t
+
+m_Tin = 50
+
+m_cp = 4186#  ' capacité thermique massique à pression constant (J.K^-1.kg^-1)
+m_e = rho * ctlCuve1.Volume * m_cp * ctlCuve1.Temp
+End Sub
 
 Private Sub Timer1_Timer()
 
@@ -88,19 +131,30 @@ Private Sub Timer1_Timer()
 
 ' Bilan de masse
 ' ==============
+' dm/dt = rho * (Qvin - Qvout)
+' m = rho * V
 ' rho = cst => simplif par rho => bilan de volume
-ctlCuve1.Volume = (Qin - Qout) * (delta_t / 1000#) + ctlCuve1.Volume
+m_m = (rho * (Qvin - Qvout)) * (delta_t / 1000#) + m_m
+ctlCuve1.Volume = m_m / rho
+'ctlCuve1.Volume = (Qvin - Qvout) * (delta_t / 1000#) + ctlCuve1.Volume
 'ctlCuve1.Level = (1 / S * (Qin - Qout)) * (delta_t / 1000#) + ctlCuve1.Level
 
-lblQin.Caption = "Qin = " & Format(Qin, "#0.00") & " m^3/s"
-lblQout.Caption = "Qout = " & Format(Qout, "#0.00") & " m^3/s"
-lblLevel.Caption = "h = " & Format(ctlCuve1.Level, "###0.00") & " m"
-End Sub
 
-Private Sub UserControl_Initialize()
-ctlCuve1.Level = 0.8
+' Bilan d'énergie
+' ===============
+' dE/dt = rho*Qvin*cp*deltaT+Pelec
 
-Timer1.Interval = delta_t
+
+' Affichage
+' =========
+lblQin.Caption = "Qv_in = " & Format(Qvin, "#0.00") & " m^3/s"
+lblTin.Caption = "Tin = " & Format(Tin, "##0.0") & " °C"
+
+lblLevel.Caption = "h = " & Format(ctlCuve1.Level, "###0.00") & " m" & " ; V=" & Format(ctlCuve1.Volume, "###0.00") & " m^3"
+lblTemp.Caption = "T = " & Format(ctlCuve1.Temp, "##0.0") & " °C"
+
+lblQout.Caption = "Qv_out = " & Format(Qvout, "#0.00") & " m^3/s"
+lblTout.Caption = "Tout = " & Format(ctlCuve1.Temp, "##0.0") & " °C"
 End Sub
 
 Private Sub UserControl_Resize()
@@ -108,12 +162,12 @@ Private Sub UserControl_Resize()
 'ctlCuve1.Height = UserControl.Height
 End Sub
 
-Public Property Get Qin() As Double
-Qin = m_qin
+Public Property Get Qvin() As Double
+Qvin = m_qvin
 End Property
 
-Public Property Let Qin(ByVal new_qin As Double)
-m_qin = new_qin
+Public Property Let Qvin(ByVal new_qvin As Double)
+m_qvin = new_qvin
 End Property
 
 Public Property Get Kv() As Double
@@ -124,9 +178,9 @@ Public Property Let Kv(ByVal new_Kv As Double)
 m_Kv = new_Kv
 End Property
 
-Public Property Get Qout() As Double
-m_qout = Kv * Sqr(rho * g * ctlCuve1.Level)
-Qout = m_qout
+Public Property Get Qvout() As Double
+m_qvout = Kv * Sqr(rho * G * ctlCuve1.Level)
+Qvout = m_qvout
 'If Qout <> 0 Then
 '    Debug.Print Qout
 'End If
@@ -137,3 +191,11 @@ Public Property Get Level() As Double
 Level = ctlCuve1.Level
 End Property
 
+
+Public Property Get Tin() As Double
+Tin = m_Tin
+End Property
+
+Public Property Let Tin(ByVal new_Tin As Double)
+m_Tin = new_Tin
+End Property

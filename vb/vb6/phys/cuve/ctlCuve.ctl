@@ -46,9 +46,14 @@ Dim m_level As Double ' niveau liquide
 
 Dim m_surface As Double
 
-Dim m_volume_min As Double ' volume min (0)
+Dim m_volume_min As Double ' volume min
 Dim m_volume_max As Double ' volume max
 'Dim m_volume As Double
+
+Dim m_temp_min As Double ' temperature min
+Dim m_temp_max As Double ' temperature max
+Dim m_temp As Double ' temperature
+Dim m_colormap_temp_liq As clsColorMap ' colormap temperature liquide
 
 Public Event VolumeChanged() ' changement de volume
 'Public Event CuveVidée() '
@@ -61,7 +66,17 @@ m_volume_min = 0#
 m_volume_max = 1#
 
 Me.Volume = 0
-m_color = vbBlue
+
+m_temp_min = 10
+m_temp_max = 50
+m_temp = 10
+
+Set m_colormap_temp_liq = New clsColorMap
+m_colormap_temp_liq.colorAt(0#) = vbBlue
+'m_colormap_temp_liq.colorAt(0.5) = vbYellow
+m_colormap_temp_liq.colorAt(1#) = vbRed
+'m_color = vbBlue
+
 End Sub
 
 Private Sub UserControl_Resize()
@@ -85,6 +100,8 @@ Private Sub Picture1_Paint()
 Picture1.Cls
 
 'Picture1.Line (0, m_level_min)-(1, m_level_max)
+
+m_color = m_colormap_temp_liq.colorAt((m_temp - m_temp_min) / (m_temp_max - m_temp_min))
 
 Picture1.ForeColor = m_color
 Picture1.FillStyle = 0
@@ -152,3 +169,13 @@ Public Sub test()
         & " ; Vmin=" & Me.VolumeMin & " ; Vmax=" & Me.VolumeMax
     
 End Sub
+
+Public Property Get Temp() As Double
+Temp = m_temp
+End Property
+
+Public Property Let Temp(ByVal new_temp As Double)
+If new_temp <> m_temp Then
+    m_temp = new_temp
+End If
+End Property
