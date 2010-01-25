@@ -179,3 +179,7 @@ If new_temp <> m_temp Then
     m_temp = new_temp
 End If
 End Property
+
+Public Sub Refresh()
+Picture1_Paint
+End Sub

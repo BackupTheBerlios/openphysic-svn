@@ -201,6 +201,7 @@ m_m = (ctlCuve1.Level * ctlCuve1.Surface) * rho
 Timer1.Interval = delta_t
 
 m_Tin(1) = 10
+m_Tin(2) = 50
 
 m_cp = 4186#  ' capacité thermique massique à pression constant (J.K^-1.kg^-1)
 m_e = rho * m_cp * ctlCuve1.Temp
@@ -218,7 +219,7 @@ Private Sub Timer1_Timer()
 ' dm/dt = rho * (Qvin - Qvout)
 ' m = rho * V
 ' rho = cst => simplif par rho => bilan de volume
-m_m = (rho * (Qvin(1) - Qvout)) * (delta_t / 1000#) + m_m
+m_m = (rho * (Qvin(1) + Qvin(2) - Qvout)) * (delta_t / 1000#) + m_m
 ctlCuve1.Volume = m_m / rho
 'ctlCuve1.Volume = (Qvin - Qvout) * (delta_t / 1000#) + ctlCuve1.Volume
 'ctlCuve1.Level = (1 / S * (Qin - Qout)) * (delta_t / 1000#) + ctlCuve1.Level
@@ -228,7 +229,9 @@ ctlCuve1.Volume = m_m / rho
 ' ===============
 ' dE/dt = rho*Qvin*cp*deltaT+Pelec
 If ctlCuve1.Volume <> 0 Then
-    m_e = (rho * Qvin(1) * m_cp * (m_Tin(1) - ctlCuve1.Temp) + m_Pelec + m_U * (m_temp_air - ctlCuve1.Temp)) / ctlCuve1.Volume * (delta_t / 1000#) + m_e
+    m_e = (rho * Qvin(1) * m_cp * (m_Tin(1) - ctlCuve1.Temp) _
+        + rho * Qvin(2) * m_cp * (m_Tin(2) - ctlCuve1.Temp) _
+        + m_Pelec + m_U * (m_temp_air - ctlCuve1.Temp)) / ctlCuve1.Volume * (delta_t / 1000#) + m_e
     ctlCuve1.Temp = m_e / (rho * m_cp)
 Else
     If Qvin(1) <> 0 Or Qvin(2) <> 0 Then
@@ -261,7 +264,8 @@ lblPelec.Caption = "Pelec = " & Format(m_Pelec, "####0") & " W"
 lblGeom.Caption = "S = " & ctlCuve1.Surface & " m^2" & vbCrLf _
     & "Vmin = " & ctlCuve1.VolumeMin & " m^3" & vbCrLf _
     & "Vmax = " & ctlCuve1.VolumeMax & " m^3"
-    
+
+ctlCuve1.Refresh
 End Sub
 
 Private Sub UserControl_Resize()
