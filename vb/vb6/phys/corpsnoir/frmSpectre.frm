@@ -42,6 +42,38 @@ Begin VB.Form frmSpectre
       Top             =   240
       Width           =   7575
    End
+   Begin VB.Label lblMtheo 
+      Caption         =   "lblMtheo"
+      Height          =   615
+      Left            =   14040
+      TabIndex        =   12
+      Top             =   1800
+      Width           =   2415
+   End
+   Begin VB.Label Label5 
+      Caption         =   "M_theo = sigma * T^4"
+      Height          =   375
+      Left            =   11280
+      TabIndex        =   11
+      Top             =   1800
+      Width           =   2295
+   End
+   Begin VB.Label lblM 
+      Caption         =   "lblM"
+      Height          =   615
+      Left            =   14040
+      TabIndex        =   10
+      Top             =   1320
+      Width           =   2895
+   End
+   Begin VB.Label Label4 
+      Caption         =   "M"
+      Height          =   375
+      Left            =   11280
+      TabIndex        =   9
+      Top             =   1320
+      Width           =   2295
+   End
    Begin VB.Label lblSigmaW 
       Caption         =   "lblSigmaW"
       Height          =   615
@@ -55,14 +87,14 @@ Begin VB.Form frmSpectre
       Height          =   375
       Left            =   14280
       TabIndex        =   7
-      Top             =   0
+      Top             =   120
       Width           =   2175
    End
    Begin VB.Label lblLambdaM 
       Height          =   495
       Left            =   11040
       TabIndex        =   6
-      Top             =   600
+      Top             =   480
       Width           =   2775
    End
    Begin VB.Label Label2 
@@ -154,17 +186,24 @@ Private Sub cmdCalculer_Click()
     lambda_m = 0 ' attention à ne pas confondre lambda_max et lambda_m
     For lambda = lambda_min To lambda_max Step lambda_step
         If Llambda(lambda, T) > L_lambda_m Then
-            L_lambda_m = Llambda(lambda_min, T)
+            L_lambda_m = Llambda(lambda, T)
             lambda_m = lambda
         End If
     Next lambda
     lblLambdaM.Caption = lambda_m
-    
+    lblSigmaW.Caption = lambda_m * T
     
     
     ' intégration numérique -> Loi de Stephan-Boltzmann
     ' =================================================
     Dim L As Double
+    Dim M As Double
     L = 0
-    
+    For lambda = lambda_min To lambda_max - lambda_step Step lambda_step
+        L = L + (Llambda(lambda, T) + Llambda(lambda + lambda_step, T)) * lambda_step / 2
+    Next lambda
+    M = pi * L
+    lblM.Caption = M
+    lblMtheo = sigma * T ^ 4
 End Sub
+
