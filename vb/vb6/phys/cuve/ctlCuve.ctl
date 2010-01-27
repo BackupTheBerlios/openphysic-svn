@@ -160,14 +160,15 @@ Attribute VB_Exposed = False
 
 
 ' Propriétés
-'  Level (en lecture seule) : niveau de la cuve (S=1m^2)
+'  Level (en lecture seule) : niveau de la cuve (en m) - h=0.5m par défaut
+'  Surface (en lecture/écriture) : surface de la cuve (en m^2) - S=1m^2 par défaut
 '  Qin(index) (en lecture/écriture) : débit volumique entrant (en m^3/s) index=1 ou 2
 '  Tin(index) (en lecture/écriture) : température liquide entrant (en °C) index=1 ou 2
 '  Kv (en lecture/écriture) : coefficient de la vanne de vidange (0..1)
-'  Qout (en lecture seule) : débit volumique sortant (en m^3/s)
+'  Qvout (en lecture seule) : débit volumique sortant (en m^3/s)
 '  P (en lecture/écriture) : puissance fournie par la résistance chauffante
 '  Temp (en lecture/écriture) : température du liquide dans la cuve
-'  U : coefficient d'échange global :
+'  U : coefficient d'échange global (en W.K^-1)
 '  Tair : température de l'air extérieur à la cuve
 
 Option Explicit
