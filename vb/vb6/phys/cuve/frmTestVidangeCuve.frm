@@ -171,8 +171,6 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
 
-
-
 Private Sub chkRemplir_Click(index As Integer)
 If chkRemplir(index).Value = 0 Then
     ctlCuve1.Qvin(index) = 0
@@ -188,8 +186,6 @@ Private Sub cmdTest_Click()
 'lblTest.Caption = ctlCuve1.Kv
 lblTest.Caption = ctlCuve1.Qvout
 End Sub
-
-
 
 Private Sub Form_Load()
 chkRemplir_Click (1)
