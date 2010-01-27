@@ -208,12 +208,11 @@ Dim m_qvout As Double
 
 Dim m_m As Double ' masse
 
-
 Dim m_cp As Double
 
 Dim m_e As Double ' energie
-Dim m_Pelec As Double ' puissance électrique
-
+Dim m_Pelec As Double ' puissance fournie par la résistance électrique à la cuve
+Dim m_colormap_r As clsColorMap ' colormap puissance résistance
 
 Dim m_temp_air As Double ' temperature de l'air entourant la cuve (pour convection)
 Dim m_U As Double ' coeff d'echange en W.K^-1
@@ -245,7 +244,12 @@ m_Tin(1) = 10
 m_Tin(2) = 50
 
 m_cp = 4186#  ' capacité thermique massique à pression constant (J.K^-1.kg^-1)
-m_e = rho * m_cp * Me.Temp
+m_e = rho * m_cp * m_temp
+
+m_Pelec = 0
+Set m_colormap_r = New clsColorMap
+m_colormap_r.colorAt(0#) = vbBlack
+m_colormap_r.colorAt(1#) = vbRed
 
 m_temp_air = 20
 m_U = 20000
@@ -255,6 +259,8 @@ Private Sub UserControl_InitializePictureBox()
 Picture1.ScaleMode = 0
 Picture1.ScaleWidth = 1
 Picture1.ScaleLeft = 0
+'Picture1.ScaleWidth = 1.8
+'Picture1.ScaleLeft = -Picture1.ScaleWidth / 4
 Picture1.ScaleHeight = -(m_volume_max - m_volume_min)
 Picture1.ScaleTop = m_volume_max
 End Sub
@@ -263,7 +269,7 @@ Private Sub Picture1_Paint()
 UserControl_InitializePictureBox
 
 Picture1.Cls
-
+Picture1.DrawWidth = 1
 'Picture1.Line (0, m_level_min)-(1, m_level_max)
 
 m_color = m_colormap_temp_liq.colorAt((m_temp - m_temp_min) / (m_temp_max - m_temp_min))
@@ -272,9 +278,29 @@ Picture1.ForeColor = m_color
 Picture1.FillStyle = 0
 Picture1.FillColor = m_color
 
-Picture1.Line (0, 0)-(1, Me.Volume)
-
 Picture1.Line (0, 0)-(1, Me.Volume), , B
+
+
+' Resistance
+    Picture1.DrawWidth = 3
+    Dim x As Double
+    Const m_power_min As Double = 0
+    Const m_power_max As Double = 20 * 10 ^ 3
+    If m_power_max - m_power_min <> 0 Then
+        x = (m_Pelec - m_power_min) / (m_power_max - m_power_min)
+        Picture1.ForeColor = m_colormap_r.colorAt(x)
+    Else
+        Picture1.ForeColor = vbGreen
+    End If
+
+    Const h As Double = 0.2
+    Picture1.Line (0.2, 0)-(0.2, h) ' | gauche
+    Picture1.Line (0.2, h)-(0.4, h * 0.5) ' \
+    Picture1.Line (0.4, h * 0.5)-(0.4, h) ' |
+    Picture1.Line (0.4, h)-(0.6, h * 0.5) ' \
+    Picture1.Line (0.6, h * 0.5)-(0.6, h * 1) ' |
+    Picture1.Line (0.6, h)-(0.8, h * 0.5) ' \
+    Picture1.Line (0.8, 0)-(0.8, h * 0.5) ' | droit
 
 End Sub
 
@@ -298,17 +324,17 @@ Me.Volume = m_m / rho
 ' le système est un système ouvert... on raisonne en energie volumique (ou massique)
 ' pour faire le bilan
 If Me.Volume <> 0 Then
-    m_e = (rho * Qvin(1) * m_cp * (m_Tin(1) - Me.Temp) _
-        + rho * Qvin(2) * m_cp * (m_Tin(2) - Me.Temp) _
-        + m_Pelec + m_U * (m_temp_air - Me.Temp)) / Me.Volume * (delta_t / 1000#) + m_e
-    Me.Temp = m_e / (rho * m_cp)
+    m_e = (rho * Qvin(1) * m_cp * (m_Tin(1) - m_temp) _
+        + rho * Qvin(2) * m_cp * (m_Tin(2) - m_temp) _
+        + m_Pelec + m_U * (m_temp_air - m_temp)) / Me.Volume * (delta_t / 1000#) + m_e
+    m_temp = m_e / (rho * m_cp)
 Else
     If Qvin(1) <> 0 Or Qvin(2) <> 0 Then
         m_e = rho * m_cp * (Qvin(1) * m_Tin(1) + Qvin(2) * m_Tin(2)) / (Qvin(1) + Qvin(2)) ' to fix qvin2
-        Me.Temp = m_e / (rho * m_cp)
+        m_temp = m_e / (rho * m_cp)
     Else
         m_e = rho * m_cp * m_temp_air
-        Me.Temp = m_e / (rho * m_cp) 'ctlCuve1.TempAir
+        m_temp = m_e / (rho * m_cp) 'ctlCuve1.TempAir
     End If
 End If
 
@@ -321,10 +347,10 @@ lblQin2.Caption = "Qv_in(2) = " & Format(Qvin(2), "#0.00") & " m^3/s" ' tofix
 lblTin2.Caption = "Tin(2) = " & Format(Tin(2), "##0.0") & " °C" ' tofix
 
 lblLevel.Caption = "h = " & Format(Me.Level, "###0.00") & " m" & " ; V=" & Format(Me.Volume, "###0.00") & " m^3"
-lblTemp.Caption = "T = " & Format(Me.Temp, "##0.0") & " °C"
+lblTemp.Caption = "T = " & Format(m_temp, "##0.0") & " °C"
 
 lblQout.Caption = "Qv_out = " & Format(Qvout, "#0.00") & " m^3/s"
-lblTout.Caption = "Tout = " & Format(Me.Temp, "##0.0") & " °C"
+lblTout.Caption = "Tout = " & Format(m_temp, "##0.0") & " °C"
 
 lblTair.Caption = "Tair = " & Format(m_temp_air, "##0.0") & " °C" & " ; U=" & Format(m_U, "####0") & " W/K"
 
