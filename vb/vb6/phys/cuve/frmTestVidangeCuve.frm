@@ -95,14 +95,14 @@ Begin VB.Form frmTestVidangeCuve
       Top             =   2760
       Width           =   1215
    End
-   Begin TestVidangeCuve.ctlCuveVidangeable ctlCuveVidangeable1 
+   Begin TestVidangeCuve.ctlCuve ctlCuve1 
       Height          =   5295
       Left            =   2160
       TabIndex        =   0
       Top             =   240
       Width           =   5895
-      _extentx        =   10398
-      _extenty        =   9340
+      _ExtentX        =   10398
+      _ExtentY        =   9340
    End
    Begin VB.Label Label4 
       Caption         =   "Puissance résistance (kW)"
@@ -175,7 +175,7 @@ Option Explicit
 
 Private Sub chkRemplir_Click(index As Integer)
 If chkRemplir(index).Value = 0 Then
-    ctlCuveVidangeable1.Qvin(index) = 0
+    ctlCuve1.Qvin(index) = 0
 Else
     txtQvin_Change (index)
     txtTin_Change (index)
@@ -184,9 +184,9 @@ End If
 End Sub
 
 Private Sub cmdTest_Click()
-'lblTest.Caption = ctlCuveVidangeable1.Level
-'lblTest.Caption = ctlCuveVidangeable1.Kv
-lblTest.Caption = ctlCuveVidangeable1.Qvout
+'lblTest.Caption = ctlCuve1.Level
+'lblTest.Caption = ctlCuve1.Kv
+lblTest.Caption = ctlCuve1.Qvout
 End Sub
 
 
@@ -200,27 +200,27 @@ End Sub
 
 Private Sub txtKv_Change()
 'If chkVider.Value = True Then
-'    ctlCuveVidangeable1.Kv = CDbl(txtKv.Text)
+'    ctlCuve1.Kv = CDbl(txtKv.Text)
 'End If
 chkVider_Click
 End Sub
 
 Private Sub chkVider_Click()
 If chkVider.Value = 0 Then
-    ctlCuveVidangeable1.Kv = 0
+    ctlCuve1.Kv = 0
 Else
-    ctlCuveVidangeable1.Kv = CDbl(txtKv.Text)
+    ctlCuve1.Kv = CDbl(txtKv.Text)
 End If
 End Sub
 
 Private Sub txtP_Change()
-ctlCuveVidangeable1.Pelec = CDbl(txtP.Text) * 1000
+ctlCuve1.Pelec = CDbl(txtP.Text) * 1000
 End Sub
 
 Private Sub txtQvin_Change(index As Integer)
-ctlCuveVidangeable1.Qvin(index) = CDbl(txtQvin(index).Text)
+ctlCuve1.Qvin(index) = CDbl(txtQvin(index).Text)
 End Sub
 
 Private Sub txtTin_Change(index As Integer)
-ctlCuveVidangeable1.Tin(index) = CDbl(txtTin(index).Text)
+ctlCuve1.Tin(index) = CDbl(txtTin(index).Text)
 End Sub

@@ -1,5 +1,5 @@
 VERSION 5.00
-Begin VB.UserControl ctlCuveVidangeable 
+Begin VB.UserControl ctlCuve 
    BackColor       =   &H00FFFFFF&
    ClientHeight    =   5370
    ClientLeft      =   0
@@ -141,7 +141,7 @@ Begin VB.UserControl ctlCuveVidangeable
       Width           =   1815
    End
 End
-Attribute VB_Name = "ctlCuveVidangeable"
+Attribute VB_Name = "ctlCuve"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
