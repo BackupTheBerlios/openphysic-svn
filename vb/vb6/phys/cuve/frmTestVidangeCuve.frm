@@ -101,8 +101,8 @@ Begin VB.Form frmTestVidangeCuve
       TabIndex        =   0
       Top             =   240
       Width           =   5895
-      _ExtentX        =   10398
-      _ExtentY        =   9340
+      _extentx        =   10398
+      _extenty        =   9340
    End
    Begin VB.Label Label4 
       Caption         =   "Puissance résistance (kW)"
@@ -210,7 +210,7 @@ End If
 End Sub
 
 Private Sub txtP_Change()
-ctlCuve1.Pelec = CDbl(txtP.Text) * 1000
+ctlCuve1.Pr = CDbl(txtP.Text) * 1000
 End Sub
 
 Private Sub txtQvin_Change(index As Integer)

@@ -152,6 +152,11 @@ Attribute VB_Exposed = False
 ' Contrôle utilisateur simulant une cuve contenant un liquide
 ' ce contrôle simule la variation du niveau dans la cuve
 ' lorsqu'on la remplit ou lorsqu'on la vidange
+' il simule en outre la variation de température du liquide
+' dans la cuve en fonction des apports/déperditions
+'  - liquide entrant à une certaine température et un certain débit
+'  - puissance fournie par une résistance chauffante
+'  - convection naturelle
 
 ' Sébastien CELLES
 ' IUT de Poitiers
@@ -162,14 +167,14 @@ Attribute VB_Exposed = False
 ' Propriétés
 '  Level (en lecture seule) : niveau de la cuve (en m) - h=0.5m par défaut
 '  Surface (en lecture/écriture) : surface de la cuve (en m^2) - S=1m^2 par défaut
-'  Qin(index) (en lecture/écriture) : débit volumique entrant (en m^3/s) index=1 ou 2
-'  Tin(index) (en lecture/écriture) : température liquide entrant (en °C) index=1 ou 2
+'  Qin(index) (en lecture/écriture) : débit volumique entrant (en m^3/s) avec index=1 ou 2
+'  Tin(index) (en lecture/écriture) : température liquide entrant (en °C) avec index=1 ou 2
 '  Kv (en lecture/écriture) : coefficient de la vanne de vidange (0..1)
 '  Qvout (en lecture seule) : débit volumique sortant (en m^3/s)
-'  P (en lecture/écriture) : puissance fournie par la résistance chauffante
-'  Temp (en lecture/écriture) : température du liquide dans la cuve
+'  Pr (en lecture/écriture) : puissance fournie par la résistance chauffante (en W)
+'  Temp (en lecture/écriture) : température du liquide dans la cuve (en °C)
 '  U : coefficient d'échange global (en W.K^-1)
-'  Tair : température de l'air extérieur à la cuve
+'  Tair : température de l'air extérieur à la cuve (en °C)
 
 Option Explicit
 
@@ -212,7 +217,7 @@ Dim m_m As Double ' masse
 Dim m_cp As Double
 
 Dim m_e As Double ' energie
-Dim m_Pelec As Double ' puissance fournie par la résistance électrique à la cuve
+Dim m_power As Double ' puissance fournie par la résistance électrique à la cuve
 Dim m_colormap_r As clsColorMap ' colormap puissance résistance
 
 Dim m_temp_air As Double ' temperature de l'air entourant la cuve (pour convection)
@@ -247,7 +252,7 @@ m_Tin(2) = 50
 m_cp = 4186#  ' capacité thermique massique à pression constant (J.K^-1.kg^-1)
 m_e = rho * m_cp * m_temp
 
-m_Pelec = 0
+m_power = 0
 Set m_colormap_r = New clsColorMap
 m_colormap_r.colorAt(0#) = vbBlack
 m_colormap_r.colorAt(1#) = vbRed
@@ -288,7 +293,7 @@ Picture1.Line (0, 0)-(1, Me.Volume), , B
     Const m_power_min As Double = 0
     Const m_power_max As Double = 20 * 10 ^ 3
     If m_power_max - m_power_min <> 0 Then
-        x = (m_Pelec - m_power_min) / (m_power_max - m_power_min)
+        x = (m_power - m_power_min) / (m_power_max - m_power_min)
         Picture1.ForeColor = m_colormap_r.colorAt(x)
     Else
         Picture1.ForeColor = vbGreen
@@ -327,7 +332,7 @@ Me.Volume = m_m / rho
 If Me.Volume <> 0 Then
     m_e = (rho * Qvin(1) * m_cp * (m_Tin(1) - m_temp) _
         + rho * Qvin(2) * m_cp * (m_Tin(2) - m_temp) _
-        + m_Pelec + m_U * (m_temp_air - m_temp)) / Me.Volume * (delta_t / 1000#) + m_e
+        + m_power + m_U * (m_temp_air - m_temp)) / Me.Volume * (delta_t / 1000#) + m_e
     m_temp = m_e / (rho * m_cp)
 Else
     If Qvin(1) <> 0 Or Qvin(2) <> 0 Then
@@ -355,7 +360,7 @@ lblTout.Caption = "Tout = " & Format(m_temp, "##0.0") & " °C"
 
 lblTair.Caption = "Tair = " & Format(m_temp_air, "##0.0") & " °C" & " ; U=" & Format(m_U, "####0") & " W/K"
 
-lblPelec.Caption = "Pelec = " & Format(m_Pelec, "####0") & " W"
+lblPelec.Caption = "Pelec = " & Format(m_power, "####0") & " W"
 
 lblGeom.Caption = "S = " & Me.Surface & " m^2" & vbCrLf _
     & "Vmin = " & Me.VolumeMin & " m^3" & vbCrLf _
@@ -420,12 +425,12 @@ Public Property Let Tin(ByVal index As Byte, ByVal new_Tin As Double)
 m_Tin(index) = new_Tin
 End Property
 
-Public Property Get Pelec() As Double
-Pelec = m_Pelec
+Public Property Get Pr() As Double
+Pr = m_power
 End Property
 
-Public Property Let Pelec(ByVal new_Pelec As Double)
-m_Pelec = new_Pelec
+Public Property Let Pr(ByVal new_power As Double)
+m_power = new_power
 End Property
 
 
