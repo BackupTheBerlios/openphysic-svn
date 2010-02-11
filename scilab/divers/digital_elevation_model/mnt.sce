@@ -73,4 +73,5 @@ sep = ",";
 mfprintf(fd,"%.3f"+sep+"%.3f"+sep+"%.3f"+"\n",X,Y,Z); // sortie fichier
 mclose(fd); // fermeture du fichier
 
+param3d(X,Y,Z);
 //plot3d(X,Y,Z);
