@@ -22,7 +22,11 @@ zB = delta_z;
 
 xC = 0;
 yC = 100;
-zC = 10+delta_z;
+zC = 4+delta_z;
+
+// Nb de points du maillage
+Nx = 50; // nb de points en x
+Ny = 50; // nb de points en y
 
 // Definition de xmin, ymin, xmax et ymax
 xmin = min(xA, xB, xC);
@@ -30,9 +34,6 @@ ymin = min(yA, yB, yC);
 
 xmax = max(xA, xB, xC);
 ymax = max(yA, yB, yC);
-
-Nx = 50; // nb de points en x
-Ny = 50; // nb de points en y
 
 // Debut des calculs
 x = xmin;
@@ -68,7 +69,8 @@ end
 
 // Generation du fichier csv
 fd = mopen("mnt.csv","w"); // ouverture en ecriture d'un fichier
-mfprintf(fd,"%.3f;%.3f;%.3f\n",X,Y,Z); // sortie fichier
+sep = ",";
+mfprintf(fd,"%.3f"+sep+"%.3f"+sep+"%.3f"+"\n",X,Y,Z); // sortie fichier
 mclose(fd); // fermeture du fichier
 
 //plot3d(X,Y,Z);
