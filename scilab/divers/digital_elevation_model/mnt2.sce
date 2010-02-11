@@ -46,7 +46,10 @@ end
 
 
 // Generation du fichier csv
-fd = mopen("mnt2.csv","w"); // ouverture en ecriture d'un fichier
+DIR = ""
+//DIR = "/Users/scls/openphysic/scilab/divers/digital_elevation_model/"
+//DIR = "C:\"
+fd = mopen(DIR+"mnt2.csv","w"); // ouverture en ecriture d'un fichier
 sep = ",";
 mfprintf(fd,"%.3f"+sep+"%.3f"+sep+"%.3f"+"\n",X,Y,Z); // sortie fichier
 mclose(fd); // fermeture du fichier
