@@ -16,16 +16,16 @@ xA = 0;
 yA = 0;
 zA = delta_z;
 
-xB = 100;
-yB = 0;
+xB = 0;
+yB = 100;
 zB = delta_z;
 
-xC = 0;
-yC = 100;
+xC = 100;
+yC = 0;
 zC = 4+delta_z;
 
 // Nb de points du maillage
-Nx = 50; // nb de points en x
+Nx = 10; // nb de points en x
 Ny = 50; // nb de points en y
 
 // Definition de xmin, ymin, xmax et ymax
@@ -73,5 +73,6 @@ sep = ",";
 mfprintf(fd,"%.3f"+sep+"%.3f"+sep+"%.3f"+"\n",X,Y,Z); // sortie fichier
 mclose(fd); // fermeture du fichier
 
+clf
 param3d(X,Y,Z);
 //plot3d(X,Y,Z);
