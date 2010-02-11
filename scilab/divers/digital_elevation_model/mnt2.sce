@@ -54,4 +54,5 @@ mclose(fd); // fermeture du fichier
 halt
 
 clf
-param3d(X,Y,Z);
+plot3d(X,Y,Z);
+//param3d(X,Y,Z);
