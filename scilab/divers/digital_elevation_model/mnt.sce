@@ -1,0 +1,74 @@
+// Generation du maillage d'un plan
+// pour faire un modele numerique de terrain
+
+// eq d'un plan
+// a1*x+b1*y+c1*z = d1
+// ou
+// z = a*x + b*y + z0
+//  il faut 3 points pour determiner a b z0
+
+clear
+
+delta_z = 0.4; // amplitude chaos
+
+// Definition du plan via 3 points
+xA = 0;
+yA = 0;
+zA = delta_z;
+
+xB = 100;
+yB = 0;
+zB = delta_z;
+
+xC = 0;
+yC = 100;
+zC = 10+delta_z;
+
+// Definition de xmin, ymin, xmax et ymax
+xmin = min(xA, xB, xC);
+ymin = min(yA, yB, yC);
+
+xmax = max(xA, xB, xC);
+ymax = max(yA, yB, yC);
+
+Nx = 50; // nb de points en x
+Ny = 50; // nb de points en y
+
+// Debut des calculs
+x = xmin;
+y = ymin;
+z = 0;
+
+A3 = [xA yA 1 ; xB yB 1 ; xC yC 1];
+Z3 = [zA ; zB ; zC];
+X3 = A3^-1*Z3;
+a  = X3(1);
+b  = X3(2);
+z0 = X3(3);
+
+X = [];
+Y = [];
+Z = [];
+
+for i=1:Nx,
+  for j=1:Ny,
+    X = [X ; x];
+    Y = [Y ; y];
+    z = a*x + b*y + z0;
+    z = z + delta_z*((rand()-0.5)*2);
+    Z = [Z ; z];
+    y = ymin + j * (ymax - ymin) / Ny;
+  end
+  x = xmin + i * (xmax - xmin) / Nx;
+end
+
+// [X';Y';Z']'
+
+//mprintf("%.3f;%.3f;%.3f\n",X,Y,Z); // sortie stdout
+
+// Generation du fichier csv
+fd = mopen("mnt.csv","w"); // ouverture en ecriture d'un fichier
+mfprintf(fd,"%.3f;%.3f;%.3f\n",X,Y,Z); // sortie fichier
+mclose(fd); // fermeture du fichier
+
+//plot3d(X,Y,Z);
