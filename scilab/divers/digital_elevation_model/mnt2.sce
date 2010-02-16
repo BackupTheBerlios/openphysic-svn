@@ -9,7 +9,7 @@ ymin = 0;
 ymax = 100;
 
 // Nb de points du maillage
-Nx = 10; // nb d'ecartements en x
+Nx = 50; // nb d'ecartements en x
 Ny = 50; // nb d'ecartements en y
 
 X = [xmin:(xmax-xmin)/(Nx-1):xmax]';
@@ -58,8 +58,17 @@ halt
 
 clf
 //plot3d(X,Y,Z);
+
 param3d(X,Y,Z);
+p=gce();//get the handle on the just drawn polyline
+p.mark_mode='on';//enable the mark drawing (a mark at each given point)
+p.line_mode='off';//disable line drawing between given points
 
-halt
 
-xdel
+//drawlater();
+//param3d1(X,Y,list(Z,ones(Z)))
+//drawnow(); 
+
+//halt
+
+//xdel
