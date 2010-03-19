@@ -54,7 +54,7 @@ i=1
 for file in back/*.jpg
 do
   from=$file
-  to=temp/z_back_$(printf "%03d" $i).jpg
+  to=temp/back_$(printf "%03d" $i).jpg
   echo "Copy \"$from\" to \"$to\""
   cp "$from" "$to"
   i=$(($i + 1))
