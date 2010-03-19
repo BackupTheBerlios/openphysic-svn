@@ -2,9 +2,4 @@
 
 # Rename "recto 012.jpg" -> "recto1 012.jpg"
 
-rename ^recto ???.jpg$
-
-#for file in *.jpg;
-#do
-#  echo $file
-#done
+rename 's/recto/recto1/' *.jpg
