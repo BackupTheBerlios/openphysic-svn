@@ -1,8 +1,8 @@
 #/!usr/bin/env bash
 
-rm cover/*
-rm recto/*
-rm verso/*
-rm back/*
+rm cover/*.jpg
+rm recto/*.jpg
+rm verso/*.jpg
+rm back/*.jpg
 
 ./cleanup.sh
