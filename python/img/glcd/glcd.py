@@ -36,13 +36,14 @@ print "Output:", output
 #im.show()
 
 data = list(im.getdata())
-#print data
+print data
 
 i=0
 for d in data:
   i=i+1
-  mean = (d[0]+d[1]+d[2])/3.0
-  print "%i : %s : %i" % (i, d, mean==0)
+  #mean = (d[0]+d[1]+d[2])/3.0 # si RGB
+  mean = d # 
+  print "%i : %s : %i" % (i, d, mean)
   
   #if mean == 0:
   #	pass
