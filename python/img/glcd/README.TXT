@@ -1,6 +1,6 @@
-Ce script est rŽalisŽ en Python avec PIL (Python Imaging Library).
-Il transforme une image (glcd.bmp) en un fichier source en C qui contient les donnŽes ˆ envoyer ˆ un microcont™leur pour un afficheur graphique LCD (type T6963 ou KS0108B)
+Ce script est réalisé en Python avec PIL (Python Imaging Library).
+Il transforme une image (glcd.bmp) en un fichier source en C qui contient les données à envoyer à un microcontrôleur pour un afficheur graphique LCD (type T6963 ou KS0108B)
 
 $ make
-prŽrequis :
+prérequis :
 installer Python + PIL (Python Imaging Library)
