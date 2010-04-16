@@ -13,4 +13,4 @@ for i in range(0, 2**8):
   sbin = int2bin(i)# "00000000"
   iBin = "%s %s" % (sbin[0:4], sbin[4:8]) # "0000 0000"
   
-  print "%s \t %s \t %s" % (iDec, iHex, iBin)
+  print "%s\t%s\t%s" % (iDec, iHex, iBin)
