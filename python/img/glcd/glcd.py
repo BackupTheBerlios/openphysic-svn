@@ -96,8 +96,8 @@ for i in range(0, len(data)/pixelsperbyte):
 	byte = 0
 	for bit in range(0, pixelsperbyte):
 		byte = byte + data[i*pixelsperbyte+pixelsperbyte-1-bit]*2**bit #T6963
-	#datastring = datastring + "data[%i] = 0x%02X;\n" % (i, byte) # C
-	datastring = datastring + "\tretlw\t0x%02X\n" % byte # ASM TAB MICROCHIP PIC
+	datastring = datastring + "data[%i] = 0x%02X;\n" % (i, byte) # C
+	#datastring = datastring + "\tretlw\t0x%02X\n" % byte # ASM TAB MICROCHIP PIC
 	#"	DA	0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x00" # ASM DATA MICROCHIP PIC
 	#"	.db	0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x00" # ASM DATA ATMEL
 	#"fcb$00 , $00 , $00 , $00 , $00 , $00 , $00 , $00" # ASM DATA ATMEL
