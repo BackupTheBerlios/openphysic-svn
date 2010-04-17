@@ -26,13 +26,13 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Image
+import sys
 from datetime import datetime
 
 from writer import Writer
 
 def usage():
-	print """python glcd.py
-"""
+	print("""Usage: python glcd.py""")
 
 def main():
 	#input = 'glcd.bmp'
@@ -48,8 +48,8 @@ def main():
 	var = "data" # variable's name of data
 
 	im = Image.open(input)
-	print "Input:", input, im.format, im.size, im.mode
-	print "Output:", output
+	print("Input:", input, im.format, im.size, im.mode)
+	print("Output:", output)
 
 	#im.show()
 	data = list(im.getdata())
@@ -76,6 +76,8 @@ def main():
 	f = open(output, 'w')
 
 	#my_writer = Writer(output)
+	my_writer = Writer(sys.stdout)
+	
 	wdata = []
 
 	# Header
@@ -116,6 +118,8 @@ def main():
 \t; \t\tImage Mode: %(mode)s
 """ % head_params
 
+	my_writer.header()
+
 	# Datastring
 
 	datastring = """#include <stdint.h>
@@ -143,6 +147,7 @@ void init_%(data)s(void){
 					px = offset + bit
 				byte = byte + data[px]*2**bit #T6963
 			wdata.append(byte)
+			my_writer.append(byte)
 
 	elif gcontroller == "KS0108B":
 		msb_first = False
@@ -159,7 +164,11 @@ void init_%(data)s(void){
 
 
 	else:
-		print "Unsupported graphic controller"
+		msg = 'Unsupported graphic controller'
+		print(msg)
+		usage()
+		exit
+		#raise Exception, msg
 		
 	for byte in range(0, len(wdata)):
 		datastring = datastring + "\t%s[%i] = 0x%02X;" % (var, byte, wdata[byte]) # C
@@ -178,6 +187,8 @@ void init_%(data)s(void){
 	datastring = datastring + "}\n"
 
 	# End Of File
+	
+	my_writer.footer()
 
 	eof_c = "/*********************************************************/"+"\n"
 	eof_asm = "\t; \t\tEOF"
@@ -197,6 +208,8 @@ void init_%(data)s(void){
 	f.write(eof_c)
 
 	f.close()
+	
+	my_writer.__del__()
 
 
 if __name__ == "__main__":
