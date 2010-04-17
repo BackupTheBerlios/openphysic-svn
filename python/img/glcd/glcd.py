@@ -28,11 +28,12 @@ import Image
 from datetime import datetime
 
 #input = 'glcd.bmp'
-#input = 'samples/glcd_bw_240_128_hz2_8bits.bmp' #T6963 test case (1 to 8 pixels hz ON - 0x01 0x03 0x07 0x0F 0x1F 0x3F 0x7F 0xFF)
+#input = 'samples/glcd_bw_240_128_hz2_8bits.bmp' # T6963   test case (1 to 8 pixels hz   ON - 0x01 0x03 0x07 0x0F 0x1F 0x3F 0x7F 0xFF)
 input = 'samples/glcd_bw_240_128_vt_8bits.bmp' # KS0108B test case (1 to 8 pixels vert ON - 0x01 0x03 0x07 0x0F 0x1F 0x3F 0x7F 0xFF)
 output = 'glcd.c'
 #language = 'C_AVR' # language C_AVR C_PIC...
 pixelsperbyte = 8 # 8 or 6
+#gcontroller = "T6963" # graphic controller T6963, KS0108B
 gcontroller = "KS0108B" # graphic controller T6963, KS0108B
 
 bytesperline = 4 # nb of bytes per lines of code
@@ -43,11 +44,13 @@ print "Input:", input, im.format, im.size, im.mode
 print "Output:", output
 
 #im.show()
-
 data = list(im.getdata())
 #print data
+#print im.getpixel((239,127)) 
 
 w = im.size[0] # get image width
+h = im.size[1] # get image height
+px_nb = w * h # len(data)
 	
 #i=0
 #for d in data:
@@ -66,14 +69,15 @@ f = open(output, 'w')
 
 # Header
 
-head_params = {'output': output,
+head_params = {
+	'output': output,
 	'input': input,
 	'format': im.format,
 	'size': im.size,
 	'mode': im.mode,
 	'now': datetime.now(),
-	'gcontroller': gcontroller
-	}
+	'gcontroller': gcontroller,
+}
 	
 head_c = """/*********************************************************
  * Graphic controller: %(gcontroller)s
@@ -109,7 +113,7 @@ datastring = """#include <stdint.h>
 uint8_t %(data)s[N_%(data)s];
 
 void init_%(data)s(void){
-""" % {'data': var, 'size': len(data)/pixelsperbyte}
+""" % {'data': var, 'size': px_nb/pixelsperbyte}
 
 #datastring = datastring + "int %s[4000];" % var + "\n\n"
 
@@ -117,10 +121,16 @@ void init_%(data)s(void){
 
 sp = 1
 if gcontroller == "T6963":
-	for i in range(0, len(data)/pixelsperbyte):
+	msb_first = True
+	for i in range(0, px_nb/pixelsperbyte):
 		byte = 0
 		for bit in range(0, pixelsperbyte):
-			byte = byte + data[i*pixelsperbyte+pixelsperbyte-1-bit]*2**bit #T6963
+			offset = i*pixelsperbyte
+			if msb_first:
+				px = offset + pixelsperbyte - 1 - bit
+			else:
+				px = offset + bit
+			byte = byte + data[px]*2**bit #T6963
 		datastring = datastring + "\t%s[%i] = 0x%02X;" % (var, i, byte) # C
 		if sp == bytesperline:
 			datastring = datastring + "\n"
@@ -135,19 +145,26 @@ if gcontroller == "T6963":
 		#Pix(0,0) = &H2A& : Pix(0,1) = &H20& : Pix(0,2) = &H00& : Pix(0,3) = &H00& # VB
 
 elif gcontroller == "KS0108B":
-	for i in range(0, len(data)/pixelsperbyte):
-		byte = 0
-		#for bit in range(0, pixelsperbyte):
-		bit=0
-		byte = byte + data[i] #*2**bit # KS0108B ToFix +bit*w
-		datastring = datastring + "\t%s[%i] = 0x%02X;" % (var, i, byte) # C
-		#f.write(datastring)
-		if sp == bytesperline:
-			datastring = datastring + "\n"
-			sp = 0
-		else:
-			datastring = datastring + " "
-		sp = sp + 1	
+	k = 0
+	msb_first = False
+	for i in range(0, h/pixelsperbyte):
+		for j in range(0, w):
+			pixel = (j, i*pixelsperbyte) # x, y
+			byte = 0
+			for bit in range(0, pixelsperbyte):
+				if msb_first:
+					byte = byte + im.getpixel((pixel[0], pixel[1]+pixelsperbyte - 1 - bit))*2**bit
+				else:
+					byte = byte + im.getpixel((pixel[0], pixel[1]+bit))*2**bit
+			datastring = datastring + "\t%s[%i] = 0x%02X;" % (var, k, byte) # C
+			k = k + 1
+			if sp == bytesperline:
+				datastring = datastring + "\n"
+				sp = 0
+			else:
+				datastring = datastring + " "
+			sp = sp + 1
+
 else:
 	print "Unsupported graphic controller"
 

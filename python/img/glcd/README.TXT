@@ -37,13 +37,16 @@ Config :
 		MSB Last
 
 Exemples :
+
 T6963
+	240x128
 	Monochrome bitmap (1bpp)
 	Table horizontal from left to right
 	Origin at Top Left
 	MSB First
 
 KS0108B
+	240x128
 	Monochrome bitmap (1bpp)
 	Table vertical downwards
 	Origin at Top Left
