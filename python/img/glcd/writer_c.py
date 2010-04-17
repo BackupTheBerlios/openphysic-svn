@@ -24,15 +24,19 @@ class Writer_C(Writer):
 #define N_%(data)s %(dsize)s
 uint8_t %(data)s[N_%(data)s];
 
-void init_%(data)s(void){
+void init_%(data)s(void) {
+
 """ % self.params)
 
 	def append(self, d):
-		self.fd.write("\tdata[%i] = 0x%02X;" % (self.i, d))
+		if self.sp==1:
+			self.fd.write("\t")
+		
+		self.fd.write("data[%i] = 0x%02X;" % (self.i, d))
 		
 		self.i = self.i + 1
 		
-		self.space_data()
+		self.space_data("   ")
 
 	def footer(self):
 		self.fd.write("""
