@@ -26,11 +26,15 @@
 import Image
 from datetime import datetime
 
-input = 'glcd.bmp'
+#input = 'glcd.bmp'
+input = 'samples/glcd_bw_240_128_vt_8bits.bmp'
 output = 'glcd.c'
+#language = 'C_AVR' # language C_AVR C_PIC...
 pixelsperbyte = 8 # 8 or 6
+gcontroller = "T6963" # graphic controller T6963, KS0108B
 
-#bytesperline = 4 # nb of bytes per lines of code
+bytesperline = 4 # nb of bytes per lines of code
+var = "data" # variable's name of data
 
 im = Image.open(input)
 print "Input:", input, im.format, im.size, im.mode
@@ -91,17 +95,42 @@ head_asm = """\t; \t\tFilename: %(output)s
 
 # Datastring
 
-datastring = ""
-for i in range(0, len(data)/pixelsperbyte):
-	byte = 0
-	for bit in range(0, pixelsperbyte):
-		byte = byte + data[i*pixelsperbyte+pixelsperbyte-1-bit]*2**bit #T6963
-	datastring = datastring + "data[%i] = 0x%02X;\n" % (i, byte) # C
-	#datastring = datastring + "\tretlw\t0x%02X\n" % byte # ASM TAB MICROCHIP PIC
-	#"	DA	0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x00" # ASM DATA MICROCHIP PIC
-	#"	.db	0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x00" # ASM DATA ATMEL
-	#"fcb$00 , $00 , $00 , $00 , $00 , $00 , $00 , $00" # ASM DATA ATMEL
-	#Pix(0,0) = &H2A& : Pix(0,1) = &H20& : Pix(0,2) = &H00& : Pix(0,3) = &H00& # VB
+datastring = """#include <stdint.h>
+
+uint8_t %(data)s[4000];
+
+void init_%(data)s(void){
+""" % {'data': var}
+
+#datastring = datastring + "int %s[4000];" % var + "\n\n"
+
+#datastring = datastring + "void init_%s(void){" % var + "\n"
+
+sp = 1
+if gcontroller == "T6963":
+	for i in range(0, len(data)/pixelsperbyte):
+		byte = 0
+		for bit in range(0, pixelsperbyte):
+			byte = byte + data[i*pixelsperbyte+pixelsperbyte-1-bit]*2**bit #T6963
+		datastring = datastring + "\t%s[%i] = 0x%02X;" % (var, i, byte) # C
+		if sp == bytesperline:
+			datastring = datastring + "\n"
+			sp = 0
+		else:
+			datastring = datastring + " "
+		sp = sp + 1
+		#datastring = datastring + "\tretlw\t0x%02X\n" % byte # ASM TAB MICROCHIP PIC
+		#"	DA	0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x00" # ASM DATA MICROCHIP PIC
+		#"	.db	0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x00" # ASM DATA ATMEL
+		#"fcb$00 , $00 , $00 , $00 , $00 , $00 , $00 , $00" # ASM DATA ATMEL
+		#Pix(0,0) = &H2A& : Pix(0,1) = &H20& : Pix(0,2) = &H00& : Pix(0,3) = &H00& # VB
+elif gcontroller == "KS0108B":
+	datastring = datastring + "KS0108B\n"
+	
+else:
+	print "Unsupported graphic controller"
+
+datastring = datastring + "}"
 	
 # End Of File
 
