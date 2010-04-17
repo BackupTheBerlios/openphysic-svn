@@ -30,6 +30,8 @@ import sys
 from datetime import datetime
 
 from writer import Writer
+from writer_c import Writer_C
+from writer_asm import Writer_ASM
 
 def usage():
 	print("""Usage: python glcd.py""")
@@ -76,7 +78,6 @@ def main():
 	f = open(output, 'w')
 
 	#my_writer = Writer(output)
-	my_writer = Writer(sys.stdout)
 	
 	wdata = []
 
@@ -91,6 +92,23 @@ def main():
 		'now': datetime.now(),
 		'gcontroller': gcontroller,
 	}
+
+	writer_params = {
+		'output': output,
+		'input': input,
+		'format': im.format,
+		'size': im.size,
+		'mode': im.mode,
+		'now': datetime.now(),
+		'gcontroller': gcontroller,
+		'data': "data",
+		'bytespersline': 4,
+		'dsize': px_nb, 
+	}
+
+	#my_writer = Writer(sys.stdout, writer_params)
+	#my_writer = Writer_C(sys.stdout, writer_params)
+	my_writer = Writer_ASM(sys.stdout, writer_params)
 	
 	head_c = """/*********************************************************
  * Graphic controller: %(gcontroller)s
