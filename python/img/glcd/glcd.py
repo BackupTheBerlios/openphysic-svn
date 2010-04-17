@@ -27,7 +27,8 @@ import Image
 from datetime import datetime
 
 #input = 'glcd.bmp'
-input = 'samples/glcd_bw_240_128_vt_8bits.bmp'
+input = 'samples/glcd_bw_240_128_hz2_8bits.bmp' #T6963 test case (1 to 8 pixels ON - 0x01 0x03 0x07 0x0F 0x1F 0x3F 0x7F 0xFF)
+#input = 'samples/glcd_bw_240_128_vt_8bits.bmp' # KS0108B test case
 output = 'glcd.c'
 #language = 'C_AVR' # language C_AVR C_PIC...
 pixelsperbyte = 8 # 8 or 6
