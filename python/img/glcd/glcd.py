@@ -161,7 +161,7 @@ void init_%(data)s(void){
 					else:
 						byte = byte + im.getpixel((pixel[0], pixel[1]+bit))*2**bit
 				wdata.append(byte)
-
+				my_writer.append(byte)
 
 	else:
 		msg = 'Unsupported graphic controller'
