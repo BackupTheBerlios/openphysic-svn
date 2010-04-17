@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf8 -*-
 
 # =====================================================================
 # = convert a picture to data for T6963 or KS0108B graphic controller =
@@ -27,19 +28,21 @@
 import Image
 from datetime import datetime
 
+from writer import Writer
+
 def usage():
 	print """python glcd.py
 """
 
 def main():
 	#input = 'glcd.bmp'
-	#input = 'samples/glcd_bw_240_128_hz2_8bits.bmp' # T6963   test case (1 to 8 pixels hz   ON - 0x01 0x03 0x07 0x0F 0x1F 0x3F 0x7F 0xFF)
-	input = 'samples/glcd_bw_240_128_vt_8bits.bmp' # KS0108B test case (1 to 8 pixels vert ON - 0x01 0x03 0x07 0x0F 0x1F 0x3F 0x7F 0xFF)
+	input = 'samples/glcd_bw_240_128_hz2_8bits.bmp' # T6963   test case (1 to 8 pixels hz   ON - 0x01 0x03 0x07 0x0F 0x1F 0x3F 0x7F 0xFF)
+	#input = 'samples/glcd_bw_240_128_vt_8bits.bmp' # KS0108B test case (1 to 8 pixels vert ON - 0x01 0x03 0x07 0x0F 0x1F 0x3F 0x7F 0xFF)
 	output = 'glcd.c'
 	#language = 'C_AVR' # language C_AVR C_PIC...
 	pixelsperbyte = 8 # 8 or 6
-	#gcontroller = "T6963" # graphic controller T6963, KS0108B
-	gcontroller = "KS0108B" # graphic controller T6963, KS0108B
+	gcontroller = "T6963" # graphic controller T6963, KS0108B
+	#gcontroller = "KS0108B" # graphic controller T6963, KS0108B
 
 	bytesperline = 4 # nb of bytes per lines of code
 	var = "data" # variable's name of data
@@ -71,6 +74,9 @@ def main():
 	  #  print "%i : %s : true" % (i, d)
 
 	f = open(output, 'w')
+
+	#my_writer = Writer(output)
+	wdata = []
 
 	# Header
 
@@ -136,21 +142,9 @@ void init_%(data)s(void){
 				else:
 					px = offset + bit
 				byte = byte + data[px]*2**bit #T6963
-			datastring = datastring + "\t%s[%i] = 0x%02X;" % (var, i, byte) # C
-			if sp == bytesperline:
-				datastring = datastring + "\n"
-				sp = 0
-			else:
-				datastring = datastring + " "
-			sp = sp + 1
-			#datastring = datastring + "\tretlw\t0x%02X\n" % byte # ASM TAB MICROCHIP PIC
-			#"	DA	0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x00" # ASM DATA MICROCHIP PIC
-			#"	.db	0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x00" # ASM DATA ATMEL
-			#"fcb$00 , $00 , $00 , $00 , $00 , $00 , $00 , $00" # ASM DATA ATMEL
-			#Pix(0,0) = &H2A& : Pix(0,1) = &H20& : Pix(0,2) = &H00& : Pix(0,3) = &H00& # VB
+			wdata.append(byte)
 
 	elif gcontroller == "KS0108B":
-		k = 0
 		msb_first = False
 		for i in range(0, h/pixelsperbyte):
 			for j in range(0, w):
@@ -161,19 +155,27 @@ void init_%(data)s(void){
 						byte = byte + im.getpixel((pixel[0], pixel[1]+pixelsperbyte - 1 - bit))*2**bit
 					else:
 						byte = byte + im.getpixel((pixel[0], pixel[1]+bit))*2**bit
-				datastring = datastring + "\t%s[%i] = 0x%02X;" % (var, k, byte) # C
-				k = k + 1
-				if sp == bytesperline:
-					datastring = datastring + "\n"
-					sp = 0
-				else:
-					datastring = datastring + " "
-				sp = sp + 1
+				wdata.append(byte)
+
 
 	else:
 		print "Unsupported graphic controller"
+		
+	for byte in range(0, len(wdata)):
+		datastring = datastring + "\t%s[%i] = 0x%02X;" % (var, byte, wdata[byte]) # C
+		if sp == bytesperline:
+			datastring = datastring + "\n"
+			sp = 0
+		else:
+			datastring = datastring + " "
+		sp = sp + 1		
+			#datastring = datastring + "\tretlw\t0x%02X\n" % byte # ASM TAB MICROCHIP PIC
+			#"	DA	0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x00" # ASM DATA MICROCHIP PIC
+			#"	.db	0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x00" # ASM DATA ATMEL
+			#"fcb$00 , $00 , $00 , $00 , $00 , $00 , $00 , $00" # ASM DATA ATMEL
+			#Pix(0,0) = &H2A& : Pix(0,1) = &H20& : Pix(0,2) = &H00& : Pix(0,3) = &H00& # VB
 
-	datastring = datastring + "}"
+	datastring = datastring + "}\n"
 
 	# End Of File
 
