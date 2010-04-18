@@ -2,7 +2,7 @@
 # -*- coding: utf8 -*-
 
 class Writer:
-	bytesperline = 4
+	_bytesperline = 4
 
 	i = 0
 	sp = 1
@@ -36,12 +36,18 @@ class Writer:
 
 
 	def space_data(self, space="\t"):
-		if self.sp == self.bytesperline:
+		if self.sp == self._bytesperline:
 			self.fd.write("\n")
 			self.sp = 0
 		else:
 			self.fd.write(space)
 		self.sp = self.sp + 1
+	
+	#def get_bytesperline(self):
+	#	return self.bytesperline
+		
+	def set_bytesperline(self, bytesperline):
+		self._bytesperline = bytesperline
 		
 		
 #"\tretlw\t0x%02X\n" % byte # ASM TAB MICROCHIP PIC

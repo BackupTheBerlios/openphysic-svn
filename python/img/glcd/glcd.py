@@ -55,9 +55,9 @@ def main():
 		default="DEFAULT", type="string",
 		help="specify language (DEFAULT, C, ASM)")
 
- 	#parser.add_option("-B", "--bytesperline", dest="bytesperline",
-	#	default=4, type="int",
-	#	help="specify number of bytes per line")
+ 	parser.add_option("-B", "--bytesperline", dest="bytesperline",
+		default=4, type="int",
+		help="specify number of bytes per line")
 
 	(options, args) = parser.parse_args()
 	
@@ -131,6 +131,7 @@ Output:
 	else: # DEFAULT
 		my_writer = Writer(f, writer_params)
 
+	my_writer.set_bytesperline(options.bytesperline)
 
 	my_writer.header()
 

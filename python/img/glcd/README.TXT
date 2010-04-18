@@ -56,8 +56,6 @@ KS0108B
 	
 ToDo :
 
-Passage de bytesperline dans la ligne de commande
-
 Amélioration de la classe GController
 	pb avec Enum ?
 	faire des tests pour vérifier l'égalité
