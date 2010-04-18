@@ -21,15 +21,16 @@ class Writer_ASM(Writer):
 
 	def append(self, d):
 	
-		if self.sp==1:
+		if self._sp==1:
 			self.fd.write("\tDA\t")
 		
 		self.fd.write("0x%02X" % d)
 		
-		self.i = self.i + 1
+		self._i = self._i + 1
 		
 		self.space_data(" , ")
 
 	def footer(self):
-		self.fd.write("""\t; \t\tEOF
+		self.fd.write("""
+\t\t;  \tEOF
 """ % self.params)

@@ -151,7 +151,7 @@ Supported graphic controllers are: T6963 KS0108B""" % name)
 		return self.name
 			
 	def display(self):
-		print """Graphic Controller:
+		print """Graphic Controller
 	Name: %(name)s
 	Size: %(size)s
 	Color: %(color)s

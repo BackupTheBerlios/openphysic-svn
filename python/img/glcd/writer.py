@@ -4,8 +4,8 @@
 class Writer:
 	_bytesperline = 4
 
-	i = 0
-	sp = 1
+	_i = 0
+	_sp = 1
 	
 	def __init__(self, fd, params):
 		self.fd = fd
@@ -36,12 +36,12 @@ class Writer:
 
 
 	def space_data(self, space="\t"):
-		if self.sp == self._bytesperline:
+		if self._sp == self._bytesperline:
 			self.fd.write("\n")
-			self.sp = 0
+			self._sp = 0
 		else:
 			self.fd.write(space)
-		self.sp = self.sp + 1
+		self._sp = self._sp + 1
 	
 	#def get_bytesperline(self):
 	#	return self.bytesperline

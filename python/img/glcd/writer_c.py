@@ -35,12 +35,12 @@ void init_data(void) {
 
 	def append(self, d):
 
-		if self.sp==1:
+		if self._sp==1:
 			self.fd.write("\t")
 		
-		self.fd.write("%s[%i] = 0x%02X;" % (self.params['data'], self.i, d))
+		self.fd.write("%s[%i] = 0x%02X;" % (self.params['data'], self._i, d))
 		
-		self.i = self.i + 1
+		self._i = self._i + 1
 		
 		self.space_data("   ")
 

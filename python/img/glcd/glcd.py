@@ -92,13 +92,15 @@ def main():
 	h = im.size[1] # get image height
 	px_nb = w * h # len(data)
 
-	print """Input:
+	print """Input
 	Filename: %s
 	Format: %s
 	Size: %s
 	Mode: %s
-Output:
-	Filename: %s""" %  (input, im.format, im.size, im.mode, output)
+
+Output
+	Filename: %s
+""" %  (input, im.format, im.size, im.mode, output)
 	
 	#i=0
 	#for d in data:
@@ -127,7 +129,7 @@ Output:
 	if options.lang.upper()=="C":
 		my_writer = Writer_C(f, writer_params)
 	elif options.lang.upper()=="ASM":
-		my_writer = Writer_C(f, writer_params)
+		my_writer = Writer_ASM(f, writer_params)
 	else: # DEFAULT
 		my_writer = Writer(f, writer_params)
 
