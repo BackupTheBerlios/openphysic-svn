@@ -3,8 +3,8 @@ output = glcd.c
 
 all:
 	$(RM) *.o
-	python glcd.py
-	#python glcd.py samples/glcd_bw_240_128_hz2_8bits.bmp -g T6963 -o glcd.c -w C
+	#python glcd.py
+	python glcd.py samples/glcd_bw_240_128_hz2_8bits.bmp -g T6963 -o glcd.c -l C
 	#cat $(output)
 	gcc -c $(output) -W -Wall -pedantic -ansi
 

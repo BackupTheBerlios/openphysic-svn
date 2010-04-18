@@ -57,7 +57,7 @@ def main():
 
 	(options, args) = parser.parse_args()
 	
-	if len(args) != 1:
+	if len(args) != 1: #and len(args) != 0:
 		parser.error("incorrect number of arguments")
 
 	input = args[0]
