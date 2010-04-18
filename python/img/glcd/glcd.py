@@ -116,21 +116,19 @@ Output:
 
 	my_writer.header()
 
-	#if gcontroller == "T6963":
 	if gc.name == "T6963":
 		msb_first = True
 		for i in range(0, px_nb/gc.pixelsperbyte):
 			byte = 0
 			for bit in range(0, gc.pixelsperbyte):
 				offset = i*gc.pixelsperbyte
-				if msb_first:
+				if msb_first:  # gc.msb ==  MsbEnum.FIRST
 					px = offset + gc.pixelsperbyte - 1 - bit
 				else:
 					px = offset + bit
-				byte = byte + data[px]*2**bit #T6963
+				byte = byte + data[px]*2**bit
 			my_writer.append(byte)
 
-	#elif gcontroller == "KS0108B":
 	elif gc.name == "KS0108B":
 		msb_first = False
 		for i in range(0, h/gc.pixelsperbyte):
@@ -138,7 +136,7 @@ Output:
 				pixel = (j, i*gc.pixelsperbyte) # x, y
 				byte = 0
 				for bit in range(0, gc.pixelsperbyte):
-					if msb_first:
+					if msb_first:  # gc.msb ==  MsbEnum.FIRST
 						byte = byte + im.getpixel((pixel[0], pixel[1]+gc.pixelsperbyte - 1 - bit))*2**bit
 					else:
 						byte = byte + im.getpixel((pixel[0], pixel[1]+bit))*2**bit

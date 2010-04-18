@@ -91,7 +91,7 @@ class MSB:
 			return "Undefined MSB order"
 
 class GController:
-	#name = ""
+	name = "noname"
 	
 	size = (240, 128) # (w, h)
 	color = Color(ColorEnum.MONOCHROME)
