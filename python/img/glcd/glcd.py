@@ -50,8 +50,8 @@ def main():
 	var = "data" # variable's name of data
 
 	im = Image.open(input)
-	print("Input:", input, im.format, im.size, im.mode)
-	print("Output:", output)
+	print "Input:", input, im.format, im.size, im.mode
+	print "Output:", output
 
 	#im.show()
 	data = list(im.getdata())
@@ -126,7 +126,7 @@ def main():
 
 	else:
 		msg = 'Unsupported graphic controller'
-		print(msg)
+		print msg
 		usage()
 		exit
 		#raise Exception, msg
