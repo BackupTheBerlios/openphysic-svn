@@ -44,7 +44,7 @@ def main():
 	#input = 'samples/glcd_bw_240_128_vt_8bits.bmp' # KS0108B test case (1 to 8 pixels vert ON - 0x01 0x03 0x07 0x0F 0x1F 0x3F 0x7F 0xFF)
 	output = 'glcd.c'
 	#language = 'C_AVR' # language C_AVR C_PIC...
-	pixelsperbyte = 8 # 8 or 6
+	
 	#gcontroller = "T6963" # graphic controller T6963, KS0108B
 	#gcontroller = "KS0108B" # graphic controller T6963, KS0108B
 	
@@ -52,7 +52,10 @@ def main():
 	gc = GController("KS0108B")
 	gc.display()
 	
-	#print gc.msb==MSBEnum.FIRST
+	#if gc.msb == MSBEnum.FIRST:
+	#	print "FIRST"
+	#else:
+	#	print "LAST"
 
 	bytesperline = 4 # nb of bytes per lines of code
 	var = "data" # variable's name of data
@@ -103,7 +106,7 @@ Output:
 #		'gcontroller': gcontroller,
 		'data': "data",
 		'bytespersline': 4,
-		'dsize': px_nb/pixelsperbyte, 
+		'dsize': px_nb/gc.pixelsperbyte, 
 	}
 
 	#my_writer = Writer(f, writer_params)
@@ -116,12 +119,12 @@ Output:
 	#if gcontroller == "T6963":
 	if gc.name == "T6963":
 		msb_first = True
-		for i in range(0, px_nb/pixelsperbyte):
+		for i in range(0, px_nb/gc.pixelsperbyte):
 			byte = 0
-			for bit in range(0, pixelsperbyte):
-				offset = i*pixelsperbyte
+			for bit in range(0, gc.pixelsperbyte):
+				offset = i*gc.pixelsperbyte
 				if msb_first:
-					px = offset + pixelsperbyte - 1 - bit
+					px = offset + gc.pixelsperbyte - 1 - bit
 				else:
 					px = offset + bit
 				byte = byte + data[px]*2**bit #T6963
@@ -130,13 +133,13 @@ Output:
 	#elif gcontroller == "KS0108B":
 	elif gc.name == "KS0108B":
 		msb_first = False
-		for i in range(0, h/pixelsperbyte):
+		for i in range(0, h/gc.pixelsperbyte):
 			for j in range(0, w):
-				pixel = (j, i*pixelsperbyte) # x, y
+				pixel = (j, i*gc.pixelsperbyte) # x, y
 				byte = 0
-				for bit in range(0, pixelsperbyte):
+				for bit in range(0, gc.pixelsperbyte):
 					if msb_first:
-						byte = byte + im.getpixel((pixel[0], pixel[1]+pixelsperbyte - 1 - bit))*2**bit
+						byte = byte + im.getpixel((pixel[0], pixel[1]+gc.pixelsperbyte - 1 - bit))*2**bit
 					else:
 						byte = byte + im.getpixel((pixel[0], pixel[1]+bit))*2**bit
 				my_writer.append(byte)

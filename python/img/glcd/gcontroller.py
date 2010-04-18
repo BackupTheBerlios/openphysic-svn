@@ -98,6 +98,8 @@ class GController:
 	paging = Paging(PagingEnum.L2R)
 	origin = Origin(OriginEnum.TL)
 	msb = MSB(MSBEnum.FIRST) # Most Signifiant Bit first
+	
+	pixelsperbyte = 8 # 8 or 6
 
 	#backcolor = 0
 	#forecolor = 0
@@ -120,6 +122,7 @@ class GController:
 			self.paging = Paging(PagingEnum.L2R)
 			self.origin = Origin(OriginEnum.TL)
 			self.msb = MSB(MSBEnum.FIRST)
+			self.pixelsperbyte = 8
 			
 			
 		elif self.name == "KS0108B":
@@ -135,6 +138,7 @@ class GController:
 			self.paging = Paging(PagingEnum.U2D)
 			self.origin = Origin(OriginEnum.TL)
 			self.msb = MSB(MSBEnum.LAST)
+			self.pixelsperbyte = 8
 			
 		else:
 			print "Unknow Graphic controller"
@@ -150,6 +154,7 @@ class GController:
 	Paging: %(paging)s
 	Origin: %(origin)s
 	MSB: %(msb)s
+	Pixels per byte: %(pixelsperbyte)s
 """ % {
 	'name': self.name,
 	'size': self.size,
@@ -157,5 +162,6 @@ class GController:
 	'paging': self.paging,
 	'origin': self.origin,
 	'msb': self.msb,
+	'pixelsperbyte': self.pixelsperbyte
 	}
 
