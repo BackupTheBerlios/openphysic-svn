@@ -11,6 +11,8 @@ class Writer:
 		self.fd = fd
 		self.params = params
 
+	def constants(self):
+		pass
 
 	
 	def header(self):

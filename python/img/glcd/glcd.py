@@ -35,32 +35,47 @@ from writer import Writer
 from writer_c import Writer_C
 from writer_asm import Writer_ASM
 
-def usage():
-	print("""Usage: python glcd.py""")
+from optparse import OptionParser
+
+#def usage():
+#	print("""Usage: glcd.py [options] arg1""")
 
 def main():
-	#input = 'glcd.bmp'
-	input = 'samples/glcd_bw_240_128_hz2_8bits.bmp' # T6963   test case (1 to 8 pixels hz   ON - 0x01 0x03 0x07 0x0F 0x1F 0x3F 0x7F 0xFF)
-	#input = 'samples/glcd_bw_240_128_vt_8bits.bmp' # KS0108B test case (1 to 8 pixels vert ON - 0x01 0x03 0x07 0x0F 0x1F 0x3F 0x7F 0xFF)
-	output = 'glcd.c'
-	#language = 'C_AVR' # language C_AVR C_PIC...
+	parser = OptionParser("usage: %prog picture [options]")
+
+ 	parser.add_option("-o", "--out", dest="output",
+		default="", type="string",
+		help="specify output filename")
+
+ 	parser.add_option("-g", "--gc", dest="gc",
+		default="T6963", type="string",
+		help="specify graphic controller (T6963, KS0108B)")
+
+ 	parser.add_option("-l", "--lang", dest="lang",
+		default="DEFAULT", type="string",
+		help="specify language (DEFAULT, C, ASM)")
+
+	(options, args) = parser.parse_args()
 	
-	#gcontroller = "T6963" # graphic controller T6963, KS0108B
-	#gcontroller = "KS0108B" # graphic controller T6963, KS0108B
+	if len(args) != 1:
+		parser.error("incorrect number of arguments")
+
+	input = args[0]
+
+	if options.output<>"":
+		output = options.output
+		f = open(output, 'w')
+	else:
+		output = "sys.stdout"
+		f = sys.stdout
 	
-	gc = GController("T6963")
+	gc = GController(options.gc)
+	#gc = GController("T6963")
 	#gc = GController("KS0108B")
 	
-	#gc.msb = MSB(MSBEnum.LAST)
-	#if gc.msb: #.ismsb:
-	#	print "FIRST"
-	#else:
-	#	print "LAST"
+	#gc.origin('TL')
 	
 	gc.display()
-
-	bytesperline = 4 # nb of bytes per lines of code
-	var = "data" # variable's name of data
 
 	im = Image.open(input)
 
@@ -93,9 +108,6 @@ Output:
 	    #print "%i : %s : false" % (i, d)
 	  #else:
 	  #  print "%i : %s : true" % (i, d)
-
-	#f = sys.stdout
-	f = open(output, 'w')
 	
 	writer_params = {
 		'output': output,
@@ -105,15 +117,15 @@ Output:
 		'mode': im.mode,
 		'now': datetime.now(),
 		'gcontroller': gc.name,
-#		'gcontroller': gcontroller,
-		'data': "data",
-		'bytespersline': 4,
 		'dsize': px_nb/gc.pixelsperbyte, 
 	}
-
-	#my_writer = Writer(f, writer_params)
-	my_writer = Writer_C(f, writer_params)
-	#my_writer = Writer_ASM(f, writer_params)
+	
+	if options.lang=="C":
+		my_writer = Writer_C(f, writer_params)
+	elif options.lang=="ASM":
+		my_writer = Writer_C(f, writer_params)
+	else: # DEFAULT
+		my_writer = Writer(f, writer_params)
 
 
 	my_writer.header()
@@ -146,7 +158,7 @@ Output:
 	else:
 		msg = 'Unsupported graphic controller'
 		print msg
-		usage()
+		#usage()
 		exit
 		#raise Exception, msg
 		

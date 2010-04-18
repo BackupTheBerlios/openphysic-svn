@@ -4,8 +4,13 @@
 from writer import Writer
 
 class Writer_C(Writer):
-	
+
+	def constants(self):
+		self.params['data'] = "data"
+		
 	def header(self):
+		self.constants()
+
 		self.fd.write("""/*********************************************************
  * Graphic controller: %(gcontroller)s
  * Filename: %(output)s
@@ -24,15 +29,16 @@ class Writer_C(Writer):
 #define N_%(data)s %(dsize)s
 uint8_t %(data)s[N_%(data)s];
 
-void init_%(data)s(void) {
+void init_data(void) {
 
-""" % self.params)
+""" % (self.params) )
 
 	def append(self, d):
+
 		if self.sp==1:
 			self.fd.write("\t")
 		
-		self.fd.write("data[%i] = 0x%02X;" % (self.i, d))
+		self.fd.write("%s[%i] = 0x%02X;" % (self.params['data'], self.i, d))
 		
 		self.i = self.i + 1
 		

@@ -51,25 +51,27 @@ class Paging:
 			return "Table vertical upwards"
 		else:
 			return "Undefined paging"
-			
-			
-class OriginEnum:
-	TL = 0	# Origin at Top Left
-	BL = 1	# Origin at Bottom Left
+
 
 class Origin:
-	origin = OriginEnum.TL
+	origin = 'TL'
 
-	def __init__(self, origin=OriginEnum.TL):
-		self.origin = origin
+	def __init__(self, origin='TL'):
+		if origin in ('TL','BL'):
+			self.origin = origin
+		else:
+			raise Exception("ERREUR")
 	
 	def __str__(self):
-		if self.origin == OriginEnum.TL:
+		if self.origin == 'TL':
 			return "Origin at Top Left"
-		elif self.origin == OriginEnum.BL:
+		elif self.origin == 'BL':
 			return "Origin at Bottom Left"
 		else:
 			return "Undefined origin"
+			
+	def __cmp__(self, other):
+		return self.origin==other.origin
 
 
 class MSB:
@@ -96,7 +98,7 @@ class GController:
 	size = (240, 128) # (w, h)
 	color = Color(ColorEnum.MONOCHROME)
 	paging = Paging(PagingEnum.L2R)
-	origin = Origin(OriginEnum.TL)
+	origin = Origin('TL')
 	msb = MSB('FIRST') # Most Signifiant Bit first
 	
 	pixelsperbyte = 8 # 8 or 6
@@ -107,7 +109,7 @@ class GController:
 	def __init__(self, name="noname"):
 		self.name = name
 		
-		print name
+		#print name
 		
 		if self.name == "T6963":
 			"""
@@ -120,7 +122,7 @@ class GController:
 			self.size = (240, 128)
 			self.color = Color(ColorEnum.MONOCHROME)
 			self.paging = Paging(PagingEnum.L2R)
-			self.origin = Origin(OriginEnum.TL)
+			self.origin = Origin('TL')
 			self.msb = MSB('FIRST')
 			self.pixelsperbyte = 8
 			
@@ -136,12 +138,14 @@ class GController:
 			self.size = (240, 128)
 			self.color = Color(ColorEnum.MONOCHROME)
 			self.paging = Paging(PagingEnum.U2D)
-			self.origin = Origin(OriginEnum.TL)
+			self.origin = Origin('TL')
 			self.msb = MSB('LAST')
 			self.pixelsperbyte = 8
 			
+			
 		else:
-			print "Unknow Graphic controller"
+			raise Exception("""Unknow Graphic controller \"%s\"
+Supported graphic controllers are: T6963 KS0108B""" % name)
 
 	def __str__(self):
 		return self.name
