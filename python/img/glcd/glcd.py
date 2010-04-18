@@ -29,6 +29,8 @@ import Image
 import sys
 from datetime import datetime
 
+from gcontroller import GController
+
 from writer import Writer
 from writer_c import Writer_C
 from writer_asm import Writer_ASM
@@ -45,13 +47,14 @@ def main():
 	pixelsperbyte = 8 # 8 or 6
 	gcontroller = "T6963" # graphic controller T6963, KS0108B
 	#gcontroller = "KS0108B" # graphic controller T6963, KS0108B
+	
+	gc = GController("T6963")
+	gc.display()
 
 	bytesperline = 4 # nb of bytes per lines of code
 	var = "data" # variable's name of data
 
 	im = Image.open(input)
-	print "Input:", input, im.format, im.size, im.mode
-	print "Output:", output
 
 	#im.show()
 	data = list(im.getdata())
@@ -61,6 +64,14 @@ def main():
 	w = im.size[0] # get image width
 	h = im.size[1] # get image height
 	px_nb = w * h # len(data)
+
+	print """Input:
+	Filename: %s
+	Format: %s
+	Size: %s
+	Mode: %s
+Output:
+	Filename: %s""" %  (input, im.format, im.size, im.mode, output)
 	
 	#i=0
 	#for d in data:
