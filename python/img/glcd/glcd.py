@@ -55,6 +55,10 @@ def main():
 		default="DEFAULT", type="string",
 		help="specify language (DEFAULT, C, ASM)")
 
+ 	#parser.add_option("-B", "--bytesperline", dest="bytesperline",
+	#	default=4, type="int",
+	#	help="specify number of bytes per line")
+
 	(options, args) = parser.parse_args()
 	
 	if len(args) != 1: #and len(args) != 0:
@@ -120,9 +124,9 @@ Output:
 		'dsize': px_nb/gc.pixelsperbyte, 
 	}
 	
-	if options.lang=="C":
+	if options.lang.upper()=="C":
 		my_writer = Writer_C(f, writer_params)
-	elif options.lang=="ASM":
+	elif options.lang.upper()=="ASM":
 		my_writer = Writer_C(f, writer_params)
 	else: # DEFAULT
 		my_writer = Writer(f, writer_params)

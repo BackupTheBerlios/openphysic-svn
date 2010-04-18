@@ -107,7 +107,7 @@ class GController:
 	#forecolor = 0
 
 	def __init__(self, name="noname"):
-		self.name = name
+		self.name = name.upper()
 		
 		#print name
 		
