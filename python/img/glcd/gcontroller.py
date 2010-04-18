@@ -9,7 +9,6 @@ class ColorEnum:
 	COLOR16BPP = 4	# 65535 colors (16bpp)
 
 class Color:
-	color = ColorEnum.MONOCHROME
 
 	def __init__(self, color=ColorEnum.MONOCHROME):
 		self.color = color
@@ -106,6 +105,8 @@ class GController:
 	def __init__(self, name="noname"):
 		self.name = name
 		
+		print name
+		
 		if self.name == "T6963":
 			"""
 			240x128
@@ -114,11 +115,11 @@ class GController:
 			Origin at Top Left
 			MSB First
 			"""
-			size = (240, 128)
-			color = Color(ColorEnum.MONOCHROME)
-			paging = Paging(PagingEnum.L2R)
-			origin = Origin(OriginEnum.TL)
-			msb = MSB(MSBEnum.FIRST)
+			self.size = (240, 128)
+			self.color = Color(ColorEnum.MONOCHROME)
+			self.paging = Paging(PagingEnum.L2R)
+			self.origin = Origin(OriginEnum.TL)
+			self.msb = MSB(MSBEnum.FIRST)
 			
 			
 		elif self.name == "KS0108B":
@@ -129,14 +130,17 @@ class GController:
 			Origin at Top Left
 			MSB Last
 			"""
-			size = (240, 128)
-			color = Color(ColorEnum.MONOCHROME)
-			paging = Paging(PagingEnum.U2D)
-			origin = Origin(OriginEnum.TL)
-			msb = MSB(MSBEnum.LAST)
+			self.size = (240, 128)
+			self.color = Color(ColorEnum.MONOCHROME)
+			self.paging = Paging(PagingEnum.U2D)
+			self.origin = Origin(OriginEnum.TL)
+			self.msb = MSB(MSBEnum.LAST)
 			
 		else:
 			print "Unknow Graphic controller"
+
+	def __str__(self):
+		return self.name
 			
 	def display(self):
 		print """Graphic Controller:

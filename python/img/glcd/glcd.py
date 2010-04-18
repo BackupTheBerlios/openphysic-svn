@@ -29,7 +29,7 @@ import Image
 import sys
 from datetime import datetime
 
-from gcontroller import GController
+from gcontroller import *
 
 from writer import Writer
 from writer_c import Writer_C
@@ -45,12 +45,14 @@ def main():
 	output = 'glcd.c'
 	#language = 'C_AVR' # language C_AVR C_PIC...
 	pixelsperbyte = 8 # 8 or 6
-	gcontroller = "T6963" # graphic controller T6963, KS0108B
+	#gcontroller = "T6963" # graphic controller T6963, KS0108B
 	#gcontroller = "KS0108B" # graphic controller T6963, KS0108B
 	
-	gc = GController("T6963")
+	#gc = GController("T6963")
 	gc = GController("KS0108B")
 	gc.display()
+	
+	#print gc.msb==MSBEnum.FIRST
 
 	bytesperline = 4 # nb of bytes per lines of code
 	var = "data" # variable's name of data
@@ -97,7 +99,8 @@ Output:
 		'size': im.size,
 		'mode': im.mode,
 		'now': datetime.now(),
-		'gcontroller': gcontroller,
+		'gcontroller': gc.name,
+#		'gcontroller': gcontroller,
 		'data': "data",
 		'bytespersline': 4,
 		'dsize': px_nb/pixelsperbyte, 
@@ -110,7 +113,8 @@ Output:
 
 	my_writer.header()
 
-	if gcontroller == "T6963":
+	#if gcontroller == "T6963":
+	if gc.name == "T6963":
 		msb_first = True
 		for i in range(0, px_nb/pixelsperbyte):
 			byte = 0
@@ -123,7 +127,8 @@ Output:
 				byte = byte + data[px]*2**bit #T6963
 			my_writer.append(byte)
 
-	elif gcontroller == "KS0108B":
+	#elif gcontroller == "KS0108B":
+	elif gc.name == "KS0108B":
 		msb_first = False
 		for i in range(0, h/pixelsperbyte):
 			for j in range(0, w):
