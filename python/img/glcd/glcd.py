@@ -48,14 +48,16 @@ def main():
 	#gcontroller = "T6963" # graphic controller T6963, KS0108B
 	#gcontroller = "KS0108B" # graphic controller T6963, KS0108B
 	
-	#gc = GController("T6963")
-	gc = GController("KS0108B")
-	gc.display()
+	gc = GController("T6963")
+	#gc = GController("KS0108B")
 	
-	#if gc.msb == MSBEnum.FIRST:
+	#gc.msb = MSB(MSBEnum.LAST)
+	#if gc.msb: #.ismsb:
 	#	print "FIRST"
 	#else:
 	#	print "LAST"
+	
+	gc.display()
 
 	bytesperline = 4 # nb of bytes per lines of code
 	var = "data" # variable's name of data
@@ -116,13 +118,13 @@ Output:
 
 	my_writer.header()
 
+
 	if gc.name == "T6963":
-		msb_first = True
 		for i in range(0, px_nb/gc.pixelsperbyte):
 			byte = 0
 			for bit in range(0, gc.pixelsperbyte):
 				offset = i*gc.pixelsperbyte
-				if msb_first:  # gc.msb ==  MsbEnum.FIRST
+				if gc.msb.is_first: # msb_first
 					px = offset + gc.pixelsperbyte - 1 - bit
 				else:
 					px = offset + bit
@@ -130,13 +132,12 @@ Output:
 			my_writer.append(byte)
 
 	elif gc.name == "KS0108B":
-		msb_first = False
 		for i in range(0, h/gc.pixelsperbyte):
 			for j in range(0, w):
 				pixel = (j, i*gc.pixelsperbyte) # x, y
 				byte = 0
 				for bit in range(0, gc.pixelsperbyte):
-					if msb_first:  # gc.msb ==  MsbEnum.FIRST
+					if gc.msb.is_first: # msb_first
 						byte = byte + im.getpixel((pixel[0], pixel[1]+gc.pixelsperbyte - 1 - bit))*2**bit
 					else:
 						byte = byte + im.getpixel((pixel[0], pixel[1]+bit))*2**bit

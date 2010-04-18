@@ -72,23 +72,23 @@ class Origin:
 			return "Undefined origin"
 
 
-class MSBEnum:
-	FIRST = True
-	LAST = False
-
 class MSB:
-	msb = True # MSB First
+	is_first = True # MSB First
 	
-	def __init__(self, msb=True):
-		self.msb = msb
-	
-	def __str__(self):
-		if self.msb == MSBEnum.FIRST:
-			return "Most Signifiant Bit First"
-		elif self.msb == MSBEnum.LAST:
-			return "Most Signifiant Bit Last"
+	def __init__(self, pos='FIRST'):
+		if pos=='FIRST':
+			self.is_first = True
+		elif pos=='LAST':
+			self.is_first = False
 		else:
-			return "Undefined MSB order"
+			raise Exception, "Unknow MSB position"
+
+	def __str__(self):
+		if self.is_first:
+			return "Most Signifiant Bit First"
+		else:
+			return "Most Signifiant Bit Last"
+
 
 class GController:
 	name = "noname"
@@ -97,7 +97,7 @@ class GController:
 	color = Color(ColorEnum.MONOCHROME)
 	paging = Paging(PagingEnum.L2R)
 	origin = Origin(OriginEnum.TL)
-	msb = MSB(MSBEnum.FIRST) # Most Signifiant Bit first
+	msb = MSB('FIRST') # Most Signifiant Bit first
 	
 	pixelsperbyte = 8 # 8 or 6
 
@@ -121,7 +121,7 @@ class GController:
 			self.color = Color(ColorEnum.MONOCHROME)
 			self.paging = Paging(PagingEnum.L2R)
 			self.origin = Origin(OriginEnum.TL)
-			self.msb = MSB(MSBEnum.FIRST)
+			self.msb = MSB('FIRST')
 			self.pixelsperbyte = 8
 			
 			
@@ -137,7 +137,7 @@ class GController:
 			self.color = Color(ColorEnum.MONOCHROME)
 			self.paging = Paging(PagingEnum.U2D)
 			self.origin = Origin(OriginEnum.TL)
-			self.msb = MSB(MSBEnum.LAST)
+			self.msb = MSB('LAST')
 			self.pixelsperbyte = 8
 			
 		else:
