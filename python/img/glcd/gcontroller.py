@@ -75,18 +75,18 @@ class Origin:
 
 class MSBEnum:
 	FIRST = True
-	FALSE = False
+	LAST = False
 
 class MSB:
-	msb_first = True
+	msb = True # MSB First
 	
-	def __init__(self, msb_first=True):
-		self.msb_first = msb_first
+	def __init__(self, msb=True):
+		self.msb = msb
 	
 	def __str__(self):
-		if self.msb_first == MsbEnum.FISRT:
+		if self.msb == MSBEnum.FIRST:
 			return "Most Signifiant Bit First"
-		elif self.msb_first == MsbEnum.LAST:
+		elif self.msb == MSBEnum.LAST:
 			return "Most Signifiant Bit Last"
 		else:
 			return "Undefined MSB order"
@@ -95,14 +95,10 @@ class GController:
 	#name = ""
 	
 	size = (240, 128) # (w, h)
-
 	color = Color(ColorEnum.MONOCHROME)
-	
 	paging = Paging(PagingEnum.L2R)
-	
 	origin = Origin(OriginEnum.TL)
-		
-	msb_first = True # Most Signifiant Bit first
+	msb = MSB(MSBEnum.FIRST) # Most Signifiant Bit first
 
 	#backcolor = 0
 	#forecolor = 0
@@ -122,7 +118,7 @@ class GController:
 			color = Color(ColorEnum.MONOCHROME)
 			paging = Paging(PagingEnum.L2R)
 			origin = Origin(OriginEnum.TL)
-			msb_first = True
+			msb = MSB(MSBEnum.FIRST)
 			
 			
 		elif self.name == "KS0108B":
@@ -137,7 +133,7 @@ class GController:
 			color = Color(ColorEnum.MONOCHROME)
 			paging = Paging(PagingEnum.U2D)
 			origin = Origin(OriginEnum.TL)
-			msb_first = False
+			msb = MSB(MSBEnum.LAST)
 			
 		else:
 			print "Unknow Graphic controller"
@@ -149,13 +145,13 @@ class GController:
 	Color: %(color)s
 	Paging: %(paging)s
 	Origin: %(origin)s
-	MSB First: %(msb)s
+	MSB: %(msb)s
 """ % {
 	'name': self.name,
 	'size': self.size,
 	'color': self.color,
 	'paging': self.paging,
 	'origin': self.origin,
-	'msb': self.msb_first,
+	'msb': self.msb,
 	}
 

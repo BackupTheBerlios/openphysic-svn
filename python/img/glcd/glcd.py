@@ -49,6 +49,7 @@ def main():
 	#gcontroller = "KS0108B" # graphic controller T6963, KS0108B
 	
 	gc = GController("T6963")
+	gc = GController("KS0108B")
 	gc.display()
 
 	bytesperline = 4 # nb of bytes per lines of code
