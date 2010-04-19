@@ -84,3 +84,9 @@ Rendre les writers appelables via une chaîne de caractère et générer automatique
 Possibilité de passer un writer_perso dans la ligne de commande (?)
 	option -W chemin/vers/writer_perso.py (au lieu de -w writer_name)
 	$ python glcd.py picture.bmp -g T6963 -l c -W chemin/vers/writer_perso.py
+	
+Gérer des afficheurs en niveaux de gris et en couleurs (pas uniquement monochrome)
+
+Rajouter en début de prog la possibilité de remettre à l'échelle (à piori rétrécir) l'image afin qu'elle rentre dans l'afficheur
+	voir création de thumbnail avec PIL
+	conserver le ratio w/h (combler par des pixels vide sinon)
