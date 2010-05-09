@@ -1,7 +1,7 @@
 
-# 1 "C:\Documents and Settings\Administrateur\Mes documents\uc\svn\lcd_16f877\lcd.c"
+# 1 "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877\lcd.c"
 
-# 22 "C:\Program Files\HI-TECH Software\PICC\9.70\include\pic1687x.h"
+# 19 "C:\Program Files\HI-TECH Software\PICC\9.70\include\pic168xa.h"
 volatile unsigned char INDF @ 0x00;
 volatile unsigned char TMR0 @ 0x01;
 volatile unsigned char PCL @ 0x02;
@@ -23,23 +23,17 @@ volatile unsigned char TMR1H @ 0x0F;
 volatile unsigned char T1CON @ 0x10;
 volatile unsigned char TMR2 @ 0x11;
 volatile unsigned char T2CON @ 0x12;
-
 volatile unsigned char SSPBUF @ 0x13;
 volatile unsigned char SSPCON @ 0x14;
-
 volatile unsigned char CCPR1L @ 0x15;
 volatile unsigned char CCPR1H @ 0x16;
 volatile unsigned char CCP1CON @ 0x17;
-
 volatile unsigned char RCSTA @ 0x18;
 volatile unsigned char TXREG @ 0x19;
 volatile unsigned char RCREG @ 0x1A;
-
 volatile unsigned char CCPR2L @ 0x1B;
 volatile unsigned char CCPR2H @ 0x1C;
 volatile unsigned char CCP2CON @ 0x1D;
-
-
 volatile unsigned char ADRESH @ 0x1E;
 volatile unsigned char ADCON0 @ 0x1F;
 
@@ -55,24 +49,22 @@ volatile unsigned char TRISE @ 0x89;
 volatile unsigned char PIE1 @ 0x8C;
 volatile unsigned char PIE2 @ 0x8D;
 volatile unsigned char PCON @ 0x8E;
-
 volatile unsigned char SSPCON2 @ 0x91;
-
 volatile unsigned char PR2 @ 0x92;
-
 volatile unsigned char SSPADD @ 0x93;
 volatile unsigned char SSPSTAT @ 0x94;
-
-
 volatile unsigned char TXSTA @ 0x98;
 volatile unsigned char SPBRG @ 0x99;
-
+volatile unsigned char CMCON @ 0x9C;
+volatile unsigned char CVRCON @ 0x9D;
 volatile unsigned char ADRESL @ 0x9E;
 volatile unsigned char ADCON1 @ 0x9F;
 
 
 volatile unsigned char EEDATA @ 0x10C;
 volatile unsigned char EEADR @ 0x10D;
+
+volatile unsigned char EEADRL @ 0x10D;
 volatile unsigned char EEDATH @ 0x10E;
 volatile unsigned char EEADRH @ 0x10F;
 
@@ -153,25 +145,18 @@ volatile bit TMR0IF @ (unsigned)&INTCON*8+2;
 volatile bit PSPIF @ (unsigned)&PIR1*8+7;
 
 volatile bit ADIF @ (unsigned)&PIR1*8+6;
-
 volatile bit RCIF @ (unsigned)&PIR1*8+5;
 volatile bit TXIF @ (unsigned)&PIR1*8+4;
-
-
 volatile bit SSPIF @ (unsigned)&PIR1*8+3;
-
 volatile bit CCP1IF @ (unsigned)&PIR1*8+2;
 volatile bit TMR2IF @ (unsigned)&PIR1*8+1;
 volatile bit TMR1IF @ (unsigned)&PIR1*8+0;
 
 
+volatile bit CMIF @ (unsigned)&PIR2*8+6;
 volatile bit EEIF @ (unsigned)&PIR2*8+4;
-
 volatile bit BCLIF @ (unsigned)&PIR2*8+3;
-
 volatile bit CCP2IF @ (unsigned)&PIR2*8+0;
-
-
 
 
 volatile bit T1CKPS1 @ (unsigned)&T1CON*8+5;
@@ -189,7 +174,6 @@ volatile bit TOUTPS0 @ (unsigned)&T2CON*8+3;
 volatile bit TMR2ON @ (unsigned)&T2CON*8+2;
 volatile bit T2CKPS1 @ (unsigned)&T2CON*8+1;
 volatile bit T2CKPS0 @ (unsigned)&T2CON*8+0;
-
 
 
 volatile bit WCOL @ (unsigned)&SSPCON*8+7;
@@ -210,7 +194,6 @@ volatile bit CCP1M1 @ (unsigned)&CCP1CON*8+1;
 volatile bit CCP1M0 @ (unsigned)&CCP1CON*8+0;
 
 
-
 volatile bit SPEN @ (unsigned)&RCSTA*8+7;
 volatile bit RX9 @ (unsigned)&RCSTA*8+6;
 volatile bit SREN @ (unsigned)&RCSTA*8+5;
@@ -221,15 +204,12 @@ volatile bit OERR @ (unsigned)&RCSTA*8+1;
 volatile bit RX9D @ (unsigned)&RCSTA*8+0;
 
 
-
-
 volatile bit CCP2X @ (unsigned)&CCP2CON*8+5;
 volatile bit CCP2Y @ (unsigned)&CCP2CON*8+4;
 volatile bit CCP2M3 @ (unsigned)&CCP2CON*8+3;
 volatile bit CCP2M2 @ (unsigned)&CCP2CON*8+2;
 volatile bit CCP2M1 @ (unsigned)&CCP2CON*8+1;
 volatile bit CCP2M0 @ (unsigned)&CCP2CON*8+0;
-
 
 
 volatile bit ADCS1 @ (unsigned)&ADCON0*8+7;
@@ -307,26 +287,22 @@ volatile bit TRISE0 @ (unsigned)&TRISE*8+0;
 volatile bit PSPIE @ (unsigned)&PIE1*8+7;
 
 volatile bit ADIE @ (unsigned)&PIE1*8+6;
-
 volatile bit RCIE @ (unsigned)&PIE1*8+5;
 volatile bit TXIE @ (unsigned)&PIE1*8+4;
-
 volatile bit SSPIE @ (unsigned)&PIE1*8+3;
 volatile bit CCP1IE @ (unsigned)&PIE1*8+2;
 volatile bit TMR2IE @ (unsigned)&PIE1*8+1;
 volatile bit TMR1IE @ (unsigned)&PIE1*8+0;
 
 
+volatile bit CMIE @ (unsigned)&PIE2*8+6;
 volatile bit EEIE @ (unsigned)&PIE2*8+4;
 volatile bit BCLIE @ (unsigned)&PIE2*8+3;
-
 volatile bit CCP2IE @ (unsigned)&PIE2*8+0;
-
 
 
 volatile bit POR @ (unsigned)&PCON*8+1;
 volatile bit BOR @ (unsigned)&PCON*8+0;
-
 
 
 volatile bit GCEN @ (unsigned)&SSPCON2*8+7;
@@ -339,8 +315,6 @@ volatile bit RSEN @ (unsigned)&SSPCON2*8+1;
 volatile bit SEN @ (unsigned)&SSPCON2*8+0;
 
 
-
-
 volatile bit SMP @ (unsigned)&SSPSTAT*8+7;
 volatile bit CKE @ (unsigned)&SSPSTAT*8+6;
 volatile bit DA @ (unsigned)&SSPSTAT*8+5;
@@ -350,7 +324,7 @@ volatile bit RW @ (unsigned)&SSPSTAT*8+2;
 volatile bit UA @ (unsigned)&SSPSTAT*8+1;
 volatile bit BF @ (unsigned)&SSPSTAT*8+0;
 
-# 383
+# 352
 volatile bit CSRC @ (unsigned)&TXSTA*8+7;
 volatile bit TX9 @ (unsigned)&TXSTA*8+6;
 volatile bit TXEN @ (unsigned)&TXSTA*8+5;
@@ -360,8 +334,27 @@ volatile bit TRMT @ (unsigned)&TXSTA*8+1;
 volatile bit TX9D @ (unsigned)&TXSTA*8+0;
 
 
+volatile bit C2OUT @ (unsigned)&CMCON*8+7;
+volatile bit C1OUT @ (unsigned)&CMCON*8+6;
+volatile bit C2INV @ (unsigned)&CMCON*8+5;
+volatile bit C1INV @ (unsigned)&CMCON*8+4;
+volatile bit CIS @ (unsigned)&CMCON*8+3;
+volatile bit CM2 @ (unsigned)&CMCON*8+2;
+volatile bit CM1 @ (unsigned)&CMCON*8+1;
+volatile bit CM0 @ (unsigned)&CMCON*8+0;
+
+
+volatile bit CVREN @ (unsigned)&CVRCON*8+7;
+volatile bit CVROE @ (unsigned)&CVRCON*8+6;
+volatile bit CVRR @ (unsigned)&CVRCON*8+5;
+volatile bit CVR3 @ (unsigned)&CVRCON*8+3;
+volatile bit CVR2 @ (unsigned)&CVRCON*8+2;
+volatile bit CVR1 @ (unsigned)&CVRCON*8+1;
+volatile bit CVR0 @ (unsigned)&CVRCON*8+0;
+
 
 volatile bit ADFM @ (unsigned)&ADCON1*8+7;
+volatile bit ADCS2 @ (unsigned)&ADCON1*8+6;
 volatile bit PCFG3 @ (unsigned)&ADCON1*8+3;
 volatile bit PCFG2 @ (unsigned)&ADCON1*8+2;
 volatile bit PCFG1 @ (unsigned)&ADCON1*8+1;
@@ -386,7 +379,7 @@ extern unsigned char eeprom_read(unsigned char addr);
 #pragma inline(_delay)
 extern void _delay(unsigned long);
 
-# 8 "C:\Documents and Settings\Administrateur\Mes documents\uc\svn\lcd_16f877\lcd.h"
+# 8 "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877\lcd.h"
 extern void lcd_write(unsigned char);
 
 
@@ -407,7 +400,7 @@ extern void lcd_init(void);
 
 extern void lcd_putch(char);
 
-# 37 "C:\Documents and Settings\Administrateur\Mes documents\uc\svn\lcd_16f877\lcd.c"
+# 37 "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877\lcd.c"
 void
 lcd_write(unsigned char c)
 {

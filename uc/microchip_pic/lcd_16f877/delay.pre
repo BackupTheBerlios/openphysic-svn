@@ -1,10 +1,10 @@
 
-# 1 "C:\Documents and Settings\Administrateur\Mes documents\uc\svn\lcd_16f877\delay.c"
+# 1 "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877\delay.c"
 
-# 50 "C:\Documents and Settings\Administrateur\Mes documents\uc\svn\lcd_16f877\delay.h"
+# 50 "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877\delay.h"
 extern void DelayMs(unsigned char);
 
-# 10 "C:\Documents and Settings\Administrateur\Mes documents\uc\svn\lcd_16f877\delay.c"
+# 10 "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877\delay.c"
 void
 DelayMs(unsigned char cnt)
 {

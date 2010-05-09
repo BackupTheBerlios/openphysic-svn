@@ -10,5 +10,6 @@ main(void)
 	lcd_goto(0x40);	// Select second line
 	lcd_puts("Hello world");
 
-	for(;;);
+	while(1) {
+	}
 }

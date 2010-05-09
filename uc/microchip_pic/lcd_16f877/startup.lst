@@ -1,7 +1,7 @@
 
 
 HI-TECH Software PIC Macro Assembler V9.70 build 5239 
-                                                      Sat May 08 15:56:04 2010
+                                                      Sun May 09 10:54:52 2010
 
 
      1                           
@@ -17,16 +17,16 @@ HI-TECH Software PIC Macro Assembler V9.70 build 5239
      9                           	;
     10                           	; -olcd.cof -mlcd.map --summary=default --outp
                                  ut=default main.p1 lcd.p1 \
-    11                           	; delay.p1 --chip=16F877 -P --runtime=default 
-                                 --opt=default -D__DEBUG=1 \
-    12                           	; -g --asmlist --errformat=Error   [%n] %f; %l
-                                 .%c %s \
+    11                           	; delay.p1 --chip=16F877A -P --runtime=default
+                                  --opt=default \
+    12                           	; -D__DEBUG=1 -g --asmlist --errformat=Error  
+                                  [%n] %f; %l.%c %s \
     13                           	; --msgformat=Advisory[%n] %s --warnformat=War
                                  ning [%n] %f; %l.%c %s
     14                           	;
     15                           
     16                           
-    17                           	processor	16F877
+    17                           	processor	16F877A
     18                           
     19                           	global	_main,start,_exit,reset_vec
     20                           	fnroot	_main
@@ -82,7 +82,7 @@ HI-TECH Software PIC Macro Assembler V9.70 build 5239
 
 
 HI-TECH Software PICC Macro Assembler V9.70 build 5239 
-Symbol Table                                          Sat May 08 15:56:04 2010
+Symbol Table                                          Sun May 09 10:54:52 2010
 
                _main 072C                 _exit 0000  
                start 0000  start_initialization 079C  

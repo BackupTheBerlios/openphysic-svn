@@ -8,13 +8,13 @@
 	; Compiler options:
 	;
 	; -olcd.cof -mlcd.map --summary=default --output=default main.p1 lcd.p1 \
-	; delay.p1 --chip=16F877 -P --runtime=default --opt=default -D__DEBUG=1 \
-	; -g --asmlist --errformat=Error   [%n] %f; %l.%c %s \
+	; delay.p1 --chip=16F877A -P --runtime=default --opt=default \
+	; -D__DEBUG=1 -g --asmlist --errformat=Error   [%n] %f; %l.%c %s \
 	; --msgformat=Advisory[%n] %s --warnformat=Warning [%n] %f; %l.%c %s
 	;
 
 
-	processor	16F877
+	processor	16F877A
 
 	global	_main,start,_exit,reset_vec
 	fnroot	_main

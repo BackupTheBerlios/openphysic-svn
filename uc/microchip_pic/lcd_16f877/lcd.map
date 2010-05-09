@@ -3,7 +3,7 @@ HI-TECH Software C Compiler
 Linker command line:
 
 --edf=C:\Program Files\HI-TECH Software\PICC\9.70\dat\en_msgs.txt -cs \
-  -h+lcd.sym -z -Q16F877 -ol.obj -Mlcd.map -E1 -ACODE=00h-07FFhx4 \
+  -h+lcd.sym -z -Q16F877A -ol.obj -Mlcd.map -E1 -ACODE=00h-07FFhx4 \
   -ACONST=00h-0FFhx32 -AENTRY=00h-0FFhx32 -ASTRING=00h-0FFhx32 \
   -ABANK0=020h-06Fh -ABANK1=0A0h-0EFh -ABANK2=0110h-016Fh \
   -ABANK3=0190h-01EFh -ARAM=020h-06Fh,0A0h-0EFh,0110h-016Fh,0190h-01EFh \
@@ -16,7 +16,7 @@ Linker command line:
 
 Object code version is 3.10
 
-Machine type is 16F877
+Machine type is 16F877A
 
 
 
@@ -149,6 +149,7 @@ _ADCON0               (abs)        0001F
 _ADCON1               (abs)        0009F
 _ADCS0                (abs)        000FE
 _ADCS1                (abs)        000FF
+_ADCS2                (abs)        004FE
 _ADDEN                (abs)        000C3
 _ADFM                 (abs)        004FF
 _ADGO                 (abs)        000FA
@@ -162,6 +163,10 @@ _BCLIF                (abs)        0006B
 _BF                   (abs)        004A0
 _BOR                  (abs)        00470
 _BRGH                 (abs)        004C2
+_C1INV                (abs)        004E4
+_C1OUT                (abs)        004E6
+_C2INV                (abs)        004E5
+_C2OUT                (abs)        004E7
 _CARRY                (abs)        00018
 _CCP1CON              (abs)        00017
 _CCP1IE               (abs)        00462
@@ -188,14 +193,30 @@ _CCPR2L               (abs)        0001B
 _CHS0                 (abs)        000FB
 _CHS1                 (abs)        000FC
 _CHS2                 (abs)        000FD
+_CIS                  (abs)        004E3
 _CKE                  (abs)        004A6
 _CKP                  (abs)        000A4
+_CM0                  (abs)        004E0
+_CM1                  (abs)        004E1
+_CM2                  (abs)        004E2
+_CMCON                (abs)        0009C
+_CMIE                 (abs)        0046E
+_CMIF                 (abs)        0006E
 _CREN                 (abs)        000C4
 _CSRC                 (abs)        004C7
+_CVR0                 (abs)        004E8
+_CVR1                 (abs)        004E9
+_CVR2                 (abs)        004EA
+_CVR3                 (abs)        004EB
+_CVRCON               (abs)        0009D
+_CVREN                (abs)        004EF
+_CVROE                (abs)        004EE
+_CVRR                 (abs)        004ED
 _DA                   (abs)        004A5
 _DC                   (abs)        00019
 _EEADR                (abs)        0010D
 _EEADRH               (abs)        0010F
+_EEADRL               (abs)        0010D
 _EECON1               (abs)        0018C
 _EECON2               (abs)        0018D
 _EEDATA               (abs)        0010C

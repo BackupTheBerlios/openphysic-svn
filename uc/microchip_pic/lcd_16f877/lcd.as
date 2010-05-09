@@ -4,7 +4,7 @@ opt pagewidth 120
 
 	opt lm
 
-	processor	16F877
+	processor	16F877A
 clrc	macro
 	bcf	3,0
 	endm
@@ -183,6 +183,8 @@ _CHS1  equ     252
 _CHS2  equ     253
 	global	_CKP
 _CKP  equ     164
+	global	_CMIF
+_CMIF  equ     110
 	global	_CREN
 _CREN  equ     196
 	global	_DC
@@ -357,6 +359,10 @@ _ZERO  equ     26
 _ADCON1  equ     159
 	global	_ADRESL
 _ADRESL  equ     158
+	global	_CMCON
+_CMCON  equ     156
+	global	_CVRCON
+_CVRCON  equ     157
 	global	_OPTION
 _OPTION  equ     129
 	global	_PCON
@@ -393,6 +399,8 @@ _ACKDT  equ     1165
 _ACKEN  equ     1164
 	global	_ACKSTAT
 _ACKSTAT  equ     1166
+	global	_ADCS2
+_ADCS2  equ     1278
 	global	_ADFM
 _ADFM  equ     1279
 	global	_ADIE
@@ -405,14 +413,46 @@ _BF  equ     1184
 _BOR  equ     1136
 	global	_BRGH
 _BRGH  equ     1218
+	global	_C1INV
+_C1INV  equ     1252
+	global	_C1OUT
+_C1OUT  equ     1254
+	global	_C2INV
+_C2INV  equ     1253
+	global	_C2OUT
+_C2OUT  equ     1255
 	global	_CCP1IE
 _CCP1IE  equ     1122
 	global	_CCP2IE
 _CCP2IE  equ     1128
+	global	_CIS
+_CIS  equ     1251
 	global	_CKE
 _CKE  equ     1190
+	global	_CM0
+_CM0  equ     1248
+	global	_CM1
+_CM1  equ     1249
+	global	_CM2
+_CM2  equ     1250
+	global	_CMIE
+_CMIE  equ     1134
 	global	_CSRC
 _CSRC  equ     1223
+	global	_CVR0
+_CVR0  equ     1256
+	global	_CVR1
+_CVR1  equ     1257
+	global	_CVR2
+_CVR2  equ     1258
+	global	_CVR3
+_CVR3  equ     1259
+	global	_CVREN
+_CVREN  equ     1263
+	global	_CVROE
+_CVROE  equ     1262
+	global	_CVRR
+_CVRR  equ     1261
 	global	_DA
 _DA  equ     1189
 	global	_EEIE
@@ -563,6 +603,8 @@ _UA  equ     1185
 _EEADR  equ     269
 	global	_EEADRH
 _EEADRH  equ     271
+	global	_EEADRL
+_EEADRL  equ     269
 	global	_EEDATA
 _EEDATA  equ     268
 	global	_EEDATH
@@ -786,7 +828,7 @@ __pmaintext:
 
 ; *************** function _main *****************
 ; Defined at:
-;		line 6 in file "C:\Documents and Settings\Administrateur\Mes documents\uc\svn\lcd_16f877\main.c"
+;		line 6 in file "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877\main.c"
 ; Parameters:    Size  Location     Type
 ;		None
 ; Auto vars:     Size  Location     Type
@@ -812,7 +854,7 @@ __pmaintext:
 ; This function uses a non-reentrant model
 ; 
 psect	maintext
-	file	"C:\Documents and Settings\Administrateur\Mes documents\uc\svn\lcd_16f877\main.c"
+	file	"C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877\main.c"
 	line	6
 	global	__size_of_main
 	__size_of_main	equ	__end_of_main-_main
@@ -825,7 +867,7 @@ _main:
 ; Regs used in _main: [wreg+status,2+status,0+pclath+cstack]
 	line	7
 	
-l30000676:	
+l30000718:	
 ;main.c: 7: lcd_init();
 	fcall	_lcd_init
 	line	8
@@ -855,7 +897,7 @@ GLOBAL	__end_of_main
 ; =============== function _main ends ============
 
 psect	maintext
-	line	14
+	line	15
 	signat	_main,88
 	global	_lcd_goto
 psect	text27,local,class=CODE,delta=2
@@ -864,7 +906,7 @@ __ptext27:
 
 ; *************** function _lcd_goto *****************
 ; Defined at:
-;		line 85 in file "C:\Documents and Settings\Administrateur\Mes documents\uc\svn\lcd_16f877\lcd.c"
+;		line 85 in file "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877\lcd.c"
 ; Parameters:    Size  Location     Type
 ;  pos             1    wreg     unsigned char 
 ; Auto vars:     Size  Location     Type
@@ -888,7 +930,7 @@ __ptext27:
 ; This function uses a non-reentrant model
 ; 
 psect	text27
-	file	"C:\Documents and Settings\Administrateur\Mes documents\uc\svn\lcd_16f877\lcd.c"
+	file	"C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877\lcd.c"
 	line	85
 	global	__size_of_lcd_goto
 	__size_of_lcd_goto	equ	__end_of_lcd_goto-_lcd_goto
@@ -902,21 +944,21 @@ _lcd_goto:
 ;lcd_goto@pos stored from wreg
 	movwf	(lcd_goto@pos)
 	
-l30000681:	
+l30000723:	
 	line	86
 ;lcd.c: 86: RA3 = 0;
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	bcf	(43/8),(43)&7
 	
-l30000682:	
+l30000724:	
 	line	87
 ;lcd.c: 87: lcd_write(0x80+pos);
 	movf	(lcd_goto@pos),w
 	addlw	080h
 	fcall	_lcd_write
 	
-l11:	
+l12:	
 	return
 	opt stack 0
 GLOBAL	__end_of_lcd_goto
@@ -932,7 +974,7 @@ __ptext28:
 
 ; *************** function _lcd_puts *****************
 ; Defined at:
-;		line 63 in file "C:\Documents and Settings\Administrateur\Mes documents\uc\svn\lcd_16f877\lcd.c"
+;		line 63 in file "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877\lcd.c"
 ; Parameters:    Size  Location     Type
 ;  s               1    wreg     PTR const unsigned char 
 ;		 -> STR_1(17), STR_2(12), 
@@ -958,7 +1000,7 @@ __ptext28:
 ; This function uses a non-reentrant model
 ; 
 psect	text28
-	file	"C:\Documents and Settings\Administrateur\Mes documents\uc\svn\lcd_16f877\lcd.c"
+	file	"C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877\lcd.c"
 	line	63
 	global	__size_of_lcd_puts
 	__size_of_lcd_puts	equ	__end_of_lcd_puts-_lcd_puts
@@ -972,15 +1014,15 @@ _lcd_puts:
 ;lcd_puts@s stored from wreg
 	movwf	(lcd_puts@s)
 	
-l30000677:	
+l30000719:	
 	line	64
 ;lcd.c: 64: RA3 = 1;
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	bsf	(43/8),(43)&7
-	goto	l30000680
+	goto	l30000722
 	
-l30000678:	
+l30000720:	
 	line	66
 ;lcd.c: 66: lcd_write(*s++);
 	movf	(lcd_puts@s),w
@@ -988,13 +1030,13 @@ l30000678:
 	fcall	stringdir
 	fcall	_lcd_write
 	
-l30000679:	
+l30000721:	
 	movlw	(01h)
 	movwf	(??_lcd_puts+0+0)
 	movf	(??_lcd_puts+0+0),w
 	addwf	(lcd_puts@s),f
 	
-l30000680:	
+l30000722:	
 	line	65
 	movf	(lcd_puts@s),w
 	FNCALL _lcd_puts,stringtab
@@ -1004,10 +1046,10 @@ l30000680:
 	goto	u41
 	goto	u40
 u41:
-	goto	l30000678
+	goto	l30000720
 u40:
 	
-l6:	
+l7:	
 	return
 	opt stack 0
 GLOBAL	__end_of_lcd_puts
@@ -1023,7 +1065,7 @@ __ptext29:
 
 ; *************** function _lcd_init *****************
 ; Defined at:
-;		line 93 in file "C:\Documents and Settings\Administrateur\Mes documents\uc\svn\lcd_16f877\lcd.c"
+;		line 93 in file "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877\lcd.c"
 ; Parameters:    Size  Location     Type
 ;		None
 ; Auto vars:     Size  Location     Type
@@ -1049,7 +1091,7 @@ __ptext29:
 ; This function uses a non-reentrant model
 ; 
 psect	text29
-	file	"C:\Documents and Settings\Administrateur\Mes documents\uc\svn\lcd_16f877\lcd.c"
+	file	"C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877\lcd.c"
 	line	93
 	global	__size_of_lcd_init
 	__size_of_lcd_init	equ	__end_of_lcd_init-_lcd_init
@@ -1062,7 +1104,7 @@ _lcd_init:
 ; Regs used in _lcd_init: [wreg+status,2+status,0+pclath+cstack]
 	line	96
 	
-l30000658:	
+l30000700:	
 ;lcd.c: 94: char init_value;
 ;lcd.c: 96: ADCON1 = 0x06;
 	movlw	(06h)
@@ -1070,7 +1112,7 @@ l30000658:
 	bcf	status, 6	;RP1=0, select bank1
 	movwf	(159)^080h	;volatile
 	
-l30000659:	
+l30000701:	
 	line	99
 ;lcd.c: 99: TRISA=0;
 	clrc
@@ -1079,7 +1121,7 @@ l30000659:
 	movlw	1
 	movwf	(133)^080h	;volatile
 	
-l30000660:	
+l30000702:	
 	line	100
 ;lcd.c: 100: TRISD=0;
 	clrc
@@ -1088,19 +1130,19 @@ l30000660:
 	movlw	1
 	movwf	(136)^080h	;volatile
 	
-l30000661:	
+l30000703:	
 	line	101
 ;lcd.c: 101: RA3 = 0;
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	bcf	(43/8),(43)&7
 	
-l30000662:	
+l30000704:	
 	line	102
 ;lcd.c: 102: RA1 = 0;
 	bcf	(41/8),(41)&7
 	
-l30000663:	
+l30000705:	
 	line	103
 ;lcd.c: 103: RA2 = 0;
 	bcf	(42/8),(42)&7
@@ -1124,12 +1166,12 @@ u57:
 	bcf	status, 6	;RP1=0, select bank0
 	movwf	(8)	;volatile
 	
-l30000664:	
+l30000706:	
 	line	107
 ;lcd.c: 107: ((RA1 = 1),(RA1=0));
 	bsf	(41/8),(41)&7
 	
-l30000665:	
+l30000707:	
 	bcf	(41/8),(41)&7
 	line	108
 ;lcd.c: 108: _delay((unsigned long)((5)*(4000000/4000.0)));
@@ -1144,14 +1186,14 @@ u67:
 	goto	u67
 
 	
-l30000666:	
+l30000708:	
 	line	109
 ;lcd.c: 109: ((RA1 = 1),(RA1=0));
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	bsf	(41/8),(41)&7
 	
-l30000667:	
+l30000709:	
 	bcf	(41/8),(41)&7
 	line	110
 ;lcd.c: 110: _delay((unsigned long)((200)*(4000000/4000000.0)));
@@ -1163,14 +1205,14 @@ decfsz	(??_lcd_init+0+0),f
 	clrwdt
 
 	
-l30000668:	
+l30000710:	
 	line	111
 ;lcd.c: 111: ((RA1 = 1),(RA1=0));
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	bsf	(41/8),(41)&7
 	
-l30000669:	
+l30000711:	
 	bcf	(41/8),(41)&7
 	line	112
 ;lcd.c: 112: _delay((unsigned long)((200)*(4000000/4000000.0)));
@@ -1188,38 +1230,38 @@ decfsz	(??_lcd_init+0+0),f
 	bcf	status, 6	;RP1=0, select bank0
 	movwf	(8)	;volatile
 	
-l30000670:	
+l30000712:	
 	line	114
 ;lcd.c: 114: ((RA1 = 1),(RA1=0));
 	bsf	(41/8),(41)&7
 	
-l30000671:	
+l30000713:	
 	bcf	(41/8),(41)&7
 	
-l30000672:	
+l30000714:	
 	line	116
 ;lcd.c: 116: lcd_write(0x28);
 	movlw	(028h)
 	fcall	_lcd_write
 	
-l30000673:	
+l30000715:	
 	line	117
 ;lcd.c: 117: lcd_write(0xF);
 	movlw	(0Fh)
 	fcall	_lcd_write
 	
-l30000674:	
+l30000716:	
 	line	118
 ;lcd.c: 118: lcd_clear();
 	fcall	_lcd_clear
 	
-l30000675:	
+l30000717:	
 	line	119
 ;lcd.c: 119: lcd_write(0x6);
 	movlw	(06h)
 	fcall	_lcd_write
 	
-l12:	
+l13:	
 	return
 	opt stack 0
 GLOBAL	__end_of_lcd_init
@@ -1235,7 +1277,7 @@ __ptext30:
 
 ; *************** function _lcd_clear *****************
 ; Defined at:
-;		line 53 in file "C:\Documents and Settings\Administrateur\Mes documents\uc\svn\lcd_16f877\lcd.c"
+;		line 53 in file "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877\lcd.c"
 ; Parameters:    Size  Location     Type
 ;		None
 ; Auto vars:     Size  Location     Type
@@ -1260,7 +1302,7 @@ __ptext30:
 ; This function uses a non-reentrant model
 ; 
 psect	text30
-	file	"C:\Documents and Settings\Administrateur\Mes documents\uc\svn\lcd_16f877\lcd.c"
+	file	"C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877\lcd.c"
 	line	53
 	global	__size_of_lcd_clear
 	__size_of_lcd_clear	equ	__end_of_lcd_clear-_lcd_clear
@@ -1273,19 +1315,19 @@ _lcd_clear:
 ; Regs used in _lcd_clear: [wreg+status,2+status,0+pclath+cstack]
 	line	54
 	
-l30000655:	
+l30000697:	
 ;lcd.c: 54: RA3 = 0;
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	bcf	(43/8),(43)&7
 	
-l30000656:	
+l30000698:	
 	line	55
 ;lcd.c: 55: lcd_write(0x1);
 	movlw	(01h)
 	fcall	_lcd_write
 	
-l30000657:	
+l30000699:	
 	line	56
 ;lcd.c: 56: _delay((unsigned long)((2)*(4000000/4000.0)));
 	movlw	3
@@ -1300,7 +1342,7 @@ u97:
 	nop2
 
 	
-l5:	
+l6:	
 	return
 	opt stack 0
 GLOBAL	__end_of_lcd_clear
@@ -1316,7 +1358,7 @@ __ptext31:
 
 ; *************** function _lcd_write *****************
 ; Defined at:
-;		line 39 in file "C:\Documents and Settings\Administrateur\Mes documents\uc\svn\lcd_16f877\lcd.c"
+;		line 39 in file "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877\lcd.c"
 ; Parameters:    Size  Location     Type
 ;  c               1    wreg     unsigned char 
 ; Auto vars:     Size  Location     Type
@@ -1343,7 +1385,7 @@ __ptext31:
 ; This function uses a non-reentrant model
 ; 
 psect	text31
-	file	"C:\Documents and Settings\Administrateur\Mes documents\uc\svn\lcd_16f877\lcd.c"
+	file	"C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877\lcd.c"
 	line	39
 	global	__size_of_lcd_write
 	__size_of_lcd_write	equ	__end_of_lcd_write-_lcd_write
@@ -1359,7 +1401,7 @@ _lcd_write:
 	bcf	status, 6	;RP1=0, select bank0
 	movwf	(lcd_write@c)
 	
-l30000648:	
+l30000690:	
 	line	40
 ;lcd.c: 40: _delay((unsigned long)((40)*(4000000/4000000.0)));
 	movlw	13
@@ -1369,7 +1411,7 @@ decfsz	(??_lcd_write+0+0),f
 	goto	u107
 
 	
-l30000649:	
+l30000691:	
 	line	41
 ;lcd.c: 41: PORTD = ( ( c >> 4 ) & 0x0F );
 	bcf	status, 5	;RP0=0, select bank0
@@ -1387,30 +1429,30 @@ u35:
 	andlw	0Fh
 	movwf	(8)	;volatile
 	
-l30000650:	
+l30000692:	
 	line	42
 ;lcd.c: 42: ((RA1 = 1),(RA1=0));
 	bsf	(41/8),(41)&7
 	
-l30000651:	
+l30000693:	
 	bcf	(41/8),(41)&7
 	
-l30000652:	
+l30000694:	
 	line	43
 ;lcd.c: 43: PORTD = ( c & 0x0F );
 	movf	(lcd_write@c),w
 	andlw	0Fh
 	movwf	(8)	;volatile
 	
-l30000653:	
+l30000695:	
 	line	44
 ;lcd.c: 44: ((RA1 = 1),(RA1=0));
 	bsf	(41/8),(41)&7
 	
-l30000654:	
+l30000696:	
 	bcf	(41/8),(41)&7
 	
-l4:	
+l5:	
 	return
 	opt stack 0
 GLOBAL	__end_of_lcd_write

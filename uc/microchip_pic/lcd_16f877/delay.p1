@@ -1,6 +1,6 @@
 Version 3.2 HI-TECH Software Intermediate Code
 [; ;delay.h: 50: extern void DelayMs(unsigned char);
-"12 C:\Documents and Settings\Administrateur\Mes documents\uc\svn\lcd_16f877\delay.c
+"12 C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877\delay.c
 [v _DelayMs `(v 1 ef1`uc ]
 {
 [; ;delay.c: 10: void
