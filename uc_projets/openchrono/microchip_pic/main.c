@@ -26,12 +26,15 @@ Compiler: HI-TECH C Compiler for PIC10/12/16 MCUs
 Simulator : Proteus VSM
 */
 
+//#define _XTAL_FREQ 4000000
+
 #include <pic.h>
 #include "lcd.h"
 #include "delay.h"
 #include <stdio.h>
 
 int ticks;
+int disp;
 
 int hh;
 int mm;
@@ -57,6 +60,7 @@ xxxxxxxxxxxxxxxxxxxx L2
 xxxxxxxxxxxxxxxxxxxx L3
 xxxxxxxxxxxxxxxxxxxx L4
 */
+	disp++;
 
 	//lcd_clear();
 
@@ -65,10 +69,13 @@ xxxxxxxxxxxxxxxxxxxx L4
 	lcd_goto(L1_OFFSET);	// select first line
 	//lcd_puts("L1: 567890123456");
 	//lcd_puts("**** OpenChrono ****");
+	lcd_puts("********************");
 
 	lcd_goto(L2_OFFSET);	// Select second line
 	//lcd_puts("L2: 5678901234567");
 	//lcd_puts("**** S. Celles  ****");
+	nbc = sprintf(buffer, "disp=%05d",disp);
+	lcd_puts(buffer);
 
 	lcd_goto(L3_OFFSET);
 	//lcd_puts("L3: 56789012345678");
@@ -104,7 +111,12 @@ void increment(void) {
 }
 
 void timer_init() {
-	// Timer 1 (16 bits) utilisé pour l'horloge: base de 62 µs.
+	// Timer 0 (8 bits) utilisé pour le rafraîchissement de l'écran
+	//TMR0 = 0x00;
+	//TMR0ON = 1 ; // On lance le timer 1
+	//TMR0IE = 1 ; // On autorise les interruptions du timer 1
+	
+	// Timer 1 (16 bits) utilisé pour l'horloge
 	// Quartz 4 Mhz => 1 instruction = 1 µs
 
 	T1CON = 0x00 ; // Prédivision de l'horloge par 1
@@ -135,7 +147,14 @@ void reset_time(void) {
 }
 
 void interrupt tc_int(void) {
+//if (TMR0IF) {
+	//display_lcd();
+	//lcd_goto(L1_OFFSET);	// select first line
+	//lcd_puts("++++++++++++++++++++");	
+//} else if(TMR1IF) {
 if(TMR1IF) {
+	GIE = 0 ; // interdiction interruption
+
 	TMR1IF = 0 ;
 	//Flag62us = 1 ;
 	TMR1H = 0xFF ;
@@ -143,6 +162,8 @@ if(TMR1IF) {
 
 	//reset_time();
 	increment();
+
+	GIE = 1 ; // autorisation interruption
 }
 
 /*
@@ -156,6 +177,9 @@ if(TMR1IF) {
 }
 
 void main(void) {
+	ticks=0;
+	disp=0;
+
 	reset_time();
 
 	timer_init();
@@ -163,13 +187,15 @@ void main(void) {
 	lcd_init();
 
 	while(1) {
+		ticks++;
+
 		display_lcd();	
 
 		//increment();
 		//i=i+1;
-		ticks++;
 
 
-		//DelayMs(100);
+
+		//DelayMs(500);
 	}
 }
