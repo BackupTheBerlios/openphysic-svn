@@ -1,10 +1,10 @@
 
-# 1 "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_refresh\delay.c"
+# 1 "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_20x4\delay.c"
 
-# 50 "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_refresh\delay.h"
+# 50 "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_20x4\delay.h"
 extern void DelayMs(unsigned char);
 
-# 10 "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_refresh\delay.c"
+# 10 "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_20x4\delay.c"
 void
 DelayMs(unsigned char cnt)
 {

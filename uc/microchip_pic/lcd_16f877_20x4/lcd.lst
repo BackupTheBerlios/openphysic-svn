@@ -1,7 +1,7 @@
 
 
 HI-TECH Software PIC LITE Macro Assembler V9.70 build 5239 
-                                                                                               Sun May 09 13:45:24 2010
+                                                                                               Sun May 09 14:30:33 2010
 
 HI-TECH Software Omniscient Code Generator (Lite mode) build 5239
      1  0000                     opt subtitle "HI-TECH Software Omniscient Code Generator (Lite mode) build 5239"
@@ -953,7 +953,7 @@ HI-TECH Software Omniscient Code Generator (Lite mode) build 5239
    946                           ; *************** function _main *****************
    947                           ; Defined at:
    948                           ;		line 46 in file "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic
-                                 \uc\microchip_pic\lcd_16f877_refresh\main.c"
+                                 \uc\microchip_pic\lcd_16f877_20x4\main.c"
    949                           ; Parameters:    Size  Location     Type
    950                           ;		None
    951                           ; Auto vars:     Size  Location     Type
@@ -980,7 +980,7 @@ HI-TECH Software Omniscient Code Generator (Lite mode) build 5239
    972                           ; 
    973                           psect	maintext
    974                           	file	"C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip
-                                 _pic\lcd_16f877_refresh\main.c"
+                                 _pic\lcd_16f877_20x4\main.c"
    975                           	line	46
    976                           	global	__size_of_main
    977  0020                     	__size_of_main	equ	__end_of_main-_main
@@ -1047,7 +1047,7 @@ HI-TECH Software Omniscient Code Generator (Lite mode) build 5239
   1035                           ; *************** function _test_lcd *****************
   1036                           ; Defined at:
   1037                           ;		line 19 in file "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic
-                                 \uc\microchip_pic\lcd_16f877_refresh\main.c"
+                                 \uc\microchip_pic\lcd_16f877_20x4\main.c"
   1038                           ; Parameters:    Size  Location     Type
   1039                           ;		None
   1040                           ; Auto vars:     Size  Location     Type
@@ -1073,7 +1073,7 @@ HI-TECH Software Omniscient Code Generator (Lite mode) build 5239
   1060                           ; 
   1061                           psect	text63
   1062                           	file	"C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip
-                                 _pic\lcd_16f877_refresh\main.c"
+                                 _pic\lcd_16f877_20x4\main.c"
   1063                           	line	19
   1064                           	global	__size_of_test_lcd
   1065  0031                     	__size_of_test_lcd	equ	__end_of_test_lcd-_test_lcd
@@ -1142,7 +1142,7 @@ HI-TECH Software Omniscient Code Generator (Lite mode) build 5239
   1120                           ; *************** function _DelayMs *****************
   1121                           ; Defined at:
   1122                           ;		line 12 in file "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic
-                                 \uc\microchip_pic\lcd_16f877_refresh\delay.c"
+                                 \uc\microchip_pic\lcd_16f877_20x4\delay.c"
   1123                           ; Parameters:    Size  Location     Type
   1124                           ;  cnt             1    wreg     unsigned char 
   1125                           ; Auto vars:     Size  Location     Type
@@ -1169,7 +1169,7 @@ HI-TECH Software Omniscient Code Generator (Lite mode) build 5239
   1146                           ; 
   1147                           psect	text64
   1148                           	file	"C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip
-                                 _pic\lcd_16f877_refresh\delay.c"
+                                 _pic\lcd_16f877_20x4\delay.c"
   1149                           	line	12
   1150                           	global	__size_of_DelayMs
   1151  0018                     	__size_of_DelayMs	equ	__end_of_DelayMs-_DelayMs
@@ -1247,7 +1247,7 @@ HI-TECH Software Omniscient Code Generator (Lite mode) build 5239
   1222                           ; *************** function _lcd_init *****************
   1223                           ; Defined at:
   1224                           ;		line 93 in file "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic
-                                 \uc\microchip_pic\lcd_16f877_refresh\lcd.c"
+                                 \uc\microchip_pic\lcd_16f877_20x4\lcd.c"
   1225                           ; Parameters:    Size  Location     Type
   1226                           ;		None
   1227                           ; Auto vars:     Size  Location     Type
@@ -1274,7 +1274,7 @@ HI-TECH Software Omniscient Code Generator (Lite mode) build 5239
   1248                           ; 
   1249                           psect	text65
   1250                           	file	"C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip
-                                 _pic\lcd_16f877_refresh\lcd.c"
+                                 _pic\lcd_16f877_20x4\lcd.c"
   1251                           	line	93
   1252                           	global	__size_of_lcd_init
   1253  005A                     	__size_of_lcd_init	equ	__end_of_lcd_init-_lcd_init
@@ -1429,21 +1429,21 @@ HI-TECH Software Omniscient Code Generator (Lite mode) build 5239
               120A  118A         
   1402                           	
   1403  07EE                     l30000768:	
-  1404                           	line	117
-  1405                           ;lcd.c: 117: lcd_write(0xF);
-  1406  07EE  300F               	movlw	(0Fh)
+  1404                           	line	118
+  1405                           ;lcd.c: 118: lcd_write(0xC);
+  1406  07EE  300C               	movlw	(0Ch)
   1407  07EF  120A  118A  278A   	fcall	_lcd_write
               120A  118A         
   1408                           	
   1409  07F4                     l30000769:	
-  1410                           	line	118
-  1411                           ;lcd.c: 118: lcd_clear();
+  1410                           	line	119
+  1411                           ;lcd.c: 119: lcd_clear();
   1412  07F4  120A  118A  2695   	fcall	_lcd_clear
               120A  118A         
   1413                           	
   1414  07F9                     l30000770:	
-  1415                           	line	119
-  1416                           ;lcd.c: 119: lcd_write(0x6);
+  1415                           	line	120
+  1416                           ;lcd.c: 120: lcd_write(0x6);
   1417  07F9  3006               	movlw	(06h)
   1418  07FA  120A  118A  278A   	fcall	_lcd_write
               120A  118A         
@@ -1458,14 +1458,14 @@ HI-TECH Software Omniscient Code Generator (Lite mode) build 5239
   1427                           psect	text66,local,class=CODE,delta=2
   1428                           global __ptext66
   1429  0678                     __ptext66:
-  1430                           	line	120
+  1430                           	line	121
   1431                           	signat	_lcd_init,88
   1432                           	global	_lcd_goto
   1433                           
   1434                           ; *************** function _lcd_goto *****************
   1435                           ; Defined at:
   1436                           ;		line 85 in file "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic
-                                 \uc\microchip_pic\lcd_16f877_refresh\lcd.c"
+                                 \uc\microchip_pic\lcd_16f877_20x4\lcd.c"
   1437                           ; Parameters:    Size  Location     Type
   1438                           ;  pos             1    wreg     unsigned char 
   1439                           ; Auto vars:     Size  Location     Type
@@ -1490,7 +1490,7 @@ HI-TECH Software Omniscient Code Generator (Lite mode) build 5239
   1458                           ; 
   1459                           psect	text66
   1460                           	file	"C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip
-                                 _pic\lcd_16f877_refresh\lcd.c"
+                                 _pic\lcd_16f877_20x4\lcd.c"
   1461                           	line	85
   1462                           	global	__size_of_lcd_goto
   1463  000C                     	__size_of_lcd_goto	equ	__end_of_lcd_goto-_lcd_goto
@@ -1536,7 +1536,7 @@ HI-TECH Software Omniscient Code Generator (Lite mode) build 5239
   1502                           ; *************** function _lcd_puts *****************
   1503                           ; Defined at:
   1504                           ;		line 63 in file "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic
-                                 \uc\microchip_pic\lcd_16f877_refresh\lcd.c"
+                                 \uc\microchip_pic\lcd_16f877_20x4\lcd.c"
   1505                           ; Parameters:    Size  Location     Type
   1506                           ;  s               1    wreg     PTR const unsigned char 
   1507                           ;		 -> STR_1(17), STR_2(18), STR_3(19), STR_4(20), 
@@ -1563,7 +1563,7 @@ HI-TECH Software Omniscient Code Generator (Lite mode) build 5239
   1528                           ; 
   1529                           psect	text67
   1530                           	file	"C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip
-                                 _pic\lcd_16f877_refresh\lcd.c"
+                                 _pic\lcd_16f877_20x4\lcd.c"
   1531                           	line	63
   1532                           	global	__size_of_lcd_puts
   1533  0020                     	__size_of_lcd_puts	equ	__end_of_lcd_puts-_lcd_puts
@@ -1632,7 +1632,7 @@ HI-TECH Software Omniscient Code Generator (Lite mode) build 5239
   1593                           ; *************** function _lcd_clear *****************
   1594                           ; Defined at:
   1595                           ;		line 53 in file "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic
-                                 \uc\microchip_pic\lcd_16f877_refresh\lcd.c"
+                                 \uc\microchip_pic\lcd_16f877_20x4\lcd.c"
   1596                           ; Parameters:    Size  Location     Type
   1597                           ;		None
   1598                           ; Auto vars:     Size  Location     Type
@@ -1658,7 +1658,7 @@ HI-TECH Software Omniscient Code Generator (Lite mode) build 5239
   1618                           ; 
   1619                           psect	text68
   1620                           	file	"C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip
-                                 _pic\lcd_16f877_refresh\lcd.c"
+                                 _pic\lcd_16f877_20x4\lcd.c"
   1621                           	line	53
   1622                           	global	__size_of_lcd_clear
   1623  0013                     	__size_of_lcd_clear	equ	__end_of_lcd_clear-_lcd_clear
@@ -1716,7 +1716,7 @@ HI-TECH Software Omniscient Code Generator (Lite mode) build 5239
   1674                           ; *************** function _lcd_write *****************
   1675                           ; Defined at:
   1676                           ;		line 39 in file "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic
-                                 \uc\microchip_pic\lcd_16f877_refresh\lcd.c"
+                                 \uc\microchip_pic\lcd_16f877_20x4\lcd.c"
   1677                           ; Parameters:    Size  Location     Type
   1678                           ;  c               1    wreg     unsigned char 
   1679                           ; Auto vars:     Size  Location     Type
@@ -1744,7 +1744,7 @@ HI-TECH Software Omniscient Code Generator (Lite mode) build 5239
   1701                           ; 
   1702                           psect	text69
   1703                           	file	"C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip
-                                 _pic\lcd_16f877_refresh\lcd.c"
+                                 _pic\lcd_16f877_20x4\lcd.c"
   1704                           	line	39
   1705                           	global	__size_of_lcd_write
   1706  001C                     	__size_of_lcd_write	equ	__end_of_lcd_write-_lcd_write
@@ -1828,7 +1828,7 @@ HI-TECH Software Omniscient Code Generator (Lite mode) build 5239
 
 
 HI-TECH Software PICC Macro Assembler V9.70 build 5239 
-Symbol Table                                                                                   Sun May 09 13:45:24 2010
+Symbol Table                                                                                   Sun May 09 14:30:33 2010
 
     __size_of_DelayMs 0018                     l2 0789                     l7 07A5                     l8 06A7  
                    l9 06FF                     _i 0075                     pc 0002                    _DA 04A5  

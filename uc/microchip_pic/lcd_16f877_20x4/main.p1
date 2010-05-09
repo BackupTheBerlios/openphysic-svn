@@ -555,20 +555,20 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _WR `Vb 1 e@3169 ]
 "392 C:\Program Files\HI-TECH Software\PICC\9.70\include\pic168xa.h
 [v _RD `Vb 1 e@3168 ]
-"6 C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_refresh\main.c
+"6 C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_20x4\main.c
 [v _i `i 1 e ]
-"16 C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_refresh\main.c
+"16 C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_20x4\main.c
 [v _buffer `uc + * -> 20 `i -> 4 `i -> 1 `i e ]
-"17 C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_refresh\main.c
+"17 C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_20x4\main.c
 [v _nbc `i 1 e ]
-"20 C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_refresh\lcd.h
+"20 C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_20x4\lcd.h
 [v _lcd_goto `(v 0 ef1`uc ]
-"16 C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_refresh\lcd.h
+"16 C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_20x4\lcd.h
 [v _lcd_puts `(v 0 ef1`*Cuc ]
 [p mainexit ]
-"24 C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_refresh\lcd.h
+"24 C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_20x4\lcd.h
 [v _lcd_init `(v 0 ef ]
-"50 C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_refresh\delay.h
+"50 C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_20x4\delay.h
 [v _DelayMs `(v 0 ef1`uc ]
 [; ;pic168xa.h: 19: volatile unsigned char INDF @ 0x00;
 [; ;pic168xa.h: 20: volatile unsigned char TMR0 @ 0x01;
@@ -895,7 +895,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 6: int i;
 [; ;main.c: 16: char buffer[20*4+1];
 [; ;main.c: 17: int nbc;
-"19 C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_refresh\main.c
+"19 C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_20x4\main.c
 [v _test_lcd `(v 1 ef ]
 {
 [; ;main.c: 19: void test_lcd(void) {

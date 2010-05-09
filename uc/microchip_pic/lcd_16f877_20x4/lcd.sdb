@@ -4,9 +4,9 @@
 [d chip 16F877A ]
 "3 C:\Program Files\HI-TECH Software\PICC\9.70\sources\bmul.c
 [v ___bmul `(uc  1 e 1 0 ]
-"12 C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_refresh\delay.c
+"12 C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_20x4\delay.c
 [v _DelayMs `(v  1 e 0 0 ]
-"39 C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_refresh\lcd.c
+"39 C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_20x4\lcd.c
 [v _lcd_write `(v  1 e 0 0 ]
 "53
 [v _lcd_clear `(v  1 e 0 0 ]
@@ -18,7 +18,7 @@
 [v _lcd_goto `(v  1 e 0 0 ]
 "93
 [v _lcd_init `(v  1 e 0 0 ]
-"19 C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_refresh\main.c
+"19 C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_20x4\main.c
 [v _test_lcd `(v  1 e 0 0 ]
 "46
 [v _main `(v  1 e 0 0 ]
@@ -124,7 +124,7 @@
 [v ___tmul `(um  1 e 3 0 ]
 "3 C:\Program Files\HI-TECH Software\PICC\9.70\sources\wmul.c
 [v ___wmul `(ui  1 e 2 0 ]
-"6 C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_refresh\main.c
+"6 C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_20x4\main.c
 [v _i `i  1 e 2 0 ]
 "16
 [v _buffer `[81]uc  1 e 81 0 ]
@@ -686,7 +686,7 @@
 [v _WR `Vb  1 e 0 @3169 ]
 "392
 [v _RD `Vb  1 e 0 @3168 ]
-"46 C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_refresh\main.c
+"46 C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_20x4\main.c
 [v _main `(v  1 e 0 0 ]
 {
 "57
@@ -696,7 +696,7 @@
 {
 "44
 } 0
-"12 C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_refresh\delay.c
+"12 C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_20x4\delay.c
 [v _DelayMs `(v  1 e 0 0 ]
 {
 [v DelayMs@cnt `uc  1 a 1 wreg ]
@@ -708,10 +708,10 @@
 [v DelayMs@cnt `uc  1 a 1 wreg ]
 "28
 } 0
-"93 C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_refresh\lcd.c
+"93 C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_20x4\lcd.c
 [v _lcd_init `(v  1 e 0 0 ]
 {
-"120
+"121
 } 0
 "85
 [v _lcd_goto `(v  1 e 0 0 ]

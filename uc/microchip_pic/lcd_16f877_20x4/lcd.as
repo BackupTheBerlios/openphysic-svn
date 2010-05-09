@@ -945,7 +945,7 @@ __pmaintext:
 
 ; *************** function _main *****************
 ; Defined at:
-;		line 46 in file "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_refresh\main.c"
+;		line 46 in file "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_20x4\main.c"
 ; Parameters:    Size  Location     Type
 ;		None
 ; Auto vars:     Size  Location     Type
@@ -971,7 +971,7 @@ __pmaintext:
 ; This function uses a non-reentrant model
 ; 
 psect	maintext
-	file	"C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_refresh\main.c"
+	file	"C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_20x4\main.c"
 	line	46
 	global	__size_of_main
 	__size_of_main	equ	__end_of_main-_main
@@ -1034,7 +1034,7 @@ __ptext63:
 
 ; *************** function _test_lcd *****************
 ; Defined at:
-;		line 19 in file "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_refresh\main.c"
+;		line 19 in file "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_20x4\main.c"
 ; Parameters:    Size  Location     Type
 ;		None
 ; Auto vars:     Size  Location     Type
@@ -1059,7 +1059,7 @@ __ptext63:
 ; This function uses a non-reentrant model
 ; 
 psect	text63
-	file	"C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_refresh\main.c"
+	file	"C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_20x4\main.c"
 	line	19
 	global	__size_of_test_lcd
 	__size_of_test_lcd	equ	__end_of_test_lcd-_test_lcd
@@ -1119,7 +1119,7 @@ __ptext64:
 
 ; *************** function _DelayMs *****************
 ; Defined at:
-;		line 12 in file "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_refresh\delay.c"
+;		line 12 in file "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_20x4\delay.c"
 ; Parameters:    Size  Location     Type
 ;  cnt             1    wreg     unsigned char 
 ; Auto vars:     Size  Location     Type
@@ -1145,7 +1145,7 @@ __ptext64:
 ; This function uses a non-reentrant model
 ; 
 psect	text64
-	file	"C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_refresh\delay.c"
+	file	"C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_20x4\delay.c"
 	line	12
 	global	__size_of_DelayMs
 	__size_of_DelayMs	equ	__end_of_DelayMs-_DelayMs
@@ -1221,7 +1221,7 @@ __ptext65:
 
 ; *************** function _lcd_init *****************
 ; Defined at:
-;		line 93 in file "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_refresh\lcd.c"
+;		line 93 in file "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_20x4\lcd.c"
 ; Parameters:    Size  Location     Type
 ;		None
 ; Auto vars:     Size  Location     Type
@@ -1247,7 +1247,7 @@ __ptext65:
 ; This function uses a non-reentrant model
 ; 
 psect	text65
-	file	"C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_refresh\lcd.c"
+	file	"C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_20x4\lcd.c"
 	line	93
 	global	__size_of_lcd_init
 	__size_of_lcd_init	equ	__end_of_lcd_init-_lcd_init
@@ -1401,19 +1401,19 @@ l30000767:
 	fcall	_lcd_write
 	
 l30000768:	
-	line	117
-;lcd.c: 117: lcd_write(0xF);
-	movlw	(0Fh)
+	line	118
+;lcd.c: 118: lcd_write(0xC);
+	movlw	(0Ch)
 	fcall	_lcd_write
 	
 l30000769:	
-	line	118
-;lcd.c: 118: lcd_clear();
+	line	119
+;lcd.c: 119: lcd_clear();
 	fcall	_lcd_clear
 	
 l30000770:	
-	line	119
-;lcd.c: 119: lcd_write(0x6);
+	line	120
+;lcd.c: 120: lcd_write(0x6);
 	movlw	(06h)
 	fcall	_lcd_write
 	
@@ -1427,13 +1427,13 @@ GLOBAL	__end_of_lcd_init
 psect	text66,local,class=CODE,delta=2
 global __ptext66
 __ptext66:
-	line	120
+	line	121
 	signat	_lcd_init,88
 	global	_lcd_goto
 
 ; *************** function _lcd_goto *****************
 ; Defined at:
-;		line 85 in file "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_refresh\lcd.c"
+;		line 85 in file "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_20x4\lcd.c"
 ; Parameters:    Size  Location     Type
 ;  pos             1    wreg     unsigned char 
 ; Auto vars:     Size  Location     Type
@@ -1457,7 +1457,7 @@ __ptext66:
 ; This function uses a non-reentrant model
 ; 
 psect	text66
-	file	"C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_refresh\lcd.c"
+	file	"C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_20x4\lcd.c"
 	line	85
 	global	__size_of_lcd_goto
 	__size_of_lcd_goto	equ	__end_of_lcd_goto-_lcd_goto
@@ -1501,7 +1501,7 @@ __ptext67:
 
 ; *************** function _lcd_puts *****************
 ; Defined at:
-;		line 63 in file "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_refresh\lcd.c"
+;		line 63 in file "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_20x4\lcd.c"
 ; Parameters:    Size  Location     Type
 ;  s               1    wreg     PTR const unsigned char 
 ;		 -> STR_1(17), STR_2(18), STR_3(19), STR_4(20), 
@@ -1527,7 +1527,7 @@ __ptext67:
 ; This function uses a non-reentrant model
 ; 
 psect	text67
-	file	"C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_refresh\lcd.c"
+	file	"C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_20x4\lcd.c"
 	line	63
 	global	__size_of_lcd_puts
 	__size_of_lcd_puts	equ	__end_of_lcd_puts-_lcd_puts
@@ -1592,7 +1592,7 @@ __ptext68:
 
 ; *************** function _lcd_clear *****************
 ; Defined at:
-;		line 53 in file "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_refresh\lcd.c"
+;		line 53 in file "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_20x4\lcd.c"
 ; Parameters:    Size  Location     Type
 ;		None
 ; Auto vars:     Size  Location     Type
@@ -1617,7 +1617,7 @@ __ptext68:
 ; This function uses a non-reentrant model
 ; 
 psect	text68
-	file	"C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_refresh\lcd.c"
+	file	"C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_20x4\lcd.c"
 	line	53
 	global	__size_of_lcd_clear
 	__size_of_lcd_clear	equ	__end_of_lcd_clear-_lcd_clear
@@ -1673,7 +1673,7 @@ __ptext69:
 
 ; *************** function _lcd_write *****************
 ; Defined at:
-;		line 39 in file "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_refresh\lcd.c"
+;		line 39 in file "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_20x4\lcd.c"
 ; Parameters:    Size  Location     Type
 ;  c               1    wreg     unsigned char 
 ; Auto vars:     Size  Location     Type
@@ -1700,7 +1700,7 @@ __ptext69:
 ; This function uses a non-reentrant model
 ; 
 psect	text69
-	file	"C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_refresh\lcd.c"
+	file	"C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_20x4\lcd.c"
 	line	39
 	global	__size_of_lcd_write
 	__size_of_lcd_write	equ	__end_of_lcd_write-_lcd_write

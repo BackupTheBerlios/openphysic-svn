@@ -1,5 +1,5 @@
 
-# 1 "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_refresh\lcd.c"
+# 1 "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_20x4\lcd.c"
 
 # 19 "C:\Program Files\HI-TECH Software\PICC\9.70\include\pic168xa.h"
 volatile unsigned char INDF @ 0x00;
@@ -379,7 +379,7 @@ extern unsigned char eeprom_read(unsigned char addr);
 #pragma inline(_delay)
 extern void _delay(unsigned long);
 
-# 8 "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_refresh\lcd.h"
+# 8 "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_20x4\lcd.h"
 extern void lcd_write(unsigned char);
 
 
@@ -400,7 +400,7 @@ extern void lcd_init(void);
 
 extern void lcd_putch(char);
 
-# 37 "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_refresh\lcd.c"
+# 37 "C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_20x4\lcd.c"
 void
 lcd_write(unsigned char c)
 {
@@ -474,7 +474,8 @@ PORTD = 2;
 ((RA1 = 1),(RA1=0));
 
 lcd_write(0x28);
-lcd_write(0xF);
+
+lcd_write(0xC);
 lcd_clear();
 lcd_write(0x6);
 }

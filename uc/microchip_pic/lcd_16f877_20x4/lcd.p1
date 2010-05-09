@@ -846,7 +846,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;lcd.h: 20: extern void lcd_goto(unsigned char pos);
 [; ;lcd.h: 24: extern void lcd_init(void);
 [; ;lcd.h: 26: extern void lcd_putch(char);
-"39 C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_refresh\lcd.c
+"39 C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877_20x4\lcd.c
 [v _lcd_write `(v 1 ef1`uc ]
 {
 [; ;lcd.c: 37: void
@@ -1025,16 +1025,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;lcd.c: 116: lcd_write(0x28);
 "116
 [e ( _lcd_write (1 -> -> 40 `i `uc ]
-[; ;lcd.c: 117: lcd_write(0xF);
-"117
-[e ( _lcd_write (1 -> -> 15 `i `uc ]
-[; ;lcd.c: 118: lcd_clear();
+[; ;lcd.c: 118: lcd_write(0xC);
 "118
-[e ( _lcd_clear ..  ]
-[; ;lcd.c: 119: lcd_write(0x6);
+[e ( _lcd_write (1 -> -> 12 `i `uc ]
+[; ;lcd.c: 119: lcd_clear();
 "119
-[e ( _lcd_write (1 -> -> 6 `i `uc ]
-[; ;lcd.c: 120: }
+[e ( _lcd_clear ..  ]
+[; ;lcd.c: 120: lcd_write(0x6);
 "120
+[e ( _lcd_write (1 -> -> 6 `i `uc ]
+[; ;lcd.c: 121: }
+"121
 [e :UE 9 ]
 }
