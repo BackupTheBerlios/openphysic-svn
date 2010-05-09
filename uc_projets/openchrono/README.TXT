@@ -74,7 +74,7 @@ PAGE RESULT COMP BEST
 
 
 
-Attention on trouve pas mal de LCD alphanumérique en 16x2 !!! mais des 20x2 ou 20x3 ???
+Attention on trouve pas mal de LCD alphanumérique en 16x2 !!! mais aussi des 20x2 ou 20x4 ???
 
 
 possibilité de tester le LCD avec lcdproc http://lcdproc.omnipotent.net
