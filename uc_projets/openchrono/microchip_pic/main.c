@@ -33,8 +33,8 @@ Simulator : Proteus VSM
 #include "delay.h"
 #include <stdio.h>
 
-int ticks;
-int disp;
+unsigned int ticks;
+unsigned int disp;
 
 int hh;
 int mm;
@@ -96,9 +96,9 @@ xxxxxxxxxxxxxxxxxxxx L4
 
 	lcd_goto(L4_OFFSET);
 	//lcd_puts("L4: 567890123456789");
-	//nbc = sprintf(buffer, "%02d:%02d:%02d:%03d",hh,mm,ss,xx/10)
+	//nbc = sprintf(buffer, "%02d:%02d:%02d:%03d",hh,mm,ss,xx)
 
-	nbc = sprintf(buffer, "%02d:%02d:%03d",mm,ss,xx/10);
+	nbc = sprintf(buffer, "%02d:%02d:%03d",mm,ss,xx);
 	lcd_puts(buffer);
 }
 
@@ -173,12 +173,11 @@ if(TMR1IF) {
 	TMR1H = 0xFC ;
 	TMR1L = 0x36; // 100us=0x9B ; 10us //0xC1 ; // 0xFFFF - 0xFFC1 = 62 => 62 x 1 µs = 62 µs
 
-	TMR1IF = 0 ;
-
 	//reset_time();
 	increment();
 
-	GIE = 1 ; // autorisation interruption
+	//GIE = 1 ; // autorisation interruption
+	TMR1IF = 0 ;
 }
 
 /*
