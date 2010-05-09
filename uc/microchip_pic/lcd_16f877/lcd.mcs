@@ -2,9 +2,9 @@
 MagicCookie={0b13fe8c-dfe0-40eb-8900-6712719559a7}
 Version=1.0
 [File000]
-Location=C:\Documents and Settings\Administrateur\Mes documents\uc\svn\lcd_16f877\main.p1
+Location=C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877\main.p1
 Folder=Intermediary
-DeviceName=PIC16F877
+DeviceName=PIC16F877A
 LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
 LanguageToolLocation=C:\Program Files\HI-TECH Software\PICC\9.70\bin\picc.exe
@@ -15,9 +15,9 @@ ToolArgsString=C9=4,3,2
 TraceCmdString=
 DebugOptions=
 [File001]
-Location=C:\Documents and Settings\Administrateur\Mes documents\uc\svn\lcd_16f877\lcd.p1
+Location=C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877\lcd.p1
 Folder=Intermediary
-DeviceName=PIC16F877
+DeviceName=PIC16F877A
 LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
 LanguageToolLocation=C:\Program Files\HI-TECH Software\PICC\9.70\bin\picc.exe
@@ -28,9 +28,9 @@ ToolArgsString=C9=4,3,2
 TraceCmdString=
 DebugOptions=
 [File002]
-Location=C:\Documents and Settings\Administrateur\Mes documents\uc\svn\lcd_16f877\delay.p1
+Location=C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877\delay.p1
 Folder=Intermediary
-DeviceName=PIC16F877
+DeviceName=PIC16F877A
 LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
 LanguageToolLocation=C:\Program Files\HI-TECH Software\PICC\9.70\bin\picc.exe
@@ -41,9 +41,9 @@ ToolArgsString=C9=4,3,2
 TraceCmdString=
 DebugOptions=
 [File003]
-Location=C:\Documents and Settings\Administrateur\Mes documents\uc\svn\lcd_16f877\lcd.cof
+Location=C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877\lcd.cof
 Folder=Output
-DeviceName=PIC16F877
+DeviceName=PIC16F877A
 LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
 LanguageToolLocation=C:\Program Files\HI-TECH Software\PICC\9.70\bin\picc.exe
@@ -54,9 +54,9 @@ ToolArgsString=C9=4,3,2
 TraceCmdString=
 DebugOptions=
 [File004]
-Location=C:\Documents and Settings\Administrateur\Mes documents\uc\svn\lcd_16f877\lcd.hex
+Location=C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877\lcd.hex
 Folder=Output
-DeviceName=PIC16F877
+DeviceName=PIC16F877A
 LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
 LanguageToolLocation=C:\Program Files\HI-TECH Software\PICC\9.70\bin\picc.exe
@@ -67,9 +67,9 @@ ToolArgsString=C9=4,3,2
 TraceCmdString=
 DebugOptions=
 [File005]
-Location=C:\Documents and Settings\Administrateur\Mes documents\uc\svn\lcd_16f877\lcd.sym
+Location=C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877\lcd.sym
 Folder=Output
-DeviceName=PIC16F877
+DeviceName=PIC16F877A
 LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
 LanguageToolLocation=C:\Program Files\HI-TECH Software\PICC\9.70\bin\picc.exe
@@ -80,9 +80,9 @@ ToolArgsString=C9=4,3,2
 TraceCmdString=
 DebugOptions=
 [File006]
-Location=C:\Documents and Settings\Administrateur\Mes documents\uc\svn\lcd_16f877\lcd.map
+Location=C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877\lcd.map
 Folder=Output
-DeviceName=PIC16F877
+DeviceName=PIC16F877A
 LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
 LanguageToolLocation=C:\Program Files\HI-TECH Software\PICC\9.70\bin\picc.exe
@@ -93,9 +93,9 @@ ToolArgsString=C9=4,3,2
 TraceCmdString=
 DebugOptions=
 [File007]
-Location=C:\Documents and Settings\Administrateur\Mes documents\uc\svn\lcd_16f877\lcd.hxl
+Location=C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877\lcd.hxl
 Folder=Output
-DeviceName=PIC16F877
+DeviceName=PIC16F877A
 LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
 LanguageToolLocation=C:\Program Files\HI-TECH Software\PICC\9.70\bin\picc.exe
@@ -106,9 +106,9 @@ ToolArgsString=C9=4,3,2
 TraceCmdString=
 DebugOptions=
 [File008]
-Location=C:\Documents and Settings\Administrateur\Mes documents\uc\svn\lcd_16f877\startup.lst
+Location=C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877\startup.lst
 Folder=Output
-DeviceName=PIC16F877
+DeviceName=PIC16F877A
 LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
 LanguageToolLocation=C:\Program Files\HI-TECH Software\PICC\9.70\bin\picc.exe
@@ -119,9 +119,9 @@ ToolArgsString=C9=4,3,2
 TraceCmdString=
 DebugOptions=
 [File009]
-Location=C:\Documents and Settings\Administrateur\Mes documents\uc\svn\lcd_16f877\startup.rlf
+Location=C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877\startup.rlf
 Folder=Output
-DeviceName=PIC16F877
+DeviceName=PIC16F877A
 LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
 LanguageToolLocation=C:\Program Files\HI-TECH Software\PICC\9.70\bin\picc.exe
@@ -132,9 +132,9 @@ ToolArgsString=C9=4,3,2
 TraceCmdString=
 DebugOptions=
 [File010]
-Location=C:\Documents and Settings\Administrateur\Mes documents\uc\svn\lcd_16f877\doprnt.p1
+Location=C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877\doprnt.p1
 Folder=Output
-DeviceName=PIC16F877
+DeviceName=PIC16F877A
 LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
 LanguageToolLocation=C:\Program Files\HI-TECH Software\PICC\9.70\bin\picc.exe
@@ -145,9 +145,9 @@ ToolArgsString=C9=4,3,2
 TraceCmdString=
 DebugOptions=
 [File011]
-Location=C:\Documents and Settings\Administrateur\Mes documents\uc\svn\lcd_16f877\doprnt.pre
+Location=C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877\doprnt.pre
 Folder=Output
-DeviceName=PIC16F877
+DeviceName=PIC16F877A
 LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
 LanguageToolLocation=C:\Program Files\HI-TECH Software\PICC\9.70\bin\picc.exe
@@ -158,9 +158,9 @@ ToolArgsString=C9=4,3,2
 TraceCmdString=
 DebugOptions=
 [File012]
-Location=C:\Documents and Settings\Administrateur\Mes documents\uc\svn\lcd_16f877\lcd.obj
+Location=C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877\lcd.obj
 Folder=Output
-DeviceName=PIC16F877
+DeviceName=PIC16F877A
 LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
 LanguageToolLocation=C:\Program Files\HI-TECH Software\PICC\9.70\bin\picc.exe
@@ -171,9 +171,9 @@ ToolArgsString=C9=4,3,2
 TraceCmdString=
 DebugOptions=
 [File013]
-Location=C:\Documents and Settings\Administrateur\Mes documents\uc\svn\lcd_16f877\lcd.lst
+Location=C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877\lcd.lst
 Folder=Output
-DeviceName=PIC16F877
+DeviceName=PIC16F877A
 LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
 LanguageToolLocation=C:\Program Files\HI-TECH Software\PICC\9.70\bin\picc.exe
@@ -184,9 +184,9 @@ ToolArgsString=C9=4,3,2
 TraceCmdString=
 DebugOptions=
 [File014]
-Location=C:\Documents and Settings\Administrateur\Mes documents\uc\svn\lcd_16f877\lcd.rlf
+Location=C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877\lcd.rlf
 Folder=Output
-DeviceName=PIC16F877
+DeviceName=PIC16F877A
 LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
 LanguageToolLocation=C:\Program Files\HI-TECH Software\PICC\9.70\bin\picc.exe
@@ -197,9 +197,9 @@ ToolArgsString=C9=4,3,2
 TraceCmdString=
 DebugOptions=
 [File015]
-Location=C:\Documents and Settings\Administrateur\Mes documents\uc\svn\lcd_16f877\lcd.sdb
+Location=C:\Documents and Settings\Administrateur\Mes documents\uc\openphysic\uc\microchip_pic\lcd_16f877\lcd.sdb
 Folder=Output
-DeviceName=PIC16F877
+DeviceName=PIC16F877A
 LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
 LanguageToolLocation=C:\Program Files\HI-TECH Software\PICC\9.70\bin\picc.exe

@@ -1,7 +1,7 @@
 
 
 HI-TECH Software PIC Macro Assembler V9.70 build 5239 
-                                                      Sun May 09 10:54:52 2010
+                                                      Sun May 09 14:00:16 2010
 
 
      1                           
@@ -82,7 +82,7 @@ HI-TECH Software PIC Macro Assembler V9.70 build 5239
 
 
 HI-TECH Software PICC Macro Assembler V9.70 build 5239 
-Symbol Table                                          Sun May 09 10:54:52 2010
+Symbol Table                                          Sun May 09 14:00:16 2010
 
                _main 072C                 _exit 0000  
                start 0000  start_initialization 079C  

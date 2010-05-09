@@ -1,7 +1,7 @@
 
 
 HI-TECH Software PIC LITE Macro Assembler V9.70 build 5239 
-                                                                                               Sun May 09 10:54:52 2010
+                                                                                               Sun May 09 14:00:15 2010
 
 HI-TECH Software Omniscient Code Generator (Lite mode) build 5239
      1  0000                     opt subtitle "HI-TECH Software Omniscient Code Generator (Lite mode) build 5239"
@@ -1501,7 +1501,7 @@ HI-TECH Software Omniscient Code Generator (Lite mode) build 5239
 
 
 HI-TECH Software PICC Macro Assembler V9.70 build 5239 
-Symbol Table                                                                                   Sun May 09 10:54:52 2010
+Symbol Table                                                                                   Sun May 09 14:00:15 2010
 
                    l2 0749                     l5 0788                     l6 079B                     l7 076C  
                    pc 0002                    l12 06FF                    l13 07FF                    _DA 04A5  
