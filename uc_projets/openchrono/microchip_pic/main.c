@@ -69,13 +69,25 @@ xxxxxxxxxxxxxxxxxxxx L4
 	lcd_goto(L1_OFFSET);	// select first line
 	//lcd_puts("L1: 567890123456");
 	//lcd_puts("**** OpenChrono ****");
-	lcd_puts("********************");
+	//lcd_puts("********************");
+	//for(int i=0 ; i<NB_COLS ; i++) {
+	//	lcd_putch(0b11111111); // pavé plein
+	//}
+	nbc = sprintf(buffer, "xxxx OpenChrono xxxx");
+	for(int i=0 ; i<4 ; i++) {
+		buffer[i]=0b11111111;
+		buffer[NB_COLS-i-1]=0b11111111;
+	}
+	lcd_puts(buffer);
 
 	lcd_goto(L2_OFFSET);	// Select second line
 	//lcd_puts("L2: 5678901234567");
 	//lcd_puts("**** S. Celles  ****");
-	nbc = sprintf(buffer, "disp=%05d",disp);
-	lcd_puts(buffer);
+	//nbc = sprintf(buffer, "disp=%05d",disp);
+	//lcd_puts(buffer);
+	for(int i=0 ; i<NB_COLS ; i++) {
+		lcd_putch(0b11111111); // pavé plein
+	}
 
 	lcd_goto(L3_OFFSET);
 	//lcd_puts("L3: 56789012345678");
@@ -92,7 +104,7 @@ xxxxxxxxxxxxxxxxxxxx L4
 
 void increment(void) {
 	xx++;
-	if (xx==10000) {
+	if (xx==1000) {
 		xx=0;
 		ss++;
 		if (ss==60) {
@@ -120,8 +132,9 @@ void timer_init() {
 	// Quartz 4 Mhz => 1 instruction = 1 µs
 
 	T1CON = 0x00 ; // Prédivision de l'horloge par 1
-	TMR1H = 0xFF;
-	TMR1L = 0x9B; // 100us=0x9B 10us=0xF5 // 0xC1 ; // 0xFFFF - 0xFFC1 = 62 => 62 x 1 µs = 62 µs
+	/* 1ms -> 0xFC17 ; 0.1ms->0xFF9B -> TMR1H=0xFF; TMR1L= 0x9B */
+	TMR1H = 0xFC; // 0xFF
+	TMR1L = 0x36; // 100us=0x9B 10us=0xF5 // 0xC1 ; // 0xFFFF - 0xFFC1 = 62 => 62 x 1 µs = 62 µs
 	TMR1ON = 1 ; // On lance le timer 1
 	TMR1IE = 1 ; // On autorise les interruptions du timer 1
 
@@ -153,12 +166,14 @@ void interrupt tc_int(void) {
 	//lcd_puts("++++++++++++++++++++");	
 //} else if(TMR1IF) {
 if(TMR1IF) {
-	GIE = 0 ; // interdiction interruption
+	//GIE = 0 ; // interdiction interruption
+	PORTB = ~PORTB;
+
+	//Flag62us = 1 ;
+	TMR1H = 0xFC ;
+	TMR1L = 0x36; // 100us=0x9B ; 10us //0xC1 ; // 0xFFFF - 0xFFC1 = 62 => 62 x 1 µs = 62 µs
 
 	TMR1IF = 0 ;
-	//Flag62us = 1 ;
-	TMR1H = 0xFF ;
-	TMR1L = 0x9B; // 100us=0x9B ; 10us //0xC1 ; // 0xFFFF - 0xFFC1 = 62 => 62 x 1 µs = 62 µs
 
 	//reset_time();
 	increment();
@@ -179,6 +194,8 @@ if(TMR1IF) {
 void main(void) {
 	ticks=0;
 	disp=0;
+
+	TRISB = 0x00; // sortie sur B pour calibrage horloge
 
 	reset_time();
 
