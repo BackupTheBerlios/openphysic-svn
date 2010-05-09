@@ -1,25 +1,25 @@
-Projet de chrono, mesure de tempÃ©rature
-MicrocontrÃ´leur
+Projet de chrono, mesure de température
+Microcontrôleur
 Afficheur LCD graphique
 Boutons
 
 
 
 
-InspirÃ© de Alphano dont voici les caractÃ©ristiques de certains modÃ¨les
+Inspiré de Alphano dont voici les caractéristiques de certains modèles
 http://www.alfano-usa.com
 http://www.chrono-sport.fr (importateur pour la France)
-http://www.alfano.be (manuel en franÃ§ais)
+http://www.alfano.be (manuel en français)
 voir docs dans /media/graver/auto/sports_mecaniques/kart/alfano
 
 
-"Le chronomÃ¨tre Alfano PRO fonctionne grÃ¢ce Ã  un capteur fixÃ© sur le plancher du kart qui dÃ©tecte la prÃ©sence du champ magnÃ©tique implantÃ© dans la piste. TrÃ¨s utilisÃ© pour les rÃ©glages des moteurs, il affiche Ã©galement les rÃ©gimes moteur ainsi que la tempÃ©rature du moteur. CaractÃ©ristiques : - MÃ©moire de 98 tours. - Compte-tours (diffÃ©rentes lectures) Maximum 26.000 tr/m. - Affichage du meilleur tour, Ã©cart avec le meilleur tour, nombre de tours et temps total de roulage. - 5 Compteurs temps moteurs. - TempÃ©rature moteur Dimensions du BoÃ®tier : 115 mm X 90 mm / Dimensions de l' Ecran : 86 mm X 35 mm. Poids : +/- 460 Gr MatÃ©riel inclus : 1 capteur magnÃ©tique 1 cÃ¢ble pour le capteur magnÃ©tique 1 CÃ¢ble pour le compte-tours 3 Colsons noirs 1 Manuel ""mode dÂ´emploi"" En option : Capteur de tÂ° eau / Capteur de tÂ° Ã  la bougie / Emetteur et rÃ©cepteur infrarouge"
+"Le chronomètre Alfano PRO fonctionne grâce à un capteur fixé sur le plancher du kart qui détecte la présence du champ magnétique implanté dans la piste. Très utilisé pour les réglages des moteurs, il affiche également les régimes moteur ainsi que la température du moteur. Caractéristiques : - Mémoire de 98 tours. - Compte-tours (différentes lectures) Maximum 26.000 tr/m. - Affichage du meilleur tour, écart avec le meilleur tour, nombre de tours et temps total de roulage. - 5 Compteurs temps moteurs. - Température moteur Dimensions du Boîtier : 115 mm X 90 mm / Dimensions de l' Ecran : 86 mm X 35 mm. Poids : +/- 460 Gr Matériel inclus : 1 capteur magnétique 1 câble pour le capteur magnétique 1 Câble pour le compte-tours 3 Colsons noirs 1 Manuel ""mode d´emploi"" En option : Capteur de t° eau / Capteur de t° à la bougie / Emetteur et récepteur infrarouge"
 
 
-"CaractÃ©ristques : - Temps au tour / meilleur temps - Configurable jusquÃ‡Ã  6 partiels - Comparateur de temps (sur le meilleur temps, sur le temps prÃ©cÃ©dent, sur le temps cible Â« configurable Â») - RPM en lecture directe, Shift Lights et Bar Graph - 2 entrÃ©es de tempÃ©rature (De 0Â°C Ã  1.500Â°C: Eau, Culasse, Bougie, Echappements, etcÃ„) - Configuration de la tempÃ©rature : Maximum, minimum pour chaque tour avec alarmes luminescentes - Vitesse (Configurable avec ou sans le capteur de roue) - Rapport de boÃ®te jusqu'Ã  9 vitesses - 8 compteurs configurables - Simulation dÃ‡un tour en temps rÃ©el, pendant 15 Minutes - Force G LatÃ©rale et Longitudinale - Fonctionne en infrarouge pour les pistes non Ã©quippÃ©es de la bande magnÃ©tique - DonnÃ©es de tÃ©lÃ©chargement Ã  un PC par l'intermÃ©diaire de stylo infrarouge USB - SystÃ¨me up-gradable Dimension du systÃ¨me : 123 x 104 mm Dimension Ã©cran : 85 x 49 mm Poids : +/- 425 Gr Batteries : 2 x AA "
+"Caractéristques : - Temps au tour / meilleur temps - Configurable jusquÇà 6 partiels - Comparateur de temps (sur le meilleur temps, sur le temps précédent, sur le temps cible « configurable ») - RPM en lecture directe, Shift Lights et Bar Graph - 2 entrées de température (De 0°C à 1.500°C: Eau, Culasse, Bougie, Echappements, etcÄ) - Configuration de la température : Maximum, minimum pour chaque tour avec alarmes luminescentes - Vitesse (Configurable avec ou sans le capteur de roue) - Rapport de boîte jusqu'à 9 vitesses - 8 compteurs configurables - Simulation dÇun tour en temps réel, pendant 15 Minutes - Force G Latérale et Longitudinale - Fonctionne en infrarouge pour les pistes non équippées de la bande magnétique - Données de téléchargement à un PC par l'intermédiaire de stylo infrarouge USB - Système up-gradable Dimension du système : 123 x 104 mm Dimension écran : 85 x 49 mm Poids : +/- 425 Gr Batteries : 2 x AA "
 
 
-Fonction Ã  supporter impÃ©rativement
+Fonction à supporter impérativement
 ===================================
 temps du tour
 meilleur temps
@@ -29,10 +29,10 @@ dernier temps
 
 Affichage
 =========
-Possible : LCD (alphanumÃ©rique ou graphique ?)
-alphanumÃ©rique : bien supportÃ© par WinAVR et VMLAB HD44780 http://www.nongnu.org/avr-libc/user-manual/group__stdiodemo.html
+Possible : LCD (alphanumérique ou graphique ?)
+alphanumérique : bien supporté par WinAVR et VMLAB HD44780 http://www.nongnu.org/avr-libc/user-manual/group__stdiodemo.html
 mais
-graphique car plus joli et plus facile Ã  faire Ã©voluer...
+graphique car plus joli et plus facile à faire évoluer...
 
 si LCD alpha
 
@@ -55,7 +55,7 @@ ZONE3=dernier temps (last_time)
 ZONE4
  + ou - ou = : comparaison avec dernier temps (LST) ou avec le meilleur (BST)
       00:00:000
- ex : BST= LST+ (sans calcul de la diffÃ©rence de temps)
+ ex : BST= LST+ (sans calcul de la différence de temps)
  ex : BST=
 
 PAGE RESULT SUM
@@ -74,10 +74,10 @@ PAGE RESULT COMP BEST
 
 
 
-Attention on trouve pas mal de LCD alphanumÃ©rique en 16x2 !!! mais des 20x2 ou 20x3 ???
+Attention on trouve pas mal de LCD alphanumérique en 16x2 !!! mais des 20x2 ou 20x3 ???
 
 
-possibilitÃ© de tester le LCD avec lcdproc http://lcdproc.omnipotent.net
+possibilité de tester le LCD avec lcdproc http://lcdproc.omnipotent.net
 This is a client/server suite including drivers for all kinds of
 nifty LCD displays. The server supports several serial devices: Matrix
 Orbital, Crystal Fontz, Bayrad, LB216, LCDM001 (kernelconcepts.de),
@@ -95,17 +95,17 @@ Taille autour de 85x49mm (un pixel = 0,48x0.48mm)
 voir docs dans /media/graver/sciences/programmation/microcontroleurs/display_7seg_lcd_graph/
 
 
-Envoyer un bitmap Ã  un LCD
+Envoyer un bitmap à un LCD
 http://www.amontec.com/lcd_nokia_3310.shtml
 [WISH] Transformer un bitmap en tableau (array) C
 GIMP http://bugzilla.gnome.org/show_bug.cgi?id=353521
 --> Exporter en tant que fichier .xbm (X11 Bitmap = Image Bitmap X)
-ImageMagick convert : Ã  faire http://www.imagemagick.org
+ImageMagick convert : à faire http://www.imagemagick.org
 
 
-BibliothÃ¨que permettant de gÃ©rer les menus
+Bibliothèque permettant de gérer les menus
 
-Quelques bibliothÃ¨ques Ã  envisager :
+Quelques bibliothèques à envisager :
  Liste : http://forums.jelectronique.com/ftopic104.php
  
 AVR-libc http://www.nongnu.org/avr-libc/
@@ -116,19 +116,19 @@ Peter Fleury http://homepage.hispeed.ch/peterfleury/
 Embedded FileSystem Library http://sourceforge.net/projects/efsl
 
 
-Attention au domaine de tempÃ©rature d'utilisation du LCD !!! (surtout l'Ã©tÃ© !!!)
+Attention au domaine de température d'utilisation du LCD !!! (surtout l'été !!!)
 
 
 Choix final : 
 
 
-Affichage Ã  complÃ©ter avec des LEDs (vert jaune rouge)
+Affichage à compléter avec des LEDs (vert jaune rouge)
 - pour compte-tours (total 10)
   lent   2 LED vertes
   moyen  4 LED jaunes
   rapide 4 LED rouges
 
-- autres (Ã  dÃ©finir)
+- autres (à définir)
   passage de 1 LED rouge (clignotante)
   meilleur temps 1 LED verte (clignotante)
 
@@ -138,42 +138,42 @@ Affichage Ã  complÃ©ter avec des LEDs (vert jaune rouge)
 Clavier
 =======
 2 boutons (OK et CANCEL)
-et un bouton joystick Ã  4 positions (gauche, droite, haut, bas)
-permettront de se dÃ©placer dans les pages, menus, etc...
+et un bouton joystick à 4 positions (gauche, droite, haut, bas)
+permettront de se déplacer dans les pages, menus, etc...
 
-IdÃ©e d'interface
-des pages diffÃ©rentes que l'on peut faire dÃ©filer par gauche/droite
+Idée d'interface
+des pages différentes que l'on peut faire défiler par gauche/droite
 on rentre dans une page par OK pour des faire modifications
 et on quite les modifs
  
 Interruption externe ou pas ?
-Astuce : brancher les boutons entre la masse et PBx pour rÃ©cupÃ©rer l'Ã©tat de chaque touche
-mais on utilise une interruption externe pour dÃ©clancher lors de l'appui d'une touche
+Astuce : brancher les boutons entre la masse et PBx pour récupérer l'état de chaque touche
+mais on utilise une interruption externe pour déclancher lors de l'appui d'une touche
 voir : http://forums.jelectronique.com/ftopic3760.php&sid=3735f95c7f0de511b3825bbf68867b53
-OU logique entre les 6 entrÃ©es dont la sortie va sur une interruption. 
+OU logique entre les 6 entrées dont la sortie va sur une interruption. 
 de simple diodes suffisent amplement pour faire un ou
-on peut mettre toutes les ( 6) anodes communes et les relier Ã  l'entrÃ©e interruption et chaque cathode relier Ã  une touche et la touche relier Ã  la masse.
-chaque touche appuyÃ©e forcera l'entrÃ©e interruption Ã  la masse. 
+on peut mettre toutes les ( 6) anodes communes et les relier à l'entrée interruption et chaque cathode relier à une touche et la touche relier à la masse.
+chaque touche appuyée forcera l'entrée interruption à la masse. 
 
 
-MicrocontrÃ´leur
+Microcontrôleur
 ===============
 PIC ou ATMEL AVR ou ARM ou ...
-PrÃ©voir de la mÃ©moire pour pouvoir stocker des donnÃ©es
+Prévoir de la mémoire pour pouvoir stocker des données
 
 PIC
- + beaucoup de doc en franÃ§ais
- - compilateur C gratuit limitÃ©
+ + beaucoup de doc en français
+ - compilateur C gratuit limité
 
 ATMEL AVR
- + quelques exemples avec ATmÃ©ga sur GNU/Linux Mag France
+ + quelques exemples avec ATméga sur GNU/Linux Mag France
  + compilateur C gcc-avr
  + prix
- - limitÃ© (?)
+ - limité (?)
 
 ARM
  + cross-compilation facile avec Scratchbox
- + possibilitÃ© de mettre un noyau Linux embarquÃ© (voir uclibc ...)
+ + possibilité de mettre un noyau Linux embarqué (voir uclibc ...)
  - prix !!!
 
 
@@ -187,16 +187,16 @@ Choix final :
 
 Timer
 =====
-On utilisera une interruption gÃ©nÃ©rÃ©e par un timer
+On utilisera une interruption générée par un timer
 voir : http://forums.jelectronique.com/ftopic3761.php&sid=3735f95c7f0de511b3825bbf68867b53
 voir : http://www.jelectronique.com/pwm.php
 
 Capteurs
 ========
-Quelques rÃ©fÃ©rences sur les capteurs
+Quelques références sur les capteurs
 http://www.u-electronique.com/annuaire/cours_6.php
 
-Sonde Ã  effet Hall
+Sonde à effet Hall
 ------------------
 Capteur LEM ?
 Choix final : 
@@ -204,52 +204,52 @@ Choix final :
 Interruption externe (INT0 sur PD2) via AO comparateur 0 5V
 
 
-RÃ©gime moteur
+Régime moteur
 =============
 Capteur inductif => tension induite en forme de pics => mise en forme du signal
 
 Choix final :
 
-Convertisseur analogique-numÃ©rique intÃ©grÃ© au microcontrÃ´leur
+Convertisseur analogique-numérique intégré au microcontrôleur
 
 
 
-Sonde tempÃ©rature
+Sonde température
 -----------------
-RÃ©sistance ? Thermocouple ? Composant spÃ©cialisÃ© : LM335
+Résistance ? Thermocouple ? Composant spécialisé : LM335
 
 Choix final : 
 
-Convertisseur analogique-numÃ©rique intÃ©grÃ© au microcontrÃ´leur
+Convertisseur analogique-numérique intégré au microcontrôleur
 
 
 
 
-AccÃ©lÃ©romÃ¨tre
+Accéléromètre
 -------------
-Mesure de l'accÃ©lÃ©ration latÃ©rale (G/D)
-Mesure de l'accÃ©lÃ©ration/dÃ©cÃ©lÃ©ration (AV/AR)
+Mesure de l'accélération latérale (G/D)
+Mesure de l'accélération/décélération (AV/AR)
 Choix final :
 
 
-Convertisseur analogique-numÃ©rique intÃ©grÃ© au microcontrÃ´leur
+Convertisseur analogique-numérique intégré au microcontrôleur
 
 
-FonctionnalitÃ©s supplÃ©mentaires (pas implantÃ© dans un premier temps)
+Fonctionnalités supplémentaires (pas implanté dans un premier temps)
 ===============================
 Temps partiels
 data-logger
  temps par tours
- temps intermÃ©diaires
+ temps intermédiaires
  RPM=f(t)
- TÂ°1=f(t)
- TÂ°2=f(t)
+ T°1=f(t)
+ T°2=f(t)
  acc_frontale=f(t)
  acc_laterale=f(t) 
 WIFI (pour envoyer les temps) ou Infra-Rouge
-clÃ© USB (pour rÃ©cupÃ©rer les donnÃ©es) ou Ã©criture sur carte MMC, SD ou CF
-coupure Ã  distance du kart
-reflashage facile du microcontroleur voir In Situ Programming ISP... par port sÃ©rie mais l'idÃ©al serait par USB... voir si c'est possible !!!)
+clé USB (pour récupérer les données) ou écriture sur carte MMC, SD ou CF
+coupure à distance du kart
+reflashage facile du microcontroleur voir In Situ Programming ISP... par port série mais l'idéal serait par USB... voir si c'est possible !!!)
 
 
 
@@ -300,7 +300,7 @@ PC1.............LED RPM 2/8 (10)
 PC0.............LED RPM 1/8 (10)
 PD7.............
 
-AbandonnÃ© car pas assez de ports pour un LCD parallÃ¨le (et le reste)
+Abandonné car pas assez de ports pour un LCD parallèle (et le reste)
 
 
 nouveau choix ATmega128
@@ -313,11 +313,11 @@ TO DO
 - ou sur clavier INT1 (PD3)
 - LCD
 + separation du code
-- Ã©cart temps
+- écart temps
 
-projet temporairement cassÃ© (changement de uc ATmega8535 vers ATmega128)
+projet temporairement cassé (changement de uc ATmega8535 vers ATmega128)
 faire modifications pour les pb d'interruptions
-modif conv analogique->numÃ©rique
+modif conv analogique->numérique
 
 traiter les signaux visuels (led_alarm) et auditif (beep) en dehors des interruptions
 (afin de ne pas ralentir le chrono)
@@ -328,8 +328,8 @@ Hardware
 ========
 uc ATMEL AVR ATmega8535
 Diodes 1N4148 (*6)
-LCD caractÃ¨re type HD44780 (2 lignes et 19 colonnes au mini - 17 Ã  la rigueur)
-74HC164 (parallÃ¨le->serie)
+LCD caractère type HD44780 (2 lignes et 19 colonnes au mini - 17 à la rigueur)
+74HC164 (parallèle->serie)
 
 
 Menus
@@ -347,7 +347,7 @@ track_menu
 recall_menu
 
 time
- page principale permettant de visualiser le temps en cours, le meilleur temps, le dernier temps, le rÃ©gime moteur
+ page principale permettant de visualiser le temps en cours, le meilleur temps, le dernier temps, le régime moteur
  Action :
   Ok : rien
   Cancel :
@@ -365,7 +365,7 @@ engine_menu
   Cancel -> time
 
 engine_select
- Action : choix du moteur nÂ° xx
+ Action : choix du moteur n° xx
 
 engine_stroke
  Action : choix du type de moteur (2 temps ou 4 temps) pour le moteur xx
@@ -374,7 +374,7 @@ engine_reset_time
  Action : effacer le totaliseur d'heure du moteur xx
 
 track_menu
- Action : nombre de temps intermÃ©diaires sur un tour de circuit
+ Action : nombre de temps intermédiaires sur un tour de circuit
 
 recall_menu
  Action : rappeler les derniers temps
