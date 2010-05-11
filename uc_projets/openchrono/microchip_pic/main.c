@@ -33,6 +33,7 @@ Simulator : Proteus VSM
 #include "delay.h"
 #include <stdio.h>
 
+
 unsigned char state;
 unsigned int ticks;
 unsigned int disp;
@@ -152,21 +153,24 @@ xxxxxxxxxxxxxxxxxxxx L4
 	//for(int i=0 ; i<NB_COLS ; i++) {
 	//	lcd_putch(0b11111111); // pavé plein
 	//}
-
+	nbc = sprintf(buffer, " %01u:%02u:%03u  B%01u:%02u:%03u",mm%10,ss,xx,0%10,0,0); // temps tour en cours & meilleur tour
+	lcd_puts(buffer);
 
 	lcd_goto(L3_OFFSET);
 	//lcd_puts("L3: 56789012345678");
 	//nbc = sprintf(buffer, "ticks=%05u",ticks);
 	//lcd_puts(buffer);
-	nbc = sprintf(buffer, " %01u:%02u:%03u  B%01u:%02u:%03u",mm,ss,xx,0,0,0); // temps tour en cours & meilleur tour
+	nbc = sprintf(buffer, "L%01u:%02u:%03u  B+:%02u:%03u",0%10,0,0,0,0); // temps tour en cours & meilleur tour
 	lcd_puts(buffer);
 
 	lcd_goto(L4_OFFSET);
 	//lcd_puts("L4: 567890123456789");
 	//nbc = sprintf(buffer, "%02d:%02d:%02d:%03d",hh,mm,ss,xx)
-	nbc = sprintf(buffer, "L%01u:%02u:%03u  +%01u:%02u:%03u",0,0,0,0,0,0); // temps tour en cours & meilleur tour
+	nbc = sprintf(buffer, "L+:%02u:%03u",0%60,0); // temps tour en cours & meilleur tour
 	lcd_puts(buffer);
-
+	lcd_puts("  ");
+	nbc = sprintf(buffer, "E%1u:%02u:%03u",2%9,0%60,0); // temps tour en cours & meilleur tour
+	lcd_puts(buffer);
 }
 
 void increment(void) {

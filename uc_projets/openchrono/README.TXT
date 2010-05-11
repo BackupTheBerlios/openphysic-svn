@@ -36,12 +36,12 @@ graphique car plus joli et plus facile à faire évoluer...
 
 si LCD alpha
 
-19 colonnes ; 2 lignes
+20 colonnes ; 2 lignes
 
-01234567890123456789012345
+12345678901234567890
 
 PAGE TEMPS
-01234567890123456789012345
+12345678901234567890
 
 01:30:123 01:28:540
 01:29:123 LST+1:000
@@ -59,7 +59,7 @@ ZONE4
  ex : BST=
 
 PAGE RESULT SUM
-01234567890123456789012345
+1234567890123456789012345
 
 01 01:30:123 L+ B+
 02 01:30:123 L+ B+
@@ -148,7 +148,7 @@ et on quite les modifs
  
 Interruption externe ou pas ?
 Astuce : brancher les boutons entre la masse et PBx pour récupérer l'état de chaque touche
-mais on utilise une interruption externe pour déclancher lors de l'appui d'une touche
+mais on utilise une interruption externe pour déclencher lors de l'appui d'une touche
 voir : http://forums.jelectronique.com/ftopic3760.php&sid=3735f95c7f0de511b3825bbf68867b53
 OU logique entre les 6 entrées dont la sortie va sur une interruption. 
 de simple diodes suffisent amplement pour faire un ou
