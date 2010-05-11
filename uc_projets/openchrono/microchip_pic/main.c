@@ -124,7 +124,7 @@ void increment(void) {
 
 void timer_init() {
 	// Timer 0 (8 bits) utilisé pour le chrono 1ms
-	TMR0 = 0x0F; // valeur initiale timer 0 theorie=0x06 pratique=0x10
+	TMR0 = 0x0E; // valeur initiale timer 0 theorie=0x06 pratique=0x10
 
 	T0IE = 1; // On autorise les interruptions du timer 0
 
@@ -176,7 +176,7 @@ void reset_time(void) {
 void interrupt tc_int(void) {
 if (T0IF) {
 	PORTB ^= (1 << 5); // inversion bit 5 ( http://fr.wikipedia.org/wiki/Manipulation_de_bit )
-	TMR0 = 0x0F; // theorie 0x06->1000us ; pratique 0x06->1034 , 0x10->996us , 0x11->1024us
+	TMR0 = 0x0E; // theorie 0x06->1000us ; pratique 0x06->1034 , 0x10->996us , 0x11->1024us
 
 	increment();
 	//display_lcd();
