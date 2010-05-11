@@ -36,10 +36,10 @@ Simulator : Proteus VSM
 unsigned int ticks;
 unsigned int disp;
 
-int hh;
-int mm;
-int ss;
-int xx;
+unsigned char hh; /* 0-24 */
+unsigned char mm; /* 0-60 */
+unsigned char ss; /* 0-60 */
+unsigned xx; /* 0-1000 */
 
 
 #define L1_OFFSET 0x0
@@ -91,14 +91,14 @@ xxxxxxxxxxxxxxxxxxxx L4
 
 	lcd_goto(L3_OFFSET);
 	//lcd_puts("L3: 56789012345678");
-	nbc = sprintf(buffer, "ticks=%05d",ticks);
+	nbc = sprintf(buffer, "ticks=%05u",ticks);
 	lcd_puts(buffer);
 
 	lcd_goto(L4_OFFSET);
 	//lcd_puts("L4: 567890123456789");
 	//nbc = sprintf(buffer, "%02d:%02d:%02d:%03d",hh,mm,ss,xx)
 
-	nbc = sprintf(buffer, "%02d:%02d:%03d",mm,ss,xx);
+	nbc = sprintf(buffer, "%02u:%02u:%03u",mm,ss,xx);
 	lcd_puts(buffer);
 }
 
@@ -140,7 +140,8 @@ void timer_init() {
 
 	// Autorisation des interruptions
 	PEIE = 1 ; // Autorisation des IT peripherique
-	GIE = 1 ; // Autorisation général des IT	
+	
+	ei();	//GIE = 1 ; // Autorisation général des IT
 }
 
 void reset_time(void) {
@@ -166,8 +167,11 @@ void interrupt tc_int(void) {
 	//lcd_puts("++++++++++++++++++++");	
 //} else if(TMR1IF) {
 if(TMR1IF) {
-	//GIE = 0 ; // interdiction interruption
-	PORTB = ~PORTB;
+	//di(); //GIE = 0 ; // interdiction interruption
+
+	// calibrage horloge 1 ms
+	//PORTB = ~PORTB;
+	PORTB ^= (1 << 5); // inversion bit 5 ( http://fr.wikipedia.org/wiki/Manipulation_de_bit )
 
 	//Flag62us = 1 ;
 	TMR1H = 0xFC ;
@@ -176,8 +180,15 @@ if(TMR1IF) {
 	//reset_time();
 	increment();
 
-	//GIE = 1 ; // autorisation interruption
-	TMR1IF = 0 ;
+	//ei(); //GIE = 1; // autorisation interruption
+
+	TMR1IF = 0;
+}
+
+if (INTF) {
+	reset_time();
+
+	INTF = 0;
 }
 
 /*
@@ -194,7 +205,8 @@ void main(void) {
 	ticks=0;
 	disp=0;
 
-	TRISB = 0x00; // sortie sur B pour calibrage horloge
+	TRISB = 0b11011111; // sortie sur RB5 pour calibrage horloge
+	//PORTB = 0b00000000;
 
 	reset_time();
 
