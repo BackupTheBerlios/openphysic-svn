@@ -33,6 +33,7 @@ Simulator : Proteus VSM
 #include "delay.h"
 #include <stdio.h>
 
+unsigned char state;
 unsigned int ticks;
 unsigned int disp;
 
@@ -51,6 +52,65 @@ unsigned xx; /* 0-1000 */
 #define NB_LINES 4 //2
 char buffer[NB_COLS+1];
 int nbc;
+
+void display_lcd_flag_line(char offset) {
+	for(int i=0 ; i<NB_COLS ; i++) {
+		if (((i+offset) % 2) == 0) {
+			lcd_putch(0b11111111); // nb pair -> pavé plein
+		} else {
+			lcd_putch(0b11111110); // nb impair -> pavé vide
+		}
+	}
+}
+
+void display_lcd_flag_screen(void) {
+	/* Drapeau à damier */
+	lcd_goto(L1_OFFSET);
+	display_lcd_flag_line(0);
+	lcd_goto(L2_OFFSET);
+	display_lcd_flag_line(1);
+	lcd_goto(L3_OFFSET);
+	display_lcd_flag_line(2);
+	lcd_goto(L4_OFFSET);
+	display_lcd_flag_line(3);
+
+	/* Texte */
+	lcd_goto(L2_OFFSET+3);
+	lcd_puts(" OpenChrono ");
+
+	lcd_goto(L3_OFFSET+4);
+	lcd_puts(" S. Celles ");
+
+}
+
+void display_lcd_splash_screen(void) {
+	lcd_goto(L1_OFFSET);
+	for(int i=0 ; i<NB_COLS ; i++) {
+		lcd_putch(0b11111111); // pavé plein
+	}
+
+	lcd_goto(L2_OFFSET);
+	nbc = sprintf(buffer, "**   OpenChrono   **");
+	for(int i=0 ; i<2 ; i++) {
+		buffer[i]=0b11111111;
+		buffer[NB_COLS-i-1]=0b11111111;
+	}
+	lcd_puts(buffer);
+
+	lcd_goto(L3_OFFSET);
+	nbc = sprintf(buffer, "**   S. Celles    **");
+	for(int i=0 ; i<2 ; i++) {
+		buffer[i]=0b11111111;
+		buffer[NB_COLS-i-1]=0b11111111;
+	}
+	lcd_puts(buffer);
+
+	lcd_goto(L4_OFFSET);
+	for(int i=0 ; i<NB_COLS ; i++) {
+		lcd_putch(0b11111111); // pavé plein
+	}
+
+}
 
 void display_lcd(void) {
 /*
@@ -73,11 +133,15 @@ xxxxxxxxxxxxxxxxxxxx L4
 	//for(int i=0 ; i<NB_COLS ; i++) {
 	//	lcd_putch(0b11111111); // pavé plein
 	//}
+	/*
 	nbc = sprintf(buffer, "xxxx OpenChrono xxxx");
 	for(int i=0 ; i<4 ; i++) {
 		buffer[i]=0b11111111;
 		buffer[NB_COLS-i-1]=0b11111111;
 	}
+	lcd_puts(buffer);
+	*/
+	nbc = sprintf(buffer, "%05d RPM OpenChrono",0);
 	lcd_puts(buffer);
 
 	lcd_goto(L2_OFFSET);	// Select second line
@@ -85,21 +149,24 @@ xxxxxxxxxxxxxxxxxxxx L4
 	//lcd_puts("**** S. Celles  ****");
 	//nbc = sprintf(buffer, "disp=%05d",disp);
 	//lcd_puts(buffer);
-	for(int i=0 ; i<NB_COLS ; i++) {
-		lcd_putch(0b11111111); // pavé plein
-	}
+	//for(int i=0 ; i<NB_COLS ; i++) {
+	//	lcd_putch(0b11111111); // pavé plein
+	//}
+
 
 	lcd_goto(L3_OFFSET);
 	//lcd_puts("L3: 56789012345678");
-	nbc = sprintf(buffer, "ticks=%05u",ticks);
+	//nbc = sprintf(buffer, "ticks=%05u",ticks);
+	//lcd_puts(buffer);
+	nbc = sprintf(buffer, " %01u:%02u:%03u  B%01u:%02u:%03u",mm,ss,xx,0,0,0); // temps tour en cours & meilleur tour
 	lcd_puts(buffer);
 
 	lcd_goto(L4_OFFSET);
 	//lcd_puts("L4: 567890123456789");
 	//nbc = sprintf(buffer, "%02d:%02d:%02d:%03d",hh,mm,ss,xx)
-
-	nbc = sprintf(buffer, "%02u:%02u:%03u",mm,ss,xx);
+	nbc = sprintf(buffer, "L%01u:%02u:%03u  +%01u:%02u:%03u",0,0,0,0,0,0); // temps tour en cours & meilleur tour
 	lcd_puts(buffer);
+
 }
 
 void increment(void) {
@@ -225,8 +292,9 @@ if (INTF) {
 }
 
 void main(void) {
-	ticks=0;
-	disp=0;
+	state = 1;
+	ticks = 0;
+	disp = 0;
 
 	TRISB = 0b11011111; // sortie sur RB5 pour calibrage horloge
 	//PORTB = 0b00000000;
@@ -236,12 +304,22 @@ void main(void) {
 	timer_init();
 
 	lcd_init();
-
+	
 	while(1) {
+
 		ticks++;
 
-		display_lcd();	
-
+		if (state==1) {
+			//display_lcd_splash_screen();
+			if ((ticks%5000)==1) {
+				display_lcd_flag_screen();
+			} else if ((ticks%5000)==0) {
+				state = 2;
+				lcd_clear();
+			}
+		} else {		
+			display_lcd();
+		}
 		//increment();
 		//i=i+1;
 
