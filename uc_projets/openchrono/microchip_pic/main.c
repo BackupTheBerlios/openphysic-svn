@@ -123,20 +123,33 @@ void increment(void) {
 }
 
 void timer_init() {
-	// Timer 0 (8 bits) utilisé pour le rafraîchissement de l'écran
-	//TMR0 = 0x00;
+	// Timer 0 (8 bits) utilisé pour le chrono 1ms
+	TMR0 = 0x0F; // valeur initiale timer 0 theorie=0x06 pratique=0x10
+
+	T0IE = 1; // On autorise les interruptions du timer 0
+
+	T0IF = 0; // RAZ flag interruption
+
+	T0CS = 0;
+	PSA = 0;
+	PS2 = 0;
+	PS1 = 0;
+	PS0 = 1;
+	//TMR0ON = 1;
 	//TMR0ON = 1 ; // On lance le timer 1
 	//TMR0IE = 1 ; // On autorise les interruptions du timer 1
 	
+/*
 	// Timer 1 (16 bits) utilisé pour l'horloge
 	// Quartz 4 Mhz => 1 instruction = 1 µs
+	// 1ms -> 0xFC17 ; 0.1ms->0xFF9B -> TMR1H=0xFF; TMR1L= 0x9B
 
 	T1CON = 0x00 ; // Prédivision de l'horloge par 1
-	/* 1ms -> 0xFC17 ; 0.1ms->0xFF9B -> TMR1H=0xFF; TMR1L= 0x9B */
 	TMR1H = 0xFC; // 0xFF
 	TMR1L = 0x36; // 100us=0x9B 10us=0xF5 // 0xC1 ; // 0xFFFF - 0xFFC1 = 62 => 62 x 1 µs = 62 µs
 	TMR1ON = 1 ; // On lance le timer 1
 	TMR1IE = 1 ; // On autorise les interruptions du timer 1
+*/
 
 	// Autorisation des interruptions
 	PEIE = 1 ; // Autorisation des IT peripherique
@@ -161,11 +174,20 @@ void reset_time(void) {
 }
 
 void interrupt tc_int(void) {
-//if (TMR0IF) {
+if (T0IF) {
+	PORTB ^= (1 << 5); // inversion bit 5 ( http://fr.wikipedia.org/wiki/Manipulation_de_bit )
+	TMR0 = 0x0F; // theorie 0x06->1000us ; pratique 0x06->1034 , 0x10->996us , 0x11->1024us
+
+	increment();
 	//display_lcd();
 	//lcd_goto(L1_OFFSET);	// select first line
-	//lcd_puts("++++++++++++++++++++");	
+	//lcd_puts("++++++++++++++++++++");
+
+	T0IF = 0;
+}
 //} else if(TMR1IF) {
+
+/*
 if(TMR1IF) {
 	//di(); //GIE = 0 ; // interdiction interruption
 
@@ -178,12 +200,13 @@ if(TMR1IF) {
 	TMR1L = 0x36; // 100us=0x9B ; 10us //0xC1 ; // 0xFFFF - 0xFFC1 = 62 => 62 x 1 µs = 62 µs
 
 	//reset_time();
-	increment();
+	//increment();
 
 	//ei(); //GIE = 1; // autorisation interruption
 
 	TMR1IF = 0;
 }
+*/
 
 if (INTF) {
 	reset_time();
