@@ -1,0 +1,17 @@
+LCD 20 caractères x 4 lignes
+
+Caractère 7 pix vertical x 5 pixel hz
+
+#####
+#####
+#####
+#####
+#####
+#####
+#####
+
+Ecartement entre caractères
+horizontal : 1 px
+vertical : 1 px
+
+Table de caractères
