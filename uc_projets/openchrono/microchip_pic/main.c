@@ -222,6 +222,8 @@ void timer_init() {
 	TMR1IE = 1 ; // On autorise les interruptions du timer 1
 */
 
+	INTEDG = 0; // external interrupt on falling edge
+
 	// Autorisation des interruptions
 	PEIE = 1 ; // Autorisation des IT peripherique
 	
@@ -245,8 +247,9 @@ void reset_time(void) {
 }
 
 void interrupt tc_int(void) {
-if (T0IF) {
-	PORTB ^= (1 << 5); // inversion bit 5 ( http://fr.wikipedia.org/wiki/Manipulation_de_bit )
+if (T0IF) { // increment timer 1ms
+	RE0 = !RE0; // signal pour calibrage horloge 1ms
+	//PORTB ^= (1 << 5); // inversion bit 5 ( http://fr.wikipedia.org/wiki/Manipulation_de_bit )
 	TMR0 = 0x0E; // theorie 0x06->1000us ; pratique 0x06->1034 , 0x10->996us , 0x11->1024us
 
 	increment();
@@ -279,7 +282,7 @@ if(TMR1IF) {
 }
 */
 
-if (INTF) {
+if (INTF && !RB1) { // line
 	reset_time();
 
 	INTF = 0;
@@ -300,9 +303,13 @@ void main(void) {
 	ticks = 0;
 	disp = 0;
 
-	TRISB = 0b11011111; // sortie sur RB5 pour calibrage horloge
-	RBPU = 0; // enable pull-up resistors on RBx
+	TRISB = 0b11111111; // digital inputs on PORTB (keypad, line)
+	//TRISB = 0b11011111; // sortie sur RB5 pour calibrage horloge
+	//RBPU = 0; // enable pull-up resistors on RBx
 	//PORTB = 0b00000000;
+
+	TRISE = 0b00001110; // sortie sur RE0 pour calibrage horloge
+	PORTE = 0b00000000;
 
 	reset_time();
 
@@ -314,17 +321,19 @@ void main(void) {
 
 		ticks++;
 
+/*
 		if (state==1) {
 			//display_lcd_splash_screen();
-			if ((ticks%5000)==1) {
+			if ((ticks%5000)==1) { // ToFix 5000 for Release - 0 for Debug
 				display_lcd_flag_screen();
 			} else if ((ticks%5000)==0) {
 				state = 2;
 				lcd_clear();
 			}
-		} else {		
+		} else {
+*/
 			display_lcd();
-		}
+//		}
 		//increment();
 		//i=i+1;
 
