@@ -301,6 +301,7 @@ void main(void) {
 	disp = 0;
 
 	TRISB = 0b11011111; // sortie sur RB5 pour calibrage horloge
+	RBPU = 0; // enable pull-up resistors on RBx
 	//PORTB = 0b00000000;
 
 	reset_time();
