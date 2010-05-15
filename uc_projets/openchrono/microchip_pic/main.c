@@ -54,9 +54,35 @@ unsigned xx; /* 0-1000 */
 char buffer[NB_COLS+1];
 int nbc;
 
+//char bufferScreen[NB_COLS*NB_LINES+1];
+/*
+char bufferScreen[NB_LINES][NB_COLS+1];
+
+void write_buffer_screen(void) {
+	for (unsigned char i=0 ; i<NB_LINES ; i++) {
+		for(unsigned char j=0 ; j<NB_COLS ; j++) {
+			if (((j+i) % 2) == 0) {
+				bufferScreen[i][j] = 0b11111111; // nb pair -> pavé plein
+			} else {
+				bufferScreen[i][j] = 0b11111110; // nb impair -> pavé vide
+			}
+		}
+	}
+}
+
+void buffer2lcd(void) {
+	lcd_clear();
+	for (unsigned char i=0 ; i<NB_LINES ; i++) {
+		for(unsigned char j=0 ; j<NB_COLS ; j++) {
+			lcd_putch(bufferScreen[i][j]);
+		}
+	}
+}
+*/
+
 void display_lcd_flag_line(char offset) {
-	for(int i=0 ; i<NB_COLS ; i++) {
-		if (((i+offset) % 2) == 0) {
+	for(unsigned char j=0 ; j<NB_COLS ; j++) {
+		if (((j+offset) % 2) == 0) {
 			lcd_putch(0b11111111); // nb pair -> pavé plein
 		} else {
 			lcd_putch(0b11111110); // nb impair -> pavé vide
@@ -67,13 +93,13 @@ void display_lcd_flag_line(char offset) {
 void display_lcd_flag_screen(void) {
 	/* Drapeau à damier */
 	lcd_goto(L1_OFFSET);
-	display_lcd_flag_line(0);
-	lcd_goto(L2_OFFSET);
 	display_lcd_flag_line(1);
-	lcd_goto(L3_OFFSET);
+	lcd_goto(L2_OFFSET);
 	display_lcd_flag_line(2);
-	lcd_goto(L4_OFFSET);
+	lcd_goto(L3_OFFSET);
 	display_lcd_flag_line(3);
+	lcd_goto(L4_OFFSET);
+	display_lcd_flag_line(4);
 
 	/* Texte */
 	lcd_goto(L2_OFFSET+3);
@@ -86,13 +112,13 @@ void display_lcd_flag_screen(void) {
 
 void display_lcd_splash_screen(void) {
 	lcd_goto(L1_OFFSET);
-	for(int i=0 ; i<NB_COLS ; i++) {
+	for(unsigned char i=0 ; i<NB_COLS ; i++) {
 		lcd_putch(0b11111111); // pavé plein
 	}
 
 	lcd_goto(L2_OFFSET);
 	nbc = sprintf(buffer, "**   OpenChrono   **");
-	for(int i=0 ; i<2 ; i++) {
+	for(unsigned char i=0 ; i<2 ; i++) {
 		buffer[i]=0b11111111;
 		buffer[NB_COLS-i-1]=0b11111111;
 	}
@@ -100,14 +126,14 @@ void display_lcd_splash_screen(void) {
 
 	lcd_goto(L3_OFFSET);
 	nbc = sprintf(buffer, "**   S. Celles    **");
-	for(int i=0 ; i<2 ; i++) {
+	for(unsigned char i=0 ; i<2 ; i++) {
 		buffer[i]=0b11111111;
 		buffer[NB_COLS-i-1]=0b11111111;
 	}
 	lcd_puts(buffer);
 
 	lcd_goto(L4_OFFSET);
-	for(int i=0 ; i<NB_COLS ; i++) {
+	for(unsigned char i=0 ; i<NB_COLS ; i++) {
 		lcd_putch(0b11111111); // pavé plein
 	}
 
@@ -299,7 +325,7 @@ if (INTF && RB1) { // line
 	// process other interrupt sources here
 }
 
-void main(void) {
+int main(void) {
 	state = 1;
 	ticks = 0;
 	disp = 0;
@@ -317,6 +343,8 @@ void main(void) {
 	timer_init();
 
 	lcd_init();
+
+	//write_buffer_screen();// ToFix
 	
 	while(1) {
 
@@ -333,7 +361,9 @@ void main(void) {
 			}
 		} else {
 */
-			display_lcd();
+			//display_lcd();
+			display_lcd_flag_screen();
+			//buffer2lcd();	
 //		}
 		//increment();
 		//i=i+1;
@@ -342,4 +372,6 @@ void main(void) {
 
 		//DelayMs(500);
 	}
+
+	return 0;
 }
