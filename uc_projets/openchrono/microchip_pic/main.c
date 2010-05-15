@@ -38,10 +38,25 @@ unsigned char state;
 unsigned int ticks;
 unsigned int disp;
 
-unsigned char hh; /* 0-24 */
-unsigned char mm; /* 0-60 */
-unsigned char ss; /* 0-60 */
-unsigned xx; /* 0-1000 */
+unsigned char hh=0; /* 0-24 */
+unsigned char mm=0; /* 0-60 */
+unsigned char ss=0; /* 0-60 */
+unsigned int xx=0; /* 0-1000 */
+
+unsigned char h2=0; /* 0-24 */
+unsigned char m2=0; /* 0-60 */
+unsigned char s2=0; /* 0-60 */
+unsigned int x2=0; /* 0-1000 */
+
+unsigned long int time;
+unsigned long int time_remain;
+
+/*
+typedef struct {
+   int    x;
+   int    y;
+} time_struct;
+*/
 
 char L_OFFSET[] = {0x00, 0x40, 0x14, 0x54};
 /*	i=0 -> L1 0x00=0
@@ -118,29 +133,52 @@ void buffer2lcd(void) {
 	}
 }
 
+int ms2time(unsigned long int t, unsigned char * h, unsigned char * m, unsigned char * s, unsigned int * x) {
+	unsigned long int time_remain = t;
+	*h = time_remain / 3600000;
+
+	time_remain = time_remain % 3600000;
+	*m = time_remain / 60000;
+
+	time_remain = time_remain % 60000;
+	*s = time_remain / 1000;
+
+	time_remain = time_remain % 1000;
+	*x = time_remain;
+
+	return 0;
+}
+
 void display_lcd(void) {
 	disp++;
 	lcd_goto(L_OFFSET[0]);	// select first line
-	nbc = sprintf(buffer, "%05d RPM OpenChrono",0);
+	nbc = sprintf(buffer, "%05d RPM OpenChrono", 0);
 	lcd_puts(buffer);
 
 	lcd_goto(L_OFFSET[1]);	// Select second line
-	nbc = sprintf(buffer, " %01u:%02u:%03u  B%01u:%02u:%03u",mm%10,ss,xx,0%10,0,0); // temps tour en cours & meilleur tour
+	nbc = sprintf(buffer, " %01u:%02u:%03u  B%01u:%02u:%03u", mm%10, ss, xx, 0%10, 0, 0); // temps tour en cours & meilleur tour
 	lcd_puts(buffer);
 
 	lcd_goto(L_OFFSET[2]);
-	nbc = sprintf(buffer, "L%01u:%02u:%03u  B+:%02u:%03u",0%10,0,0,0,0); // temps tour en cours & meilleur tour
+	time_remain = time;
+	ms2time(time, &h2, &m2, &s2, &x2);
+	nbc = sprintf(buffer, " %01u:%02u:%03u", m2%10, s2, x2); // temps tour en cours
 	lcd_puts(buffer);
-
+/*
+	nbc = sprintf(buffer, "L%01u:%02u:%03u  B+:%02u:%03u", 0%10, 0, 0, 0, 0); // temps tour en cours & meilleur tour
+	lcd_puts(buffer);
+*/
 	lcd_goto(L_OFFSET[3]);
-	nbc = sprintf(buffer, "L+:%02u:%03u",0%60,0); // temps tour en cours & meilleur tour
+	nbc = sprintf(buffer, "L+:%02u:%03u", 0%60, 0); // temps tour en cours & meilleur tour
 	lcd_puts(buffer);
 	lcd_puts("  ");
-	nbc = sprintf(buffer, "E%1u:%02u:%03u",2%9,0%60,0); // temps tour en cours & meilleur tour
+	nbc = sprintf(buffer, "E%1u:%02u:%03u", 2%9, 0%60, 0); // temps tour en cours & meilleur tour
 	lcd_puts(buffer);
 }
 
 void increment(void) {
+	time++;
+
 	xx++;
 	if (xx==1000) {
 		xx=0;
@@ -254,7 +292,8 @@ int main(void) {
 	splashscreen2buffer();
 	buffer2lcd();
 	DelayMs(500);
-	
+	lcd_clear();
+
 	state = 2;
 
 	while(1) {
