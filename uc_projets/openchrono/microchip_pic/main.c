@@ -223,6 +223,7 @@ void timer_init() {
 */
 
 	INTEDG = 0; // external interrupt on falling edge
+	//INTEDG = 1; // external interrupt on rising edge
 
 	// Autorisation des interruptions
 	PEIE = 1 ; // Autorisation des IT peripherique
@@ -282,7 +283,7 @@ if(TMR1IF) {
 }
 */
 
-if (INTF && !RB1) { // line
+if (INTF && RB1) { // line
 	reset_time();
 
 	INTF = 0;
