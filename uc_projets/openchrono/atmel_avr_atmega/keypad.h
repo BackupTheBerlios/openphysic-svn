@@ -18,8 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef LCD_H
-#define LCD_H
+#ifndef KEYPAD_H
+#define KEYPAD_H
 
 
-#endif //LCD_H
+#endif //KEYPAD_H
