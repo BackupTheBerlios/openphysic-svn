@@ -32,7 +32,7 @@ Simulator : Proteus VSM
 #include "lcd.h"
 #include "delay.h"
 #include <stdio.h>
-
+#include <string.h>
 
 unsigned char state;
 unsigned int ticks;
@@ -43,11 +43,12 @@ unsigned char mm; /* 0-60 */
 unsigned char ss; /* 0-60 */
 unsigned xx; /* 0-1000 */
 
-
-#define L1_OFFSET 0x0
-#define L2_OFFSET 0x40 // 64
-#define L3_OFFSET 0x14 // 0x40-22*2
-#define L4_OFFSET 0x54 // 0x40+20
+char L_OFFSET[] = {0x00, 0x40, 0x14, 0x54};
+/*	i=0 -> L1 0x00=0
+	i=1 -> L1 0x40=64
+	i=2 -> L1 0x14=0x40-22*2
+	i=3 -> L1 0x54=0x40+20
+*/
 
 #define NB_COLS 20 //16
 #define NB_LINES 4 //2
@@ -55,10 +56,39 @@ char buffer[NB_COLS+1];
 int nbc;
 
 //char bufferScreen[NB_COLS*NB_LINES+1];
-/*
+
 char bufferScreen[NB_LINES][NB_COLS+1];
 
-void write_buffer_screen(void) {
+/*
+// Tester le LCD en envoyant
+// A2345678901234567890
+// B2345678901234567890
+// C2345678901234567890
+// D2345678901234567890
+void test_buffer(void) {
+	for (unsigned char i=0 ; i<NB_LINES ; i++) {
+		for(unsigned char j=0 ; j<NB_COLS ; j++) {
+			if (j!=0) {
+				bufferScreen[i][j] = 0b0011<<4 | (j+1)%10 ;
+			} else {
+				bufferScreen[i][j] = 0b0100<<4 | (i+1)%10 ;
+			}
+		}
+	}
+}
+*/
+
+/* Effacer le buffer */
+void clear_buffer(void) {
+	for (unsigned char i=0 ; i<NB_LINES ; i++) {
+		for(unsigned char j=0 ; j<NB_COLS ; j++) {
+			bufferScreen[i][j] = 0;
+		}
+	}
+}
+
+void flag2buffer(void) {
+	/* Drapeau à damier */
 	for (unsigned char i=0 ; i<NB_LINES ; i++) {
 		for(unsigned char j=0 ; j<NB_COLS ; j++) {
 			if (((j+i) % 2) == 0) {
@@ -70,128 +100,39 @@ void write_buffer_screen(void) {
 	}
 }
 
+void splashscreen2buffer(void) {
+	flag2buffer();
+
+	/* Texte */
+	strcpy(bufferScreen[1]+4, " OpenChrono ");
+	strcpy(bufferScreen[2]+5, " S. Celles");
+}
+
 void buffer2lcd(void) {
-	lcd_clear();
+	//lcd_clear();
 	for (unsigned char i=0 ; i<NB_LINES ; i++) {
+		lcd_goto(L_OFFSET[i]);
 		for(unsigned char j=0 ; j<NB_COLS ; j++) {
 			lcd_putch(bufferScreen[i][j]);
 		}
 	}
 }
-*/
-
-void display_lcd_flag_line(char offset) {
-	for(unsigned char j=0 ; j<NB_COLS ; j++) {
-		if (((j+offset) % 2) == 0) {
-			lcd_putch(0b11111111); // nb pair -> pavé plein
-		} else {
-			lcd_putch(0b11111110); // nb impair -> pavé vide
-		}
-	}
-}
-
-void display_lcd_flag_screen(void) {
-	/* Drapeau à damier */
-	lcd_goto(L1_OFFSET);
-	display_lcd_flag_line(1);
-	lcd_goto(L2_OFFSET);
-	display_lcd_flag_line(2);
-	lcd_goto(L3_OFFSET);
-	display_lcd_flag_line(3);
-	lcd_goto(L4_OFFSET);
-	display_lcd_flag_line(4);
-
-	/* Texte */
-	lcd_goto(L2_OFFSET+3);
-	lcd_puts(" OpenChrono ");
-
-	lcd_goto(L3_OFFSET+4);
-	lcd_puts(" S. Celles ");
-
-}
-
-void display_lcd_splash_screen(void) {
-	lcd_goto(L1_OFFSET);
-	for(unsigned char i=0 ; i<NB_COLS ; i++) {
-		lcd_putch(0b11111111); // pavé plein
-	}
-
-	lcd_goto(L2_OFFSET);
-	nbc = sprintf(buffer, "**   OpenChrono   **");
-	for(unsigned char i=0 ; i<2 ; i++) {
-		buffer[i]=0b11111111;
-		buffer[NB_COLS-i-1]=0b11111111;
-	}
-	lcd_puts(buffer);
-
-	lcd_goto(L3_OFFSET);
-	nbc = sprintf(buffer, "**   S. Celles    **");
-	for(unsigned char i=0 ; i<2 ; i++) {
-		buffer[i]=0b11111111;
-		buffer[NB_COLS-i-1]=0b11111111;
-	}
-	lcd_puts(buffer);
-
-	lcd_goto(L4_OFFSET);
-	for(unsigned char i=0 ; i<NB_COLS ; i++) {
-		lcd_putch(0b11111111); // pavé plein
-	}
-
-}
 
 void display_lcd(void) {
-/*
-12345678901234567890
-mm:ss:xxx  mm:ss:xxx L1
-xxxxxxxxxxxxxxxxxxxx L2
-xxxxxxxxxxxxxxxxxxxx L3
-xxxxxxxxxxxxxxxxxxxx L4
-*/
 	disp++;
-
-	//lcd_clear();
-
-	//lcd_puts("12345678901234567890");
-
-	lcd_goto(L1_OFFSET);	// select first line
-	//lcd_puts("L1: 567890123456");
-	//lcd_puts("**** OpenChrono ****");
-	//lcd_puts("********************");
-	//for(int i=0 ; i<NB_COLS ; i++) {
-	//	lcd_putch(0b11111111); // pavé plein
-	//}
-	/*
-	nbc = sprintf(buffer, "xxxx OpenChrono xxxx");
-	for(int i=0 ; i<4 ; i++) {
-		buffer[i]=0b11111111;
-		buffer[NB_COLS-i-1]=0b11111111;
-	}
-	lcd_puts(buffer);
-	*/
+	lcd_goto(L_OFFSET[0]);	// select first line
 	nbc = sprintf(buffer, "%05d RPM OpenChrono",0);
 	lcd_puts(buffer);
 
-	lcd_goto(L2_OFFSET);	// Select second line
-	//lcd_puts("L2: 5678901234567");
-	//lcd_puts("**** S. Celles  ****");
-	//nbc = sprintf(buffer, "disp=%05d",disp);
-	//lcd_puts(buffer);
-	//for(int i=0 ; i<NB_COLS ; i++) {
-	//	lcd_putch(0b11111111); // pavé plein
-	//}
+	lcd_goto(L_OFFSET[1]);	// Select second line
 	nbc = sprintf(buffer, " %01u:%02u:%03u  B%01u:%02u:%03u",mm%10,ss,xx,0%10,0,0); // temps tour en cours & meilleur tour
 	lcd_puts(buffer);
 
-	lcd_goto(L3_OFFSET);
-	//lcd_puts("L3: 56789012345678");
-	//nbc = sprintf(buffer, "ticks=%05u",ticks);
-	//lcd_puts(buffer);
+	lcd_goto(L_OFFSET[2]);
 	nbc = sprintf(buffer, "L%01u:%02u:%03u  B+:%02u:%03u",0%10,0,0,0,0); // temps tour en cours & meilleur tour
 	lcd_puts(buffer);
 
-	lcd_goto(L4_OFFSET);
-	//lcd_puts("L4: 567890123456789");
-	//nbc = sprintf(buffer, "%02d:%02d:%02d:%03d",hh,mm,ss,xx)
+	lcd_goto(L_OFFSET[3]);
 	nbc = sprintf(buffer, "L+:%02u:%03u",0%60,0); // temps tour en cours & meilleur tour
 	lcd_puts(buffer);
 	lcd_puts("  ");
@@ -258,7 +199,6 @@ void timer_init() {
 }
 
 void reset_time(void) {
-
 	hh=0;
 	mm=0;
 	ss=0;
@@ -280,48 +220,15 @@ if (T0IF) { // increment timer 1ms
 	TMR0 = 0x0E; // theorie 0x06->1000us ; pratique 0x06->1034 , 0x10->996us , 0x11->1024us
 
 	increment();
-	//display_lcd();
-	//lcd_goto(L1_OFFSET);	// select first line
-	//lcd_puts("++++++++++++++++++++");
 
 	T0IF = 0;
 }
-//} else if(TMR1IF) {
-
-/*
-if(TMR1IF) {
-	//di(); //GIE = 0 ; // interdiction interruption
-
-	// calibrage horloge 1 ms
-	//PORTB = ~PORTB;
-	PORTB ^= (1 << 5); // inversion bit 5 ( http://fr.wikipedia.org/wiki/Manipulation_de_bit )
-
-	//Flag62us = 1 ;
-	TMR1H = 0xFC ;
-	TMR1L = 0x36; // 100us=0x9B ; 10us //0xC1 ; // 0xFFFF - 0xFFC1 = 62 => 62 x 1 µs = 62 µs
-
-	//reset_time();
-	//increment();
-
-	//ei(); //GIE = 1; // autorisation interruption
-
-	TMR1IF = 0;
-}
-*/
 
 if (INTF && RB1) { // line
 	reset_time();
 
 	INTF = 0;
 }
-
-/*
-	if (T0IE && T0IF) {
-		T0IF=0;
-		++tick_count;
-		return;
-	}
-*/
 	// process other interrupt sources here
 }
 
@@ -344,33 +251,16 @@ int main(void) {
 
 	lcd_init();
 
-	//write_buffer_screen();// ToFix
+	splashscreen2buffer();
+	buffer2lcd();
+	DelayMs(500);
 	
-	while(1) {
+	state = 2;
 
+	while(1) {
 		ticks++;
 
-/*
-		if (state==1) {
-			//display_lcd_splash_screen();
-			if ((ticks%5000)==1) { // ToFix 5000 for Release - 0 for Debug
-				display_lcd_flag_screen();
-			} else if ((ticks%5000)==0) {
-				state = 2;
-				lcd_clear();
-			}
-		} else {
-*/
-			//display_lcd();
-			display_lcd_flag_screen();
-			//buffer2lcd();	
-//		}
-		//increment();
-		//i=i+1;
-
-
-
-		//DelayMs(500);
+		display_lcd();
 	}
 
 	return 0;
