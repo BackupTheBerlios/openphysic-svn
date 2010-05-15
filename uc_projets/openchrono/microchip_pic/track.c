@@ -28,6 +28,6 @@ track;
 track current_track;
 
 void init_track(track* my_track) {
-   my_track->sectors = 1;
+   my_track->sectors = 2;
 }
 
