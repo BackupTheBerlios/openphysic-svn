@@ -22,5 +22,20 @@
 #ifndef TRACK_H
 #define TRACK_H
 
+typedef struct track_
+{
+	unsigned char sectors; // Number of sectors on the track (nb of magnetic field)
+	unsigned char current_sector;
+	unsigned char initial_sector;
+
+	unsigned char lap;
+}
+track;
+
+track current_track;
+
+void init_track(track* my_track);
+void track_new_lap(track* my_track);
+void track_new_sect(track* my_track);
 
 #endif //TRACK_H

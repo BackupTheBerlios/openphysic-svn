@@ -34,6 +34,8 @@ Simulator : Proteus VSM
 #include <stdio.h>
 #include <string.h>
 
+#include "track.h"
+
 unsigned char state;
 unsigned int ticks;
 unsigned int disp;
@@ -43,20 +45,17 @@ unsigned char mm=0; /* 0-60 */
 unsigned char ss=0; /* 0-60 */
 unsigned int xx=0; /* 0-1000 */
 
-unsigned char h2=0; /* 0-24 */
-unsigned char m2=0; /* 0-60 */
-unsigned char s2=0; /* 0-60 */
-unsigned int x2=0; /* 0-1000 */
-
 unsigned long int time;
-unsigned long int time_remain;
+//unsigned long int time_remain;
 
-/*
 typedef struct {
-   int    x;
-   int    y;
+	unsigned char hh; /* 0-24 */
+	unsigned char mm; /* 0-60 */
+	unsigned char ss; /* 0-60 */
+	unsigned int xx; /* 0-1000 */
 } time_struct;
-*/
+
+time_struct laptime;
 
 char L_OFFSET[] = {0x00, 0x40, 0x14, 0x54};
 /*	i=0 -> L1 0x00=0
@@ -65,9 +64,11 @@ char L_OFFSET[] = {0x00, 0x40, 0x14, 0x54};
 	i=3 -> L1 0x54=0x40+20
 */
 
-#define NB_COLS 20 //16
-#define NB_LINES 4 //2
+#define NB_COLS 20
+#define NB_LINES 4
+
 char buffer[NB_COLS+1];
+
 int nbc;
 
 //char bufferScreen[NB_COLS*NB_LINES+1];
@@ -133,18 +134,18 @@ void buffer2lcd(void) {
 	}
 }
 
-int ms2time(unsigned long int t, unsigned char * h, unsigned char * m, unsigned char * s, unsigned int * x) {
+int ms2timestruct(unsigned long int t, time_struct * ts) {
 	unsigned long int time_remain = t;
-	*h = time_remain / 3600000;
+	ts->hh = time_remain / 3600000;
 
 	time_remain = time_remain % 3600000;
-	*m = time_remain / 60000;
+	ts->mm = time_remain / 60000;
 
 	time_remain = time_remain % 60000;
-	*s = time_remain / 1000;
+	ts->ss = time_remain / 1000;
 
 	time_remain = time_remain % 1000;
-	*x = time_remain;
+	ts->xx = time_remain;	
 
 	return 0;
 }
@@ -152,7 +153,7 @@ int ms2time(unsigned long int t, unsigned char * h, unsigned char * m, unsigned 
 void display_lcd(void) {
 	disp++;
 	lcd_goto(L_OFFSET[0]);	// select first line
-	nbc = sprintf(buffer, "%05d RPM OpenChrono", 0);
+	nbc = sprintf(buffer, "%05d L%02d", 0, (&current_track)->lap);
 	lcd_puts(buffer);
 
 	lcd_goto(L_OFFSET[1]);	// Select second line
@@ -160,9 +161,8 @@ void display_lcd(void) {
 	lcd_puts(buffer);
 
 	lcd_goto(L_OFFSET[2]);
-	time_remain = time;
-	ms2time(time, &h2, &m2, &s2, &x2);
-	nbc = sprintf(buffer, " %01u:%02u:%03u", m2%10, s2, x2); // temps tour en cours
+	ms2timestruct(time, &laptime);
+	nbc = sprintf(buffer, " %01u:%02u:%03u", ((&laptime)->mm)%10, (&laptime)->ss, (&laptime)->xx); // temps tour en cours
 	lcd_puts(buffer);
 /*
 	nbc = sprintf(buffer, "L%01u:%02u:%03u  B+:%02u:%03u", 0%10, 0, 0, 0, 0); // temps tour en cours & meilleur tour
@@ -171,8 +171,8 @@ void display_lcd(void) {
 	lcd_goto(L_OFFSET[3]);
 	nbc = sprintf(buffer, "L+:%02u:%03u", 0%60, 0); // temps tour en cours & meilleur tour
 	lcd_puts(buffer);
-	lcd_puts("  ");
-	nbc = sprintf(buffer, "E%1u:%02u:%03u", 2%9, 0%60, 0); // temps tour en cours & meilleur tour
+	lcd_puts(" ");
+	nbc = sprintf(buffer, "%1u/%1u:%02u:%03u", ((&current_track)->current_sector)%9, 0, 0%60, 0); // temps tour en cours & meilleur tour
 	lcd_puts(buffer);
 }
 
@@ -242,7 +242,6 @@ void reset_time(void) {
 	ss=0;
 	xx=0;
 
-
 /*
 	hh=23;
 	mm=59;
@@ -264,6 +263,7 @@ if (T0IF) { // increment timer 1ms
 
 if (INTF && RB1) { // line
 	reset_time();
+	track_new_sect(&current_track);
 
 	INTF = 0;
 }
@@ -291,10 +291,12 @@ int main(void) {
 
 	splashscreen2buffer();
 	buffer2lcd();
-	DelayMs(500);
+	//DelayMs(500); // Comment for debug
 	lcd_clear();
 
 	state = 2;
+
+	init_track(&current_track);
 
 	while(1) {
 		ticks++;

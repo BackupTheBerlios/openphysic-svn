@@ -19,15 +19,21 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-typedef struct track_
-{
-	unsigned char sectors; // Number of sectors on the track (nb of magnetic field)
-}
-track;
-
-track current_track;
+#include	"track.h"
 
 void init_track(track* my_track) {
-   my_track->sectors = 2;
+	my_track->sectors = 2;
+	my_track->initial_sector = my_track->sectors;
+	my_track->current_sector = my_track->initial_sector;
+
+	my_track->lap = 0;
 }
 
+void track_new_sect(track* my_track) {
+	if ( my_track->current_sector == my_track->sectors ) { // new lap
+		my_track->lap = (my_track->lap + 1) % 100;
+		my_track->current_sector = 1;
+	} else { // new sector
+		my_track->current_sector++;
+	}
+}
