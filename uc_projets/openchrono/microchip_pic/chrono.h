@@ -43,7 +43,7 @@ unsigned long int time;
 unsigned long int laptime_evt[9];
 
 //unsigned long int laptime_evt2[9][100];
-unsigned long int laptimes[2];
+//unsigned long int laptimes[20];
 
 /* Temps en ms */
 unsigned long int laptime_current;
