@@ -35,7 +35,11 @@ track;
 track current_track;
 
 void init_track(track* my_track);
+
+/*
 void track_new_lap(track* my_track);
+*/
+
 void track_new_sect(track* my_track);
 
 #endif //TRACK_H

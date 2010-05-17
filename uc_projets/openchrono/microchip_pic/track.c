@@ -29,6 +29,7 @@ void init_track(track* my_track) {
 	my_track->lap = 0;
 }
 
+
 void track_new_sect(track* my_track) {
 	if ( my_track->current_sector == my_track->sectors ) { // new lap
 		my_track->lap = (my_track->lap + 1) % 100;
