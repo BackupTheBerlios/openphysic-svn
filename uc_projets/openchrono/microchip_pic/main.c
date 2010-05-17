@@ -34,62 +34,10 @@ Simulator: Proteus VSM
 #include <stdio.h>
 #include <string.h>
 
+#include "display.h"
 #include "track.h"
 
-unsigned char state;
-enum state_value { state_off = 0, state_splash, state_stop, state_run};
-
-unsigned int ticks;
-unsigned int disp;
-
-unsigned char hh=0; /* 0-24 */
-unsigned char mm=0; /* 0-60 */
-unsigned char ss=0; /* 0-60 */
-unsigned int xx=0; /* 0-1000 */
-
-unsigned long int time;
-//unsigned long int time_remain;
-unsigned long int laptime_evt[9];
-
-/* Temps en ms */
-unsigned long int laptime_current;
-unsigned long int laptime_best;
-unsigned long int laptime_last;
-
-unsigned long int laptime_best_old;
-unsigned long int laptime_penultimate;
-//unsigned long int laptime_antepenultimate;
-
-typedef struct {
-	unsigned char hh; /* 0-24 */
-	unsigned char mm; /* 0-60 */
-	unsigned char ss; /* 0-60 */
-	unsigned int xx; /* 0-1000 */
-} time_struct;
-
-//#define RUNNING T0IE
-
-time_struct laptime_st;
-
-char L_OFFSET[] = {0x00, 0x40, 0x14, 0x54};
-/*	i=0 -> L1 0x00=0
-	i=1 -> L1 0x40=64
-	i=2 -> L1 0x14=0x40-22*2
-	i=3 -> L1 0x54=0x40+20
-*/
-
-#define NB_COLS 20
-#define NB_LINES 4
-
-char buffer[NB_COLS+1];
-
-unsigned int rpm;
-
-int nbc;
-
-//char bufferScreen[NB_COLS*NB_LINES+1];
-
-char bufferScreen[NB_LINES][NB_COLS+1];
+#include "global.h"
 
 /*
 // Tester le LCD en envoyant
@@ -150,121 +98,9 @@ void buffer2lcd(void) {
 	}
 }
 
-int ms2timestruct(unsigned long int t, time_struct * ts) {
-	unsigned long int time_remain = t;
-	ts->hh = time_remain / 3600000;
-
-	time_remain = time_remain % 3600000;
-	ts->mm = time_remain / 60000;
-
-	time_remain = time_remain % 60000;
-	ts->ss = time_remain / 1000;
-
-	time_remain = time_remain % 1000;
-	ts->xx = time_remain;	
-
-	return 0;
-}
-
-void display_lcd(void) {
-	//lcd_clear();
-
-	disp++;
-	lcd_goto(L_OFFSET[0]);	// select first line
-	if (rpm!=0) {
-		nbc = sprintf(buffer, "%05d", 0);
-		lcd_puts(buffer);
-	} else {
-		lcd_puts("_____");
-	}
-	lcd_putch(' ');
-	if ( state==state_run || state==state_stop && (&current_track)->lap!=0 ) {
-		nbc = sprintf(buffer, "L%02d", (&current_track)->lap); // lap
-		lcd_puts(buffer);
-	} else {
-		lcd_puts("L__");
-	}
-	lcd_putch(' ');
-	nbc = sprintf(buffer, "%06u", ticks); // ticks
-	lcd_puts(buffer);
-
-	lcd_goto(L_OFFSET[1]);	// Select second line
-	if (state==state_run) {
-		ms2timestruct(time-laptime_evt[0], &laptime_st);
-		nbc = sprintf(buffer, " %01u:%02u:%03u", ((&laptime_st)->mm)%10, (&laptime_st)->ss, (&laptime_st)->xx); // temps tour en cours
-		lcd_puts(buffer);
-	} else {
-		lcd_puts(" * STOP *");
-		//lcd_puts(" 0:00:000");
-	}
-	lcd_puts("  ");
-	if (laptime_best!=0) {
-		ms2timestruct(laptime_best, &laptime_st);
-		nbc = sprintf(buffer, "B%01u:%02u:%03u", ((&laptime_st)->mm)%10, (&laptime_st)->ss, (&laptime_st)->xx); // meilleur temps au tour
-		lcd_puts(buffer);
-	} else {
-		lcd_puts("B_:__:___");
-	}
-
-	lcd_goto(L_OFFSET[2]);
-	if (laptime_last!=0) {
-		ms2timestruct(laptime_last, &laptime_st);
-		nbc = sprintf(buffer, "L%01u:%02u:%03u", ((&laptime_st)->mm)%10, (&laptime_st)->ss, (&laptime_st)->xx); // dernier temps tour
-		lcd_puts(buffer);
-	} else {
-		lcd_puts("L_:__:___");
-	}
-	lcd_puts("  ");
-	if (laptime_best!=0 && laptime_best_old!=0) {
-		lcd_putch('B');
-		if (laptime_last>laptime_best) {
-			lcd_putch('+');
-			ms2timestruct(laptime_last-laptime_best, &laptime_st);
-		} else if (laptime_best_old==laptime_best) {
-			lcd_putch('=');
-			ms2timestruct(0, &laptime_st);
-		} else if (laptime_best<laptime_best_old) {
-			lcd_putch('-');
-			ms2timestruct(laptime_best_old-laptime_best, &laptime_st);
-		}
-		nbc = sprintf(buffer, ":%02u:%03u", (&laptime_st)->ss, (&laptime_st)->xx); // ecart meilleur temps au tour - dernier temps au tour
-		lcd_puts(buffer);
-	} else {
-		lcd_puts("B?:__:___"); // ToFix symbole +/-
-	}
-
-	lcd_goto(L_OFFSET[3]);
-	if (laptime_penultimate!=0) {
-		lcd_putch('L');
-		if (laptime_last>laptime_penultimate) {
-			lcd_putch('+');
-			ms2timestruct(laptime_last-laptime_penultimate, &laptime_st);
-		} else if (laptime_last==laptime_penultimate) {
-			lcd_putch('=');
-			ms2timestruct(0, &laptime_st);
-		} else if (laptime_last<laptime_penultimate) {
-			lcd_putch('-');
-			ms2timestruct(laptime_penultimate-laptime_last, &laptime_st);
-		}
-		nbc = sprintf(buffer, ":%02u:%03u", (&laptime_st)->ss, (&laptime_st)->xx); // écart dernier temps au tour et avant dernier temps au tour
-		lcd_puts(buffer);
-	} else {
-		lcd_puts("L?:__:___");
-	}
-	lcd_puts(" ");
 
 
-	nbc = sprintf(buffer, "%1u/%1u:", ((&current_track)->current_sector)%10, ((&current_track)->sectors)%10); // temps étape
-	lcd_puts(buffer);
 
-	if (state==state_run && (&current_track)->sectors!=1) {
-		ms2timestruct(time-laptime_evt[(&current_track)->current_sector-1], &laptime_st);
-		nbc = sprintf(buffer, "%02u:%03u", (&laptime_st)->ss, (&laptime_st)->xx); // temps étape
-		lcd_puts(buffer);
-	} else {
-		lcd_puts("__:___");
-	}
-}
 
 void increment(void) {
 	time++;
