@@ -31,98 +31,13 @@ Simulator: Proteus VSM
 #include <pic.h>
 #include "lcd.h"
 #include "delay.h"
-#include <stdio.h>
-#include <string.h>
 
 #include "display.h"
 #include "track.h"
+#include "chrono.h"
 
 #include "global.h"
 
-/*
-// Tester le LCD en envoyant
-// A2345678901234567890
-// B2345678901234567890
-// C2345678901234567890
-// D2345678901234567890
-void test_buffer(void) {
-	for (unsigned char i=0 ; i<NB_LINES ; i++) {
-		for(unsigned char j=0 ; j<NB_COLS ; j++) {
-			if (j!=0) {
-				bufferScreen[i][j] = 0b0011<<4 | (j+1)%10 ;
-			} else {
-				bufferScreen[i][j] = 0b0100<<4 | (i+1)%10 ;
-			}
-		}
-	}
-}
-*/
-
-/* Effacer le buffer */
-void clear_buffer(void) {
-	for (unsigned char i=0 ; i<NB_LINES ; i++) {
-		for(unsigned char j=0 ; j<NB_COLS ; j++) {
-			bufferScreen[i][j] = 0;
-		}
-	}
-}
-
-void flag2buffer(void) {
-	/* Drapeau à damier */
-	for (unsigned char i=0 ; i<NB_LINES ; i++) {
-		for(unsigned char j=0 ; j<NB_COLS ; j++) {
-			if (((j+i) % 2) == 0) {
-				bufferScreen[i][j] = 0b11111111; // nb pair -> pavé plein
-			} else {
-				bufferScreen[i][j] = 0b11111110; // nb impair -> pavé vide
-			}
-		}
-	}
-}
-
-void splashscreen2buffer(void) {
-	flag2buffer();
-
-	/* Texte */
-	strcpy(bufferScreen[1]+4, " OpenChrono ");
-	strcpy(bufferScreen[2]+5, " S. Celles");
-}
-
-void buffer2lcd(void) {
-	//lcd_clear();
-	for (unsigned char i=0 ; i<NB_LINES ; i++) {
-		lcd_goto(L_OFFSET[i]);
-		for(unsigned char j=0 ; j<NB_COLS ; j++) {
-			lcd_putch(bufferScreen[i][j]);
-		}
-	}
-}
-
-
-
-
-
-void increment(void) {
-	time++;
-
-	xx++;
-	if (xx==1000) {
-		xx=0;
-		ss++;
-		if (ss==60) {
-			ss=0;
-			mm++;
-			if (mm==60) {
-				mm=0;
-				hh++;
-				if (hh==24) {
-					hh=0;
-					//dd++;
-				}
-			}
-		}
-	}
-}
 
 void timer_init() {
 	// Timer 0 (8 bits) utilisé pour le chrono 1ms
@@ -157,27 +72,14 @@ void timer_init() {
 	ei();	//GIE = 1 ; // Autorisation général des IT
 }
 
-void reset_time(void) {
-	hh=0;
-	mm=0;
-	ss=0;
-	xx=0;
-
-/*
-	hh=23;
-	mm=59;
-	ss=59;
-	xx=990;
-*/
-}
-
 void interrupt tc_int(void) {
 if (T0IF) { // increment timer 1ms
 	RE0 = !RE0; // signal pour calibrage horloge 1ms
 	//PORTB ^= (1 << 5); // inversion bit 5 ( http://fr.wikipedia.org/wiki/Manipulation_de_bit )
 	TMR0 = 0x0E; // theorie 0x06->1000us ; pratique 0x06->1034 , 0x10->996us , 0x11->1024us
 
-	increment();
+	//increment();
+	time++;
 
 	T0IF = 0;
 }
@@ -220,7 +122,7 @@ int main(void) {
 	TRISE = 0b00001110; // sortie sur RE0 pour calibrage horloge
 	PORTE = 0b00000000;
 
-	reset_time();
+	//reset_time();
 
 	timer_init();
 

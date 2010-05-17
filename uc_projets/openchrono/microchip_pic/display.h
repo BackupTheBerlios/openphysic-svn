@@ -22,6 +22,23 @@
 #ifndef DISPLAY_H
 #define DISPLAY_H
 
+char L_OFFSET[] = {0x00, 0x40, 0x14, 0x54};
+/*	i=0 -> L1 0x00=0
+	i=1 -> L1 0x40=64
+	i=2 -> L1 0x14=0x40-22*2
+	i=3 -> L1 0x54=0x40+20
+*/
+
+#define NB_COLS 20
+#define NB_LINES 4
+
+char buffer[NB_COLS+1];
+char bufferScreen[NB_LINES][NB_COLS+1];
+
+void clear_buffer(void);
+void flag2buffer(void);
+void splashscreen2buffer(void);
+void buffer2lcd(void);
 void display_lcd(void);
 
 #endif //DISPLAY_H

@@ -19,13 +19,73 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <stdio.h>
+#include "lcd.h"
 
+#include <stdio.h>
+#include <string.h>
+#include "global.h"
 #include "track.h"
 #include "display.h"
-#include "lcd.h"
-#include "global.h"
 #include "chrono.h"
+
+/*
+// Tester le LCD en envoyant
+// A2345678901234567890
+// B2345678901234567890
+// C2345678901234567890
+// D2345678901234567890
+void test_buffer(void) {
+	for (unsigned char i=0 ; i<NB_LINES ; i++) {
+		for(unsigned char j=0 ; j<NB_COLS ; j++) {
+			if (j!=0) {
+				bufferScreen[i][j] = 0b0011<<4 | (j+1)%10 ;
+			} else {
+				bufferScreen[i][j] = 0b0100<<4 | (i+1)%10 ;
+			}
+		}
+	}
+}
+*/
+
+/* Effacer le buffer */
+void clear_buffer(void) {
+	for (unsigned char i=0 ; i<NB_LINES ; i++) {
+		for(unsigned char j=0 ; j<NB_COLS ; j++) {
+			bufferScreen[i][j] = 0;
+		}
+	}
+}
+
+void flag2buffer(void) {
+	/* Drapeau à damier */
+	for (unsigned char i=0 ; i<NB_LINES ; i++) {
+		for(unsigned char j=0 ; j<NB_COLS ; j++) {
+			if (((j+i) % 2) == 0) {
+				bufferScreen[i][j] = 0b11111111; // nb pair -> pavé plein
+			} else {
+				bufferScreen[i][j] = 0b11111110; // nb impair -> pavé vide
+			}
+		}
+	}
+}
+
+void splashscreen2buffer(void) {
+	flag2buffer();
+
+	/* Texte */
+	strcpy(bufferScreen[1]+4, " OpenChrono ");
+	strcpy(bufferScreen[2]+5, " S. Celles");
+}
+
+void buffer2lcd(void) {
+	//lcd_clear();
+	for (unsigned char i=0 ; i<NB_LINES ; i++) {
+		lcd_goto(L_OFFSET[i]);
+		for(unsigned char j=0 ; j<NB_COLS ; j++) {
+			lcd_putch(bufferScreen[i][j]);
+		}
+	}
+}
 
 void display_lcd(void) {
 	//lcd_clear();

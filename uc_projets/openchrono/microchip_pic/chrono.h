@@ -31,6 +31,19 @@ typedef struct {
 
 time_struct laptime_st;
 
+unsigned long int time;
+//unsigned long int time_remain;
+unsigned long int laptime_evt[9];
+
+/* Temps en ms */
+unsigned long int laptime_current;
+unsigned long int laptime_best;
+unsigned long int laptime_last;
+
+unsigned long int laptime_best_old;
+unsigned long int laptime_penultimate;
+//unsigned long int laptime_antepenultimate;
+
 int ms2timestruct(unsigned long int t, time_struct * ts);
 
 #endif //CHRONO_H

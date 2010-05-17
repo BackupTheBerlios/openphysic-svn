@@ -36,3 +36,41 @@ int ms2timestruct(unsigned long int t, time_struct * ts) {
 
 	return 0;
 }
+
+/*
+void reset_time(void) {
+	hh=0;
+	mm=0;
+	ss=0;
+	xx=0;
+
+//	hh=23;
+//	mm=59;
+//	ss=59;
+//	xx=990;
+}
+*/
+
+/*
+void increment(void) {
+	time++;
+
+	xx++;
+	if (xx==1000) {
+		xx=0;
+		ss++;
+		if (ss==60) {
+			ss=0;
+			mm++;
+			if (mm==60) {
+				mm=0;
+				hh++;
+				if (hh==24) {
+					hh=0;
+					//dd++;
+				}
+			}
+		}
+	}
+}
+*/
