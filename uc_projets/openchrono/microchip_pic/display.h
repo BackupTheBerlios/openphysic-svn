@@ -33,7 +33,7 @@ char L_OFFSET[] = {0x00, 0x40, 0x14, 0x54};
 #define NB_LINES 4
 
 char buffer[NB_COLS+1];
-char bufferScreen[NB_LINES][NB_COLS+1];
+//char bufferScreen[NB_LINES][NB_COLS+1];
 
 void clear_buffer(void);
 void flag2buffer(void);

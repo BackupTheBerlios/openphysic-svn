@@ -22,6 +22,13 @@
 #ifndef CHRONO_H
 #define CHRONO_H
 
+/*
+unsigned char hh=0; // 0-24
+unsigned char mm=0; // 0-60
+unsigned char ss=0; // 0-60
+unsigned int xx=0; // 0-1000
+*/
+
 typedef struct {
 	unsigned char hh; /* 0-24 */
 	unsigned char mm; /* 0-60 */
@@ -34,6 +41,9 @@ time_struct laptime_st;
 unsigned long int time;
 //unsigned long int time_remain;
 unsigned long int laptime_evt[9];
+
+//unsigned long int laptime_evt2[9][100];
+unsigned long int laptimes[2];
 
 /* Temps en ms */
 unsigned long int laptime_current;

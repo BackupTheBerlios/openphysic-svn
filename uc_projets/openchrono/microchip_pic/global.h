@@ -27,20 +27,12 @@ enum state_value { state_off = 0, state_splash, state_stop, state_run};
 
 unsigned int ticks;
 unsigned int disp;
-
-/*
-unsigned char hh=0; // 0-24
-unsigned char mm=0; // 0-60
-unsigned char ss=0; // 0-60
-unsigned int xx=0; // 0-1000
-*/
-
-
-
-
-unsigned int rpm;
-
 int nbc;
 
+#define LINE RB1
+#define B_LEFT RB6
+#define B_RIGHT RB7
+
+unsigned int rpm;
 
 #endif //GLOBAL_H

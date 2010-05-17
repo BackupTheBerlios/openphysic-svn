@@ -84,7 +84,7 @@ if (T0IF) { // increment timer 1ms
 	T0IF = 0;
 }
 
-if (INTF && RB1) { // line
+if (INTF && LINE) { // line
 	unsigned long int time2;
 	time2 = time;
 	track_new_sect(&current_track);
@@ -129,10 +129,10 @@ int main(void) {
 	lcd_init();
 
 	state = state_splash;
-	splashscreen2buffer();
-	buffer2lcd();
+	//splashscreen2buffer();
+	//buffer2lcd();
 	//DelayMs(500); // Comment for debug
-	lcd_clear();
+	//lcd_clear();
 
 	state = state_stop;
 

@@ -47,7 +47,8 @@ void test_buffer(void) {
 }
 */
 
-/* Effacer le buffer */
+/*
+// Effacer le buffer
 void clear_buffer(void) {
 	for (unsigned char i=0 ; i<NB_LINES ; i++) {
 		for(unsigned char j=0 ; j<NB_COLS ; j++) {
@@ -57,7 +58,7 @@ void clear_buffer(void) {
 }
 
 void flag2buffer(void) {
-	/* Drapeau à damier */
+	// Drapeau à damier
 	for (unsigned char i=0 ; i<NB_LINES ; i++) {
 		for(unsigned char j=0 ; j<NB_COLS ; j++) {
 			if (((j+i) % 2) == 0) {
@@ -72,7 +73,7 @@ void flag2buffer(void) {
 void splashscreen2buffer(void) {
 	flag2buffer();
 
-	/* Texte */
+	// Texte
 	strcpy(bufferScreen[1]+4, " OpenChrono ");
 	strcpy(bufferScreen[2]+5, " S. Celles");
 }
@@ -86,7 +87,7 @@ void buffer2lcd(void) {
 		}
 	}
 }
-
+*/
 void display_lcd(void) {
 	//lcd_clear();
 
