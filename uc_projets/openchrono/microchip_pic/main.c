@@ -92,7 +92,11 @@ if (INTF && LINE) { // line
 	if ( state == state_stop ) {
 		state = state_run;
 	} else {
+		flag_sector = 1;
+		new_page_flag = 1;
 		if ((&current_track)->current_sector==1) {
+			flag_lap = 1;
+			new_page_flag = 1;
 			laptime_penultimate = laptime_last;
 			laptime_last = time2 - laptime_evt[0];
 			if (laptime_best==0 || time2-laptime_evt[0]<laptime_best) {
@@ -104,6 +108,11 @@ if (INTF && LINE) { // line
 
 	laptime_evt[(&current_track)->current_sector-1] = time2;
 
+	INTF = 0;
+}
+
+if (INTF && B_LEFT) {
+	goto_next_page();
 	INTF = 0;
 }
 	// process other interrupt sources here
@@ -124,15 +133,19 @@ int main(void) {
 
 	//reset_time();
 
-	timer_init();
-
 	lcd_init();
+	init_pages();
 
 	state = state_splash;
 	//splashscreen2buffer();
 	//buffer2lcd();
-	//DelayMs(500); // Comment for debug
+
+	ptr_current_page->display();
+	DelayMs(500); // Comment for debug
+	goto_next_page();
 	//lcd_clear();
+
+	timer_init();
 
 	state = state_stop;
 
@@ -141,7 +154,16 @@ int main(void) {
 	while(1) {
 		ticks++;
 
-		display_lcd();
+		if (new_page_flag) {
+			lcd_clear();
+			new_page_flag=0;
+		}
+		ptr_current_page->display();
+
+		if (state == state_run && time-laptime_evt[0]>=10*60000) { // ->stop après 10' en run sans rencontrer de ligne
+			state = state_stop;
+			(&current_track)->current_sector = (&current_track)->initial_sector;
+		}
 	}
 
 	return 0;

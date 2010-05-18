@@ -30,9 +30,12 @@ unsigned int disp;
 int nbc;
 
 #define LINE RB1
-#define B_LEFT RB6
-#define B_RIGHT RB7
+#define B_LEFT RB2
+#define B_RIGHT RB3
 
 unsigned int rpm;
+
+char flag_sector;
+char flag_lap;
 
 #endif //GLOBAL_H

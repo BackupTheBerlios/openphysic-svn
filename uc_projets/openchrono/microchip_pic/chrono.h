@@ -38,9 +38,11 @@ typedef struct {
 
 time_struct laptime_st;
 
+#define MAX_SECTORS 3
+
 unsigned long int time;
 //unsigned long int time_remain;
-unsigned long int laptime_evt[9];
+unsigned long int laptime_evt[MAX_SECTORS];
 
 //unsigned long int laptime_evt2[9][100];
 //unsigned long int laptimes[20];

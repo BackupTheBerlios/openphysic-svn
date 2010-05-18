@@ -22,7 +22,7 @@
 #include	"track.h"
 
 void init_track(track* my_track) {
-	my_track->sectors = 2;
+	my_track->sectors = 3;
 	my_track->initial_sector = my_track->sectors;
 	my_track->current_sector = my_track->initial_sector;
 
@@ -38,3 +38,8 @@ void track_new_sect(track* my_track) {
 		my_track->current_sector++;
 	}
 }
+
+unsigned char get_previous_sect(track* my_track) {
+	return (my_track->current_sector+my_track->sectors-2) % my_track->sectors + 1;
+}
+

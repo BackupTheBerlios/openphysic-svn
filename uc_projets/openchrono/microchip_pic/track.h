@@ -42,4 +42,6 @@ void track_new_lap(track* my_track);
 
 void track_new_sect(track* my_track);
 
+unsigned char get_previous_sect(track* my_track);
+
 #endif //TRACK_H

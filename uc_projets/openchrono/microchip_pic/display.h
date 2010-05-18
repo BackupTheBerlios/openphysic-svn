@@ -35,10 +35,36 @@ char L_OFFSET[] = {0x00, 0x40, 0x14, 0x54};
 char buffer[NB_COLS+1];
 //char bufferScreen[NB_LINES][NB_COLS+1];
 
+/*
 void clear_buffer(void);
 void flag2buffer(void);
 void splashscreen2buffer(void);
 void buffer2lcd(void);
-void display_lcd(void);
+void display_normal(void);
+*/
+
+typedef struct page_typ
+{
+	void (*display) (void); // pointeur de fonction sur fonction d'affichage
+
+	struct page_typ * page_next;
+
+	void (*on_left) (void);     // ptr de fct sur evenement appui touche ok
+	void (*on_right) (void); // ptr de fct sur evenement appui touche cancel
+};
+
+struct page_typ * ptr_current_page;
+
+struct page_typ page_splash;
+struct page_typ page_normal;
+
+void init_pages(void);
+
+void click_left(void);
+void click_right(void);
+
+void goto_next_page(void);
+
+char new_page_flag;
 
 #endif //DISPLAY_H
