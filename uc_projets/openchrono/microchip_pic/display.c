@@ -237,7 +237,7 @@ nbc = sprintf(buffer, "Sect %1u->%1u/%1u (L%02u)", get_previous_sect((&current_t
 lcd_puts(buffer);
 
 lcd_goto(L_OFFSET[1]);	// Select second line
-ms2timestruct(time-laptime_evt[0], &laptime_st);
+ms2timestruct(laptime_evt[(&current_track)->current_sector-1]-laptime_evt[get_previous_sect((&current_track))-1], &laptime_st);
 nbc = sprintf(buffer, " %01u:%02u:%03u", ((&laptime_st)->mm)%10, (&laptime_st)->ss, (&laptime_st)->xx); // temps tour en cours
 lcd_puts(buffer);
 
@@ -324,6 +324,21 @@ void display_lap(void) {
 #define DISP_LAP_DELAY 3000
 #define DISP_LAST_SECT_DELAY 1000
 
+void display_config_sectors(void) {
+	lcd_goto(L_OFFSET[0]);
+	lcd_puts("====== CONFIG ======");	
+
+	lcd_goto(L_OFFSET[1]);
+	lcd_puts("   Sectors number   ");	
+
+	lcd_goto(L_OFFSET[2]);
+	nbc = sprintf(buffer, "       > %02u <       ", (&current_track)->sectors); // dernier temps tour
+	lcd_puts(buffer);
+
+	lcd_goto(L_OFFSET[3]);
+	lcd_puts("Next          Modify");	
+}
+
 void display_main(void) {
 	if (flag_sector || flag_lap) {
 
@@ -365,23 +380,26 @@ void goto_next_page(void) {
 }
 
 void click_left(void) {
-	lcd_puts("LEFT");
+//	lcd_puts("LEFT");
 }
 
 void click_right(void) {
-	lcd_puts("RIGHT");
+//	lcd_puts("RIGHT");
 }
 
 void init_pages(void) {
 	(&page_splash)->display = &display_splash;
 	(&page_splash)->page_next = &page_normal;
 	//(&page_splash)->on_left = &click_left;
-	(&page_splash)->on_right = NULL;
+	//(&page_splash)->on_right = NULL;
 
 	(&page_normal)->display = &display_main;
-	(&page_normal)->page_next = &page_splash;
-	//(&page_normal)->on_left = NULL;
+	(&page_normal)->page_next = &page_config_sectors; //page_splash;
+	//(&page_normal)->on_left = &click_left;
 	(&page_normal)->on_right = NULL;
+
+	(&page_config_sectors)->display = &display_config_sectors;
+	(&page_config_sectors)->page_next = &page_normal;
 
 	ptr_current_page = &page_splash;
 	//ptr_current_page = &page_normal;

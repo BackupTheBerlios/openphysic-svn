@@ -115,6 +115,16 @@ if (INTF && B_LEFT) {
 	goto_next_page();
 	INTF = 0;
 }
+
+if (INTF && B_RIGHT) {
+	if (state == state_run) {
+		state = state_stop;
+	} else {
+		modify_sectors(&current_track);
+	}
+	INTF = 0;
+}
+
 	// process other interrupt sources here
 }
 
@@ -153,6 +163,8 @@ int main(void) {
 
 	while(1) {
 		ticks++;
+
+		//(&current_track)->sectors = ( (&current_track)->sectors + 1 ) % 50;
 
 		if (new_page_flag) {
 			lcd_clear();

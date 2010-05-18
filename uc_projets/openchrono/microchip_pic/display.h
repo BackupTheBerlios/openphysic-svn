@@ -57,11 +57,11 @@ struct page_typ * ptr_current_page;
 
 struct page_typ page_splash;
 struct page_typ page_normal;
+struct page_typ page_config_sectors;
 
 void init_pages(void);
 
-void click_left(void);
-void click_right(void);
+
 
 void goto_next_page(void);
 

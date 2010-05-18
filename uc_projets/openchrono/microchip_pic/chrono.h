@@ -22,6 +22,8 @@
 #ifndef CHRONO_H
 #define CHRONO_H
 
+#include "global.h"
+
 /*
 unsigned char hh=0; // 0-24
 unsigned char mm=0; // 0-60
@@ -38,7 +40,7 @@ typedef struct {
 
 time_struct laptime_st;
 
-#define MAX_SECTORS 3
+
 
 unsigned long int time;
 //unsigned long int time_remain;

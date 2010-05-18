@@ -21,6 +21,8 @@
 
 #include	"track.h"
 
+#include "global.h"
+
 void init_track(track* my_track) {
 	my_track->sectors = 3;
 	my_track->initial_sector = my_track->sectors;
@@ -43,3 +45,9 @@ unsigned char get_previous_sect(track* my_track) {
 	return (my_track->current_sector+my_track->sectors-2) % my_track->sectors + 1;
 }
 
+void modify_sectors(track* my_track) {
+	my_track->sectors = my_track->sectors % MAX_SECTORS + 1; // ajoute 1
+
+	my_track->initial_sector = my_track->sectors;
+	my_track->current_sector = my_track->initial_sector;
+}
