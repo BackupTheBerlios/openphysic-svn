@@ -67,4 +67,14 @@ void goto_next_page(void);
 
 char new_page_flag;
 
+/*
+fncall fp__click_left, click_left
+*/
+
+/*
+#asm
+fncall _main, _click_left
+#endasm
+*/
+
 #endif //DISPLAY_H

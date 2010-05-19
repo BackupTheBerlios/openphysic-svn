@@ -45,7 +45,7 @@ unsigned long int time;
 //unsigned long int time_remain;
 unsigned long int laptime_evt[MAX_SECTORS];
 
-//unsigned long int laptime_evt2[9][100];
+//unsigned long int laptime_evt2[3][7];
 //unsigned long int laptimes[20];
 
 /* Temps en ms */

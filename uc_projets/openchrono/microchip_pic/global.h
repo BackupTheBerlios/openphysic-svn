@@ -40,4 +40,6 @@ char flag_lap;
 
 #define MAX_SECTORS 3
 
+
+
 #endif //GLOBAL_H
