@@ -24,7 +24,7 @@
 #include "global.h"
 
 void init_track(track* my_track) {
-	my_track->sectors = 3;
+	my_track->sectors = 1;
 	my_track->initial_sector = my_track->sectors;
 	my_track->current_sector = my_track->initial_sector;
 

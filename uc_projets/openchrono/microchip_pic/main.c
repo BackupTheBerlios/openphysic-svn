@@ -97,11 +97,11 @@ if (INTF && LINE) { // line
 		if ((&current_track)->current_sector==1) {
 			flag_lap = 1;
 			new_page_flag = 1;
-			laptime_penultimate = laptime_last;
-			laptime_last = time2 - laptime_evt[0];
-			if (laptime_best==0 || time2-laptime_evt[0]<laptime_best) {
-				laptime_best_old = laptime_best;
-				laptime_best = time2-laptime_evt[0];
+			laptime[2] = laptime[1];
+			laptime[1] = time2 - laptime_evt[0];
+			if (laptime_best[0]==0 || time2-laptime_evt[0]<laptime_best[0]) {
+				laptime_best[1] = laptime_best[0];
+				laptime_best[0] = time2-laptime_evt[0];
 			}
 		}
 	}

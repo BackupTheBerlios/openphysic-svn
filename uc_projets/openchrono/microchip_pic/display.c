@@ -113,7 +113,7 @@ void display_splash(void) {
 }
 
 
-void display_normal(void) {
+void display_normal() {
 /*
   12345678901234567890
   --------------------
@@ -156,7 +156,7 @@ void display_normal(void) {
 	}
 	lcd_puts("  ");
 	if (laptime_best!=0) {
-		ms2timestruct(laptime_best, &laptime_st);
+		ms2timestruct(laptime_best[0], &laptime_st);
 		nbc = sprintf(buffer, "B%01u:%02u:%03u", ((&laptime_st)->mm)%10, (&laptime_st)->ss, (&laptime_st)->xx); // meilleur temps au tour
 		lcd_puts(buffer);
 	} else {
@@ -164,25 +164,25 @@ void display_normal(void) {
 	}
 
 	lcd_goto(L_OFFSET[2]);
-	if (laptime_last!=0) {
-		ms2timestruct(laptime_last, &laptime_st);
+	if (laptime[1]!=0) {
+		ms2timestruct(laptime[1], &laptime_st);
 		nbc = sprintf(buffer, "L%01u:%02u:%03u", ((&laptime_st)->mm)%10, (&laptime_st)->ss, (&laptime_st)->xx); // dernier temps tour
 		lcd_puts(buffer);
 	} else {
 		lcd_puts("L_:__:___");
 	}
 	lcd_puts("  ");
-	if (laptime_best!=0 && laptime_best_old!=0) {
+	if (laptime_best[0]!=0 && laptime_best[1]!=0) {
 		lcd_putch('B');
-		if (laptime_last>laptime_best) {
+		if (laptime[1]>laptime_best[0]) {
 			lcd_putch('+');
-			ms2timestruct(laptime_last-laptime_best, &laptime_st);
-		} else if (laptime_best_old==laptime_best) {
+			ms2timestruct(laptime[1]-laptime_best[0], &laptime_st);
+		} else if (laptime_best[1]==laptime_best[0]) {
 			lcd_putch('=');
 			ms2timestruct(0, &laptime_st);
-		} else if (laptime_best<laptime_best_old) {
+		} else if (laptime_best[0]<laptime_best[1]) {
 			lcd_putch('-');
-			ms2timestruct(laptime_best_old-laptime_best, &laptime_st);
+			ms2timestruct(laptime_best[1]-laptime_best[0], &laptime_st);
 		}
 		nbc = sprintf(buffer, ":%02u:%03u", (&laptime_st)->ss, (&laptime_st)->xx); // ecart meilleur temps au tour - dernier temps au tour
 		lcd_puts(buffer);
@@ -191,17 +191,17 @@ void display_normal(void) {
 	}
 
 	lcd_goto(L_OFFSET[3]);
-	if (laptime_penultimate!=0) {
+	if (laptime[2]!=0) {
 		lcd_putch('L');
-		if (laptime_last>laptime_penultimate) {
+		if (laptime[1]>laptime[2]) {
 			lcd_putch('+');
-			ms2timestruct(laptime_last-laptime_penultimate, &laptime_st);
-		} else if (laptime_last==laptime_penultimate) {
+			ms2timestruct(laptime[1]-laptime[2], &laptime_st);
+		} else if (laptime[1]==laptime[2]) {
 			lcd_putch('=');
 			ms2timestruct(0, &laptime_st);
-		} else if (laptime_last<laptime_penultimate) {
+		} else if (laptime[1]<laptime[2]) {
 			lcd_putch('-');
-			ms2timestruct(laptime_penultimate-laptime_last, &laptime_st);
+			ms2timestruct(laptime[2]-laptime[1], &laptime_st);
 		}
 		nbc = sprintf(buffer, ":%02u:%03u", (&laptime_st)->ss, (&laptime_st)->xx); // écart dernier temps au tour et avant dernier temps au tour
 		lcd_puts(buffer);
@@ -260,12 +260,12 @@ void display_lap(void) {
 
 
 	lcd_goto(L_OFFSET[1]);	// Select second line
-	ms2timestruct(laptime_last, &laptime_st);
+	ms2timestruct(laptime[1], &laptime_st);
 	nbc = sprintf(buffer, " %01u:%02u:%03u", ((&laptime_st)->mm)%10, (&laptime_st)->ss, (&laptime_st)->xx); // dernier temps tour
 	lcd_puts(buffer);
 	lcd_puts("  ");
 	if (laptime_best!=0) {
-		ms2timestruct(laptime_best, &laptime_st);
+		ms2timestruct(laptime_best[0], &laptime_st);
 		nbc = sprintf(buffer, "B%01u:%02u:%03u", ((&laptime_st)->mm)%10, (&laptime_st)->ss, (&laptime_st)->xx); // meilleur temps au tour
 		lcd_puts(buffer);
 	} else {
@@ -273,25 +273,25 @@ void display_lap(void) {
 	}
 
 	lcd_goto(L_OFFSET[2]);
-	if (laptime_penultimate!=0) {
-		ms2timestruct(laptime_penultimate, &laptime_st);
+	if (laptime[2]!=0) {
+		ms2timestruct(laptime[2], &laptime_st);
 		nbc = sprintf(buffer, "L%01u:%02u:%03u", ((&laptime_st)->mm)%10, (&laptime_st)->ss, (&laptime_st)->xx); // dernier temps tour
 		lcd_puts(buffer);
 	} else {
 		lcd_puts("L_:__:___");
 	}
 	lcd_puts("  ");
-	if (laptime_best!=0 && laptime_best_old!=0) {
+	if (laptime_best[0]!=0 && laptime_best[1]!=0) {
 		lcd_putch('B');
-		if (laptime_last>laptime_best) {
+		if (laptime[1]>laptime_best[0]) {
 			lcd_putch('+');
-			ms2timestruct(laptime_last-laptime_best, &laptime_st);
-		} else if (laptime_best_old==laptime_best) {
+			ms2timestruct(laptime[1]-laptime_best[0], &laptime_st);
+		} else if (laptime_best[1]==laptime_best[0]) {
 			lcd_putch('=');
 			ms2timestruct(0, &laptime_st);
-		} else if (laptime_best<laptime_best_old) {
+		} else if (laptime_best[0]<laptime_best[1]) {
 			lcd_putch('-');
-			ms2timestruct(laptime_best_old-laptime_best, &laptime_st);
+			ms2timestruct(laptime_best[1]-laptime_best[0], &laptime_st);
 		}
 		nbc = sprintf(buffer, ":%02u:%03u", (&laptime_st)->ss, (&laptime_st)->xx); // ecart meilleur temps au tour - dernier temps au tour
 		lcd_puts(buffer);
@@ -300,17 +300,17 @@ void display_lap(void) {
 	}
 
 	lcd_goto(L_OFFSET[3]);
-	if (laptime_penultimate!=0) {
+	if (laptime[2]!=0) {
 		lcd_putch('L');
-		if (laptime_last>laptime_penultimate) {
+		if (laptime[1]>laptime[2]) {
 			lcd_putch('+');
-			ms2timestruct(laptime_last-laptime_penultimate, &laptime_st);
-		} else if (laptime_last==laptime_penultimate) {
+			ms2timestruct(laptime[1]-laptime[2], &laptime_st);
+		} else if (laptime[1]==laptime[2]) {
 			lcd_putch('=');
 			ms2timestruct(0, &laptime_st);
-		} else if (laptime_last<laptime_penultimate) {
+		} else if (laptime[1]<laptime[2]) {
 			lcd_putch('-');
-			ms2timestruct(laptime_penultimate-laptime_last, &laptime_st);
+			ms2timestruct(laptime[2]-laptime[1], &laptime_st);
 		}
 		nbc = sprintf(buffer, ":%02u:%03u", (&laptime_st)->ss, (&laptime_st)->xx); // écart dernier temps au tour et avant dernier temps au tour
 		lcd_puts(buffer);
@@ -380,7 +380,7 @@ void goto_next_page(void) {
 }
 
 void click_left(void) {
-//	lcd_puts("LEFT");
+	lcd_puts("LEFT");
 }
 
 void click_right(void) {
@@ -393,9 +393,12 @@ void init_pages(void) {
 	//(&page_splash)->on_left = &click_left;
 	//(&page_splash)->on_right = NULL;
 
-	(&page_normal)->display = &display_main;
+	//(&page_normal)->display = &display_main;
+	page_normal.display = display_main; // &click_left; // display_main;
 	(&page_normal)->page_next = &page_config_sectors; //page_splash;
 	//(&page_normal)->on_left = &click_left;
+	//page_normal.on_left = display_main;
+
 	(&page_normal)->on_right = NULL;
 
 	(&page_config_sectors)->display = &display_config_sectors;

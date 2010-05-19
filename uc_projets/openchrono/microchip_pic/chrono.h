@@ -41,7 +41,6 @@ typedef struct {
 time_struct laptime_st;
 
 
-
 unsigned long int time;
 //unsigned long int time_remain;
 unsigned long int laptime_evt[MAX_SECTORS];
@@ -50,13 +49,14 @@ unsigned long int laptime_evt[MAX_SECTORS];
 //unsigned long int laptimes[20];
 
 /* Temps en ms */
-unsigned long int laptime_current;
-unsigned long int laptime_best;
-unsigned long int laptime_last;
+unsigned long int laptime[3];
+// laptime[0] = temps au tour (laptime_current)
+// laptime[1] = dernier temps au tour (laptime_last)
+// laptime[2] = avant dernier temps au tour (laptime_penultimate)
 
-unsigned long int laptime_best_old;
-unsigned long int laptime_penultimate;
-//unsigned long int laptime_antepenultimate;
+unsigned long int laptime_best[2];
+ // laptime_best[0] = meilleur temps au tour
+ // laptime_best[1] = ancien meilleur temps au tour (laptime_best_old)
 
 int ms2timestruct(unsigned long int t, time_struct * ts);
 
