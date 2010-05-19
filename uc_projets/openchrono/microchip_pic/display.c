@@ -384,7 +384,7 @@ void click_left(void) {
 }
 
 void click_right(void) {
-//	lcd_puts("RIGHT");
+	lcd_puts("RIGHT");
 }
 
 void init_pages(void) {
@@ -396,6 +396,7 @@ void init_pages(void) {
 	//(&page_normal)->display = &display_main;
 	page_normal.display = display_main; // &click_left; // display_main;
 	(&page_normal)->page_next = &page_config_sectors; //page_splash;
+	//page_normal.on_left = click_left;
 	//(&page_normal)->on_left = &click_left;
 	//page_normal.on_left = display_main;
 
