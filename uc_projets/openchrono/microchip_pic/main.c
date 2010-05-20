@@ -146,12 +146,19 @@ int main(void) {
 	lcd_init();
 	init_pages();
 
+	/* Load cycles from EEPROM */
+
+	cycles++;
+
+	/* Save cycles to EEPROM */
+
 	state = state_splash;
 	//splashscreen2buffer();
 	//buffer2lcd();
 
 	ptr_current_page->display();
-	DelayMs(500); // Comment for debug
+	//DelayMs(4500); // Comment for debug
+	for(unsigned long int i=0;i<100000;i++){}
 	goto_next_page();
 	//lcd_clear();
 

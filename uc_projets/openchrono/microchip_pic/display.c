@@ -108,8 +108,11 @@ void display_splash(void) {
 	lcd_puts("   v0.1   ");
 	lcd_goto(L_OFFSET[2]+5);
 	lcd_puts(" S.Celles ");
-	lcd_goto(L_OFFSET[3]+3);
-	lcd_puts("www.celles.net");
+	//lcd_goto(L_OFFSET[3]+3);
+	//lcd_puts("www.celles.net");
+	lcd_goto(L_OFFSET[3]+7);
+	nbc = sprintf(buffer, "%06d", cycles);
+	lcd_puts(buffer);
 }
 
 
