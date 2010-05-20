@@ -58,6 +58,9 @@ unsigned long int laptime_best[2];
  // laptime_best[0] = meilleur temps au tour
  // laptime_best[1] = ancien meilleur temps au tour (laptime_best_old)
 
+//unsigned long int timesector[MAX_SECTORS][2]; // memoire des partiels (du tour en cours et du précédent)
+//unsigned long int timesector_best[MAX_SECTORS][2]; // memoire des meilleurs partiels
+
 int ms2timestruct(unsigned long int t, time_struct * ts);
 
 #endif //CHRONO_H
