@@ -51,3 +51,16 @@ void modify_sectors(track* my_track) {
 	my_track->initial_sector = my_track->sectors;
 	my_track->current_sector = my_track->initial_sector;
 }
+
+void set_sectors(track* my_track, unsigned char new_val) {
+	if (new_val>=1 && new_val<=3) {
+		my_track->sectors = new_val;	
+	} else {
+		my_track->sectors = 3;
+	}
+
+	my_track->initial_sector = my_track->sectors;
+	my_track->current_sector = my_track->initial_sector;
+
+	my_track->lap = 0;
+}

@@ -22,7 +22,7 @@
 #ifndef GLOBAL_H
 #define GLOBAL_H
 
-unsigned char cycles;
+unsigned long int cycles;
 
 unsigned char state;
 enum state_value { state_off = 0, state_splash, state_stop, state_run};

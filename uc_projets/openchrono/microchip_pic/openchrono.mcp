@@ -36,6 +36,7 @@ file_008=.
 file_009=.
 file_010=.
 file_011=.
+file_012=.
 [GENERATED_FILES]
 file_000=no
 file_001=no
@@ -49,6 +50,7 @@ file_008=no
 file_009=no
 file_010=no
 file_011=no
+file_012=no
 [OTHER_FILES]
 file_000=no
 file_001=no
@@ -62,6 +64,7 @@ file_008=no
 file_009=no
 file_010=no
 file_011=no
+file_012=no
 [FILE_INFO]
 file_000=main.c
 file_001=lcd.c
@@ -75,6 +78,7 @@ file_008=track.h
 file_009=display.h
 file_010=global.h
 file_011=chrono.h
+file_012=eeprom.h
 [SUITE_INFO]
 suite_guid={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 suite_state=

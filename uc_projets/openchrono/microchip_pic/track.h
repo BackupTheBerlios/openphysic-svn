@@ -44,5 +44,6 @@ void track_new_sect(track* my_track);
 
 unsigned char get_previous_sect(track* my_track);
 void modify_sectors(track* my_track);
+void set_sectors(track* my_track, unsigned char new_val);
 
 #endif //TRACK_H

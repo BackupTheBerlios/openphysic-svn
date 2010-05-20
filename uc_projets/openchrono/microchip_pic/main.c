@@ -37,7 +37,7 @@ Simulator: Proteus VSM
 #include "chrono.h"
 
 #include "global.h"
-
+#include "eeprom.h"
 
 void timer_init() {
 	// Timer 0 (8 bits) utilisé pour le chrono 1ms
@@ -128,6 +128,21 @@ if (INTF && B_RIGHT) {
 	// process other interrupt sources here
 }
 
+void read_config(void) {
+	/* Load cycles from EEPROM */
+	//eeprom_read(unsigned char addr);
+	cycles = eeprom_read_uint32(0x00);
+
+	cycles++;
+
+	/* Save cycles to EEPROM */
+	//eeprom_write(unsigned char addr, unsigned char value);
+	eeprom_write_uint32(0x00, cycles);
+
+	/* Read other config settings from EEPROM */
+	//set_seccurrent_track.sectors = 3;
+}
+
 int main(void) {
 	state = state_off;
 	ticks = 0;
@@ -145,12 +160,9 @@ int main(void) {
 
 	lcd_init();
 	init_pages();
+	init_track(&current_track);
 
-	/* Load cycles from EEPROM */
-
-	cycles++;
-
-	/* Save cycles to EEPROM */
+	read_config();
 
 	state = state_splash;
 	//splashscreen2buffer();
@@ -166,7 +178,7 @@ int main(void) {
 
 	state = state_stop;
 
-	init_track(&current_track);
+
 
 	while(1) {
 		ticks++;
