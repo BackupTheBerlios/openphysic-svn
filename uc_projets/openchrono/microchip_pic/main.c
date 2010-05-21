@@ -130,17 +130,17 @@ if (INTF && B_RIGHT) {
 
 void read_config(void) {
 	/* Load cycles from EEPROM */
-	//eeprom_read(unsigned char addr);
-	cycles = eeprom_read_uint32(0x00);
+	//cycles = eeprom_read(0x00);
+	//cycles = eeprom_read_uint32(0x00);
 
 	cycles++;
 
 	/* Save cycles to EEPROM */
 	//eeprom_write(unsigned char addr, unsigned char value);
-	eeprom_write_uint32(0x00, cycles);
+	//eeprom_write_uint32(0x00, cycles);
 
 	/* Read other config settings from EEPROM */
-	//set_seccurrent_track.sectors = 3;
+	//read_track(&current_track);
 }
 
 int main(void) {
@@ -160,7 +160,7 @@ int main(void) {
 
 	lcd_init();
 	init_pages();
-	init_track(&current_track);
+	//init_track(&current_track);
 
 	read_config();
 
@@ -170,7 +170,7 @@ int main(void) {
 
 	ptr_current_page->display();
 	//DelayMs(4500); // Comment for debug
-	for(unsigned long int i=0;i<100000;i++){}
+	//for(unsigned long int i=0;i<100000;i++){}
 	goto_next_page();
 	//lcd_clear();
 

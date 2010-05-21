@@ -19,34 +19,19 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef TRACK_H
-#define TRACK_H
+#include "eeprom.h"
 
-typedef struct track_
-{
-	unsigned char sectors; // Number of sectors on the track (nb of magnetic field)
-	unsigned char current_sector;
-	unsigned char initial_sector;
-
-	unsigned char lap;
+//Ecrire data dans l'EEPROM à partir de l'adresse "n"
+void eeprom_write_uint32(unsigned long int n, unsigned long int data) {
+   for (unsigned char i = 0; i < 4; i++)
+     eeprom_write(i + n, *(((unsigned char*)&data) + i) ) ;
 }
-track;
+ 
+//Lire depuis l'EEPROM partir de l'adresse "n"
+unsigned long int eeprom_read_uint32(unsigned long int n) {
+   unsigned long int data=0;
+   for (unsigned char i = 0; i < 4; i++)
+     *(((unsigned char*)&data) + i) = eeprom_read(i + n);
+   return(data);
+}
 
-track current_track;
-
-void init_track(track* my_track);
-
-/*
-void track_new_lap(track* my_track);
-*/
-
-void track_new_sect(track* my_track);
-
-unsigned char get_previous_sect(track* my_track);
-void modify_sectors(track* my_track);
-void set_sectors(track* my_track, unsigned char new_val);
-
-void read_track(track* my_track);
-void save_track(track* my_track);
-
-#endif //TRACK_H

@@ -64,3 +64,13 @@ void set_sectors(track* my_track, unsigned char new_val) {
 
 	my_track->lap = 0;
 }
+
+/*
+void read_track(track* my_track) {
+	set_sectors(my_track, eeprom_read_uint32(0x04));
+}
+
+void save_track(track* my_track) {
+	eeprom_write_uint32(0x04, my_track->sectors);	
+}
+*/
