@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 
-from pysqlite2 import dbapi2 as sqlite
-connection = sqlite.connect('my.db')
+import sqlite3
+
+#from pysqlite2 import dbapi2 as sqlite
+connection = sqlite3.connect('my.db')
 #memoryConnection = sqlite.connect(':memory:')
 cursor = connection.cursor()
 #cursor.execute('INSERT INTO names VALUES (null, "John Doe", "jdoe@jdoe.zz")')
