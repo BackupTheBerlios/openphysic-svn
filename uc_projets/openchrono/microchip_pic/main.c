@@ -38,6 +38,7 @@ Simulator: Proteus VSM
 
 #include "global.h"
 #include "eeprom.h"
+#include "i2c.h"
 
 void timer_init() {
 	// Timer 0 (8 bits) utilisé pour le chrono 1ms
@@ -133,6 +134,8 @@ void read_config(void) {
 	/* Load cycles from EEPROM */
 	//cycles = eeprom_read(0x00);
 	cycles = eeprom_read_uint32(0x00);
+
+
 
 	cycles++;
 
