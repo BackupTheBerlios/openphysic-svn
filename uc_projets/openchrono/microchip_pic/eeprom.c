@@ -21,6 +21,8 @@
 
 #include "eeprom.h"
 
+#include <pic.h>
+
 //Ecrire data dans l'EEPROM à partir de l'adresse "n"
 void eeprom_write_uint32(unsigned long int n, unsigned long int data) {
    for (unsigned char i = 0; i < 4; i++)

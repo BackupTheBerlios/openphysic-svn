@@ -22,6 +22,7 @@
 #include	"track.h"
 
 #include "global.h"
+#include "eeprom.h"
 
 void init_track(track* my_track) {
 	my_track->sectors = 1;
@@ -65,7 +66,6 @@ void set_sectors(track* my_track, unsigned char new_val) {
 	my_track->lap = 0;
 }
 
-/*
 void read_track(track* my_track) {
 	set_sectors(my_track, eeprom_read_uint32(0x04));
 }
@@ -73,4 +73,3 @@ void read_track(track* my_track) {
 void save_track(track* my_track) {
 	eeprom_write_uint32(0x04, my_track->sectors);	
 }
-*/

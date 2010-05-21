@@ -40,6 +40,8 @@ unsigned int rpm;
 char flag_sector;
 char flag_lap;
 
+char flag_save;
+
 #define MAX_SECTORS 3
 
 

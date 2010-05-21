@@ -121,6 +121,7 @@ if (INTF && B_RIGHT) {
 		state = state_stop;
 	} else {
 		modify_sectors(&current_track);
+		flag_save = 1;
 	}
 	INTF = 0;
 }
@@ -131,16 +132,22 @@ if (INTF && B_RIGHT) {
 void read_config(void) {
 	/* Load cycles from EEPROM */
 	//cycles = eeprom_read(0x00);
-	//cycles = eeprom_read_uint32(0x00);
+	cycles = eeprom_read_uint32(0x00);
 
 	cycles++;
 
 	/* Save cycles to EEPROM */
-	//eeprom_write(unsigned char addr, unsigned char value);
-	//eeprom_write_uint32(0x00, cycles);
+	//eeprom_write(0x00, cycles);
+	eeprom_write_uint32(0x00, cycles);
 
 	/* Read other config settings from EEPROM */
-	//read_track(&current_track);
+	read_track(&current_track);
+}
+
+void save(void) {
+	save_track(&current_track);
+
+	flag_save=0;
 }
 
 int main(void) {
@@ -178,8 +185,6 @@ int main(void) {
 
 	state = state_stop;
 
-
-
 	while(1) {
 		ticks++;
 
@@ -194,6 +199,10 @@ int main(void) {
 		if (state == state_run && time-laptime_evt[0]>=10*60000) { // ->stop après 10' en run sans rencontrer de ligne
 			state = state_stop;
 			(&current_track)->current_sector = (&current_track)->initial_sector;
+		}
+
+		if (flag_save) {
+			save();
 		}
 	}
 
