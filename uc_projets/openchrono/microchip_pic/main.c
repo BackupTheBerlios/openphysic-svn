@@ -132,16 +132,24 @@ if (INTF && B_RIGHT) {
 
 void read_config(void) {
 	/* Load cycles from EEPROM */
-	//cycles = eeprom_read(0x00);
-	cycles = eeprom_read_uint32(0x00);
+	//cycles = eeprom_read(0x00); // unsigned char
+	cycles = eeprom_read_uint32(0x00); // unsigned long int
 
+/*
+	while (i2c_ReadAcknowledge()) {
+		i2c_WriteTo(0xA0);
+		cycles++;
+	}
+*/
+	// attente ACK
+	//cycles = 0;
 
 
 	cycles++;
 
 	/* Save cycles to EEPROM */
-	//eeprom_write(0x00, cycles);
-	eeprom_write_uint32(0x00, cycles);
+	//eeprom_write(0x00, cycles); // unsigned char
+	eeprom_write_uint32(0x00, cycles); // unsigned long int
 
 	/* Read other config settings from EEPROM */
 	read_track(&current_track);
@@ -180,7 +188,7 @@ int main(void) {
 
 	ptr_current_page->display();
 	//DelayMs(4500); // Comment for debug
-	//for(unsigned long int i=0;i<100000;i++){}
+	for(unsigned long int i=0;i<100000;i++){}
 	goto_next_page();
 	//lcd_clear();
 
