@@ -23,6 +23,8 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stddef.h>
+
 #include "global.h"
 #include "track.h"
 #include "display.h"
@@ -386,27 +388,32 @@ void click_left(void) {
 	lcd_puts("LEFT");
 }
 
-void click_right(void) {
-	lcd_puts("RIGHT");
+void click_right_config_sectors(void) {
+	modify_sectors(&current_track);
+	flag_save = 1;
+}
+
+void click_right_normal(void) {
+	if (state == state_run) {
+		state = state_stop;
+	}
 }
 
 void init_pages(void) {
-	(&page_splash)->display = &display_splash;
-	(&page_splash)->page_next = &page_normal;
-	//(&page_splash)->on_left = &click_left;
-	//(&page_splash)->on_right = NULL;
+	page_splash.display = &display_splash;
+	page_splash.page_next = &page_normal;
+	//page_splash.on_left = NULL;
+	page_splash.on_right = NULL;
 
-	//(&page_normal)->display = &display_main;
-	page_normal.display = display_main; // &click_left; // display_main;
-	(&page_normal)->page_next = &page_config_sectors; //page_splash;
-	//page_normal.on_left = click_left;
-	//(&page_normal)->on_left = &click_left;
-	//page_normal.on_left = display_main;
-
-	(&page_normal)->on_right = NULL;
-
-	(&page_config_sectors)->display = &display_config_sectors;
-	(&page_config_sectors)->page_next = &page_normal;
+	page_normal.display = &display_main;
+	page_normal.page_next = &page_config_sectors;
+	//page_normal.on_left = NULL;
+	page_normal.on_right = &click_right_normal;
+	
+	page_config_sectors.display = &display_config_sectors;
+	page_config_sectors.page_next = &page_normal;
+	//page_config_sectors.on_left = NULL;
+	page_config_sectors.on_right = &click_right_config_sectors;
 
 	ptr_current_page = &page_splash;
 	//ptr_current_page = &page_normal;

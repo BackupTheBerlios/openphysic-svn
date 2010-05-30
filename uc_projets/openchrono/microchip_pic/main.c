@@ -29,6 +29,8 @@ Simulator: Proteus VSM
 //#define _XTAL_FREQ 4000000
 
 #include <pic.h>
+#include <stddef.h>
+
 #include "lcd.h"
 #include "delay.h"
 
@@ -118,11 +120,8 @@ if (INTF && B_LEFT) {
 }
 
 if (INTF && B_RIGHT) {
-	if (state == state_run) {
-		state = state_stop;
-	} else {
-		modify_sectors(&current_track);
-		flag_save = 1;
+	if 	( ptr_current_page->on_right != NULL ) {
+		ptr_current_page->on_right();
 	}
 	INTF = 0;
 }
