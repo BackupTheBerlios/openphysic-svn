@@ -1,4 +1,6 @@
-
+IDE : MPLAB
+C Compiler : HI-TECH C16
+SIMULATOR : PROTEUS
 
 Incrémentation chrono
 

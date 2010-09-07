@@ -160,10 +160,11 @@ void display_normal() {
 		//lcd_puts(" 0:00:000");
 	}
 	lcd_puts("  ");
-	if (laptime_best!=0) {
+	if (laptime_best[0]!=0) {
 		ms2timestruct(laptime_best[0], &laptime_st);
 		nbc = sprintf(buffer, "B%01u:%02u:%03u", ((&laptime_st)->mm)%10, (&laptime_st)->ss, (&laptime_st)->xx); // meilleur temps au tour
 		lcd_puts(buffer);
+		//lcd_puts(laptime_best);
 	} else {
 		lcd_puts("B_:__:___");
 	}
