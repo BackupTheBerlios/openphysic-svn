@@ -1,6 +1,4 @@
-// Résolution d'un problème de mécanique terrestre en 3 dimensions avec SciLab 2.7
-//
-// Lancé d'un obus sans frottement ou avec frottement visqueux et/ou avec frottement fluide
+// Mvt d'une particule dans un chp E et B
 //
 // Technique : application de la RFD
 //								méthode d'Euler
@@ -9,11 +7,9 @@
 // Commencé le 06/02/2004
 //
 // Hyp : Terre = réf gali
-// Système : obus supposé ponctuel
-// Forces : poids
-//          rem : pour modifier les forces il faut changer les valeurs
-//								dans la boucle (attention!)
-//							 	ET au début (attention (bis !))
+// Système : particule chg
+// Forces : Fe=qE
+//          Fm->=q v-> vectoriel B->
 // Système de coordonnées : cartésien [ux uy uz]
 // Horloge : t
 //
@@ -29,18 +25,7 @@
 //     |/
 //    x ---
 //
-//
-//  z
-//  / \
-//   |
-//   |           ***
-//   |        *       *
-//   |     *             *
-//   |   *                 *
-//   | *                    *
-//   |*                      *  \
-//   *------------------------*--  y
-//                              /
+
 
 clear
 
