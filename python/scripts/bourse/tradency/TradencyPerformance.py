@@ -1,5 +1,31 @@
 #!/usr/bin/env python3
 
+#    TradencyPerformance analyzer
+#       But : ce script permet d'analyser les performances de diverses stratégies utilisées
+#       dans le système de trading automatique Tradency http://www.tradency.com/
+#
+#       Technique : exportez depuis l'interface de Tradency le fichier Excel contenant les performances
+#       (en réalité c'est un fichier HTML qui contient un tableau)
+#       copiez ce fichier sous le nom TradencyPerformance.html
+#       lancez le script via $ python3 TradencyPerformance.py
+#       modifiez-le afin qu'il vous convienne en ajoutant des critères complémentaires
+#       aucune garantie n'est apportée quand à l'utilisation de ce script (c'est vous qui tradez !)
+#
+#    Copyright (C) 2010  "Sebastien CELLES" <s.celles@gmail.com>
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>
+
 from html.parser import HTMLParser
 from datetime import date, datetime, timedelta
 #import csv
@@ -57,7 +83,7 @@ class HTMLTableParser(HTMLParser):
                 #self.data.append(tuple(self.row)) # tuple
 
     	#if tag == 'td':
-    	#	print("yo")
+    	#	print("a closing td")
 
     def handle_data(self, data):
         #print(data)
