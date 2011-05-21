@@ -117,13 +117,14 @@ data = myparser.get_data()
 dataO = []
 t = date.today()
 for row in data:
-	myPerformance = TradencyPerformance(header, row)
+    myPerformance = TradencyPerformance(header, row)
 	
-	myPerformance.__dict__['Espérance'] = (myPerformance.__dict__['% gain']/100)*myPerformance.__dict__['GMT (pips)'] + (1-myPerformance.__dict__['% gain']/100)*myPerformance.__dict__['PMT (pips)']
-	myPerformance.__dict__['TradeDepuis'] = t - myPerformance.__dict__['Date'] 
-	#myPerformance.__dict__['NbTradesParJour'] = float(myPerformance.__dict__['NumTrades'])/((t - myPerformance.__dict__['Date'].days))
+    myPerformance.__dict__['Espérance'] = (myPerformance.__dict__['% gain']/100)*myPerformance.__dict__['GMT (pips)'] + (1-myPerformance.__dict__['% gain']/100)*myPerformance.__dict__['PMT (pips)']
+    TradeDepuis = t - myPerformance.__dict__['Date']
+    myPerformance.__dict__['TradeDepuis'] = t - myPerformance.__dict__['Date'] 
+    myPerformance.__dict__['NbTradesParJour'] = float(myPerformance.__dict__['NumTrades'])/(TradeDepuis.days)
 	
-	dataO.append(myPerformance)
+    dataO.append(myPerformance)
 
 
 #['Stratégie', 'Symbole', 'T-Score', 'NumTrades', 'Max DD', 'Pips', 'Positions Max', '% gain', 'TAR', 'Profit', 'Facteur de Profit', 'Date', 'GMT (pips)', 'Temps de Trade Moyen', 'PMT (pips)', 'TPM (pips)', 'PMT (pips)']
@@ -134,7 +135,7 @@ nw_data=sorted(dataO, key=lambda dataO: dataO.__dict__[criterium], reverse=not d
 #nw_data=sorted(dataO, key=lambda dataO: dataO.__dict__['Espérance'], reverse=False)
 #nw_data=sorted(dataO, key=lambda dataO: dataO.__dict__['Pips'], reverse=False)
 for row in nw_data:
-    if row.__dict__['NumTrades']>50:
+    if row.__dict__['TradeDepuis']>timedelta(30) and row.__dict__['NumTrades']>30:
         print("=== {0}\t\t{1}\t{2}={3} ===".format(row.__dict__['Stratégie'], row.__dict__['Symbole'], criterium, row.__dict__[criterium]))
         #print(row)
         row.display()
