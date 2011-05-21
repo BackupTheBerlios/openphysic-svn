@@ -152,7 +152,7 @@ descending = True
 nw_data = sorted(dataObj, key=lambda dataObj: dataObj.__dict__[criterium], reverse=not descending)
 i=1
 for row in nw_data:
-    if row.__dict__['TradeDepuis']>timedelta(30) and row.__dict__['NumTrades']>30 and row.__dict__['Facteur de Profit']>1 and row.__dict__['Facteur de Profit']<3.5:
+    if row.__dict__['TradeDepuis']>timedelta(30) and row.__dict__['NumTrades']>30 and row.__dict__['Facteur de Profit']>1 and row.__dict__['Facteur de Profit']<3.5 and row.__dict__['Espérance']>0:
     #if True:
         print("=== {4}: {0}\t\t{1}\t{2}={3} ===".format(row.__dict__['Stratégie'], row.__dict__['Symbole'], criterium, row.__dict__[criterium], i))
         #print(row)
