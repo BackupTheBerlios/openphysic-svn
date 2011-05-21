@@ -63,8 +63,7 @@ class HTMLTableParser(HTMLParser):
         #print(data)
         if self.rows == 1: # head
             self.row.append(data)
-        else: # head
-            
+        else: # data
             try:
                 self.row.append(self.types[self.cols-1](data)) # cast to float, int or other
             except:
@@ -99,7 +98,7 @@ class TradencyPerformanceParser(HTMLTableParser):
         HTMLTableParser.__init__(self, fh, types)
         #self.feed(fh.read())
 
-class TradencyPerformance:
+class Dict2Obj:
     def __init__(self, format, value):
         
         i = 0
@@ -113,7 +112,17 @@ class TradencyPerformance:
     def display(self):
         for key in self.__dict__:
             print("\t{0} = {1}".format(key,self.__dict__[key]))
-        
+
+class TradencyPerformance(Dict2Obj):
+    def __init__(self, format, value):
+        Dict2Obj.__init__(self, format, value)
+
+        # add specials indicators
+        self.__dict__['Espérance'] = (self.__dict__['% gain']/100)*self.__dict__['GMT (pips)'] + (1-self.__dict__['% gain']/100)*self.__dict__['PMT (pips)']
+        TradeDepuis = t - self.__dict__['Date']
+        self.__dict__['TradeDepuis'] = t - self.__dict__['Date'] 
+        self.__dict__['NbTradesParJour'] = float(self.__dict__['NumTrades'])/(TradeDepuis.days)
+
 
 datasource = open('TradencyPerformance.html')
 #myparser = HTMLTableParser(datasource)
@@ -128,32 +137,23 @@ data = myparser.get_data()
 #print(header)
 
 # convert list of list to list of objects
-# and add specials indicators
-dataO = []
+dataObj = []
 t = date.today()
 for row in data:
     myPerformance = TradencyPerformance(header, row)
-	
-    myPerformance.__dict__['Espérance'] = (myPerformance.__dict__['% gain']/100)*myPerformance.__dict__['GMT (pips)'] + (1-myPerformance.__dict__['% gain']/100)*myPerformance.__dict__['PMT (pips)']
-    TradeDepuis = t - myPerformance.__dict__['Date']
-    myPerformance.__dict__['TradeDepuis'] = t - myPerformance.__dict__['Date'] 
-    myPerformance.__dict__['NbTradesParJour'] = float(myPerformance.__dict__['NumTrades'])/(TradeDepuis.days)
-	
-    dataO.append(myPerformance)
+    dataObj.append(myPerformance)
 
 #print(row)
 
 #['Stratégie', 'Symbole', 'T-Score', 'NumTrades', 'Max DD', 'Pips', 'Positions Max', '% gain', 'TAR', 'Profit', 'Facteur de Profit', 'Date', 'GMT (pips)', 'Temps de Trade Moyen', 'PMT (pips)', 'TPM (pips)', 'PMT (pips)']
 
-criterium = 'T-Score' #'Espérance' #'T-Score'
+criterium = 'T-Score' #'Temps de Trade Moyen' #'T-Score' #'Espérance'
 descending = True
-nw_data=sorted(dataO, key=lambda dataO: dataO.__dict__[criterium], reverse=not descending)
-#nw_data=sorted(dataO, key=lambda dataO: dataO.__dict__['Espérance'], reverse=False)
-#nw_data=sorted(dataO, key=lambda dataO: dataO.__dict__['Pips'], reverse=False)
+nw_data = sorted(dataObj, key=lambda dataObj: dataObj.__dict__[criterium], reverse=not descending)
 i=1
 for row in nw_data:
-    #if row.__dict__['TradeDepuis']>timedelta(30) and row.__dict__['NumTrades']>30 and row.__dict__['Facteur de Profit']>1 and row.__dict__['Facteur de Profit']<3.5:
-    if True:
+    if row.__dict__['TradeDepuis']>timedelta(30) and row.__dict__['NumTrades']>30 and row.__dict__['Facteur de Profit']>1 and row.__dict__['Facteur de Profit']<3.5:
+    #if True:
         print("=== {4}: {0}\t\t{1}\t{2}={3} ===".format(row.__dict__['Stratégie'], row.__dict__['Symbole'], criterium, row.__dict__[criterium], i))
         #print(row)
         row.display()
