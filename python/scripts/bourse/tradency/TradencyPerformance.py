@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 #    TradencyPerformance analyzer
+#
 #       But : ce script permet d'analyser les performances de diverses stratégies utilisées
 #       dans le système de trading automatique Tradency http://www.tradency.com/
 #
