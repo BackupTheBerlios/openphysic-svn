@@ -12,6 +12,8 @@
 #       modifiez-le afin qu'il vous convienne en ajoutant des critères complémentaires
 #       aucune garantie n'est apportée quand à l'utilisation de ce script
 #       c'est vous qui tradez et qui devez respecter un money management !
+#       pensez à observer l'historique de trading d'une stratégie afin de vraiment vous assurer
+#       qu'elle vous aurait convenu (en espérant qu'elle vous convienne par la suite)
 #
 #    Copyright (C) 2010  "Sébastien CELLES" <s.celles@gmail.com>
 #
@@ -180,7 +182,7 @@ descending = True
 nw_data = sorted(dataObj, key=lambda dataObj: dataObj.__dict__[criterium], reverse=not descending)
 i=1
 for row in nw_data:
-    if row.__dict__['TradeDepuis']>timedelta(30) and row.__dict__['NumTrades']>30 and row.__dict__['Facteur de Profit']>1 and row.__dict__['Facteur de Profit']<3.5 and row.__dict__['Espérance']>0:
+    if row.__dict__['TradeDepuis']>timedelta(30) and row.__dict__['NumTrades']>30 and row.__dict__['Facteur de Profit']>1 and row.__dict__['Facteur de Profit']<3.5 and row.__dict__['Espérance']>5:
     #if True:
         print("=== {4}: {0}\t\t{1}\t{2}={3} ===".format(row.__dict__['Stratégie'], row.__dict__['Symbole'], criterium, row.__dict__[criterium], i))
         #print(row)
