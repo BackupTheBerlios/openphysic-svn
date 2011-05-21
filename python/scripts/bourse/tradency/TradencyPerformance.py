@@ -5,14 +5,14 @@
 #       dans le système de trading automatique Tradency http://www.tradency.com/
 #
 #       Technique : exportez depuis l'interface de Tradency le fichier Excel contenant les performances
-#       (en réalité c'est un fichier HTML qui contient un tableau)
+#       (en réalité ça n'est pas un fichier Excel mais c'est un fichier HTML qui contient un tableau)
 #       copiez ce fichier sous le nom TradencyPerformance.html
 #       lancez le script via $ python3 TradencyPerformance.py
 #       modifiez-le afin qu'il vous convienne en ajoutant des critères complémentaires
 #       aucune garantie n'est apportée quand à l'utilisation de ce script
 #       c'est vous qui tradez et qui devez respecter un money management !
 #
-#    Copyright (C) 2010  "Sebastien CELLES" <s.celles@gmail.com>
+#    Copyright (C) 2010  "Sébastien CELLES" <s.celles@gmail.com>
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
