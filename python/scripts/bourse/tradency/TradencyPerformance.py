@@ -9,7 +9,8 @@
 #       copiez ce fichier sous le nom TradencyPerformance.html
 #       lancez le script via $ python3 TradencyPerformance.py
 #       modifiez-le afin qu'il vous convienne en ajoutant des critères complémentaires
-#       aucune garantie n'est apportée quand à l'utilisation de ce script (c'est vous qui tradez !)
+#       aucune garantie n'est apportée quand à l'utilisation de ce script
+#       c'est vous qui tradez et qui devez respecter un money management !
 #
 #    Copyright (C) 2010  "Sebastien CELLES" <s.celles@gmail.com>
 #
