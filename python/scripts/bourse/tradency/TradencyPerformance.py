@@ -37,7 +37,7 @@ datasource = open('TradencyPerformance.html')
 #myparser = HTMLTableParser(datasource)
 #myparser.parse()
 myparser = TradencyPerformanceParser(datasource)
-myparser.print_data()
+#myparser.print_data()
 
 header = myparser.get_header()
 data = myparser.get_data()
@@ -67,6 +67,8 @@ for row in nw_data:
         row.display()
         print('')
         i = i + 1
+
+
 
 """
 Mes remarques
