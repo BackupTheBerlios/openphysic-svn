@@ -5,7 +5,7 @@
 #       But : ce script permet d'analyser les performances de diverses stratégies utilisées
 #       dans le système de trading automatique Tradency http://www.tradency.com/
 #
-#    Copyright (C) 2010  "Sébastien CELLES" <s.celles@gmail.com>
+#    Copyright (C) 2011  "Sébastien CELLES" <s.celles@gmail.com>
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by

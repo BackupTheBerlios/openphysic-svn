@@ -15,7 +15,7 @@
 #       pensez à observer l'historique de trading d'une stratégie afin de vraiment vous assurer
 #       qu'elle vous aurait convenu (en espérant qu'elle vous convienne par la suite)
 #
-#    Copyright (C) 2010  "Sébastien CELLES" <s.celles@gmail.com>
+#    Copyright (C) 2011  "Sébastien CELLES" <s.celles@gmail.com>
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
