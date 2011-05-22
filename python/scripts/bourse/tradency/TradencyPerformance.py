@@ -33,7 +33,7 @@
 
 from TradencyPerformanceClass import *
 
-datasource = open('TradencyPerformance.html')
+datasource = open('Performance.html')
 #myparser = HTMLTableParser(datasource)
 #myparser.parse()
 myparser = TradencyPerformanceParser(datasource)
