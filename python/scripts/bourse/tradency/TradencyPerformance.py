@@ -4,6 +4,7 @@
 #
 #       But : ce script permet d'analyser les performances de diverses stratégies utilisées
 #       dans le système de trading automatique Tradency http://www.tradency.com/
+#       utilisé par différents brokers sous le nom FXCM Forex System Selector, Alpari NZ Systematic ...
 #
 #       Technique : exportez depuis l'interface de Tradency le fichier Excel contenant les performances
 #       (en réalité ça n'est pas un fichier Excel mais c'est un fichier HTML qui contient un tableau)
