@@ -73,3 +73,4 @@ Mes remarques
 http://www.trader-forex.fr/forum/systemes-de-trading-auto/11080-fxcm-system-selector-fss-6.html
 
 """
+
