@@ -52,22 +52,24 @@ for row in data:
     dataObj.append(myPerformance)
 
 #print(row)
-
 #['Stratégie', 'Symbole', 'T-Score', 'NumTrades', 'Max DD', 'Pips', 'Positions Max', '% gain', 'TAR', 'Profit', 'Facteur de Profit', 'Date', 'GMT (pips)', 'Temps de Trade Moyen', 'PMT (pips)', 'TPM (pips)', 'PMT (pips)']
 
 criterium = 'T-Score' #'Temps de Trade Moyen' #'T-Score' #'Espérance'
-descending = True
+descending = False
 nw_data = sorted(dataObj, key=lambda dataObj: dataObj.__dict__[criterium], reverse=not descending)
-i=1
+
+dataObjSelected = []
 for row in nw_data:
     if row.__dict__['TradeDepuis']>timedelta(30) and row.__dict__['NumTrades']>30 and row.__dict__['Facteur de Profit']>1 and row.__dict__['Facteur de Profit']<3.5 and row.__dict__['Espérance']>5:
-    #if True:
-        print("=== {4}: {0}\t\t{1}\t{2}={3} ===".format(row.__dict__['Stratégie'], row.__dict__['Symbole'], criterium, row.__dict__[criterium], i))
-        #print(row)
-        row.display()
-        print('')
-        i = i + 1
+        dataObjSelected.append(row)
 
+i=1
+for row in dataObjSelected:
+    print("=== {4}/{5} : {0}\t\t{1}\t{2}={3} ===".format(row.__dict__['Stratégie'], row.__dict__['Symbole'], criterium, row.__dict__[criterium], i, len(dataObjSelected)))
+    #print(row)
+    row.display()
+    print('')
+    i = i + 1
 
 
 """
