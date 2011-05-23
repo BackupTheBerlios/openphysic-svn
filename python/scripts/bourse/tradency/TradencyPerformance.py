@@ -61,6 +61,20 @@ for row in data:
 
 #print(row)
 
+
+#  ###########################################
+#  # select data using a filter
+#  ###########################################
+
+filter = True
+if filter:
+    dataObjSelected = []
+    for row in dataObj:
+        if row.__dict__['TradeDepuis']>timedelta(30) and row.__dict__['NumTrades']>30 and row.__dict__['Facteur de Profit']>1 and row.__dict__['Facteur de Profit']<3.5 and row.__dict__['Espérance']>5:
+            dataObjSelected.append(row)
+else:
+    dataObjSelected = dataObj
+
 #  ###########################################
 #  # sort data using a criterion
 #  ###########################################
@@ -69,25 +83,17 @@ for row in data:
 
 criterion = 'T-Score' #'Temps de Trade Moyen' #'T-Score' #'Espérance'
 descending = False
-nw_data = sorted(dataObj, key=lambda dataObj: dataObj.__dict__[criterion], reverse=not descending)
+dataObjSorted = sorted(dataObjSelected, key=lambda dataObjSelected: dataObjSelected.__dict__[criterion], reverse=not descending)
 
 
-#  ###########################################
-#  # sort data using a filter
-#  ###########################################
-
-dataObjSelected = []
-for row in nw_data:
-    if row.__dict__['TradeDepuis']>timedelta(30) and row.__dict__['NumTrades']>30 and row.__dict__['Facteur de Profit']>1 and row.__dict__['Facteur de Profit']<3.5 and row.__dict__['Espérance']>5:
-        dataObjSelected.append(row)
 
 #  ###########################################
 #  # display data (selected and sorted)
 #  ###########################################
 
 i=1
-for row in dataObjSelected:
-    print("=== {4}/{5} : {0}\t\t{1}\t{2}={3} ===".format(row.__dict__['Stratégie'], row.__dict__['Symbole'], criterion, row.__dict__[criterion], i, len(dataObjSelected)))
+for row in dataObjSorted:
+    print("=== {4}/{5} : {0}\t\t{1}\t{2}={3} ===".format(row.__dict__['Stratégie'], row.__dict__['Symbole'], criterion, row.__dict__[criterion], i, len(dataObjSorted)))
     #print(row)
     row.display()
     print('')
