@@ -64,3 +64,5 @@ History
 	Portfolio
 		Calculer exposition à partir du portfolio et du solde
 		Distribution de Symboles de Portefeuille
+		
+	Faire un dictionnaire qui traduit les noms de colonnes (pb entre 2 langues ou dans une même langue colonne avec des noms différents mais même signification)
