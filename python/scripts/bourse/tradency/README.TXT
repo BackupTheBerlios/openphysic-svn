@@ -79,11 +79,6 @@ History
 	 BuySell ou Direction (en interne booléen) if achatvente == Direction.Buy
 	 Currency (ex EUR), Pair (ex EURUSD avec valeur buy-sell ask-bid)
 	 
-strH2timedelta
-strDate2date
-strBuySell2BooleanBuy
-strHighLow2HighLow
-strDatetime2datetime
 
 MyHistory
 types = [int, int, str, str, str, self.strBuySell2BooleanBuy, int, float, strDatetime2datetime, float, strDatetime2datetime, float, float, float, float, float, float]

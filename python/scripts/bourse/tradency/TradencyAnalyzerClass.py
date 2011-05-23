@@ -168,6 +168,9 @@ class TradencyPerformance(Dict2Obj):
         self.__dict__['NbTradesParJour'] = float(self.__dict__['NumTrades'])/(TradeDepuis.days)
 
 
+#  ###########################################
+
+
 class TradencyHistoryParser(HTMLTableParser):
     def __init__(self, fh, types=[]):
         types = [int, str, str, Direction, float, self.strDatetime2datetime, float, self.strDatetime2datetime, float, self.strHighLow2HighLow, float, float, float]
@@ -179,6 +182,9 @@ class TradencyHistory(Dict2Obj):
         Dict2Obj.__init__(self, format, value)
 
 
+#  ###########################################
+
+
 class TradencyMyHistoryParser(HTMLTableParser):
     def __init__(self, fh, types=[]):
         types = [int, int, str, str, str, Direction, int, float, self.strDatetime2datetime, float, self.strDatetime2datetime, float, float, float, float, float, float]
@@ -186,5 +192,47 @@ class TradencyMyHistoryParser(HTMLTableParser):
 
 
 class TradencyMyHistory(Dict2Obj):
+    def __init__(self, format, value):
+        Dict2Obj.__init__(self, format, value)
+        
+
+#  ###########################################
+
+
+class TradencyOrdersParser(HTMLTableParser):
+    def __init__(self, fh, types=[]):
+        types = [int, int, str, str, Direction, float, float, float, float, float, self.strDatetime2datetime]
+        HTMLTableParser.__init__(self, fh, types)
+
+
+class TradencyOrders(Dict2Obj):
+    def __init__(self, format, value):
+        Dict2Obj.__init__(self, format, value)
+
+
+#  ###########################################
+
+
+class TradencyPortfolioParser(HTMLTableParser):
+    def __init__(self, fh, types=[]):
+        types = [boolean, int, str, str, float, int, int, str, float, float, float]
+        HTMLTableParser.__init__(self, fh, types)
+
+
+class TradencyPortfolio(Dict2Obj):
+    def __init__(self, format, value):
+        Dict2Obj.__init__(self, format, value)
+
+
+#  ###########################################
+
+
+class TradencyPositionsParser(HTMLTableParser):
+    def __init__(self, fh, types=[]):
+        types = [int, int, str, str, Direction, float, float, float, float, float, float, float, float, self.strDatetime2datetime]
+        HTMLTableParser.__init__(self, fh, types)
+
+
+class TradencyPositions(Dict2Obj):
     def __init__(self, format, value):
         Dict2Obj.__init__(self, format, value)
