@@ -2,8 +2,7 @@
 
 #    FOREX class
 #
-#       But : ce script permet d'analyser les performances de diverses stratégies utilisées
-#       dans le système de trading automatique Tradency http://www.tradency.com/
+#       But : ces classes définissent divers objets utilisés dans le FOREX
 #
 #    Copyright (C) 2011  "Sébastien CELLES" <s.celles@gmail.com>
 #

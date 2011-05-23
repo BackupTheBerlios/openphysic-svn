@@ -2,7 +2,7 @@
 
 #    Tradency Analyzer for MyHistory
 #
-#       But : ce script permet d'analyser les trades effectué sur le compte
+#       But : ce script permet d'analyser les trades effectués sur le compte
 #       dans le système de trading automatique Tradency http://www.tradency.com/
 #       utilisé par différents brokers sous le nom FXCM Forex System Selector, Alpari NZ Systematic ...
 #
