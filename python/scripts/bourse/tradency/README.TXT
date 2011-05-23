@@ -63,9 +63,14 @@ History
 		
 	Portfolio
 		Calculer exposition à partir du portfolio et du solde
-		Distribution de Symboles de Portefeuille
+		Distribution de Symboles de Portefeuille (% EURUSD ; % ... en fonction des lots)
+		Distribution de Volumes de Stratégies de Portefeuille
 		
-	Faire un dictionnaire qui traduit les noms de colonnes (pb entre 2 langues ou dans une même langue colonne avec des noms différents mais même signification)
+	Faire un dictionnaire qui traduit les noms de colonnes
+		- pb entre 2 langues
+			2 fichiers exportés depuis l'interface ont des entêtes différentes selon la langue choisie
+			-> pb pour écrire un code portable entre langues (cf i18n et Python)
+		- dans une même langue colonne avec des noms différents mais même signification)
 	
 	Créer des classes
 	 BuySell ou Direction (en interne booléen) if achatvente == Direction.Buy
