@@ -175,12 +175,14 @@ class TradencyHistoryParser(HTMLTableParser):
     def __init__(self, fh, types=[]):
         types = [int, str, str, Direction, float, self.strDatetime2datetime, float, self.strDatetime2datetime, float, self.strHighLow2HighLow, float, float, float]
         HTMLTableParser.__init__(self, fh, types)
-
+        
 
 class TradencyHistory(Dict2Obj):
     def __init__(self, format, value):
         Dict2Obj.__init__(self, format, value)
 
+        # add specials indicators
+        self.__dict__['Durée Trade'] = self.__dict__['Fermer Heure '] - self.__dict__['Ouvrir Heure ']
 
 #  ###########################################
 

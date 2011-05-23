@@ -37,6 +37,38 @@ header = myparser.get_header()
 data = myparser.get_data()
 
 #print(data)
+#for row in data:
+#	print(row)
+#print(header)
+
+#  ###########################################
+#  # convert list of list to list of objects
+#  ###########################################
+
+dataObj = []
 for row in data:
-	print(row)
-print(header)
+    dataObj.append(TradencyHistory(header, row))
+
+
+#  ###########################################
+#  # display data (selected and sorted)
+#  ###########################################
+
+i = 1
+NbTrades = len(dataObj)
+for row in dataObj:
+    print("=== {0}/{1} : {2}\t\t{3}\t{4}\t{5} ===".format(i, NbTrades, row.__dict__['Stratégie'], row.__dict__['A/V'], row.__dict__['Montant (k)'], row.__dict__['Symbole']))
+    #print(row)
+    row.display()
+    print('')
+    i = i + 1
+
+#  ###########################################
+#  # Calculate stats
+#  ###########################################
+DuréeTotaleTrades = timedelta()
+for row in dataObj:
+	DuréeTotaleTrades = DuréeTotaleTrades + row.__dict__['Durée Trade']
+
+#print("Durée totale des trades = {0}".format(DuréeTotaleTrades))
+print("Durée moyenne des trades = {0}".format(DuréeTotaleTrades//NbTrades)) # tmdelta//n uniquement si n entier
