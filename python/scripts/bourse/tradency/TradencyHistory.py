@@ -23,3 +23,20 @@
 
 from TradencyAnalyzerClass import *
 
+#  ###########################################
+#  # parse HTML file        
+#  ###########################################
+
+datasource = open('History.html')
+#myparser = HTMLTableParser(datasource)
+#myparser.parse()
+myparser = TradencyHistoryParser(datasource)
+#myparser.print_data()
+
+header = myparser.get_header()
+data = myparser.get_data()
+
+#print(data)
+for row in data:
+	print(row)
+print(header)

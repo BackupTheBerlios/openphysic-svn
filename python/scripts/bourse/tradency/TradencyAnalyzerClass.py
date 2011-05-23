@@ -86,8 +86,11 @@ class HTMLTableParser(HTMLParser):
         else: # data
             try:
                 self.row.append(self.types[self.cols-1](data)) # cast to float, int or other
-            except:
+            except IndexError: # Index out of range
                 self.row.append(data) # string
+            #except: # uncomment this to see in which colon is cast error, comment this to see error
+            #    self.row.append('Err')
+
 
     def get_data(self):
         return self.data
@@ -143,3 +146,43 @@ class TradencyPerformance(Dict2Obj):
         TradeDepuis = t - self.__dict__['Date']
         self.__dict__['TradeDepuis'] = t - self.__dict__['Date'] 
         self.__dict__['NbTradesParJour'] = float(self.__dict__['NumTrades'])/(TradeDepuis.days)
+
+
+# ToDo
+
+#class BuySell:
+#    def __init__(self, format, value):
+#	    self.__buy__ = None
+#
+#    def __repr__(self):
+#    	if self.__buy__ == True:
+#    	    return 'Yes we Buy'
+#    	elif self.__buy__ == False:
+#    	    return 'Oh we Sell'
+#    	else:
+#    	    return None
+
+class TradencyHistoryParser(HTMLTableParser):
+    def strDatetime2datetime(self, data):
+        return datetime.strptime(data, '%m/%d/%Y %H:%M:%S')
+
+    def strBuySell2BooleanBuy(self, data):
+        if data=='Buy':
+            return True
+        elif data=='Sell':
+            return False
+        else:
+            return None
+
+    def strHighLow2HighLow(self, data):
+        data = data.split('/')
+        #data = float(data)
+        data[0] = float(data[0])
+        data[1] = float(data[1])
+        return data
+
+    def __init__(self, fh, types=[]):
+        types = [int, str, str, self.strBuySell2BooleanBuy, float, self.strDatetime2datetime, float, self.strDatetime2datetime, float, self.strHighLow2HighLow, float, float, float]
+        #types = [] # just for test
+        HTMLTableParser.__init__(self, fh, types)
+        #self.feed(fh.read())

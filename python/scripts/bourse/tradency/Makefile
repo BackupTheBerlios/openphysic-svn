@@ -10,6 +10,10 @@ perf:
 myhist:
 	$(PYTHON) TradencyMyHistory.py
 
+hist:
+	$(PYTHON) TradencyHistory.py
+
+
 .PHONY: clean
 
 clean:
