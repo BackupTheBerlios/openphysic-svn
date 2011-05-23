@@ -18,7 +18,7 @@ History
 		% trades gagnants
 		% trades perdants
 		Max DD
-		PM
+		PM (nb max de positions ouvertes en simultané)
 		Facteur de Profit
 		Temps de Trade Moyen
 		Pips moyen par trade
@@ -46,7 +46,7 @@ History
 			
 	Simuler la mise en place d'un stop loss (SL) sur une stratégie existante
 
-	Simuler la mise en place d'un take profil (TP) sur une stratégie existante
+	Simuler la mise en place d'un take profit (TP=limite) sur une stratégie existante
 
 	Optimiser le SL et le TP à partir d'une stratégie existante
 	
