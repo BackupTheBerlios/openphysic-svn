@@ -21,9 +21,12 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>
 
 
-class BuySell:
-    def __init__(self, format, value):
+class Direction:
+    def __init__(self):
 	    self.__buy__ = None
+
+	    self.Buy = True
+	    self.Sell = False
 
     def __repr__(self):
     	if self.__buy__ == True:
@@ -32,3 +35,5 @@ class BuySell:
     	    return 'Oh we Sell'
     	else:
     	    return None
+
+dir = Direction()
