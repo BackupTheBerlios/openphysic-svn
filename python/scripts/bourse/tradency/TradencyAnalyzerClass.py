@@ -192,3 +192,7 @@ class TradencyMyHistoryParser(HTMLTableParser):
     def __init__(self, fh, types=[]):
         types = [int, int, str, str, str, self.strBuySell2BooleanBuy, int, float, self.strDatetime2datetime, float, self.strDatetime2datetime, float, float, float, float, float, float]
         HTMLTableParser.__init__(self, fh, types)
+
+class TradencyMyHistory(Dict2Obj):
+    def __init__(self, format, value):
+        Dict2Obj.__init__(self, format, value)
