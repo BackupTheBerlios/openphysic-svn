@@ -5,14 +5,17 @@ http://www.mataf.net/forums/Tradency-1-Mois-De-Test-t17146.html
 http://forexforums.dailyfx.com/demandez-aux-experts/276338-fss-tradency.html
 
 2011-05-22
-	History.xls
-	MyHistory.xls
-	Portfolio.xls
+	Performance.xls : comparaison de diverses stratégies
+	History.xls : historique de trading d'une stratégie
+	MyHistory.xls : mon historique de trading (combinaison de différentes + manuel)
+	Portfolio.xls : paramétrage des stratégies
+	Positions.xls : positions ouvertes
+	Orders.xls : : ordres
 	
 TODO:
 History
 	Faire script pour analyser les positions et qui calcule
-	(pour un intervalle de temps donné ou pour tout)
+	(pour un intervalle de temps donné ou pour toutes les données)
 		nb de transactions
 		total pips
 		% trades gagnants
