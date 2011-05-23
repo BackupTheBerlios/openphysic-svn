@@ -10,6 +10,7 @@ http://www.mataf.net/forums/Tradency-1-Mois-De-Test-t17146.html
 	Portfolio.xls
 	
 TODO:
+History
 	Faire script pour analyser les positions et qui calcule
 	(pour un intervalle de temps donné ou pour tout)
 		nb de transactions
@@ -27,7 +28,7 @@ TODO:
 		Perte de Trade Maximale (pips)
 		Rollover ($)
 		Symboles Tradés
-		
+
 	Calculer le nb de trades avec un total pips dans tel ou tel intervalle
 		principe : on définit les bornes ex :
 			[0] x<=0 x>0
@@ -53,9 +54,13 @@ TODO:
 		(dépend de la paire traitée)
 		Pip stands for percentage in point. A pip is equal to 1/100th of 1 percent
 	
-	Calculer le profit en EUR (en fonction du nb de pips)
+	Calculer le profit en EUR (en fonction du nb de pips, du cours de la paire xxx/yyy, du cours yyy/EUR et du nb de lots)
 	
 	Calculer valeur interpolée dans temps
 		y = (yb-ya)/(tb-ta)*(t-ta)+ya
 		[[t1, y1], [t2, y2], ...] (t croissant)
 		trouver y à un t quelconque (ne pas extrapoler)
+		
+	Portfolio
+		Calculer exposition à partir du portfolio et du solde
+		Distribution de Symboles de Portefeuille
