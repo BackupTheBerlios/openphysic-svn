@@ -87,7 +87,7 @@ for row in nw_data:
 
 i=1
 for row in dataObjSelected:
-    print("=== {4}/{5} : {0}\t\t{1}\t{2}={3} ===".format(row.__dict__['Stratégie'], row.__dict__['Symbole'], criterium, row.__dict__[criterium], i, len(dataObjSelected)))
+    print("=== {4}/{5} : {0}\t\t{1}\t{2}={3} ===".format(row.__dict__['Stratégie'], row.__dict__['Symbole'], criterion, row.__dict__[criterion], i, len(dataObjSelected)))
     #print(row)
     row.display()
     print('')
