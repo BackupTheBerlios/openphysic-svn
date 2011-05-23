@@ -2,7 +2,7 @@ A voir
 
 http://www.trader-forex.fr/forum/systemes-de-trading-auto/11080-fxcm-system-selector-fss-6.html
 http://www.mataf.net/forums/Tradency-1-Mois-De-Test-t17146.html
-
+http://forexforums.dailyfx.com/demandez-aux-experts/276338-fss-tradency.html
 
 2011-05-22
 	History.xls
@@ -66,3 +66,7 @@ History
 		Distribution de Symboles de Portefeuille
 		
 	Faire un dictionnaire qui traduit les noms de colonnes (pb entre 2 langues ou dans une même langue colonne avec des noms différents mais même signification)
+	
+	Créer des classes
+	 BuySell ou Direction (en interne booléen) if achatvente == Direction.Buy
+	 Currency (ex EUR), Pair (ex EURUSD)

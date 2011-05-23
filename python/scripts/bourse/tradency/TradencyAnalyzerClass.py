@@ -162,6 +162,9 @@ class TradencyPerformance(Dict2Obj):
 #    	else:
 #    	    return None
 
+# class Currency
+# class Pair
+
 class TradencyHistoryParser(HTMLTableParser):
     def strDatetime2datetime(self, data):
         return datetime.strptime(data, '%m/%d/%Y %H:%M:%S')
