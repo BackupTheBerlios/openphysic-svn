@@ -33,6 +33,10 @@
 
 from TradencyPerformanceClass import *
 
+#  ###########################################
+#  # parse HTML file        
+#  ###########################################
+
 datasource = open('Performance.html')
 #myparser = HTMLTableParser(datasource)
 #myparser.parse()
@@ -45,23 +49,41 @@ data = myparser.get_data()
 #print(data)
 #print(header)
 
-# convert list of list to list of objects
+
+#  ###########################################
+#  # convert list of list to list of objects
+#  ###########################################
+
 dataObj = []
 for row in data:
     myPerformance = TradencyPerformance(header, row)
     dataObj.append(myPerformance)
 
 #print(row)
+
+#  ###########################################
+#  # sort data using a criterion
+#  ###########################################
+
 #['Stratégie', 'Symbole', 'T-Score', 'NumTrades', 'Max DD', 'Pips', 'Positions Max', '% gain', 'TAR', 'Profit', 'Facteur de Profit', 'Date', 'GMT (pips)', 'Temps de Trade Moyen', 'PMT (pips)', 'TPM (pips)', 'PMT (pips)']
 
-criterium = 'T-Score' #'Temps de Trade Moyen' #'T-Score' #'Espérance'
+criterion = 'T-Score' #'Temps de Trade Moyen' #'T-Score' #'Espérance'
 descending = False
-nw_data = sorted(dataObj, key=lambda dataObj: dataObj.__dict__[criterium], reverse=not descending)
+nw_data = sorted(dataObj, key=lambda dataObj: dataObj.__dict__[criterion], reverse=not descending)
+
+
+#  ###########################################
+#  # sort data using a filter
+#  ###########################################
 
 dataObjSelected = []
 for row in nw_data:
     if row.__dict__['TradeDepuis']>timedelta(30) and row.__dict__['NumTrades']>30 and row.__dict__['Facteur de Profit']>1 and row.__dict__['Facteur de Profit']<3.5 and row.__dict__['Espérance']>5:
         dataObjSelected.append(row)
+
+#  ###########################################
+#  # display data (selected and sorted)
+#  ###########################################
 
 i=1
 for row in dataObjSelected:
@@ -70,12 +92,3 @@ for row in dataObjSelected:
     row.display()
     print('')
     i = i + 1
-
-
-"""
-Mes remarques
-
-http://www.trader-forex.fr/forum/systemes-de-trading-auto/11080-fxcm-system-selector-fss-6.html
-
-"""
-
