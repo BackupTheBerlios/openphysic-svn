@@ -22,7 +22,6 @@
 
 from html.parser import HTMLParser
 from datetime import date, datetime, timedelta
-#import csv
 
 class HTMLTableParser(HTMLParser):
     def __init__(self, fh, types=[]):
@@ -139,6 +138,7 @@ class TradencyPerformanceParser(HTMLTableParser):
         HTMLTableParser.__init__(self, fh, types)
         #self.feed(fh.read())
 
+
 class Dict2Obj:
     def __init__(self, format, value):
         
@@ -154,6 +154,7 @@ class Dict2Obj:
         for key in self.__dict__:
             print("\t{0} = {1}".format(key,self.__dict__[key]))
 
+
 class TradencyPerformance(Dict2Obj):
     def __init__(self, format, value):
         Dict2Obj.__init__(self, format, value)
@@ -166,26 +167,22 @@ class TradencyPerformance(Dict2Obj):
         self.__dict__['NbTradesParJour'] = float(self.__dict__['NumTrades'])/(TradeDepuis.days)
 
 
-# ToDo
-
-
-
-# class Currency
-# class Pair
-
 class TradencyHistoryParser(HTMLTableParser):
     def __init__(self, fh, types=[]):
         types = [int, str, str, self.strBuySell2BooleanBuy, float, self.strDatetime2datetime, float, self.strDatetime2datetime, float, self.strHighLow2HighLow, float, float, float]
         HTMLTableParser.__init__(self, fh, types)
 
+
 class TradencyHistory(Dict2Obj):
     def __init__(self, format, value):
         Dict2Obj.__init__(self, format, value)
+
 
 class TradencyMyHistoryParser(HTMLTableParser):
     def __init__(self, fh, types=[]):
         types = [int, int, str, str, str, self.strBuySell2BooleanBuy, int, float, self.strDatetime2datetime, float, self.strDatetime2datetime, float, float, float, float, float, float]
         HTMLTableParser.__init__(self, fh, types)
+
 
 class TradencyMyHistory(Dict2Obj):
     def __init__(self, format, value):
