@@ -18,17 +18,17 @@ History
 	(pour un intervalle de temps donné ou pour toutes les données)
 ->		nb de transactions
 ->		total pips
-		% trades gagnants
-		% trades perdants
-		Max DD
+->		% trades gagnants
+->		% trades perdants
+->		Max DD
 		PM (nb max de positions ouvertes en simultané)
 		Facteur de Profit
-		Temps de Trade Moyen
-		Pips moyen par trade
-		Gain de Trade Moyen (pips)
-		Perte de Trade Moyenne (pips)
-		Trade Profitable Maximal (pips)
-		Perte de Trade Maximale (pips)
+->		Temps de Trade Moyen
+->		Pips moyen par trade
+->		Gain de Trade Moyen (pips)
+->		Perte de Trade Moyenne (pips)
+->		Trade Profitable Maximal (pips)
+->		Perte de Trade Maximale (pips)
 		Rollover ($)
 		Symboles Tradés
 
