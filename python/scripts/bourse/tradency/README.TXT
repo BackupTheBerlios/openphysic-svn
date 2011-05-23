@@ -16,8 +16,8 @@ TODO:
 History
 	Faire script pour analyser les positions et qui calcule
 	(pour un intervalle de temps donné ou pour toutes les données)
-		nb de transactions
-		total pips
+->		nb de transactions
+->		total pips
 		% trades gagnants
 		% trades perdants
 		Max DD
