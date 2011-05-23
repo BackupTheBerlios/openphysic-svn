@@ -168,17 +168,7 @@ class TradencyPerformance(Dict2Obj):
 
 # ToDo
 
-#class BuySell:
-#    def __init__(self, format, value):
-#	    self.__buy__ = None
-#
-#    def __repr__(self):
-#    	if self.__buy__ == True:
-#    	    return 'Yes we Buy'
-#    	elif self.__buy__ == False:
-#    	    return 'Oh we Sell'
-#    	else:
-#    	    return None
+
 
 # class Currency
 # class Pair
