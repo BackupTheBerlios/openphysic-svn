@@ -23,12 +23,12 @@
 
 class Direction:
     def __init__(self, dir = 'Buy'):
+        self.__buy__ = None
         if dir == 'Buy':
             self.__buy__ = True
         elif dir == 'Sell':
             self.__buy__ = False
         else:
-            #self.__buy__ = None
             raise Exception("'Buy' or 'Sell'")
 
     def __repr__(self):
