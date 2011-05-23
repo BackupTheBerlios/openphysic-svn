@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-#    TradencyPerformance analyzer
+#    Tradency analyzer for Performance
 #
 #       But : ce script permet d'analyser les performances de diverses stratégies utilisées
 #       dans le système de trading automatique Tradency http://www.tradency.com/
@@ -31,7 +31,7 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-from TradencyPerformanceClass import *
+from TradencyAnalyzerClass import *
 
 #  ###########################################
 #  # parse HTML file        
