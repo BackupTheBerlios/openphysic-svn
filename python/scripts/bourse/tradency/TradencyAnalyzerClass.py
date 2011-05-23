@@ -91,7 +91,6 @@ class HTMLTableParser(HTMLParser):
             #except: # uncomment this to see in which colon is cast error, comment this to see error
             #    self.row.append('Err')
 
-
     def get_data(self):
         return self.data
 
@@ -108,7 +107,6 @@ class HTMLTableParser(HTMLParser):
         print("types = ", self.types)
         print("data = ", self.data)
 
-class TradencyPerformanceParser(HTMLTableParser):
     def strH2timedelta(self, data):
         data = data.split(':')
         return timedelta(hours=int(data[0]), minutes=int(data[1]), seconds=float(data[2]))
@@ -116,6 +114,26 @@ class TradencyPerformanceParser(HTMLTableParser):
     def strDate2date(self, data):
         return datetime.strptime(data, '%m/%d/%Y').date()
 
+    def strDatetime2datetime(self, data):
+        return datetime.strptime(data, '%m/%d/%Y %H:%M:%S')
+
+    def strBuySell2BooleanBuy(self, data):
+        if data=='Buy':
+            return True
+        elif data=='Sell':
+            return False
+        else:
+            return None
+
+    def strHighLow2HighLow(self, data):
+        data = data.split('/')
+        #data = float(data)
+        data[0] = float(data[0])
+        data[1] = float(data[1])
+        return data
+
+
+class TradencyPerformanceParser(HTMLTableParser):
     def __init__(self, fh, types=[]):
         types = [str, str, float, int, float, float, int, float, float, float, float, self.strDate2date, float, self.strH2timedelta, float, float, float]
         HTMLTableParser.__init__(self, fh, types)
@@ -166,26 +184,11 @@ class TradencyPerformance(Dict2Obj):
 # class Pair
 
 class TradencyHistoryParser(HTMLTableParser):
-    def strDatetime2datetime(self, data):
-        return datetime.strptime(data, '%m/%d/%Y %H:%M:%S')
-
-    def strBuySell2BooleanBuy(self, data):
-        if data=='Buy':
-            return True
-        elif data=='Sell':
-            return False
-        else:
-            return None
-
-    def strHighLow2HighLow(self, data):
-        data = data.split('/')
-        #data = float(data)
-        data[0] = float(data[0])
-        data[1] = float(data[1])
-        return data
-
     def __init__(self, fh, types=[]):
         types = [int, str, str, self.strBuySell2BooleanBuy, float, self.strDatetime2datetime, float, self.strDatetime2datetime, float, self.strHighLow2HighLow, float, float, float]
-        #types = [] # just for test
         HTMLTableParser.__init__(self, fh, types)
-        #self.feed(fh.read())
+
+class TradencyMyHistoryParser(HTMLTableParser):
+    def __init__(self, fh, types=[]):
+        types = [int, int, str, str, str, self.strBuySell2BooleanBuy, int, float, self.strDatetime2datetime, float, self.strDatetime2datetime, float, float, float, float, float, float]
+        HTMLTableParser.__init__(self, fh, types)

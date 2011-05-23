@@ -86,9 +86,7 @@ strHighLow2HighLow
 strDatetime2datetime
 
 MyHistory
-types = [int, int, str, str, str, self.strBuySell2BooleanBuy, int, float, strDatetime2datetime, float, strDatetime2datetime, 
-
-float, float, float, float, float, float]
+types = [int, int, str, str, str, self.strBuySell2BooleanBuy, int, float, strDatetime2datetime, float, strDatetime2datetime, float, float, float, float, float, float]
 
 Orders
 #types = [int, int, str, str, self.strBuySell2BooleanBuy, float, float, float, float, float, self.strDatetime2datetime]
