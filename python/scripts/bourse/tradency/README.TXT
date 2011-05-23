@@ -78,3 +78,24 @@ History
 	Créer des classes
 	 BuySell ou Direction (en interne booléen) if achatvente == Direction.Buy
 	 Currency (ex EUR), Pair (ex EURUSD)
+	 
+strH2timedelta
+strDate2date
+strBuySell2BooleanBuy
+strHighLow2HighLow
+strDatetime2datetime
+
+MyHistory
+filter = [int, int, str, str, str, self.strBuySell2BooleanBuy, int, float, strDatetime2datetime, float, strDatetime2datetime, 
+
+float, float, float, float, float, float]
+
+Orders
+#filter = [int, int, str, str, self.strBuySell2BooleanBuy, int, float, float, float, float, self.strDatetime2datetime]
+#à vérifier (pas de données)
+
+Porfolio
+filter = [boolean, int, str, str, float, int, int, str, float, float, float]
+
+Positions
+filter = [int, int, str, str, self.strBuySell2BooleanBuy, float, float, float, float, float, float, float, float, self.strDatetime2datetime]
