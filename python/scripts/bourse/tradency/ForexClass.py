@@ -22,18 +22,34 @@
 
 
 class Direction:
-    def __init__(self):
-	    self.__buy__ = None
-
-	    self.Buy = True
-	    self.Sell = False
+    def __init__(self, dir = 'Buy'):
+        if dir == 'Buy':
+            self.__buy__ = True
+        elif dir == 'Sell':
+            self.__buy__ = False
+        else:
+            #self.__buy__ = None
+            raise Exception("'Buy' or 'Sell'")
 
     def __repr__(self):
     	if self.__buy__ == True:
-    	    return 'Yes we Buy'
+    	    return 'Buy'
     	elif self.__buy__ == False:
-    	    return 'Oh we Sell'
-    	else:
-    	    return None
+    	    return 'Sell'
+    	#else:
+    	#    return 'Undef'
 
-dir = Direction()
+    def __eq__(self, other):
+        return self.__buy__ == other.__buy__
+
+    def __ne__(self, other):
+        return self.__buy__ != other.__buy__
+
+#class Currency
+
+#class Pair
+
+#class Lot
+# Micro
+# Mini
+# Std

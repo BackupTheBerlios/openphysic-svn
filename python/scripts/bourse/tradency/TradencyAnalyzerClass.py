@@ -22,6 +22,7 @@
 
 from html.parser import HTMLParser
 from datetime import date, datetime, timedelta
+from ForexClass import *
 
 class HTMLTableParser(HTMLParser):
     def __init__(self, fh, types=[]):
@@ -169,7 +170,7 @@ class TradencyPerformance(Dict2Obj):
 
 class TradencyHistoryParser(HTMLTableParser):
     def __init__(self, fh, types=[]):
-        types = [int, str, str, self.strBuySell2BooleanBuy, float, self.strDatetime2datetime, float, self.strDatetime2datetime, float, self.strHighLow2HighLow, float, float, float]
+        types = [int, str, str, Direction, float, self.strDatetime2datetime, float, self.strDatetime2datetime, float, self.strHighLow2HighLow, float, float, float]
         HTMLTableParser.__init__(self, fh, types)
 
 

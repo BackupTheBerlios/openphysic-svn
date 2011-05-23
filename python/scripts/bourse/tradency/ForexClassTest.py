@@ -23,4 +23,38 @@
 
 from ForexClass import *
 
+dir = Direction('Buy')
+print(dir)
+
+dir = Direction('Sell')
+print(dir)
+
 dir = Direction()
+print(dir)
+
+#dir = Direction('x')
+#print(dir)
+
+dir1 = Direction('Buy')
+dir2 = Direction('Sell')
+print(dir1 == dir2, False)
+
+dir1 = Direction('Buy')
+dir2 = Direction('Buy')
+print(dir1 == dir2, True)
+
+dir1 = Direction('Sell')
+dir2 = Direction('Sell')
+print(dir1 == dir2, True)
+
+dir1 = Direction('Sell')
+dir2 = Direction('Sell')
+print(dir1 != dir2, False)
+
+dir1 = Direction('Buy')
+dir2 = Direction('Sell')
+print(dir1 != dir2, True)
+
+#dir = Direction('Buy')
+#print(dir)
+#print(not dir)
