@@ -117,13 +117,13 @@ class HTMLTableParser(HTMLParser):
     def strDatetime2datetime(self, data):
         return datetime.strptime(data, '%m/%d/%Y %H:%M:%S')
 
-    def strBuySell2BooleanBuy(self, data):
-        if data=='Buy':
-            return True
-        elif data=='Sell':
-            return False
-        else:
-            return None
+    #def strBuySell2BooleanBuy(self, data):
+    #    if data=='Buy':
+    #        return True
+    #    elif data=='Sell':
+    #        return False
+    #    else:
+    #        return None
 
     def strHighLow2HighLow(self, data):
         data = data.split('/')
@@ -181,7 +181,7 @@ class TradencyHistory(Dict2Obj):
 
 class TradencyMyHistoryParser(HTMLTableParser):
     def __init__(self, fh, types=[]):
-        types = [int, int, str, str, str, self.strBuySell2BooleanBuy, int, float, self.strDatetime2datetime, float, self.strDatetime2datetime, float, float, float, float, float, float]
+        types = [int, int, str, str, str, Direction, int, float, self.strDatetime2datetime, float, self.strDatetime2datetime, float, float, float, float, float, float]
         HTMLTableParser.__init__(self, fh, types)
 
 
