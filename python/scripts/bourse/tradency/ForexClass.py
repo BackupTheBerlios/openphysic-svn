@@ -57,7 +57,7 @@ class Currencies:
     def __init__(self):
         #pass
         reader = csv.reader(open("currencies.csv"), delimiter='\t')
-        writer = csv.reader(open("currencies_nw.csv", 'wb'), delimiter='\t')
+        writer = csv.writer(open("currencies_nw.csv", 'wb'), delimiter='\t')
         data2 = []
         for row in reader:
             row2 = []
@@ -65,7 +65,8 @@ class Currencies:
                 col = col.strip()
                 row2.append(col)
             data2 = row2.append(row2)
-            writer.writerow(row2)
+            print(row2)
+            #writer.writerow(row2)
             
 
 
