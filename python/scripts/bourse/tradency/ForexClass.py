@@ -51,11 +51,14 @@ class Direction:
 class Currency:
 # cf ISO_4217 http://en.wikipedia.org/wiki/ISO_4217
     def __init__(self, code = '', name = '', num = 0, digits = 0, locations = []):
-	    self.Code = code # Symbol
-	    self.Name = name
-	    self.Num = num
-	    self.Digits = digits # ex USD 1.23 => 2 digits
-	    self.Locations = locations
+        if len(code)!=3:
+            raise(Exception('Currency code must be 3 letters long. ex: EUR'))    	
+
+        self.Code = code # Symbol
+        self.Name = name
+        self.Num = num
+        self.Digits = digits # ex USD 1.23 => 2 digits
+        self.Locations = locations
 
     def __repr__(self):
     	return self.Code
@@ -80,12 +83,21 @@ class Currencies(dict):
 
 
 class Pair:
-    def __init__(self, fromC = None, toC = None):
-#    def __init_(self):
+    #def __init__(self, fromC = None, toC = None):
     	# ex EURUSD 1.5767/1.5769 bid/ask sell/buy
-        self.fromC = fromC # ex EUR
-        self.toC = toC # ex USD
-        self.Symbol = ''
+        #self.fromC = fromC # ex EUR
+        #self.toC = toC # ex USD
+        #self.Symbol = ''
+        #self.Bid = 0
+        #self.Ask = 0
+        #self.update()
+
+    def __init__(self, currencies = None, symbol = ''):
+    	# ex EURUSD 1.5767/1.5769 bid/ask sell/buy 1EUR=1.58$
+        if len(symbol)!=6:
+            raise(Exception('Pair symbol must be 6 letters long. ex: EURUSD'))    	
+        self.fromC = Currency(symbol[:3]) # ex EUR
+        self.toC = Currency(symbol[3:]) # ex USD
         self.Bid = 0
         self.Ask = 0
         self.update()
