@@ -2,7 +2,7 @@
 
 #    FOREX class
 #
-#       But : ces classes définissent divers objets utilisés dans le FOREX
+#       But : ces classes définissent divers objets utilisés dans le marché des devises (FOREX=FOReign EXchange)
 #
 #    Copyright (C) 2011  "Sébastien CELLES" <s.celles@gmail.com>
 #
@@ -19,6 +19,7 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>
 
+import csv
 
 class Direction:
     def __init__(self, dir = 'Buy'):
@@ -44,17 +45,45 @@ class Direction:
     def __ne__(self, other):
         return self.__buy__ != other.__buy__
 
-#class Currency
+class Currency:
 # cf ISO_4217 http://en.wikipedia.org/wiki/ISO_4217
-# Symbol
-# Name
-# Num
-# Digits (ex USD 1.23 => 2 digits)
+    def __init_(self):
+	    self.Code = '' # Symbol
+	    self.Name = ''
+	    self.Num = 0
+	    self.Digits = 0 # ex USD 1.23 => 2 digits
 
-#class Pair
-# Symbol
-# Bid
-# Ask
+class Currencies:
+    def __init__(self):
+        #pass
+        reader = csv.reader(open("currencies.csv"), delimiter='\t')
+        writer = csv.reader(open("currencies_nw.csv", 'wb'), delimiter='\t')
+        data2 = []
+        for row in reader:
+            row2 = []
+            for col in row:
+                col = col.strip()
+                row2.append(col)
+            data2 = row2.append(row2)
+            writer.writerow(row2)
+            
+
+
+class Pair:
+    def __init_(self):
+    	# ex EURUSD 1.5767/1.5769 bid/ask sell/buy
+        self.Symbol = ''
+        self.Bid = 0
+        self.Ask = 0
+        self.fromC = None # ex EUR
+        self.toC = None # ex USD
+        
+    def spread(self):
+    	return self.Ask - self.Bid
+
+class Pairs:
+    def __init__(self):
+	    pass
 
 #class Lot
 # Micro 1000
