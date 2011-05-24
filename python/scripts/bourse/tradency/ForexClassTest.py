@@ -27,5 +27,7 @@ myCurs = Currencies()
 print(myCurs.USD)
 #myCurs.USD.display()
 
-myPair = Pair(myCurs.EUR, myCurs.USD)
+#myPair = Pair(myCurs.EUR, myCurs.USD)
+myPair = Pair(myCurs, 'EURUSD')
+
 print(myPair)
