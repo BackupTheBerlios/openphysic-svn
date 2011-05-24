@@ -1,3 +1,4 @@
+ISO4217	Country	Name	Digits
 AFN	Afghanistan	Afghani
 ZAR	Afrique du Sud	Rand
 ALL	Albanie	Lek
@@ -191,3 +192,5 @@ YER	Yemen Rial	YER
 YUN	Yougoslavie	Dinar
 ZMK	Zambie	Kwacha
 ZWD	Zimbabwe	Dollar
+XTS	---	Code réservé
+XXX	---	Code réservé

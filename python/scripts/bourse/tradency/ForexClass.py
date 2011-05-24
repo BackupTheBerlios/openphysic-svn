@@ -45,8 +45,11 @@ class Direction:
         return self.__buy__ != other.__buy__
 
 #class Currency
+# cf ISO_4217 http://en.wikipedia.org/wiki/ISO_4217
 # Symbol
 # Name
+# Num
+# Digits (ex USD 1.23 => 2 digits)
 
 #class Pair
 # Symbol
