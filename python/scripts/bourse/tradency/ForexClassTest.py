@@ -24,4 +24,8 @@ from ForexClass import *
 
 myCurs = Currencies()
 
-print(myCurs.USD.display())
+print(myCurs.USD)
+#myCurs.USD.display()
+
+myPair = Pair(myCurs.EUR, myCurs.USD)
+print(myPair)

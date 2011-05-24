@@ -50,7 +50,7 @@ class Direction:
 
 class Currency:
 # cf ISO_4217 http://en.wikipedia.org/wiki/ISO_4217
-    def __init_(self, code = '', name = '', num = 0, digits = 0, locations = []):
+    def __init__(self, code = '', name = '', num = 0, digits = 0, locations = []):
 	    self.Code = code # Symbol
 	    self.Name = name
 	    self.Num = num
@@ -72,14 +72,7 @@ class Currencies(dict):
         i = 0
         for row in reader:
             if i!=0:
-                cur = Currency()
-                #cur.__init__(row[0], row[3], row[1], row[2])
-                cur.Code = row[0]
-                cur.Name = row[3]
-                cur.Num = row[1] #int(row[1])
-                cur.Digits = row[2]
-                cur.Locations = row[4]
-                self.__dict__[row[0]] = cur
+                self.__dict__[row[0]] = Currency(row[0], row[3], row[1], row[2])
             i = i + 1
         
     def __repr__(self):
@@ -87,17 +80,23 @@ class Currencies(dict):
 
 
 class Pair:
-    def __init_(self):
+    def __init__(self, fromC = None, toC = None):
+#    def __init_(self):
     	# ex EURUSD 1.5767/1.5769 bid/ask sell/buy
+        self.fromC = fromC # ex EUR
+        self.toC = toC # ex USD
         self.Symbol = ''
         self.Bid = 0
         self.Ask = 0
-        self.fromC = None # ex EUR
-        self.toC = None # ex USD
         self.update()
         
     def update(self):
+    	self.Symbol = self.fromC.Code + self.toC.Code
     	self.spread = self.Ask - self.Bid
+
+    def __repr__(self):
+    	self.update()
+    	return self.Symbol
 
 
 class Pairs:
