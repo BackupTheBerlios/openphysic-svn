@@ -106,31 +106,50 @@ class Pair:
             self.toC = currencies.__dict__[symbol[3:]] # ex USD        
         except:
             raise(Exception("The yyy currency in xxx/yyy pair doesn't exist"))
-        self.Bid = 0
-        self.Ask = 0
+        self.Digits = 5
+        self.__Bid = 0
+        self.__Ask = 0
         self.PipPosition = 4 # 0.0001 (so 4 because 10^(-4)) for most pairs but for xxxJPY PipPosition=2
         self.date = datetime.now()
         self.update()
         
+    def setBid(self, val):
+        self.__Bid = round(val, self.Digits) #val
+    
+    def setAsk(self, val):
+        self.__Ask = round(val, self.Digits) #val
+
+    def getBid(self):
+        return(round(self.__Bid, self.Digits))
+    
+    def getAsk(self):
+        return(round(self.__Ask, self.Digits))
+        
     def update(self):
     	self.Symbol = self.fromC.Code + self.toC.Code
-    	self.spread = self.Ask - self.Bid
+    	self.spread = round((self.getAsk() - self.getBid())*10**(self.PipPosition), self.Digits-self.PipPosition)
+    	#self.spread = (round(self.__Ask - self.__Bid, self.Digits))*10**(self.PipPosition)
 
     def __repr__(self):
     	self.update()
-    	return self.Symbol
+    	#return self.Symbol
+    	return repr(self.__dict__)
 
 
 class Pairs:
     def __init__(self, currencies = None):
-    	pass
-        #reader = csv.reader(open("pairs.csv"), delimiter='\t')
-        #i = 0
-        #for row in reader:
-        #    if i!=0:
-        #        pair = Pair(currencies, row[0])
-        #        self.__dict__[row[0]] = pair
-        #    i = i + 1
+    	#pass
+        reader = csv.reader(open("pairs.csv"), delimiter='\t')
+        i = 0
+        for row in reader:
+            if i!=0:
+                pair = Pair(currencies, row[0])
+                pair.PipPosition = int(row[1])
+                pair.setBid(float(row[2]))
+                pair.setAsk(float(row[3]))
+                pair.date = datetime.now() #row[4]
+                self.__dict__[row[0]] = pair
+            i = i + 1
         
     def __repr__(self):
         return repr(self.__dict__)
