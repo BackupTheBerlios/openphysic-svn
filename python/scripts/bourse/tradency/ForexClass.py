@@ -49,6 +49,10 @@ class Direction:
 #class Pair
 
 #class Lot
-# Micro
-# Mini
-# Std
+# Micro 1000
+# Mini 10000
+# Std 100000
+
+# Compte en EUR
+#Parité 	Montant investit en devise 	Montant investi en Euros 	Position du pip 	Valeur du pip en devise cotée à l'incertain 	Valeur du pip en Euros
+#GBP/USD 	10000 GBP 	10000*(GBP/EUR) 	0.0001 	10000*0.0001=1 USD 	1 / (EUR/USD)
