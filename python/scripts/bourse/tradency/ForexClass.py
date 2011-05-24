@@ -21,7 +21,7 @@
 
 
 import csv
-
+from datetime import datetime
 
 class Direction:
     def __init__(self, dir = 'Buy'):
@@ -96,10 +96,20 @@ class Pair:
     	# ex EURUSD 1.5767/1.5769 bid/ask sell/buy 1EUR=1.58$
         if len(symbol)!=6:
             raise(Exception('Pair symbol must be 6 letters long. ex: EURUSD'))    	
-        self.fromC = Currency(symbol[:3]) # ex EUR
-        self.toC = Currency(symbol[3:]) # ex USD
+        #self.fromC = Currency(symbol[:3]) # ex EUR
+        #self.toC = Currency(symbol[3:]) # ex USD
+        try:
+            self.fromC = currencies.__dict__[symbol[:3]] # ex EUR
+        except:
+            raise(Exception("The xxx currency in xxx/yyy pair doesn't exist"))
+        try:
+            self.toC = currencies.__dict__[symbol[3:]] # ex USD        
+        except:
+            raise(Exception("The yyy currency in xxx/yyy pair doesn't exist"))
         self.Bid = 0
         self.Ask = 0
+        self.PipPosition = 4 # 0.0001 (so 4 because 10^(-4)) for most pairs but for xxxJPY PipPosition=2
+        self.date = datetime.now()
         self.update()
         
     def update(self):
@@ -112,8 +122,18 @@ class Pair:
 
 
 class Pairs:
-    def __init__(self):
-	    pass
+    def __init__(self, currencies = None):
+    	pass
+        #reader = csv.reader(open("pairs.csv"), delimiter='\t')
+        #i = 0
+        #for row in reader:
+        #    if i!=0:
+        #        pair = Pair(currencies, row[0])
+        #        self.__dict__[row[0]] = pair
+        #    i = i + 1
+        
+    def __repr__(self):
+        return repr(self.__dict__)
 
 
 #class Lot
@@ -121,6 +141,10 @@ class Pairs:
 # Mini 10000
 # Std 100000
 
+# Pip calculator
 # Compte en EUR
 #Parité 	Montant investit en devise 	Montant investi en Euros 	Position du pip 	Valeur du pip en devise cotée à l'incertain 	Valeur du pip en Euros
 #GBP/USD 	10000 GBP 	10000*(GBP/EUR) 	0.0001 	10000*0.0001=1 USD 	1 / (EUR/USD)
+
+# Candelstick
+# OHLC = Open High Low Close
