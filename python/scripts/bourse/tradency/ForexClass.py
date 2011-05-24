@@ -45,8 +45,13 @@ class Direction:
         return self.__buy__ != other.__buy__
 
 #class Currency
+# Symbol
+# Name
 
 #class Pair
+# Symbol
+# Bid
+# Ask
 
 #class Lot
 # Micro 1000
