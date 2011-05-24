@@ -61,12 +61,15 @@ class Currencies:
         data2 = []
         for row in reader:
             row2 = []
+            j = 0
             for col in row:
                 col = col.strip()
-                row2.append(col)
-            data2 = row2.append(row2)
-            print(row2)
-            #writer.writerow(row2)
+                if j<5:
+                    row2.append(str(col))
+                j = j + 1
+            data2.append(row2)
+            #print(row2)
+            writer.writerow(row2)
             
 
 

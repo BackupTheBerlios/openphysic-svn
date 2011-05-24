@@ -1,4 +1,4 @@
-Code 	Num 	E 	Currency	Locations using this currency
+Code 	Num 	E 	Currency	Locations
 AED 	784 	2 	United Arab Emirates dirham 	United Arab Emirates
 AFN 	971 	2 	Afghan afghani 	Afghanistan
 ALL 	008 	2 	Albanian lek 	Albania
@@ -149,7 +149,7 @@ UAH 	980 	2 	Ukrainian hryvnia 	Ukraine
 UGX 	800 	0 	Ugandan shilling 	Uganda
 USD 	840 	2 	United States dollar 	American Samoa, British Indian Ocean Territory, Caribbean Netherlands, Ecuador, El Salvador, Guam, Haiti, Marshall Islands, Micronesia, Northern Mariana Islands, Palau, Panama, Puerto Rico, Timor-Leste, Turks and Caicos Islands, United States, Virgin Islands, Bermuda (as well as Bermudian Dollar), Zimbabwe
 USN 	997 	2 	United States dollar (next day) (funds code) 	United States
-USS 	998 	2 	United States dollar (same day) (funds code) (one source[who?] claims it is no longer used, but it is still on the ISO 4217-MA list) 	United States
+USS 	998 	2 	United States dollar (same day) (funds code) 	United States
 UYI 	940 	0 	Uruguay Peso en Unidades Indexadas (URUIURUI) (funds code) 	Uruguay
 UYU 	858 	2 	Uruguayan peso 	Uruguay
 UZS 	860 	2 	Uzbekistan som 	Uzbekistan
