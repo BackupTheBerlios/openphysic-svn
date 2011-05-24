@@ -47,31 +47,25 @@ class Direction:
 
 class Currency:
 # cf ISO_4217 http://en.wikipedia.org/wiki/ISO_4217
-    def __init_(self):
-	    self.Code = '' # Symbol
-	    self.Name = ''
-	    self.Num = 0
-	    self.Digits = 0 # ex USD 1.23 => 2 digits
+    def __init_(self, code='', name='', num=0, digits=0, locations=[]):
+	    self.Code = code # Symbol
+	    self.Name = name
+	    self.Num = num
+	    self.Digits = digits # ex USD 1.23 => 2 digits
+	    self.Locations = locations
+
+    def __repr__(self):
+        return repr(self.__dict__)
 
 class Currencies:
     def __init__(self):
         #pass
         reader = csv.reader(open("currencies.csv"), delimiter='\t')
-        writer = csv.writer(open("currencies_nw.csv", 'w'), delimiter='\t')
-        data2 = []
         for row in reader:
-            row2 = []
-            j = 0
-            for col in row:
-                col = col.strip()
-                if j<5:
-                    row2.append(str(col))
-                j = j + 1
-            data2.append(row2)
-            #print(row2)
-            writer.writerow(row2)
-        #print(data2)     
-
+            cur = Currency(row[0], row[1], row[2], row[3], row[4])
+            self.__dict__[row[0]] = cur
+        
+        print(self.__dict__)
 
 class Pair:
     def __init_(self):
