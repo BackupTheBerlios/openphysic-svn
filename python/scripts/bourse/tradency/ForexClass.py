@@ -19,7 +19,9 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>
 
+
 import csv
+
 
 class Direction:
     def __init__(self, dir = 'Buy'):
@@ -45,9 +47,10 @@ class Direction:
     def __ne__(self, other):
         return self.__buy__ != other.__buy__
 
+
 class Currency:
 # cf ISO_4217 http://en.wikipedia.org/wiki/ISO_4217
-    def __init_(self, code='', name='', num=0, digits=0, locations=[]):
+    def __init_(self, code = '', name = '', num = 0, digits = 0, locations = []):
 	    self.Code = code # Symbol
 	    self.Name = name
 	    self.Num = num
@@ -55,17 +58,33 @@ class Currency:
 	    self.Locations = locations
 
     def __repr__(self):
-        return repr(self.__dict__)
+    	return self.Code
+    
+    def display(self):
+    	print(self.__dict__)
+        #print(repr(self.__dict__))
+        
 
-class Currencies:
+class Currencies(dict):
     def __init__(self):
         #pass
         reader = csv.reader(open("currencies.csv"), delimiter='\t')
+        i = 0
         for row in reader:
-            cur = Currency(row[0], row[1], row[2], row[3], row[4])
-            self.__dict__[row[0]] = cur
+            if i!=0:
+                cur = Currency()
+                #cur.__init__(row[0], row[3], row[1], row[2])
+                cur.Code = row[0]
+                cur.Name = row[3]
+                cur.Num = row[1] #int(row[1])
+                cur.Digits = row[2]
+                cur.Locations = row[4]
+                self.__dict__[row[0]] = cur
+            i = i + 1
         
-        print(self.__dict__)
+    def __repr__(self):
+        return repr(self.__dict__)
+
 
 class Pair:
     def __init_(self):
@@ -75,13 +94,16 @@ class Pair:
         self.Ask = 0
         self.fromC = None # ex EUR
         self.toC = None # ex USD
+        self.update()
         
-    def spread(self):
-    	return self.Ask - self.Bid
+    def update(self):
+    	self.spread = self.Ask - self.Bid
+
 
 class Pairs:
     def __init__(self):
 	    pass
+
 
 #class Lot
 # Micro 1000

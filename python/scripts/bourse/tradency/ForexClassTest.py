@@ -23,3 +23,5 @@
 from ForexClass import *
 
 myCurs = Currencies()
+
+print(myCurs.USD.display())
