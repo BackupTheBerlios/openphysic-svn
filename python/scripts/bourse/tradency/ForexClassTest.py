@@ -33,4 +33,11 @@ print(myCurs.USD)
 #print(myPair)
 
 myPairs = Pairs(myCurs)
-print(myPairs.EURUSD)
+#print(myPairs.EURUSD)
+
+balance = Value(100, myCurs.USD)
+print(balance)
+
+balanceEUR = balance.convert(myCurs.EUR, myPairs)
+print(balanceEUR)
+#print(balance)

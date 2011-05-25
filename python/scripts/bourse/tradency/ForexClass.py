@@ -54,14 +54,15 @@ class Currency:
         if len(code)!=3:
             raise(Exception('Currency code must be 3 letters long. ex: EUR'))    	
 
-        self.Code = code # Symbol
-        self.Name = name
-        self.Num = num
-        self.Digits = digits # ex USD 1.23 => 2 digits
-        self.Locations = locations
+        self.code = code # Symbol
+        self.name = name
+        self.num = num
+        self.digits = digits # ex USD 1.23 => 2 digits
+        self.locations = locations
 
     def __repr__(self):
-    	return self.Code
+        return(repr(self.__dict__))
+        #return self.code
     
     def display(self):
     	print(self.__dict__)
@@ -75,7 +76,11 @@ class Currencies(dict):
         i = 0
         for row in reader:
             if i!=0:
-                self.__dict__[row[0]] = Currency(row[0], row[3], row[1], row[2])
+                try:
+                    self.__dict__[row[0]] = Currency(row[0], row[3], row[1], int(row[2]))
+                except:
+                    #pass
+                    print("Currency {0} not imported".format(row[0]))
             i = i + 1
         
     def __repr__(self):
@@ -99,11 +104,11 @@ class Pair:
         #self.fromC = Currency(symbol[:3]) # ex EUR
         #self.toC = Currency(symbol[3:]) # ex USD
         try:
-            self.fromC = currencies.__dict__[symbol[:3]] # ex EUR
+            self.fromC = currencies.__dict__[symbol[:3]] # ex EUR - base currency
         except:
             raise(Exception("The xxx currency in xxx/yyy pair doesn't exist"))
         try:
-            self.toC = currencies.__dict__[symbol[3:]] # ex USD        
+            self.toC = currencies.__dict__[symbol[3:]] # ex USD - quote currency
         except:
             raise(Exception("The yyy currency in xxx/yyy pair doesn't exist"))
         self.Digits = 5
@@ -126,7 +131,7 @@ class Pair:
         return(round(self.__Ask, self.Digits))
         
     def update(self):
-    	self.Symbol = self.fromC.Code + self.toC.Code
+    	self.Symbol = self.fromC.code + self.toC.code
     	self.spread = round((self.getAsk() - self.getBid())*10**(self.PipPosition), self.Digits-self.PipPosition)
     	#self.spread = (round(self.__Ask - self.__Bid, self.Digits))*10**(self.PipPosition)
 
@@ -155,12 +160,33 @@ class Pairs:
         return repr(self.__dict__)
 
 
+class Value:
+    def __init__(self, amount, currency):
+        self.amount = float(amount)
+        self.currency = currency
+
+    def __repr__(self):
+        return(self.currency.code+"{:03.2f}".format(round(self.amount, self.currency.digits)))
+        
+    def convert(self, currency, pairs):
+    	#find pair self.currency/currency and get quote
+    	#if it doesn't exists look for currency/self.currency quote=1/x
+    	#if it doesn't exists raise an exception
+        quote = 1/1.58 # EURUSD=1.58 1.00EUR = $1.58
+        return Value(self.amount*quote, currency)
+
+
 #class Lot
 # Micro 1000
 # Mini 10000
 # Std 100000
 
 # Pip calculator
+#def pipcalculate(units, pair, quoteCurrency=None):
+#    if quoteCurrency==None:
+#        quoteCurrency = pair.toC
+#    return 0.0001 * units
+#	print(units, pair, quoteCurrency) 
 # Compte en EUR
 #Parité 	Montant investit en devise 	Montant investi en Euros 	Position du pip 	Valeur du pip en devise cotée à l'incertain 	Valeur du pip en Euros
 #GBP/USD 	10000 GBP 	10000*(GBP/EUR) 	0.0001 	10000*0.0001=1 USD 	1 / (EUR/USD)

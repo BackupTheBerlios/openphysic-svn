@@ -163,10 +163,10 @@ class TradencyPerformance(Dict2Obj):
         Dict2Obj.__init__(self, format, value)
 
         # add specials indicators
-        self.__dict__['Pips moyen par trade'] = self.__dict__['Pips']/float(self.__dict__['NumTrades'])
+        self.__dict__['Pips moyens par trade'] = self.__dict__['Pips']/float(self.__dict__['NumTrades'])
         self.__dict__['Espérance'] = (self.__dict__['% gain']/100)*self.__dict__['GMT (pips)'] + (1-self.__dict__['% gain']/100)*self.__dict__['PMT (pips)']
         # pq c'est différent ???? normalement Pips moy par trade = Espérance
-        self.__dict__['!!!!!!!! Erreur % !!!!!!!!'] = 100*abs(self.__dict__['Espérance'] - self.__dict__['Pips moyen par trade'])/self.__dict__['Pips moyen par trade']
+        self.__dict__['!!!!!!!! Erreur % !!!!!!!!'] = 100*abs(self.__dict__['Espérance'] - self.__dict__['Pips moyens par trade'])/self.__dict__['Pips moyens par trade']
         # en fait il y a deux colonnes nommées PMT (pips)
         
         t = date.today()
