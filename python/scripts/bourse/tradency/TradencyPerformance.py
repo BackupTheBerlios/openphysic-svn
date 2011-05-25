@@ -44,6 +44,8 @@ myparser = TradencyPerformanceParser(datasource)
 #myparser.print_data()
 
 header = myparser.get_header()
+#header[16] = 'PMT (pips) _ 2' # pour éviter 2 noms identiques sur une même colonne
+print(header)
 data = myparser.get_data()
 
 #print(data)
@@ -70,6 +72,8 @@ filter = True
 if filter:
     dataObjSelected = []
     for row in dataObj:
+        #if row.__dict__['!!!!!!!! Erreur % !!!!!!!!']>1:
+        #if row.__dict__['Stratégie']=='BreakoutMaster' and row.__dict__['Symbole']=='EURUSD':
         if row.__dict__['TradeDepuis']>timedelta(30) and row.__dict__['NumTrades']>30 and row.__dict__['Facteur de Profit']>1 and row.__dict__['Facteur de Profit']<3.5 and row.__dict__['Espérance']>5:
             dataObjSelected.append(row)
 else:
@@ -81,7 +85,7 @@ else:
 
 #['Stratégie', 'Symbole', 'T-Score', 'NumTrades', 'Max DD', 'Pips', 'Positions Max', '% gain', 'TAR', 'Profit', 'Facteur de Profit', 'Date', 'GMT (pips)', 'Temps de Trade Moyen', 'PMT (pips)', 'TPM (pips)', 'PMT (pips)']
 
-criterion = 'T-Score' #'Temps de Trade Moyen' #'T-Score' #'Espérance'
+criterion = 'Pips moyen par trade' #'Temps de Trade Moyen' #'T-Score' #'Espérance' #'Pips moyen par trade' #'!!!!!!!! Erreur % !!!!!!!!'
 descending = False
 dataObjSorted = sorted(dataObjSelected, key=lambda dataObjSelected: dataObjSelected.__dict__[criterion], reverse=not descending)
 

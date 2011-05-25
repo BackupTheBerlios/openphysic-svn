@@ -82,6 +82,8 @@ class HTMLTableParser(HTMLParser):
     def handle_data(self, data):
         #print(data)
         if self.rows == 1: # head
+            if data in self.row:
+                data = data + "_2" # to avoid same colon name
             self.row.append(data)
         else: # data
             try:
@@ -165,7 +167,7 @@ class TradencyPerformance(Dict2Obj):
         self.__dict__['Espérance'] = (self.__dict__['% gain']/100)*self.__dict__['GMT (pips)'] + (1-self.__dict__['% gain']/100)*self.__dict__['PMT (pips)']
         # pq c'est différent ???? normalement Pips moy par trade = Espérance
         self.__dict__['!!!!!!!! Erreur % !!!!!!!!'] = 100*abs(self.__dict__['Espérance'] - self.__dict__['Pips moyen par trade'])/self.__dict__['Pips moyen par trade']
-        
+        # en fait il y a deux colonnes nommées PMT (pips)
         
         t = date.today()
         TradeDepuis = t - self.__dict__['Date']
