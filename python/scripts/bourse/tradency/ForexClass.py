@@ -208,7 +208,8 @@ class Value:
     	#if it doesn't exists look for currency/self.currency quote=1/x
     	#if it doesn't exists raise an exception
         quote = 1/1.58 # EURUSD=1.58 1.00EUR = $1.58
-        return Value(self.amount*quote, currency)
+        return Value(self.amount*quote, to_currency)
+        # ToDo
 
 
 #class Lot

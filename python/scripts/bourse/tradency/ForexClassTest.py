@@ -40,9 +40,9 @@ myPair = myPairs.EURUSD
 #print(myPairs.get('USDCAD').getQuote())
 #print(myPairs.get('CADUSD').getQuote())
 
-#balance = Value(100, myCurs.USD)
-#print(balance)
+balance = Value(100, myCurs.USD)
+print(balance)
 
-#balanceEUR = balance.convert(myCurs.EUR, myPairs)
-#print(balanceEUR)
+balanceEUR = balance.convert(myCurs.EUR, myPairs)
+print(balanceEUR)
 #print(balance)
