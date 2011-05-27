@@ -134,7 +134,7 @@ class Pair:
         return(round(self.__Ask, self.Digits))
         
     def getQuote(self):
-        return (getAsk()+getBid())/2
+        return (self.getAsk()+self.getBid())/2
         
     def getSpread(self):
         return round((self.getAsk() - self.getBid())*10**(self.PipPosition), self.Digits-self.PipPosition)
@@ -171,7 +171,10 @@ class Pairs:
                 pair = Pair(currencies, row[0])
                 pair.PipPosition = int(row[1])
                 pair.setBid(float(row[2]))
-                pair.setAsk(float(row[3]))
+                if float(row[3])!=0:
+                    pair.setAsk(float(row[3])) # si Bid est à 0 on met le prix Ask (spread=0)
+                else:
+                    pair.setAsk(float(row[2]))
                 pair.date = datetime.now() #row[4]
                 self.__dict__[row[0]] = pair
             i = i + 1
@@ -184,13 +187,12 @@ class Pairs:
             pair = self.__dict__[pairSymbol]
             return pair
         except:
-            pass
-            #try:
-                #inv_pairSymbol = pairSymbol[3:] + pairSymbol[:3]
-                #inv_pairSymbol
-                #print(inv_pairSymbol)
-            #except:
-            #    raise Exception("This pair doesn't exists")
+            try:
+                inv_pairSymbol = pairSymbol[3:] + pairSymbol[:3]
+                invPair = self.__dict__[inv_pairSymbol]
+                return invPair.invert()
+            except:
+                raise Exception("This pair doesn't exists")
 
 
 class Value:
@@ -201,8 +203,8 @@ class Value:
     def __repr__(self):
         return(self.currency.code+"{:03.2f}".format(round(self.amount, self.currency.digits)))
         
-    def convert(self, currency, pairs):
-    	#find pair self.currency/currency and get quote
+    def convert(self, to_currency, pairs):
+    	#find pair self.currency/to_currency and get quote
     	#if it doesn't exists look for currency/self.currency quote=1/x
     	#if it doesn't exists raise an exception
         quote = 1/1.58 # EURUSD=1.58 1.00EUR = $1.58
