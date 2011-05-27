@@ -98,17 +98,20 @@ class Pair:
         #self.update()
 
     def __init__(self, currencies = None, symbol = ''):
+    	# currencies = list of currencies
+    	# symbol = EURUSD ...
     	# ex EURUSD 1.5767/1.5769 bid/ask sell/buy 1EUR=1.58$
+        self.currencies = currencies
         if len(symbol)!=6:
             raise(Exception('Pair symbol must be 6 letters long. ex: EURUSD'))    	
         #self.fromC = Currency(symbol[:3]) # ex EUR
         #self.toC = Currency(symbol[3:]) # ex USD
         try:
-            self.fromC = currencies.__dict__[symbol[:3]] # ex EUR - base currency
+            self.fromC = self.currencies.__dict__[symbol[:3]] # ex EUR - base currency
         except:
             raise(Exception("The xxx currency in xxx/yyy pair doesn't exist"))
         try:
-            self.toC = currencies.__dict__[symbol[3:]] # ex USD - quote currency
+            self.toC = self.currencies.__dict__[symbol[3:]] # ex USD - quote currency
         except:
             raise(Exception("The yyy currency in xxx/yyy pair doesn't exist"))
         self.Digits = 5
@@ -130,15 +133,32 @@ class Pair:
     def getAsk(self):
         return(round(self.__Ask, self.Digits))
         
+    def getQuote(self):
+        return (getAsk()+getBid())/2
+        
+    def getSpread(self):
+        return round((self.getAsk() - self.getBid())*10**(self.PipPosition), self.Digits-self.PipPosition)
+        
     def update(self):
-    	self.Symbol = self.fromC.code + self.toC.code
-    	self.spread = round((self.getAsk() - self.getBid())*10**(self.PipPosition), self.Digits-self.PipPosition)
-    	#self.spread = (round(self.__Ask - self.__Bid, self.Digits))*10**(self.PipPosition)
+        self.symbol = self.fromC.code + self.toC.code
+        self.spread = round((self.getAsk() - self.getBid())*10**(self.PipPosition), self.Digits-self.PipPosition)
+        #self.spread = (round(self.__Ask - self.__Bid, self.Digits))*10**(self.PipPosition)
 
     def __repr__(self):
-    	self.update()
-    	#return self.Symbol
-    	return repr(self.__dict__)
+        self.update()
+        #return self.Symbol
+        return repr(self.__dict__)
+    	
+    def invert(self):
+        #print(self.symbol[3:] + self.symbol[:3])
+        invPair = Pair(self.currencies, self.symbol[3:] + self.symbol[:3])
+        #del invPair.__dict__['currencies']
+        invPair.Digits = self.Digits
+        invPair.setBid(1/self.getAsk())
+        invPair.setAsk(1/self.getBid())
+        invPair.PipPosition = 4
+        invPair.date = self.date
+        return invPair
 
 
 class Pairs:
@@ -158,6 +178,19 @@ class Pairs:
         
     def __repr__(self):
         return repr(self.__dict__)
+    
+    def get(self, pairSymbol):
+        try:
+            pair = self.__dict__[pairSymbol]
+            return pair
+        except:
+            pass
+            #try:
+                #inv_pairSymbol = pairSymbol[3:] + pairSymbol[:3]
+                #inv_pairSymbol
+                #print(inv_pairSymbol)
+            #except:
+            #    raise Exception("This pair doesn't exists")
 
 
 class Value:

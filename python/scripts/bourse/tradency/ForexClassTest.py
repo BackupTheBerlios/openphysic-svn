@@ -33,11 +33,15 @@ print(myCurs.USD)
 #print(myPair)
 
 myPairs = Pairs(myCurs)
-#print(myPairs.EURUSD)
+myPair = myPairs.EURUSD
+print(myPair)
+print(myPairs.EURUSD.invert())
+#print(myPairs.get('USDEUR'))
+#print(myPairs.get('USDEUR'))
 
-balance = Value(100, myCurs.USD)
-print(balance)
+#balance = Value(100, myCurs.USD)
+#print(balance)
 
-balanceEUR = balance.convert(myCurs.EUR, myPairs)
-print(balanceEUR)
+#balanceEUR = balance.convert(myCurs.EUR, myPairs)
+#print(balanceEUR)
 #print(balance)
