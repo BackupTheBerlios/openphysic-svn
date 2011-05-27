@@ -212,9 +212,9 @@ class Value:
 
 
 #class Lot
-# Micro 1000
-# Mini 10000
-# Std 100000
+MicroLot = 1000
+MiniLot = 10000
+Lot = 100000
 
 # Pip calculator
 #def pipcalculate(units, pair, quoteCurrency=None):
