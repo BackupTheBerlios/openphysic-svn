@@ -160,6 +160,27 @@ class Pair:
         invPair.date = self.date
         return invPair
 
+# Pip calculator
+    def pipcalculate(self, pairs, units, quoteCurrency=None):
+        if quoteCurrency==None:
+            quoteCurrency = self.toC
+        val = Value(units, self.fromC)
+        #print(val)
+        #new_val=val.convert(quoteCurrency, pairs) # montant investi en quoteCurrency
+        #print(new_val)
+        pipValue = Value(units * 0.0001, self.toC)
+        pipValue = pipValue.convert(quoteCurrency, pairs)
+        print(pipValue)
+#	print(units, pair, quoteCurrency) 
+# Compte en EUR
+#Parité 	Montant investit en devise 	Montant investi en Euros 	Position du pip 	Valeur du pip en devise cotée à l'incertain 	Valeur du pip en Euros
+#GBP/USD 	10000 GBP 	10000*(GBP/EUR) 	0.0001 	10000*0.0001=1 USD 	1 / (EUR/USD)
+
+
+#class Lot
+MicroLot = 1000
+MiniLot = 10000
+Lot = 100000
 
 class Pairs:
     def __init__(self, currencies = None):
@@ -195,6 +216,7 @@ class Pairs:
                 invPair = self.__dict__[inv_pairSymbol]
                 return invPair.invert()
             except:
+                print(pairSymbol)
             	# ToDo : combiner plusieurs paires
             	# (cf théorie des graphes / pb du voyageur de commerce / algorithme de Dijkstra)
             	# ex : EURJPY = EURUSD * USDJPY
@@ -205,7 +227,7 @@ class Pairs:
        return self.get(fromC.code+toC.code)
 
 
-class Value:
+class Value: # ToDo dériver de float afin de pouvoir faire opé avec devise
     def __init__(self, amount, currency):
         self.amount = float(amount)
         self.currency = currency
@@ -221,22 +243,6 @@ class Value:
         quote = pair.getQuote() #1/1.58 # EURUSD=1.58 1.00EUR = $1.58 => USDEUR=1/1.58
         return Value(self.amount*quote, to_currency)
         # ToDo
-
-
-#class Lot
-MicroLot = 1000
-MiniLot = 10000
-Lot = 100000
-
-# Pip calculator
-#def pipcalculate(units, pair, quoteCurrency=None):
-#    if quoteCurrency==None:
-#        quoteCurrency = pair.toC
-#    return 0.0001 * units
-#	print(units, pair, quoteCurrency) 
-# Compte en EUR
-#Parité 	Montant investit en devise 	Montant investi en Euros 	Position du pip 	Valeur du pip en devise cotée à l'incertain 	Valeur du pip en Euros
-#GBP/USD 	10000 GBP 	10000*(GBP/EUR) 	0.0001 	10000*0.0001=1 USD 	1 / (EUR/USD)
 
 # Candelstick
 # OHLC = Open High Low Close

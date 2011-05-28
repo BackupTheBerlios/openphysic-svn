@@ -40,9 +40,12 @@ myPair = myPairs.EURUSD
 #print(myPairs.get('USDCAD').getQuote())
 #print(myPairs.get('CADUSD').getQuote())
 
-balance = Value(100, myCurs.USD)
-print(balance)
-
-balanceEUR = balance.convert(myCurs.EUR, myPairs)
-print(balanceEUR)
+#balance = Value(100, myCurs.USD)
 #print(balance)
+
+#balanceEUR = balance.convert(myCurs.EUR, myPairs)
+#print(balanceEUR)
+#print(balance)
+
+myPair = myPairs.GBPUSD
+myPair.pipcalculate(myPairs, Lot, myCurs.EUR)
