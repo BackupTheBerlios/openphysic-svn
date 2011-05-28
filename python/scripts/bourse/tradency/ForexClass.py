@@ -170,11 +170,14 @@ class Pairs:
             if i!=0:
                 pair = Pair(currencies, row[0])
                 pair.PipPosition = int(row[1])
-                pair.setBid(float(row[2]))
-                if float(row[3])!=0:
-                    pair.setAsk(float(row[3])) # si Bid est à 0 on met le prix Ask (spread=0)
+                if float(row[2])!=0:
+                    pair.setBid(float(row[2]))
                 else:
-                    pair.setAsk(float(row[2]))
+                    pair.setBid(float(row[3])) # si Bid est à 0 on met le prix Ask (spread=0)
+                if float(row[3])!=0:
+                    pair.setAsk(float(row[3])) 
+                else:
+                    pair.setAsk(float(row[2])) # si Ask est à 0 on met le prix Bid (spread=0)
                 pair.date = datetime.now() #row[4]
                 self.__dict__[row[0]] = pair
             i = i + 1
@@ -192,7 +195,13 @@ class Pairs:
                 invPair = self.__dict__[inv_pairSymbol]
                 return invPair.invert()
             except:
+            	# ToDo : combiner plusieurs paires (pb du voyageur de commerce)
+            	# ex : EURJPY = EURUSD * USDJPY
+            	# ex2 : EURAUD = EURUSD * 1/AUDUSD
                 raise Exception("This pair doesn't exists")
+    
+    def getByCurrencies(self, fromC, toC):
+       return self.get(fromC.code+toC.code)
 
 
 class Value:
@@ -207,7 +216,8 @@ class Value:
     	#find pair self.currency/to_currency and get quote
     	#if it doesn't exists look for currency/self.currency quote=1/x
     	#if it doesn't exists raise an exception
-        quote = 1/1.58 # EURUSD=1.58 1.00EUR = $1.58
+        pair = pairs.getByCurrencies(self.currency, to_currency)
+        quote = pair.getQuote() #1/1.58 # EURUSD=1.58 1.00EUR = $1.58
         return Value(self.amount*quote, to_currency)
         # ToDo
 
