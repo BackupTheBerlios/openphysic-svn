@@ -183,6 +183,14 @@ MiniLot = 10000
 Lot = 100000
 
 class Pairs:
+
+# ToDo : 
+# au lieu d'utiliser __dict__['EURUSD']
+# il est peut-être préférable d'utiliser
+# __dict__['EUR'].__dict__['USD']
+# ça permet de facilement construire un graphe (orienté)
+
+
     def __init__(self, currencies = None):
     	#pass
         reader = csv.reader(open("pairs.csv"), delimiter='\t')
@@ -206,7 +214,7 @@ class Pairs:
     def __repr__(self):
         return repr(self.__dict__)
     
-    def get(self, pairSymbol):
+    def getByPairSymbol(self, pairSymbol):
         try:
             pair = self.__dict__[pairSymbol]
             return pair
@@ -227,7 +235,7 @@ class Pairs:
                 raise Exception("This pair doesn't exists")
     
     def getByCurrencies(self, fromC, toC):
-        return self.get(fromC.code+toC.code)
+        return self.getByPairSymbol(fromC.code+toC.code)
 
 
 class Value: # ToDo dériver de float afin de pouvoir faire opé avec devise
