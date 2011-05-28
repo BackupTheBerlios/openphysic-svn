@@ -168,8 +168,8 @@ class Pair:
         #print(val)
         #new_val=val.convert(quoteCurrency, pairs) # montant investi en quoteCurrency
         #print(new_val)
-        pipValue = Value(units * 0.0001, self.toC)
-        pipValue = pipValue.convert(quoteCurrency, pairs)
+        pipValue = Value(units * 0.0001, self.toC, pairs)
+        pipValue = pipValue.convert(quoteCurrency)
         return pipValue
 #	print(units, pair, quoteCurrency) 
 # Compte en EUR
@@ -238,22 +238,41 @@ class Pairs:
         return self.getByPairSymbol(fromC.code+toC.code)
 
 
-class Value: # ToDo dériver de float afin de pouvoir faire opé avec devise
-    def __init__(self, amount, currency):
+class Value(): # ToDo dériver de float afin de pouvoir faire opé avec devise
+    def __init__(self, amount, currency, pairs=None):
+        self.pairs = pairs
         self.amount = float(amount)
         self.currency = currency
 
     def __repr__(self):
+        #return repr(self.__dict__)
         return(self.currency.code+"{:03.2f}".format(round(self.amount, self.currency.digits)))
         
-    def convert(self, to_currency, pairs):
+    def convert(self, to_currency):
     	#find pair self.currency/to_currency and get quote
     	#if it doesn't exists look for currency/self.currency quote=1/x
     	#if it doesn't exists raise an exception
-        pair = pairs.getByCurrencies(self.currency, to_currency)
-        quote = pair.getQuote() #1/1.58 # EURUSD=1.58 1.00EUR = $1.58 => USDEUR=1/1.58
+        if self.currency!=to_currency:
+            pair = self.pairs.getByCurrencies(self.currency, to_currency)
+            quote = pair.getQuote() #1/1.58 # EURUSD=1.58 1.00EUR = $1.58 => USDEUR=1/1.58
+        else:
+            quote = 1
         return Value(self.amount*quote, to_currency)
         # ToDo
+        
+    def __add__(self,other):
+        other2 = other.convert(self.currency)
+        return Value(self.amount + other2.amount, self.currency)
+
+    def __sub__(self,other):
+        other2 = other.convert(self.currency)
+        return Value(self.amount - other2.amount, self.currency)
+
+    #def __mul__(self,other):
+    #    other2 = other.convert(self.currency)
+    #    return Value(self.amount * other2.amount, self.currency)
+
+    #__rmul__ __div__ __rdiv__
 
 # Candelstick
 # OHLC = Open High Low Close

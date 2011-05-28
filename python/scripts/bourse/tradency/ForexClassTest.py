@@ -50,3 +50,12 @@ myPair = myPairs.EURUSD
 myPair = myPairs.GBPUSD
 pipValue = myPair.pipcalculate(myPairs, Lot, myCurs.EUR)
 print(pipValue)
+
+#print(pipValue + Value(100, myCurs.USD))
+
+b1 = Value(100, myCurs.USD, myPairs)
+print(b1)
+b2 = Value(50, myCurs.USD, myPairs)
+print(b2)
+b = b1 - b2
+print(b)

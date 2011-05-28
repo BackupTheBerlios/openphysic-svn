@@ -79,6 +79,13 @@ History
 	 BuySell ou Direction (en interne booléen) if achatvente == Direction.Buy
 	 Currency (ex EUR), Pair (ex EURUSD avec valeur buy-sell ask-bid)
 	 
+	Conversion de devise à partir des paires présentes dans pairs.csv
+	Si la paire n'existe pas la construire (si possible)
+	soit en inversant, soit en combinant plusieurs paire (cf Algorithme de Dijkstra)
+	
+	Valeur du pips
+	
+	 
 
 MyHistory
 types = [int, int, str, str, str, self.strBuySell2BooleanBuy, int, float, strDatetime2datetime, float, strDatetime2datetime, float, float, float, float, float, float]
