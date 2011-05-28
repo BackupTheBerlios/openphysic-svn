@@ -272,7 +272,7 @@ class Value(): # ToDo dériver de float afin de pouvoir faire opé avec devise
     #    other2 = other.convert(self.currency)
     #    return Value(self.amount * other2.amount, self.currency)
 
-    #__rmul__ __div__ __rdiv__
+    #__div__ __rmul__ __rdiv__
 
 # Candelstick
 # OHLC = Open High Low Close
