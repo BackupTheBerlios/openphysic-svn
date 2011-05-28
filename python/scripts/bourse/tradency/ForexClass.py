@@ -170,7 +170,7 @@ class Pair:
         #print(new_val)
         pipValue = Value(units * 0.0001, self.toC)
         pipValue = pipValue.convert(quoteCurrency, pairs)
-        print(pipValue)
+        return pipValue
 #	print(units, pair, quoteCurrency) 
 # Compte en EUR
 #Parité 	Montant investit en devise 	Montant investi en Euros 	Position du pip 	Valeur du pip en devise cotée à l'incertain 	Valeur du pip en Euros
@@ -216,7 +216,10 @@ class Pairs:
                 invPair = self.__dict__[inv_pairSymbol]
                 return invPair.invert()
             except:
-                print(pairSymbol)
+                #print(pairSymbol)
+                #if pairSymbol[3:]==pairSymbol[:3]: ### paire USDUSD => quote=1
+                #    pair = Pair()
+                #    return pair
             	# ToDo : combiner plusieurs paires
             	# (cf théorie des graphes / pb du voyageur de commerce / algorithme de Dijkstra)
             	# ex : EURJPY = EURUSD * USDJPY
@@ -224,7 +227,7 @@ class Pairs:
                 raise Exception("This pair doesn't exists")
     
     def getByCurrencies(self, fromC, toC):
-       return self.get(fromC.code+toC.code)
+        return self.get(fromC.code+toC.code)
 
 
 class Value: # ToDo dériver de float afin de pouvoir faire opé avec devise

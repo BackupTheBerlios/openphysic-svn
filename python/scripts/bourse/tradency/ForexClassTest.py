@@ -48,4 +48,5 @@ myPair = myPairs.EURUSD
 #print(balance)
 
 myPair = myPairs.GBPUSD
-myPair.pipcalculate(myPairs, Lot, myCurs.EUR)
+pipValue = myPair.pipcalculate(myPairs, Lot, myCurs.EUR)
+print(pipValue)
