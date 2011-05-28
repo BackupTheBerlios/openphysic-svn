@@ -195,7 +195,8 @@ class Pairs:
                 invPair = self.__dict__[inv_pairSymbol]
                 return invPair.invert()
             except:
-            	# ToDo : combiner plusieurs paires (pb du voyageur de commerce)
+            	# ToDo : combiner plusieurs paires
+            	# (cf théorie des graphes / pb du voyageur de commerce / algorithme de Dijkstra)
             	# ex : EURJPY = EURUSD * USDJPY
             	# ex2 : EURAUD = EURUSD * 1/AUDUSD
                 raise Exception("This pair doesn't exists")
@@ -217,7 +218,7 @@ class Value:
     	#if it doesn't exists look for currency/self.currency quote=1/x
     	#if it doesn't exists raise an exception
         pair = pairs.getByCurrencies(self.currency, to_currency)
-        quote = pair.getQuote() #1/1.58 # EURUSD=1.58 1.00EUR = $1.58
+        quote = pair.getQuote() #1/1.58 # EURUSD=1.58 1.00EUR = $1.58 => USDEUR=1/1.58
         return Value(self.amount*quote, to_currency)
         # ToDo
 
