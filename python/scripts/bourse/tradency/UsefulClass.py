@@ -45,7 +45,3 @@ def inbound(bounds, vals, minus_infinity=False, plus_infinity=False):
         nb.append(nb_plus_infinity)
     return nb
 
-bounds = [1, 2, 3, 4]
-vals = [0.5, 1.4, 1.5, 2.1, 2.3, 2.5, 3.1, 3.1, 4.1]
-nb = inbound(bounds, vals, True, True)
-print(nb)
