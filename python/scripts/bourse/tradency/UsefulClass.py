@@ -23,7 +23,7 @@
 #
 # Donne le nb de val dans chaque intervalle
 #
-def inbound(bounds, vals, minus_infinity=False, plus_infinity=False):
+def inbound(bounds, vals, minus_infinity=True, plus_infinity=True):
     bounds.sort()
     nb = [0 for i in range(0, len(bounds)-1)]
     nb_minus_infinity = 0
@@ -32,16 +32,20 @@ def inbound(bounds, vals, minus_infinity=False, plus_infinity=False):
     for val in vals:
         if val < bounds[0]:
             nb_minus_infinity = nb_minus_infinity + 1
+
         if val >= bounds[len(bounds)-1]:
             nb_plus_infinity = nb_plus_infinity + 1
-        
+
         for j in range(0, len(bounds)-1):
             #print("[{0};{1}]".format(bounds[j],bounds[j+1]))
             if bounds[j]<=val and (val<bounds[j+1] or val<=bounds[j+1] and not plus_infinity):
                 nb[j] = nb[j] + 1
+
     if minus_infinity:
         nb.insert(0, nb_minus_infinity)
+
     if plus_infinity:
         nb.append(nb_plus_infinity)
+
     return nb
 
