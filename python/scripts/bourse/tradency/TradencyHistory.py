@@ -22,6 +22,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>
 
 from TradencyAnalyzerClass import *
+from UsefulClass import *
 
 #  ###########################################
 #  # parse HTML file        
@@ -77,9 +78,11 @@ IpipsMin = -1
 pipsMax = 0
 IpipsMax = -1
 i = 0
+lstPips = []
 for row in dataObj:
     DuréeTotaleTrades = DuréeTotaleTrades + row.__dict__['Durée Trade']
     Pips = row.__dict__['Pips']
+    lstPips.append(Pips)
     totalPips = totalPips + Pips
     if Pips >= 0:
         winTrades = winTrades + 1
@@ -108,3 +111,11 @@ print("Meilleur trade = {0} pips".format(pipsMax))
 dataObj[IpipsMax].display()
 print("Pire trade = {0} pips".format(pipsMin))
 dataObj[IpipsMin].display()
+
+print(lstPips)
+bounds = [x for x in range(-100,101,10)]
+nb = inbound(bounds, lstPips, True, True)
+print(bounds)
+#print(nb)
+for i in range(0,len(bounds)-1):
+    print("[{0};{1}[".format(bounds[i], bounds[i+1]))
