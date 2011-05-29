@@ -19,6 +19,15 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-def inbound():
-    pass
+def inbound(bounds, vals):
+    nb = [0 for i in range(0,len(bounds))]
+    for i in range(0, len(bounds)-1):
+        print("[{0};{1}]".format(bounds[i],bounds[i+1]))
+    return nb
 
+bounds = [1,2,3]
+print(bounds)
+vals = [1.4,1.5,2.1,2.3,2.5]
+print(vals)
+nb = inbound(bounds, vals)
+print(nb)
