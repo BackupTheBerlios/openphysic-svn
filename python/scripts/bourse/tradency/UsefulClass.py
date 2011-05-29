@@ -19,15 +19,33 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-def inbound(bounds, vals):
-    nb = [0 for i in range(0,len(bounds))]
-    for i in range(0, len(bounds)-1):
-        print("[{0};{1}]".format(bounds[i],bounds[i+1]))
+
+#
+# Donne le nb de val dans chaque intervalle
+#
+def inbound(bounds, vals, minus_infinity=False, plus_infinity=False):
+    bounds.sort()
+    nb = [0 for i in range(0, len(bounds)-1)]
+    nb_minus_infinity = 0
+    nb_plus_infinity = 0
+    
+    for val in vals:
+        if val < bounds[0]:
+            nb_minus_infinity = nb_minus_infinity + 1
+        if val >= bounds[len(bounds)-1]:
+            nb_plus_infinity = nb_plus_infinity + 1
+        
+        for j in range(0, len(bounds)-1):
+            #print("[{0};{1}]".format(bounds[j],bounds[j+1]))
+            if bounds[j]<=val and (val<bounds[j+1] or val<=bounds[j+1] and not plus_infinity):
+                nb[j] = nb[j] + 1
+    if minus_infinity:
+        nb.insert(0, nb_minus_infinity)
+    if plus_infinity:
+        nb.append(nb_plus_infinity)
     return nb
 
-bounds = [1,2,3]
-print(bounds)
-vals = [1.4,1.5,2.1,2.3,2.5]
-print(vals)
-nb = inbound(bounds, vals)
+bounds = [1, 2, 3, 4]
+vals = [0.5, 1.4, 1.5, 2.1, 2.3, 2.5, 3.1, 3.1, 4.1]
+nb = inbound(bounds, vals, True, True)
 print(nb)
