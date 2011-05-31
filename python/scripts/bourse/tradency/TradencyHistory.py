@@ -23,6 +23,7 @@
 
 from TradencyAnalyzerClass import *
 from UsefulClass import *
+#from numpy import * # variance
 
 #  ###########################################
 #  # parse HTML file        
@@ -79,6 +80,9 @@ pipsMax = 0
 IpipsMax = -1
 i = 0
 lstPips = []
+lstPipsWin = []
+lstPipsLost = []
+
 for row in dataObj:
     DuréeTotaleTrades = DuréeTotaleTrades + row.__dict__['Durée Trade']
     Pips = row.__dict__['Pips']
@@ -87,9 +91,12 @@ for row in dataObj:
     if Pips >= 0:
         winTrades = winTrades + 1
         winPips = winPips + row.__dict__['Pips']
+        lstPipsWin.append(row.__dict__['Pips'])
     else:
         lostTrades = lostTrades + 1
         lostPips = lostPips + row.__dict__['Pips']
+        print(lostPips)
+        lstPipsLost.append(row.__dict__['Pips'])
     if Pips > pipsMax:
         pipsMax = Pips
         IpipsMax = i
@@ -99,11 +106,17 @@ for row in dataObj:
     i = i + 1
     	
 
+totalPips = sum(lstPips) # cumul des pips
+winTrades = len(lstPipsWin) # nb de trades gagnants
+lostTrades = len(lstPipsLost) # nb de trades perdants
+winPips = sum(lstPipsWin) # cumul pips gagnants
+lostPips = sum(lstPipsLost) # cumul pips perdants
+
 print("Nb total de trades = {0}".format(NbTrades))
 print("Total pips = {0}".format(totalPips))
 print("Pips moyen par trade = {0}".format(totalPips/NbTrades))
-print("Trades gagnants\tNb = {0}/{1} ({2}%) ; Pips = {3}".format(winTrades, NbTrades, winTrades/NbTrades*100, winPips))
-print("Trades perdants\tNb = {0}/{1} ({2}%) ; Pips = {3}".format(lostTrades, NbTrades, lostTrades/NbTrades*100, lostPips))
+print("Trades gagnants\tNb = {0}/{1} ({2}%) ; Pips gagnés moy = {3}".format(winTrades, NbTrades, winTrades/NbTrades*100, winPips/winTrades))
+print("Trades perdants\tNb = {0}/{1} ({2}%) ; Pips perdus moy = {3}".format(lostTrades, NbTrades, lostTrades/NbTrades*100, lostPips/lostTrades))
 print("Espérance (Pips) = {0}".format(winTrades/NbTrades * winPips + lostTrades/NbTrades * lostPips))
 #print("Durée totale des trades = {0}".format(DuréeTotaleTrades))
 print("Durée moyenne des trades = {0}".format(DuréeTotaleTrades//NbTrades)) # tmdelta//n uniquement si n entier
@@ -113,9 +126,12 @@ print("Pire trade = {0} pips".format(pipsMin))
 dataObj[IpipsMin].display()
 
 print(lstPips)
-bounds = [x for x in range(-100,101,10)]
-nb = inbound(bounds, lstPips, True, True)
-print(bounds)
+print(lstPipsWin)
+print(lstPipsLost)
+
+#bounds = [x for x in range(-100,101,10)]
+#nb = inbound(bounds, lstPips, True, True)
+#print(bounds)
 #print(nb)
-for i in range(0,len(bounds)-1):
-    print("[{0};{1}[".format(bounds[i], bounds[i+1]))
+#for i in range(0,len(bounds)-1):
+#    print("[{0};{1}[".format(bounds[i], bounds[i+1]))
