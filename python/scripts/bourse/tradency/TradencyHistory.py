@@ -127,13 +127,14 @@ dataObj[IpipsMin].display()
 
 print(lstPips)
 print(lstPipsWin)
-print(lstPipsLost)
 
 # indice de proximité de valeur en pips
 #  0: trades avec des valeurs très différentes
 #  1: trades avec des valeurs très proches (de la moy)
 a = array(lstPipsWin)
 print("Proximité de la moy des pips gagnants [0(loin) - 1(proche)] = {0}".format(1-2*a.std()/(a.max()))) # std=écart-type (standard deviation)
+
+print(lstPipsLost)
 a = array(lstPipsLost)
 print("Proximité de la moy des pips perdants [0(loin) - 1(proche)] = {0}".format(1+2*a.std()/(a.min()))) # std=écart-type (standard deviation)
 
