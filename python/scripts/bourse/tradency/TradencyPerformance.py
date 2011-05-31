@@ -82,7 +82,7 @@ else:
 #  # sort data using a criterion
 #  ###########################################
 
-#['Stratégie', 'Symbole', 'T-Score', 'NumTrades', 'Max DD', 'Pips', 'Positions Max', '% gain', 'TAR', 'Profit', 'Facteur de Profit', 'Date', 'GMT (pips)', 'Temps de Trade Moyen', 'PMT (pips)', 'TPM (pips)', 'PMT (pips)']
+#['Stratégie', 'Symbole', 'T-Score', 'NumTrades', 'Max DD', 'Pips', 'Positions Max', '% gain', 'TAR', 'Profit', 'Facteur de Profit', 'Date', 'GMT (pips)', 'Temps de Trade Moyen', 'PMT (pips)', 'TPM (pips)', 'PMT (pips)_2']
 
 criterion = 'Pips moyens par trade' #'Temps de Trade Moyen' #'T-Score' #'Espérance' #'Pips moyens par trade' #'!!!!!!!! Erreur % !!!!!!!!'
 descending = False

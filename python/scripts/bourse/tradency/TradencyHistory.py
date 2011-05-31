@@ -23,7 +23,7 @@
 
 from TradencyAnalyzerClass import *
 from UsefulClass import *
-#from numpy import * # variance
+from numpy import * # variance
 
 #  ###########################################
 #  # parse HTML file        
@@ -117,7 +117,7 @@ print("Total pips = {0}".format(totalPips))
 print("Pips moyen par trade = {0}".format(totalPips/NbTrades))
 print("Trades gagnants\tNb = {0}/{1} ({2}%) ; Pips gagnés moy = {3}".format(winTrades, NbTrades, winTrades/NbTrades*100, winPips/winTrades))
 print("Trades perdants\tNb = {0}/{1} ({2}%) ; Pips perdus moy = {3}".format(lostTrades, NbTrades, lostTrades/NbTrades*100, lostPips/lostTrades))
-print("Espérance (Pips) = {0}".format(winTrades/NbTrades * winPips + lostTrades/NbTrades * lostPips))
+#print("Espérance (Pips) = {0}".format(winTrades/NbTrades * (winPips/winTrades) + lostTrades/NbTrades * (lostPips/lostTrades)))
 #print("Durée totale des trades = {0}".format(DuréeTotaleTrades))
 print("Durée moyenne des trades = {0}".format(DuréeTotaleTrades//NbTrades)) # tmdelta//n uniquement si n entier
 print("Meilleur trade = {0} pips".format(pipsMax))
@@ -128,6 +128,14 @@ dataObj[IpipsMin].display()
 print(lstPips)
 print(lstPipsWin)
 print(lstPipsLost)
+
+# indice de proximité de valeur en pips
+#  0: trades avec des valeurs très différentes
+#  1: trades avec des valeurs très proches (de la moy)
+a = array(lstPipsWin)
+print("Proximité de la moy des pips gagnants [0(loin) - 1(proche)] = {0}".format(1-2*a.std()/(a.max()))) # std=écart-type (standard deviation)
+a = array(lstPipsLost)
+print("Proximité de la moy des pips perdants [0(loin) - 1(proche)] = {0}".format(1+2*a.std()/(a.min()))) # std=écart-type (standard deviation)
 
 #bounds = [x for x in range(-100,101,10)]
 #nb = inbound(bounds, lstPips, True, True)
