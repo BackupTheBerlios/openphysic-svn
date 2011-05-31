@@ -86,7 +86,8 @@ History
 	Valeur du pips
 	
 	Ajouter graphs avec Matplotlib http://matplotlib.sourceforge.net/examples/pylab_examples/plotfile_demo.html
-	Intégration SciPi (interpolate, integrate...)	 
+	Intégration SciPi (interpolate, integrate...)
+	Comparer avec Quantmod (pour R) http://www.quantmod.com/
 
 MyHistory
 types = [int, int, str, str, str, self.strBuySell2BooleanBuy, int, float, strDatetime2datetime, float, strDatetime2datetime, float, float, float, float, float, float]
