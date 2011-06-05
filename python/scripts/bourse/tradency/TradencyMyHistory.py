@@ -136,8 +136,8 @@ for key in lstBilanStrateg:
     #    strPipsTotal = str(strPipsTotal).zfill(6)
     
     print("Bilan {0} ({1}) \t Pips total = {2}".format(strStrategie, key[1]['Symbole'], strPipsTotal))
-    #for key2 in key[1]:
-    #    print("\t{0} = {1}".format(key2, key[1][key2]))
+    for key2 in key[1]:
+        print("\t{0} = {1}".format(key2, key[1][key2]))
 
 #print(lstBilanStrateg)
 #print(items[1])
