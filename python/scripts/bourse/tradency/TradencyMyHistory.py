@@ -73,11 +73,13 @@ for row in dataObj:
         bilanStrateg[key]['Pips total'] = bilanStrateg[key]['Pips total'] + row.__dict__['Pips']
         bilanStrateg[key]['Profit total'] = bilanStrateg[key]['Profit total'] + row.__dict__['Profit']
         bilanStrateg[key]['Nb Trades'] = bilanStrateg[key]['Nb Trades'] + 1
-        bilanStrateg[key]['Pips moyen / trade'] = bilanStrateg[key]['Pips total']/bilanStrateg[key]['Nb Trades']
-        bilanStrateg[key]['Profit moyen / trade'] = bilanStrateg[key]['Profit total']/bilanStrateg[key]['Nb Trades']
         bilanStrateg[key]['Montant (k) total'] = bilanStrateg[key]['Montant (k) total'] + row.__dict__['Montant (k)']
         bilanStrateg[key]['Durée Trade total'] = bilanStrateg[key]['Durée Trade total'] + row.__dict__['Durée Trade']
 
+        bilanStrateg[key]['Pips moyen / trade'] = bilanStrateg[key]['Pips total']/bilanStrateg[key]['Nb Trades']
+        bilanStrateg[key]['Profit moyen / trade'] = bilanStrateg[key]['Profit total']/bilanStrateg[key]['Nb Trades']
+        bilanStrateg[key]['Durée moyen / trade'] = bilanStrateg[key]['Durée Trade total']/bilanStrateg[key]['Nb Trades']
+		
     except:
         #bilanStrateg[key] = row.__dict__['Pips']
         bilanStrateg[key] = dict()
