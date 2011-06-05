@@ -103,25 +103,12 @@ print("="*20)
 #print(bilanStrateg)
 
 #lstBilanStrateg = [] # to sort bilan
-for key in bilanStrateg:
-    print("Bilan {0} \t\t Pips total = {1}".format(key, bilanStrateg[key]['Pips total']))
-    for key2 in bilanStrateg[key]:
-        print("\t{0} = {1}".format(key2, bilanStrateg[key][key2]))
-	#lstBilanStrateg.append([key, bilanStrateg[key]])
-#	lstBilanStrateg.append({'Stratégie (Symbole)'=key, 'Pips total'=bilanStrateg[key]})
-
-#print(lstBilanStrateg)
-
-# (IMHO) the simplest approach:
-#def sortedDictValues1(adict):
-#    items = adict.items()
-#    items.sort()
-#    return [value for key, value in items]
-
-#print(bilanStrateg.items())
-#SortedBilanStrateg = bilanStrateg.items()
-#SortedBilanStrateg = sortedDictValues1(bilanStrateg)
-#print(SortedBilanStrateg)
+#for key in bilanStrateg:
+#    print("Bilan {0} \t\t Pips total = {1}".format(key, bilanStrateg[key]['Pips total']))
+#    for key2 in bilanStrateg[key]:
+#        print("\t{0} = {1}".format(key2, bilanStrateg[key][key2]))
+#	#lstBilanStrateg.append([key, bilanStrateg[key]])
+##	lstBilanStrateg.append({'Stratégie (Symbole)'=key, 'Pips total'=bilanStrateg[key]})
 
 
 print("="*20)
@@ -130,3 +117,17 @@ print("Pips total = {0}".format(pips))
 print("Profit total = {0}".format(profit))
 
 print("="*20)
+
+
+#v=bilanStrateg.items()
+#lstBilanStrateg = sorted(bilanStrateg.items())
+lstBilanStrateg = sorted(bilanStrateg.items(), key=lambda lstBilanStrateg: lstBilanStrateg[1]['Pips total'])
+#dataObjSorted = sorted(dataObjSelected, key=lambda dataObjSelected: dataObjSelected.__dict__[criterion], reverse=not descending)
+
+for key in lstBilanStrateg:
+    print("Bilan {0} \t\t Pips total = {1}".format(key[1]['Stratégie']+' ('+key[1]['Symbole']+')', key[1]['Pips total']))
+    #for key2 in key[1]:
+    #    print("\t{0} = {1}".format(key2, key[1][key2]))
+
+#print(lstBilanStrateg)
+#print(items[1])
