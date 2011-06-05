@@ -125,7 +125,17 @@ lstBilanStrateg = sorted(bilanStrateg.items(), key=lambda lstBilanStrateg: lstBi
 #dataObjSorted = sorted(dataObjSelected, key=lambda dataObjSelected: dataObjSelected.__dict__[criterion], reverse=not descending)
 
 for key in lstBilanStrateg:
-    print("Bilan {0} \t\t Pips total = {1}".format(key[1]['Stratégie']+' ('+key[1]['Symbole']+')', key[1]['Pips total']))
+    strStrategie = key[1]['Stratégie']
+    NbC = 20
+    strStrategie = strStrategie[0:NbC].ljust(NbC, ' ')
+    strPipsTotal = key[1]['Pips total']
+    # ToDo : align decimal points
+    #if strPipsTotal<0:
+    #    strPipsTotal = str(strPipsTotal).zfill(5)
+    #else:
+    #    strPipsTotal = str(strPipsTotal).zfill(6)
+    
+    print("Bilan {0} ({1}) \t Pips total = {2}".format(strStrategie, key[1]['Symbole'], strPipsTotal))
     #for key2 in key[1]:
     #    print("\t{0} = {1}".format(key2, key[1][key2]))
 
