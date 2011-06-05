@@ -60,6 +60,7 @@ for row in data:
 
 i = 1
 pips = 0
+profit = 0
 bilanStrateg = dict()
 
 for row in dataObj:
@@ -67,6 +68,8 @@ for row in dataObj:
     row.display()
     i = i + 1
     pips = pips + row.__dict__['Pips']
+    profit = profit + row.__dict__['Profit']
+
     key = row.__dict__['Stratégie']+' ('+row.__dict__['Symbole']+')' # cumul par stratégie(symbole)
     try:
         #bilanStrateg[key] = bilanStrateg[key] + row.__dict__['Pips']
