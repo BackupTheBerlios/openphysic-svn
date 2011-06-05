@@ -82,6 +82,7 @@ class HTMLTableParser(HTMLParser):
     def handle_data(self, data):
         #print(data)
         if self.rows == 1: # head
+            data = data.strip() # remove white space in title (begin or end)
             if data in self.row:
                 data = data + "_2" # to avoid same colon name
             self.row.append(data)
@@ -189,7 +190,7 @@ class TradencyHistory(Dict2Obj):
         Dict2Obj.__init__(self, format, value)
 
         # add specials indicators
-        self.__dict__['Durée Trade'] = self.__dict__['Fermer Heure '] - self.__dict__['Ouvrir Heure ']
+        self.__dict__['Durée Trade'] = self.__dict__['Fermer Heure'] - self.__dict__['Ouvrir Heure']
 
 #  ###########################################
 

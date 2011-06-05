@@ -78,7 +78,10 @@ for row in dataObj:
 
         bilanStrateg[key]['Pips moyen / trade'] = bilanStrateg[key]['Pips total']/bilanStrateg[key]['Nb Trades']
         bilanStrateg[key]['Profit moyen / trade'] = bilanStrateg[key]['Profit total']/bilanStrateg[key]['Nb Trades']
-        bilanStrateg[key]['Durée moyen / trade'] = bilanStrateg[key]['Durée Trade total']/bilanStrateg[key]['Nb Trades']
+        bilanStrateg[key]['Durée moyen / trade'] = bilanStrateg[key]['Durée Trade total']//bilanStrateg[key]['Nb Trades'] # // is not a bug... deltatime/integer
+        bilanStrateg[key]['Montant (k) moyen'] = bilanStrateg[key]['Montant (k) total']/bilanStrateg[key]['Nb Trades']
+
+        #bilanStrateg[key]['Date/Heure Dernier Trade'] = row.__dict__['Fermer Heure']
 		
     except:
         #bilanStrateg[key] = row.__dict__['Pips']
@@ -90,6 +93,7 @@ for row in dataObj:
         bilanStrateg[key]['Profit total'] = row.__dict__['Profit']
         bilanStrateg[key]['Montant (k) total'] = row.__dict__['Montant (k)']
         bilanStrateg[key]['Durée Trade total'] = row.__dict__['Durée Trade']
+        bilanStrateg[key]['Date/Heure Premier Trade'] = row.__dict__['Ouvrir Heure']
 
 print("="*10)
 
@@ -97,7 +101,7 @@ print("Pips total = {0}".format(pips))
 
 print("="*10)
 
-print(bilanStrateg)
+#print(bilanStrateg)
 
 #lstBilanStrateg = [] # to sort bilan
 for key in bilanStrateg:
