@@ -34,6 +34,86 @@ header = myparser.get_header()
 data = myparser.get_data()
 
 #print(data)
+#for row in data:
+#	print(row)
+#print(header)
+
+
+#  ###########################################
+#  # convert list of list to list of objects
+#  ###########################################
+
+dataObj = []
 for row in data:
-	print(row)
-print(header)
+    myHistory = TradencyHistory(header, row)
+    dataObj.append(myHistory)
+
+
+#  ###########################################
+#  # filter by date
+#  ###########################################
+
+
+#  ###########################################
+#  # display data (selected and sorted)
+#  ###########################################
+
+i = 1
+pips = 0
+bilanStrateg = dict()
+
+for row in dataObj:
+    print("=== {0}/{1} : {2} ({3})===".format(i, len(dataObj), row.__dict__['Stratégie'], row.__dict__['Symbole']))
+    row.display()
+    i = i + 1
+    pips = pips + row.__dict__['Pips']
+    key = row.__dict__['Stratégie']+' ('+row.__dict__['Symbole']+')' # cumul par stratégie(symbole)
+    try:
+        #bilanStrateg[key] = bilanStrateg[key] + row.__dict__['Pips']
+        bilanStrateg[key]['Pips total'] = bilanStrateg[key]['Pips total'] + row.__dict__['Pips']
+        bilanStrateg[key]['Profit total'] = bilanStrateg[key]['Profit total'] + row.__dict__['Profit']
+        bilanStrateg[key]['Nb Trades'] = bilanStrateg[key]['Nb Trades'] + 1
+        bilanStrateg[key]['Pips moyen / trade'] = bilanStrateg[key]['Pips total']/bilanStrateg[key]['Nb Trades']
+        bilanStrateg[key]['Profit moyen / trade'] = bilanStrateg[key]['Profit total']/bilanStrateg[key]['Nb Trades']
+        bilanStrateg[key]['Montant (k) total'] = bilanStrateg[key]['Montant (k) total'] + row.__dict__['Montant (k)']
+        bilanStrateg[key]['Durée Trade total'] = bilanStrateg[key]['Durée Trade total'] + row.__dict__['Durée Trade']
+
+    except:
+        #bilanStrateg[key] = row.__dict__['Pips']
+        bilanStrateg[key] = dict()
+        bilanStrateg[key]['Stratégie'] = row.__dict__['Stratégie']
+        bilanStrateg[key]['Symbole'] = row.__dict__['Symbole']
+        bilanStrateg[key]['Nb Trades'] = 1
+        bilanStrateg[key]['Pips total'] = row.__dict__['Pips']
+        bilanStrateg[key]['Profit total'] = row.__dict__['Profit']
+        bilanStrateg[key]['Montant (k) total'] = row.__dict__['Montant (k)']
+        bilanStrateg[key]['Durée Trade total'] = row.__dict__['Durée Trade']
+
+print("="*10)
+
+print("Pips total = {0}".format(pips))
+
+print("="*10)
+
+print(bilanStrateg)
+
+#lstBilanStrateg = [] # to sort bilan
+for key in bilanStrateg:
+    print("{0} \t\t Pips total = {1}".format(key, bilanStrateg[key]['Pips total']))
+    for key2 in bilanStrateg[key]:
+        print("\t{0} = {1}".format(key2, bilanStrateg[key][key2]))
+	#lstBilanStrateg.append([key, bilanStrateg[key]])
+#	lstBilanStrateg.append({'Stratégie (Symbole)'=key, 'Pips total'=bilanStrateg[key]})
+
+#print(lstBilanStrateg)
+
+# (IMHO) the simplest approach:
+#def sortedDictValues1(adict):
+#    items = adict.items()
+#    items.sort()
+#    return [value for key, value in items]
+
+#print(bilanStrateg.items())
+#SortedBilanStrateg = bilanStrateg.items()
+#SortedBilanStrateg = sortedDictValues1(bilanStrateg)
+#print(SortedBilanStrateg)
