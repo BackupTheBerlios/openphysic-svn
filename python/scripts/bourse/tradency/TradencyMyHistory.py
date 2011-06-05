@@ -84,7 +84,7 @@ for row in dataObj:
         bilanStrateg[key]['Durée moyen / trade'] = bilanStrateg[key]['Durée Trade total']//bilanStrateg[key]['Nb Trades'] # // is not a bug... deltatime/integer
         bilanStrateg[key]['Montant (k) moyen'] = bilanStrateg[key]['Montant (k) total']/bilanStrateg[key]['Nb Trades']
 
-        #bilanStrateg[key]['Date/Heure Dernier Trade'] = row.__dict__['Fermer Heure']
+        bilanStrateg[key]['Date/Heure Dernier Trade'] = row.__dict__['Fermer Heure']
 		
     except:
         #bilanStrateg[key] = row.__dict__['Pips']
