@@ -64,7 +64,7 @@ profit = 0
 bilanStrateg = dict()
 
 for row in dataObj:
-    print("=== {0}/{1} : {2} ({3})===".format(i, len(dataObj), row.__dict__['Stratégie'], row.__dict__['Symbole']))
+    print("=== Trade {0}/{1} : {2} ({3})===".format(i, len(dataObj), row.__dict__['Stratégie'], row.__dict__['Symbole']))
     row.display()
     i = i + 1
     pips = pips + row.__dict__['Pips']
@@ -98,17 +98,13 @@ for row in dataObj:
         bilanStrateg[key]['Durée Trade total'] = row.__dict__['Durée Trade']
         bilanStrateg[key]['Date/Heure Premier Trade'] = row.__dict__['Ouvrir Heure']
 
-print("="*10)
-
-print("Pips total = {0}".format(pips))
-
-print("="*10)
+print("="*20)
 
 #print(bilanStrateg)
 
 #lstBilanStrateg = [] # to sort bilan
 for key in bilanStrateg:
-    print("{0} \t\t Pips total = {1}".format(key, bilanStrateg[key]['Pips total']))
+    print("Bilan {0} \t\t Pips total = {1}".format(key, bilanStrateg[key]['Pips total']))
     for key2 in bilanStrateg[key]:
         print("\t{0} = {1}".format(key2, bilanStrateg[key][key2]))
 	#lstBilanStrateg.append([key, bilanStrateg[key]])
@@ -126,3 +122,11 @@ for key in bilanStrateg:
 #SortedBilanStrateg = bilanStrateg.items()
 #SortedBilanStrateg = sortedDictValues1(bilanStrateg)
 #print(SortedBilanStrateg)
+
+
+print("="*20)
+
+print("Pips total = {0}".format(pips))
+print("Profit total = {0}".format(profit))
+
+print("="*20)
