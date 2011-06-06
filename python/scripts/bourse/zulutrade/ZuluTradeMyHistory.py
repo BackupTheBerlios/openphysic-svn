@@ -29,9 +29,9 @@ from ZuluTradeAnalyzerClass import *
 #  ###########################################
 
 datasource = open('ZuluTrade-TradeHistory.xls')
-print(datasource)
+#print(datasource)
 #myreader = HTMLTableWithHeadParser(datasource)
-#myreader = ZuluTradeMyHistoryReader(datasource)
+myreader = ZuluTradeMyHistoryReader(datasource)
 
 #myreader.print_data()
 

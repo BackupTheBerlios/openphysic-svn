@@ -41,7 +41,11 @@ class HTMLTableWithHeadParser(HTMLParser):
         #self.types = [str, str, float, int, float, float, int, float, float, float, float, strDate2date, float, strH2timedelta, float, float, float]
         #self.types = []
         self.types = types
-        self.feed(fh.read())
+        str = fh.read()
+        str = str.replace('<br/>','__br__')
+        str = str.replace('<br />','__br__')
+        str = str.replace('&lt;','<')
+        self.feed(str)
     
     #def parse(self):
     #    self.feed(self.fh.read())
@@ -95,6 +99,7 @@ class HTMLTableWithHeadParser(HTMLParser):
             self.row.append(data)
         else: # data
             try:
+                #print(data)
                 self.row.append(self.types[self.cols-1](data)) # cast to float, int or other
             except IndexError: # Index out of range
                 self.row.append(data) # string
