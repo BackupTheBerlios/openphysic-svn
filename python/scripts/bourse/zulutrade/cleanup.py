@@ -1,7 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-import re
 
 htmlfilename = 'ZuluTrade-TradeHistory.html'
 htmlfile = open(htmlfilename, 'rb')
