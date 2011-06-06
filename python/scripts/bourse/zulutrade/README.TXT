@@ -13,6 +13,7 @@ autre solution
 utiliser un parser autre que HTMLParser
 http://stackoverflow.com/questions/2870667/how-to-convert-an-html-table-to-an-array-in-python
 BeautifulSoup http://www.crummy.com/software/BeautifulSoup/
+voir Web Scraping
 
 
 str
