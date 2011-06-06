@@ -21,8 +21,8 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-from HTMLParser import HTMLParser # py2
-#from html.parser import HTMLParser #py3
+#from HTMLParser import HTMLParser # py2
+from html.parser import HTMLParser #py3
 from datetime import date, datetime, timedelta
 
 class HTMLTableWithHeadParser(HTMLParser):
@@ -47,6 +47,7 @@ class HTMLTableWithHeadParser(HTMLParser):
     #    self.feed(self.fh.read())
 
     def handle_starttag(self, tag, attrs):
+        print("  start "+tag)
         if tag == 'table':
             self.state = 1
 
@@ -57,7 +58,7 @@ class HTMLTableWithHeadParser(HTMLParser):
                 self.row = []
                 #self.row = ()
         	
-            if tag == 'td':
+            if tag == 'td' or tag == 'th':
                 self.cels = self.cels + 1
                 self.cols = self.cols + 1
 
@@ -81,9 +82,12 @@ class HTMLTableWithHeadParser(HTMLParser):
     	#	print("a closing td")
 
     def handle_data(self, data):
-        #print(data)
-        if self.rows == 1: # head
-            data = data.strip() # remove white space in title (begin or end)
+        data = data.strip() # remove white space in title (begin or end)
+        print(data)
+        if self.rows == 0:
+            pass
+        elif self.rows == 1: # head
+            #data = data.strip() # remove white space in title (begin or end)
             if data in self.row:
                 data = data + "_2" # to avoid same colon name
             self.row.append(data)
@@ -139,9 +143,9 @@ class HTMLTableWithHeadParser(HTMLParser):
 
 class ZuluTradeMyHistoryReader(HTMLTableWithHeadParser):
     def __init__(self, fh, types=[]):
-    	pass
-        #types = [str, str, float, int, float, float, int, float, float, float, float, self.strDate2date, float, self.strH2timedelta, float, float, float]
-        #HTMLTableParser.__init__(self, fh, types)
+        #pass
+        types = [str, str, str, int]
+        HTMLTableWithHeadParser.__init__(self, fh, types)
         #self.feed(fh.read())
 
 
