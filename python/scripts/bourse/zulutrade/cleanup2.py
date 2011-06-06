@@ -1,5 +1,6 @@
 #!/usr/bin/python
- 
+# -*- coding: utf8 -*-
+
 from BeautifulSoup import BeautifulSoup
 
 datasource = open('ZuluTrade-TradeHistory.html')

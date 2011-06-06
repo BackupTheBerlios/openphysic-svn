@@ -1,4 +1,5 @@
 #!/usr/bin/python
+# -*- coding: utf8 -*-
 
 import urllib 
 from BeautifulSoup import BeautifulSoup
@@ -18,8 +19,8 @@ print(table.prettify())
 
 dat = [ map(str, row.findAll("td")) for row in table.findAll("tr") ]
 
-i = 0
-for row in dat:
-    if i>=2:
-      print(row)
-    i = i + 1
+# ligne 0 header
+# ligne 1 currency_first
+# denière ligne currency_last
+for row in dat[2:-1]:
+    print(row)
