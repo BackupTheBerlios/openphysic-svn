@@ -1,4 +1,5 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
+# -*- coding: utf8 -*-
 
 #    FOREX class
 #
@@ -246,7 +247,8 @@ class Value(): # ToDo dériver de float afin de pouvoir faire opé avec devise
 
     def __repr__(self):
         #return repr(self.__dict__)
-        return(self.currency.code+"{:03.2f}".format(round(self.amount, self.currency.digits)))
+        #return(self.currency.code+"{:03.2f}".format(round(self.amount, self.currency.digits)))
+        return(self.currency.code+"{0}".format(round(self.amount, self.currency.digits)))
         
     def convert(self, to_currency):
     	#find pair self.currency/to_currency and get quote

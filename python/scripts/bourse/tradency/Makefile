@@ -1,4 +1,6 @@
-PYTHON = python3
+PYTHON = python
+#PYTHON = python2.7
+#PYTHON = python3
 
 all:
 	$(MAKE) perf > Out_Performance.txt

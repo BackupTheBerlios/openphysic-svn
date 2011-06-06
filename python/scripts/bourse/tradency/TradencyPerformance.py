@@ -1,4 +1,5 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
+# -*- coding: utf8 -*-
 
 #    Tradency analyzer for Performance
 #
@@ -88,7 +89,7 @@ criterion = '!!!!!!!! Erreur % !!!!!!!!' #'Pips moyens par trade' #'Temps de Tra
 descending = False
 dataObjSorted = sorted(dataObjSelected, key=lambda dataObjSelected: dataObjSelected.__dict__[criterion], reverse=not descending)
 
-# Rem (à vérifier) : 'Espérance' ne prend pas en compte les trades en cours (prend en compte uniquement les trades fermés)
+# Rem (à vérifier) : 'Pips total' ne prend pas en compte les trades en cours (prend en compte uniquement les trades fermés)
 #  alors que 'Pips moyen par trade' si
 # Csq : si Espérance > Pips moyen par trade => il y a des trades perdants non fermés
 

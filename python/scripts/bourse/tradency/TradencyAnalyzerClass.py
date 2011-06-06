@@ -1,4 +1,5 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
+# -*- coding: utf8 -*-
 
 #    Tradency analyzer class
 #
@@ -20,7 +21,8 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-from html.parser import HTMLParser
+from HTMLParser import HTMLParser # py2
+#from html.parser import HTMLParser #py3
 from datetime import date, datetime, timedelta
 from ForexClass import *
 

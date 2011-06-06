@@ -1,4 +1,5 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
+# -*- coding: utf8 -*-
 
 #    Tradency Analyzer for History
 #
@@ -68,7 +69,7 @@ for row in dataObj:
 #  ###########################################
 #  # Calculate stats
 #  ###########################################
-DuréeTotaleTrades = timedelta()
+DureeTotaleTrades = timedelta()
 winTrades = 0
 lostTrades = 0
 winPips = 0
@@ -84,7 +85,7 @@ lstPipsWin = []
 lstPipsLost = []
 
 for row in dataObj:
-    DuréeTotaleTrades = DuréeTotaleTrades + row.__dict__['Durée Trade']
+    DureeTotaleTrades = DureeTotaleTrades + row.__dict__['Durée Trade']
     Pips = row.__dict__['Pips']
     lstPips.append(Pips)
     totalPips = totalPips + Pips
@@ -118,8 +119,8 @@ print("Pips moyen par trade = {0}".format(totalPips/NbTrades))
 print("Trades gagnants\tNb = {0}/{1} ({2}%) ; Pips gagnés moy = {3}".format(winTrades, NbTrades, winTrades/NbTrades*100, winPips/winTrades))
 print("Trades perdants\tNb = {0}/{1} ({2}%) ; Pips perdus moy = {3}".format(lostTrades, NbTrades, lostTrades/NbTrades*100, lostPips/lostTrades))
 #print("Espérance (Pips) = {0}".format(winTrades/NbTrades * (winPips/winTrades) + lostTrades/NbTrades * (lostPips/lostTrades)))
-#print("Durée totale des trades = {0}".format(DuréeTotaleTrades))
-print("Durée moyenne des trades = {0}".format(DuréeTotaleTrades//NbTrades)) # tmdelta//n uniquement si n entier
+#print("Durée totale des trades = {0}".format(DureeTotaleTrades))
+print("Durée moyenne des trades = {0}".format(DureeTotaleTrades//NbTrades)) # tmdelta//n uniquement si n entier
 print("Meilleur trade = {0} pips".format(pipsMax))
 dataObj[IpipsMax].display()
 print("Pire trade = {0} pips".format(pipsMin))
