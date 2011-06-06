@@ -1,4 +1,5 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
+# -*- coding: utf8 -*-
 
 #    Bilan pour ADE - v 0.1
 #
@@ -90,9 +91,9 @@ for placement in lstPlacements:
     b = Bilan()
     enseignant = placement.__dict__['Enseignants au choix (noms)']
     typeAct = placement.__dict__['Type']
-    durée = placement.__dict__['Durée (h)']
+    duree = placement.__dict__['Durée (h)']
     #try:
-    #    bilanEns[enseignant].__dict__[typeAct] = bilanEns[enseignant].__dict__[typeAct] + durée
+    #    bilanEns[enseignant].__dict__[typeAct] = bilanEns[enseignant].__dict__[typeAct] + duree
     #except:
     #    bilanEns[enseignant] = Bilan()
     #print(enseignant)
