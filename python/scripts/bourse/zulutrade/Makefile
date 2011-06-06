@@ -3,8 +3,6 @@ PYTHON=python
 
 all:
 	$(MAKE) MyHistory
-	#$(PYTHON) ZuluTradeMyHistory.py > out.txt
-	#less out.txt
 
 .PHONY: clean
 
@@ -12,7 +10,7 @@ MyHistory:
 	$(PYTHON) cleanup.py ZuluTradeMyHistory.html > out.html
 	$(PYTHON) html2csv.py out.html
 
-	#$(PYTHON) ZuluTradeMyHistory.py
+	#$(PYTHON) ZuluTradeMyHistory.py out.csv
 	
 clean:
 	$(RM) out.txt

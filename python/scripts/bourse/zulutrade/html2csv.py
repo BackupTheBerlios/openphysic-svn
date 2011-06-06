@@ -122,7 +122,6 @@ if __name__ == "__main__":
             htmlfile = open(htmlfilename, 'rb')
             csvfile = open( outputfilename, 'w+b')
             data = htmlfile.read(8192)
-            print(data)
             while data:
                 parser.feed( data )
                 csvfile.write( parser.getCSV() )
