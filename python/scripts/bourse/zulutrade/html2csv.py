@@ -65,10 +65,11 @@ class html2csv(HTMLParser.HTMLParser):
         self.rowCount = 0  # CSV output line counter.
     def handle_starttag(self, tag, attrs):
         if   tag == 'tr': self.start_tr()
-        elif tag == 'td': self.start_td()
+        elif tag == 'td' or tag == 'th': self.start_td() # scls : add th
+        #elif tag == 'br': print 'br is here'
     def handle_endtag(self, tag):
         if   tag == 'tr': self.end_tr()
-        elif tag == 'td': self.end_td()         
+        elif tag == 'td' or tag == 'th': self.end_td() # scls : add th
     def start_tr(self):
         if self.inTR: self.end_tr()  # <TR> implies </TR>
         self.inTR = 1
@@ -90,7 +91,7 @@ class html2csv(HTMLParser.HTMLParser):
             self.inTD = 0
     def handle_data(self, data):
         if self.inTD:
-            self.CSVrow += self.re_multiplespaces.sub(' ',data.replace('\t',' ').replace('\n','').replace('\r','').replace('"','""'))
+            self.CSVrow += self.re_multiplespaces.sub(' ',data.replace('\t',' ').replace('\n','').replace('\r','').replace('"','""')).strip() # scls : add strip()
     def getCSV(self,purge=False):
         ''' Get output CSV.
             If purge is true, getCSV() will return all remaining data,
@@ -122,6 +123,7 @@ if __name__ == "__main__":
             htmlfile = open(htmlfilename, 'rb')
             csvfile = open( outputfilename, 'w+b')
             data = htmlfile.read(8192)
+            print(data)
             while data:
                 parser.feed( data )
                 csvfile.write( parser.getCSV() )

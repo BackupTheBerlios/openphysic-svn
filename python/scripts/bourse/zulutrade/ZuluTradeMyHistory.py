@@ -29,10 +29,11 @@ from ZuluTradeAnalyzerClass import *
 #  ###########################################
 
 datasource = open('ZuluTrade-TradeHistory.xls')
-myreader = HTMLTableWithHeadParser(datasource)
+print(datasource)
+#myreader = HTMLTableWithHeadParser(datasource)
 #myreader = ZuluTradeMyHistoryReader(datasource)
 
-myreader.print_data()
+#myreader.print_data()
 
 #header = myreader.get_header()
 #data = myreader.get_data()

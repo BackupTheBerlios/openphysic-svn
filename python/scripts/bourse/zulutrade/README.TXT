@@ -1,3 +1,8 @@
+Nettoyer fichier
+-enlever entities &#233;
+-remplacer <br/> et <br /> par __br__
+- enlever title="&lt;table>&lt;tr>&lt;td>Gross PnL:&lt;/td>&lt;td>-€3.51&lt;/td>&lt;/tr>&lt;tr>&lt;td>Interest:&lt;/td>&lt;td>-€0.23&lt;/td>&lt;/tr>&lt;tr>&lt;td>Commision:&lt;/td>&lt;td>€0.00&lt;/td>&lt;/tr>&lt;tr>&lt;td>Net PnL:&lt;/td>&lt;td>-€3.74&lt;/td>&lt;/tr>&lt;/table>"
+
 ToDo : parser HTML table (th pour col au lieu de td pour en-têtes)
 
 str
