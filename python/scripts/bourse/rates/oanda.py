@@ -33,5 +33,5 @@ for row in dat[2:-1]:
         minisoup = BeautifulSoup(col)
         print(minisoup.td.string)
         #print(minisoup.contents[0])
-    print("***")
+    print("="*10)
     #print(row)
