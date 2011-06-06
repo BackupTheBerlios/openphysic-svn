@@ -18,9 +18,15 @@ table = soup.find('table')
 print(table.prettify())
 
 dat = [ map(str, row.findAll("td")) for row in table.findAll("tr") ]
+#print(dat)
 
 # ligne 0 header
+
+print(dat[0])
+
 # ligne 1 currency_first
 # denière ligne currency_last
+
+
 for row in dat[2:-1]:
     print(row)
