@@ -1,3 +1,5 @@
+ToDo : parser HTML table (th pour col au lieu de td pour en-têtes)
+
 str
 str ou strBuySell2BooleanBuy
 str ou strPair2Pair
