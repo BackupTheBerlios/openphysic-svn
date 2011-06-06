@@ -1,7 +1,9 @@
+PYTHON=python
+
 all:
 	$(MAKE) MyHistory
 
 .PHONY: clean
 
 MyHistory:
-	python ZuluTradeMyHistory.py
+	$(PYTHON) ZuluTradeMyHistory.py

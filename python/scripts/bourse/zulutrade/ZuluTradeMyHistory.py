@@ -28,8 +28,12 @@ from ZuluTradeAnalyzerClass import *
 #  # read XLS file        
 #  ###########################################
 
-datasource = open('ZuluTrade-TradeHistory.xls')
-myreader = ZuluTradeMyHistoryReader(datasource)
+import xlrd
+
+myreader = xlrd.open_workbook('ZuluTrade-TradeHistory.xls')
+
+#datasource = open('ZuluTrade-TradeHistory.xls')
+#myreader = ZuluTradeMyHistoryReader(datasource)
 
 #myreader.print_data()
 
