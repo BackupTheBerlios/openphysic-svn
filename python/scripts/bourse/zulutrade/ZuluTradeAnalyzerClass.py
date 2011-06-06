@@ -87,17 +87,20 @@ class HTMLTableWithHeadParser(HTMLParser):
 
     def handle_data(self, data):
         data = data.strip() # remove white space in title (begin or end)
-        print(data)
         #data.encode('iso8859-9')
         #print(data)
         if self.rows == 0:
             pass
         elif self.rows == 1: # head
+            print(data)
+
             #data = data.strip() # remove white space in title (begin or end)
             if data in self.row:
                 data = data + "_2" # to avoid same colon name
             self.row.append(data)
         else: # data
+            print(data)
+
             try:
                 #print(data)
                 self.row.append(self.types[self.cols-1](data)) # cast to float, int or other

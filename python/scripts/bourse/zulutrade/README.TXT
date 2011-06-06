@@ -5,6 +5,16 @@ Nettoyer fichier
 
 ToDo : parser HTML table (th pour col au lieu de td pour en-têtes)
 
+cleanup.py
+html2csv.py
+puis parseur CSV
+
+autre solution
+utiliser un parser autre que HTMLParser
+http://stackoverflow.com/questions/2870667/how-to-convert-an-html-table-to-an-array-in-python
+BeautifullSoup http://www.crummy.com/software/BeautifulSoup/
+
+
 str
 str ou strBuySell2BooleanBuy
 str ou strPair2Pair

@@ -7,10 +7,9 @@ all:
 .PHONY: clean
 
 MyHistory:
-	$(PYTHON) cleanup.py ZuluTradeMyHistory.html > out.html
+	$(PYTHON) cleanup.py ZuluTrade-TradeHistory.html out.html
 	$(PYTHON) html2csv.py out.html
-
-	#$(PYTHON) ZuluTradeMyHistory.py out.csv
+	#$(PYTHON) ZuluTradeMyHistory.py
 	
 clean:
 	$(RM) out.txt
