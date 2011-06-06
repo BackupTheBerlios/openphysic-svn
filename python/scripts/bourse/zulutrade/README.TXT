@@ -15,6 +15,9 @@ http://stackoverflow.com/questions/2870667/how-to-convert-an-html-table-to-an-ar
 BeautifulSoup http://www.crummy.com/software/BeautifulSoup/
 voir Web Scraping
 
+installer dépendances avec
+easy_install beautifulsoup
+
 
 str
 str ou strBuySell2BooleanBuy
