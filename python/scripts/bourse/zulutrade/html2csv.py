@@ -66,7 +66,6 @@ class html2csv(HTMLParser.HTMLParser):
     def handle_starttag(self, tag, attrs):
         if   tag == 'tr': self.start_tr()
         elif tag == 'td' or tag == 'th': self.start_td() # scls : add th
-        #elif tag == 'br': print 'br is here'
     def handle_endtag(self, tag):
         if   tag == 'tr': self.end_tr()
         elif tag == 'td' or tag == 'th': self.end_td() # scls : add th
