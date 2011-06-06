@@ -82,7 +82,6 @@ class HTMLTableParser(HTMLParser):
     	#	print("a closing td")
 
     def handle_data(self, data):
-        #print(data)
         if self.rows == 1: # head
             data = data.strip() # remove white space in title (begin or end)
             if data in self.row:

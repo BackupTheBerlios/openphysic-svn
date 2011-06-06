@@ -85,7 +85,7 @@ else:
 
 #['Stratégie', 'Symbole', 'T-Score', 'NumTrades', 'Max DD', 'Pips', 'Positions Max', '% gain', 'TAR', 'Profit', 'Facteur de Profit', 'Date', 'GMT (pips)', 'Temps de Trade Moyen', 'PMT (pips)', 'TPM (pips)', 'PMT (pips)_2']
 
-criterion = '!!!!!!!! Erreur % !!!!!!!!' #'Pips moyens par trade' #'Temps de Trade Moyen' #'T-Score' #'Espérance' #'Pips moyens par trade' #'!!!!!!!! Erreur % !!!!!!!!'
+criterion = 'T-Score' #'!!!!!!!! Erreur % !!!!!!!!' #'Pips moyens par trade' #'Temps de Trade Moyen' #'T-Score' #'Espérance' #'Pips moyens par trade' #'!!!!!!!! Erreur % !!!!!!!!'
 descending = False
 dataObjSorted = sorted(dataObjSelected, key=lambda dataObjSelected: dataObjSelected.__dict__[criterion], reverse=not descending)
 
