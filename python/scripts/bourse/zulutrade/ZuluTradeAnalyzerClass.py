@@ -84,6 +84,8 @@ class HTMLTableWithHeadParser(HTMLParser):
     def handle_data(self, data):
         data = data.strip() # remove white space in title (begin or end)
         print(data)
+        #data.encode('iso8859-9')
+        #print(data)
         if self.rows == 0:
             pass
         elif self.rows == 1: # head
