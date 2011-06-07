@@ -17,6 +17,7 @@ table = soup.find('table')
 
 #print(table.prettify()) # display the table
 
+
 dat = [ map(str, row.findAll("td")) for row in table.findAll("tr") ]
 #print(dat)
 
