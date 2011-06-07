@@ -20,7 +20,9 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>
 
+
 from UsefulClass import *
+#from pylab import plot
 
 bounds = [1, 2, 3, 4]
 vals = [0.5, 1.4, 1.5, 2.1, 2.3, 2.5, 3.1, 3.1, 4.1]
@@ -33,3 +35,6 @@ pips = [1, 2, 3, 4]
 cum_pips = cumulative_sum(pips)
 print(pips)
 print(cum_pips)
+x = range(0,len(pips))
+print(x)
+#plot(x,cum_pips)
