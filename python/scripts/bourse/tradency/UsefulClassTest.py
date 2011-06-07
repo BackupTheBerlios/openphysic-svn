@@ -28,3 +28,8 @@ nb = inbound(bounds, vals, True, True)
 print(vals)
 print(bounds)
 print(nb)
+
+pips = [1, 2, 3, 4]
+cum_pips = cumulative_sum(pips)
+print(pips)
+print(cum_pips)

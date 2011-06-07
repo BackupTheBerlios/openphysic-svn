@@ -50,3 +50,11 @@ def inbound(bounds, vals, minus_infinity=True, plus_infinity=True):
 
     return nb
 
+def cumulative_sum(n):
+    cum_sum = []
+    y = 0
+    for i in n:   # <--- i will contain elements (not indices) from n
+        y += i    # <--- so you need to add i, not n[i]
+        cum_sum.append(y)
+    return cum_sum
+
