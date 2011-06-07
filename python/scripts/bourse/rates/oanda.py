@@ -28,7 +28,6 @@ dat = [ map(str, row.findAll("td")) for row in table.findAll("tr") ]
 # ligne 1 currency_first
 # denière ligne currency_last
 
-
 for row in dat[2:-1]:
     for col in row:
         minisoup = BeautifulSoup(col)
@@ -36,3 +35,5 @@ for row in dat[2:-1]:
         #print(minisoup.contents[0])
     print("="*10)
     #print(row)
+
+f.close()
