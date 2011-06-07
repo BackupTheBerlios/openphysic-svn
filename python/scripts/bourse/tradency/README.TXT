@@ -85,6 +85,8 @@ History
 	
 	Valeur du pips
 	
+	Cumuler (Pips ou profit)
+	
 	Ajouter graphs avec Matplotlib http://matplotlib.sourceforge.net/examples/pylab_examples/plotfile_demo.html
 	Intégration SciPi (interpolate, integrate...)
 	Comparer avec Quantmod (pour R) http://www.quantmod.com/
