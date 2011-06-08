@@ -20,14 +20,26 @@ soup = BeautifulSoup(html)
 
 t = soup.findAll('table')
 
+
+lstTables = []
 for table in t:
+    lstData = []
     rows = table.findAll('tr')
     for tr in rows:
+        lstRow = []
         cols = tr.findAll('td')
         for td in cols:
-            g.write(str(td.find(text=True)))
+            val = str(td.find(text=True))
+            lstRow.append(val)
+            g.write(val)
             g.write(";")
         g.write("\n")
+        lstData.append(lstRow)
+    lstTables.append(lstData)
+
+print(lstTables)
 
 f.close()
-g.close()  
+g.close()
+
+print(lstTables) # ValueError: I/O operation on closed file
