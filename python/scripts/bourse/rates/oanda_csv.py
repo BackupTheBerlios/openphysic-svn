@@ -37,9 +37,10 @@ for table in t:
         lstData.append(lstRow)
     lstTables.append(lstData)
 
-print(lstTables)
+nbcols = len(lstTables[0][:][0])
+nblignes = len(lstTables[0][0][:])
 
 f.close()
 g.close()
 
-print(lstTables) # ValueError: I/O operation on closed file
+#print(lstTables) # ValueError: I/O operation on closed file
