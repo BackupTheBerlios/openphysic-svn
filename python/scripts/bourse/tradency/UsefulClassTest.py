@@ -45,15 +45,18 @@ show()
 
 strategies = ['s1', 's2', 's3', 's4']
 cum_pips_s = [10, 20, -10, 40]
-#bar
+N = len(strategies)
+ind = np.arange(N)  # the x locations for the groups
+width = 0.5       # the width of the bars
+bar(ind+width/2, cum_pips_s, width)
+xticks(ind+width, strategies )
 show()
 
 
 #Repartition en % paires -> camembert
 labels = 'EURUSD', 'EURGBP', 'USDJPY', 'USDAUD'
 fracs = [30,15,5, 10]
-
-pie(fracs, explode=None, labels=labels, autopct='%1.1f%%', shadow=True)
+pie(fracs, explode=None, labels=labels, autopct='%1.2f%%', shadow=True)
 title('Repartition', bbox={'facecolor':'0.8', 'pad':5})
 
 show()
