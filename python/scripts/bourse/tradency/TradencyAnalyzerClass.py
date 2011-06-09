@@ -25,6 +25,8 @@ from HTMLParser import HTMLParser # py2
 #from html.parser import HTMLParser #py3
 from datetime import date, datetime, timedelta
 from ForexClass import *
+from UsefulClass import *
+from pylab import plot, show, grid, title, xlabel, ylabel, subplot # plot
 
 class HTMLTableParser(HTMLParser):
     def __init__(self, fh, types=[]):

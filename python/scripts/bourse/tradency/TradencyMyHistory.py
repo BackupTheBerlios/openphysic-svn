@@ -58,18 +58,29 @@ for row in data:
 #  ###########################################
 #  # display data (selected and sorted)
 #  ###########################################
+descending = True
+criterion = 'Fermer Heure'
+dataObjSorted = sorted(dataObj, key=lambda dataObj: dataObj.__dict__[criterion], reverse=not descending)
+
 
 i = 1
-pips = 0
-profit = 0
+t = []
+pips = []
+profit = []
+pipsTot = 0
+profitTot = 0
 bilanStrateg = dict()
 
-for row in dataObj:
+for row in dataObjSorted:
+    t.append(row.__dict__['Fermer Heure'])
+    pips.append(row.__dict__['Pips'])
+    profit.append(row.__dict__['Profit'])
+    
     print("=== Trade {0}/{1} : {2} ({3})===".format(i, len(dataObj), row.__dict__['Stratégie'], row.__dict__['Symbole']))
     row.display()
     i = i + 1
-    pips = pips + row.__dict__['Pips']
-    profit = profit + row.__dict__['Profit']
+    pipsTot = pipsTot + row.__dict__['Pips']
+    profitTot = profitTot + row.__dict__['Profit']
 
     key = row.__dict__['Stratégie']+' ('+row.__dict__['Symbole']+')' # cumul par stratégie(symbole)
     try:
@@ -114,8 +125,8 @@ print("="*20)
 
 print("="*20)
 
-print("Pips total = {0}".format(pips))
-print("Profit total = {0}".format(profit))
+print("Pips total = {0}".format(pipsTot))
+print("Profit total = {0}".format(profitTot))
 
 print("="*20)
 
@@ -139,6 +150,24 @@ for key in lstBilanStrateg:
     print("Bilan {0} ({1}) \t Pips total = {2}".format(strStrategie, key[1]['Symbole'], strPipsTotal))
     for key2 in key[1]:
         print("\t{0} = {1}".format(key2, key[1][key2]))
+
+#print(t)
+cum_pips = cumulative_sum(pips)
+cum_profit = cumulative_sum(profit)
+x = range(0,len(pips))
+subplot(211)
+plot(t, cum_pips, 'b.', t, cum_pips, 'k--')
+title('Accumulated pips')
+xlabel('date') #'trade #')
+ylabel('pips')
+grid(True)
+subplot(212)
+plot(t, cum_profit, 'r.', t, cum_profit, 'k--')
+title('Accumulated profit')
+xlabel('date') #'trade #')
+ylabel('profit')
+grid(True)
+show()
 
 #print(lstBilanStrateg)
 #print(items[1])
