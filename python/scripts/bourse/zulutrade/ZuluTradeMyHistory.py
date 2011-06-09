@@ -55,9 +55,21 @@ for tr in rows:
     i = i + 1
 # 0..8
 # 9 # &lt;tr>&lt;td>Gross PnL:&lt;/td>&lt;td>-€12.49&lt;/td>&lt;/tr>&lt;tr>&lt;td>Interest:&lt;/td>&lt;td>€0.00&lt;/td>&lt;/tr>&lt;tr>&lt;td>Commision:&lt;/td>&lt;td>€0.00&lt;/td>&lt;/tr>&lt;tr>&lt;td>Net PnL:&lt;/td>&lt;td>-€12.49&lt;/td>&lt;/tr>&lt;/table>" style="background-color:#FFD2D2;">-15 pips
-print(lstData[2][7])
-print(lstData[2][8])
 
+i = 2
+print(lstData[i][0][0].strip()) # string Stratégie
+print(lstData[i][1][0]) # SELL/BUY
+print(lstData[i][2][0]) # XXX/YYY
+print(int(lstData[i][3][0])) # int
+print(lstData[i][4][0].strip()) # datetime
+print(lstData[i][5][0]) # datetime
+print(float(lstData[i][6][0]))
+print(float(lstData[i][7][0]))
+print(int(lstData[i][8][0]))
+print(int(lstData[i][8][1]))
+print(lstData[i][9][0]) # use regexp
+print(lstData[2][10][0])
+print(lstData[2][10][1])
 datasource.close()
 
 
