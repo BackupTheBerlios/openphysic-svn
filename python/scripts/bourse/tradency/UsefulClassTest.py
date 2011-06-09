@@ -32,11 +32,28 @@ print(vals)
 print(bounds)
 print(nb)
 
-pips = [1, 2, 3, 4, -3, 1]
+pips = [10, 20, 30, 40, -30, 10, -100, 50]
 cum_pips = cumulative_sum(pips)
 print(pips)
 print(cum_pips)
 x = range(0,len(pips))
 print(x)
 plot(x,cum_pips)
+show()
+# ToDo : ajouter couleur de tracé vert ou rouge si cum_pips augmente ou descend
+# ToDo : ajouter couleur de remplissage vert ou rouge si cum_pips>0 ou <0
+
+strategies = ['s1', 's2', 's3', 's4']
+cum_pips_s = [10, 20, -10, 40]
+#bar
+show()
+
+
+#Repartition en % paires -> camembert
+labels = 'EURUSD', 'EURGBP', 'USDJPY', 'USDAUD'
+fracs = [30,15,5, 10]
+
+pie(fracs, explode=None, labels=labels, autopct='%1.1f%%', shadow=True)
+title('Repartition', bbox={'facecolor':'0.8', 'pad':5})
+
 show()
