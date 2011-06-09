@@ -174,11 +174,16 @@ grid(True)
 show()
 
 # Bargraph pips cumulé par stratégie
+fig = figure()
+fig.subplots_adjust(bottom=0.3)
 N = len(strategies)
 ind = np.arange(N)  # the x locations for the groups
 width = 0.5       # the width of the bars
 bar(ind+width/2, cum_pips_s, width)
 xticks(ind+width, strategies, rotation=-90 )
+title('Accumulated pips by each strategy')
+xlabel('strategies')
+ylabel('pips')
 grid(True)
 show()
 

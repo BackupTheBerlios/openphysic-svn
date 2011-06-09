@@ -72,9 +72,9 @@ filter = True
 if filter:
     dataObjSelected = []
     for row in dataObj:
-        if row.__dict__['!!!!!!!! Erreur % !!!!!!!!']>1:
+        #if row.__dict__['!!!!!!!! Erreur % !!!!!!!!']>1:
         #if row.__dict__['Stratégie']=='BreakoutMaster' and row.__dict__['Symbole']=='EURUSD':
-        #if row.__dict__['TradeDepuis']>timedelta(30) and row.__dict__['NumTrades']>30 and row.__dict__['Facteur de Profit']>1 and row.__dict__['Facteur de Profit']<3.5 and row.__dict__['Espérance']>5:
+        if row.__dict__['TradeDepuis']>timedelta(30) and row.__dict__['NumTrades']>30 and row.__dict__['Facteur de Profit']>1 and row.__dict__['Facteur de Profit']<3.5 and row.__dict__['Espérance']>5 and row.__dict__['T-Score']>8.5:
             dataObjSelected.append(row)
 else:
     dataObjSelected = dataObj
@@ -98,9 +98,28 @@ dataObjSorted = sorted(dataObjSelected, key=lambda dataObjSelected: dataObjSelec
 #  ###########################################
 
 i=1
+val = []
+strategies = []
 for row in dataObjSorted:
     print("=== {4}/{5} : {0}\t\t{1}\t{2}={3} ===".format(row.__dict__['Stratégie'], row.__dict__['Symbole'], criterion, row.__dict__[criterion], i, len(dataObjSorted)))
     #print(row)
     row.display()
     print('')
+    if i<30:
+        val.append(row.__dict__[criterion])
+        strategies.append(row.__dict__['Stratégie'])
     i = i + 1
+
+
+fig = figure()
+fig.subplots_adjust(bottom=0.3)
+N = len(strategies)
+ind = np.arange(N)  # the x locations for the groups
+width = 0.5       # the width of the bars
+bar(ind+width/2, val, width)
+xticks(ind+width, strategies, rotation=-90 )
+title(criterion+' for each strategy')
+xlabel('strategies')
+ylabel(criterion)
+grid(True)
+show()
