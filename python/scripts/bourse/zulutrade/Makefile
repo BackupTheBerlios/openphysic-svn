@@ -7,6 +7,9 @@ all:
 .PHONY: clean
 
 MyHistory:
+	$(PYTHON) ZuluTradeMyHistory.py
+
+MyHistoryCSV:
 	$(PYTHON) cleanup.py ZuluTrade-TradeHistory.html out.html
 	$(PYTHON) html2csv.py out.html
 	#$(PYTHON) ZuluTradeMyHistory.py
