@@ -21,7 +21,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>
 
 from UsefulClass import *
-#from pylab import plot
+from pylab import *
 #import numpy
 #print numpy.__file__
 
@@ -39,3 +39,4 @@ print(cum_pips)
 x = range(0,len(pips))
 print(x)
 plot(x,cum_pips)
+show()
