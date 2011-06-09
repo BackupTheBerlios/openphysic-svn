@@ -90,11 +90,19 @@ i = 0
 lstPips = []
 lstPipsWin = []
 lstPipsLost = []
+cum_H = []
+cum_L = []
+
+DOCHLV = [] # (date, open, close, high, low, volume)
 
 for row in dataObj:
     t.append(row.__dict__['Fermer Heure'])
     pips.append(row.__dict__['Pips'])
+    cum_H.append(row.__dict__['High/Low'][0])
+    cum_L.append(row.__dict__['High/Low'][1])
     profit.append(row.__dict__['Profit'])
+    
+    DOCHLV.append((i+1, 0, row.__dict__['Pips'], row.__dict__['High/Low'][0], row.__dict__['High/Low'][1], 0))
     
     DureeTotaleTrades = DureeTotaleTrades + row.__dict__['Durée Trade']
     Pips = row.__dict__['Pips']
@@ -106,7 +114,7 @@ for row in dataObj:
         winPips = winPips + row.__dict__['Pips']
         lstPipsWin.append(row.__dict__['Pips'])
     else:
-        win.append(-1)
+        win.append(0)
         lostTrades = lostTrades + 1
         lostPips = lostPips + row.__dict__['Pips']
         print(lostPips)
@@ -162,18 +170,33 @@ print("Proximité de la moy des pips perdants [0(loin) - 1(proche)] = {0}".forma
 # Graph pips&profit cumulé
 cum_pips = cumulative_sum(pips)
 cum_profit = cumulative_sum(profit)
+
 #cum_win = cumulative_sum(win)
 #pc_win = []
 #for i in range(0, len(cum_win)):
 #    pc_win.append(cum_win[i]/(i+1))
 x = range(0,len(pips))
-subplot(211)
+
+fig = figure()
+fig.subplots_adjust(bottom=0.1)
+ax = fig.add_subplot(311)
+candlestick(ax, DOCHLV, width=0.6, colorup='g', colordown='r', alpha=1.0)
+grid(True)
+#plot(x, cum_H, 'g.', x, cum_L, 'r.', x, pips, 'b.')
+
+#subplot(311)
+#plot(x, cum_H, 'g.', x, cum_L, 'r.', x, pips, 'b.')
+#title('pips')
+#xlabel('date') #'trade #')
+#ylabel('pips')
+#grid(True)
+subplot(312)
 plot(t, cum_pips, 'b.', t, cum_pips, 'k--')
 title('Accumulated pips')
 xlabel('date') #'trade #')
 ylabel('pips')
 grid(True)
-subplot(212)
+subplot(313)
 plot(t, cum_profit, 'r.', t, cum_profit, 'k--')
 #plot(t, pc_win, 'k--')
 title('Accumulated profit')
@@ -181,3 +204,11 @@ xlabel('date') #'trade #')
 ylabel('profit')
 grid(True)
 show()
+
+#plot(t, pc_win)
+#show()
+
+#date1 = ( 2004, 2, 1)
+#date2 = ( 2004, 4, 12 )
+#quotes = quotes_historical_yahoo('INTC', date1, date2)
+#print(quotes)
