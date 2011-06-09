@@ -56,10 +56,13 @@ for row in data:
 #  ###########################################
 #  # display data (selected and sorted)
 #  ###########################################
+descending = True
+criterion = 'Fermer Heure'
+dataObjSorted = sorted(dataObj, key=lambda dataObj: dataObj.__dict__[criterion], reverse=not descending)
 
 i = 1
-NbTrades = len(dataObj)
-for row in dataObj:
+NbTrades = len(dataObjSorted)
+for row in dataObjSorted:
     print("=== {0}/{1} : {2}\t\t{3}\t{4}\t{5} ===".format(i, NbTrades, row.__dict__['Stratégie'], row.__dict__['A/V'], row.__dict__['Montant (k)'], row.__dict__['Symbole']))
     #print(row)
     row.display()
@@ -69,6 +72,10 @@ for row in dataObj:
 #  ###########################################
 #  # Calculate stats
 #  ###########################################
+t = []
+pips = []
+win = []
+profit = []
 DureeTotaleTrades = timedelta()
 winTrades = 0
 lostTrades = 0
@@ -85,15 +92,21 @@ lstPipsWin = []
 lstPipsLost = []
 
 for row in dataObj:
+    t.append(row.__dict__['Fermer Heure'])
+    pips.append(row.__dict__['Pips'])
+    profit.append(row.__dict__['Profit'])
+    
     DureeTotaleTrades = DureeTotaleTrades + row.__dict__['Durée Trade']
     Pips = row.__dict__['Pips']
     lstPips.append(Pips)
     totalPips = totalPips + Pips
     if Pips >= 0:
+        win.append(1)
         winTrades = winTrades + 1
         winPips = winPips + row.__dict__['Pips']
         lstPipsWin.append(row.__dict__['Pips'])
     else:
+        win.append(-1)
         lostTrades = lostTrades + 1
         lostPips = lostPips + row.__dict__['Pips']
         print(lostPips)
@@ -145,3 +158,26 @@ print("Proximité de la moy des pips perdants [0(loin) - 1(proche)] = {0}".forma
 #print(nb)
 #for i in range(0,len(bounds)-1):
 #    print("[{0};{1}[".format(bounds[i], bounds[i+1]))
+
+# Graph pips&profit cumulé
+cum_pips = cumulative_sum(pips)
+cum_profit = cumulative_sum(profit)
+#cum_win = cumulative_sum(win)
+#pc_win = []
+#for i in range(0, len(cum_win)):
+#    pc_win.append(cum_win[i]/(i+1))
+x = range(0,len(pips))
+subplot(211)
+plot(t, cum_pips, 'b.', t, cum_pips, 'k--')
+title('Accumulated pips')
+xlabel('date') #'trade #')
+ylabel('pips')
+grid(True)
+subplot(212)
+plot(t, cum_profit, 'r.', t, cum_profit, 'k--')
+#plot(t, pc_win, 'k--')
+title('Accumulated profit')
+xlabel('date') #'trade #')
+ylabel('profit')
+grid(True)
+show()

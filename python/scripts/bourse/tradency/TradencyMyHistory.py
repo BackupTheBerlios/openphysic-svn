@@ -136,11 +136,15 @@ print("="*20)
 lstBilanStrateg = sorted(bilanStrateg.items(), key=lambda lstBilanStrateg: lstBilanStrateg[1]['Pips total'])
 #dataObjSorted = sorted(dataObjSelected, key=lambda dataObjSelected: dataObjSelected.__dict__[criterion], reverse=not descending)
 
+strategies = []
+cum_pips_s = []
 for key in lstBilanStrateg:
     strStrategie = key[1]['Stratégie']
+    strategies.append(strStrategie)
     NbC = 20
     strStrategie = strStrategie[0:NbC].ljust(NbC, ' ')
     strPipsTotal = key[1]['Pips total']
+    cum_pips_s.append(strPipsTotal)
     # ToDo : align decimal points
     #if strPipsTotal<0:
     #    strPipsTotal = str(strPipsTotal).zfill(5)
@@ -151,7 +155,7 @@ for key in lstBilanStrateg:
     for key2 in key[1]:
         print("\t{0} = {1}".format(key2, key[1][key2]))
 
-#print(t)
+# Graph pips&profit cumulé
 cum_pips = cumulative_sum(pips)
 cum_profit = cumulative_sum(profit)
 x = range(0,len(pips))
@@ -166,6 +170,15 @@ plot(t, cum_profit, 'r.', t, cum_profit, 'k--')
 title('Accumulated profit')
 xlabel('date') #'trade #')
 ylabel('profit')
+grid(True)
+show()
+
+# Bargraph pips cumulé par stratégie
+N = len(strategies)
+ind = np.arange(N)  # the x locations for the groups
+width = 0.5       # the width of the bars
+bar(ind+width/2, cum_pips_s, width)
+xticks(ind+width, strategies, rotation=-90 )
 grid(True)
 show()
 
