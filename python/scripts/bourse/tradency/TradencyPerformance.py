@@ -74,7 +74,7 @@ if filter:
     for row in dataObj:
         #if row.__dict__['!!!!!!!! Erreur % !!!!!!!!']>1:
         #if row.__dict__['Stratégie']=='BreakoutMaster' and row.__dict__['Symbole']=='EURUSD':
-        if row.__dict__['TradeDepuis']>timedelta(30) and row.__dict__['NumTrades']>30 and row.__dict__['Facteur de Profit']>1 and row.__dict__['Facteur de Profit']<3.5 and row.__dict__['Espérance']>5 and row.__dict__['T-Score']>8.5:
+        if row.__dict__['TradeDepuis']>timedelta(30) and row.__dict__['NumTrades']>30 and row.__dict__['Facteur de Profit']>1 and row.__dict__['Facteur de Profit']<3.5 and row.__dict__['Espérance']>10 and row.__dict__['Pips moyens par trade']>10 and row.__dict__['T-Score']>8.5:
             dataObjSelected.append(row)
 else:
     dataObjSelected = dataObj
@@ -107,7 +107,7 @@ for row in dataObjSorted:
     print('')
     if i<30:
         val.append(row.__dict__[criterion])
-        strategies.append(row.__dict__['Stratégie'])
+        strategies.append("{0}/{1} {2}".format(i, len(dataObjSorted), row.__dict__['Stratégie']))
     i = i + 1
 
 
