@@ -93,10 +93,16 @@ class ZuluTradeMyHistory():
                     val = [totalpips, totalcur] # tofix
                 else:
                 	pass
-                print(val)
+                #print(val)
                 self.lstData[i][j] = val
-            print(". "*10)
+            #print(". "*10)
 
-        print("*"*10)
+        #print("*"*10)
 
-        print(self.lstHead)
+        #print(self.lstHead)
+        
+        def get(self, colname, index):
+            pass
+
+        def getAll(self, colname):
+            pass
