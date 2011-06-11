@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from scipy import *
+#from scipy import *
 from pylab import *
 # Creating the grid of coordinates x,y 
 x,y = ogrid[-1.:1.:.01, -1.:1.:.01]
@@ -15,3 +15,4 @@ title('A spiral !')
 # Adding a line plot slicing the z matrix just for fun. 
 plot(x[:], z[50, :])
 savefig('spiral')
+show()
