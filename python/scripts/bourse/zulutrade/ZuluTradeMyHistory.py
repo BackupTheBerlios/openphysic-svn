@@ -77,9 +77,13 @@ for j in range(0, 10+1):
     elif j==8:
 		val = [int(val[0]), int(val[1])]
     elif j==9:
-        val = [val[0], val[1]] # tofix
+        profitpips = val[0]
+        profitcur = float(val[1][1:(len(val[1]))]) # enlever le symb euro au début
+        val = [profitpips, profitcur] # tofix
     elif j==10:
-        val = [val[0], val[1]] # tofix
+        totalpips = float(val[0][0:val[0].find(" pips")]) # enlever _pips à la fin
+        totalcur = float(val[1][1:(len(val[1]))]) # enlever le symb euro au début
+        val = [totalpips, totalcur] # tofix
     else:
     	pass
     print(val)
@@ -97,6 +101,7 @@ print(float(lstData[i][7][0]))
 print(int(lstData[i][8][0]))
 print(int(lstData[i][8][1]))
 print(lstData[i][9][0]) # use regexp
+print(lstData[i][9][1]) # use regexp
 print(lstData[2][10][0]) # xxx pips
 print(lstData[2][10][1]) # €xxx.yy
 datasource.close()
