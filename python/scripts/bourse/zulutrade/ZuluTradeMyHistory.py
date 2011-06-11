@@ -62,7 +62,8 @@ for tr in rows:
 # 0..8
 # 9 # &lt;tr>&lt;td>Gross PnL:&lt;/td>&lt;td>-€12.49&lt;/td>&lt;/tr>&lt;tr>&lt;td>Interest:&lt;/td>&lt;td>€0.00&lt;/td>&lt;/tr>&lt;tr>&lt;td>Commision:&lt;/td>&lt;td>€0.00&lt;/td>&lt;/tr>&lt;tr>&lt;td>Net PnL:&lt;/td>&lt;td>-€12.49&lt;/td>&lt;/tr>&lt;/table>" style="background-color:#FFD2D2;">-15 pips
 
-i = 2
+i = 2 # ok
+#i = 10 # pas bon (à cause du signe - avant le symbole eur)
 
 for j in range(0, 10+1):
     val = lstData[i][j]
@@ -79,6 +80,8 @@ for j in range(0, 10+1):
     elif j==9:
         val[0] = val[0][val[0].find(';">')+3:len(val[0])] # nettoyer le code HTML
         profitpips = float(val[0][0:val[0].find(" pips")]) # enlever _pips à la fin
+        val[1] = val[1].strip()
+        print(val[1])
         profitcur = float(val[1][1:(len(val[1]))]) # enlever le symb euro au début
         val = [profitpips, profitcur] # tofix
     elif j==10:
