@@ -65,21 +65,21 @@ for tr in rows:
 i = 2
 
 for j in range(0, 10+1):
-    val = lstData[i][j][0]
+    val = lstData[i][j]
     if j==0 or j==1 or j==2:
-    	val = str(val.strip())    
+    	val = str(val[0].strip())    
     if j==3:
-        val = int(val)
+        val = int(val[0])
     elif j==4 or j==5:
-        val = datetime.strptime(lstData[i][j][0].strip(), '%Y/%m/%d %H:%M:%S')
+        val = datetime.strptime(val[0].strip(), '%Y/%m/%d %H:%M:%S')
     elif j==6 or j==7:
-        val = float(val)
+        val = float(val[0])
     elif j==8:
-		val = [int(val[0]), int(val[1])] # tofix
+		val = [int(val[0]), int(val[1])]
     elif j==9:
-        pass
+        val = [val[0], val[1]] # tofix
     elif j==10:
-        pass
+        val = [val[0], val[1]] # tofix
     else:
     	pass
     print(val)
