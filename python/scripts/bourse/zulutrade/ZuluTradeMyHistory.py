@@ -63,36 +63,8 @@ for tr in rows:
 # 9 # &lt;tr>&lt;td>Gross PnL:&lt;/td>&lt;td>-€12.49&lt;/td>&lt;/tr>&lt;tr>&lt;td>Interest:&lt;/td>&lt;td>€0.00&lt;/td>&lt;/tr>&lt;tr>&lt;td>Commision:&lt;/td>&lt;td>€0.00&lt;/td>&lt;/tr>&lt;tr>&lt;td>Net PnL:&lt;/td>&lt;td>-€12.49&lt;/td>&lt;/tr>&lt;/table>" style="background-color:#FFD2D2;">-15 pips
 
 i = 2 # ok
-#i = 10 # pas bon (à cause du signe - avant le symbole eur)
+i = 10 # pas bon (à cause du signe - avant le symbole eur)
 
-for j in range(0, 10+1):
-    val = lstData[i][j]
-    if j==0 or j==1 or j==2:
-    	val = str(val[0].strip())    
-    if j==3:
-        val = int(val[0])
-    elif j==4 or j==5:
-        val = datetime.strptime(val[0].strip(), '%Y/%m/%d %H:%M:%S')
-    elif j==6 or j==7:
-        val = float(val[0])
-    elif j==8:
-		val = [int(val[0]), int(val[1])]
-    elif j==9:
-        val[0] = val[0][val[0].find(';">')+3:len(val[0])] # nettoyer le code HTML
-        profitpips = float(val[0][0:val[0].find(" pips")]) # enlever _pips à la fin
-        val[1] = val[1].strip()
-        print(val[1])
-        profitcur = float(val[1][1:(len(val[1]))]) # enlever le symb euro au début
-        val = [profitpips, profitcur] # tofix
-    elif j==10:
-        totalpips = float(val[0][0:val[0].find(" pips")]) # enlever _pips à la fin
-        totalcur = float(val[1][1:(len(val[1]))]) # enlever le symb euro au début
-        val = [totalpips, totalcur] # tofix
-    else:
-    	pass
-    print(val)
-
-print("*"*10)
 
 print(str(lstData[i][0][0].strip())) # string Stratégie
 print(str(lstData[i][1][0])) # SELL/BUY
@@ -106,8 +78,51 @@ print(int(lstData[i][8][0]))
 print(int(lstData[i][8][1]))
 print(lstData[i][9][0]) # use regexp
 print(lstData[i][9][1]) # use regexp
-print(lstData[2][10][0]) # xxx pips
-print(lstData[2][10][1]) # €xxx.yy
+print(lstData[i][10][0]) # xxx pips
+print(lstData[i][10][1]) # €xxx.yy
+
+print("*"*10)
+
+for i in range(0, len(lstData)):
+    for j in range(0, 10+1):
+        val = lstData[i][j]
+        if j==0 or j==1 or j==2:
+        	val = str(val[0].strip())    
+        if j==3:
+            val = int(val[0])
+        elif j==4 or j==5:
+            val = datetime.strptime(val[0].strip(), '%Y/%m/%d %H:%M:%S')
+        elif j==6 or j==7:
+            val = float(val[0])
+        elif j==8:
+	    	val = [int(val[0]), int(val[1])]
+        elif j==9:
+            val[0] = val[0][val[0].find(';">')+3:len(val[0])] # nettoyer le code HTML
+            profitpips = float(val[0][0:val[0].find(" pips")]) # enlever _pips à la fin
+            val[1] = val[1].strip()
+            if val[1][0]=='-':
+                val[1] = val[1][1:len(val[1])]
+                profitcur = -float(val[1][1:(len(val[1]))]) # enlever le symb euro au début            
+            else:
+                profitcur = float(val[1][1:(len(val[1]))]) # enlever le symb euro au début
+            val = [profitpips, profitcur] # tofix
+        elif j==10:
+            totalpips = float(val[0][0:val[0].find(" pips")]) # enlever _pips à la fin
+            val[1] = val[1].strip()
+            if val[1][0]=='-':
+                val[1] = val[1][1:len(val[1])]
+                totalcur = -float(val[1][1:(len(val[1]))]) # enlever le symb euro au début            
+            else:
+                totalcur = float(val[1][1:(len(val[1]))]) # enlever le symb euro au début
+            val = [totalpips, totalcur] # tofix
+        else:
+        	pass
+        print(val)
+        lstData[i][j] = val
+    print(". "*10)
+
+print("*"*10)
+
 datasource.close()
 
 
