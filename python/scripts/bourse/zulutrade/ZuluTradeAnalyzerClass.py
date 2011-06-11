@@ -33,8 +33,8 @@ class ZuluTradeMyHistory():
         soup = BeautifulSoup(html)
         table = soup.find('table')
         #print(table)
-        lstData = []
-        lstHead = []
+        self.lstData = []
+        self.lstHead = []
         rows = table.findAll('tr')
         i = 0
         for tr in rows:
@@ -44,43 +44,24 @@ class ZuluTradeMyHistory():
                 for td in cols:
                     val = td.findAll(text=True)    
                     lstRow.append(str(val[0]))
-                lstHead = lstRow
+                self.lstHead = lstRow
             else:
                 cols = tr.findAll('td')
                 for td in cols:
                     val = td.findAll(text=True)
                     lstRow.append(val)
-                lstData.append(lstRow)
+                self.lstData.append(lstRow)
             i = i + 1
+
         # 0..8
         # 9 # &lt;tr>&lt;td>Gross PnL:&lt;/td>&lt;td>-€12.49&lt;/td>&lt;/tr>&lt;tr>&lt;td>Interest:&lt;/td>&lt;td>€0.00&lt;/td>&lt;/tr>&lt;tr>&lt;td>Commision:&lt;/td>&lt;td>€0.00&lt;/td>&lt;/tr>&lt;tr>&lt;td>Net PnL:&lt;/td>&lt;td>-€12.49&lt;/td>&lt;/tr>&lt;/table>" style="background-color:#FFD2D2;">-15 pips
+        # 10 # xxx pips / €xxx.yy
         
         datasource.close()
 
-        i = 2 # ok
-        i = 10 # pas bon (à cause du signe - avant le symbole eur)
-
-
-        print(str(lstData[i][0][0].strip())) # string Stratégie
-        print(str(lstData[i][1][0])) # SELL/BUY
-        print(str(lstData[i][2][0])) # XXX/YYY
-        print(int(lstData[i][3][0])) # int
-        print(datetime.strptime(lstData[i][4][0].strip(), '%Y/%m/%d %H:%M:%S')) # datetime
-        print(datetime.strptime(lstData[i][5][0].strip(), '%Y/%m/%d %H:%M:%S')) # datetime
-        print(float(lstData[i][6][0]))
-        print(float(lstData[i][7][0]))
-        print(int(lstData[i][8][0]))
-        print(int(lstData[i][8][1]))
-        print(lstData[i][9][0]) # use regexp
-        print(lstData[i][9][1]) # use regexp
-        print(lstData[i][10][0]) # xxx pips
-        print(lstData[i][10][1]) # €xxx.yy
-
-        print("*"*10)
-
-        for i in range(0, len(lstData)):
+        for i in range(0, len(self.lstData)):
             for j in range(0, 10+1):
-                val = lstData[i][j]
+                val = self.lstData[i][j]
                 if j==0 or j==1 or j==2:
                 	val = str(val[0].strip())    
                 elif j==3:
@@ -113,9 +94,9 @@ class ZuluTradeMyHistory():
                 else:
                 	pass
                 print(val)
-                lstData[i][j] = val
+                self.lstData[i][j] = val
             print(". "*10)
 
         print("*"*10)
 
-        print(lstHead)
+        print(self.lstHead)
