@@ -45,18 +45,17 @@ rows = table.findAll('tr')
 i = 0
 for tr in rows:
     lstRow = []
-    cols = tr.findAll('td')
-    j = 0
-    for td in cols:
-        #val = str(td.find(text=True))
-        val = td.findAll(text=True)
-        #val = td.text
-        #val = val.strip()
-        lstRow.append(val)
-        j = j + 1
     if i==0:
+        cols = tr.findAll('th')
+        for td in cols:
+            val = td.findAll(text=True)    
+            lstRow.append(val)
         lstHead.append(lstRow)
     else:
+        cols = tr.findAll('td')
+        for td in cols:
+            val = td.findAll(text=True)
+            lstRow.append(val)
         lstData.append(lstRow)
     i = i + 1
 # 0..8
@@ -122,6 +121,8 @@ for i in range(0, len(lstData)):
     print(". "*10)
 
 print("*"*10)
+
+print(lstHead)
 
 datasource.close()
 
