@@ -77,7 +77,8 @@ for j in range(0, 10+1):
     elif j==8:
 		val = [int(val[0]), int(val[1])]
     elif j==9:
-        profitpips = val[0]
+        val[0] = val[0][val[0].find(';">')+3:len(val[0])] # nettoyer le code HTML
+        profitpips = float(val[0][0:val[0].find(" pips")]) # enlever _pips à la fin
         profitcur = float(val[1][1:(len(val[1]))]) # enlever le symb euro au début
         val = [profitpips, profitcur] # tofix
     elif j==10:
