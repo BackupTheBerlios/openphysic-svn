@@ -31,6 +31,8 @@
 #  ###########################################
 
 from BeautifulSoup import BeautifulSoup
+import re
+from datetime import datetime
 
 datasource = open('ZuluTrade-TradeHistory.html')
 html = datasource.read()
@@ -38,6 +40,7 @@ soup = BeautifulSoup(html)
 table = soup.find('table')
 #print(table)
 lstData = []
+lstHead = []
 rows = table.findAll('tr')
 i = 0
 for tr in rows:
@@ -51,25 +54,51 @@ for tr in rows:
         #val = val.strip()
         lstRow.append(val)
         j = j + 1
-    lstData.append(lstRow)
+    if i==0:
+        lstHead.append(lstRow)
+    else:
+        lstData.append(lstRow)
     i = i + 1
 # 0..8
 # 9 # &lt;tr>&lt;td>Gross PnL:&lt;/td>&lt;td>-€12.49&lt;/td>&lt;/tr>&lt;tr>&lt;td>Interest:&lt;/td>&lt;td>€0.00&lt;/td>&lt;/tr>&lt;tr>&lt;td>Commision:&lt;/td>&lt;td>€0.00&lt;/td>&lt;/tr>&lt;tr>&lt;td>Net PnL:&lt;/td>&lt;td>-€12.49&lt;/td>&lt;/tr>&lt;/table>" style="background-color:#FFD2D2;">-15 pips
 
 i = 2
-print(lstData[i][0][0].strip()) # string Stratégie
-print(lstData[i][1][0]) # SELL/BUY
-print(lstData[i][2][0]) # XXX/YYY
+
+for j in range(0, 10+1):
+    val = lstData[i][j][0]
+    if j==0 or j==1 or j==2:
+    	val = str(val.strip())    
+    if j==3:
+        val = int(val)
+    elif j==4 or j==5:
+        val = datetime.strptime(lstData[i][j][0].strip(), '%Y/%m/%d %H:%M:%S')
+    elif j==6 or j==7:
+        val = float(val)
+    elif j==8:
+		val = [int(val[0]), int(val[1])] # tofix
+    elif j==9:
+        pass
+    elif j==10:
+        pass
+    else:
+    	pass
+    print(val)
+
+print("*"*10)
+
+print(str(lstData[i][0][0].strip())) # string Stratégie
+print(str(lstData[i][1][0])) # SELL/BUY
+print(str(lstData[i][2][0])) # XXX/YYY
 print(int(lstData[i][3][0])) # int
-print(lstData[i][4][0].strip()) # datetime
-print(lstData[i][5][0]) # datetime
+print(datetime.strptime(lstData[i][4][0].strip(), '%Y/%m/%d %H:%M:%S')) # datetime
+print(datetime.strptime(lstData[i][5][0].strip(), '%Y/%m/%d %H:%M:%S')) # datetime
 print(float(lstData[i][6][0]))
 print(float(lstData[i][7][0]))
 print(int(lstData[i][8][0]))
 print(int(lstData[i][8][1]))
 print(lstData[i][9][0]) # use regexp
-print(lstData[2][10][0])
-print(lstData[2][10][1])
+print(lstData[2][10][0]) # xxx pips
+print(lstData[2][10][1]) # €xxx.yy
 datasource.close()
 
 
