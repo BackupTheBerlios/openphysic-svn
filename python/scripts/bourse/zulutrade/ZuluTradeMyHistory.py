@@ -37,4 +37,5 @@ myhistory = ZuluTradeMyHistory(datasource)
 #print(myhistory.MoveFirst)
 #print(myhistory.MoveNext)
 #print(myhistory.EOF)
-#print(myhistory.get('Fournisseur', 2))
+print(myhistory.get('Fournisseur', 2)) #
+#print(myhistory.getAll('Profit', 0)) # liste des profits en pips
