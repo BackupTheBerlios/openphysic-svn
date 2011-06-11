@@ -49,8 +49,8 @@ for tr in rows:
         cols = tr.findAll('th')
         for td in cols:
             val = td.findAll(text=True)    
-            lstRow.append(val)
-        lstHead.append(lstRow)
+            lstRow.append(str(val[0]))
+        lstHead = lstRow
     else:
         cols = tr.findAll('td')
         for td in cols:
@@ -60,6 +60,8 @@ for tr in rows:
     i = i + 1
 # 0..8
 # 9 # &lt;tr>&lt;td>Gross PnL:&lt;/td>&lt;td>-€12.49&lt;/td>&lt;/tr>&lt;tr>&lt;td>Interest:&lt;/td>&lt;td>€0.00&lt;/td>&lt;/tr>&lt;tr>&lt;td>Commision:&lt;/td>&lt;td>€0.00&lt;/td>&lt;/tr>&lt;tr>&lt;td>Net PnL:&lt;/td>&lt;td>-€12.49&lt;/td>&lt;/tr>&lt;/table>" style="background-color:#FFD2D2;">-15 pips
+
+datasource.close()
 
 i = 2 # ok
 i = 10 # pas bon (à cause du signe - avant le symbole eur)
@@ -123,15 +125,3 @@ for i in range(0, len(lstData)):
 print("*"*10)
 
 print(lstHead)
-
-datasource.close()
-
-
-#print(datasource)
-#myreader = HTMLTableWithHeadParser(datasource)
-#myreader = ZuluTradeMyHistoryReader(datasource)
-
-#myreader.print_data()
-
-#header = myreader.get_header()
-#data = myreader.get_data()
