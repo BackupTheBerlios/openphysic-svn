@@ -61,11 +61,17 @@ for row in dataObj:
 #  ###########################################
 #  # filter by date
 #  ###########################################
-filter = False
+filter = True
 if filter:
     dataObjSelected = []
     for row in dataObj:
-        if row.__dict__['Fermer Heure']>=datetime(year=2011, month=5, day=14):
+        #if row.__dict__['Stratégie']=='FOREXTECHNO - [EURUSD_LT]':
+        #if row.__dict__['Stratégie'].find('FOREXTEC')!=-1:
+        #if row.__dict__['Fermer Heure']>=datetime(year=2011, month=5, day=1):
+        if row.__dict__['Fermer Heure']>=datetime(year=2011, month=5, day=20):
+        #dtref = datetime.now()
+        #dtref = datetime(year=2011, month=5, day=30)
+        #if dtref-row.__dict__['Fermer Heure'] <= timedelta(days=10):
             dataObjSelected.append(row)
 else:
     dataObjSelected = dataObj
@@ -181,13 +187,19 @@ for key in lstBilanStrateg:
 cum_pips = cumulative_sum(pips)
 cum_profit = cumulative_sum(profit)
 x = range(0,len(pips))
-subplot(211)
+fig = figure()
+fig.subplots_adjust(bottom=0.1)
+ax = fig.add_subplot(311)
+candlestick(ax, DOCHLV, width=0.6, colorup='g', colordown='r', alpha=1.0)
+grid(True)
+#plot(x, cum_H, 'g.', x, cum_L, 'r.', x, pips, 'b.')
+subplot(312)
 plot(t, cum_pips, 'b.', t, cum_pips, 'k--')
 title('Accumulated pips')
 xlabel('date') #'trade #')
 ylabel('pips')
 grid(True)
-subplot(212)
+subplot(313)
 plot(t, cum_profit, 'r.', t, cum_profit, 'k--')
 title('Accumulated profit')
 xlabel('date') #'trade #')
