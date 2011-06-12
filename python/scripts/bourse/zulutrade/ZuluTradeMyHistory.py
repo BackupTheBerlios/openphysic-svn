@@ -78,11 +78,17 @@ profit = []
 pipsTot = 0
 profitTot = 0
 bilanStrateg = dict()
+cum_H = []
+cum_L = []
+DOCHLV = []
 
 for row in dataObjSorted:
     t.append(row.__dict__['Fermer Heure'])
     pips.append(row.__dict__['Pips'])
     profit.append(row.__dict__['Profit'])
+    cum_H.append(row.__dict__['High'])
+    cum_L.append(row.__dict__['Low'])
+    DOCHLV.append((i+1, 0, row.__dict__['Pips'], row.__dict__['High'], row.__dict__['Low'], 0))
     
     print("=== Trade {0}/{1} : {2} ({3})===".format(i, len(dataObj), row.__dict__['Stratégie'], row.__dict__['Symbole']))
     row.display()
