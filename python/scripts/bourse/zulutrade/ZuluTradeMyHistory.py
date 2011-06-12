@@ -90,7 +90,8 @@ for row in dataObjSorted:
     pipsTot = pipsTot + row.__dict__['Pips']
     profitTot = profitTot + row.__dict__['Profit']
 
-    key = row.__dict__['Stratégie']+' ('+row.__dict__['Symbole']+')' # cumul par stratégie(symbole)
+    #key = row.__dict__['Stratégie']+' ('+row.__dict__['Symbole']+')' # cumul par stratégie(symbole)
+    key = row.__dict__['Stratégie'] # cumul par fournisseur
     try:
         #bilanStrateg[key] = bilanStrateg[key] + row.__dict__['Pips']
         bilanStrateg[key]['Pips total'] = bilanStrateg[key]['Pips total'] + row.__dict__['Pips']
