@@ -61,14 +61,21 @@ for row in dataObj:
 #  ###########################################
 #  # filter by date
 #  ###########################################
-
+filter = False
+if filter:
+    dataObjSelected = []
+    for row in dataObj:
+        if row.__dict__['Fermer Heure']>=datetime(year=2011, month=5, day=14):
+            dataObjSelected.append(row)
+else:
+    dataObjSelected = dataObj
 
 #  ###########################################
 #  # display data (selected and sorted)
 #  ###########################################
 descending = True
 criterion = 'Fermer Heure'
-dataObjSorted = sorted(dataObj, key=lambda dataObj: dataObj.__dict__[criterion], reverse=not descending)
+dataObjSorted = sorted(dataObjSelected, key=lambda dataObjSelected: dataObjSelected.__dict__[criterion], reverse=not descending)
 
 
 i = 1

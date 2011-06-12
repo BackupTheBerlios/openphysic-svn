@@ -25,7 +25,7 @@
 
 from BeautifulSoup import BeautifulSoup
 import re
-from datetime import datetime
+from datetime import date, datetime, timedelta
 from UsefulClass import *
 from pylab import figure, plot, show, grid, title, xlabel, ylabel, subplot, bar, np, xticks # plot
 from matplotlib.finance import quotes_historical_yahoo, candlestick
