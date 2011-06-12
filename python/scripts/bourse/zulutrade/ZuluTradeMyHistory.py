@@ -52,4 +52,7 @@ for row in data:
     myHistory = ZuluTradeMyHistory(header, row)
     dataObj.append(myHistory)
 
-print(dataObj)
+for row in dataObj:
+    #print("Fournisseur {0}".format(row['Stratégie']))
+    row.display()
+    print("-"*10)

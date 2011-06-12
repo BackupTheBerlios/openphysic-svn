@@ -93,14 +93,21 @@ class ZuluTradeMyHistoryParser():
                     val = [totalpips, totalcur] # tofix
                 else:
                 	pass
-                print(val)
+                #print(val)
                 self.lstData[i][j] = val
-            print(". "*10)
+            #print(". "*10)
 
-        print("*"*10)
+        #print("*"*10)
 
-        print(self.lstHead)
-        
+        #print(self.lstHead)
+        # Rename head
+        self.lstHead[0] = "Stratégie"
+        self.lstHead[4] = "Ouvrir Heure"
+        self.lstHead[5] = "Fermer Heure"
+        self.lstHead[6] = "Ouvrir Prix"
+        self.lstHead[7] = "Fermer Prix"
+        self.lstHead[8] = "Haut/Bas"
+
     def get_header(self):
         return self.lstHead
 
@@ -124,7 +131,7 @@ class ZuluTradeMyHistoryParser():
             else:
                 lst.append(self.lstData[i][j][lstindex])
         return lst
-        
+
 #  ###########################################
 
 class Dict2Obj:
