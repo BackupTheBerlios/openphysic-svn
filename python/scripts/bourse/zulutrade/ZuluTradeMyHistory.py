@@ -148,7 +148,7 @@ lstBilanStrateg = sorted(bilanStrateg.items(), key=lambda lstBilanStrateg: lstBi
 strategies = []
 cum_pips_s = []
 for key in lstBilanStrateg:
-    strStrategie = key[1]['Stratégie']
+    strStrategie = "{0} ({1})".format(key[1]['Stratégie'],'*')
     strategies.append(strStrategie)
     NbC = 20
     strStrategie = strStrategie[0:NbC].ljust(NbC, ' ')
