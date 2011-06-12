@@ -61,7 +61,7 @@ for row in dataObj:
 #  ###########################################
 #  # filter by date
 #  ###########################################
-filter = True
+filter = False
 if filter:
     dataObjSelected = []
     for row in dataObj:
