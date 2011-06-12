@@ -26,6 +26,9 @@
 from BeautifulSoup import BeautifulSoup
 import re
 from datetime import datetime
+from UsefulClass import *
+from pylab import figure, plot, show, grid, title, xlabel, ylabel, subplot, bar, np, xticks # plot
+from matplotlib.finance import quotes_historical_yahoo, candlestick
 
 class ZuluTradeMyHistoryParser():
     def __init__(self, datasource):
@@ -65,7 +68,7 @@ class ZuluTradeMyHistoryParser():
                 if j==0 or j==1 or j==2:
                 	val = str(val[0].strip())    
                 elif j==3:
-                    val = int(val[0])
+                    val = int(val[0]) # Montant en micro-lot (1Micro-Lot=1k ; 1Mini-Lot=10k ; 1Lot=100k)
                 elif j==4 or j==5:
                     val = datetime.strptime(val[0].strip(), '%Y/%m/%d %H:%M:%S')
                 elif j==6 or j==7:
@@ -102,12 +105,17 @@ class ZuluTradeMyHistoryParser():
         #print(self.lstHead)
         # Rename head
         self.lstHead[0] = "Stratégie"
+        self.lstHead[1] = "A/V"
+        self.lstHead[2] = "Symbole"
+        self.lstHead[3] = "Montant (k)"
         self.lstHead[4] = "Ouvrir Heure"
         self.lstHead[5] = "Fermer Heure"
         self.lstHead[6] = "Ouvrir Prix"
         self.lstHead[7] = "Fermer Prix"
         self.lstHead[8] = "Haut/Bas"
-
+        #self.lstHead[9] = "Profit"
+        #self.lstHead[10] = "Total"
+            
     def get_header(self):
         return self.lstHead
 
@@ -134,23 +142,30 @@ class ZuluTradeMyHistoryParser():
 
 #  ###########################################
 
-class Dict2Obj:
+class ZuluTradeMyHistory:
     def __init__(self, format, value):
-        
         i = 0
         for key in format:
-            self.__dict__[key] = value[i]
+            if key=="Profit":
+                self.__dict__['Pips'] = value[i][0]
+                self.__dict__['Profit'] = value[i][1]                
+            elif key=="Total":
+                self.__dict__['TotalPips'] = value[i][0]
+                self.__dict__['TotalProfit'] = value[i][1]                
+            elif key=="Haut/Bas":
+                self.__dict__['High'] = value[i][0]
+                self.__dict__['Low'] = value[i][1]
+            else:
+                self.__dict__[key] = value[i]            
             i = i + 1
-                
+
+        # add specials indicators
+        self.__dict__['Durée Trade'] = self.__dict__['Fermer Heure'] - self.__dict__['Ouvrir Heure']
+
+
     def __repr__(self):
         return repr(self.__dict__)
         
     def display(self):
         for key in self.__dict__:
             print("\t{0} = {1}".format(key,self.__dict__[key]))
-
-#  ###########################################
-
-class ZuluTradeMyHistory(Dict2Obj):
-    def __init__(self, format, value):
-        Dict2Obj.__init__(self, format, value)
