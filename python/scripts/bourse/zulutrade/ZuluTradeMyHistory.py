@@ -27,15 +27,29 @@
 from ZuluTradeAnalyzerClass import *
 
 #  ###########################################
-#  # read HTML file        
+#  # Parse HTML file        
 #  ###########################################
 
 datasource = open('ZuluTrade-TradeHistory.html')
-myhistory = ZuluTradeMyHistory(datasource)
+myparser = ZuluTradeMyHistoryParser(datasource)
 
+header = myparser.get_header()
+data = myparser.get_data()
 
-#print(myhistory.MoveFirst)
-#print(myhistory.MoveNext)
-#print(myhistory.EOF)
-print(myhistory.get('Fournisseur', 2)) #
-#print(myhistory.getAll('Profit', 0)) # liste des profits en pips
+#print(myparser.MoveFirst)
+#print(myparser.MoveNext)
+#print(myparser.EOF)
+#print(myparser.get('Profit', 2)) #
+#print(myparser.getAll('Fournisseur'))
+#print(myparser.getAll('Profit', 0)) # liste des profits en pips
+
+#  ###########################################
+#  # convert list of list to list of objects
+#  ###########################################
+
+dataObj = []
+for row in data:
+    myHistory = ZuluTradeMyHistory(header, row)
+    dataObj.append(myHistory)
+
+print(dataObj)

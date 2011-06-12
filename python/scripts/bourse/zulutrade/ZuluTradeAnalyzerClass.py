@@ -27,7 +27,7 @@ from BeautifulSoup import BeautifulSoup
 import re
 from datetime import datetime
 
-class ZuluTradeMyHistory():
+class ZuluTradeMyHistoryParser():
     def __init__(self, datasource):
         html = datasource.read()
         soup = BeautifulSoup(html)
@@ -101,8 +101,49 @@ class ZuluTradeMyHistory():
 
         print(self.lstHead)
         
-    def get(self, colname, index):
-        pass
+    def get_header(self):
+        return self.lstHead
+
+    def get_data(self):
+        return self.lstData
+        
+    def get(self, colname, index): #, lstindex = None):
+        j =  self.lstHead.index(colname)
+        return self.lstData[index][j]
+        #if lstindex == None:
+        #    return self.lstData[index][j]
+        #else:
+        #    return self.lstData[index][j][lstindex]
 
     def getAll(self, colname, lstindex = None):
-        pass
+        j =  self.lstHead.index(colname)
+        lst = []
+        for i in range(0, len(self.lstData)):
+            if lstindex == None:
+                lst.append(self.lstData[i][j])
+            else:
+                lst.append(self.lstData[i][j][lstindex])
+        return lst
+        
+#  ###########################################
+
+class Dict2Obj:
+    def __init__(self, format, value):
+        
+        i = 0
+        for key in format:
+            self.__dict__[key] = value[i]
+            i = i + 1
+                
+    def __repr__(self):
+        return repr(self.__dict__)
+        
+    def display(self):
+        for key in self.__dict__:
+            print("\t{0} = {1}".format(key,self.__dict__[key]))
+
+#  ###########################################
+
+class ZuluTradeMyHistory(Dict2Obj):
+    def __init__(self, format, value):
+        Dict2Obj.__init__(self, format, value)
