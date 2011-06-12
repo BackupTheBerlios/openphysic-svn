@@ -86,7 +86,7 @@ pipsMin = 0
 IpipsMin = -1
 pipsMax = 0
 IpipsMax = -1
-i = 0
+i = 1
 lstPips = []
 lstPipsWin = []
 lstPipsLost = []
@@ -102,7 +102,7 @@ for row in dataObj:
     cum_L.append(row.__dict__['High/Low'][1])
     profit.append(row.__dict__['Profit'])
     
-    DOCHLV.append((i+1, 0, row.__dict__['Pips'], row.__dict__['High/Low'][0], row.__dict__['High/Low'][1], 0))
+    DOCHLV.append((i, 0, row.__dict__['Pips'], row.__dict__['High/Low'][0], row.__dict__['High/Low'][1], 0))
     
     DureeTotaleTrades = DureeTotaleTrades + row.__dict__['Durée Trade']
     Pips = row.__dict__['Pips']
