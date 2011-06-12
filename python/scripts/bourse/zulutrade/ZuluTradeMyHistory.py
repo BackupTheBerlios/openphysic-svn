@@ -101,9 +101,9 @@ for row in dataObjSorted:
     profit.append(row.__dict__['Profit'])
     cum_H.append(row.__dict__['High'])
     cum_L.append(row.__dict__['Low'])
-    DOCHLV.append((i+1, 0, row.__dict__['Pips'], row.__dict__['High'], row.__dict__['Low'], 0))
+    DOCHLV.append((i, 0, row.__dict__['Pips'], row.__dict__['High'], row.__dict__['Low'], 0))
     
-    print("=== Trade {0}/{1} : {2} ({3})===".format(i, len(dataObj), row.__dict__['Stratégie'], row.__dict__['Symbole']))
+    print("=== Trade {0}/{1}/{2} : {3} ({4})===".format(i, len(dataObjSorted), len(dataObj), row.__dict__['Stratégie'], row.__dict__['Symbole']))
     row.display()
     i = i + 1
     pipsTot = pipsTot + row.__dict__['Pips']
