@@ -47,18 +47,146 @@ data = myparser.get_data()
 
 dataObj = []
 for row in data:
-    myHistory = ZuluTradeMyHistory(header, row)
+    myHistory = ZuluTradeHistory(header, row)
     dataObj.append(myHistory)
 
-i = 1
-for row in dataObj:
+#i = 1
+#for row in dataObj:
     #print("Fournisseur {0}".format(row['Stratégie']))
-    row.display()
-    print("-"*10)
-    i = i + 1
-    
+#    row.display()
+#    print("-"*10)
+#    i = i + 1
+   
 Pips = myparser.getAll('Pips')
 PipsMin = min(Pips)
 PipsMax = max(Pips)
+print("-"*10)
 print("Pips Min = {0}".format(PipsMin))
 print("Pips Max = {0}".format(PipsMax))
+print("-"*10)
+
+#  ###########################################
+#  # filter by date
+#  ###########################################
+filter = False
+if filter:
+    dataObjSelected = []
+    for row in dataObj:
+        #if row.__dict__['Stratégie']=='FOREXTECHNO - [EURUSD_LT]':
+        #if row.__dict__['Stratégie'].find('FOREXTEC')!=-1:
+        #if row.__dict__['Fermer Heure']>=datetime(year=2011, month=5, day=1):
+        if row.__dict__['Fermer Heure']>=datetime(year=2011, month=5, day=20):
+        #dtref = datetime.now()
+        #dtref = datetime(year=2011, month=5, day=30)
+        #if dtref-row.__dict__['Fermer Heure'] <= timedelta(days=10):
+            dataObjSelected.append(row)
+else:
+    dataObjSelected = dataObj
+
+#  ###########################################
+#  # display data (selected and sorted)
+#  ###########################################
+descending = True
+criterion = 'Fermer Heure'
+dataObjSorted = sorted(dataObjSelected, key=lambda dataObjSelected: dataObjSelected.__dict__[criterion], reverse=not descending)
+
+
+i = 1
+t = []
+pips = []
+profit = []
+pipsTot = 0
+profitTot = 0
+bilanStrateg = dict()
+cum_H = []
+cum_L = []
+DOCHLV = []
+
+for row in dataObjSorted:
+    row.__dict__['Stratégie'] = filename
+    t.append(row.__dict__['Fermer Heure'])
+    pips.append(row.__dict__['Pips'])
+    profit.append(row.__dict__['Profit'])
+    cum_H.append(row.__dict__['Haut'])
+    cum_L.append(row.__dict__['Bas'])
+    DOCHLV.append((i, 0, row.__dict__['Pips'], row.__dict__['Haut'], row.__dict__['Bas'], 0))
+    
+    print("=== Trade {0}/{1}/{2} : {3} ({4})===".format(i, len(dataObjSorted), len(dataObj), row.__dict__['Stratégie'], row.__dict__['Symbole']))
+    row.display()
+    i = i + 1
+    pipsTot = pipsTot + row.__dict__['Pips']
+    profitTot = profitTot + row.__dict__['Profit']
+
+    #key = row.__dict__['Stratégie']+' ('+row.__dict__['Symbole']+')' # cumul par stratégie(symbole)
+    key = row.__dict__['Stratégie'] # cumul par fournisseur
+    try:
+        #bilanStrateg[key] = bilanStrateg[key] + row.__dict__['Pips']
+        bilanStrateg[key]['Pips total'] = bilanStrateg[key]['Pips total'] + row.__dict__['Pips']
+        bilanStrateg[key]['Profit total'] = bilanStrateg[key]['Profit total'] + row.__dict__['Profit']
+        bilanStrateg[key]['Nb Trades'] = bilanStrateg[key]['Nb Trades'] + 1
+        bilanStrateg[key]['Montant (k) total'] = bilanStrateg[key]['Montant (k) total'] + row.__dict__['Montant (k)']
+        bilanStrateg[key]['Durée Trade total'] = bilanStrateg[key]['Durée Trade total'] + row.__dict__['Durée Trade']
+
+        bilanStrateg[key]['Pips moyen / trade'] = bilanStrateg[key]['Pips total']/bilanStrateg[key]['Nb Trades']
+        bilanStrateg[key]['Profit moyen / trade'] = bilanStrateg[key]['Profit total']/bilanStrateg[key]['Nb Trades']
+        bilanStrateg[key]['Durée moyen / trade'] = bilanStrateg[key]['Durée Trade total']//bilanStrateg[key]['Nb Trades'] # // is not a bug... deltatime/integer
+        bilanStrateg[key]['Montant (k) moyen'] = bilanStrateg[key]['Montant (k) total']/bilanStrateg[key]['Nb Trades']
+
+        bilanStrateg[key]['Date/Heure Dernier Trade'] = row.__dict__['Fermer Heure']
+		
+    except:
+        #bilanStrateg[key] = row.__dict__['Pips']
+        bilanStrateg[key] = dict()
+        bilanStrateg[key]['Stratégie'] = row.__dict__['Stratégie']
+        bilanStrateg[key]['Symbole'] = row.__dict__['Symbole']
+        bilanStrateg[key]['Nb Trades'] = 1
+        bilanStrateg[key]['Pips total'] = row.__dict__['Pips']
+        bilanStrateg[key]['Profit total'] = row.__dict__['Profit']
+        bilanStrateg[key]['Montant (k) total'] = row.__dict__['Montant (k)']
+        bilanStrateg[key]['Durée Trade total'] = row.__dict__['Durée Trade']
+        bilanStrateg[key]['Date/Heure Premier Trade'] = row.__dict__['Ouvrir Heure']
+
+#print("="*20)
+
+#print(bilanStrateg)
+
+#lstBilanStrateg = [] # to sort bilan
+#for key in bilanStrateg:
+#    print("Bilan {0} \t\t Pips total = {1}".format(key, bilanStrateg[key]['Pips total']))
+#    for key2 in bilanStrateg[key]:
+#        print("\t{0} = {1}".format(key2, bilanStrateg[key][key2]))
+#	#lstBilanStrateg.append([key, bilanStrateg[key]])
+##	lstBilanStrateg.append({'Stratégie (Symbole)'=key, 'Pips total'=bilanStrateg[key]})
+
+
+print("="*20)
+
+print("Pips total = {0}".format(pipsTot))
+print("Profit total = {0}".format(profitTot))
+
+print("="*20)
+
+
+# Graph pips&profit cumulé
+cum_pips = cumulative_sum(pips)
+cum_profit = cumulative_sum(profit)
+x = range(0,len(pips))
+fig = figure()
+fig.subplots_adjust(bottom=0.1)
+ax = fig.add_subplot(311)
+candlestick(ax, DOCHLV, width=0.6, colorup='g', colordown='r', alpha=1.0)
+grid(True)
+#plot(x, cum_H, 'g.', x, cum_L, 'r.', x, pips, 'b.')
+subplot(312)
+plot(t, cum_pips, 'b.', t, cum_pips, 'k--')
+title('Accumulated pips')
+xlabel('date') #'trade #')
+ylabel('pips')
+grid(True)
+subplot(313)
+plot(t, cum_profit, 'r.', t, cum_profit, 'k--')
+title('Accumulated profit')
+xlabel('date') #'trade #')
+ylabel('profit')
+grid(True)
+show()

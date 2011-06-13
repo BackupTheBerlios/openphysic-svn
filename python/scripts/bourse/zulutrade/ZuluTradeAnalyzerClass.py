@@ -250,6 +250,7 @@ class ZuluTradeHistoryParser():
         
         # Rename header
         self.lstHead[1] = 'A/V'
+        self.lstHead[2] = 'Montant (k)'
         self.lstHead[3] = 'Symbole'
         self.lstHead[4] = 'Ouvrir Heure'
         self.lstHead[5] = 'Fermer Heure'
@@ -257,6 +258,7 @@ class ZuluTradeHistoryParser():
         self.lstHead[7] = 'Fermer Prix'
         self.lstHead[8] = 'Haut'
         self.lstHead[9] = 'Bas'
+        self.lstHead[12] = 'Profit'
 
         datasource.close()
         
