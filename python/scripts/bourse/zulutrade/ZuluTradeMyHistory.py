@@ -54,10 +54,10 @@ for row in data:
     myHistory = ZuluTradeMyHistory(header, row)
     dataObj.append(myHistory)
 
-for row in dataObj:
+#for row in dataObj:
     #print("Fournisseur {0}".format(row['Stratégie']))
-    row.display()
-    print("-"*10)
+#    row.display()
+#    print("-"*10)
 
 
 #  ###########################################
@@ -140,7 +140,7 @@ for row in dataObjSorted:
         bilanStrateg[key]['Durée Trade total'] = row.__dict__['Durée Trade']
         bilanStrateg[key]['Date/Heure Premier Trade'] = row.__dict__['Ouvrir Heure']
 
-print("="*20)
+#print("="*20)
 
 #print(bilanStrateg)
 

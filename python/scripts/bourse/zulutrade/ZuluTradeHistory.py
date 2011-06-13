@@ -41,11 +41,6 @@ data = myparser.get_data()
 #print(data)
 #print(header)
 
-Pips = myparser.getAll('Pips')
-print(Pips)
-#PipsMin = Pips.min()
-#PipsMax = Pips.max()
-
 #  ###########################################
 #  # convert list of list to list of objects
 #  ###########################################
@@ -55,7 +50,15 @@ for row in data:
     myHistory = ZuluTradeMyHistory(header, row)
     dataObj.append(myHistory)
 
+i = 1
 for row in dataObj:
     #print("Fournisseur {0}".format(row['Stratégie']))
     row.display()
     print("-"*10)
+    i = i + 1
+    
+Pips = myparser.getAll('Pips')
+PipsMin = min(Pips)
+PipsMax = max(Pips)
+print("Pips Min = {0}".format(PipsMin))
+print("Pips Max = {0}".format(PipsMax))
