@@ -35,6 +35,7 @@ from BeautifulSoup import BeautifulSoup
 #filename = 'Zulutrade_zulumaster1_Performance_2011-06-12.xls'
 filename = 'Zulutrade_BBSqueeze_Performance_2011-06-13.xls'
 filename = 'Zulutrade_SenshFX-(R-System)_Performance_2011-06-13.xls'
+# ToFix : pb 50 trades perdants ????
 myparser = ZuluTradeHistoryParser(filename)
 
 header = myparser.get_header()
