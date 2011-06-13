@@ -32,14 +32,44 @@ from openpyxl.reader.excel import load_workbook
 #  # Parse HTML file        
 #  ###########################################
 
+from BeautifulSoup import BeautifulSoup
 
 filename = 'Zulutrade_zulumaster1_Performance_2011-06-12.xls'
-wb = load_workbook(filename)
+datasource = open(filename)
+xml = datasource.read()
+soup = BeautifulSoup(xml)
+#print(soup.prettify())
+table = soup.find('table')
+#print(table)
+rows = table.findAll('row')
+print(rows)
+for row in rows:
+    print(row)
+    print("-"*10)
+       
+#  0 : Provider Ticket
+#  1 : Type
+#  2 : Lots
+#  3 : Currency
+#  4 : Date Closed
+#  5 : Price Opened
+#  6 : Price Closed
+#  7 : Highest Profit
+#  8 : Worst Drawdown
+#  9 : Roll
+# 10 : Pips
+# 11 : Net Profit &amp; Loss
+# 12 : Live Trade?
+# 13 : Accumulated Pips
+# 14 : Accumulated Profit
+
+#wb = load_workbook(filename)
 #myparser = ZuluTradeHistoryParser(datasource)
 
 #header = myparser.get_header()
 #data = myparser.get_data()
 
 #print(datasource)
-print wb.get_sheet_names()
+#print wb.get_sheet_names()
 
+datasource.close()
