@@ -80,6 +80,6 @@ def get_pips_stat(lstPips):
     #print nb_trades
     #print nb_win
     #print nb_lost
-    #stat = {'Nb Trades':nb_trades, 'Pips total':totalPips, 'Nb Trades gagnants':nb_win, 'Nb Trades perdants':nb_lost, 'Pips moyen gagnés':pipsWin/nb_win, 'Pips moyen perdus':pipsLost/nb_lost, 'Pips moyen / trade':totalPips/nb_trades, '% gagner':nb_win*100.0/nb_trades, '% perdre':nb_lost*100.0/nb_trades}
-    #return stat
-    return None
+    stat = {'Nb Trades':nb_trades, 'Pips total':totalPips, 'Nb Trades gagnants':nb_win, 'Nb Trades perdants':nb_lost} #, 'Pips moyen gagnés':pipsWin/nb_win, 'Pips moyen perdus':pipsLost/nb_lost, 'Pips moyen / trade':totalPips/nb_trades, '% gagner':nb_win*100.0/nb_trades, '% perdre':nb_lost*100.0/nb_trades}
+    return stat
+    #return None
