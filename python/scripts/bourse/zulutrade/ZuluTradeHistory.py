@@ -6,7 +6,7 @@
 
        But : ce script permet d'analyser les trades effectués
        dans le système de trading automatique ZuluTrade http://www.zulutrade.com/
-       pou 1 provider donné
+       pour 1 signal provider donné
 
     Copyright (C) 2011  "Sébastien CELLES" <s.celles@gmail.com>
 
