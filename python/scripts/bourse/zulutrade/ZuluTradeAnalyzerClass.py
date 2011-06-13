@@ -169,3 +169,36 @@ class ZuluTradeMyHistory:
     def display(self):
         for key in self.__dict__:
             print("\t{0} = {1}".format(key,self.__dict__[key]))
+
+#  ###########################################
+
+class ZuluTradeHistoryParser():
+    def __init__(self, datasource):
+        xml = datasource.read()
+        soup = BeautifulSoup(xml)
+        #print(soup.prettify())
+        table = soup.find('table')
+        #print(table)
+        rows = table.findAll('row')
+        print(rows)
+        for row in rows:
+            print(row)
+            print("-"*10)
+       
+        #  0 : Provider Ticket
+        #  1 : Type
+        #  2 : Lots
+        #  3 : Currency
+        #  4 : Date Closed
+        #  5 : Price Opened
+        #  6 : Price Closed
+        #  7 : Highest Profit
+        #  8 : Worst Drawdown
+        #  9 : Roll
+        # 10 : Pips
+        # 11 : Net Profit &amp; Loss
+        # 12 : Live Trade?
+        # 13 : Accumulated Pips
+        # 14 : Accumulated Profit
+        
+        
