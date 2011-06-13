@@ -32,7 +32,8 @@ from ZuluTradeAnalyzerClass import *
 
 from BeautifulSoup import BeautifulSoup
 
-filename = 'Zulutrade_zulumaster1_Performance_2011-06-12.xls'
+#filename = 'Zulutrade_zulumaster1_Performance_2011-06-12.xls'
+filename = 'Zulutrade_BBSqueeze_Performance_2011-06-13.xls'
 myparser = ZuluTradeHistoryParser(filename)
 
 header = myparser.get_header()
@@ -57,13 +58,6 @@ for row in data:
 #    print("-"*10)
 #    i = i + 1
    
-Pips = myparser.getAll('Pips')
-PipsMin = min(Pips)
-PipsMax = max(Pips)
-print("-"*10)
-print("Pips Min = {0}".format(PipsMin))
-print("Pips Max = {0}".format(PipsMax))
-print("-"*10)
 
 #  ###########################################
 #  # filter by date
@@ -163,6 +157,11 @@ print("="*20)
 
 print("Pips total = {0}".format(pipsTot))
 print("Profit total = {0}".format(profitTot))
+Pips = myparser.getAll('Pips')
+PipsMin = min(Pips)
+PipsMax = max(Pips)
+print("Pips Min = {0}".format(PipsMin))
+print("Pips Max = {0}".format(PipsMax))
 
 print("="*20)
 
