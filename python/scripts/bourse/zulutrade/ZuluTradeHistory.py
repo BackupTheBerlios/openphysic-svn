@@ -97,6 +97,7 @@ bilanStrateg = dict()
 cum_H = []
 cum_L = []
 DOCHLV = []
+DureeTotaleTrades = timedelta()
 
 for row in dataObjSorted:
     row.__dict__['Stratégie'] = filename
@@ -106,6 +107,7 @@ for row in dataObjSorted:
     cum_H.append(row.__dict__['Haut'])
     cum_L.append(row.__dict__['Bas'])
     DOCHLV.append((i, 0, row.__dict__['Pips'], row.__dict__['Haut'], row.__dict__['Bas'], 0))
+    DureeTotaleTrades = DureeTotaleTrades + row.__dict__['Durée Trade']
     
     print("=== Trade {0}/{1}/{2} : {3} ({4})===".format(i, len(dataObjSorted), len(dataObj), row.__dict__['Stratégie'], row.__dict__['Symbole']))
     row.display()
@@ -142,23 +144,21 @@ for row in dataObjSorted:
         bilanStrateg[key]['Durée Trade total'] = row.__dict__['Durée Trade']
         bilanStrateg[key]['Date/Heure Premier Trade'] = row.__dict__['Ouvrir Heure']
 
-#print("="*20)
+print("="*20)
 
 #print(bilanStrateg)
 
-#lstBilanStrateg = [] # to sort bilan
-#for key in bilanStrateg:
-#    print("Bilan {0} \t\t Pips total = {1}".format(key, bilanStrateg[key]['Pips total']))
-#    for key2 in bilanStrateg[key]:
-#        print("\t{0} = {1}".format(key2, bilanStrateg[key][key2]))
-#	#lstBilanStrateg.append([key, bilanStrateg[key]])
-##	lstBilanStrateg.append({'Stratégie (Symbole)'=key, 'Pips total'=bilanStrateg[key]})
+print("Bilan {0} \t\t Pips total = {1}".format(key, bilanStrateg[key]['Pips total']))
+for key2 in bilanStrateg[key]:
+    print("\t{0} = {1}".format(key2, bilanStrateg[key][key2]))
+    #lstBilanStrateg.append([key, bilanStrateg[key]])
+    #lstBilanStrateg.append({'Stratégie (Symbole)'=key, 'Pips total'=bilanStrateg[key]})
 
 
 print("="*20)
 
-print("Pips total = {0}".format(pipsTot))
-print("Profit total = {0}".format(profitTot))
+#print("Pips total = {0}".format(pipsTot))
+#print("Profit total = {0}".format(profitTot))
 lstPips = myparser.getAll('Pips')
 PipsMin = min(lstPips)
 PipsMax = max(lstPips)
@@ -172,7 +172,7 @@ print("Pips Haut Max = {0}".format(PipsHautMax))
 print("Pips Bas Min = {0}".format(PipsBasMin))
 stat=get_pips_stat(lstPips)
 for key in stat:
-    print("{0} = {1}".format(key,stat[key]))
+    print("\t{0} = {1}".format(key,stat[key]))
 print("="*20)
 
 
