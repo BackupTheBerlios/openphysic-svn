@@ -204,11 +204,14 @@ class ZuluTradeHistoryParser():
                 for cell in cols:
                     val = cell.find(text=True)
                     #print(val)
+                    if j==14:
+                        val = float(val)
                     lstRow.append(val)
                     j = j + 1
                 self.lstData.append(lstRow)
             i = i + 1
             #print("-"*10)
+            
         #  0 : Provider Ticket
         #  1 : Type
         #  2 : Lots
