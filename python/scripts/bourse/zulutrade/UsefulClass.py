@@ -66,7 +66,7 @@ def get_pips_stat(lstPips):
     pipsWin = 0
     pipsLost = 0
     #(nb_trade, nb_win, nb_lost)
-    print(lstPips)
+    #print(lstPips)
     for pips in lstPips:
         totalPips = totalPips + pips
         if pips>=0:
@@ -80,6 +80,23 @@ def get_pips_stat(lstPips):
     #print nb_trades
     #print nb_win
     #print nb_lost
-    stat = {'Nb Trades':nb_trades, 'Pips total':totalPips, 'Nb Trades gagnants':nb_win, 'Nb Trades perdants':nb_lost} #, 'Pips moyen gagnés':pipsWin/nb_win, 'Pips moyen perdus':pipsLost/nb_lost, 'Pips moyen / trade':totalPips/nb_trades, '% gagner':nb_win*100.0/nb_trades, '% perdre':nb_lost*100.0/nb_trades}
+    try:
+        pipsMoyWin = pipsWin / nb_win
+    except:
+        pipsMoyWin = 0
+    try:
+        pipsMoyLost = pipsLost / nb_lost
+    except:
+        pipsMoyLost = 0
+    try:
+        pipsMoy = totalPips / nb_trades
+        pcWin = nb_win*100.0 / nb_trades
+        pcLost = nb_lost*100.0 / nb_trades
+    except:
+        pipsMoy = 0
+        pcWin = 50
+        pcLost = 50
+
+    stat = {'Nb Trades':nb_trades, 'Pips total':totalPips, 'Nb Trades gagnants':nb_win, 'Nb Trades perdants':nb_lost, 'Pips moyen gagnés':pipsMoyWin, 'Pips moyen perdus':pipsMoyLost, 'Pips moyen / trade':pipsMoy, '% gagner':pcWin, '% perdre':pcLost}
     return stat
     #return None

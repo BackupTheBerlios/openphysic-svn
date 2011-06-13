@@ -278,7 +278,7 @@ class ZuluTradeHistoryParser():
 
     def getAll(self, colname, lstindex = None):
         j =  self.lstHead.index(colname)
-        print("j={0}".format(j))
+        #print("j={0}".format(j))
         lst = []
         for i in range(0, len(self.lstData)):
             if lstindex == None:
