@@ -306,3 +306,19 @@ class ZuluTradeHistory:
     def display(self):
         for key in self.__dict__:
             print("\t{0} = {1}".format(key,self.__dict__[key]))
+    
+    # ToTest
+    def apply_stop_loss(self, sl=0):
+        #sl=10
+        if sl<0:
+            raise(Exception("Stop loss must be a positive value"))
+        elif sl!=0:
+            oldpips = self.__dict__['Pips']
+            if self.__dict__['Pips']<=-sl:
+                self.__dict__['Pips'] = -sl
+            if self.__dict__['Bas']<=-sl:
+                self.__dict__['Pips'] = -sl
+            # Calculer profit
+        else:
+            pass # no stop loss
+

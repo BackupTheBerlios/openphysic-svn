@@ -33,7 +33,7 @@ from ZuluTradeAnalyzerClass import *
 from BeautifulSoup import BeautifulSoup
 
 #filename = 'Zulutrade_zulumaster1_Performance_2011-06-12.xls'
-filename = 'Zulutrade_BBSqueeze_Performance_2011-06-13.xls'
+#filename = 'Zulutrade_BBSqueeze_Performance_2011-06-13.xls'
 filename = 'Zulutrade_SenshFX-(R-System)_Performance_2011-06-13.xls'
 # ToFix : pb 50 trades perdants ????
 myparser = ZuluTradeHistoryParser(filename)
@@ -99,7 +99,12 @@ cum_L = []
 DOCHLV = []
 DureeTotaleTrades = timedelta()
 
+#for row in dataObjSorted:
+    #row.apply_stop_loss(10)
+    #row.apply_take_profit()
+
 for row in dataObjSorted:
+
     row.__dict__['Stratégie'] = filename
     t.append(row.__dict__['Fermer Heure'])
     pips.append(row.__dict__['Pips'])
