@@ -36,10 +36,8 @@ filename = 'Zulutrade_zulumaster1_Performance_2011-06-12.xls'
 datasource = open(filename)
 myparser = ZuluTradeHistoryParser(datasource)
 
-#header = myparser.get_header()
-#data = myparser.get_data()
-
-#print(datasource)
-#print wb.get_sheet_names()
-
+header = myparser.get_header()
+data = myparser.get_data()
+print(header)
+print(data)
 datasource.close()

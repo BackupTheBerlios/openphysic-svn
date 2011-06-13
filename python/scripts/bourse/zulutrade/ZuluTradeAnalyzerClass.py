@@ -193,18 +193,22 @@ class ZuluTradeHistoryParser():
                 j = 0
                 for cell in cols:
                     val = cell.find(text=True)
-                    print(val)
+                    #print(val)
+                    self.lstHead.append(val)
                     j = j + 1
             else:
+                lstRow = []
                 cols = row.findAll('cell')
                 #print(cols)
                 j = 0
                 for cell in cols:
                     val = cell.find(text=True)
-                    print(val)
+                    #print(val)
+                    lstRow.append(val)
                     j = j + 1
+                self.lstData.append(lstRow)
             i = i + 1
-            print("-"*10)
+            #print("-"*10)
         #  0 : Provider Ticket
         #  1 : Type
         #  2 : Lots
@@ -221,4 +225,26 @@ class ZuluTradeHistoryParser():
         # 13 : Accumulated Pips
         # 14 : Accumulated Profit
         
+    def get_header(self):
+        return self.lstHead
+
+    def get_data(self):
+        return self.lstData
         
+    def get(self, colname, index): #, lstindex = None):
+        j =  self.lstHead.index(colname)
+        return self.lstData[index][j]
+        #if lstindex == None:
+        #    return self.lstData[index][j]
+        #else:
+        #    return self.lstData[index][j][lstindex]
+
+    def getAll(self, colname, lstindex = None):
+        j =  self.lstHead.index(colname)
+        lst = []
+        for i in range(0, len(self.lstData)):
+            if lstindex == None:
+                lst.append(self.lstData[i][j])
+            else:
+                lst.append(self.lstData[i][j][lstindex])
+        return lst        
