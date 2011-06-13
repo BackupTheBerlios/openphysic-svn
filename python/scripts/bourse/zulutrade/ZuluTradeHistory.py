@@ -25,7 +25,8 @@
 """
 
 #from ZuluTradeAnalyzerClass import *
-import xlrd
+#import xlrd
+from openpyxl.reader.excel import load_workbook
 
 #  ###########################################
 #  # Parse HTML file        
@@ -33,13 +34,12 @@ import xlrd
 
 
 filename = 'Zulutrade_zulumaster1_Performance_2011-06-12.xls'
-wb = xlrd.open_workbook(filename)
+wb = load_workbook(filename)
 #myparser = ZuluTradeHistoryParser(datasource)
 
 #header = myparser.get_header()
 #data = myparser.get_data()
 
 #print(datasource)
-print(wb.sheet_names())
+print wb.get_sheet_names()
 
-datasource.close()

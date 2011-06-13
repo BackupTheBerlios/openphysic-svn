@@ -30,7 +30,8 @@ from ZuluTradeAnalyzerClass import *
 #  # Parse HTML file        
 #  ###########################################
 
-datasource = open('ZuluTrade-TradeHistory.html')
+datasource = open('ZuluTrade-TradeHistory.html') # v1 05/2011
+#datasource = open('ZuluTrade-TradeHistory-latest.xls') #v2 12/06/2011
 myparser = ZuluTradeMyHistoryParser(datasource)
 
 header = myparser.get_header()
@@ -159,13 +160,13 @@ print("Profit total = {0}".format(profitTot))
 print("="*20)
 
 
-#v=bilanStrateg.items()
-#lstBilanStrateg = sorted(bilanStrateg.items())
+# Classement des stratégies
 lstBilanStrateg = sorted(bilanStrateg.items(), key=lambda lstBilanStrateg: lstBilanStrateg[1]['Pips total'])
-#dataObjSorted = sorted(dataObjSelected, key=lambda dataObjSelected: dataObjSelected.__dict__[criterion], reverse=not descending)
+#lstBilanStrateg = sorted(bilanStrateg.items(), key=lambda lstBilanStrateg: lstBilanStrateg[1]['Profit total'])
 
 strategies = []
 cum_pips_s = []
+cum_profits_s = []
 for key in lstBilanStrateg:
     strStrategie = "{0} ({1})".format(key[1]['Stratégie'],'*')
     strategies.append(strStrategie)
@@ -173,6 +174,7 @@ for key in lstBilanStrateg:
     strStrategie = strStrategie[0:NbC].ljust(NbC, ' ')
     strPipsTotal = key[1]['Pips total']
     cum_pips_s.append(strPipsTotal)
+    cum_profits_s.append(key[1]['Profit total'])
     # ToDo : align decimal points
     #if strPipsTotal<0:
     #    strPipsTotal = str(strPipsTotal).zfill(5)
@@ -210,14 +212,23 @@ show()
 # Bargraph pips cumulé par stratégie
 fig = figure()
 fig.subplots_adjust(bottom=0.3)
+subplot(211)
 N = len(strategies)
+empty_strategies=["" for i in range(0,N+1)]
 ind = np.arange(N)  # the x locations for the groups
 width = 0.5       # the width of the bars
 bar(ind+width/2, cum_pips_s, width)
-xticks(ind+width, strategies, rotation=-90 )
+xticks(ind+width, [], rotation=-90 )
 title('Accumulated pips by each strategy')
-xlabel('strategies')
+#xlabel('strategies')
 ylabel('pips')
+grid(True)
+subplot(212)
+bar(ind+width/2, cum_profits_s, width)
+xticks(ind+width, strategies, rotation=-90 )
+title('Accumulated profits by each strategy')
+xlabel('strategies')
+ylabel('profits')
 grid(True)
 show()
 
