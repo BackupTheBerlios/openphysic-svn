@@ -58,3 +58,23 @@ def cumulative_sum(n):
         cum_sum.append(y)
     return cum_sum
 
+def get_pips_stat(lstPips):
+    nb_trades = len(lstPips)
+    nb_win = 0
+    nb_lost = 0
+    totalPips = 0
+    pipsWin = 0
+    pipsLost = 0
+    #(nb_trade, nb_win, nb_lost)
+    for pips in lstPips:
+        totalPips = totalPips + pips
+        if pips>=0:
+            nb_win = nb_win + 1
+            pipsWin = pipsWin + pips
+        else:
+            nb_lost = nb_lost + 1
+            pipsLost = pipsLost + pips
+    #val = (nb_trades, totalPips, nb_win, nb_lost, pipsWin, pipsLost)
+    #return val
+    stat = {'Nb Trades':nb_trades, 'Pips total':totalPips, 'Nb Trades gagnants':nb_win, 'Nb Trades perdants':nb_lost, 'Pips moyen gagnés':pipsWin/nb_win, 'Pips moyen perdus':pipsLost/nb_lost, 'Pips moyen / trade':totalPips/nb_trades, '% gagner':nb_win*100.0/nb_trades, '% perdre':nb_lost*100.0/nb_trades}
+    return stat

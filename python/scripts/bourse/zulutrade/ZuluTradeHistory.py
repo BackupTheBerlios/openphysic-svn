@@ -69,7 +69,7 @@ if filter:
         #if row.__dict__['Stratégie']=='FOREXTECHNO - [EURUSD_LT]':
         #if row.__dict__['Stratégie'].find('FOREXTEC')!=-1:
         #if row.__dict__['Fermer Heure']>=datetime(year=2011, month=5, day=1):
-        if row.__dict__['Fermer Heure']>=datetime(year=2011, month=5, day=20):
+        if row.__dict__['Fermer Heure']>=datetime(year=2010, month=10, day=1) and row.__dict__['Fermer Heure']>=datetime(year=2010, month=12, day=1):
         #dtref = datetime.now()
         #dtref = datetime(year=2011, month=5, day=30)
         #if dtref-row.__dict__['Fermer Heure'] <= timedelta(days=10):
@@ -157,12 +157,20 @@ print("="*20)
 
 print("Pips total = {0}".format(pipsTot))
 print("Profit total = {0}".format(profitTot))
-Pips = myparser.getAll('Pips')
-PipsMin = min(Pips)
-PipsMax = max(Pips)
+lstPips = myparser.getAll('Pips')
+PipsMin = min(lstPips)
+PipsMax = max(lstPips)
 print("Pips Min = {0}".format(PipsMin))
 print("Pips Max = {0}".format(PipsMax))
-
+lstPips = myparser.getAll('Haut')
+PipsHautMax = max(lstPips)
+lstPips = myparser.getAll('Bas')
+PipsBasMin = min(lstPips)
+print("Pips Haut Max = {0}".format(PipsHautMax))
+print("Pips Bas Min = {0}".format(PipsBasMin))
+stat=get_pips_stat(lstPips)
+for key in stat:
+    print("{0} = {1}".format(key,stat[key]))
 print("="*20)
 
 
@@ -174,6 +182,7 @@ fig = figure()
 fig.subplots_adjust(bottom=0.1)
 ax = fig.add_subplot(311)
 candlestick(ax, DOCHLV, width=0.6, colorup='g', colordown='r', alpha=1.0)
+# ToDo : ajouter lignes avec pips moyen / trade ; pipsWin moy ; pipLost moy
 grid(True)
 #plot(x, cum_H, 'g.', x, cum_L, 'r.', x, pips, 'b.')
 subplot(312)
