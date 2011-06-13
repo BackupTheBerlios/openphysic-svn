@@ -180,11 +180,31 @@ class ZuluTradeHistoryParser():
         table = soup.find('table')
         #print(table)
         rows = table.findAll('row')
-        print(rows)
+        #print(rows)
+        self.lstData = []
+        self.lstHead = []
+        i = 0
         for row in rows:
-            print(row)
+            #print(row)
+            #print("-"*10)
+            if i==0:
+                cols = row.findAll('cell')
+                #print(cols)
+                j = 0
+                for cell in cols:
+                    val = cell.find(text=True)
+                    print(val)
+                    j = j + 1
+            else:
+                cols = row.findAll('cell')
+                #print(cols)
+                j = 0
+                for cell in cols:
+                    val = cell.find(text=True)
+                    print(val)
+                    j = j + 1
+            i = i + 1
             print("-"*10)
-       
         #  0 : Provider Ticket
         #  1 : Type
         #  2 : Lots
