@@ -33,11 +33,29 @@ from ZuluTradeAnalyzerClass import *
 from BeautifulSoup import BeautifulSoup
 
 filename = 'Zulutrade_zulumaster1_Performance_2011-06-12.xls'
-datasource = open(filename)
-myparser = ZuluTradeHistoryParser(datasource)
+myparser = ZuluTradeHistoryParser(filename)
 
 header = myparser.get_header()
 data = myparser.get_data()
-print(header)
-print(data)
-datasource.close()
+#print(header)
+#print(data)
+#print(header)
+
+Pips = myparser.getAll('Pips')
+print(Pips)
+#PipsMin = Pips.min()
+#PipsMax = Pips.max()
+
+#  ###########################################
+#  # convert list of list to list of objects
+#  ###########################################
+
+dataObj = []
+for row in data:
+    myHistory = ZuluTradeMyHistory(header, row)
+    dataObj.append(myHistory)
+
+for row in dataObj:
+    #print("Fournisseur {0}".format(row['Stratégie']))
+    row.display()
+    print("-"*10)

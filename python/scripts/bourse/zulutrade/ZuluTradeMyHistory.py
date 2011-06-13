@@ -30,12 +30,13 @@ from ZuluTradeAnalyzerClass import *
 #  # Parse HTML file        
 #  ###########################################
 
-datasource = open('ZuluTrade-TradeHistory.html') # v1 05/2011
-#datasource = open('ZuluTrade-TradeHistory-latest.xls') #v2 12/06/2011
-myparser = ZuluTradeMyHistoryParser(datasource)
+filename = 'ZuluTrade-TradeHistory.html' # v1 05/2011
+#filename = 'ZuluTrade-TradeHistory-latest.xls' #v2 12/06/2011
+myparser = ZuluTradeMyHistoryParser(filename)
 
 header = myparser.get_header()
 data = myparser.get_data()
+
 
 #print(myparser.MoveFirst)
 #print(myparser.MoveNext)
@@ -100,9 +101,9 @@ for row in dataObjSorted:
     t.append(row.__dict__['Fermer Heure'])
     pips.append(row.__dict__['Pips'])
     profit.append(row.__dict__['Profit'])
-    cum_H.append(row.__dict__['High'])
-    cum_L.append(row.__dict__['Low'])
-    DOCHLV.append((i, 0, row.__dict__['Pips'], row.__dict__['High'], row.__dict__['Low'], 0))
+    cum_H.append(row.__dict__['Haut'])
+    cum_L.append(row.__dict__['Bas'])
+    DOCHLV.append((i, 0, row.__dict__['Pips'], row.__dict__['Haut'], row.__dict__['Bas'], 0))
     
     print("=== Trade {0}/{1}/{2} : {3} ({4})===".format(i, len(dataObjSorted), len(dataObj), row.__dict__['Stratégie'], row.__dict__['Symbole']))
     row.display()
