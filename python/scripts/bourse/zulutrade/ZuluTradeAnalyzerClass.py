@@ -322,3 +322,15 @@ class ZuluTradeHistory:
         else:
             pass # no stop loss
 
+    def apply_take_profit(self, limit=0):
+        #limit=10
+        if limit<0:
+            raise(Exception("Limit must be a positive value"))
+        elif limit!=0:
+            oldpips = self.__dict__['Pips']
+            if oldpips>=0:
+                if oldpips>=limit or self.__dict__['Haut']>=limit:
+                    self.__dict__['Pips'] = limit
+                    # Calculer profit
+        else:
+            pass # no take profit
