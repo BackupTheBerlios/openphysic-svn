@@ -102,7 +102,7 @@ DureeTotaleTrades = timedelta()
 #for row in dataObjSorted:
 
 for row in dataObjSorted:
-    row.apply_stop_loss(69)
+    #row.apply_stop_loss(10)
     #row.apply_take_profit()
 
     row.__dict__['Stratégie'] = filename
