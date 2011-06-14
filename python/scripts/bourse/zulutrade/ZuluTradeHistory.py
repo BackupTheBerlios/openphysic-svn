@@ -33,9 +33,9 @@ from ZuluTradeAnalyzerClass import *
 from BeautifulSoup import BeautifulSoup
 
 #filename = 'Zulutrade_zulumaster1_Performance_2011-06-12.xls'
-#filename = 'Zulutrade_BBSqueeze_Performance_2011-06-13.xls'
+filename = 'Zulutrade_BBSqueeze_Performance_2011-06-13.xls'
 #filename = 'Zulutrade_SenshFX-(R-System)_Performance_2011-06-13.xls'
-filename = 'Zulutrade_ZuluTop5_Performance_2011-06-14.xls'
+#filename = 'Zulutrade_ZuluTop5_Performance_2011-06-14.xls'
 myparser = ZuluTradeHistoryParser(filename)
 
 header = myparser.get_header()
@@ -64,7 +64,7 @@ for row in data:
 #  ###########################################
 #  # filter by date
 #  ###########################################
-filter = False
+filter = True
 if filter:
     dataObjSelected = []
     for row in dataObj:
@@ -102,7 +102,7 @@ DureeTotaleTrades = timedelta()
 #for row in dataObjSorted:
 
 for row in dataObjSorted:
-    #row.apply_stop_loss(10)
+    #row.apply_stop_loss(200)
     #row.apply_take_profit(199)
 
     row.__dict__['Stratégie'] = filename
