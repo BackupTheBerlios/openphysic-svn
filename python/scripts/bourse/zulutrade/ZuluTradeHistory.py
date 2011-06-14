@@ -35,7 +35,7 @@ from BeautifulSoup import BeautifulSoup
 #filename = 'Zulutrade_zulumaster1_Performance_2011-06-12.xls'
 filename = 'Zulutrade_BBSqueeze_Performance_2011-06-13.xls'
 #filename = 'Zulutrade_SenshFX-(R-System)_Performance_2011-06-13.xls'
-#filename = 'Zulutrade_ZuluTop5_Performance_2011-06-14.xls'
+filename = 'Zulutrade_MayfairSwing_Performance_2011-06-14.xls'
 myparser = ZuluTradeHistoryParser(filename)
 
 header = myparser.get_header()
@@ -64,7 +64,7 @@ for row in data:
 #  ###########################################
 #  # filter by date
 #  ###########################################
-filter = True
+filter = False
 if filter:
     dataObjSelected = []
     for row in dataObj:
@@ -102,8 +102,21 @@ DureeTotaleTrades = timedelta()
 #for row in dataObjSorted:
 
 for row in dataObjSorted:
-    #row.apply_stop_loss(500)
-    #row.apply_take_profit(199)
+    SL = 0
+    LIMIT = 0
+    
+    if SL == 0:
+        strSL = "No Stop Loss"
+    else:
+        strSL = "SL={0}".format(SL)
+    row.apply_stop_loss(SL)
+    
+    if LIMIT == 0:
+        strLIMIT = "No Limit"
+    else:
+        strLIMIT = "LIMIT={0}".format(LIMIT)
+    row.apply_take_profit(LIMIT)
+    
 
     row.__dict__['Stratégie'] = filename
     t.append(row.__dict__['Fermer Heure'])
@@ -159,6 +172,7 @@ for key2 in bilanStrateg[key]:
     #lstBilanStrateg.append([key, bilanStrateg[key]])
     #lstBilanStrateg.append({'Stratégie (Symbole)'=key, 'Pips total'=bilanStrateg[key]})
 
+print(strSL + " - " + strLIMIT)
 
 print("="*20)
 
