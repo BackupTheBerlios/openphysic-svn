@@ -89,28 +89,28 @@ dataObjSorted = sorted(dataObjSelected, key=lambda dataObjSelected: dataObjSelec
 
 i = 1
 t = []
-pips = []
-profit = []
+lstPips = []
+lstProfit = []
 pipsTot = 0
 profitTot = 0
 bilanStrateg = dict()
-cum_H = []
-cum_L = []
+lstPipsHaut = []
+lstPipsBas = []
 DOCHLV = []
 DureeTotaleTrades = timedelta()
 
 #for row in dataObjSorted:
-    #row.apply_stop_loss(10)
-    #row.apply_take_profit()
 
 for row in dataObjSorted:
+    row.apply_stop_loss(69)
+    #row.apply_take_profit()
 
     row.__dict__['Stratégie'] = filename
     t.append(row.__dict__['Fermer Heure'])
-    pips.append(row.__dict__['Pips'])
-    profit.append(row.__dict__['Profit'])
-    cum_H.append(row.__dict__['Haut'])
-    cum_L.append(row.__dict__['Bas'])
+    lstPips.append(row.__dict__['Pips'])
+    lstProfit.append(row.__dict__['Profit'])
+    lstPipsHaut.append(row.__dict__['Haut'])
+    lstPipsBas.append(row.__dict__['Bas'])
     DOCHLV.append((i, 0, row.__dict__['Pips'], row.__dict__['Haut'], row.__dict__['Bas'], 0))
     DureeTotaleTrades = DureeTotaleTrades + row.__dict__['Durée Trade']
     
@@ -164,14 +164,14 @@ print("="*20)
 
 #print("Pips total = {0}".format(pipsTot))
 #print("Profit total = {0}".format(profitTot))
-lstPips = myparser.getAll('Pips')
+#lstPips = myparser.getAll('Pips')
 PipsMin = min(lstPips)
 PipsMax = max(lstPips)
 print("Pips Min = {0}".format(PipsMin))
 print("Pips Max = {0}".format(PipsMax))
-lstPipsHaut = myparser.getAll('Haut')
+#lstPipsHaut = myparser.getAll('Haut')
 PipsHautMax = max(lstPipsHaut)
-lstPipsBas = myparser.getAll('Bas')
+#lstPipsBas = myparser.getAll('Bas')
 PipsBasMin = min(lstPipsBas)
 print("Pips Haut Max = {0}".format(PipsHautMax))
 print("Pips Bas Min = {0}".format(PipsBasMin))
@@ -182,16 +182,16 @@ print("="*20)
 
 
 # Graph pips&profit cumulé
-cum_pips = cumulative_sum(pips)
-cum_profit = cumulative_sum(profit)
-x = range(0,len(pips))
+cum_pips = cumulative_sum(lstPips)
+cum_profit = cumulative_sum(lstProfit)
+x = range(0,len(lstPips))
 fig = figure()
 fig.subplots_adjust(bottom=0.1)
 ax = fig.add_subplot(311)
 candlestick(ax, DOCHLV, width=0.6, colorup='g', colordown='r', alpha=1.0)
 # ToDo : ajouter lignes avec pips moyen / trade ; pipsWin moy ; pipLost moy
 grid(True)
-#plot(x, cum_H, 'g.', x, cum_L, 'r.', x, pips, 'b.')
+#plot(x, lstHaut, 'g.', x, lstBas, 'r.', x, lstPips, 'b.')
 subplot(312)
 plot(t, cum_pips, 'b.', t, cum_pips, 'k--')
 title('Accumulated pips')
