@@ -314,10 +314,9 @@ class ZuluTradeHistory:
             raise(Exception("Stop loss must be a positive value"))
         elif sl!=0:
             oldpips = self.__dict__['Pips']
-            if self.__dict__['Pips']<=-sl:
+            if self.__dict__['Pips']<=-sl or self.__dict__['Bas']<=-sl:
                 self.__dict__['Pips'] = -sl
-            if self.__dict__['Bas']<=-sl:
-                self.__dict__['Pips'] = -sl
+                self.__dict__['Bas'] = -sl
             # Calculer profit
         else:
             pass # no stop loss
