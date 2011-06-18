@@ -47,9 +47,9 @@ def update():
     #d = {'ticker': {'high': 17.2, 'low':13, 'vol':83990, 'buy':15.2303, 'sell':15.4499, 'last':15.2303}}
     #json_data = json.dumps(d)
 
-    #print(json_data)
+    print(json_data)
 
-    data=json.loads(json_data)
+    data = json.loads(json_data)
     #print(data['ticker']['sell'])
 
     clear_screen()
