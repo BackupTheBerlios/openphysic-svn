@@ -53,7 +53,7 @@ def update():
     #print(data['ticker']['sell'])
 
     clear_screen()
-    print("""Bitcoin rates from Mt Gox API @ {0}
+    print("""Bitcoin BTC/USD rates from Mt Gox API @ {0}
 Buy : {1}
 Sell : {2}
 High : {3}
