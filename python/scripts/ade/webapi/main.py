@@ -78,6 +78,17 @@ class ade_webapi():
         xmlrep = f.read()
         self.xml_debug(xmlrep)
         
+    def getEvents(self):
+        pass
+        
+    def getCosts(self):
+        pass
+
+    def getCaracteristics(self):
+        pass
+        
+    def getDate(self, week, day, slot):
+        pass
 
 myade = ade_webapi('https://upplanning.appli.univ-poitiers.fr/ade/webapi?', 'login', 'password')
 myade.connect()
