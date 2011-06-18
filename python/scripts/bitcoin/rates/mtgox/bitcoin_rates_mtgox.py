@@ -25,19 +25,34 @@ import urllib
 import json
 import datetime
 import time
+import os
+
+def clear_screen():
+    if os.name == "posix":
+    # Unix/Linux/MacOS/BSD/etc
+        os.system('clear')
+    elif os.name in ("nt", "dos", "ce"):
+    # DOS/Windows
+        os.system('CLS')
+    else:
+        # Fallback for other operating systems.
+        print("="*10)
+        #print '\n' * numlines
 
 def update():
-    #f = urllib.urlopen("http://mtgox.com/code/data/ticker.php")
-    #json_data = f.read()
+    f = urllib.urlopen("http://mtgox.com/code/data/ticker.php")
+    json_data = f.read()
 
     # Value for test 2011/06/18 @ 09:45
-    d = {'ticker': {'high': 17.2, 'low':13, 'vol':83990, 'buy':15.2303, 'sell':15.4499, 'last':15.2303}}
-    json_data = json.dumps(d)
+    #d = {'ticker': {'high': 17.2, 'low':13, 'vol':83990, 'buy':15.2303, 'sell':15.4499, 'last':15.2303}}
+    #json_data = json.dumps(d)
 
     #print(json_data)
 
     data=json.loads(json_data)
     #print(data['ticker']['sell'])
+
+    clear_screen()
     print("""Bitcoin rates from Mt Gox API @ {0}
 Buy : {1}
 Sell : {2}
@@ -53,9 +68,8 @@ Vol : {6}""".format(
     data['ticker']['last'],
     data['ticker']['vol']
 ))
-    print("="*10)
-    #f.close()
+    f.close()
 
 while(True):
     update()
-    time.sleep(6)
+    time.sleep(60) # wait 60 seconds
