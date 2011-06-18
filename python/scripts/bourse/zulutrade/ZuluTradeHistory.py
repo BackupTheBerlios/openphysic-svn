@@ -32,10 +32,10 @@ from ZuluTradeAnalyzerClass import *
 
 from BeautifulSoup import BeautifulSoup
 
-#filename = 'Zulutrade_zulumaster1_Performance_2011-06-12.xls'
-filename = 'Zulutrade_BBSqueeze_Performance_2011-06-13.xls'
+filename = 'Zulutrade_Forex_Cruise_Control_Performance_2011-06-15.xls'
+#filename = 'Zulutrade_BBSqueeze_Performance_2011-06-13.xls'
 #filename = 'Zulutrade_SenshFX-(R-System)_Performance_2011-06-13.xls'
-filename = 'Zulutrade_MayfairSwing_Performance_2011-06-14.xls'
+#filename = 'Zulutrade_MayfairSwing_Performance_2011-06-14.xls'
 myparser = ZuluTradeHistoryParser(filename)
 
 header = myparser.get_header()
@@ -102,7 +102,7 @@ DureeTotaleTrades = timedelta()
 #for row in dataObjSorted:
 
 for row in dataObjSorted:
-    SL = 0
+    SL = 200
     LIMIT = 0
     
     if SL == 0:

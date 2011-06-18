@@ -30,7 +30,7 @@ from ZuluTradeAnalyzerClass import *
 #  # Parse HTML file        
 #  ###########################################
 
-filename = 'ZuluTrade-TradeHistory.html' # v1 05/2011
+#filename = 'ZuluTrade-TradeHistory.html' # v1 05/2011
 filename = 'ZuluTrade-TradeHistory-latest.xls' #v2 12/06/2011
 myparser = ZuluTradeMyHistoryParser(filename)
 
