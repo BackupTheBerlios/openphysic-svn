@@ -24,19 +24,24 @@ import urllib
 import xml.dom.minidom
 
 class ade_webapi():
-    def __init__(self):
-        self.url = 'https://upplanning.appli.univ-poitiers.fr/ade/webapi?'
-        self.login = 'login'
-        self.password = 'pswd'
+    def __init__(self, url, login, password):
+        self.url = url
+        self.login = login
+        self.password = password
+        
+        self.sessionId = None
 
+    def connect(self):
         #f = urllib.urlopen(self.url + "function=connect&login={0}&password={1}".format(self.login, self.password))
         #xmlrep = f.read()
         xmlrep = """<?xml version="1.0" encoding="UTF-8"?>
 <session id="130a433bf04"/>"""
-        #dom = dom.minidom.parseString(xmlrep)
+        #print(xmlrep)
+        dom = xml.dom.minidom.parseString(xmlrep)
+        elt = dom.getElementsByTagName('session')[0]
+        self.sessionId = elt.getAttribute('id')
 
-        print(xmlrep)
-
+    def disconnect(self):
         #f = urllib.urlopen(self.url + "function=disconnect")
         #xmlrep = f.read()
         xmlrep = """<?xml version="1.0" encoding="UTF-8"?>
@@ -44,4 +49,6 @@ class ade_webapi():
 
         print(xmlrep)
 
-myade = ade_webapi()
+myade = ade_webapi('https://upplanning.appli.univ-poitiers.fr/ade/webapi?', 'login', 'password')
+myade.connect()
+myade.disconnect()
