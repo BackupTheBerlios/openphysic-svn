@@ -25,15 +25,46 @@
 # http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20%28%22YHOO%22,%22AAPL%22,%22GOOG%22,%22MSFT%22%29&env=http://datatables.org/alltables.env
 
 import yql
+import datetime
+import os
+import time
 
-y = yql.Public()
-query = 'select * from yahoo.finance.quotes where symbol="EURUSD=X" limit 1';
-result = y.execute(query, env='http://datatables.org/alltables.env')
-# ToFix : No definition found for Table yahoo.finance.quotes => env
+def clear_screen():
+    if os.name == "posix":
+    # Unix/Linux/MacOS/BSD/etc
+        os.system('clear')
+    elif os.name in ("nt", "dos", "ce"):
+    # DOS/Windows
+        os.system('CLS')
+    else:
+        # Fallback for other operating systems.
+        print("="*10)
+        #print '\n' * numlines
 
-#print(result)
-#for row in result.rows:
-#    print repr(row)
+def update():
+    y = yql.Public()
+    symbol = 'EURUSD'
+    query = 'select * from yahoo.finance.quotes where symbol="{0}=X" limit 1'.format(symbol);
+    result = y.execute(query, env='http://datatables.org/alltables.env')
+    # ToFix : No definition found for Table yahoo.finance.quotes => env
 
-row = result.rows[0]
-print(row['Bid'])
+    #print(result)
+    #for row in result.rows:
+    #    print repr(row)
+
+    data = result.rows[0]
+    #print(data)
+
+    clear_screen()
+    print("""{0} rates from Yahoo! Finance YQL @ {1}
+Bid : {2}
+Ask : {3}""".format(
+    symbol,
+    datetime.datetime.now(), #.strftime('%Y/%m/%d %H:%M:%s'),
+    data['Bid'],
+    data['Ask']
+))
+
+while(True):
+    update()
+    time.sleep(60) # wait 60 seconds
