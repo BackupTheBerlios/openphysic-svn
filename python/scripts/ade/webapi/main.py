@@ -21,17 +21,27 @@
 """
 
 import urllib
+import xml.dom.minidom
 
-url = 'https://upplanning.appli.univ-poitiers.fr/ade/webapi?'
-login = 'login'
-password = 'password'
+class ade_webapi():
+    def __init__(self):
+        self.url = 'https://upplanning.appli.univ-poitiers.fr/ade/webapi?'
+        self.login = 'login'
+        self.password = 'pswd'
 
-f = urllib.urlopen(url + "function=connect&login={0}&password={1}".format(login, password))
-xml = f.read()
+        #f = urllib.urlopen(self.url + "function=connect&login={0}&password={1}".format(self.login, self.password))
+        #xmlrep = f.read()
+        xmlrep = """<?xml version="1.0" encoding="UTF-8"?>
+<session id="130a433bf04"/>"""
+        #dom = dom.minidom.parseString(xmlrep)
 
-print(xml)
+        print(xmlrep)
 
-f = urllib.urlopen(url + "function=disconnect")
-xml = f.read()
+        #f = urllib.urlopen(self.url + "function=disconnect")
+        #xmlrep = f.read()
+        xmlrep = """<?xml version="1.0" encoding="UTF-8"?>
+<disconnected sessionId=""/>"""
 
-print(xml)
+        print(xmlrep)
+
+myade = ade_webapi()
