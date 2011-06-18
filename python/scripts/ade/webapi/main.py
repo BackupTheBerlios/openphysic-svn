@@ -34,11 +34,15 @@ class ade_webapi():
         
         self.debug = True
 
+    def xml_debug(self, xmlrep):
+        if self.debug:
+            print(xmlrep)
+            time.sleep(2)
+
     def connect(self):
         f = urllib.urlopen(self.url + "function={0}&login={1}&password={2}".format('connect', self.login, self.password))
         xmlrep = f.read()
-        if self.debug:
-            print(xmlrep)
+        self.xml_debug(xmlrep)
         
         dom = xml.dom.minidom.parseString(xmlrep)
         elt = dom.getElementsByTagName('session')[0]
@@ -47,33 +51,38 @@ class ade_webapi():
     def disconnect(self):
         f = urllib.urlopen(self.url + "function={0}&sessionId={1}".format('disconnect', self.sessionId))
         xmlrep = f.read()
-        if self.debug:
-            print(xmlrep)
+        self.xml_debug(xmlrep)
         
     def getProjectsById(self, id):
         f = urllib.urlopen(self.url + "function={0}&sessionId={1}&id={2}".format('getProjects', self.sessionId, id))
         xmlrep = f.read()
-        if self.debug:
-            print(xmlrep)
+        self.xml_debug(xmlrep)
 
     def getProjects(self, detail):
         f = urllib.urlopen(self.url + "function={0}&sessionId={1}&detail={2}".format('getProjects', self.sessionId, detail))
         xmlrep = f.read()
-        if self.debug:
-            print(xmlrep)
+        self.xml_debug(xmlrep)
         
     def setProject(self, projectId):
         f = urllib.urlopen(self.url + "function={0}&sessionId={1}&projectId={2}".format('setProject', self.sessionId, projectId))
         xmlrep = f.read()
-        if self.debug:
-            print(xmlrep)
-    
+        self.xml_debug(xmlrep)
+            
+    def getResources(self): # ToFix
+        f = urllib.urlopen(self.url + "function={0}&sessionId={1}&tree=true&name=Amphi&category=classroom".format('getResources', self.sessionId))
+        xmlrep = f.read()
+        self.xml_debug(xmlrep)
+
+    def getActivities(self):
+        f = urllib.urlopen(self.url + "function={0}&sessionId={1}&tree=true".format('getActivities', self.sessionId))
+        xmlrep = f.read()
+        self.xml_debug(xmlrep)
+        
 
 myade = ade_webapi('https://upplanning.appli.univ-poitiers.fr/ade/webapi?', 'login', 'password')
 myade.connect()
-time.sleep(3)
 myade.getProjects(4)
-time.sleep(3)
 myade.setProject(11) # 2010-2011=>11 2011-2012=>1
-time.sleep(3)
+#myade.getResources()
+myade.getActivities()
 myade.disconnect()
