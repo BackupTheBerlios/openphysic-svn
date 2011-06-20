@@ -48,23 +48,6 @@ class Bilan(dict):
     def __repr__(self):
         return repr(self.__dict__)
 
-#class BilanEnseignants():
-#    def __init__(self):
-#        pass
-
-#    def append(self, placement):
-#        pass
-
-#    def __repr__(self):
-#        return repr(self.__dict__)
-
-#class BilanMatieres():
-#    def __init__(self):
-#        pass
-
-#    def __repr__(self):
-#        return repr(self.__dict__)
-
 # Lecture des entêtes de colonnes
 fileHead = open('ade_entete.txt', 'r', encoding='latin-1')
 strHead = fileHead.read()
