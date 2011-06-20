@@ -103,6 +103,7 @@ for placement in lstPlacements:
     enseignant = placement.__dict__['Enseignants au choix (noms)']
     typeAct = placement.__dict__['Type']
     duree = placement.__dict__['Durée (h)']
+    #code = placement.__dict__['...']
 
     # Total CM TD TP autres de l'ensemble des enseignants    
     if typeAct in bilanTotalEns:
@@ -119,7 +120,11 @@ for placement in lstPlacements:
     else:
         bilanEns[enseignant][typeAct] = duree
 
-    # Total CM TD TP autre pour chaque matière pour un enseignant donné
+    # Total CM TD TP autres pour chaque matière pour un enseignant donné
+
+    # Total CM TD TP autres pour chaque matiere (regroupement par code Apogée)
+
+    # Total CM TP TP autres pour chaque enseignant dans une matière donnée
 
 #print(bilanTotalEns)
 
