@@ -106,6 +106,7 @@ for placement in placements:
 #print(lstPlacements[0]) # voir une ligne de l'onglet placement pour test
 
 bilanTotalEns = Bilan() #{'CM': timedelta(), 'TD': timedelta(), 'TP': timedelta(), 'autres': timedelta()}
+bilanTotalEns['total'] = dict()
 bilanEns = dict()
 bilanEns['enseignants'] = dict()
 bilanMatiere = dict()
@@ -128,10 +129,10 @@ for placement in lstPlacements:
     code = placement.__dict__['Activité']
 
     # Total CM TD TP autres de l'ensemble des enseignants    
-    if typeAct in bilanTotalEns:
-        bilanTotalEns[typeAct] = bilanTotalEns[typeAct] + duree
+    if typeAct in bilanTotalEns['total']:
+        bilanTotalEns['total'][typeAct] = bilanTotalEns['total'][typeAct] + duree
     else:
-        bilanTotalEns[typeAct] = duree
+        bilanTotalEns['total'][typeAct] = duree
     
     # Total CM TD TP autres pour chaque enseignant
     if enseignant not in bilanEns['enseignants']:
@@ -155,19 +156,21 @@ for placement in lstPlacements:
     else:
         bilanMatiere['matieres'][code][typeAct] = duree
         
-    print(bilanMatiere)
+    #print(bilanMatiere)
 
     # Total CM TP TP autres pour chaque enseignant dans une matière donnée
     #if enseignant not in bilanMatiere:
 
-#print(bilanTotalEns)
+#print(bilanTotalEns['total']['TD']/60)
+
+#exit()
 
 #print('='*30)
 
-CM = bilanTotalEns['CM']/60
-TD = bilanTotalEns['TD']/60
-TP = bilanTotalEns['TP']/60
-autres = bilanTotalEns['autres']/60
+CM = bilanTotalEns['total']['CM']/60
+TD = bilanTotalEns['total']['TD']/60
+TP = bilanTotalEns['total']['TP']/60
+autres = bilanTotalEns['total']['autres']/60
 print("""Bilan {0}
 CM     : {1}
 TD     : {2}
