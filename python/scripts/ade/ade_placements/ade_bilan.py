@@ -77,10 +77,11 @@ for placement in placements:
             val = timedelta(hours=int(val[0]), minutes=int(val[1])) # conversion de la chaine en heure Python
         elif lstHead[i] == 'Ressources verouillées' or lstHead[i] == 'Date verrouillée':
             val = bool(strP) # conversion de la chaine en booléen
-        #elif lstHead[i] == 'Type':
-            #pass
-            #if strP!='CM' and strP!='TD' and strP!='TP':
-            #    strP = 'autres'   
+        elif lstHead[i] == 'Type': # tout ce qui n'est pas de type CM TD TP est de type autre
+            if strP!='CM' and strP!='TD' and strP!='TP':
+                val = 'autres'
+            else:
+                val = strP
         else:
             val = strP
         #except:
@@ -90,7 +91,9 @@ for placement in placements:
 #print(lstPlacements)
 
 # Création du bilan enseignants
-print(lstPlacements[0])
+
+#print(lstPlacements[0]) # voir une ligne de l'onglet placement pour test
+
 bilanEns = dict()
 #bilanEns = BilanEnseignants()
 for placement in lstPlacements:
@@ -109,6 +112,13 @@ for placement in lstPlacements:
     except:
         bilanEns[typeAct] = duree
         
+    try:
+
+        bilanEns['_Total'][typeAct] = bilanEns['_Total'][typeAct] + duree
+    except:
+        bilanEns['_Total'][typeAct] = duree
+
+
     
     #try:
     #    bilanEns[enseignant].__dict__[typeAct] = bilanEns[enseignant].__dict__[typeAct] + duree
