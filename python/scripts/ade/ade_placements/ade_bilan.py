@@ -108,7 +108,8 @@ for placement in placements:
 bilanTotalEns = Bilan() #{'CM': timedelta(), 'TD': timedelta(), 'TP': timedelta(), 'autres': timedelta()}
 bilanEns = dict()
 bilanMatiere = dict()
-
+#bilanMatiere['matieres'] = {}
+#bilanMatiere = {'matieres':dict()}
 #bilanTotalEns = {'total': Bilan(), 'enseignants': {}}
 
 for placement in lstPlacements:
@@ -146,6 +147,7 @@ for placement in lstPlacements:
         bilanMatiere[code][typeAct] = duree
 
     # Total CM TP TP autres pour chaque enseignant dans une matière donnée
+    #if enseignant not in bilanMatiere:
 
 #print(bilanTotalEns)
 
@@ -175,13 +177,13 @@ for enseignant in bilanEns:
     TD = bilanEns[enseignant]['TD']/60
     TP = bilanEns[enseignant]['TP']/60
     autres = bilanEns[enseignant]['autres']/60
-    print("""Bilan {0}
-CM     : {1}
-TD     : {2}
-TP     : {3}
-autres : {4}
+    print("""    Bilan {0}
+    CM     : {1}
+    TD     : {2}
+    TP     : {3}
+    autres : {4}
 
-H eq TD(*) : {5}""".format(enseignant, CM, TD, TP, autres, CM*1.5 + TD + TP))
+    H eq TD(*) : {5}""".format(enseignant, CM, TD, TP, autres, CM*1.5 + TD + TP))
     print()
     print('='*15)
     print()
@@ -189,7 +191,7 @@ H eq TD(*) : {5}""".format(enseignant, CM, TD, TP, autres, CM*1.5 + TD + TP))
 
 print('='*30)
 
-#print(bilanMatiere)
+print(bilanMatiere)
 
 # Affichage bilan matiere
 for matiere in bilanMatiere:
