@@ -101,26 +101,14 @@ for placement in placements:
     lstPlacements.append(p)
 #print(lstPlacements)
 
-# Création du bilan enseignants
+# Création des bilan
 
 #print(lstPlacements[0]) # voir une ligne de l'onglet placement pour test
 
-bilanTotalEns = Bilan() #{'CM': timedelta(), 'TD': timedelta(), 'TP': timedelta(), 'autres': timedelta()}
-bilanTotalEns['total'] = dict()
-bilanEns = dict()
-bilanEns['enseignants'] = dict()
-bilanMatiere = dict()
-bilanMatiere['matieres'] = dict()
-#bilanMatiere['matieres']['math'] = Bilan()
-#bilanMatiere['matieres2'] = 0
-#bilanMatiere['matieres3'] = Bilan()
-
-print(bilanMatiere)
-#print(bilanMatiere['matieres3'])
-#bilanMatiere = {'matieres':dict()}
-#bilanTotalEns = {'total': Bilan(), 'enseignants': {}}
-
-#exit()
+bilan = dict()
+bilan['total'] = dict()
+bilan['enseignants'] = dict()
+bilan['matieres'] = dict()
 
 for placement in lstPlacements:
     enseignant = placement.__dict__['Enseignants au choix (noms)'] # ToFix : double encadrement
@@ -129,48 +117,42 @@ for placement in lstPlacements:
     code = placement.__dict__['Activité']
 
     # Total CM TD TP autres de l'ensemble des enseignants    
-    if typeAct in bilanTotalEns['total']:
-        bilanTotalEns['total'][typeAct] = bilanTotalEns['total'][typeAct] + duree
+    if typeAct in bilan['total']:
+        bilan['total'][typeAct] = bilan['total'][typeAct] + duree
     else:
-        bilanTotalEns['total'][typeAct] = duree
+        bilan['total'][typeAct] = duree
     
     # Total CM TD TP autres pour chaque enseignant
-    if enseignant not in bilanEns['enseignants']:
-        bilanEns['enseignants'][enseignant] = Bilan() #{'CM': timedelta(), 'TD': timedelta(), 'TP': timedelta(), 'autres': timedelta()}
+    if enseignant not in bilan['enseignants']:
+        bilan['enseignants'][enseignant] = Bilan() #{'CM': timedelta(), 'TD': timedelta(), 'TP': timedelta(), 'autres': timedelta()}
     
-    if typeAct in bilanEns['enseignants'][enseignant]:
-        bilanEns['enseignants'][enseignant][typeAct] = bilanEns['enseignants'][enseignant][typeAct] + duree
+    if typeAct in bilan['enseignants'][enseignant]:
+        bilan['enseignants'][enseignant][typeAct] = bilan['enseignants'][enseignant][typeAct] + duree
     else:
-        bilanEns['enseignants'][enseignant][typeAct] = duree
+        bilan['enseignants'][enseignant][typeAct] = duree
 
     # Total CM TD TP autres pour chaque matière pour un enseignant donné
 
     # ###########################################################
 
     # Total CM TD TP autres pour chaque matiere (regroupement par code Apogée)
-    if code not in bilanMatiere['matieres']:
-        bilanMatiere['matieres'][code] = Bilan()
+    if code not in bilan['matieres']:
+        bilan['matieres'][code] = Bilan()
     
-    if typeAct in bilanMatiere['matieres'][code]:
-        bilanMatiere['matieres'][code][typeAct] = bilanMatiere['matieres'][code][typeAct] + duree
+    if typeAct in bilan['matieres'][code]:
+        bilan['matieres'][code][typeAct] = bilan['matieres'][code][typeAct] + duree
     else:
-        bilanMatiere['matieres'][code][typeAct] = duree
+        bilan['matieres'][code][typeAct] = duree
         
     #print(bilanMatiere)
 
     # Total CM TP TP autres pour chaque enseignant dans une matière donnée
     #if enseignant not in bilanMatiere:
 
-#print(bilanTotalEns['total']['TD']/60)
-
-#exit()
-
-#print('='*30)
-
-CM = bilanTotalEns['total']['CM']/60
-TD = bilanTotalEns['total']['TD']/60
-TP = bilanTotalEns['total']['TP']/60
-autres = bilanTotalEns['total']['autres']/60
+CM = bilan['total']['CM']/60
+TD = bilan['total']['TD']/60
+TP = bilan['total']['TP']/60
+autres = bilan['total']['autres']/60
 print("""Bilan {0}
 CM     : {1}
 TD     : {2}
@@ -182,15 +164,14 @@ H eq TD(*) : {5}""".format('total des enseignants', CM, TD, TP, autres, CM*1.5 +
 print('='*30)
 print()
 
-#print(bilanEns)
 
 # Affichage bilan enseignant
-for enseignant in bilanEns['enseignants']:
+for enseignant in bilan['enseignants']:
     #print(enseignant)
-    CM = bilanEns['enseignants'][enseignant]['CM']/60
-    TD = bilanEns['enseignants'][enseignant]['TD']/60
-    TP = bilanEns['enseignants'][enseignant]['TP']/60
-    autres = bilanEns['enseignants'][enseignant]['autres']/60
+    CM = bilan['enseignants'][enseignant]['CM']/60
+    TD = bilan['enseignants'][enseignant]['TD']/60
+    TP = bilan['enseignants'][enseignant]['TP']/60
+    autres = bilan['enseignants'][enseignant]['autres']/60
     print("""    Bilan {0}
     CM     : {1}
     TD     : {2}
@@ -205,15 +186,13 @@ for enseignant in bilanEns['enseignants']:
 
 print('='*30)
 
-print(bilanMatiere)
-
 # Affichage bilan matiere
-for matiere in bilanMatiere['matieres']:
+for matiere in bilan['matieres']:
     #print(enseignant)
-    CM = bilanMatiere['matieres'][matiere]['CM']/60
-    TD = bilanMatiere['matieres'][matiere]['TD']/60
-    TP = bilanMatiere['matieres'][matiere]['TP']/60
-    autres = bilanMatiere['matieres'][matiere]['autres']/60
+    CM = bilan['matieres'][matiere]['CM']/60
+    TD = bilan['matieres'][matiere]['TD']/60
+    TP = bilan['matieres'][matiere]['TP']/60
+    autres = bilan['matieres'][matiere]['autres']/60
     print("""Bilan {0}
 CM     : {1}
 TD     : {2}
