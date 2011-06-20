@@ -64,7 +64,7 @@ fileHead.close()
 #print(lstHead)
 
 # Lecture du fichier ade_onglet_placement.txt
-placements = csv.reader(open('ade_onglet_placement.txt'), delimiter='\t')
+placements = csv.reader(open('ade_onglet_placement_mini.txt'), delimiter='\t')
 lstPlacements = []
 for placement in placements:
     #print(placement)
