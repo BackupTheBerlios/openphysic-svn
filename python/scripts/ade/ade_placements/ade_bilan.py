@@ -93,6 +93,42 @@ bilan['total'] = dict()
 bilan['enseignants'] = dict()
 bilan['matieres'] = dict()
 
+"""Structure : nested dictionary pour les bilans
+Ref :
+http://stackoverflow.com/questions/635483/what-is-the-best-way-to-implement-nested-dictionaries-in-python
+http://stackoverflow.com/questions/651794/whats-the-best-way-to-initialize-a-dict-of-dicts-in-python
+
+total
+  CM
+  TD
+  TP
+  autres
+matieres
+  matiere1
+    total
+      CM
+      TD
+      TP
+      autres
+    enseignants
+      nom1
+        CM
+        TD
+        TP
+        autres
+      nom2
+        CM
+        TD
+        TP
+        autres
+enseignants
+  nom1
+    CM
+    TD
+    TP
+    autres
+"""
+
 for placement in lstPlacements:
     enseignant = placement.__dict__['Enseignants au choix (noms)'] # ToFix : double encadrement
     typeAct = placement.__dict__['Type']
@@ -120,17 +156,22 @@ for placement in lstPlacements:
 
     # Total CM TD TP autres pour chaque matiere (regroupement par code Apogée)
     if code not in bilan['matieres']:
-        bilan['matieres'][code] = Bilan()
+        bilan['matieres'][code] = dict()
+        bilan['matieres'][code]['total'] = Bilan()
+        bilan['matieres'][code]['enseignants'] = dict()
     
-    if typeAct in bilan['matieres'][code]:
-        bilan['matieres'][code][typeAct] = bilan['matieres'][code][typeAct] + duree
+    if typeAct in bilan['matieres'][code]['total']:
+        bilan['matieres'][code]['total'][typeAct] = bilan['matieres'][code]['total'][typeAct] + duree
     else:
-        bilan['matieres'][code][typeAct] = duree
+        bilan['matieres'][code]['total'][typeAct] = duree
         
     #print(bilanMatiere)
 
     # Total CM TP TP autres pour chaque enseignant dans une matière donnée
-    #if enseignant not in bilanMatiere:
+    if enseignant not in bilan['matieres'][code]['enseignants']:
+        bilan['matieres'][code]['enseignants'][enseignant] = Bilan()
+        
+    #...
 
 CM = bilan['total']['CM']/60
 TD = bilan['total']['TD']/60
@@ -172,10 +213,10 @@ print('='*30)
 # Affichage bilan matiere
 for matiere in bilan['matieres']:
     #print(enseignant)
-    CM = bilan['matieres'][matiere]['CM']/60
-    TD = bilan['matieres'][matiere]['TD']/60
-    TP = bilan['matieres'][matiere]['TP']/60
-    autres = bilan['matieres'][matiere]['autres']/60
+    CM = bilan['matieres'][matiere]['total']['CM']/60
+    TD = bilan['matieres'][matiere]['total']['TD']/60
+    TP = bilan['matieres'][matiere]['total']['TP']/60
+    autres = bilan['matieres'][matiere]['total']['autres']/60
     print("""Bilan {0}
 CM     : {1}
 TD     : {2}
@@ -192,3 +233,5 @@ print('='*30)
 print("""(*) Les heures équivalents TD sont calculées à titre indicatif
 sans prendre en compte le prorata (dépend du statut) avec les coefficients suivants :
 CM=1.5 ; TD=1 ; TP=1""")
+
+print(bilan)
