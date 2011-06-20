@@ -186,12 +186,31 @@ H eq TD(*) : {5}""".format(enseignant, CM, TD, TP, autres, CM*1.5 + TD + TP))
     print('='*15)
     print()
 
+
+print('='*30)
+
+#print(bilanMatiere)
+
+# Affichage bilan matiere
+for matiere in bilanMatiere:
+    #print(enseignant)
+    CM = bilanMatiere[matiere]['CM']/60
+    TD = bilanMatiere[matiere]['TD']/60
+    TP = bilanMatiere[matiere]['TP']/60
+    autres = bilanMatiere[matiere]['autres']/60
+    print("""Bilan {0}
+CM     : {1}
+TD     : {2}
+TP     : {3}
+autres : {4}
+
+H eq TD(*) : {5}""".format(matiere, CM, TD, TP, autres, CM*1.5 + TD + TP))
+    print()
+    print('='*15)
+    print()
+
+print('='*30)
+
 print("""(*) Les heures équivalents TD sont calculées à titre indicatif
 sans prendre en compte le prorata (dépend du statut) avec les coefficients suivants :
 CM=1.5 ; TD=1 ; TP=1""")
-#print('='*30)
-
-# Affichage bilan matiere
-#for matiere in bilanMatiere:
-
-
