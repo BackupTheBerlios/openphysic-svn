@@ -11,6 +11,14 @@
 
        Remarque : modifier le fichier ade_entete.txt afin d'avoir
        une disposition des données convenables
+       l'ordre des colonnes de l'onglet "Placement" doit être
+       le même que l'ordre dans le fichier ade_entete.txt
+       Il est nécessaire d'afficher les informations suivantes dans le client ADE
+        - Type
+        - Durée
+        - Enseignants au choix (noms)
+        - Code
+        - Activité
 
     Copyright (C) 2011  "Sébastien CELLES" <sebastien.celles@univ-poitiers.fr>
 
@@ -30,26 +38,25 @@ class Placement():
     def __repr__(self):
         return repr(self.__dict__)
 
-class Bilan():
+class Bilan(dict):
     def __init__(self):
-        self.CM = 0
-        self.TD = 0        
-        self.TP = 0
-        self.autres = 0
+        self['CM'] = timedelta()
+        self['TD'] = timedelta()
+        self['TP'] = timedelta()
+        self['autres'] = timedelta()
 
     def __repr__(self):
         return repr(self.__dict__)
-    
 
-class BilanEnseignants():
-    def __init__(self):
-        pass
+#class BilanEnseignants():
+#    def __init__(self):
+#        pass
 
-    def append(self, placement):
-        pass
+#    def append(self, placement):
+#        pass
 
-    def __repr__(self):
-        return repr(self.__dict__)
+#    def __repr__(self):
+#        return repr(self.__dict__)
 
 #class BilanMatieres():
 #    def __init__(self):
@@ -59,14 +66,14 @@ class BilanEnseignants():
 #        return repr(self.__dict__)
 
 # Lecture des entêtes de colonnes
-fileHead = open('ade_entete.txt', 'r')
+fileHead = open('ade_entete.txt', 'r', encoding='latin-1')
 strHead = fileHead.read()
 lstHead = strHead.split("\n")
 fileHead.close()
 #print(lstHead)
 
 # Lecture du fichier ade_onglet_placement.txt
-placements = csv.reader(open('ade_onglet_placement_mini.txt'), delimiter='\t')
+placements = csv.reader(open('ade_onglet_placement_mini.txt', encoding='latin-1'), delimiter='\t')
 lstPlacements = []
 for placement in placements:
     #print(placement)
@@ -77,6 +84,8 @@ for placement in placements:
         if lstHead[i] == 'Durée (h)':
             val = strP.split('h')
             val = timedelta(hours=int(val[0]), minutes=int(val[1])) # conversion de la chaine en heure Python
+            #val = float(val[0]) + float(val[1])/60 # numérique (heures)
+            #val = int(val[0])*60 + int(val[1]) # numérique (minutes)
         elif lstHead[i] == 'Ressources verouillées' or lstHead[i] == 'Date verrouillée':
             val = bool(strP) # conversion de la chaine en booléen
         elif lstHead[i] == 'Type': # tout ce qui n'est pas de type CM TD TP est de type autre
@@ -96,7 +105,7 @@ for placement in placements:
 
 #print(lstPlacements[0]) # voir une ligne de l'onglet placement pour test
 
-bilanTotalEns = {'CM': timedelta(), 'TD': timedelta(), 'TP': timedelta(), 'autres': timedelta()}
+bilanTotalEns = Bilan() #{'CM': timedelta(), 'TD': timedelta(), 'TP': timedelta(), 'autres': timedelta()}
 bilanEns = dict()
 
 for placement in lstPlacements:
@@ -113,7 +122,7 @@ for placement in lstPlacements:
     
     # Total CM TD TP autres pour chaque enseignant
     if enseignant not in bilanEns:
-        bilanEns[enseignant] = {'CM': timedelta(), 'TD': timedelta(), 'TP': timedelta(), 'autres': timedelta()}
+        bilanEns[enseignant] = Bilan() #{'CM': timedelta(), 'TD': timedelta(), 'TP': timedelta(), 'autres': timedelta()}
     
     if typeAct in bilanEns[enseignant]:
         bilanEns[enseignant][typeAct] = bilanEns[enseignant][typeAct] + duree
@@ -138,7 +147,9 @@ print("""Bilan {0}
 CM     : {1}
 TD     : {2}
 TP     : {3}
-autres : {4}""".format('total des enseignants', CM, TD, TP, autres))
+autres : {4}
+
+H eq TD(*) : {5}""".format('total des enseignants', CM, TD, TP, autres, (CM*3)//2 + TD + TP))
 
 print('='*30)
 print()
@@ -155,10 +166,16 @@ for key in bilanEns:
 CM     : {1}
 TD     : {2}
 TP     : {3}
-autres : {4}""".format(key, CM, TD, TP, autres))
+autres : {4}
+
+H eq TD(*) : {5}""".format(key, CM, TD, TP, autres, (CM*3)//2 + TD + TP))
+    print()
     print('='*15)
+    print()
 
-
+print("""(*) Les heures équivalents TD sont calculées à titre indicatif
+sans prendre en compte le prorata (dépend du statut) avec les coefficients suivants :
+CM=1.5 ; TD=1 ; TP=1""")
 #print('='*30)
 
 # Création du bilan matières

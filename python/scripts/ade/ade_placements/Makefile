@@ -1,9 +1,9 @@
-PYTHON=python
+PYTHON=python3
 
 all:
-	$(MAKE) myhistory
+	$(MAKE) bilan
 
 .PHONY: clean
 
-myhistory:
+bilan:
 	$(PYTHON) ade_bilan.py
