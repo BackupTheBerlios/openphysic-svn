@@ -103,30 +103,24 @@ for placement in lstPlacements:
     #b = Bilan()
     enseignant = placement.__dict__['Enseignants au choix (noms)']
     typeAct = placement.__dict__['Type']
-
     duree = placement.__dict__['Durée (h)']
 
-    bilanEns['_Total'] = dict()
+    bilanEns['_Total'] = {}
     #bilanEns['_Total'][typeAct] = duree
-    
-    try:
+
+    # Total CM TD TP autres de l'ensemble des enseignants    
+    if typeAct in bilanEns:
         bilanEns[typeAct] = bilanEns[typeAct] + duree
-    except:
+    else:
         bilanEns[typeAct] = duree
         
-    try:
-
+    # Total CM TD TP autres pour chaque enseignant
+    if typeAct in bilanEns['_Total']:
         bilanEns['_Total'][typeAct] = bilanEns['_Total'][typeAct] + duree
-    except:
+        #print(typeAct)
+    else:
         bilanEns['_Total'][typeAct] = duree
 
-
-    
-    #try:
-    #    bilanEns[enseignant].__dict__[typeAct] = bilanEns[enseignant].__dict__[typeAct] + duree
-    #except:
-    #    bilanEns[enseignant] = Bilan()
-    #print(enseignant)
 
 print(bilanEns)
 
