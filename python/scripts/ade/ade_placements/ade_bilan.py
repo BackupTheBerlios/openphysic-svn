@@ -107,12 +107,15 @@ for placement in placements:
 
 bilanTotalEns = Bilan() #{'CM': timedelta(), 'TD': timedelta(), 'TP': timedelta(), 'autres': timedelta()}
 bilanEns = dict()
+bilanMatiere = dict()
+
+#bilanTotalEns = {'total': Bilan(), 'enseignants': {}}
 
 for placement in lstPlacements:
     enseignant = placement.__dict__['Enseignants au choix (noms)']
     typeAct = placement.__dict__['Type']
     duree = placement.__dict__['Durée (h)']
-    #code = placement.__dict__['...']
+    code = placement.__dict__['Activité']
 
     # Total CM TD TP autres de l'ensemble des enseignants    
     if typeAct in bilanTotalEns:
@@ -131,7 +134,16 @@ for placement in lstPlacements:
 
     # Total CM TD TP autres pour chaque matière pour un enseignant donné
 
+    # ###########################################################
+
     # Total CM TD TP autres pour chaque matiere (regroupement par code Apogée)
+    if code not in bilanMatiere:
+        bilanMatiere[code] = Bilan()
+    
+    if typeAct in bilanMatiere[code]:
+        bilanMatiere[code][typeAct] = bilanMatiere[code][typeAct] + duree
+    else:
+        bilanMatiere[code][typeAct] = duree
 
     # Total CM TP TP autres pour chaque enseignant dans une matière donnée
 
@@ -156,19 +168,20 @@ print()
 
 #print(bilanEns)
 
-for key in bilanEns:
-    #print(key)
-    CM = bilanEns[key]['CM']/60
-    TD = bilanEns[key]['TD']/60
-    TP = bilanEns[key]['TP']/60
-    autres = bilanEns[key]['autres']/60
+# Affichage bilan enseignant
+for enseignant in bilanEns:
+    #print(enseignant)
+    CM = bilanEns[enseignant]['CM']/60
+    TD = bilanEns[enseignant]['TD']/60
+    TP = bilanEns[enseignant]['TP']/60
+    autres = bilanEns[enseignant]['autres']/60
     print("""Bilan {0}
 CM     : {1}
 TD     : {2}
 TP     : {3}
 autres : {4}
 
-H eq TD(*) : {5}""".format(key, CM, TD, TP, autres, CM*1.5 + TD + TP))
+H eq TD(*) : {5}""".format(enseignant, CM, TD, TP, autres, CM*1.5 + TD + TP))
     print()
     print('='*15)
     print()
@@ -178,4 +191,7 @@ sans prendre en compte le prorata (dépend du statut) avec les coefficients suiv
 CM=1.5 ; TD=1 ; TP=1""")
 #print('='*30)
 
-# Création du bilan matières
+# Affichage bilan matiere
+#for matiere in bilanMatiere:
+
+
