@@ -40,10 +40,10 @@ class Placement():
 
 class Bilan(dict):
     def __init__(self):
-        self['CM'] = timedelta()
-        self['TD'] = timedelta()
-        self['TP'] = timedelta()
-        self['autres'] = timedelta()
+        self['CM'] = 0 #timedelta()
+        self['TD'] = 0 #timedelta()
+        self['TP'] = 0 #timedelta()
+        self['autres'] = 0 #timedelta()
 
     def __repr__(self):
         return repr(self.__dict__)
@@ -83,9 +83,9 @@ for placement in placements:
         #try:
         if lstHead[i] == 'Durée (h)':
             val = strP.split('h')
-            val = timedelta(hours=int(val[0]), minutes=int(val[1])) # conversion de la chaine en heure Python
+            #val = timedelta(hours=int(val[0]), minutes=int(val[1])) # conversion de la chaine en heure Python
             #val = float(val[0]) + float(val[1])/60 # numérique (heures)
-            #val = int(val[0])*60 + int(val[1]) # numérique (minutes)
+            val = int(val[0])*60 + int(val[1]) # numérique (minutes)
         elif lstHead[i] == 'Ressources verouillées' or lstHead[i] == 'Date verrouillée':
             val = bool(strP) # conversion de la chaine en booléen
         elif lstHead[i] == 'Type': # tout ce qui n'est pas de type CM TD TP est de type autre
@@ -139,17 +139,17 @@ for placement in lstPlacements:
 
 #print('='*30)
 
-CM = bilanTotalEns['CM']
-TD = bilanTotalEns['TD']
-TP = bilanTotalEns['TP']
-autres = bilanTotalEns['autres']
+CM = bilanTotalEns['CM']/60
+TD = bilanTotalEns['TD']/60
+TP = bilanTotalEns['TP']/60
+autres = bilanTotalEns['autres']/60
 print("""Bilan {0}
 CM     : {1}
 TD     : {2}
 TP     : {3}
 autres : {4}
 
-H eq TD(*) : {5}""".format('total des enseignants', CM, TD, TP, autres, (CM*3)//2 + TD + TP))
+H eq TD(*) : {5}""".format('total des enseignants', CM, TD, TP, autres, CM*1.5 + TD + TP))
 
 print('='*30)
 print()
@@ -158,17 +158,17 @@ print()
 
 for key in bilanEns:
     #print(key)
-    CM = bilanEns[key]['CM']
-    TD = bilanEns[key]['TD']
-    TP = bilanEns[key]['TP']
-    autres = bilanEns[key]['autres']
+    CM = bilanEns[key]['CM']/60
+    TD = bilanEns[key]['TD']/60
+    TP = bilanEns[key]['TP']/60
+    autres = bilanEns[key]['autres']/60
     print("""Bilan {0}
 CM     : {1}
 TD     : {2}
 TP     : {3}
 autres : {4}
 
-H eq TD(*) : {5}""".format(key, CM, TD, TP, autres, (CM*3)//2 + TD + TP))
+H eq TD(*) : {5}""".format(key, CM, TD, TP, autres, CM*1.5 + TD + TP))
     print()
     print('='*15)
     print()
