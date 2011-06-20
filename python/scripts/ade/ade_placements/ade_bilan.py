@@ -119,6 +119,8 @@ for placement in lstPlacements:
     else:
         bilanEns[enseignant][typeAct] = duree
 
+    # Total CM TD TP autre pour chaque matière pour un enseignant donné
+
 #print(bilanTotalEns)
 
 #print('='*30)
