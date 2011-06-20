@@ -4,4 +4,4 @@ false	false	S37: 12 sept. 18 sept.	Vendredi 16/09/2011	TP	02h00	13h30	Bureau	MP-
 false	false	S37: 12 sept. 18 sept.	Mercredi 14/09/2011	TP	02h00	13h30	Bureau	MP-I-10	TPA	BAUDOUIN NATHALIE
 false	false	S37: 12 sept. 18 sept.	Mercredi 14/09/2011	CM	01h30	08h00	Maths	MP-A	S1	BAUDOUIN NATHALIE
 false	false	S37: 12 sept. 18 sept.	Vendredi 16/09/2011	CM	01h30	08h00	Maths	MP-A	S1	BAUDOUIN NATHALIE
-false	false			EXAM	02h00		Anglais CTL		S1	JACQUET MICHELE
+false	false			EXAM	02h00		Anglais CTL		S1	TEST MICHELE

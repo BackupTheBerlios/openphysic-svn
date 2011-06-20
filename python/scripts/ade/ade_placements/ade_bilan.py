@@ -96,40 +96,62 @@ for placement in placements:
 
 #print(lstPlacements[0]) # voir une ligne de l'onglet placement pour test
 
+bilanTotalEns = {'CM': timedelta(), 'TD': timedelta(), 'TP': timedelta(), 'autres': timedelta()}
 bilanEns = dict()
-#bilanEns = BilanEnseignants()
+
 for placement in lstPlacements:
-    #print(placement)
-    #b = Bilan()
     enseignant = placement.__dict__['Enseignants au choix (noms)']
     typeAct = placement.__dict__['Type']
     duree = placement.__dict__['Durée (h)']
 
-    bilanEns['_Total'] = {}
-    #bilanEns['_Total'][typeAct] = duree
-
     # Total CM TD TP autres de l'ensemble des enseignants    
-    if typeAct in bilanEns:
-        bilanEns[typeAct] = bilanEns[typeAct] + duree
+    if typeAct in bilanTotalEns:
+        bilanTotalEns[typeAct] = bilanTotalEns[typeAct] + duree
     else:
-        bilanEns[typeAct] = duree
-        
+        bilanTotalEns[typeAct] = duree
+    
     # Total CM TD TP autres pour chaque enseignant
-    if typeAct in bilanEns['_Total']:
-        bilanEns['_Total'][typeAct] = bilanEns['_Total'][typeAct] + duree
-        #print(typeAct)
+    if enseignant not in bilanEns:
+        bilanEns[enseignant] = {'CM': timedelta(), 'TD': timedelta(), 'TP': timedelta(), 'autres': timedelta()}
+    
+    if typeAct in bilanEns[enseignant]:
+        bilanEns[enseignant][typeAct] = bilanEns[enseignant][typeAct] + duree
     else:
-        bilanEns['_Total'][typeAct] = duree
+        bilanEns[enseignant][typeAct] = duree
+
+#print(bilanTotalEns)
+
+#print('='*30)
+
+CM = bilanTotalEns['CM']
+TD = bilanTotalEns['TD']
+TP = bilanTotalEns['TP']
+autres = bilanTotalEns['autres']
+print("""Bilan {0}
+CM     : {1}
+TD     : {2}
+TP     : {3}
+autres : {4}""".format('total des enseignants', CM, TD, TP, autres))
+
+print('='*30)
+print()
+
+#print(bilanEns)
+
+for key in bilanEns:
+    #print(key)
+    CM = bilanEns[key]['CM']
+    TD = bilanEns[key]['TD']
+    TP = bilanEns[key]['TP']
+    autres = bilanEns[key]['autres']
+    print("""Bilan {0}
+CM     : {1}
+TD     : {2}
+TP     : {3}
+autres : {4}""".format(key, CM, TD, TP, autres))
+    print('='*15)
 
 
-print(bilanEns)
-
-print('='*10)
-
-print("""Bilan total des enseignants
-CM     : {0}
-TD     : {1}
-TP     : {2}
-autres : {3}""".format(bilanEns['CM'],bilanEns['TD'],bilanEns['TP'],bilanEns['autres']))
+#print('='*30)
 
 # Création du bilan matières
