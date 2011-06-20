@@ -1,22 +1,24 @@
 #!/usr/bin/env python
 # -*- coding: utf8 -*-
 
-#    Bilan pour ADE - v 0.1
-#
-#       But : ce script permet de générer des bilans à partir
-#       des données présentes dans l'onglet "Placement" d'ADE
-#        * Bilan matières
-#        * Bilan enseignants
-#
-#       Remarque : modifier le fichier ade_entete.txt afin d'avoir
-#       une disposition des données convenables
-#
-#    Copyright (C) 2011  "Sébastien CELLES" <sebastien.celles@univ-poitiers.fr>
-#
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU General Public License as published by
-#    You should have received a copy of the GNU General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>
+"""
+    Bilan pour ADE - v 0.1
+
+       But : ce script permet de générer des bilans à partir
+       des données présentes dans l'onglet "Placement" d'ADE
+        * Bilan matières
+        * Bilan enseignants
+
+       Remarque : modifier le fichier ade_entete.txt afin d'avoir
+       une disposition des données convenables
+
+    Copyright (C) 2011  "Sébastien CELLES" <sebastien.celles@univ-poitiers.fr>
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>
+"""
 
 import csv
 from datetime import date, datetime, timedelta
@@ -127,5 +129,13 @@ for placement in lstPlacements:
     #print(enseignant)
 
 print(bilanEns)
+
+print('='*10)
+
+print("""Bilan total des enseignants
+CM     : {0}
+TD     : {1}
+TP     : {2}
+autres : {3}""".format(bilanEns['CM'],bilanEns['TD'],bilanEns['TP'],bilanEns['autres']))
 
 # Création du bilan matières
