@@ -43,6 +43,9 @@ class BilanEnseignants():
     def __init__(self):
         pass
 
+    def append(self, placement):
+        pass
+
     def __repr__(self):
         return repr(self.__dict__)
 
@@ -74,6 +77,10 @@ for placement in placements:
             val = timedelta(hours=int(val[0]), minutes=int(val[1])) # conversion de la chaine en heure Python
         elif lstHead[i] == 'Ressources verouillées' or lstHead[i] == 'Date verrouillée':
             val = bool(strP) # conversion de la chaine en booléen
+        #elif lstHead[i] == 'Type':
+            #pass
+            #if strP!='CM' and strP!='TD' and strP!='TP':
+            #    strP = 'autres'   
         else:
             val = strP
         #except:
@@ -84,18 +91,31 @@ for placement in placements:
 
 # Création du bilan enseignants
 print(lstPlacements[0])
-#bilanEns = dict()
-bilanEns = BilanEnseignants()
+bilanEns = dict()
+#bilanEns = BilanEnseignants()
 for placement in lstPlacements:
     #print(placement)
-    b = Bilan()
+    #b = Bilan()
     enseignant = placement.__dict__['Enseignants au choix (noms)']
     typeAct = placement.__dict__['Type']
+
     duree = placement.__dict__['Durée (h)']
+
+    bilanEns['_Total'] = dict()
+    #bilanEns['_Total'][typeAct] = duree
+    
+    try:
+        bilanEns[typeAct] = bilanEns[typeAct] + duree
+    except:
+        bilanEns[typeAct] = duree
+        
+    
     #try:
     #    bilanEns[enseignant].__dict__[typeAct] = bilanEns[enseignant].__dict__[typeAct] + duree
     #except:
     #    bilanEns[enseignant] = Bilan()
     #print(enseignant)
+
+print(bilanEns)
 
 # Création du bilan matières
