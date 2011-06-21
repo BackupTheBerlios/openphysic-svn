@@ -58,12 +58,15 @@ lstHead = strHead.split("\n")
 
 # Lecture du fichier ade_onglet_placement.txt
 #filePlacements = open('ade_onglet_placement_mini.txt', 'r', encoding='latin-1')
-filePlacements = open('ade_onglet_placement_test_gte2.txt', 'r', encoding='latin-1')
+filePlacements = open('ade_onglet_placement_test_gte2_tout.txt', 'r', encoding='latin-1')
+#compter_seances_non_planifiees = True
+
 placements = csv.reader(filePlacements, delimiter='\t')
 
 lstPlacements = []
 for placement in placements:
     p = Placement()
+    #seance_planifiee = True
     for i in range(0, len(placement)):
         strP = placement[i]
         #try:
@@ -80,20 +83,31 @@ for placement in placements:
                 val = 'autres'
             else:
                 val = strP
+        #elif lstHead[i] == 'Semaine':
+        #    val = strP
+        #    seance_planifiee = (strP!='') # ajouter pour bilan uniquement si la séance a été placée dans le planning
         else:
             val = strP
         #except:
         #    val = strP
         p.__dict__[lstHead[i]] = val
+    #if seance_planifiee or compter_seances_non_planifiees:
+    #print(p)
+    #if seance_planifiee:
     lstPlacements.append(p)
+    
 #print(lstPlacements)
+#for placement in lstPlacements:
+#    print(placement)
 
 # Création des bilans
 
 #print(lstPlacements[0]) # voir une ligne de l'onglet placement pour test
+print("Nb de séances : {0}".format(len(lstPlacements)))
+print()
 
 bilan = dict()
-bilan['total'] = dict()
+bilan['total'] = Bilan()
 bilan['enseignants'] = dict()
 bilan['matieres'] = dict()
 
