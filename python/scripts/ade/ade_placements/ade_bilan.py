@@ -16,9 +16,10 @@
        Il est nécessaire d'afficher les informations suivantes dans le client ADE
         - Type
         - Durée
-        - Enseignants au choix (noms)
+        - Enseignants
         - Code
         - Activité
+        - Semaine
 
     Copyright (C) 2011  "Sébastien CELLES" <sebastien.celles@univ-poitiers.fr>
 
@@ -122,7 +123,8 @@ total
   TP
   autres
 matieres
-  matiere1
+  matiere1 (code Apogée)
+    nom (nom d'une des activités de ce code) ? ToDo
     total
       CM
       TD
@@ -155,7 +157,7 @@ enseignants
 """
 
 for placement in lstPlacements:
-    enseignant = placement.__dict__['Enseignants au choix (noms)'] # ToFix : double encadrement
+    enseignant = placement.__dict__['Enseignants'] # ToFix : double encadrement
     typeAct = placement.__dict__['Type']
     duree = placement.__dict__['Durée (h)']
     code = placement.__dict__['Code'] # ToFix : code Apogée ou Activité
@@ -293,21 +295,21 @@ H eq TD(*) : {5}""".format(title, CM, TD, TP, autres, CM*1.5 + TD + TP))
 
 affichage_bilan_total(bilan)
 
-#print('='*30)
-#print()
+print('='*30)
+print()
 
-#affichage_bilan_enseignants(bilan)
+affichage_bilan_enseignants(bilan)
 
-#print('='*30)
-#print()
+print('='*30)
+print()
 
-#affichage_bilan_matieres(bilan)
+affichage_bilan_matieres(bilan)
 
-#print('='*30)
+print('='*30)
 
-#print("""(*) Les heures équivalents TD sont calculées à titre indicatif
-#sans prendre en compte le prorata (dépend du statut) avec les coefficients suivants :
-#CM=1.5 ; TD=1 ; TP=1""")
+print("""(*) Les heures équivalents TD sont calculées à titre indicatif
+sans prendre en compte le prorata (dépend du statut) avec les coefficients suivants :
+CM=1.5 ; TD=1 ; TP=1""")
 
 #print(bilan) # Debug
 
