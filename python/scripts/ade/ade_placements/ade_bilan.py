@@ -123,10 +123,17 @@ matieres
         autres
 enseignants
   nom1
-    CM
-    TD
-    TP
-    autres
+    total <----- ToDo
+      CM
+      TD
+      TP
+      autres
+    matieres
+      matiere1
+        CM
+        TD
+        TP
+        autres
 """
 
 for placement in lstPlacements:
@@ -144,7 +151,8 @@ for placement in lstPlacements:
     # Total CM TD TP autres pour chaque enseignant
     if enseignant not in bilan['enseignants']:
         bilan['enseignants'][enseignant] = Bilan() #{'CM': timedelta(), 'TD': timedelta(), 'TP': timedelta(), 'autres': timedelta()}
-    
+        # ToDo : 'total' & 'matieres'
+        
     if typeAct in bilan['enseignants'][enseignant]:
         bilan['enseignants'][enseignant][typeAct] = bilan['enseignants'][enseignant][typeAct] + duree
     else:
