@@ -2,7 +2,7 @@
 # -*- coding: utf8 -*-
 
 """
-    Bilan pour ADE - v 0.1
+    Bilan pour ADE - v 0.0.1 alpha
 
        But : ce script permet de générer des bilans à partir
        des données présentes dans l'onglet "Placement" d'ADE
