@@ -133,7 +133,7 @@ for placement in lstPlacements:
     enseignant = placement.__dict__['Enseignants au choix (noms)'] # ToFix : double encadrement
     typeAct = placement.__dict__['Type']
     duree = placement.__dict__['Durée (h)']
-    code = placement.__dict__['Activité']
+    code = placement.__dict__['Activité'] # ToFix : code Apogée
 
     # Total CM TD TP autres de l'ensemble des enseignants    
     if typeAct in bilan['total']:
@@ -196,7 +196,7 @@ print()
 # Affichage bilan enseignant
 for enseignant in bilan['enseignants']:
     #print(enseignant)
-    title = enseignant
+    title = 'enseignant {0}'.format(enseignant)
     CM = bilan['enseignants'][enseignant]['CM']/60
     TD = bilan['enseignants'][enseignant]['TD']/60
     TP = bilan['enseignants'][enseignant]['TP']/60
@@ -219,7 +219,7 @@ print()
 # Affichage bilan matiere
 for matiere in bilan['matieres']:
     #print(enseignant)
-    title = matiere
+    title = 'matière {0}'.format(matiere)
     CM = bilan['matieres'][matiere]['total']['CM']/60
     TD = bilan['matieres'][matiere]['total']['TD']/60
     TP = bilan['matieres'][matiere]['total']['TP']/60
@@ -252,4 +252,4 @@ print("""(*) Les heures équivalents TD sont calculées à titre indicatif
 sans prendre en compte le prorata (dépend du statut) avec les coefficients suivants :
 CM=1.5 ; TD=1 ; TP=1""")
 
-print(bilan)
+#print(bilan)
