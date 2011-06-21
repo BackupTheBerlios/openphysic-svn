@@ -171,8 +171,12 @@ for placement in lstPlacements:
     if enseignant not in bilan['matieres'][code]['enseignants']:
         bilan['matieres'][code]['enseignants'][enseignant] = Bilan()
         
-    #...
+    if typeAct in bilan['matieres'][code]['enseignants'][enseignant]:
+        bilan['matieres'][code]['enseignants'][enseignant][typeAct] = bilan['matieres'][code]['enseignants'][enseignant][typeAct] + duree
+    else:
+        bilan['matieres'][code]['enseignants'][enseignant][typeAct] = duree
 
+title = 'total des enseignants'
 CM = bilan['total']['CM']/60
 TD = bilan['total']['TD']/60
 TP = bilan['total']['TP']/60
@@ -183,7 +187,7 @@ TD     : {2}
 TP     : {3}
 autres : {4}
 
-H eq TD(*) : {5}""".format('total des enseignants', CM, TD, TP, autres, CM*1.5 + TD + TP))
+H eq TD(*) : {5}""".format(title, CM, TD, TP, autres, CM*1.5 + TD + TP))
 
 print('='*30)
 print()
@@ -192,6 +196,7 @@ print()
 # Affichage bilan enseignant
 for enseignant in bilan['enseignants']:
     #print(enseignant)
+    title = enseignant
     CM = bilan['enseignants'][enseignant]['CM']/60
     TD = bilan['enseignants'][enseignant]['TD']/60
     TP = bilan['enseignants'][enseignant]['TP']/60
@@ -202,7 +207,7 @@ for enseignant in bilan['enseignants']:
     TP     : {3}
     autres : {4}
 
-    H eq TD(*) : {5}""".format(enseignant, CM, TD, TP, autres, CM*1.5 + TD + TP))
+    H eq TD(*) : {5}""".format(title, CM, TD, TP, autres, CM*1.5 + TD + TP))
     print()
     print('='*15)
     print()
@@ -213,6 +218,7 @@ print('='*30)
 # Affichage bilan matiere
 for matiere in bilan['matieres']:
     #print(enseignant)
+    title = matiere
     CM = bilan['matieres'][matiere]['total']['CM']/60
     TD = bilan['matieres'][matiere]['total']['TD']/60
     TP = bilan['matieres'][matiere]['total']['TP']/60
@@ -223,7 +229,18 @@ TD     : {2}
 TP     : {3}
 autres : {4}
 
-H eq TD(*) : {5}""".format(matiere, CM, TD, TP, autres, CM*1.5 + TD + TP))
+H eq TD(*) : {5}""".format(title, CM, TD, TP, autres, CM*1.5 + TD + TP))
+
+    for enseignant in bilan['matieres'][matiere]['enseignants']:
+        title = enseignant
+        CM = bilan['matieres'][matiere]['enseignants'][enseignant]['CM']/60
+        TD = bilan['matieres'][matiere]['enseignants'][enseignant]['TD']/60
+        TP = bilan['matieres'][matiere]['enseignants'][enseignant]['TP']/60
+        autres = bilan['matieres'][matiere]['enseignants'][enseignant]['autres']/60
+        print()
+        print("""    Bilan {0}
+        CM     : {1}    TD     : {2}    TP     : {3}    autres : {4}    H eq TD(*) : {5}""".format(title, CM, TD, TP, autres, CM*1.5 + TD + TP))
+
     print()
     print('='*15)
     print()
