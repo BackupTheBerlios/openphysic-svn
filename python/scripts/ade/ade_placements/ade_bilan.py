@@ -59,7 +59,7 @@ lstHead = strHead.split("\n")
 # Lecture du fichier ade_onglet_placement.txt
 #filePlacements = open('ade_onglet_placement_mini.txt', 'r', encoding='latin-1')
 filePlacements = open('ade_onglet_placement_test_gte2_tout.txt', 'r', encoding='latin-1')
-#compter_seances_non_planifiees = True
+compter_seances_non_planifiees = False
 
 placements = csv.reader(filePlacements, delimiter='\t')
 
@@ -83,9 +83,9 @@ for placement in placements:
                 val = 'autres'
             else:
                 val = strP
-        #elif lstHead[i] == 'Semaine':
-        #    val = strP
-        #    seance_planifiee = (strP!='') # ajouter pour bilan uniquement si la séance a été placée dans le planning
+        elif lstHead[i] == 'Semaine':
+            val = strP
+            seance_planifiee = (strP!='') # ajouter pour bilan uniquement si la séance a été placée dans le planning
         else:
             val = strP
         #except:
@@ -93,8 +93,8 @@ for placement in placements:
         p.__dict__[lstHead[i]] = val
     #if seance_planifiee or compter_seances_non_planifiees:
     #print(p)
-    #if seance_planifiee:
-    lstPlacements.append(p)
+    if seance_planifiee or compter_seances_non_planifiees:
+        lstPlacements.append(p)
     
 #print(lstPlacements)
 #for placement in lstPlacements:
@@ -224,7 +224,9 @@ TD     : {2}
 TP     : {3}
 autres : {4}
 
-H eq TD(*) : {5}""".format(title, CM, TD, TP, autres, CM*1.5 + TD + TP))
+H eq TD(*) : {5}
+
+Total h : {6}""".format(title, CM, TD, TP, autres, CM*1.5 + TD + TP, CM + TD + TP + autres))
 
 
 # Affichage bilan enseignant
