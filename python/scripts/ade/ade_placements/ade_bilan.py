@@ -214,6 +214,7 @@ for enseignant in bilan['enseignants']:
 
 
 print('='*30)
+print()
 
 # Affichage bilan matiere
 for matiere in bilan['matieres']:
