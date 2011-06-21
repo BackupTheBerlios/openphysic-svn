@@ -57,7 +57,7 @@ lstHead = strHead.split("\n")
 #print(lstHead)
 
 # Lecture du fichier ade_onglet_placement.txt
-filePlacements = open('ade_onglet_placement_mini.txt', encoding='latin-1')
+filePlacements = open('ade_onglet_placement_mini.txt', 'r', encoding='latin-1')
 placements = csv.reader(filePlacements, delimiter='\t')
 
 lstPlacements = []
@@ -284,10 +284,10 @@ print()
 
 affichage_bilan_enseignants(bilan)
 
-print('='*30)
-print()
+#print('='*30)
+#print()
 
-affichage_bilan_matieres(bilan)
+#affichage_bilan_matieres(bilan)
 
 print('='*30)
 
@@ -296,5 +296,7 @@ sans prendre en compte le prorata (dépend du statut) avec les coefficients suiv
 CM=1.5 ; TD=1 ; TP=1""")
 
 #print(bilan)
+#print(bilan['enseignants']['TEST MICHELE']['total']['TP'])
+#repr(bilan['enseignants']['TEST MICHELE']['matieres'])
 
 filePlacements.close()
