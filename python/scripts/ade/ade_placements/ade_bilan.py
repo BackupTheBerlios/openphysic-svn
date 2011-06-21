@@ -57,18 +57,19 @@ lstHead = strHead.split("\n")
 #print(lstHead)
 
 # Lecture du fichier ade_onglet_placement.txt
-filePlacements = open('ade_onglet_placement_mini.txt', 'r', encoding='latin-1')
+#filePlacements = open('ade_onglet_placement_mini.txt', 'r', encoding='latin-1')
+filePlacements = open('ade_onglet_placement_test_gte2.txt', 'r', encoding='latin-1')
 placements = csv.reader(filePlacements, delimiter='\t')
 
 lstPlacements = []
 for placement in placements:
-    #print(placement)
     p = Placement()
     for i in range(0, len(placement)):
         strP = placement[i]
         #try:
         if lstHead[i] == 'Durée (h)':
             val = strP.split('h')
+            #print(val)
             #val = timedelta(hours=int(val[0]), minutes=int(val[1])) # conversion de la chaine en heure Python
             #val = float(val[0]) + float(val[1])/60 # numérique (heures)
             val = int(val[0])*60 + int(val[1]) # numérique (minutes)
@@ -87,7 +88,7 @@ for placement in placements:
     lstPlacements.append(p)
 #print(lstPlacements)
 
-# Création des bilan
+# Création des bilans
 
 #print(lstPlacements[0]) # voir une ligne de l'onglet placement pour test
 
@@ -143,7 +144,7 @@ for placement in lstPlacements:
     enseignant = placement.__dict__['Enseignants au choix (noms)'] # ToFix : double encadrement
     typeAct = placement.__dict__['Type']
     duree = placement.__dict__['Durée (h)']
-    code = placement.__dict__['Activité'] # ToFix : code Apogée
+    code = placement.__dict__['Code'] # ToFix : code Apogée ou Activité
 
     # - Total CM TD TP autres de l'ensemble des enseignants    
     if typeAct in bilan['total']:
@@ -163,14 +164,13 @@ for placement in lstPlacements:
         bilan['enseignants'][enseignant]['total'][typeAct] = duree
 
     # -- Total CM TD TP autres pour chaque matière pour un enseignant donné
-    # ToFix
-    #if code not in bilan['enseignants'][enseignant]['matieres']:
-    #    bilan['enseignants'][enseignant]['matieres'][code] = Bilan()
+    if code not in bilan['enseignants'][enseignant]['matieres']:
+        bilan['enseignants'][enseignant]['matieres'][code] = Bilan()
 
-    #if typeAct in bilan['enseignants'][enseignant]['matieres']:
-    #    bilan['enseignants'][enseignant]['matieres'][code][typeAct] = bilan['enseignants'][enseignant]['matieres'][code][typeAct] + duree
-    #else:
-    #    bilan['enseignants'][enseignant]['matieres'][code][typeAct] = duree
+    if typeAct in bilan['enseignants'][enseignant]['matieres'][code]:
+        bilan['enseignants'][enseignant]['matieres'][code][typeAct] = bilan['enseignants'][enseignant]['matieres'][code][typeAct] + duree
+    else:
+        bilan['enseignants'][enseignant]['matieres'][code][typeAct] = duree
 
     # ###########################################################
 
@@ -188,7 +188,6 @@ for placement in lstPlacements:
     #print(bilanMatiere)
 
     # -- Total CM TP TP autres pour chaque enseignant dans une matière donnée
-    # ToFix
     if enseignant not in bilan['matieres'][code]['enseignants']:
         bilan['matieres'][code]['enseignants'][enseignant] = Bilan()
             
@@ -230,16 +229,16 @@ TP     : {3}
 autres : {4}
 
 H eq TD(*) : {5}""".format(title, CM, TD, TP, autres, CM*1.5 + TD + TP))
-    
-        #for matiere in bilan['enseignants'][enseignant]['matieres']:
-        #    title = matiere
-        #    CM = bilan['enseignants'][enseignant]['matieres'][matiere]['CM']/60
-        #    TD = bilan['enseignants'][enseignant]['matieres'][matiere]['TD']/60
-        #    TP = bilan['enseignants'][enseignant]['matieres'][matiere]['TP']/60
-        #    autres = bilan['enseignants'][enseignant]['matieres'][matiere]['autres']/60
-        #    print()
-        #    print("""    Bilan {0}
-        #CM     : {1}    TD     : {2}    TP     : {3}    autres : {4}    H eq TD(*) : {5}""".format(title, CM, TD, TP, autres, CM*1.5 + TD + TP))
+        
+        for matiere in bilan['enseignants'][enseignant]['matieres']:
+            title = matiere
+            CM = bilan['enseignants'][enseignant]['matieres'][matiere]['CM']/60
+            TD = bilan['enseignants'][enseignant]['matieres'][matiere]['TD']/60
+            TP = bilan['enseignants'][enseignant]['matieres'][matiere]['TP']/60
+            autres = bilan['enseignants'][enseignant]['matieres'][matiere]['autres']/60
+            print()
+            print("""    Bilan {0}
+        CM     : {1}    TD     : {2}    TP     : {3}    autres : {4}    H eq TD(*) : {5}""".format(title, CM, TD, TP, autres, CM*1.5 + TD + TP))
 
         print()
         print('='*15)
@@ -276,27 +275,24 @@ H eq TD(*) : {5}""".format(title, CM, TD, TP, autres, CM*1.5 + TD + TP))
         print('='*15)
         print()
 
-
 affichage_bilan_total(bilan)
 
-print('='*30)
-print()
+#print('='*30)
+#print()
 
-affichage_bilan_enseignants(bilan)
+#affichage_bilan_enseignants(bilan)
 
 #print('='*30)
 #print()
 
 #affichage_bilan_matieres(bilan)
 
-print('='*30)
+#print('='*30)
 
-print("""(*) Les heures équivalents TD sont calculées à titre indicatif
-sans prendre en compte le prorata (dépend du statut) avec les coefficients suivants :
-CM=1.5 ; TD=1 ; TP=1""")
+#print("""(*) Les heures équivalents TD sont calculées à titre indicatif
+#sans prendre en compte le prorata (dépend du statut) avec les coefficients suivants :
+#CM=1.5 ; TD=1 ; TP=1""")
 
-#print(bilan)
-#print(bilan['enseignants']['TEST MICHELE']['total']['TP'])
-#repr(bilan['enseignants']['TEST MICHELE']['matieres'])
+#print(bilan) # Debug
 
 filePlacements.close()
