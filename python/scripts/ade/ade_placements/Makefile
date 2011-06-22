@@ -6,4 +6,4 @@ all:
 .PHONY: clean
 
 bilan:
-	$(PYTHON) ade_bilan.pyw
+	$(PYTHON) ade_bilans.pyw
