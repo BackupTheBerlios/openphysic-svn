@@ -59,8 +59,7 @@ lstHead = strHead.split("\n")
 #print(lstHead)
 
 # Lecture du fichier ade_onglet_placement.txt
-#filePlacements = open('ade_onglet_placement_mini.txt', 'r', encoding='latin-1')
-filePlacements = open('ade_onglet_placement_test_gte2_tout.txt', 'r', encoding='latin-1')
+filePlacements = open('ade_onglet_placement.txt', 'r', encoding='latin-1')
 compter_seances_non_planifiees = False
 
 placements = csv.reader(filePlacements, delimiter='\t')
@@ -229,7 +228,7 @@ def point2virgule(val):
 
 def affichage_CSV_bilan_total(bilan, file = sys.stdout):
     myCSV = csv.writer(file, delimiter=';', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-    myCSV.writerow(["Nb de séances", format(len(lstPlacements))])
+    myCSV.writerow(["Nb de séances", len(lstPlacements)])
     title = 'total'
     CM = bilan['total']['CM']/60
     TD = bilan['total']['TD']/60
@@ -242,7 +241,6 @@ def affichage_CSV_bilan_total(bilan, file = sys.stdout):
     myCSV.writerow(['H eq TD(*)', point2virgule(CM*1.5 + TD + TP)])
     myCSV.writerow(['Total', point2virgule(CM + TD + TP + autres)])
     
-# Affichage bilan enseignant
 def affichage_TXT_bilan_enseignants(bilan, file = sys.stdout):
     for enseignant in bilan['enseignants']:
         #print(enseignant)
@@ -276,7 +274,28 @@ H eq TD(*) : {5}
         file.write('\n\n')
     affichage_info_h_eq_td(file)
 
-# Affichage bilan matiere
+def affichage_CSV_bilan_enseignants(bilan, file = sys.stdout):
+    myCSV = csv.writer(file, delimiter=';', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+    for enseignant in bilan['enseignants']:
+        #print(enseignant)
+        CM = bilan['enseignants'][enseignant]['total']['CM']/60
+        TD = bilan['enseignants'][enseignant]['total']['TD']/60
+        TP = bilan['enseignants'][enseignant]['total']['TP']/60
+        autres = bilan['enseignants'][enseignant]['total']['autres']/60
+        myCSV.writerow(['Bilan enseignant', '', enseignant])
+        myCSV.writerow(['', 'CM', point2virgule(CM)])
+        myCSV.writerow(['', 'TD', point2virgule(TD)])
+        myCSV.writerow(['', 'TP', point2virgule(TP)])
+        myCSV.writerow(['', 'autres', point2virgule(autres)])
+        myCSV.writerow(['', '', '', '', 'CM', 'TD', 'TP', 'autres', 'H eq TD(*)', 'h tot'])
+        for matiere in bilan['enseignants'][enseignant]['matieres']:
+            title = matiere
+            CM = bilan['enseignants'][enseignant]['matieres'][matiere]['CM']/60
+            TD = bilan['enseignants'][enseignant]['matieres'][matiere]['TD']/60
+            TP = bilan['enseignants'][enseignant]['matieres'][matiere]['TP']/60
+            autres = bilan['enseignants'][enseignant]['matieres'][matiere]['autres']/60
+            myCSV.writerow(['', '', 'Bilan', matiere, point2virgule(CM), point2virgule(TD), point2virgule(TP), point2virgule(autres), point2virgule(1.5*CM+TD+TP), point2virgule(CM+TD+TP+autres)])
+
 def affichage_TXT_bilan_matieres(bilan, file = sys.stdout):
     for matiere in bilan['matieres']:
         #print(enseignant)
@@ -310,8 +329,30 @@ H eq TD(*) : {5}
         file.write('\n\n')
     affichage_info_h_eq_td(file)
 
-# Fichiers textes
+def affichage_CSV_bilan_matieres(bilan, file = sys.stdout):
+    myCSV = csv.writer(file, delimiter=';', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+    for matiere in bilan['matieres']:
+        #print(enseignant)
+        CM = bilan['matieres'][matiere]['total']['CM']/60
+        TD = bilan['matieres'][matiere]['total']['TD']/60
+        TP = bilan['matieres'][matiere]['total']['TP']/60
+        autres = bilan['matieres'][matiere]['total']['autres']/60
+        myCSV.writerow(['Bilan matière', '', matiere])
+        myCSV.writerow(['', 'CM', point2virgule(CM)])
+        myCSV.writerow(['', 'TD', point2virgule(TD)])
+        myCSV.writerow(['', 'TP', point2virgule(TP)])
+        myCSV.writerow(['', 'autres', point2virgule(autres)])
+        myCSV.writerow(['', '', '', '', 'CM', 'TD', 'TP', 'autres', 'H eq TD(*)', 'h tot'])
+        for enseignant in bilan['matieres'][matiere]['enseignants']:
+            title = enseignant
+            CM = bilan['matieres'][matiere]['enseignants'][enseignant]['CM']/60
+            TD = bilan['matieres'][matiere]['enseignants'][enseignant]['TD']/60
+            TP = bilan['matieres'][matiere]['enseignants'][enseignant]['TP']/60
+            autres = bilan['matieres'][matiere]['enseignants'][enseignant]['autres']/60
+            myCSV.writerow(['', '', 'Bilan', enseignant, point2virgule(CM), point2virgule(TD), point2virgule(TP), point2virgule(autres), point2virgule(1.5*CM+TD+TP), point2virgule(CM+TD+TP+autres)])
 
+# Fichiers textes
+#################
 #file = sys.stdout # affichage sur la console
 file = open('bilan_ade_total.txt', 'w')
 affichage_TXT_bilan_total(bilan, file)
@@ -336,11 +377,18 @@ file.close()
 #print('='*30)
 
 # Fichiers csv
+##############
 file = open('bilan_ade_total.csv', 'w')
 affichage_CSV_bilan_total(bilan, file)
 file.close()
 
+file = open('bilan_ade_enseignants.csv', 'w')
+affichage_CSV_bilan_enseignants(bilan, file)
+file.close()
 
+file = open('bilan_ade_matieres.csv', 'w')
+affichage_CSV_bilan_matieres(bilan, file)
+file.close()
 
 #print(bilan) # Debug
 
