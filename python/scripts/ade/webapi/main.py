@@ -80,7 +80,7 @@ class ade_webapi():
         self.xml_debug(xmlrep)
 
     def getTraineeByCode(self, code): # ToFix
-        f = urllib.urlopen(self.url + "function={0}&sessionId={1}&tree=false&code={2}&category=trainee".format('getResources', self.sessionId, code))
+        f = urllib.urlopen(self.url + "function={0}&sessionId={1}&tree=false&code={2}&category=trainee&leaves=true".format('getResources', self.sessionId, code))
         xmlrep = f.read()
         self.xml_debug(xmlrep)
 
