@@ -101,7 +101,7 @@ login = 'login'
 password = 'password'
 myade = ade_webapi(url, login, password)
 myade.connect()
-myade.getProjects(4)
+myade.getProjects(4) # 4 = + grand niveau de détail
 myade.setProject(11) # 2010-2011=>11 2011-2012=>1
 #myade.getResources()
 myade.getActivities()
