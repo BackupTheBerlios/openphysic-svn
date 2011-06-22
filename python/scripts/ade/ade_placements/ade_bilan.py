@@ -31,6 +31,7 @@
 
 import csv
 from datetime import date, datetime, timedelta
+import sys
 
 class Placement():
     def __init__(self):
@@ -104,8 +105,6 @@ for placement in placements:
 # Création des bilans
 
 #print(lstPlacements[0]) # voir une ligne de l'onglet placement pour test
-print("Nb de séances : {0}".format(len(lstPlacements)))
-print()
 
 bilan = dict()
 bilan['total'] = Bilan()
@@ -163,10 +162,7 @@ for placement in lstPlacements:
     code = placement.__dict__['Code'] # ToFix : code Apogée ou Activité
 
     # - Total CM TD TP autres de l'ensemble des enseignants    
-    if typeAct in bilan['total']:
-        bilan['total'][typeAct] = bilan['total'][typeAct] + duree
-    else:
-        bilan['total'][typeAct] = duree
+    bilan['total'][typeAct] = bilan['total'][typeAct] + duree
     
     # - Total CM TD TP autres pour chaque enseignant
     if enseignant not in bilan['enseignants']:
@@ -174,19 +170,13 @@ for placement in lstPlacements:
         bilan['enseignants'][enseignant]['total'] = Bilan() #{'CM': timedelta(), 'TD': timedelta(), 'TP': timedelta(), 'autres': timedelta()}
         bilan['enseignants'][enseignant]['matieres'] = dict()
         
-    if typeAct in bilan['enseignants'][enseignant]['total']:
-        bilan['enseignants'][enseignant]['total'][typeAct] = bilan['enseignants'][enseignant]['total'][typeAct] + duree
-    else:
-        bilan['enseignants'][enseignant]['total'][typeAct] = duree
+    bilan['enseignants'][enseignant]['total'][typeAct] = bilan['enseignants'][enseignant]['total'][typeAct] + duree
 
     # -- Total CM TD TP autres pour chaque matière pour un enseignant donné
     if code not in bilan['enseignants'][enseignant]['matieres']:
         bilan['enseignants'][enseignant]['matieres'][code] = Bilan()
 
-    if typeAct in bilan['enseignants'][enseignant]['matieres'][code]:
-        bilan['enseignants'][enseignant]['matieres'][code][typeAct] = bilan['enseignants'][enseignant]['matieres'][code][typeAct] + duree
-    else:
-        bilan['enseignants'][enseignant]['matieres'][code][typeAct] = duree
+    bilan['enseignants'][enseignant]['matieres'][code][typeAct] = bilan['enseignants'][enseignant]['matieres'][code][typeAct] + duree
 
     # ###########################################################
 
@@ -196,10 +186,7 @@ for placement in lstPlacements:
         bilan['matieres'][code]['total'] = Bilan()
         bilan['matieres'][code]['enseignants'] = dict()
     
-    if typeAct in bilan['matieres'][code]['total']:
-        bilan['matieres'][code]['total'][typeAct] = bilan['matieres'][code]['total'][typeAct] + duree
-    else:
-        bilan['matieres'][code]['total'][typeAct] = duree
+    bilan['matieres'][code]['total'][typeAct] = bilan['matieres'][code]['total'][typeAct] + duree
         
     #print(bilanMatiere)
 
@@ -207,14 +194,14 @@ for placement in lstPlacements:
     if enseignant not in bilan['matieres'][code]['enseignants']:
         bilan['matieres'][code]['enseignants'][enseignant] = Bilan()
             
-    if typeAct in bilan['matieres'][code]['enseignants'][enseignant]:
-        bilan['matieres'][code]['enseignants'][enseignant][typeAct] = bilan['matieres'][code]['enseignants'][enseignant][typeAct] + duree
-    else:
-        bilan['matieres'][code]['enseignants'][enseignant][typeAct] = duree
+    bilan['matieres'][code]['enseignants'][enseignant][typeAct] = bilan['matieres'][code]['enseignants'][enseignant][typeAct] + duree
 
 
 
-def affichage_bilan_total(bilan):
+def affichage_bilan_total(bilan, file = sys.stdout):
+    file.write("Nb de séances : {0}".format(len(lstPlacements)))
+    file.write('\n\n')
+
     title = 'total'
     CM = bilan['total']['CM']/60
     TD = bilan['total']['TD']/60
@@ -232,7 +219,7 @@ Total h : {6}""".format(title, CM, TD, TP, autres, CM*1.5 + TD + TP, CM + TD + T
 
 
 # Affichage bilan enseignant
-def affichage_bilan_enseignants(bilan):
+def affichage_bilan_enseignants(bilan, file = sys.stdout):
     for enseignant in bilan['enseignants']:
         #print(enseignant)
         title = 'enseignant {0}'.format(enseignant)
@@ -263,7 +250,7 @@ H eq TD(*) : {5}""".format(title, CM, TD, TP, autres, CM*1.5 + TD + TP))
         print()
 
 # Affichage bilan matiere
-def affichage_bilan_matieres(bilan):
+def affichage_bilan_matieres(bilan, file = sys.stdout):
     for matiere in bilan['matieres']:
         #print(enseignant)
         title = 'matière {0}'.format(matiere)
@@ -293,17 +280,19 @@ H eq TD(*) : {5}""".format(title, CM, TD, TP, autres, CM*1.5 + TD + TP))
         print('='*15)
         print()
 
-affichage_bilan_total(bilan)
+
+file = sys.stdout # affichage sur la console
+affichage_bilan_total(bilan, file)
 
 print('='*30)
 print()
 
-affichage_bilan_enseignants(bilan)
+affichage_bilan_enseignants(bilan, file)
 
 print('='*30)
 print()
 
-affichage_bilan_matieres(bilan)
+affichage_bilan_matieres(bilan, file)
 
 print('='*30)
 
