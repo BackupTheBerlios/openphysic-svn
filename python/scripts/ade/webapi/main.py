@@ -50,7 +50,7 @@ class ade_webapi():
             elt = dom.getElementsByTagName('session')[0]
             self.sessionId = elt.getAttribute('id')
         except:
-            elt = dom.getElementsByTagName('error')
+            #elt = dom.getElementsByTagName('error')
             raise Exception("Connect error")
 
 
