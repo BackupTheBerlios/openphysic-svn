@@ -196,7 +196,11 @@ for placement in lstPlacements:
             
     bilan['matieres'][code]['enseignants'][enseignant][typeAct] = bilan['matieres'][code]['enseignants'][enseignant][typeAct] + duree
 
-
+def affichage_info_h_eq_td(file):
+    file.write("""(*) Les heures équivalents TD sont calculées à titre indicatif
+sans prendre en compte le prorata (dépend du statut) avec les coefficients suivants :
+CM=1.5 ; TD=1 ; TP=1
+""")
 
 def affichage_bilan_total(bilan, file = sys.stdout):
     file.write("Nb de séances : {0}".format(len(lstPlacements)))
@@ -207,7 +211,7 @@ def affichage_bilan_total(bilan, file = sys.stdout):
     TD = bilan['total']['TD']/60
     TP = bilan['total']['TP']/60
     autres = bilan['total']['autres']/60
-    print("""Bilan {0}
+    file.write("""Bilan {0}
 CM     : {1}
 TD     : {2}
 TP     : {3}
@@ -215,7 +219,10 @@ autres : {4}
 
 H eq TD(*) : {5}
 
-Total h : {6}""".format(title, CM, TD, TP, autres, CM*1.5 + TD + TP, CM + TD + TP + autres))
+Total h : {6}
+""".format(title, CM, TD, TP, autres, CM*1.5 + TD + TP, CM + TD + TP + autres))
+    file.write('\n')
+    affichage_info_h_eq_td(file)
 
 
 # Affichage bilan enseignant
@@ -227,13 +234,14 @@ def affichage_bilan_enseignants(bilan, file = sys.stdout):
         TD = bilan['enseignants'][enseignant]['total']['TD']/60
         TP = bilan['enseignants'][enseignant]['total']['TP']/60
         autres = bilan['enseignants'][enseignant]['total']['autres']/60
-        print("""Bilan {0}
+        file.write("""Bilan {0}
 CM     : {1}
 TD     : {2}
 TP     : {3}
 autres : {4}
 
-H eq TD(*) : {5}""".format(title, CM, TD, TP, autres, CM*1.5 + TD + TP))
+H eq TD(*) : {5}
+""".format(title, CM, TD, TP, autres, CM*1.5 + TD + TP))
         
         for matiere in bilan['enseignants'][enseignant]['matieres']:
             title = matiere
@@ -241,13 +249,15 @@ H eq TD(*) : {5}""".format(title, CM, TD, TP, autres, CM*1.5 + TD + TP))
             TD = bilan['enseignants'][enseignant]['matieres'][matiere]['TD']/60
             TP = bilan['enseignants'][enseignant]['matieres'][matiere]['TP']/60
             autres = bilan['enseignants'][enseignant]['matieres'][matiere]['autres']/60
-            print()
-            print("""    Bilan {0}
-        CM     : {1}    TD     : {2}    TP     : {3}    autres : {4}    H eq TD(*) : {5}""".format(title, CM, TD, TP, autres, CM*1.5 + TD + TP))
+            file.write('\n')
+            file.write("""    Bilan {0}
+        CM     : {1}    TD     : {2}    TP     : {3}    autres : {4}    H eq TD(*) : {5}
+""".format(title, CM, TD, TP, autres, CM*1.5 + TD + TP))
 
-        print()
-        print('='*15)
-        print()
+        file.write('\n')
+        file.write('='*15)
+        file.write('\n\n')
+    affichage_info_h_eq_td(file)
 
 # Affichage bilan matiere
 def affichage_bilan_matieres(bilan, file = sys.stdout):
@@ -258,13 +268,14 @@ def affichage_bilan_matieres(bilan, file = sys.stdout):
         TD = bilan['matieres'][matiere]['total']['TD']/60
         TP = bilan['matieres'][matiere]['total']['TP']/60
         autres = bilan['matieres'][matiere]['total']['autres']/60
-        print("""Bilan {0}
+        file.write("""Bilan {0}
 CM     : {1}
 TD     : {2}
 TP     : {3}
 autres : {4}
 
-H eq TD(*) : {5}""".format(title, CM, TD, TP, autres, CM*1.5 + TD + TP))
+H eq TD(*) : {5}
+""".format(title, CM, TD, TP, autres, CM*1.5 + TD + TP))
 
         for enseignant in bilan['matieres'][matiere]['enseignants']:
             title = enseignant
@@ -272,33 +283,41 @@ H eq TD(*) : {5}""".format(title, CM, TD, TP, autres, CM*1.5 + TD + TP))
             TD = bilan['matieres'][matiere]['enseignants'][enseignant]['TD']/60
             TP = bilan['matieres'][matiere]['enseignants'][enseignant]['TP']/60
             autres = bilan['matieres'][matiere]['enseignants'][enseignant]['autres']/60
-            print()
-            print("""    Bilan {0}
-        CM     : {1}    TD     : {2}    TP     : {3}    autres : {4}    H eq TD(*) : {5}""".format(title, CM, TD, TP, autres, CM*1.5 + TD + TP))
+            file.write('\n')
+            file.write("""    Bilan {0}
+        CM     : {1}    TD     : {2}    TP     : {3}    autres : {4}    H eq TD(*) : {5}
+""".format(title, CM, TD, TP, autres, CM*1.5 + TD + TP))
 
-        print()
-        print('='*15)
-        print()
+        file.write('\n')
+        file.write('='*15)
+        file.write('\n\n')
+    affichage_info_h_eq_td(file)
 
 
-file = sys.stdout # affichage sur la console
+#file = sys.stdout # affichage sur la console
+file = open('bilan_ade_total.txt', 'w')
 affichage_bilan_total(bilan, file)
+file.close()
 
-print('='*30)
-print()
+#print('='*30)
+#print()
 
+#file = sys.stdout # affichage sur la console
+file = open('bilan_ade_enseignants.txt', 'w')
 affichage_bilan_enseignants(bilan, file)
+file.close()
 
-print('='*30)
-print()
+#print('='*30)
+#print()
 
+#file = sys.stdout # affichage sur la console
+file = open('bilan_ade_matieres.txt', 'w')
 affichage_bilan_matieres(bilan, file)
+file.close()
 
-print('='*30)
+#print('='*30)
 
-print("""(*) Les heures équivalents TD sont calculées à titre indicatif
-sans prendre en compte le prorata (dépend du statut) avec les coefficients suivants :
-CM=1.5 ; TD=1 ; TP=1""")
+
 
 #print(bilan) # Debug
 
