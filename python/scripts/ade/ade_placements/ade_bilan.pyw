@@ -202,7 +202,7 @@ sans prendre en compte le prorata (dépend du statut) avec les coefficients suiv
 CM=1.5 ; TD=1 ; TP=1
 """)
 
-def affichage_bilan_total(bilan, file = sys.stdout):
+def affichage_TXT_bilan_total(bilan, file = sys.stdout):
     file.write("Nb de séances : {0}".format(len(lstPlacements)))
     file.write('\n\n')
 
@@ -224,9 +224,26 @@ Total h : {6}
     file.write('\n')
     affichage_info_h_eq_td(file)
 
+def point2virgule(val):
+    return str(val).replace('.',',',1)
 
+def affichage_CSV_bilan_total(bilan, file = sys.stdout):
+    myCSV = csv.writer(file, delimiter=';', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+    myCSV.writerow(["Nb de séances", format(len(lstPlacements))])
+    title = 'total'
+    CM = bilan['total']['CM']/60
+    TD = bilan['total']['TD']/60
+    TP = bilan['total']['TP']/60
+    autres = bilan['total']['autres']/60
+    myCSV.writerow(['CM', point2virgule(CM)])
+    myCSV.writerow(['TD', point2virgule(TD)])
+    myCSV.writerow(['TP', point2virgule(TP)])
+    myCSV.writerow(['autres', point2virgule(autres)])
+    myCSV.writerow(['H eq TD(*)', point2virgule(CM*1.5 + TD + TP)])
+    myCSV.writerow(['Total', point2virgule(CM + TD + TP + autres)])
+    
 # Affichage bilan enseignant
-def affichage_bilan_enseignants(bilan, file = sys.stdout):
+def affichage_TXT_bilan_enseignants(bilan, file = sys.stdout):
     for enseignant in bilan['enseignants']:
         #print(enseignant)
         title = 'enseignant {0}'.format(enseignant)
@@ -260,7 +277,7 @@ H eq TD(*) : {5}
     affichage_info_h_eq_td(file)
 
 # Affichage bilan matiere
-def affichage_bilan_matieres(bilan, file = sys.stdout):
+def affichage_TXT_bilan_matieres(bilan, file = sys.stdout):
     for matiere in bilan['matieres']:
         #print(enseignant)
         title = 'matière {0}'.format(matiere)
@@ -293,10 +310,11 @@ H eq TD(*) : {5}
         file.write('\n\n')
     affichage_info_h_eq_td(file)
 
+# Fichiers textes
 
 #file = sys.stdout # affichage sur la console
 file = open('bilan_ade_total.txt', 'w')
-affichage_bilan_total(bilan, file)
+affichage_TXT_bilan_total(bilan, file)
 file.close()
 
 #print('='*30)
@@ -304,7 +322,7 @@ file.close()
 
 #file = sys.stdout # affichage sur la console
 file = open('bilan_ade_enseignants.txt', 'w')
-affichage_bilan_enseignants(bilan, file)
+affichage_TXT_bilan_enseignants(bilan, file)
 file.close()
 
 #print('='*30)
@@ -312,10 +330,15 @@ file.close()
 
 #file = sys.stdout # affichage sur la console
 file = open('bilan_ade_matieres.txt', 'w')
-affichage_bilan_matieres(bilan, file)
+affichage_TXT_bilan_matieres(bilan, file)
 file.close()
 
 #print('='*30)
+
+# Fichiers csv
+file = open('bilan_ade_total.csv', 'w')
+affichage_CSV_bilan_total(bilan, file)
+file.close()
 
 
 
