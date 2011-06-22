@@ -45,8 +45,14 @@ class ade_webapi():
         self.xml_debug(xmlrep)
         
         dom = xml.dom.minidom.parseString(xmlrep)
-        elt = dom.getElementsByTagName('session')[0]
-        self.sessionId = elt.getAttribute('id')
+                
+        try:
+            elt = dom.getElementsByTagName('session')[0]
+            self.sessionId = elt.getAttribute('id')
+        except:
+            elt = dom.getElementsByTagName('error')
+            raise Exception("Connect error")
+
 
     def disconnect(self):
         f = urllib.urlopen(self.url + "function={0}&sessionId={1}".format('disconnect', self.sessionId))
