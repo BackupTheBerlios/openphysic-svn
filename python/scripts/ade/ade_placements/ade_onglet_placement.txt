@@ -1,559 +1,661 @@
-false	false	S37: 12 sept. 18 sept.	Vendredi 16/09/2011	TD	01h30	09h30	Anglais	MP14	TD2	JACQUET MICHELE
-false	false	S37: 12 sept. 18 sept.	Vendredi 16/09/2011	TD	01h30	11h00	Anglais	MP13	TD1	JACQUET MICHELE
-false	false	S37: 12 sept. 18 sept.	Vendredi 16/09/2011	TP	02h00	13h30	Bureau	MP-I-10	TPB	BAUDOUIN NATHALIE
-false	false	S37: 12 sept. 18 sept.	Mercredi 14/09/2011	TP	02h00	13h30	Bureau	MP-I-10	TPA	BAUDOUIN NATHALIE
-false	false	S37: 12 sept. 18 sept.	Lundi 12/09/2011	TD	01h30	09h30	D.tech	MP14	TD2	LANDET JEAN MARC
-false	false	S37: 12 sept. 18 sept.	Lundi 12/09/2011	TD	01h30	11h00	D.tech	MP13	TD1	LANDET JEAN MARC
-false	false	S37: 12 sept. 18 sept.	Mercredi 14/09/2011	TP	02h00	13h30	D.tech	MP14	TPC	LANDET JEAN MARC
-false	false	S37: 12 sept. 18 sept.	Vendredi 16/09/2011	TP	02h00	13h30	D.tech	MP13	TPD	LANDET JEAN MARC
-false	false	S37: 12 sept. 18 sept.	Mardi 13/09/2011	TP	02h00	13h30	D.tech	MP13	TPB	LANDET JEAN MARC
-false	false	S37: 12 sept. 18 sept.	Lundi 12/09/2011	TP	02h00	13h30	D.tech	MP13	TPA	LANDET JEAN MARC
-false	false	S37: 12 sept. 18 sept.	Mardi 13/09/2011	TD	01h30	11h00	Elec I	MP14	TD2	LACOUTURE DENIS
-false	false	S37: 12 sept. 18 sept.	Mardi 13/09/2011	TD	01h30	09h30	Elec I	MP13	TD1	LACOUTURE DENIS
-false	false	S37: 12 sept. 18 sept.	Vendredi 16/09/2011	TP	04h00	13h30	Elec I	MP15	TPC	LACOUTURE DENIS
-false	false	S37: 12 sept. 18 sept.	Mardi 13/09/2011	TP	04h00	13h30	Elec I	MP15	TPD	LACOUTURE DENIS
-false	false	S37: 12 sept. 18 sept.	Mardi 13/09/2011	CM	01h30	08h00	Elec I	MP-A	S1	LACOUTURE DENIS
-false	false	S37: 12 sept. 18 sept.	Mardi 13/09/2011	TD	01h30	09h30	Exp	MP14	TD2	PESNOT PIN DOMINIQUE
-false	false	S37: 12 sept. 18 sept.	Mardi 13/09/2011	TD	01h30	11h00	Exp	MP13	TD1	PESNOT PIN DOMINIQUE
-false	false	S37: 12 sept. 18 sept.	Mercredi 14/09/2011	TD	01h30	09h30	Maths	MP14	TD2	BAUDOUIN NATHALIE
-false	false	S37: 12 sept. 18 sept.	Vendredi 16/09/2011	TD	01h30	11h00	Maths	MP14	TD2	BAUDOUIN NATHALIE
-false	false	S37: 12 sept. 18 sept.	Mercredi 14/09/2011	TD	01h30	11h00	Maths	MP13	TD1	BAUDOUIN NATHALIE
-false	false	S37: 12 sept. 18 sept.	Vendredi 16/09/2011	TD	01h30	09h30	Maths	MP13	TD1	BAUDOUIN NATHALIE
-false	false	S37: 12 sept. 18 sept.	Mercredi 14/09/2011	CM	01h30	08h00	Maths	MP-A	S1	BAUDOUIN NATHALIE
-false	false	S37: 12 sept. 18 sept.	Vendredi 16/09/2011	CM	01h30	08h00	Maths	MP-A	S1	BAUDOUIN NATHALIE
-false	false	S37: 12 sept. 18 sept.	Mercredi 14/09/2011	TD	01h30	11h00	Chimie	MP14	TD2	TOURENNE LAURENT
-false	false	S37: 12 sept. 18 sept.	Jeudi 15/09/2011	TD	01h30	11h00	Chimie	MP14	TD2	TOURENNE LAURENT
-false	false	S37: 12 sept. 18 sept.	Mercredi 14/09/2011	TD	01h30	09h30	Chimie	MP13	TD1	TOURENNE LAURENT
-false	false	S37: 12 sept. 18 sept.	Jeudi 15/09/2011	TD	01h30	13h30	Chimie	MP13	TD1	TOURENNE LAURENT
-false	false	S37: 12 sept. 18 sept.	Jeudi 15/09/2011	CM	01h30	08h00	Chimie	MP-A	S1	TOURENNE LAURENT
-false	false	S37: 12 sept. 18 sept.	Lundi 12/09/2011	TD	01h30	11h00	Metro	MP14	TD2	ZITOUN VIDAL RATIBA
-false	false	S37: 12 sept. 18 sept.	Jeudi 15/09/2011	TD	01h30	13h30	Metro	MP14	TD2	ZITOUN VIDAL RATIBA
-false	false	S37: 12 sept. 18 sept.	Lundi 12/09/2011	TD	01h30	09h30	Metro	MP13	TD1	ZITOUN VIDAL RATIBA
-false	false	S37: 12 sept. 18 sept.	Jeudi 15/09/2011	TD	01h30	11h00	Metro	MP13	TD1	ZITOUN VIDAL RATIBA
-false	false	S37: 12 sept. 18 sept.	Mercredi 14/09/2011	TP	04h00	13h30	Metro	MP08	TPB	ZITOUN VIDAL RATIBA
-false	false	S37: 12 sept. 18 sept.	Vendredi 16/09/2011	TP	04h00	13h30	Metro	MP08	TPA	ZITOUN VIDAL RATIBA
-false	false	S37: 12 sept. 18 sept.	Lundi 12/09/2011	CM	01h30	08h00	Metro	MP-A	S1	ZITOUN VIDAL RATIBA
-false	false	S37: 12 sept. 18 sept.	Jeudi 15/09/2011	CM	01h30	09h30	Metro	MP-A	S1	ZITOUN VIDAL RATIBA
-false	false	S36: 05 sept. 11 sept.	Mercredi 07/09/2011	TD	01h30	16h30	Anglais	MP14	TD2	JACQUET MICHELE
-false	false	S36: 05 sept. 11 sept.	Mercredi 07/09/2011	TD	01h30	15h00	Anglais	MP13	TD1	JACQUET MICHELE
-false	false	S36: 05 sept. 11 sept.	Mardi 06/09/2011	CM	01h30	08h00	D.tech	MP-A	S1	LANDET JEAN MARC
-false	false	S36: 05 sept. 11 sept.	Jeudi 08/09/2011	CM	01h30	08h00	D.tech	MP-A	S1	LANDET JEAN MARC
-false	false	S36: 05 sept. 11 sept.	Vendredi 09/09/2011	TD	01h30	09h30	Elec I	MP14	TD2	LACOUTURE DENIS
-false	false	S36: 05 sept. 11 sept.	Vendredi 09/09/2011	TD	01h30	11h00	Elec I	MP13	TD1	LACOUTURE DENIS
-false	false	S36: 05 sept. 11 sept.	Jeudi 08/09/2011	CM	01h30	09h30	Elec I	MP-A	S1	LACOUTURE DENIS
-false	false	S36: 05 sept. 11 sept.	Mardi 06/09/2011	TD	01h30	15h00	Exp	MP14	TD2	PESNOT PIN DOMINIQUE
-false	false	S36: 05 sept. 11 sept.	Mardi 06/09/2011	TD	01h30	13h30	Exp	MP13	TD1	PESNOT PIN DOMINIQUE
-false	false	S36: 05 sept. 11 sept.	Mardi 06/09/2011	TD	01h30	13h30	Maths	MP14	TD2	BAUDOUIN NATHALIE
-false	false	S36: 05 sept. 11 sept.	Vendredi 09/09/2011	TD	01h30	13h30	Maths	MP14	TD2	BAUDOUIN NATHALIE
-false	false	S36: 05 sept. 11 sept.	Mardi 06/09/2011	TD	01h30	15h00	Maths	MP13	TD1	BAUDOUIN NATHALIE
-false	false	S36: 05 sept. 11 sept.	Vendredi 09/09/2011	TD	01h30	09h30	Maths	MP13	TD1	BAUDOUIN NATHALIE
-false	false	S36: 05 sept. 11 sept.	Mardi 06/09/2011	CM	01h30	09h30	Maths	MP-A	S1	BAUDOUIN NATHALIE
-false	false	S36: 05 sept. 11 sept.	Vendredi 09/09/2011	CM	01h30	08h00	Maths	MP-A	S1	BAUDOUIN NATHALIE
-false	false	S36: 05 sept. 11 sept.	Mercredi 07/09/2011	TD	01h30	11h00	Chimie	MP14	TD2	TOURENNE LAURENT
-false	false	S36: 05 sept. 11 sept.	Mercredi 07/09/2011	TD	01h30	16h30	Chimie	MP13	TD1	TOURENNE LAURENT
-false	false	S36: 05 sept. 11 sept.	Mardi 06/09/2011	CM	01h30	11h00	Chimie	MP-A	S1	TOURENNE LAURENT
-false	false	S36: 05 sept. 11 sept.	Mercredi 07/09/2011	CM	01h30	08h00	Chimie	MP-A	S1	TOURENNE LAURENT
-false	false	S36: 05 sept. 11 sept.	Mercredi 07/09/2011	TD	01h30	15h00	Metro	MP14	TD2	ZITOUN VIDAL RATIBA
-false	false	S36: 05 sept. 11 sept.	Mercredi 07/09/2011	TD	01h30	11h00	Metro	MP13	TD1	ZITOUN VIDAL RATIBA
-false	false	S36: 05 sept. 11 sept.	Mercredi 07/09/2011	CM	01h30	09h30	Metro	MP-A	S1	ZITOUN VIDAL RATIBA
-false	false	S36: 05 sept. 11 sept.	Vendredi 09/09/2011	TD	01h30	11h00	PPP	MP14	TD2	PESNOT PIN DOMINIQUE
-false	false	S36: 05 sept. 11 sept.	Vendredi 09/09/2011	TD	01h30	13h30	PPP	MP13	TD1	PESNOT PIN DOMINIQUE
-false	false	S36: 05 sept. 11 sept.	Jeudi 08/09/2011	CM	01h00	11h00	PPP	MP-A	S1	PESNOT PIN DOMINIQUE
-false	false			TD	01h30		Anglais		TD2	JACQUET MICHELE
-false	false			TD	01h30		Anglais		TD2	JACQUET MICHELE
-false	false			TD	01h30		Anglais		TD2	JACQUET MICHELE
-false	false			TD	01h30		Anglais		TD2	JACQUET MICHELE
-false	false			TD	01h30		Anglais		TD2	JACQUET MICHELE
-false	false			TD	01h30		Anglais		TD2	JACQUET MICHELE
-false	false			TD	01h30		Anglais		TD1	JACQUET MICHELE
-false	false			TD	01h30		Anglais		TD1	JACQUET MICHELE
-false	false			TD	01h30		Anglais		TD1	JACQUET MICHELE
-false	false			TD	01h30		Anglais		TD1	JACQUET MICHELE
-false	false			TD	01h30		Anglais		TD1	JACQUET MICHELE
-false	false			TD	01h30		Anglais		TD1	JACQUET MICHELE
-false	false			TP	02h00		Anglais		TPC	JACQUET MICHELE
-false	false			TP	02h00		Anglais		TPC	JACQUET MICHELE
-false	false			TP	02h00		Anglais		TPC	JACQUET MICHELE
-false	false			TP	02h00		Anglais		TPC	JACQUET MICHELE
-false	false			TP	02h00		Anglais		TPC	JACQUET MICHELE
-false	false			TP	02h00		Anglais		TPD	JACQUET MICHELE
-false	false			TP	02h00		Anglais		TPD	JACQUET MICHELE
-false	false			TP	02h00		Anglais		TPD	JACQUET MICHELE
-false	false			TP	02h00		Anglais		TPD	JACQUET MICHELE
-false	false			TP	02h00		Anglais		TPD	JACQUET MICHELE
-false	false			TP	02h00		Anglais		TPB	JACQUET MICHELE
-false	false			TP	02h00		Anglais		TPB	JACQUET MICHELE
-false	false			TP	02h00		Anglais		TPB	JACQUET MICHELE
-false	false			TP	02h00		Anglais		TPB	JACQUET MICHELE
-false	false			TP	02h00		Anglais		TPB	JACQUET MICHELE
-false	false			TP	02h00		Anglais		TPA	JACQUET MICHELE
-false	false			TP	02h00		Anglais		TPA	JACQUET MICHELE
-false	false			TP	02h00		Anglais		TPA	JACQUET MICHELE
-false	false			TP	02h00		Anglais		TPA	JACQUET MICHELE
-false	false			TP	02h00		Anglais		TPA	JACQUET MICHELE
-false	false			EXAM	02h00		Anglais CTL		S1	JACQUET MICHELE
-false	false			TP	02h00		Bureau		TPC	BAUDOUIN NATHALIE
-false	false			TP	02h00		Bureau		TPC	BAUDOUIN NATHALIE
-false	false			TP	02h00		Bureau		TPC	BAUDOUIN NATHALIE
-false	false			TP	02h00		Bureau		TPC	BAUDOUIN NATHALIE
-false	false			TP	02h00		Bureau		TPC	BAUDOUIN NATHALIE
-false	false			TP	02h00		Bureau		TPD	BAUDOUIN NATHALIE
-false	false			TP	02h00		Bureau		TPD	BAUDOUIN NATHALIE
-false	false			TP	02h00		Bureau		TPD	BAUDOUIN NATHALIE
-false	false			TP	02h00		Bureau		TPD	BAUDOUIN NATHALIE
-false	false			TP	02h00		Bureau		TPD	BAUDOUIN NATHALIE
-false	false			TP	02h00		Bureau		TPB	BAUDOUIN NATHALIE
-false	false			TP	02h00		Bureau		TPB	BAUDOUIN NATHALIE
-false	false			TP	02h00		Bureau		TPB	BAUDOUIN NATHALIE
-false	false			TP	02h00		Bureau		TPB	BAUDOUIN NATHALIE
-false	false			TP	02h00		Bureau		TPA	BAUDOUIN NATHALIE
-false	false			TP	02h00		Bureau		TPA	BAUDOUIN NATHALIE
-false	false			TP	02h00		Bureau		TPA	BAUDOUIN NATHALIE
-false	false			TP	02h00		Bureau		TPA	BAUDOUIN NATHALIE
-false	false			TP	02h00		Bureau CTL		TPC	BAUDOUIN NATHALIE
-false	false			TP	02h00		Bureau CTL		TPD	BAUDOUIN NATHALIE
-false	false			TP	02h00		Bureau CTL		TPB	BAUDOUIN NATHALIE
-false	false			TP	02h00		Bureau CTL		TPA	BAUDOUIN NATHALIE
-false	false			TD	01h30		Conv E		TD2	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Conv E		TD2	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Conv E		TD2	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Conv E		TD2	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Conv E		TD2	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Conv E		TD2	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Conv E		TD2	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Conv E		TD2	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Conv E		TD2	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Conv E		TD2	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Conv E		TD2	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Conv E		TD1	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Conv E		TD1	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Conv E		TD1	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Conv E		TD1	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Conv E		TD1	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Conv E		TD1	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Conv E		TD1	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Conv E		TD1	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Conv E		TD1	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Conv E		TD1	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Conv E		TD1	ZITOUN VIDAL RATIBA
-false	false			CM	01h30		Conv E		S1	ZITOUN VIDAL RATIBA
-false	false			CM	01h30		Conv E		S1	ZITOUN VIDAL RATIBA
-false	false			CM	01h30		Conv E		S1	ZITOUN VIDAL RATIBA
-false	false			CM	01h30		Conv E		S1	ZITOUN VIDAL RATIBA
-false	false			CM	01h30		Conv E		S1	ZITOUN VIDAL RATIBA
-false	false			CM	01h30		Conv E		S1	ZITOUN VIDAL RATIBA
-false	false			CM	01h30		Conv E		S1	ZITOUN VIDAL RATIBA
-false	false			EXAM	02h00		Conv E CTL		S1	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		D.tech		TD2	LANDET JEAN MARC
-false	false			TD	01h30		D.tech		TD2	LANDET JEAN MARC
-false	false			TD	01h30		D.tech		TD2	LANDET JEAN MARC
-false	false			TD	01h30		D.tech		TD2	LANDET JEAN MARC
-false	false			TD	01h30		D.tech		TD1	LANDET JEAN MARC
-false	false			TD	01h30		D.tech		TD1	LANDET JEAN MARC
-false	false			TD	01h30		D.tech		TD1	LANDET JEAN MARC
-false	false			TD	01h30		D.tech		TD1	LANDET JEAN MARC
-false	false			TP	02h00		D.tech		TPC	LANDET JEAN MARC
-false	false			TP	02h00		D.tech		TPC	LANDET JEAN MARC
-false	false			TP	02h00		D.tech		TPC	LANDET JEAN MARC
-false	false			TP	02h00		D.tech		TPD	LANDET JEAN MARC
-false	false			TP	02h00		D.tech		TPD	LANDET JEAN MARC
-false	false			TP	02h00		D.tech		TPD	LANDET JEAN MARC
-false	false			TP	02h00		D.tech		TPB	LANDET JEAN MARC
-false	false			TP	02h00		D.tech		TPB	LANDET JEAN MARC
-false	false			TP	02h00		D.tech		TPB	LANDET JEAN MARC
-false	false			TP	02h00		D.tech		TPA	LANDET JEAN MARC
-false	false			TP	02h00		D.tech		TPA	LANDET JEAN MARC
-false	false			TP	02h00		D.tech		TPA	LANDET JEAN MARC
-false	false			EXAM	02h00		D.tech CTL		S1	LANDET JEAN MARC
-false	false			TD	01h30		Elec I		TD2	LACOUTURE DENIS
-false	false			TD	01h30		Elec I		TD2	LACOUTURE DENIS
-false	false			TD	01h30		Elec I		TD2	LACOUTURE DENIS
-false	false			TD	01h30		Elec I		TD2	LACOUTURE DENIS
-false	false			TD	01h30		Elec I		TD2	LACOUTURE DENIS
-false	false			TD	01h30		Elec I		TD2	LACOUTURE DENIS
-false	false			TD	01h30		Elec I		TD2	LACOUTURE DENIS
-false	false			TD	01h30		Elec I		TD2	LACOUTURE DENIS
-false	false			TD	01h30		Elec I		TD2	LACOUTURE DENIS
-false	false			TD	01h30		Elec I		TD1	LACOUTURE DENIS
-false	false			TD	01h30		Elec I		TD1	LACOUTURE DENIS
-false	false			TD	01h30		Elec I		TD1	LACOUTURE DENIS
-false	false			TD	01h30		Elec I		TD1	LACOUTURE DENIS
-false	false			TD	01h30		Elec I		TD1	LACOUTURE DENIS
-false	false			TD	01h30		Elec I		TD1	LACOUTURE DENIS
-false	false			TD	01h30		Elec I		TD1	LACOUTURE DENIS
-false	false			TD	01h30		Elec I		TD1	LACOUTURE DENIS
-false	false			TD	01h30		Elec I		TD1	LACOUTURE DENIS
-false	false			TP	04h00		Elec I		TPC	LACOUTURE DENIS
-false	false			TP	04h00		Elec I		TPC	LACOUTURE DENIS
-false	false			TP	04h00		Elec I		TPC	LACOUTURE DENIS
-false	false			TP	04h00		Elec I		TPD	LACOUTURE DENIS
-false	false			TP	04h00		Elec I		TPD	LACOUTURE DENIS
-false	false			TP	04h00		Elec I		TPD	LACOUTURE DENIS
-false	false			TP	04h00		Elec I		TPB	LACOUTURE DENIS
-false	false			TP	04h00		Elec I		TPB	LACOUTURE DENIS
-false	false			TP	04h00		Elec I		TPB	LACOUTURE DENIS
-false	false			TP	04h00		Elec I		TPB	LACOUTURE DENIS
-false	false			TP	04h00		Elec I		TPA	LACOUTURE DENIS
-false	false			TP	04h00		Elec I		TPA	LACOUTURE DENIS
-false	false			TP	04h00		Elec I		TPA	LACOUTURE DENIS
-false	false			TP	04h00		Elec I		TPA	LACOUTURE DENIS
-false	false			TP	02h00		Elec I TPCTL		TPC	LACOUTURE DENIS
-false	false			TP	02h00		Elec I TPCTL		TPD	LACOUTURE DENIS
-false	false			TP	02h00		Elec I TPCTL		TPB	LACOUTURE DENIS
-false	false			TP	02h00		Elec I TPCTL		TPA	LACOUTURE DENIS
-false	false			CM	01h30		Elec I		S1	LACOUTURE DENIS
-false	false			CM	01h30		Elec I		S1	LACOUTURE DENIS
-false	false			CM	01h30		Elec I		S1	LACOUTURE DENIS
-false	false			CM	01h30		Elec I		S1	LACOUTURE DENIS
-false	false			CM	01h30		Elec I		S1	LACOUTURE DENIS
-false	false			EXAM	02h00		Elec I CTL		S1	LACOUTURE DENIS
-false	false			TD	01h30		Elec II		TD2	MARTIN ARNAUD
-false	false			TD	01h30		Elec II		TD2	MARTIN ARNAUD
-false	false			TD	01h30		Elec II		TD2	MARTIN ARNAUD
-false	false			TD	01h30		Elec II		TD2	MARTIN ARNAUD
-false	false			TD	01h30		Elec II		TD2	MARTIN ARNAUD
-false	false			TD	01h30		Elec II		TD2	MARTIN ARNAUD
-false	false			TD	01h30		Elec II		TD2	MARTIN ARNAUD
-false	false			TD	01h30		Elec II		TD1	MARTIN ARNAUD
-false	false			TD	01h30		Elec II		TD1	MARTIN ARNAUD
-false	false			TD	01h30		Elec II		TD1	MARTIN ARNAUD
-false	false			TD	01h30		Elec II		TD1	MARTIN ARNAUD
-false	false			TD	01h30		Elec II		TD1	MARTIN ARNAUD
-false	false			TD	01h30		Elec II		TD1	MARTIN ARNAUD
-false	false			TD	01h30		Elec II		TD1	MARTIN ARNAUD
-false	false			TP	04h00		Elec II		TPC	MARTIN ARNAUD
-false	false			TP	04h00		Elec II		TPC	MARTIN ARNAUD
-false	false			TP	04h00		Elec II		TPC	MARTIN ARNAUD
-false	false			TP	04h00		Elec II		TPC	MARTIN ARNAUD
-false	false			TP	04h00		Elec II		TPD	MARTIN ARNAUD
-false	false			TP	04h00		Elec II		TPD	MARTIN ARNAUD
-false	false			TP	04h00		Elec II		TPD	MARTIN ARNAUD
-false	false			TP	04h00		Elec II		TPD	MARTIN ARNAUD
-false	false			TP	04h00		Elec II		TPB	MARTIN ARNAUD
-false	false			TP	04h00		Elec II		TPB	MARTIN ARNAUD
-false	false			TP	04h00		Elec II		TPB	MARTIN ARNAUD
-false	false			TP	04h00		Elec II		TPB	MARTIN ARNAUD
-false	false			TP	04h00		Elec II		TPA	MARTIN ARNAUD
-false	false			TP	04h00		Elec II		TPA	MARTIN ARNAUD
-false	false			TP	04h00		Elec II		TPA	MARTIN ARNAUD
-false	false			TP	04h00		Elec II		TPA	MARTIN ARNAUD
-false	false			CM	01h30		Elec II		S1	MARTIN ARNAUD
-false	false			CM	01h30		Elec II		S1	MARTIN ARNAUD
-false	false			CM	01h30		Elec II		S1	MARTIN ARNAUD
-false	false			CM	01h30		Elec II		S1	MARTIN ARNAUD
-false	false			CM	01h30		Elec II		S1	MARTIN ARNAUD
-false	false			CM	01h30		Elec II		S1	MARTIN ARNAUD
-false	false			CM	01h30		Elec II		S1	MARTIN ARNAUD
-false	false			CM	01h30		Elec II		S1	MARTIN ARNAUD
-false	false			EXAM	02h00		Elec II CTL		S1	MARTIN ARNAUD
-false	false			TD	01h30		Entr		TD2	LANDET JEAN MARC
-false	false			TD	01h30		Entr		TD2	LANDET JEAN MARC
-false	false			TD	01h30		Entr		TD2	LANDET JEAN MARC
-false	false			TD	01h30		Entr		TD1	LANDET JEAN MARC
-false	false			TD	01h30		Entr		TD1	LANDET JEAN MARC
-false	false			TD	01h30		Entr		TD1	LANDET JEAN MARC
-false	false			EXAM	02h00		Entr CTL		S1	LANDET JEAN MARC
-false	false			TD	01h30		Exp		TD2	PESNOT PIN DOMINIQUE
-false	false			TD	01h30		Exp		TD2	PESNOT PIN DOMINIQUE
-false	false			TD	01h30		Exp		TD2	PESNOT PIN DOMINIQUE
-false	false			TD	01h30		Exp		TD2	PESNOT PIN DOMINIQUE
-false	false			TD	01h30		Exp		TD2	PESNOT PIN DOMINIQUE
-false	false			TD	01h30		Exp		TD2	PESNOT PIN DOMINIQUE
-false	false			TD	01h30		Exp		TD1	PESNOT PIN DOMINIQUE
-false	false			TD	01h30		Exp		TD1	PESNOT PIN DOMINIQUE
-false	false			TD	01h30		Exp		TD1	PESNOT PIN DOMINIQUE
-false	false			TD	01h30		Exp		TD1	PESNOT PIN DOMINIQUE
-false	false			TD	01h30		Exp		TD1	PESNOT PIN DOMINIQUE
-false	false			TD	01h30		Exp		TD1	PESNOT PIN DOMINIQUE
-false	false			TP	04h00		Exp		TPC	PESNOT PIN DOMINIQUE
-false	false			TP	02h00		Exp		TPC	PESNOT PIN DOMINIQUE
-false	false			TP	02h00		Exp		TPC	PESNOT PIN DOMINIQUE
-false	false			TP	02h00		Exp		TPC	PESNOT PIN DOMINIQUE
-false	false			TP	02h00		Exp		TPC	PESNOT PIN DOMINIQUE
-false	false			TP	02h00		Exp		TPD	PESNOT PIN DOMINIQUE
-false	false			TP	02h00		Exp		TPD	PESNOT PIN DOMINIQUE
-false	false			TP	02h00		Exp		TPD	PESNOT PIN DOMINIQUE
-false	false			TP	02h00		Exp		TPD	PESNOT PIN DOMINIQUE
-false	false			TP	04h00		Exp		TPD	PESNOT PIN DOMINIQUE
-false	false			TP	04h00		Exp		TPB	PESNOT PIN DOMINIQUE
-false	false			TP	02h00		Exp		TPB	PESNOT PIN DOMINIQUE
-false	false			TP	02h00		Exp		TPB	PESNOT PIN DOMINIQUE
-false	false			TP	02h00		Exp		TPB	PESNOT PIN DOMINIQUE
-false	false			TP	02h00		Exp		TPB	PESNOT PIN DOMINIQUE
-false	false			TP	02h00		Exp		TPA	PESNOT PIN DOMINIQUE
-false	false			TP	02h00		Exp		TPA	PESNOT PIN DOMINIQUE
-false	false			TP	02h00		Exp		TPA	PESNOT PIN DOMINIQUE
-false	false			TP	02h00		Exp		TPA	PESNOT PIN DOMINIQUE
-false	false			TP	04h00		Exp		TPA	PESNOT PIN DOMINIQUE
-false	false			EXAM	03h00		Exp CTL		S1	PESNOT PIN DOMINIQUE
-false	false			TD	01h30		Maths		TD2	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD2	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD2	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD2	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD2	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD2	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD2	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD2	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD2	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD2	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD2	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD2	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD2	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD2	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD2	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD2	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD2	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD2	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD2	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD2	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD2	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD2	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD2	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD2	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD2	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD2	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD1	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD1	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD1	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD1	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD1	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD1	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD1	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD1	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD1	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD1	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD1	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD1	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD1	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD1	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD1	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD1	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD1	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD1	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD1	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD1	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD1	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD1	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD1	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD1	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD1	BAUDOUIN NATHALIE
-false	false			TD	01h30		Maths		TD1	BAUDOUIN NATHALIE
-false	false			CM	01h30		Maths		S1	BAUDOUIN NATHALIE
-false	false			CM	01h30		Maths		S1	BAUDOUIN NATHALIE
-false	false			CM	01h30		Maths		S1	BAUDOUIN NATHALIE
-false	false			CM	01h30		Maths		S1	BAUDOUIN NATHALIE
-false	false			CM	01h30		Maths		S1	BAUDOUIN NATHALIE
-false	false			CM	01h30		Maths		S1	BAUDOUIN NATHALIE
-false	false			CM	01h30		Maths		S1	BAUDOUIN NATHALIE
-false	false			CM	01h30		Maths		S1	BAUDOUIN NATHALIE
-false	false			CM	01h30		Maths		S1	BAUDOUIN NATHALIE
-false	false			CM	01h30		Maths		S1	BAUDOUIN NATHALIE
-false	false			CM	01h30		Maths		S1	BAUDOUIN NATHALIE
-false	false			CM	01h30		Maths		S1	BAUDOUIN NATHALIE
-false	false			CM	01h30		Maths		S1	BAUDOUIN NATHALIE
-false	false			CM	01h30		Maths		S1	BAUDOUIN NATHALIE
-false	false			CM	01h30		Maths		S1	BAUDOUIN NATHALIE
-false	false			CM	01h30		Maths		S1	BAUDOUIN NATHALIE
-false	false			CM	01h30		Maths		S1	BAUDOUIN NATHALIE
-false	false			EXAM	02h00		Maths CTL		S1	BAUDOUIN NATHALIE
-false	false			EXAM	02h00		Maths CTL		S1	BAUDOUIN NATHALIE
-false	false			TD	01h30		Chimie		TD2	TOURENNE LAURENT
-false	false			TD	01h30		Chimie		TD2	TOURENNE LAURENT
-false	false			TD	01h30		Chimie		TD2	TOURENNE LAURENT
-false	false			TD	01h30		Chimie		TD2	TOURENNE LAURENT
-false	false			TD	01h30		Chimie		TD2	TOURENNE LAURENT
-false	false			TD	01h30		Chimie		TD2	TOURENNE LAURENT
-false	false			TD	01h30		Chimie		TD2	TOURENNE LAURENT
-false	false			TD	01h30		Chimie		TD2	TOURENNE LAURENT
-false	false			TD	01h30		Chimie		TD2	TOURENNE LAURENT
-false	false			TD	01h30		Chimie		TD2	TOURENNE LAURENT
-false	false			TD	01h30		Chimie		TD2	TOURENNE LAURENT
-false	false			TD	01h30		Chimie		TD2	TOURENNE LAURENT
-false	false			TD	01h30		Chimie		TD2	TOURENNE LAURENT
-false	false			TD	01h30		Chimie		TD2	TOURENNE LAURENT
-false	false			TD	01h30		Chimie		TD2	TOURENNE LAURENT
-false	false			TD	01h30		Chimie		TD2	TOURENNE LAURENT
-false	false			TD	01h30		Chimie		TD2	TOURENNE LAURENT
-false	false			TD	01h30		Chimie		TD2	TOURENNE LAURENT
-false	false			TD	01h30		Chimie		TD1	TOURENNE LAURENT
-false	false			TD	01h30		Chimie		TD1	TOURENNE LAURENT
-false	false			TD	01h30		Chimie		TD1	TOURENNE LAURENT
-false	false			TD	01h30		Chimie		TD1	TOURENNE LAURENT
-false	false			TD	01h30		Chimie		TD1	TOURENNE LAURENT
-false	false			TD	01h30		Chimie		TD1	TOURENNE LAURENT
-false	false			TD	01h30		Chimie		TD1	TOURENNE LAURENT
-false	false			TD	01h30		Chimie		TD1	TOURENNE LAURENT
-false	false			TD	01h30		Chimie		TD1	TOURENNE LAURENT
-false	false			TD	01h30		Chimie		TD1	TOURENNE LAURENT
-false	false			TD	01h30		Chimie		TD1	TOURENNE LAURENT
-false	false			TD	01h30		Chimie		TD1	TOURENNE LAURENT
-false	false			TD	01h30		Chimie		TD1	TOURENNE LAURENT
-false	false			TD	01h30		Chimie		TD1	TOURENNE LAURENT
-false	false			TD	01h30		Chimie		TD1	TOURENNE LAURENT
-false	false			TD	01h30		Chimie		TD1	TOURENNE LAURENT
-false	false			TD	01h30		Chimie		TD1	TOURENNE LAURENT
-false	false			TD	01h30		Chimie		TD1	TOURENNE LAURENT
-false	false			TP	04h00		Chimie		TPC	TOURENNE LAURENT
-false	false			TP	04h00		Chimie		TPC	TOURENNE LAURENT
-false	false			TP	04h00		Chimie		TPC	TOURENNE LAURENT
-false	false			TP	04h00		Chimie		TPC	TOURENNE LAURENT
-false	false			TP	04h00		Chimie		TPC	TOURENNE LAURENT
-false	false			TP	04h00		Chimie		TPC	TOURENNE LAURENT
-false	false			TP	02h00		Chimie		TPC	TOURENNE LAURENT
-false	false			TP	02h00		Chimie		TPD	TOURENNE LAURENT
-false	false			TP	04h00		Chimie		TPD	TOURENNE LAURENT
-false	false			TP	04h00		Chimie		TPD	TOURENNE LAURENT
-false	false			TP	04h00		Chimie		TPD	TOURENNE LAURENT
-false	false			TP	04h00		Chimie		TPD	TOURENNE LAURENT
-false	false			TP	04h00		Chimie		TPD	TOURENNE LAURENT
-false	false			TP	04h00		Chimie		TPD	TOURENNE LAURENT
-false	false			TP	04h00		Chimie		TPB	TOURENNE LAURENT
-false	false			TP	04h00		Chimie		TPB	TOURENNE LAURENT
-false	false			TP	04h00		Chimie		TPB	TOURENNE LAURENT
-false	false			TP	04h00		Chimie		TPB	TOURENNE LAURENT
-false	false			TP	04h00		Chimie		TPB	TOURENNE LAURENT
-false	false			TP	04h00		Chimie		TPB	TOURENNE LAURENT
-false	false			TP	02h00		Chimie		TPB	TOURENNE LAURENT
-false	false			TP	02h00		Chimie		TPA	TOURENNE LAURENT
-false	false			TP	04h00		Chimie		TPA	TOURENNE LAURENT
-false	false			TP	04h00		Chimie		TPA	TOURENNE LAURENT
-false	false			TP	04h00		Chimie		TPA	TOURENNE LAURENT
-false	false			TP	04h00		Chimie		TPA	TOURENNE LAURENT
-false	false			TP	04h00		Chimie		TPA	TOURENNE LAURENT
-false	false			TP	04h00		Chimie		TPA	TOURENNE LAURENT
-false	false			TP	02h00		Chimie TPCTL		TPC	TOURENNE LAURENT
-false	false			TP	02h00		Chimie TPCTL		TPD	TOURENNE LAURENT
-false	false			TP	02h00		Chimie TPCTL		TPB	TOURENNE LAURENT
-false	false			TP	02h00		Chimie TPCTL		TPA	TOURENNE LAURENT
-false	false			CM	01h30		Chimie		S1	TOURENNE LAURENT
-false	false			CM	01h30		Chimie		S1	TOURENNE LAURENT
-false	false			CM	01h30		Chimie		S1	TOURENNE LAURENT
-false	false			CM	01h30		Chimie		S1	TOURENNE LAURENT
-false	false			CM	01h30		Chimie		S1	TOURENNE LAURENT
-false	false			CM	01h30		Chimie		S1	TOURENNE LAURENT
-false	false			CM	01h30		Chimie		S1	TOURENNE LAURENT
-false	false			CM	01h30		Chimie		S1	TOURENNE LAURENT
-false	false			CM	01h30		Chimie		S1	TOURENNE LAURENT
-false	false			CM	01h30		Chimie		S1	TOURENNE LAURENT
-false	false			CM	01h30		Chimie		S1	TOURENNE LAURENT
-false	false			CM	01h30		Chimie		S1	TOURENNE LAURENT
-false	false			EXAM	02h00		Chimie CTL		S1	TOURENNE LAURENT
-false	false			TD	01h30		Metro		TD2	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Metro		TD2	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Metro		TD2	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Metro		TD2	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Metro		TD1	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Metro		TD1	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Metro		TD1	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Metro		TD1	ZITOUN VIDAL RATIBA
-false	false			TP	04h00		Metro		TPC	ZITOUN VIDAL RATIBA
-false	false			TP	04h00		Metro		TPC	ZITOUN VIDAL RATIBA
-false	false			TP	04h00		Metro		TPC	ZITOUN VIDAL RATIBA
-false	false			TP	04h00		Metro		TPD	ZITOUN VIDAL RATIBA
-false	false			TP	04h00		Metro		TPD	ZITOUN VIDAL RATIBA
-false	false			TP	04h00		Metro		TPD	ZITOUN VIDAL RATIBA
-false	false			TP	04h00		Metro		TPB	ZITOUN VIDAL RATIBA
-false	false			TP	04h00		Metro		TPB	ZITOUN VIDAL RATIBA
-false	false			TP	04h00		Metro		TPA	ZITOUN VIDAL RATIBA
-false	false			TP	04h00		Metro		TPA	ZITOUN VIDAL RATIBA
-false	false			EXAM	02h00		Metro CTL		S1	ZITOUN VIDAL RATIBA
-false	false			TP	02h00		PPP		TPC	LANDET JEAN MARC, PESNOT PIN DOMINIQUE
-false	false			TP	02h00		PPP		TPC	LANDET JEAN MARC, PESNOT PIN DOMINIQUE
-false	false			TP	02h00		PPP		TPC	LANDET JEAN MARC, PESNOT PIN DOMINIQUE
-false	false			TP	02h00		PPP		TPC	LANDET JEAN MARC, PESNOT PIN DOMINIQUE
-false	false			TP	02h00		PPP		TPC	LANDET JEAN MARC, PESNOT PIN DOMINIQUE
-false	false			TP	01h30		PPP		TPC	LANDET JEAN MARC, PESNOT PIN DOMINIQUE
-false	false			TP	01h30		PPP		TPD	LANDET JEAN MARC, PESNOT PIN DOMINIQUE
-false	false			TP	02h00		PPP		TPD	LANDET JEAN MARC, PESNOT PIN DOMINIQUE
-false	false			TP	02h00		PPP		TPD	LANDET JEAN MARC, PESNOT PIN DOMINIQUE
-false	false			TP	02h00		PPP		TPD	LANDET JEAN MARC, PESNOT PIN DOMINIQUE
-false	false			TP	02h00		PPP		TPD	LANDET JEAN MARC, PESNOT PIN DOMINIQUE
-false	false			TP	02h00		PPP		TPD	LANDET JEAN MARC, PESNOT PIN DOMINIQUE
-false	false			TP	02h00		PPP		TPB	LANDET JEAN MARC, PESNOT PIN DOMINIQUE
-false	false			TP	02h00		PPP		TPB	LANDET JEAN MARC, PESNOT PIN DOMINIQUE
-false	false			TP	02h00		PPP		TPB	LANDET JEAN MARC, PESNOT PIN DOMINIQUE
-false	false			TP	02h00		PPP		TPB	LANDET JEAN MARC, PESNOT PIN DOMINIQUE
-false	false			TP	02h00		PPP		TPB	LANDET JEAN MARC, PESNOT PIN DOMINIQUE
-false	false			TP	01h30		PPP		TPB	LANDET JEAN MARC, PESNOT PIN DOMINIQUE
-false	false			TP	01h30		PPP		TPA	LANDET JEAN MARC, PESNOT PIN DOMINIQUE
-false	false			TP	02h00		PPP		TPA	LANDET JEAN MARC, PESNOT PIN DOMINIQUE
-false	false			TP	02h00		PPP		TPA	LANDET JEAN MARC, PESNOT PIN DOMINIQUE
-false	false			TP	02h00		PPP		TPA	LANDET JEAN MARC, PESNOT PIN DOMINIQUE
-false	false			TP	02h00		PPP		TPA	LANDET JEAN MARC, PESNOT PIN DOMINIQUE
-false	false			TP	02h00		PPP		TPA	LANDET JEAN MARC, PESNOT PIN DOMINIQUE
-false	false			TD	01h30		Atom		TD2	TOURENNE LAURENT
-false	false			TD	01h30		Atom		TD2	TOURENNE LAURENT
-false	false			TD	01h30		Atom		TD2	TOURENNE LAURENT
-false	false			TD	01h30		Atom		TD2	TOURENNE LAURENT
-false	false			TD	01h30		Atom		TD2	TOURENNE LAURENT
-false	false			TD	01h30		Atom		TD2	TOURENNE LAURENT
-false	false			TD	01h30		Atom		TD1	TOURENNE LAURENT
-false	false			TD	01h30		Atom		TD1	TOURENNE LAURENT
-false	false			TD	01h30		Atom		TD1	TOURENNE LAURENT
-false	false			TD	01h30		Atom		TD1	TOURENNE LAURENT
-false	false			TD	01h30		Atom		TD1	TOURENNE LAURENT
-false	false			TD	01h30		Atom		TD1	TOURENNE LAURENT
-false	false			CM	01h30		Atom		S1	TOURENNE LAURENT
-false	false			CM	01h30		Atom		S1	TOURENNE LAURENT
-false	false			CM	01h30		Atom		S1	TOURENNE LAURENT
-false	false			CM	01h30		Atom		S1	TOURENNE LAURENT
-false	false			EXAM	02h00		Atom CTL		S1	TOURENNE LAURENT
-false	false			TD	01h30		Thermo		TD2	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Thermo		TD2	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Thermo		TD2	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Thermo		TD2	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Thermo		TD2	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Thermo		TD2	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Thermo		TD2	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Thermo		TD2	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Thermo		TD2	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Thermo		TD2	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Thermo		TD2	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Thermo		TD1	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Thermo		TD1	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Thermo		TD1	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Thermo		TD1	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Thermo		TD1	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Thermo		TD1	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Thermo		TD1	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Thermo		TD1	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Thermo		TD1	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Thermo		TD1	ZITOUN VIDAL RATIBA
-false	false			TD	01h30		Thermo		TD1	ZITOUN VIDAL RATIBA
-false	false			TP	04h00		Thermo		TPC	ZITOUN VIDAL RATIBA
-false	false			TP	04h00		Thermo		TPC	ZITOUN VIDAL RATIBA
-false	false			TP	04h00		Thermo		TPC	ZITOUN VIDAL RATIBA
-false	false			TP	04h00		Thermo		TPC	ZITOUN VIDAL RATIBA
-false	false			TP	04h00		Thermo		TPC	ZITOUN VIDAL RATIBA
-false	false			TP	04h00		Thermo		TPC	ZITOUN VIDAL RATIBA
-false	false			TP	04h00		Thermo		TPC	ZITOUN VIDAL RATIBA
-false	false			TP	04h00		Thermo		TPD	ZITOUN VIDAL RATIBA
-false	false			TP	04h00		Thermo		TPD	ZITOUN VIDAL RATIBA
-false	false			TP	04h00		Thermo		TPD	ZITOUN VIDAL RATIBA
-false	false			TP	04h00		Thermo		TPD	ZITOUN VIDAL RATIBA
-false	false			TP	04h00		Thermo		TPD	ZITOUN VIDAL RATIBA
-false	false			TP	04h00		Thermo		TPD	ZITOUN VIDAL RATIBA
-false	false			TP	04h00		Thermo		TPD	ZITOUN VIDAL RATIBA
-false	false			TP	04h00		Thermo		TPB	ZITOUN VIDAL RATIBA
-false	false			TP	04h00		Thermo		TPB	ZITOUN VIDAL RATIBA
-false	false			TP	04h00		Thermo		TPB	ZITOUN VIDAL RATIBA
-false	false			TP	04h00		Thermo		TPB	ZITOUN VIDAL RATIBA
-false	false			TP	04h00		Thermo		TPB	ZITOUN VIDAL RATIBA
-false	false			TP	04h00		Thermo		TPB	ZITOUN VIDAL RATIBA
-false	false			TP	04h00		Thermo		TPB	ZITOUN VIDAL RATIBA
-false	false			TP	04h00		Thermo		TPA	ZITOUN VIDAL RATIBA
-false	false			TP	04h00		Thermo		TPA	ZITOUN VIDAL RATIBA
-false	false			TP	04h00		Thermo		TPA	ZITOUN VIDAL RATIBA
-false	false			TP	04h00		Thermo		TPA	ZITOUN VIDAL RATIBA
-false	false			TP	04h00		Thermo		TPA	ZITOUN VIDAL RATIBA
-false	false			TP	04h00		Thermo		TPA	ZITOUN VIDAL RATIBA
-false	false			TP	04h00		Thermo		TPA	ZITOUN VIDAL RATIBA
-false	false			TP	02h00		Termo TPCTL		S1	ZITOUN VIDAL RATIBA
-false	false			CM	01h30		Thermo		S1	ZITOUN VIDAL RATIBA
-false	false			CM	01h30		Thermo		S1	ZITOUN VIDAL RATIBA
-false	false			CM	01h30		Thermo		S1	ZITOUN VIDAL RATIBA
-false	false			CM	01h30		Thermo		S1	ZITOUN VIDAL RATIBA
-false	false			CM	01h30		Thermo		S1	ZITOUN VIDAL RATIBA
-false	false			CM	01h30		Thermo		S1	ZITOUN VIDAL RATIBA
-false	false			CM	01h30		Thermo		S1	ZITOUN VIDAL RATIBA
-false	false			EXAM	02h00		Thermo CTL		S1	ZITOUN VIDAL RATIBA
+false	false	S36: 05 sept. 11 sept.	Z2PT013A	Vendredi 09/09/2011	TD	02h00	15h15	Anglais		TD1	GUESDON VIVIANE
+false	false	S36: 05 sept. 11 sept.	Z2PT012A	Vendredi 09/09/2011	TD	02h00	15h15	Communication	BC-138	TD2	JOURNEAUX CLAIRE
+false	false	S36: 05 sept. 11 sept.	Z2PT010A	Vendredi 09/09/2011	TD	02h00	15h15	Mathématiques	GT-B2	TD3	BARITEAU CHRISTINE
+false	false	S36: 05 sept. 11 sept.	Z2PT011A	Vendredi 09/09/2011	CM	01h30	13h30	Mécanique des fluides	AMPHI1	S3	TARTARIN JACKY
+false	false	S36: 05 sept. 11 sept.	Z2PT015A	Vendredi 09/09/2011	CM	01h30	10h30	Transfert thermique	AMPHI2	S3	DORIGNAC EVA
+false	false	S36: 05 sept. 11 sept.	Z2PT016A	Vendredi 09/09/2011	CM	01h30	08h45	Régulation	AMPHI1	S3	LEGRAND STEPHANE
+false	false	S36: 05 sept. 11 sept.	Z2PT013A	Jeudi 08/09/2011	TD	02h00	15h30	Anglais		TD2	GUESDON VIVIANE
+false	false	S36: 05 sept. 11 sept.	Z2PT012A	Jeudi 08/09/2011	TD	02h00	15h30	Communication	BC-138	TD3	JOURNEAUX CLAIRE
+false	false	S36: 05 sept. 11 sept.	Z2PT013A	Jeudi 08/09/2011	TD	02h00	13h30	Anglais		TD3	GUESDON VIVIANE
+false	false	S36: 05 sept. 11 sept.	Z2PT010A	Jeudi 08/09/2011	TD	02h00	13h30	Mathématiques	GT-B1	TD2	SYMESAK FREDERIC
+false	false	S36: 05 sept. 11 sept.	Z2PT010A	Jeudi 08/09/2011	TD	02h00	13h30	Mathématiques	GT-B2	TD1	BARITEAU CHRISTINE
+false	false	S36: 05 sept. 11 sept.	Z2PT010A	Jeudi 08/09/2011	CM	01h30	10h30	Mathématiques	AMPHI1	S3	BARITEAU CHRISTINE
+false	false	S36: 05 sept. 11 sept.	_Z1PT11_REUNION	Jeudi 08/09/2011	Réunion	01h15	09h00	Réunion Rentrée S3	BC-01	S3	BARITEAU CHRISTINE
+false	false		Z2PT013A		TD	02h00		Anglais		TD1	
+false	false		Z2PT013A		TD	02h00		Anglais		TD1	
+false	false		Z2PT013A		TD	02h00		Anglais		TD1	
+false	false		Z2PT013A		TD	02h00		Anglais		TD1	
+false	false		Z2PT013A		TD	02h00		Anglais		TD1	
+false	false		Z2PT013A		TD	02h00		Anglais		TD1	
+false	false		Z2PT013A		TD	02h00		Anglais		TD1	
+false	false		Z2PT013A		TD	02h00		Anglais		TD1	
+false	false		Z2PT013A		TD	02h00		Anglais		TD1	
+false	false		Z2PT013A		TD	02h00		Anglais		TD1	
+false	false		Z2PT013A		TD	02h00		Anglais		TD1	
+false	false		Z2PT013A		TD	02h00		Anglais		TD1	
+false	false		Z2PT013A		TD	02h00		Anglais		TD1	
+false	false		Z2PT013A		TD	02h00		Anglais		TD1	
+false	false		Z2PT013A		TD	02h00		Anglais		TD2	
+false	false		Z2PT013A		TD	02h00		Anglais		TD2	
+false	false		Z2PT013A		TD	02h00		Anglais		TD2	
+false	false		Z2PT013A		TD	02h00		Anglais		TD2	
+false	false		Z2PT013A		TD	02h00		Anglais		TD2	
+false	false		Z2PT013A		TD	02h00		Anglais		TD2	
+false	false		Z2PT013A		TD	02h00		Anglais		TD2	
+false	false		Z2PT013A		TD	02h00		Anglais		TD2	
+false	false		Z2PT013A		TD	02h00		Anglais		TD2	
+false	false		Z2PT013A		TD	02h00		Anglais		TD2	
+false	false		Z2PT013A		TD	02h00		Anglais		TD2	
+false	false		Z2PT013A		TD	02h00		Anglais		TD2	
+false	false		Z2PT013A		TD	02h00		Anglais		TD2	
+false	false		Z2PT013A		TD	02h00		Anglais		TD2	
+false	false		Z2PT013A		TD	02h00		Anglais		TD3	
+false	false		Z2PT013A		TD	02h00		Anglais		TD3	
+false	false		Z2PT013A		TD	02h00		Anglais		TD3	
+false	false		Z2PT013A		TD	02h00		Anglais		TD3	
+false	false		Z2PT013A		TD	02h00		Anglais		TD3	
+false	false		Z2PT013A		TD	02h00		Anglais		TD3	
+false	false		Z2PT013A		TD	02h00		Anglais		TD3	
+false	false		Z2PT013A		TD	02h00		Anglais		TD3	
+false	false		Z2PT013A		TD	02h00		Anglais		TD3	
+false	false		Z2PT013A		TD	02h00		Anglais		TD3	
+false	false		Z2PT013A		TD	02h00		Anglais		TD3	
+false	false		Z2PT013A		TD	02h00		Anglais		TD3	
+false	false		Z2PT013A		TD	02h00		Anglais		TD3	
+false	false		Z2PT013A		TD	02h00		Anglais		TD3	
+false	false		Z2PT013A		TD	02h00		Anglais		TD4	
+false	false		Z2PT013A		TD	02h00		Anglais		TD4	
+false	false		Z2PT013A		TD	02h00		Anglais		TD4	
+false	false		Z2PT013A		TD	02h00		Anglais		TD4	
+false	false		Z2PT013A		TD	02h00		Anglais		TD4	
+false	false		Z2PT013A		TD	02h00		Anglais		TD4	
+false	false		Z2PT013A		TD	02h00		Anglais		TD4	
+false	false		Z2PT013A		TD	02h00		Anglais		TD4	
+false	false		Z2PT013A		TD	02h00		Anglais		TD4	
+false	false		Z2PT013A		TD	02h00		Anglais		TD4	
+false	false		Z2PT013A		TD	02h00		Anglais		TD4	
+false	false		Z2PT013A		TD	02h00		Anglais		TD4	
+false	false		Z2PT013A		TD	02h00		Anglais		TD4	
+false	false		Z2PT013A		TD	02h00		Anglais		TD4	
+false	false		Z2PT013A		TD	02h00		Anglais		TD4	
+false	false		Z2PT012A		TD	02h00		Communication		TD4	
+false	false		Z2PT012A		TD	02h00		Communication		TD4	
+false	false		Z2PT012A		TD	02h00		Communication		TD4	
+false	false		Z2PT012A		TD	02h00		Communication		TD4	
+false	false		Z2PT012A		TD	02h00		Communication		TD4	
+false	false		Z2PT012A		TD	02h00		Communication		TD4	
+false	false		Z2PT012A		TD	02h00		Communication		TD4	
+false	false		Z2PT012A		TD	02h00		Communication		TD4	
+false	false		Z2PT012A		TD	02h00		Communication		TD4	
+false	false		Z2PT012A		TD	02h00		Communication		TD4	
+false	false		Z2PT012A		TD	02h00		Communication		TD4	
+false	false		Z2PT012A		TD	02h00		Communication		TD3	
+false	false		Z2PT012A		TD	02h00		Communication		TD3	
+false	false		Z2PT012A		TD	02h00		Communication		TD3	
+false	false		Z2PT012A		TD	02h00		Communication		TD3	
+false	false		Z2PT012A		TD	02h00		Communication		TD3	
+false	false		Z2PT012A		TD	02h00		Communication		TD3	
+false	false		Z2PT012A		TD	02h00		Communication		TD3	
+false	false		Z2PT012A		TD	02h00		Communication		TD3	
+false	false		Z2PT012A		TD	02h00		Communication		TD3	
+false	false		Z2PT012A		TD	02h00		Communication		TD3	
+false	false		Z2PT012A		TD	02h00		Communication		TD2	
+false	false		Z2PT012A		TD	02h00		Communication		TD2	
+false	false		Z2PT012A		TD	02h00		Communication		TD2	
+false	false		Z2PT012A		TD	02h00		Communication		TD2	
+false	false		Z2PT012A		TD	02h00		Communication		TD2	
+false	false		Z2PT012A		TD	02h00		Communication		TD2	
+false	false		Z2PT012A		TD	02h00		Communication		TD2	
+false	false		Z2PT012A		TD	02h00		Communication		TD2	
+false	false		Z2PT012A		TD	02h00		Communication		TD2	
+false	false		Z2PT012A		TD	02h00		Communication		TD2	
+false	false		Z2PT012A		TD	02h00		Communication		TD1	
+false	false		Z2PT012A		TD	02h00		Communication		TD1	
+false	false		Z2PT012A		TD	02h00		Communication		TD1	
+false	false		Z2PT012A		TD	02h00		Communication		TD1	
+false	false		Z2PT012A		TD	02h00		Communication		TD1	
+false	false		Z2PT012A		TD	02h00		Communication		TD1	
+false	false		Z2PT012A		TD	02h00		Communication		TD1	
+false	false		Z2PT012A		TD	02h00		Communication		TD1	
+false	false		Z2PT012A		TD	02h00		Communication		TD1	
+false	false		Z2PT012A		TD	02h00		Communication		TD1	
+false	false		Z2PT012A		TD	02h00		Communication		TD1	
+false	false		Z2PT012A		TP	04h00		Communication		TP8	
+false	false		Z2PT012A		TP	04h00		Communication		TP7	
+false	false		Z2PT012A		TP	04h00		Communication		TP6	
+false	false		Z2PT012A		TP	04h00		Communication		TP5	
+false	false		Z2PT012A		TP	04h00		Communication		TP4	
+false	false		Z2PT012A		TP	04h00		Communication		TP3	
+false	false		Z2PT012A		TP	04h00		Communication		TP2	
+false	false		Z2PT012A		TP	04h00		Communication		TP1	
+false	false		Z2PT018A		TD	02h00		Informatique industrielle		TD4	
+false	false		Z2PT018A		TD	02h00		Informatique industrielle		TD3	
+false	false		Z2PT018A		TD	02h00		Informatique industrielle		TD2	
+false	false		Z2PT018A		TD	02h00		Informatique industrielle		TD1	
+false	false		Z2PT018A		TP	04h00		Informatique industrielle		TP8	
+false	false		Z2PT018A		TP	04h00		Informatique industrielle		TP8	
+false	false		Z2PT018A		TP	04h00		Informatique industrielle		TP8	
+false	false		Z2PT018A		TP	04h00		Informatique industrielle		TP7	
+false	false		Z2PT018A		TP	04h00		Informatique industrielle		TP7	
+false	false		Z2PT018A		TP	04h00		Informatique industrielle		TP7	
+false	false		Z2PT018A		TP	04h00		Informatique industrielle		TP6	
+false	false		Z2PT018A		TP	04h00		Informatique industrielle		TP6	
+false	false		Z2PT018A		TP	04h00		Informatique industrielle		TP6	
+false	false		Z2PT018A		TP	04h00		Informatique industrielle		TP5	
+false	false		Z2PT018A		TP	04h00		Informatique industrielle		TP5	
+false	false		Z2PT018A		TP	04h00		Informatique industrielle		TP5	
+false	false		Z2PT018A		TP	04h00		Informatique industrielle		TP4	
+false	false		Z2PT018A		TP	04h00		Informatique industrielle		TP4	
+false	false		Z2PT018A		TP	04h00		Informatique industrielle		TP4	
+false	false		Z2PT018A		TP	04h00		Informatique industrielle		TP3	
+false	false		Z2PT018A		TP	04h00		Informatique industrielle		TP3	
+false	false		Z2PT018A		TP	04h00		Informatique industrielle		TP3	
+false	false		Z2PT018A		TP	04h00		Informatique industrielle		TP2	
+false	false		Z2PT018A		TP	04h00		Informatique industrielle		TP2	
+false	false		Z2PT018A		TP	04h00		Informatique industrielle		TP2	
+false	false		Z2PT018A		TP	04h00		Informatique industrielle		TP1	
+false	false		Z2PT018A		TP	04h00		Informatique industrielle		TP1	
+false	false		Z2PT018A		TP	04h00		Informatique industrielle		TP1	
+false	false		Z2PT018A		CM	01h30		Informatique industrielle		S3	
+false	false		Z2PT018A		CM	01h30		Informatique industrielle		S3	
+false	false		Z2PT018A		CM	01h30		Informatique industrielle		S3	
+false	false		Z2PT018A		CM	01h30		Informatique industrielle		S3	
+false	false		Z2PT022A		TD	02h00		Machines frigorifiques		TD1	
+false	false		Z2PT022A		TD	02h00		Machines frigorifiques		TD1	
+false	false		Z2PT022A		TD	02h00		Machines frigorifiques		TD1	
+false	false		Z2PT022A		TD	02h00		Machines frigorifiques		TD1	
+false	false		Z2PT022A		TD	02h00		Machines frigorifiques		TD1	
+false	false		Z2PT022A		TD	02h00		Machines frigorifiques		TD1	
+false	false		Z2PT022A		TD	02h00		Machines frigorifiques		TD1	
+false	false		Z2PT022A		TD	02h00		Machines frigorifiques		TD2	
+false	false		Z2PT022A		TD	02h00		Machines frigorifiques		TD2	
+false	false		Z2PT022A		TD	02h00		Machines frigorifiques		TD2	
+false	false		Z2PT022A		TD	02h00		Machines frigorifiques		TD2	
+false	false		Z2PT022A		TD	02h00		Machines frigorifiques		TD2	
+false	false		Z2PT022A		TD	02h00		Machines frigorifiques		TD2	
+false	false		Z2PT022A		TD	02h00		Machines frigorifiques		TD2	
+false	false		Z2PT022A		TD	02h00		Machines frigorifiques		TD3	
+false	false		Z2PT022A		TD	02h00		Machines frigorifiques		TD3	
+false	false		Z2PT022A		TD	02h00		Machines frigorifiques		TD3	
+false	false		Z2PT022A		TD	02h00		Machines frigorifiques		TD3	
+false	false		Z2PT022A		TD	02h00		Machines frigorifiques		TD3	
+false	false		Z2PT022A		TD	02h00		Machines frigorifiques		TD3	
+false	false		Z2PT022A		TD	02h00		Machines frigorifiques		TD3	
+false	false		Z2PT022A		TD	02h00		Machines frigorifiques		TD4	
+false	false		Z2PT022A		TD	02h00		Machines frigorifiques		TD4	
+false	false		Z2PT022A		TD	02h00		Machines frigorifiques		TD4	
+false	false		Z2PT022A		TD	02h00		Machines frigorifiques		TD4	
+false	false		Z2PT022A		TD	02h00		Machines frigorifiques		TD4	
+false	false		Z2PT022A		TD	02h00		Machines frigorifiques		TD4	
+false	false		Z2PT022A		TD	02h00		Machines frigorifiques		TD4	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP1	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP1	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP1	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP2	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP2	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP2	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP3	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP3	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP3	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP4	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP4	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP4	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP5	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP5	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP5	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP6	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP6	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP6	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP7	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP7	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP7	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP8	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP8	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP8	
+false	false		Z2PT022A		CM	01h30		Machines frigorifiques		S3	
+false	false		Z2PT022A		CM	01h30		Machines frigorifiques		S3	
+false	false		Z2PT022A		CM	01h30		Machines frigorifiques		S3	
+false	false		Z2PT022A		CM	01h30		Machines frigorifiques		S3	
+false	false		Z2PT022A		CM	01h30		Machines frigorifiques		S3	
+false	false		Z2PT022A		CM	01h30		Machines frigorifiques		S3	
+false	false		Z2PT022A		CM	01h30		Machines frigorifiques		S3	
+false	false		Z2PT022A		CM	01h30		Machines frigorifiques		S3	
+false	false		Z2PT021A		TD	02h00		Machines thermiques		TD4	
+false	false		Z2PT021A		TD	02h00		Machines thermiques		TD4	
+false	false		Z2PT021A		TD	02h00		Machines thermiques		TD4	
+false	false		Z2PT021A		TD	02h00		Machines thermiques		TD4	
+false	false		Z2PT021A		TD	02h00		Machines thermiques		TD3	
+false	false		Z2PT021A		TD	02h00		Machines thermiques		TD3	
+false	false		Z2PT021A		TD	02h00		Machines thermiques		TD3	
+false	false		Z2PT021A		TD	02h00		Machines thermiques		TD3	
+false	false		Z2PT021A		TD	02h00		Machines thermiques		TD2	
+false	false		Z2PT021A		TD	02h00		Machines thermiques		TD2	
+false	false		Z2PT021A		TD	02h00		Machines thermiques		TD2	
+false	false		Z2PT021A		TD	02h00		Machines thermiques		TD2	
+false	false		Z2PT021A		TD	02h00		Machines thermiques		TD1	
+false	false		Z2PT021A		TD	02h00		Machines thermiques		TD1	
+false	false		Z2PT021A		TD	02h00		Machines thermiques		TD1	
+false	false		Z2PT021A		TD	02h00		Machines thermiques		TD1	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP8	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP8	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP8	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP8	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP8	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP8	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP7	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP7	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP7	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP7	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP7	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP7	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP6	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP6	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP6	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP6	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP6	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP6	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP5	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP5	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP5	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP5	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP5	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP5	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP4	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP4	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP4	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP4	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP4	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP4	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP3	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP3	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP3	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP3	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP3	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP3	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP2	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP2	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP2	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP2	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP2	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP2	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP1	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP1	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP1	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP1	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP1	
+false	false		Z2PT021A		TP	04h00		Machines thermiques		TP1	
+false	false		Z2PT021A		CM	02h00		Machines thermiques		S3	
+false	false		Z2PT021A		CM	02h00		Machines thermiques		S3	
+false	false		Z2PT021A		CM	02h00		Machines thermiques		S3	
+false	false		Z2PT021A		CM	02h00		Machines thermiques		S3	
+false	false		Z2PT021A		CM	02h00		Machines thermiques		S3	
+false	false		Z2PT021A		CM	02h00		Machines thermiques		S3	
+false	false		Z2PT021A		CM	02h00		Machines thermiques		S3	
+false	false		Z2PT021A		CM	02h00		Machines thermiques		S3	
+false	false		Z2PT021A		CM	02h00		Machines thermiques		S3	
+false	false		Z2PT021A		CM	02h00		Machines thermiques		S3	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD4	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD4	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD4	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD4	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD4	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD4	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD4	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD4	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD4	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD4	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD4	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD4	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD4	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD4	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD4	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD3	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD3	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD3	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD3	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD3	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD3	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD3	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD3	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD3	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD3	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD3	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD3	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD3	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD3	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD2	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD2	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD2	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD2	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD2	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD2	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD2	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD2	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD2	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD2	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD2	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD2	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD2	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD2	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD1	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD1	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD1	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD1	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD1	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD1	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD1	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD1	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD1	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD1	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD1	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD1	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD1	
+false	false		Z2PT010A		TD	02h00		Mathématiques		TD1	
+false	false		Z2PT010A		CM	01h30		Mathématiques		S3	
+false	false		Z2PT010A		CM	01h30		Mathématiques		S3	
+false	false		Z2PT010A		CM	01h30		Mathématiques		S3	
+false	false		Z2PT010A		CM	01h30		Mathématiques		S3	
+false	false		Z2PT010A		CM	01h30		Mathématiques		S3	
+false	false		Z2PT010A		CM	01h30		Mathématiques		S3	
+false	false		Z2PT010A		CM	01h30		Mathématiques		S3	
+false	false		Z2PT010A		CM	01h30		Mathématiques		S3	
+false	false		Z2PT010A		CM	01h30		Mathématiques		S3	
+false	false		Z2PT010A		CM	01h30		Mathématiques		S3	
+false	false		Z2PT010A		CM	01h30		Mathématiques		S3	
+false	false		Z2PT010A		CM	01h30		Mathématiques		S3	
+false	false		Z2PT010A		CM	01h30		Mathématiques		S3	
+false	false		Z2PT011A		TD	02h00		Mécanique des fluides		TD4	
+false	false		Z2PT011A		TD	02h00		Mécanique des fluides		TD4	
+false	false		Z2PT011A		TD	02h00		Mécanique des fluides		TD4	
+false	false		Z2PT011A		TD	02h00		Mécanique des fluides		TD4	
+false	false		Z2PT011A		TD	02h00		Mécanique des fluides		TD4	
+false	false		Z2PT011A		TD	02h00		Mécanique des fluides		TD4	
+false	false		Z2PT011A		TD	02h00		Mécanique des fluides		TD3	
+false	false		Z2PT011A		TD	02h00		Mécanique des fluides		TD3	
+false	false		Z2PT011A		TD	02h00		Mécanique des fluides		TD3	
+false	false		Z2PT011A		TD	02h00		Mécanique des fluides		TD3	
+false	false		Z2PT011A		TD	02h00		Mécanique des fluides		TD3	
+false	false		Z2PT011A		TD	02h00		Mécanique des fluides		TD3	
+false	false		Z2PT011A		TD	02h00		Mécanique des fluides		TD2	
+false	false		Z2PT011A		TD	02h00		Mécanique des fluides		TD2	
+false	false		Z2PT011A		TD	02h00		Mécanique des fluides		TD2	
+false	false		Z2PT011A		TD	02h00		Mécanique des fluides		TD2	
+false	false		Z2PT011A		TD	02h00		Mécanique des fluides		TD2	
+false	false		Z2PT011A		TD	02h00		Mécanique des fluides		TD2	
+false	false		Z2PT011A		TD	02h00		Mécanique des fluides		TD1	
+false	false		Z2PT011A		TD	02h00		Mécanique des fluides		TD1	
+false	false		Z2PT011A		TD	02h00		Mécanique des fluides		TD1	
+false	false		Z2PT011A		TD	02h00		Mécanique des fluides		TD1	
+false	false		Z2PT011A		TD	02h00		Mécanique des fluides		TD1	
+false	false		Z2PT011A		TD	02h00		Mécanique des fluides		TD1	
+false	false		Z2PT011A		TP	04h00		Mécanique des fluides		TP8	
+false	false		Z2PT011A		TP	04h00		Mécanique des fluides		TP8	
+false	false		Z2PT011A		TP	04h00		Mécanique des fluides		TP8	
+false	false		Z2PT011A		TP	04h00		Mécanique des fluides		TP7	
+false	false		Z2PT011A		TP	04h00		Mécanique des fluides		TP7	
+false	false		Z2PT011A		TP	04h00		Mécanique des fluides		TP7	
+false	false		Z2PT011A		TP	04h00		Mécanique des fluides		TP6	
+false	false		Z2PT011A		TP	04h00		Mécanique des fluides		TP6	
+false	false		Z2PT011A		TP	04h00		Mécanique des fluides		TP6	
+false	false		Z2PT011A		TP	04h00		Mécanique des fluides		TP5	
+false	false		Z2PT011A		TP	04h00		Mécanique des fluides		TP5	
+false	false		Z2PT011A		TP	04h00		Mécanique des fluides		TP5	
+false	false		Z2PT011A		TP	04h00		Mécanique des fluides		TP4	
+false	false		Z2PT011A		TP	04h00		Mécanique des fluides		TP4	
+false	false		Z2PT011A		TP	04h00		Mécanique des fluides		TP4	
+false	false		Z2PT011A		TP	04h00		Mécanique des fluides		TP3	
+false	false		Z2PT011A		TP	04h00		Mécanique des fluides		TP3	
+false	false		Z2PT011A		TP	04h00		Mécanique des fluides		TP3	
+false	false		Z2PT011A		TP	04h00		Mécanique des fluides		TP2	
+false	false		Z2PT011A		TP	04h00		Mécanique des fluides		TP2	
+false	false		Z2PT011A		TP	04h00		Mécanique des fluides		TP2	
+false	false		Z2PT011A		TP	04h00		Mécanique des fluides		TP1	
+false	false		Z2PT011A		TP	04h00		Mécanique des fluides		TP1	
+false	false		Z2PT011A		TP	04h00		Mécanique des fluides		TP1	
+false	false		Z2PT011A		CM	01h30		Mécanique des fluides		S3	
+false	false		Z2PT011A		CM	01h30		Mécanique des fluides		S3	
+false	false		Z2PT011A		CM	01h30		Mécanique des fluides		S3	
+false	false		Z2PT011A		CM	01h30		Mécanique des fluides		S3	
+false	false		Z2PT011A		CM	01h30		Mécanique des fluides		S3	
+false	false		Z2PT011A		CM	01h30		Mécanique des fluides		S3	
+false	false		Z2PT011A		CM	01h30		Mécanique des fluides		S3	
+false	false		Z2PT040A		Projet	02h00		Projet tutoré		S3	
+false	false		Z2PT016A		TD	02h00		Régulation		TD4	
+false	false		Z2PT016A		TD	02h00		Régulation		TD4	
+false	false		Z2PT016A		TD	02h00		Régulation		TD4	
+false	false		Z2PT016A		TD	02h00		Régulation		TD4	
+false	false		Z2PT016A		TD	02h00		Régulation		TD4	
+false	false		Z2PT016A		TD	02h00		Régulation		TD4	
+false	false		Z2PT016A		TD	02h00		Régulation		TD4	
+false	false		Z2PT016A		TD	02h00		Régulation		TD4	
+false	false		Z2PT016A		TD	02h00		Régulation		TD4	
+false	false		Z2PT016A		TD	02h00		Régulation		TD4	
+false	false		Z2PT016A		TD	02h00		Régulation		TD4	
+false	false		Z2PT016A		TD	02h00		Régulation		TD3	
+false	false		Z2PT016A		TD	02h00		Régulation		TD3	
+false	false		Z2PT016A		TD	02h00		Régulation		TD3	
+false	false		Z2PT016A		TD	02h00		Régulation		TD3	
+false	false		Z2PT016A		TD	02h00		Régulation		TD3	
+false	false		Z2PT016A		TD	02h00		Régulation		TD3	
+false	false		Z2PT016A		TD	02h00		Régulation		TD3	
+false	false		Z2PT016A		TD	02h00		Régulation		TD3	
+false	false		Z2PT016A		TD	02h00		Régulation		TD3	
+false	false		Z2PT016A		TD	02h00		Régulation		TD3	
+false	false		Z2PT016A		TD	02h00		Régulation		TD3	
+false	false		Z2PT016A		TD	02h00		Régulation		TD2	
+false	false		Z2PT016A		TD	02h00		Régulation		TD2	
+false	false		Z2PT016A		TD	02h00		Régulation		TD2	
+false	false		Z2PT016A		TD	02h00		Régulation		TD2	
+false	false		Z2PT016A		TD	02h00		Régulation		TD2	
+false	false		Z2PT016A		TD	02h00		Régulation		TD2	
+false	false		Z2PT016A		TD	02h00		Régulation		TD2	
+false	false		Z2PT016A		TD	02h00		Régulation		TD2	
+false	false		Z2PT016A		TD	02h00		Régulation		TD2	
+false	false		Z2PT016A		TD	02h00		Régulation		TD2	
+false	false		Z2PT016A		TD	02h00		Régulation		TD2	
+false	false		Z2PT016A		TD	02h00		Régulation		TD1	
+false	false		Z2PT016A		TD	02h00		Régulation		TD1	
+false	false		Z2PT016A		TD	02h00		Régulation		TD1	
+false	false		Z2PT016A		TD	02h00		Régulation		TD1	
+false	false		Z2PT016A		TD	02h00		Régulation		TD1	
+false	false		Z2PT016A		TD	02h00		Régulation		TD1	
+false	false		Z2PT016A		TD	02h00		Régulation		TD1	
+false	false		Z2PT016A		TD	02h00		Régulation		TD1	
+false	false		Z2PT016A		TD	02h00		Régulation		TD1	
+false	false		Z2PT016A		TD	02h00		Régulation		TD1	
+false	false		Z2PT016A		TD	02h00		Régulation		TD1	
+false	false		Z2PT016A		TP	04h00		Régulation		TP8	
+false	false		Z2PT016A		TP	04h00		Régulation		TP8	
+false	false		Z2PT016A		TP	04h00		Régulation		TP8	
+false	false		Z2PT016A		TP	04h00		Régulation		TP8	
+false	false		Z2PT016A		TP	04h00		Régulation		TP7	
+false	false		Z2PT016A		TP	04h00		Régulation		TP7	
+false	false		Z2PT016A		TP	04h00		Régulation		TP7	
+false	false		Z2PT016A		TP	04h00		Régulation		TP7	
+false	false		Z2PT016A		TP	04h00		Régulation		TP6	
+false	false		Z2PT016A		TP	04h00		Régulation		TP6	
+false	false		Z2PT016A		TP	04h00		Régulation		TP6	
+false	false		Z2PT016A		TP	04h00		Régulation		TP6	
+false	false		Z2PT016A		TP	04h00		Régulation		TP5	
+false	false		Z2PT016A		TP	04h00		Régulation		TP5	
+false	false		Z2PT016A		TP	04h00		Régulation		TP5	
+false	false		Z2PT016A		TP	04h00		Régulation		TP5	
+false	false		Z2PT016A		TP	04h00		Régulation		TP4	
+false	false		Z2PT016A		TP	04h00		Régulation		TP4	
+false	false		Z2PT016A		TP	04h00		Régulation		TP4	
+false	false		Z2PT016A		TP	04h00		Régulation		TP4	
+false	false		Z2PT016A		TP	04h00		Régulation		TP3	
+false	false		Z2PT016A		TP	04h00		Régulation		TP3	
+false	false		Z2PT016A		TP	04h00		Régulation		TP3	
+false	false		Z2PT016A		TP	04h00		Régulation		TP3	
+false	false		Z2PT016A		TP	04h00		Régulation		TP2	
+false	false		Z2PT016A		TP	04h00		Régulation		TP2	
+false	false		Z2PT016A		TP	04h00		Régulation		TP2	
+false	false		Z2PT016A		TP	04h00		Régulation		TP2	
+false	false		Z2PT016A		TP	04h00		Régulation		TP1	
+false	false		Z2PT016A		TP	04h00		Régulation		TP1	
+false	false		Z2PT016A		TP	04h00		Régulation		TP1	
+false	false		Z2PT016A		TP	04h00		Régulation		TP1	
+false	false		Z2PT016A		CM	01h30		Régulation		S3	
+false	false		Z2PT016A		CM	01h30		Régulation		S3	
+false	false		Z2PT016A		CM	01h30		Régulation		S3	
+false	false		Z2PT016A		CM	01h30		Régulation		S3	
+false	false		Z2PT016A		CM	01h30		Régulation		S3	
+false	false		Z2PT016A		CM	01h30		Régulation		S3	
+false	false		Z2PT016A		CM	01h30		Régulation		S3	
+false	false		Z2PT020A		TD	02h00		Thermique des locaux		TD4	
+false	false		Z2PT020A		TD	02h00		Thermique des locaux		TD4	
+false	false		Z2PT020A		TD	02h00		Thermique des locaux		TD3	
+false	false		Z2PT020A		TD	02h00		Thermique des locaux		TD3	
+false	false		Z2PT020A		TD	02h00		Thermique des locaux		TD2	
+false	false		Z2PT020A		TD	02h00		Thermique des locaux		TD2	
+false	false		Z2PT020A		TD	02h00		Thermique des locaux		TD1	
+false	false		Z2PT020A		TD	02h00		Thermique des locaux		TD1	
+false	false		Z2PT020A		TD	02h00		Thermique des locaux- climatisation		TD4	
+false	false		Z2PT020A		TD	02h00		Thermique des locaux- climatisation		TD4	
+false	false		Z2PT020A		TD	02h00		Thermique des locaux- climatisation		TD4	
+false	false		Z2PT020A		TD	02h00		Thermique des locaux- climatisation		TD4	
+false	false		Z2PT020A		TD	02h00		Thermique des locaux- climatisation		TD4	
+false	false		Z2PT020A		TD	02h00		Thermique des locaux- climatisation		TD3	
+false	false		Z2PT020A		TD	02h00		Thermique des locaux- climatisation		TD3	
+false	false		Z2PT020A		TD	02h00		Thermique des locaux- climatisation		TD3	
+false	false		Z2PT020A		TD	02h00		Thermique des locaux- climatisation		TD3	
+false	false		Z2PT020A		TD	02h00		Thermique des locaux- climatisation		TD3	
+false	false		Z2PT020A		TD	02h00		Thermique des locaux- climatisation		TD2	
+false	false		Z2PT020A		TD	02h00		Thermique des locaux- climatisation		TD2	
+false	false		Z2PT020A		TD	02h00		Thermique des locaux- climatisation		TD2	
+false	false		Z2PT020A		TD	02h00		Thermique des locaux- climatisation		TD2	
+false	false		Z2PT020A		TD	02h00		Thermique des locaux- climatisation		TD2	
+false	false		Z2PT020A		TD	02h00		Thermique des locaux- climatisation		TD1	
+false	false		Z2PT020A		TD	02h00		Thermique des locaux- climatisation		TD1	
+false	false		Z2PT020A		TD	02h00		Thermique des locaux- climatisation		TD1	
+false	false		Z2PT020A		TD	02h00		Thermique des locaux- climatisation		TD1	
+false	false		Z2PT020A		TD	02h00		Thermique des locaux- climatisation		TD1	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP8	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP8	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP8	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP7	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP7	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP7	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP6	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP6	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP6	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP5	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP5	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP5	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP4	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP4	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP4	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP3	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP3	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP3	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP2	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP2	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP2	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP1	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP1	
+false	false		Z2PT022A		TP	04h00		Machines frigorifiques		TP1	
+false	false		Z2PT020A		CM	01h30		Thermique des locaux		S3	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD4	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD4	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD4	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD4	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD3	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD3	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD3	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD3	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD2	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD2	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD2	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD2	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD1	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD1	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD1	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD1	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD4	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD4	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD4	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD4	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD4	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD4	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD4	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD4	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD4	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD4	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD4	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD4	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD3	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD3	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD3	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD3	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD3	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD3	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD3	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD3	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD3	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD3	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD3	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD3	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD2	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD2	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD2	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD2	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD2	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD2	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD2	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD2	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD2	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD2	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD2	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD2	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD1	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD1	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD1	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD1	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD1	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD1	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD1	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD1	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD1	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD1	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD1	
+false	false		Z2PT015A		TD	02h00		Transfert thermique		TD1	
+false	false		Z2PT015A		TP	04h00		Transfert thermique		TP8	
+false	false		Z2PT015A		TP	04h00		Transfert thermique		TP8	
+false	false		Z2PT015A		TP	04h00		Transfert thermique		TP8	
+false	false		Z2PT015A		TP	04h00		Transfert thermique		TP8	
+false	false		Z2PT015A		TP	04h00		Transfert thermique		TP7	
+false	false		Z2PT015A		TP	04h00		Transfert thermique		TP7	
+false	false		Z2PT015A		TP	04h00		Transfert thermique		TP7	
+false	false		Z2PT015A		TP	04h00		Transfert thermique		TP7	
+false	false		Z2PT015A		TP	04h00		Transfert thermique		TP6	
+false	false		Z2PT015A		TP	04h00		Transfert thermique		TP6	
+false	false		Z2PT015A		TP	04h00		Transfert thermique		TP6	
+false	false		Z2PT015A		TP	04h00		Transfert thermique		TP6	
+false	false		Z2PT015A		TP	04h00		Transfert thermique		TP5	
+false	false		Z2PT015A		TP	04h00		Transfert thermique		TP5	
+false	false		Z2PT015A		TP	04h00		Transfert thermique		TP5	
+false	false		Z2PT015A		TP	04h00		Transfert thermique		TP5	
+false	false		Z2PT015A		TP	04h00		Transfert thermique		TP4	
+false	false		Z2PT015A		TP	04h00		Transfert thermique		TP4	
+false	false		Z2PT015A		TP	04h00		Transfert thermique		TP4	
+false	false		Z2PT015A		TP	04h00		Transfert thermique		TP4	
+false	false		Z2PT015A		TP	04h00		Transfert thermique		TP3	
+false	false		Z2PT015A		TP	04h00		Transfert thermique		TP3	
+false	false		Z2PT015A		TP	04h00		Transfert thermique		TP3	
+false	false		Z2PT015A		TP	04h00		Transfert thermique		TP3	
+false	false		Z2PT015A		TP	04h00		Transfert thermique		TP2	
+false	false		Z2PT015A		TP	04h00		Transfert thermique		TP2	
+false	false		Z2PT015A		TP	04h00		Transfert thermique		TP2	
+false	false		Z2PT015A		TP	04h00		Transfert thermique		TP2	
+false	false		Z2PT015A		TP	04h00		Transfert thermique		TP1	
+false	false		Z2PT015A		TP	04h00		Transfert thermique		TP1	
+false	false		Z2PT015A		TP	04h00		Transfert thermique		TP1	
+false	false		Z2PT015A		TP	04h00		Transfert thermique		TP1	
+false	false		Z2PT015A		CM	01h30		Transfert thermique		S3	
+false	false		Z2PT015A		CM	01h30		Transfert thermique		S3	
+false	false		Z2PT015A		CM	01h30		Transfert thermique		S3	
+false	false		Z2PT015A		CM	01h30		Transfert thermique		S3	
+false	false		Z2PT015A		CM	01h00		Transfert thermique		S3	
+false	false		Z2PT015A		CM	02h00		Transfert thermique		S3	
+false	false		Z2PT015A		CM	01h30		Transfert thermique		S3	
+false	false		Z2PT015A		CM	01h30		Transfert thermique		S3	
+false	false		Z2PT015A		CM	01h30		Transfert thermique		S3	
+false	false		Z2PT015A		CM	01h30		Transfert thermique		S3	
+false	false		Z2PT015A		CM	01h30		Transfert thermique		S3	
+false	false		Z2PT015A		CM	01h30		Transfert thermique		S3	
+false	false		Z2PT015A		CM	01h30		Transfert thermique		S3	
+false	false		Z2PT015A		CM	01h30		Transfert thermique		S3	
+false	false		Z2PT015A		CM	01h30		Transfert thermique		S3	
+false	false		Z2PT015A		CM	01h30		Transfert thermique		S3	
+false	false		Z2PT015A		CM	01h30		Transfert thermique		S3	
