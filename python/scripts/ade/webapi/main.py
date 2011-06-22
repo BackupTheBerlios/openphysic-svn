@@ -90,7 +90,10 @@ class ade_webapi():
     def getDate(self, week, day, slot):
         pass
 
-myade = ade_webapi('https://upplanning.appli.univ-poitiers.fr/ade/webapi?', 'login', 'password')
+url = 'https://upplanning.appli.univ-poitiers.fr/ade/webapi?'
+login = 'login'
+password = 'password'
+myade = ade_webapi(url, login, password)
 myade.connect()
 myade.getProjects(4)
 myade.setProject(11) # 2010-2011=>11 2011-2012=>1
