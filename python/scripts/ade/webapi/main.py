@@ -37,7 +37,7 @@ class ade_webapi():
     def xml_debug(self, xmlrep):
         if self.debug:
             print(xmlrep)
-            time.sleep(2)
+            time.sleep(1)
 
     def connect(self):
         f = urllib.urlopen(self.url + "function={0}&login={1}&password={2}".format('connect', self.login, self.password))
@@ -79,6 +79,27 @@ class ade_webapi():
         xmlrep = f.read()
         self.xml_debug(xmlrep)
 
+    def getTraineeByCode(self, code): # ToFix
+        f = urllib.urlopen(self.url + "function={0}&sessionId={1}&tree=false&code={2}&category=trainee".format('getResources', self.sessionId, code))
+        xmlrep = f.read()
+        self.xml_debug(xmlrep)
+
+
+    def getClassrom(self, name):
+        f = urllib.urlopen(self.url + "function={0}&sessionId={1}&tree=true&name={2}&category=classroom".format('getResources', self.sessionId, name))
+        xmlrep = f.read()
+        self.xml_debug(xmlrep)
+
+    def getInstructorByName(self, name):
+        f = urllib.urlopen(self.url + "function={0}&sessionId={1}&tree=true&name={2}&category=instructor".format('getResources', self.sessionId, name))
+        xmlrep = f.read()
+        self.xml_debug(xmlrep)
+
+    def getInstructorByCode(self, code):
+        f = urllib.urlopen(self.url + "function={0}&sessionId={1}&tree=true&code={2}&category=instructor".format('getResources', self.sessionId, code))
+        xmlrep = f.read()
+        self.xml_debug(xmlrep)
+
     def getActivities(self):
         f = urllib.urlopen(self.url + "function={0}&sessionId={1}&tree=true".format('getActivities', self.sessionId))
         xmlrep = f.read()
@@ -97,12 +118,18 @@ class ade_webapi():
         pass
 
 url = 'https://upplanning.appli.univ-poitiers.fr/ade/webapi?'
-login = 'login'
-password = 'password'
+login = 'x'
+password = 'y'
+
 myade = ade_webapi(url, login, password)
 myade.connect()
 myade.getProjects(4) # 4 = + grand niveau de détail
 myade.setProject(11) # 2010-2011=>11 2011-2012=>1
+myade.getTraineeByCode('Z1PT11')
 #myade.getResources()
-myade.getActivities()
+#myade.getInstructorByName('CELLES SEBASTIEN')
+#myade.getInstructorByCode('4496')
+#myade.getClassrom('Amphi')
+#myade.getActivities()
 myade.disconnect()
+
