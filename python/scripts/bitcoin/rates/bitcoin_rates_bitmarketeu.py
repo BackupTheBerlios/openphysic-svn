@@ -53,14 +53,26 @@ def update():
     clear_screen()
     
     print("""Bitcoin BTC/USD rates from BitMarket.eu API @ {0}
-Buy : {1}
-Sell : {2}
-Last : {3}
-Vol : {4}""".format(
+  Buy : {1}
+  Sell : {2}
+  Last : {3}
+  Vol : {4}""".format(
     datetime.datetime.now(), #.strftime('%Y/%m/%d %H:%M:%s'),
     data['currencies']['USD']['buy'],
     data['currencies']['USD']['sell'],
     data['currencies']['USD']['last'],
+    data['vol']
+))
+    print('')
+    print("""Bitcoin BTC/EUR rates from BitMarket.eu API @ {0}
+  Buy : {1}
+  Sell : {2}
+  Last : {3}
+  Vol : {4}""".format(
+    datetime.datetime.now(), #.strftime('%Y/%m/%d %H:%M:%s'),
+    data['currencies']['EUR']['buy'],
+    data['currencies']['EUR']['sell'],
+    data['currencies']['EUR']['last'],
     data['vol']
 ))
     f.close()
