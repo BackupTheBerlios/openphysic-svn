@@ -21,11 +21,31 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>
 
 from sharpe import *
+from datetime import datetime
 
-val = [1, 2, 3, -1, -2]
+# 1er janv : 1000
+# 31 janv : 2000
+# 29 fev : 2000
+# ...
+# 31 dec : 2850
+date = [datetime(2011, 1, 1, 0, 0, 0), datetime(2011, 1, 31),
+	datetime(2011, 2, 28), datetime(2011, 3, 31),
+	datetime(2011, 4, 30), datetime(2011, 5, 31),
+	datetime(2011, 6, 30), datetime(2011, 7, 31),
+	datetime(2011, 8, 31), datetime(2011, 9, 30),
+	datetime(2011, 10, 31), datetime(2011, 11, 30), datetime(2011, 12, 31)]
+
+print(date)
+
+val = [1000, 2000, 3000, 2500, 2000, 2500,
+	2800, 2000, 2500, 2800, 2900, 2800, 2850]
 
 print(val)
 
-sh_r = sharpe_ratio()
+rf = 0 # Rendement de l'avoir sans risque
 
-so_r = sortino_ratio()
+sh_r = sharpe_ratio(val, rf)
+print('Sharpe ratio : {0}'.format(sh_r))
+
+#so_r = sortino_ratio(val, rf)
+#print('Sortino ratio : {0}'.format(so_r))
