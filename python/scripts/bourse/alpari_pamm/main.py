@@ -25,3 +25,7 @@ lstHead = strHead.split("\n")
 
 print(lstHead)
 
+# Lecture du fichier classement PAMM
+filePAMM = open('data.txt', 'r')
+
+pamms = csv.reader(filePAMM, delimiter='\t')
