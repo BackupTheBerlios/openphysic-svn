@@ -1,5 +1,8 @@
+Num
 Classement
+X_1
 Nom du compte PAMM
+X_2
 Durée
 Type
 Devise

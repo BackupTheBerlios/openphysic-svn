@@ -30,14 +30,19 @@ filePAMM = open('data.txt', 'r')
 pammsReader = csv.reader(filePAMM, delimiter='\t')
 
 pammsWriter = csv.writer(open('data_out.csv', 'w'), delimiter=';')
+pammsWriter.writerow(lstHead)
 
 i = 0
 for line in pammsReader:
     if i % 3 == 0: # Nouveau compte toutes les 3 lignes
         pamm = []
+    elif i % 3 == 1:
+        pass
+
     pamm.extend(line)
+
     if i % 3 == 2:
         print(pamm)
-        print(len(pamm))
+        #print(len(pamm))
         pammsWriter.writerow(pamm)
     i = i + 1
