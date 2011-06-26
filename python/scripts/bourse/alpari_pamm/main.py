@@ -4,8 +4,7 @@
 """
     Tri des comptes PAMM Alpari
 
-       But : ce script permet de trier
-       les comptes PAMM Alpari
+       But : ce script permet de trier les comptes PAMM Alpari
 
     Copyright (C) 2011  "Sébastien CELLES" <sebastien.celles@univ-poitiers.fr>
 
@@ -23,9 +22,22 @@ strHead = fileHead.read()
 fileHead.close()
 lstHead = strHead.split("\n")
 
-print(lstHead)
+#print(lstHead)
 
 # Lecture du fichier classement PAMM
 filePAMM = open('data.txt', 'r')
 
-pamms = csv.reader(filePAMM, delimiter='\t')
+pammsReader = csv.reader(filePAMM, delimiter='\t')
+
+pammsWriter = csv.writer(open('data_out.csv', 'w'), delimiter=';')
+
+i = 0
+for line in pammsReader:
+    if i % 3 == 0: # Nouveau compte toutes les 3 lignes
+        pamm = []
+    pamm.extend(line)
+    if i % 3 == 2:
+        print(pamm)
+        print(len(pamm))
+        pammsWriter.writerow(pamm)
+    i = i + 1
