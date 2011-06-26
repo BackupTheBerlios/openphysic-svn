@@ -46,3 +46,5 @@ for line in pammsReader:
         #print(len(pamm))
         pammsWriter.writerow(pamm)
     i = i + 1
+    
+# Critère Sharpe ratio (1 mois - 3 mois - 6 mois) proche et > 1
