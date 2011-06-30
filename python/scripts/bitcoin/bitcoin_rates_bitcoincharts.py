@@ -2,7 +2,7 @@
 # -*- coding: utf8 -*-
 
 """
-    Bitcoin rates from Mt Gox API
+    Bitcoin rates from http://bitcoincharts.com/
 
     Copyright (C) 2011 "NoOne" <noone@nowhere.com>
     You can donate @ 1MDzyfk4s2KzY1N5VybfDNRDQucrBZoMA5
@@ -40,34 +40,18 @@ def clear_screen():
         #print '\n' * numlines
 
 def update():
-    f = urllib.urlopen("http://mtgox.com/code/data/ticker.php")
+    f = urllib.urlopen("http://bitcoincharts.com/t/weighted_prices.json")
     json_data = f.read()
 
     # Value for test 2011/06/18 @ 09:45
     #d = {'ticker': {'high': 17.2, 'low':13, 'vol':83990, 'buy':15.2303, 'sell':15.4499, 'last':15.2303}}
     #json_data = json.dumps(d)
 
-    #print(json_data)
+    print(json_data)
 
     data = json.loads(json_data)
     #print(data['ticker']['sell'])
 
-    clear_screen()
-    print("""Bitcoin BTC/USD rates from Mt Gox API @ {0}
-Buy : {1}
-Sell : {2}
-High : {3}
-Low : {4}
-Last : {5}
-Vol : {6}""".format(
-    datetime.datetime.now(), #.strftime('%Y/%m/%d %H:%M:%s'),
-    data['ticker']['buy'],
-    data['ticker']['sell'],
-    data['ticker']['high'],
-    data['ticker']['low'],
-    data['ticker']['last'],
-    data['ticker']['vol']
-))
     f.close()
 
 while(True):
