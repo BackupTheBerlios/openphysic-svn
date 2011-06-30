@@ -56,7 +56,7 @@ def update():
     
     print("""Bitcoin weighted prices from http://bitcoincharts.com/ @ {0}
     
-          \t24h\t7d\t30d
+          24h\t7d\t30d
 """.format(datetime.datetime.now()))  #.strftime('%Y/%m/%d %H:%M:%s'),
 
     for currency in data:
@@ -64,26 +64,16 @@ def update():
         try:
             dC24h = data[currency]['24h']
         except:
-            dC24h = '-'
-        
+            dC24h = '-' 
         try:
             dC7d = data[currency]['7d']
         except:
             dC7d = '-'
-            
         try:
             dC30d = data[currency]['30d']
         except:
             dC30d = '-'
-        
-        print("BTC/{0} : \t{1}\t{2}\t{3}".format(
-    currency,
-    dC24h,
-    dC7d,
-    dC30d
-))
-
-
+        print("BTC/{0} : {1}\t{2}\t{3}".format(currency, dC24h, dC7d, dC30d))
 
     f.close()
 
