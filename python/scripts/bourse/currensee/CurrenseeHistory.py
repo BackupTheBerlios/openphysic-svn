@@ -29,21 +29,12 @@ from CurrenseeAnalyzerClass import *
 #  # Open XLS file
 #  ###########################################
 
-"""
+
 import xlrd
+from sqlalchemy import *
+
 book = xlrd.open_workbook("Closed+Trades.xls")
 sh = book.sheet_by_index(0)
-
-for r in range(sh.nrows): #[0:3]
-    print(sh.row(r)[:7])
-"""
-
-"""
-cf SQLAlchemy + SQLSoup
-SQLAlchemy tuto http://www.rmunn.com/sqlalchemy-tutorial/tutorial.html
-http://www.sqlalchemy.org/trac/wiki/SqlSoup
-"""
-from sqlalchemy import *
 
 connectionURI = 'sqlite:///history.sqlite'
 #connectionURI = 'sqlite:///:memory:'
@@ -66,12 +57,30 @@ Pip G/L
 
 trades = Table('trades', metadata,
     Column('trade_id', Integer, primary_key=True),
-    Column('open_date', String(40)),
+    Column('open_date', String),
     Column('close_date', String),
     Column('type', String),
     Column('currency', String),
-    Column('open_price', String),
-    Column('close_price', String),
-    Column('pip', String),
+    Column('open_price', REAL),
+    Column('close_price', REAL),
+    Column('pip', REAL),
 )
 trades.create()
+
+import datetime
+
+for r in range(sh.nrows)[1:]: #[1:] pour éviter la ligne d'entête
+    #print(sh.row(r)[:7])
+    i = trades.insert()
+    new_open_date = sh.row(r)[0].value
+    #dt1 = datetime.date.strptime(sh.row(r)[0].value,'%m/%d/%y"')
+    i.execute(open_date=new_open_date, close_date=sh.row(r)[1].value,
+        type=sh.row(r)[2].value, currency=sh.row(r)[3].value,
+        open_price=sh.row(r)[4].value, close_price=sh.row(r)[5].value, pip=sh.row(r)[6].value)
+
+
+"""
+cf SQLAlchemy + SQLSoup
+SQLAlchemy tuto http://www.rmunn.com/sqlalchemy-tutorial/tutorial.html
+http://www.sqlalchemy.org/trac/wiki/SqlSoup
+"""
