@@ -59,7 +59,7 @@ trades = Table('trades', metadata,
     Column('trade_id', Integer, primary_key=True),
     Column('open_date', String),
     Column('close_date', String),
-    Column('type', String),
+    Column('type', Integer), # BOOLEAN or Integer
     Column('currency', String),
     Column('open_price', REAL),
     Column('close_price', REAL),
@@ -72,10 +72,19 @@ import datetime
 for r in range(sh.nrows)[1:]: #[1:] pour éviter la ligne d'entête
     #print(sh.row(r)[:7])
     i = trades.insert()
-    new_open_date = sh.row(r)[0].value
-    #dt1 = datetime.date.strptime(sh.row(r)[0].value,'%m/%d/%y"')
-    i.execute(open_date=new_open_date, close_date=sh.row(r)[1].value,
-        type=sh.row(r)[2].value, currency=sh.row(r)[3].value,
+    date = sh.row(r)[0].value.split('/')
+    new_open_date = date[2]+'-'+date[0]+'-'+date[1]
+    date = sh.row(r)[1].value.split('/')
+    new_close_date = date[2]+'-'+date[0]+'-'+date[1]
+    if sh.row(r)[2].value=='LONG': # 'LONG' # 'BUY'
+        new_type = 1
+    elif sh.row(r)[2].value=='SHORT': # 'SHORT' # 'SELL'
+        new_type = 0
+    else: # Error
+    	new_type = None #-1
+    # boolean
+    i.execute(open_date=new_open_date, close_date=new_close_date,
+        type=new_type, currency=sh.row(r)[3].value,
         open_price=sh.row(r)[4].value, close_price=sh.row(r)[5].value, pip=sh.row(r)[6].value)
 
 
