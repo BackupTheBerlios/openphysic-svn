@@ -28,6 +28,8 @@ from datetime import datetime
 # 29 fev : 2000
 # ...
 # 31 dec : 2850
+print("="*5+" Input "+"="*5)
+
 date = [datetime(2011, 1, 1, 0, 0, 0), datetime(2011, 1, 31),
 	datetime(2011, 2, 28), datetime(2011, 3, 31),
 	datetime(2011, 4, 30), datetime(2011, 5, 31),
@@ -43,6 +45,11 @@ val = [1000, 2000, 3000, 2500, 2000, 2500,
 print(val)
 
 rf = 0 # Rendement de l'avoir sans risque
+
+print("="*5+" Test "+"="*5)
+print((average(val)-rf))
+
+print("="*5+" Ratio "+"="*5)
 
 sh_r = sharpe_ratio(val, rf)
 print('Sharpe ratio : {0}'.format(sh_r))
