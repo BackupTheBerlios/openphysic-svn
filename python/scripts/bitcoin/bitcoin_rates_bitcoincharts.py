@@ -53,19 +53,34 @@ def update():
     clear_screen()
     #print(json_data)
     #print(data)
+    
     print("""Bitcoin weighted prices from http://bitcoincharts.com/ @ {0}
     
           \t24h\t7d\t30d
-          
-BTC/USD : \t{1}\t{2}\t{3}
-BTC/EUR : \t{4}\t{5}\t{6}""".format(
-    datetime.datetime.now(), #.strftime('%Y/%m/%d %H:%M:%s'),
-    data['USD']['24h'],
-    data['USD']['7d'],
-    data['USD']['30d'],
-    data['EUR']['24h'],
-    data['EUR']['7d'],
-    data['EUR']['30d']
+""".format(datetime.datetime.now()))  #.strftime('%Y/%m/%d %H:%M:%s'),
+
+    for currency in data:
+        #print(key)
+        try:
+            dC24h = data[currency]['24h']
+        except:
+            dC24h = '-'
+        
+        try:
+            dC7d = data[currency]['7d']
+        except:
+            dC7d = '-'
+            
+        try:
+            dC30d = data[currency]['30d']
+        except:
+            dC30d = '-'
+        
+        print("BTC/{0} : \t{1}\t{2}\t{3}".format(
+    currency,
+    dC24h,
+    dC7d,
+    dC30d
 ))
 
 
