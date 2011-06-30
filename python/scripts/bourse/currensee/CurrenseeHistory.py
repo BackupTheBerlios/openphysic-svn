@@ -28,10 +28,50 @@ from CurrenseeAnalyzerClass import *
 #  ###########################################
 #  # Open XLS file
 #  ###########################################
+
+"""
 import xlrd
 book = xlrd.open_workbook("Closed+Trades.xls")
 sh = book.sheet_by_index(0)
 
 for r in range(sh.nrows): #[0:3]
-    print sh.row(r)[:7]
+    print(sh.row(r)[:7])
+"""
 
+"""
+cf SQLAlchemy + SQLSoup
+SQLAlchemy tuto http://www.rmunn.com/sqlalchemy-tutorial/tutorial.html
+http://www.sqlalchemy.org/trac/wiki/SqlSoup
+"""
+from sqlalchemy import *
+
+connectionURI = 'sqlite:///history.sqlite'
+#connectionURI = 'sqlite:///:memory:'
+engine = create_engine(connectionURI) # 'sqlite:///:memory:' # 'sqlite:///history.db'
+
+#engine.echo = False  # Try changing this to True and see what happens
+engine.echo = True
+
+metadata = MetaData(engine) # MetaData # BoundMetaData
+
+""" Head of xls file
+Open Date
+Close Date
+Type
+Currency
+Open Price
+Close Price
+Pip G/L
+"""
+
+trades = Table('trades', metadata,
+    Column('trade_id', Integer, primary_key=True),
+    Column('open_date', String(40)),
+    Column('close_date', String),
+    Column('type', String),
+    Column('currency', String),
+    Column('open_price', String),
+    Column('close_price', String),
+    Column('pip', String),
+)
+trades.create()
