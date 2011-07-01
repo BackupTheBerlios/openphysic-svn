@@ -41,7 +41,7 @@ connectionURI = 'sqlite:///history.sqlite'
 engine = create_engine(connectionURI) # 'sqlite:///:memory:' # 'sqlite:///history.db'
 
 #engine.echo = False  # Try changing this to True and see what happens
-engine.echo = True
+engine.echo = False
 
 metadata = MetaData(engine) # MetaData # BoundMetaData
 
@@ -87,6 +87,14 @@ for r in range(sh.nrows)[1:]: #[1:] pour éviter la ligne d'entête
         type=new_type, currency=sh.row(r)[3].value,
         open_price=sh.row(r)[4].value, close_price=sh.row(r)[5].value, pip=sh.row(r)[6].value)
 
+s = trades.select() # trades.c.pip>0
+rs = s.execute()
+#row = rs.fetchone()
+#print(row)
+rows = rs.fetchall()
+print("trade_id\topen_date\tclose_date\ttype\tcurrency\topen_price\tclose_price\tpip")
+for row in rows:
+    print("{0}\t{1}\t{2}\t{3}\t{4}\t{5}\t{6}\t{7}".format(row[0],row[1],row[2],row[3],row[4],row[5],row[6],row[7]))
 
 """
 cf SQLAlchemy + SQLSoup
