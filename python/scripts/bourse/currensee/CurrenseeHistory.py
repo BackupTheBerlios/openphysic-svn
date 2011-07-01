@@ -89,7 +89,9 @@ for r in range(sh.nrows)[1:]: #[1:] pour éviter la ligne d'entête
         type=new_type, currency=sh.row(r)[3].value,
         open_price=sh.row(r)[4].value, close_price=sh.row(r)[5].value, pip=sh.row(r)[6].value)
 
-s = trades_table.select() # trades.c.pip>0 # trades.c.trade_id<10 # order_by=trades_table.c.pip
+#mapper(Trade, trades_table)
+
+s = trades_table.select(trades_table.c.trade_id<10) # trades_table.c.pip>0 # trades_table.c.trade_id<10 # order_by=trades_table.c.pip
 rs = s.execute()
 #row = rs.fetchone()
 #print(row)
