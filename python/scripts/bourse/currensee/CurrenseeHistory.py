@@ -29,6 +29,8 @@ from CurrenseeAnalyzerClass import *
 #  # Open XLS file
 #  ###########################################
 
+#class Trade(object):
+#    pass
 
 import xlrd
 from sqlalchemy import *
@@ -55,7 +57,7 @@ Close Price
 Pip G/L
 """
 
-trades = Table('trades', metadata,
+trades_table = Table('trades', metadata,
     Column('trade_id', Integer, primary_key=True),
     Column('open_date', String),
     Column('close_date', String),
@@ -65,13 +67,13 @@ trades = Table('trades', metadata,
     Column('close_price', REAL),
     Column('pip', REAL),
 )
-trades.create()
+trades_table.create()
 
 import datetime
 
 for r in range(sh.nrows)[1:]: #[1:] pour éviter la ligne d'entête
     #print(sh.row(r)[:7])
-    i = trades.insert()
+    i = trades_table.insert()
     date = sh.row(r)[0].value.split('/')
     new_open_date = date[2]+'-'+date[0]+'-'+date[1]
     date = sh.row(r)[1].value.split('/')
@@ -87,7 +89,7 @@ for r in range(sh.nrows)[1:]: #[1:] pour éviter la ligne d'entête
         type=new_type, currency=sh.row(r)[3].value,
         open_price=sh.row(r)[4].value, close_price=sh.row(r)[5].value, pip=sh.row(r)[6].value)
 
-s = trades.select() # trades.c.pip>0
+s = trades_table.select() # trades.c.pip>0 # trades.c.trade_id<10 # order_by=trades_table.c.pip
 rs = s.execute()
 #row = rs.fetchone()
 #print(row)
